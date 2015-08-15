@@ -218,8 +218,16 @@ demo.sh         detected-sources.txt       detected-sources.txt.expected
 demo.sh --small detected-sources_small.txt detected-sources_small.txt.expected
 =============== ========================== ===================================
 
-The demo output may not be identical to the reference output due to minor variation in numerical routines between operating systems (see DM-1086 for details).
-The bin/compare script will check whether the output matches the reference to within expected tolerances.
+The demo output may not be identical to the reference output due to minor variation in numerical routines between operating systems (see `DM-1086 <https://jira.lsstcorp.org/browse/DM-1086>`_ for details).
+The ``bin/compare`` script will check whether the output matches the reference to within expected tolerances:
+
+::
+
+    bin/compare detected-sources.txt.expected detected-sources.txt
+
+The script will print "``Ok``" if the demo ran correctly.
+
+For more information about the processing done by the demo, refer to `its README on GitHub <https://github.com/lsst/lsst_dm_stack_demo>`_.
 
 .. todo::
 
