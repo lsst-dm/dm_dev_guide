@@ -27,7 +27,9 @@ Debian/Ubuntu
 
 Debian/Ubuntu systems use ``apt-get`` to install packages.
 This ``apt-get`` command will provision Debian-type systems for the LSST Stack
-(prepend the command with ``sudo`` if necessary)::
+(prepend the command with ``sudo`` if necessary):
+
+.. prompt:: bash
 
     apt-get install bison cmake curl flex g++ gettext git \
     libbz2-dev libcurl4-openssl-dev libfontconfig1 libglib2.0-dev \
@@ -43,7 +45,9 @@ RedHat/CentOS
 
 RedHat/CentOS systems use ``yum`` to install packages.
 This ``yum`` command will provision RedHat-type systems for the LSST Stack
-(prepend the command with ``sudo`` if necessary)::
+(prepend the command with ``sudo`` if necessary):
+
+.. prompt:: bash
 
     yum install blas bison bzip2 bzip2-devel cmake curl flex \
     fontconfig freetype-devel gcc-c++ gcc-gfortran gettext git \
@@ -60,12 +64,16 @@ Mac OS X
 We have tested the stack on Mavericks (10.9) and Yosemite (10.10).
 
 You will need to install developer tools, which we recommend you obtain with Apple's Xcode command line tools package.
-To do this, run from the command line (e.g. ``Terminal.app`` or similar)::
+To do this, run from the command line (e.g. ``Terminal.app`` or similar):
+
+.. prompt:: bash
 
     xcode-select --install
 
 and follow the on-screen instructions.
-You can verify where the tools are installed by running::
+You can verify where the tools are installed by running:
+
+.. prompt:: bash
 
     xcode-select -p
 
@@ -77,7 +85,9 @@ You can verify where the tools are installed by running::
 Optional Dependencies
 =====================
 
-Although not required, we recommend you install the `matplotlib <http://matplotlib.org>`_ and `scipy <http://scipy.org>`_ Python packages::
+Although not required, we recommend you install the `matplotlib <http://matplotlib.org>`_ and `scipy <http://scipy.org>`_ Python packages:
+
+.. prompt:: bash
 
     pip install -U matplotlib scipy
 
@@ -96,7 +106,9 @@ Choose an Installation Directory
 
 First, choose where you want to install the LSST Stack.
 We'll use ``$HOME/lsst_stack`` in this example.
-Create and change into that directory::
+Create and change into that directory:
+
+.. prompt:: bash
 
     mkdir -p $HOME/lsst_stack
     cd $HOME/lsst_stack
@@ -113,14 +125,18 @@ Unset Environment Variables
 ===========================
 
 If you've been running the LSST Stack previously, you may have conflicting environment variables setup.
-To be safe, run::
+To be safe, run:
+
+.. prompt:: bash
 
     unset LSST_HOME EUPS_PATH LSST_DEVEL EUPS_PKGROOT REPOSITORY_PATH
 
 Installation Set-up
 ===================
 
-Download and run the installation setup script, which installs the basic packages required to install other packages::
+Download and run the installation setup script, which installs the basic packages required to install other packages:
+
+.. prompt:: bash
 
     curl -OL https://sw.lsstcorp.org/eupspkg/newinstall.sh
     bash newinstall.sh
@@ -136,7 +152,9 @@ If you do not choose the Anaconda Python install, and subsequent package build s
 * Report the problem to `community.lsst.org <community.lsst.org>`_. Include your OS, a description of the problem, plus any error messages. Community members will provide assistance.
 * Consider removing all contents of the install directory and start from scratch, and accepting the Anaconda Python installation option.
 
-Once ``newinstall.sh`` has finished, source the LSST environment to continue the installation::
+Once ``newinstall.sh`` has finished, source the LSST environment to continue the installation by running the appropriate command for your shell:
+
+.. prompt:: bash
 
     source $LSST_INSTALL_DIR/loadLSST.bash # for bash users
     source $LSST_INSTALL_DIR/loadLSST.csh  # for csh users
@@ -153,7 +171,9 @@ Many users will want to make use of the pipelines or applications code.
 A simple way to ensure that you have a fairly complete set of packages for this need is to install ``lsst_apps``.
 The dependency tree for ``lsst_apps`` ensures that many other packages (about 70, including e.g., ``pipe_tasks``) are also installed. 
 
-Installing ``lsst_apps`` may take a little while (about 1.2 hr on a 2014-era iMac with 32 GB of memory and 8 cores)::
+Installing ``lsst_apps`` may take a little while (about 1.2 hr on a 2014-era iMac with 32 GB of memory and 8 cores):
+
+.. prompt:: bash
 
     eups distrib install -t v10_1 lsst_apps
 
@@ -176,7 +196,7 @@ We'll call this directory ``$DEMO_DATA``.
 The directory where you installed the stack is ``$LSST_INSTALL_DIR``.
 Then run:
 
-::
+.. prompt:: bash
 
     source $LSST_INSTALL_DIR/loadLSST.sh
     mkdir -p $DEMO_DATA
@@ -196,15 +216,15 @@ run  camcol field filters
 
 Now setup the processing package and run the demo:
 
-::
+.. prompt:: bash
 
     setup obs_sdss
     ./bin/demo.sh # --small to process a subset of images
 
 For each input image the script performs the following operations:
 
-* generate a subset of basic image characterization (e.g., determine photometric zero-point, detect sources, and measures positions, shapes, brightness with a variety of techniques)
-* creates a ``./output`` subdirectory containing subdirectories of configuration files, processing metadata, calibrated images, FITS tables of detected sources. These "raw" outputs are readable by other parts of the LSST pipeline
+* generate a subset of basic image characterization (e.g., determine photometric zero-point, detect sources, and measures positions, shapes, brightness with a variety of techniques),
+* creates a ``./output`` subdirectory containing subdirectories of configuration files, processing metadata, calibrated images, FITS tables of detected sources. These "raw" outputs are readable by other parts of the LSST pipeline, and
 * generates a master comparison catalog in the working directory from the band-specific source catalogs in the ``output/sci-results/`` subdirectories.
 
 The demo will take a minute or two to execute (depending upon your machine), and will generate a large number of status messages.
@@ -221,7 +241,7 @@ demo.sh --small detected-sources_small.txt detected-sources_small.txt.expected
 The demo output may not be identical to the reference output due to minor variation in numerical routines between operating systems (see `DM-1086 <https://jira.lsstcorp.org/browse/DM-1086>`_ for details).
 The ``bin/compare`` script will check whether the output matches the reference to within expected tolerances:
 
-::
+.. prompt:: bash
 
     bin/compare detected-sources.txt.expected detected-sources.txt
 
