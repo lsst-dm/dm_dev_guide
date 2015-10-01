@@ -31,6 +31,7 @@ We also encourage you to join us at `community.lsst.org <http://community.lsst.o
 
    development/getting_started.rst
    development/code_style.rst
+   development/docs/index.rst
 
 
 *******
