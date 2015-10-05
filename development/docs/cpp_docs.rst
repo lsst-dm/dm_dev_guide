@@ -7,7 +7,7 @@ Documenting C++ Code
 The LSST Stack uses `Doxygen <http://www.stack.nl/~dimitri/doxygen/>`_ to build C++ API reference documentation by extracting source code comments.
 This page covers the most important concepts in writing Doxygen-friendly C++ comments for the LSST Stack, though `Doxygen's manual <http://www.stack.nl/~dimitri/doxygen/manual.html>`_ is the most comprehensive reference.
 
-Note that LSST uses `Markdown-formatted Doxygen comment blocks <http://www.doxygen.nl/manual/markdown.html>`_
+Note that LSST uses `Markdown-formatted Doxygen comment blocks <http://www.doxygen.nl/manual/markdown.html>`_.
 
 Boilerplate for Header (.h) and Source (.cpp) Files
 ===================================================
@@ -55,7 +55,7 @@ After the boilerplate, any C++ file should have a Doxygen-style comment block (t
 
 2. ``@brief`` to provide a synopsis of the file for Doxygen's index. This should be a line, at most.
 
-3. ``@ingroup`` to specify the name of the LSST Stack package containing this file (see `below <doc-cpp-package-definition>`).
+3. ``@ingroup`` to specify the name of the LSST Stack package containing this file (see :ref:`below <doc-cpp-package-definition>`).
 
 4. ``@author`` to provide the name of the file's primary author.
 
