@@ -22,8 +22,6 @@ We are building the Stack for the `Large Synoptic Survey Telescope (LSST) <http:
 
    install
 
-
-
 ..
   FIXME uncomment this section when tutorials are available
   .. toctree::
@@ -31,17 +29,24 @@ We are building the Stack for the `Large Synoptic Survey Telescope (LSST) <http:
      :caption: Tutorials
      :name: part-tutorials
 
-
 .. toctree::
    :maxdepth: 1
    :caption: Packages
    :name: part-packages
-
 
 .. toctree::
    :maxdepth: 1
    :caption: Developer Guide
    :name: part-developer-guide
 
+   development/lsstsw_tutorial.rst
    development/docs/index.rst
    development/git_lfs.rst
+
+*******
+Indices
+*******
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

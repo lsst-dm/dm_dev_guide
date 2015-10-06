@@ -3,7 +3,7 @@ Installing the LSST Stack
 #########################
 
 This page will guide you through installing the LSST Stack from source to use for data processing.
-Developers should follow :doc:`/development/getting_started` instead.
+Developers should follow :doc:`/development/lsstsw_tutorial` instead.
 
 We are working on methods for binary installation and Docker distribution.
 In the meantime, Fabio Hernandez of IN2P3 has kindly arranged to make `binary distributions of versions v9_2 and v10_1-rc3 available via CernVM FS <https://github.com/airnandez/lsst-cvmfs>`_.
