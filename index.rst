@@ -29,7 +29,7 @@ We also encourage you to join us at `community.lsst.org <http://community.lsst.o
    :caption: Developer Guide
    :name: part-developer-guide
 
-   development/getting_started.rst
+   development/workflow.rst
    development/code_style.rst
    development/docs/index.rst
 
