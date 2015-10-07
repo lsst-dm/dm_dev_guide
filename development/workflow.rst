@@ -45,3 +45,16 @@ Edit the file lsstsw/etc/repos.yaml to change all instances of `https://github.c
 .. code-block:: bash
 
    eups tags --clone bNNNN current
+
+Next declare the git clones of the packages you will be working on to ``eups``.
+The git clones are in ``lsstsw/build`` and I suggest you ``eups declare`` them with version 'git' and a ``eups tag`` of your username (since that tag is permitted by eups without altering the eups configuration).
+For example, in lsstsw/build/afw I would issue the command:
+
+.. code-block:: bash
+
+   eups declare
+   eups declare -r . afw git -t rowen
+
+- say  package exists. eups list afw
+- use declare to declare tags
+- use undeclare to remove tags
