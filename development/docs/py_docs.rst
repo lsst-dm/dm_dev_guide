@@ -10,7 +10,7 @@ Documenting Python Code
 Boilerplate
 ===========
 
-Python source files begin with a small amount of boilerplate text:
+LSST's Python source files begin with a small amount of boilerplate text:
 
 .. code-block:: python
 
@@ -36,8 +36,8 @@ Python source files begin with a small amount of boilerplate text:
    # see <http://www.lsstcorp.org/LegalNotices/>.
    #
 
-Python Docstrings
-=================
+Python Docstring Basics
+=======================
 
 Python docstrings are special comments that form the ``__doc__`` attributes attached to modules, classes, methods and functions.
 
@@ -85,16 +85,35 @@ Modules
 Module-level docstrings should be placed as close to the top of the Python file as possible: *below* the boilerplate, but *above* the imports.
 Module-level docstrings should not be indented.
 
-Classes
-^^^^^^^
+.. code-block:: python
+   
+   #
+   # LSST Data Management System
+   # See COPYRIGHT file at the top of the source tree.
+   #
+   # [...]
+   #
+   # You should have received a copy of the LSST License Statement and
+   # the GNU General Public License along with this program. If not,
+   # see <http://www.lsstcorp.org/LegalNotices/>.
+   #
+   """Summary of MyModule.
 
-Class docstrings should be placed directly below the class declaration, and indented to the level of the class's scope.
-For example:
+   Extended discussion of my module.
+   """
+
+   import lsst.afw.table as afw_table
+   # [...]
+
+Classes, Methods, and Functions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Class/method/function docstrings should be placed directly below the class/method/function declaration, and indented to the level of the scope.
 
 .. code-block:: python
 
    class MyClass(object):
-       """Summary of my class.
+       """Summary of MyClass.
 
        Additional discussion.
        """
@@ -102,18 +121,28 @@ For example:
        def __init__(self):
            pass
 
-Note that the class docstring takes the place of a docstring of the ``__init__`` method; ``__init__`` has no docstring.
-For further information, see TODO.
+       def method(self):
+           """Summary of method.
 
-Functions and Methods
-^^^^^^^^^^^^^^^^^^^^^
+           Extended Discussion of my method.
+           """
+           pass
+
+   def my_function():
+       """Summary of my_function.
+
+       Extended discussion of my_function.
+       """
+       pass
+
+Note that the class docstring takes the place of a docstring of the ``__init__`` method; ``__init__`` has no docstring.
 
 ReStructuredText Specifics for Docstrings
 =========================================
 
 We use reStructuredText to mark up and give semantic meaning to text in docstrings.
 ReStructuredText is lightweight enough to read in raw form, such as in a help printout in a terminal.
-All of the style guidance for using restructured text from our TODO ReStructuredText Style Guide applies in docstrings with a few exceptions defined here.
+All of the style guidance for using restructured text from our :doc:`ReStructuredText Style Guide <rst_styleguide>` applies in docstrings with a few exceptions defined here.
 
 No space between headers and paragraphs
 ---------------------------------------
