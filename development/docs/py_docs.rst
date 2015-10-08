@@ -174,4 +174,12 @@ The header hierarchy is thus:
 
 This deviation from our reST style guide is in keeping with NumPy community idioms.
 
+Docstring lines should be 75 characters long or less
+----------------------------------------------------
+
+Our Coding Style Guide (TODO link) allows for Python lines to be as long as 110 lines.
+However docstring lines *must be 75 characters or fewer* to facilitate reading in the terminal or Jupyter notebook contexts.\ [#length]_
+
+.. [#length] '75' originates from the PEP8 length length recommendation of 79 characters, with the typical 4-space indentation level assumed.
+
 
