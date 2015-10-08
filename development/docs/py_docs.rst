@@ -201,8 +201,9 @@ We organize Python docstrings into sections that appear in a common order.
 10. :ref:`See Also <py-docstring-see-also>` (optional)
 11. :ref:`Notes <py-docstring-notes>` (optional)
 12. :ref:`References <py-docstring-references>` (optional)
+13. :ref:`Examples <py-docstring-examples>` (optional)
 
-In the following sections we describe the content of these docstring sections provides examples of full docstrings composed for classes, methods, functions, and constants.  
+In the following sections we describe the content of these docstring sections and provide examples of full docstrings composed for classes, methods, functions, and constants.  
 
 .. _py-docstring-short-summary:
 
@@ -590,17 +591,60 @@ It is not necessary to use the doctest markup ``<BLANKLINE>`` to indicate empty 
 
 .. The examples may assume that ``import numpy as np`` is executed before the example code.
 
-Documenting Methods and Functions
-=================================
+Documenting Modules
+===================
+
+Module docstrings are placed *after* the boilerplate and before any imports or other code.
+Module docstrings contain the following sections:
+
+1. :ref:`Short Summary <py-docstring-short-summary>`
+2. :ref:`Deprecation Warning <py-docstring-deprecation>` (if applicable)
+3. :ref:`Extended Summary <py-docstring-extended-summary>` (optional)
+4. :ref:`See Also <py-docstring-see-also>` (optional)
 
 Documenting Classes
 ===================
 
+Class docstrings are placed directly after the class definition, and serve to document both the class as a whole, *and* the arguments passed to the ``__init__`` constructor.
+Class docstrings contain the following sections:
+
+1. :ref:`Short Summary <py-docstring-short-summary>`
+2. :ref:`Deprecation Warning <py-docstring-deprecation>` (if applicable)
+3. :ref:`Extended Summary <py-docstring-extended-summary>` (optional)
+4. :ref:`Parameters <py-docstring-parameters>` (if applicable; for classes, methods and functions)
+5. :ref:`Methods <py-docstring-methods>` (if applicable; for classes)
+6. :ref:`Attributes <py-docstring-attributes>` (if applicable; for classes)
+7. :ref:`Other Parameters <py-docstring-other-parameters>` (if applicable; for classes, methods and functions)
+8. :ref:`Raises <py-docstring-raises>` (if applicable)
+9. :ref:`See Also <py-docstring-see-also>` (optional)
+10. :ref:`Notes <py-docstring-notes>` (optional)
+11. :ref:`References <py-docstring-references>` (optional)
+12. :ref:`Examples <py-docstring-examples>` (optional)
+
+Documenting Methods and Functions
+=================================
+
+1. :ref:`Short Summary <py-docstring-short-summary>`
+2. :ref:`Deprecation Warning <py-docstring-deprecation>` (if applicable)
+3. :ref:`Extended Summary <py-docstring-extended-summary>` (optional)
+4. :ref:`Parameters <py-docstring-parameters>` (if applicable; for classes, methods and functions)
+7. :ref:`Returns <py-docstring-returns>` or `Yields <py-docstring-yields>` (if applicable; for functions, methods, and generators)
+8. :ref:`Other Parameters <py-docstring-other-parameters>` (if applicable; for classes, methods and functions)
+9. :ref:`Raises <py-docstring-raises>` (if applicable)
+10. :ref:`See Also <py-docstring-see-also>` (optional)
+11. :ref:`Notes <py-docstring-notes>` (optional)
+12. :ref:`References <py-docstring-references>` (optional)
+13. :ref:`Examples <py-docstring-examples>` (optional)
+
 Documenting constants
 =====================
 
-Documenting Modules
-===================
+1. :ref:`Short Summary <py-docstring-short-summary>`
+2. :ref:`Deprecation Warning <py-docstring-deprecation>` (if applicable)
+3. :ref:`Extended Summary <py-docstring-extended-summary>` (optional)
+4. :ref:`Notes <py-docstring-notes>` (optional)
+5. :ref:`References <py-docstring-references>` (optional)
+6. :ref:`Examples <py-docstring-examples>` (optional)
 
 Acknowledgements
 ================
