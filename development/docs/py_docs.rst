@@ -191,6 +191,8 @@ For example
 
 This deviation from the normal style guide is in keeping with Python community idioms, and to save vertical space in terminal help printouts.
 
+.. _py-doc-section-levels:
+
 Top level headers are defined with '-'
 --------------------------------------
 
