@@ -61,6 +61,9 @@ Python Docstring Basics
 =======================
 
 Python docstrings are special strings that form the ``__doc__`` attributes attached to modules, classes, methods and functions.
+Docstrings are specified by `PEP-257`_.
+
+.. _PEP-257: https://www.python.org/dev/peps/pep-0257/
 
 Docstrings are delimited by triple double quotes, ``"""``.
 This allows docstrings to span multiple lines.
@@ -223,6 +226,11 @@ Common Structure of Docstrings
 ==============================
 
 We organize Python docstrings into sections that appear in a common order.
+This format follows the `Numpydoc`_ standard (used by NumPy, SciPy, and Astropy, among other scientific Python packages) rather than the format described in `PEP-287`_.
+
+.. _Numpydoc: https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt
+
+.. _PEP-287: https://www.python.org/dev/peps/pep-0287/
 
 1. :ref:`Short Summary <py-docstring-short-summary>`
 2. :ref:`Deprecation Warning <py-docstring-deprecation>` (if applicable)
