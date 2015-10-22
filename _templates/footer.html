@@ -1,0 +1,59 @@
+<footer>
+  {% if next or prev %}
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      {% if next %}
+        <a href="{{ next.link|e }}" class="btn btn-neutral float-right" title="{{ next.title|striptags|e }}" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      {% endif %}
+      {% if prev %}
+        <a href="{{ prev.link|e }}" class="btn btn-neutral" title="{{ prev.title|striptags|e }}" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    {%- if show_copyright %}
+      {%- if hasdoc('copyright') %}
+        {% trans path=pathto('copyright'), copyright=copyright|e %}&copy; <a href="{{ path }}">Copyright</a> {{ copyright }}.{% endtrans %}
+      {%- else %}
+        {% trans copyright=copyright|e %}&copy; Copyright {{ copyright }}.{% endtrans %}
+      {%- endif %}
+    {%- endif %}
+
+    {%- if build_id and build_url %}
+      {% trans build_url=build_url, build_id=build_id %}
+        <span class="build">
+          Build
+          <a href="{{ build_url }}">{{ build_id }}</a>.
+        </span>
+      {% endtrans %}
+    {%- elif commit %}
+      {% trans commit=commit %}
+        <span class="commit">
+          Revision <code>{{ commit }}</code>.
+        </span>
+      {% endtrans %}
+    {%- elif last_updated %}
+      {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}
+    {%- endif %}
+
+    </p>
+
+    <p>
+    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="{{ pathto('_static/cc-by_small.svg', 1) }}" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">LSST Stack Handbook</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://docs.lsst.codes" property="cc:attributionName" rel="cc:attributionURL">LSST Project</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+    </p>
+  </div>
+
+  {%- if show_sphinx %}
+  <p>
+    {% trans %}Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>{% endtrans %}.
+  </p>
+  {%- endif %}
+
+  <p>Financial support for LSST comes from the National Science Foundation (NSF) through Cooperative Agreement No. 1258333, the Department of Energy (DOE) Office of Science under Contract No. DE-AC02-76SF00515, and private funding raised by the <a href="http://www.lsstcorporation.org/">LSST Corporation</a>. The NSF-funded LSST Project Office for construction was established as an operating center under management of the Association of Universities for Research in Astronomy (<a href="http://www.aura-astronomy.org/">AURA</a>).  The DOE-funded effort to build the LSST camera is managed by the SLAC National Accelerator Laboratory (<a href="https://www6.slac.stanford.edu/">SLAC</a>).</p>
+
+  {%- block extrafooter %} {% endblock %}
+
+</footer>

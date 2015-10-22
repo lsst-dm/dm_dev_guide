@@ -8,7 +8,7 @@ By convention, titles and section headings are set off from surrounding text by
 a single blank line above and below. All levels of section headings may have
 named labels, which appear before the heading. We encourage you to add labels
 to all sections so that they can be referenced. Names are global, so be
-specific. See :ref:`Internal Links to Labels <internal-links-to-labels>` for
+specific. See :ref:`Internal Links to Labels <rst-internal-links>` for
 more information. The following section heading has a label named
 "``section-headings-example-section-heading``":
 
@@ -36,7 +36,7 @@ Donec et mollis dolor.
 .. _section-headings-example-subsubsection:
 
 Sub-subsection Heading
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 
 Praesent et diam eget libero egestas mattis sit amet vitae augue.
 

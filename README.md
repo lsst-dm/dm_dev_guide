@@ -28,5 +28,4 @@ The site will be built in the `_build/` directory.
 
 Copyright 2015 AURA/LSST
 
-Content is licensed Creative Common Non-Commercial Share Alike (CC-NC-SA).
-Source code is licensed GPLv3.
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="_static/cc-by_large.svg" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">LSST Stack Handbook</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://docs.lsst.codes" property="cc:attributionName" rel="cc:attributionURL">LSST Project</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>
