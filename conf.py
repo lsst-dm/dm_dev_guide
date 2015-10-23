@@ -42,6 +42,7 @@ extensions = [
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
     'sphinx-prompt',
+    'breathe',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -118,6 +119,24 @@ if on_rtd:
     todo_include_todos = False
 else:
     todo_include_todos = True
+
+
+# -- Configure breathe to bridge doxygen XML to Sphinx --------------------
+
+from documenteer.stackdocs.packages import list_packages
+
+# add breathe projects, which map to stack repositories
+breathe_projects = {}
+for package_name, package in list_packages().items():
+    try:
+        xml_path = package.xml_path
+    except (RuntimeError, OSError) as e:
+        # can't locate the Doxygen XML directory for this package
+        continue
+    breathe_projects[package_name] = xml_path
+
+# we should always set the project; this is done for config completeness
+breathe_default_project = 'afw'
 
 
 # -- Options for HTML output ----------------------------------------------
