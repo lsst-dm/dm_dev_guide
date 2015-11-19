@@ -501,7 +501,7 @@ If you *do* need footnotes, you can make them as follows:
 
    This is a line.\ [#label]_
 
-   .. [label] This is the footnote content.
+   .. [#label] This is the footnote content.
 
 Note that we had to provide an escaped space for the footnote mark occurring after a period.
 
