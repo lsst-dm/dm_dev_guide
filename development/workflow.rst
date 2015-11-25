@@ -2,7 +2,20 @@
 DM's Collaborative Development Workflow
 #######################################
 
-This page describes our procedures for collaborating on LSST DM software and documentation development with `Git <http://git-scm.org>`_, `GitHub <https://github.com>`_ and `JIRA <https://jira.lsstcorp.org/>`_.
+This page describes our procedures for collaborating on LSST DM software and documentation with `Git <http://git-scm.org>`_, `GitHub <https://github.com>`_ and `JIRA <https://jira.lsstcorp.org/>`_:
+
+1. :ref:`Configuring Git for DM development <git-setup>`.
+2. :ref:`Using JIRA for agile development <workflow-jira>`.
+3. :ref:`Policies for naming and using Git branches <git-branching>`.
+4. :ref:`Preparing code for review <review-preparation>`.
+5. :ref:`Reviewing and merging code <workflow-code-review>`.
+
+In appendices, we suggest some *best practices* for efficient collaborative development:
+
+- :ref:`Git and GitHub configuration suggestions <git-setup-best-practices>`.
+- :ref:`Commit organization best practices <git-commit-organization-best-practices>`.
+- :ref:`Commit message best practices <git-commit-message-best-practices>`.
+- :ref:`Tips for using JIRA <workflow-jira-tips>`.
 
 You can also read the :doc:`lsstsw Stack Development Tutorial </development/lsstsw_tutorial>` to see how our processes work in a holistic stack development workflow.
 
