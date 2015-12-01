@@ -222,3 +222,161 @@ The LSST Simulations team uses a different branch naming scheme:
 .. code-block:: text
 
    feature/SIM-NNN-{{feature-summary}}
+
+.. _review-preparation:
+
+Review Preparation
+==================
+
+When development on your ticket branch is complete, we use a standard process for reviewing and merging your work.
+This section describes how to prepare your work for review.
+
+.. _workflow-pushing:
+
+Pushing code
+------------
+
+We recommend that you organize commits, improve commit messages, and ensure that your work is made against the latest commits on ``master`` with an `interactive rebase <https://help.github.com/articles/about-git-rebase/>`_.
+A common pattern is:
+
+.. code-block:: bash
+
+   git checkout master
+   git pull
+   git checkout tickets/DM-NNNN
+   git rebase -i master
+   # interactive rebase
+   git push --force
+
+.. _workflow-testing:
+
+Testing with Jenkins
+--------------------
+
+Use `Jenkins at ci.lsst.codes <https://ci.lsst.codes/job/stack-os-matrix/build?delay=0sec>`_ to run the Stack's tests with your ticket branch work.
+To log into Jenkins, you'll use your GitHub credentials (your GitHub account needs to be a member of the `lsst <https://github.com/lsst>`_ organization).
+
+Jenkins finds, builds, and tests your work according to the name of your ticket branch; Stack repositories lacking your ticket branch will fall back to ``master``.
+
+You can monitor builds in the `Bot: Jenkins <https://lsst.hipchat.com/rooms/show/1648522>`_ HipChat room.
+
+.. _workflow-pr:
+
+Make a pull request
+-------------------
+
+On GitHub, `create a pull request <https://help.github.com/articles/creating-a-pull-request/>`_ for your ticket branch.
+
+The pull request's name should be formatted as
+
+.. code-block:: text
+
+   DM-NNNN: {{JIRA Ticket Title}}
+
+This helps you and other developers find the right pull request when browsing repositories on GitHub.
+
+The pull request's description shouldn't be exhaustive; only include information that will help frame the review.
+Background information should already be in the JIRA ticket description, commit messages, and code documentation.
+
+.. _workflow-code-review:
+
+DM Code Review and Merging Process
+==================================
+
+.. _workflow-review-purpose:
+
+The scope and purpose of code review
+------------------------------------
+
+We review work before it is merged to ensure that code is maintainable and usable by someone other than the author.
+
+- Is the code well commented, structured for clarity, and consistent with DM's code style?
+- Is there adequate unit test coverage for the code?
+- Is the documentation augmented or updated to be consistent with the code changes?
+- Are the Git commits well organized and well annotated to help future developers understand the code development?
+
+.. well- hyphenation? no http://english.stackexchange.com/a/65632
+
+Code reviews should also address whether the code fulfills design and performance requirements.
+
+Ideally the code review *should not be a design review.*
+Before serious coding effort is committed to a ticket, the developer should either undertake an informal design review while creating the JIRA story, or more formally use the :abbr:`RFC (Request for Comment)` and :abbr:`RFD (Request for Discussion)` processes for key design decisions.
+
+.. TODO: link to RFC/RFC process doc
+
+.. _workflow-review-assign:
+
+Assign a reviewer
+-----------------
+
+On your ticket's JIRA page, use the **Workflow** button to switch the ticket's state to **In Review**.
+JIRA will ask you to assign reviewers.
+
+In your JIRA message requesting review, indicate how involved the review work will be ("quick" or "not quick").
+The reviewer should promptly acknowledge the request, indicate whether they can do the review, and give a timeline for when they will be able to accomplish the request.
+This allows the developer to seek an alternate reviewer if necessary.
+
+Any team member in Data Management can review code; it is perfectly fine to draw reviewers from any segment of DM.
+For major changes, it is good to choose someone more experienced than yourself.
+For minor changes, it may be good to choose someone less experienced than yourself.
+For large changes, more than one reviewer may be assigned, possibly split by area of the code.
+
+Code reviews performed by peers are useful for a number of reasons:
+
+- Peers are a good proxy for maintainability.
+- It's useful for everyone to be familiar with other parts of the system.
+- Good practices can be spread; bad practices can be deprecated.
+
+All developers are expected to make time to perform reviews.
+The System Architect can intervene, however, if a developer is overburdened with review responsibility.
+
+.. _workflow-code-review-process:
+
+Code review discussion
+----------------------
+
+Code review discussion should happen on the GitHub pull request, with the reviewer giving a discussion summary and conclusive thumbs-up on the JIRA ticket.
+
+GitHub pull requests are ideal venues for discussion since individual commit diffs can be annotated and referenced.
+Be sure to make comments only from the **Conversation** and **Files changed** tabs---*not the Commits tab*.
+Any comments on code patches from the Commits tab will be lost if the developer amends and force pushes commits to the pull request.
+
+Code reviews are a collaborative check-and-improve process.
+Reviewers do not hold absolute authority, nor can developers ignore the reviewer's suggestions.
+The aim is to discuss, iterate, and improve the pull request until the work is ready to be deployed on ``master``.
+
+If the review becomes stuck on a design decision, that aspect of the review can be elevated into an RFC to seek team-wide consensus.
+
+If an issue is outside the ticket's scope, the reviewer should file a new ticket.
+
+Once the iterative review process is complete, the reviewer should switch the JIRA ticket's state to **Reviewed**.
+If there are multiple reviewers, our convention is that each review removes her/his name from the Reviewers list to indicate sign-off; the final reviewer switches the status to 'Reviewed.'
+This indicates the ticket is ready to be merged.
+
+Note that in many cases the reviewer will mark a ticket as **Reviewed** before seeing the requested changes implemented.
+This convention is used when the review comments are non-controversial; the developer can simply implement the necessary changes and self-merge.
+The reviewer does not need to be consulted for final approval in this case.
+
+.. _workflow-code-review-merge:
+
+Merging
+-------
+
+Putting a ticket in a **Reviewed** state gives the developer the go-ahead to merge the ticket branch.
+If it has not been done already, the developer should rebase the ticket branch against the latest master.
+During this rebase, we recommend squashing any fixup commits into the main commit implementing that feature.
+Git commit history should not record the iterative improvements from code review.
+If a rebase was required, a final check with Jenkins should be done.
+
+We **always use non-fast forward merges** so that the merge point is marked in Git history, with the merge commit containing the ticket number:
+
+.. code-block:: bash
+
+   git checkout master
+   git pull  # sanity check
+   git merge --no-ff tickets/DM-NNNN
+   git push
+
+Once the merge has been completed, the developer should mark the JIRA ticket as **Done**.
+
+The ticket branch **should not** be deleted from the GitHub remote.
