@@ -380,3 +380,78 @@ We **always use non-fast forward merges** so that the merge point is marked in G
 Once the merge has been completed, the developer should mark the JIRA ticket as **Done**.
 
 The ticket branch **should not** be deleted from the GitHub remote.
+
+.. _git-setup-best-practices:
+
+Appendix: Git and GitHub Setup Suggestions
+==========================================
+
+.. _git-learning-resources:
+
+Learning Git
+------------
+
+If you're new to Git, there are many great learning resources, such as
+
+* `Git's online docs <http://git-scm.com/doc>`_, and the associated online `Pro Git <http://git-scm.com/book/en/v2>`_ book by Scott Chacon and Ben Staubb.
+* `GitHub Help <https://help.github.com>`_, which covers fundamental git usage too.
+* `StackOverflow <http://stackoverflow.com/questions/tagged/git?sort=frequent&pageSize=15>`_.
+
+.. _git-github-2fa:
+
+Setup Two-Factor Authentication (2FA) for GitHub
+------------------------------------------------
+
+We encourage you to enable `Two-Factor Authentication (2FA) for GitHub <https://help.github.com/articles/about-two-factor-authentication/>`_ through your `account security settings <https://github.com/settings/security>`_.
+2FA means that you'll have to enter an authentication code when logging into GitHub.com from a new computer.
+Apps like `1Password <https://agilebits.com/onepassword>`_ (see their `guide <https://guides.agilebits.com/1password-ios/5/en/topic/setting-up-one-time-passwords>`_), `Authy <https://www.authy.com>`_, and the Google Authenticator App can help you generate these authentication codes.
+When pushing commits with a 2FA-enabled account, you'll use a personal access token instead of your password.
+You can `create and revoke tokens from your GitHub settings page <https://github.com/settings/tokens>`_.
+To help you automatically authenticate when pushing to GitHub, we encourage you to follow the next step and enable a credential helper.
+
+.. _git-credential-helper:
+
+Setup a Git credential helper
+-----------------------------
+
+Rather than entering your GitHub username and password (or 2FA access token) every time you push, you can setup a Git credential helper to manage this for you.
+A credential helper is especially important for working with our :doc:`Git LFS-backed repositories </development/git_lfs>`.
+
+**Mac users** can use the secure OS X keychain:
+
+.. code-block:: bash
+
+   git config --global credential.helper osxkeychain  
+
+**Linux users** can use a credential *cache* to temporarily keep credentials in memory.
+To have your credentials cached for 1 hour (3600 seconds):
+
+.. code-block:: bash
+
+   git config --global credential.helper 'cache --timeout=3600'
+
+**Linux users can alternatively** have their `credentials stored on disk <http://git-scm.com/docs/git-credential-store>`_ in a :file:`~/.git-credentials` file.
+Only do this for machines where you can ensure some level of security.
+
+.. code-block:: bash
+
+   git config credential.helper store
+
+Once a credential helper is enabled, the next time you ``git push``, you will add your credentials to the helper.
+
+Remember that if you have 2FA enabled, you will create and use a `personal access token <https://github.com/settings/tokens>`_ instead of your GitHub password.
+
+The DM Git LFS documentation has further information about :ref:`authenticating with our LFS storage backend <git-lfs-auth>`.
+
+.. _git-shell-setup:
+
+Tune your shell for Git
+-----------------------
+
+You can build an effective development environment and workflow by tuning your Git setup.
+Here are some ideas:
+
+1. `Add git status to your prompt <http://git-scm.com/book/en/v2/Git-in-Other-Environments-Git-in-Bash>`_.
+2. `Enable shell autocompletion <http://git-scm.com/book/en/v2/Git-in-Other-Environments-Git-in-Bash>`_
+3. `Craft aliases for common workflows <http://git-scm.com/book/en/v2/Git-Basics-Git-Aliases>`_.
+4. Use `hub <https://hub.github.com>`_ to interact with GitHub features from the command line.
