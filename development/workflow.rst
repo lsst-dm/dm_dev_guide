@@ -491,3 +491,47 @@ The end-goal is that a pull request, when merged, should have a coherent develop
 
 There is *no need* to retain post-review commits in order to preserve code review discussions.
 So long as comments are made in the 'Conversation' and 'Files changed' tabs of the pull request GitHub will preserve that content.  
+
+.. _git-commit-message-best-practices:
+
+Appendix: Commit Message Best Practices
+=======================================
+
+Generally you should write your commit messages in an editor, not at the prompt.
+Reserve the ``git commit -m "messsage"`` pattern for 'work in progress' commits that will be rebased before code review.
+
+We follow standard conventions for Git commit messages, which consist of a short summary line followed by body of discussion.
+`Tim Pope wrote about commit message formatting <http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html>`_.
+
+.. _git-commit-message-summary:
+
+Writing commit summary lines
+----------------------------
+
+**Messages start with a single-line summary of 50 characters or less**.
+Consider 50 characters as a hard limit; your summary will be truncated in the  GitHub UI otherwise.
+Write the message in the **imperative** tense, not the past tense.
+For example, "Add feature ..." and "Fix issue ..." rather than "Added feature..." and "Fixed feature...."
+Ensure the summary line contains the right keywords so that someone examining `a commit listing <https://github.com/lsst/afw/commits/master>`_ can understand what parts of the codebase are being changed.
+For example, it is useful to prefix the commit summary with the area of code being addressed.
+
+.. _git-commit-message-body:
+
+Writing commit message body content
+-----------------------------------
+
+**The message body should be wrapped at 72 character line lengths**, and contain lists or paragraphs that explain the code changes. 
+The commit message body describes:
+
+- What the original issue was; the reader shouldn't have to look at JIRA to understand what prompted the code change.
+- What the changes actually are and why they were made.
+- What the limitations of the code are. This is especially useful for future debugging.
+
+Git commit messages *are not* used to document the code and tell the reader how to use it.
+Documentation belongs in code comments, docstrings and documentation files.
+
+If the commit is trivial, a multi-line commit message may not be necessary.
+Conversely, a long message might suggest that the :ref:`commit should be split <git-commit-organization-best-practices>`.
+The code reviewer is responsible for giving feedback on the adequacy of commit messages.
+
+The `OpenStack docs have excellent thoughts on writing great commit messages <https://wiki.openstack.org/wiki/GitCommitMessages#Information_in_commit_messages>`_.
