@@ -455,3 +455,39 @@ Here are some ideas:
 2. `Enable shell autocompletion <http://git-scm.com/book/en/v2/Git-in-Other-Environments-Git-in-Bash>`_
 3. `Craft aliases for common workflows <http://git-scm.com/book/en/v2/Git-Basics-Git-Aliases>`_.
 4. Use `hub <https://hub.github.com>`_ to interact with GitHub features from the command line.
+
+.. _git-commit-organization-best-practices:
+
+Appendix: Commit Organization Best Practices
+============================================
+
+Commits should represent discrete logical changes to the code
+-------------------------------------------------------------
+
+`OpenStack has an excellent discussion of commit best practices <https://wiki.openstack.org/wiki/GitCommitMessages#Structural_split_of_changes>`_; this is recommended reading for all DM developers.
+This section summarizes those recommendations.
+
+Commits on a ticket branch should be organized into discrete, self-contained units of change.
+In general, we encourage you to err on the side of more granular commits; squashing a pull request into a single commit is an anti-pattern.
+A good rule-of-thumb is that if your commit *summary* message needs to contain the word 'and,' there are too many things happening in that commit.
+
+Associating commits to a single logical change makes debugging and code audits easier:
+
+- Git bisect is more effective for zeroing in on the change that introduced a regression.
+- Git blame is more helpful for explaining why a change was made.
+- Better commit organization guides reviewers through your pull request, making for more effective code reviews.
+- A bad commit can more easily be reverted later with fewer side-effects.
+
+Some edits serve only to fix white space or code style issues in existing code.
+Those whitespace and style fixes should be made in separate commits from new development.
+Usually it makes sense to fix whitespace and style issues in code *before* embarking on new development (or rebase those fixes to the beginning of your ticket branch).
+
+Rebase commits from code reviews rather than having 'review feedback' commits
+-----------------------------------------------------------------------------
+
+Code review will result in additional commits that address code style, documentation and implementation issues.
+Authors should rebase (i.e., ``git rebase -i master``) their ticket branch to squash the post-review fixes to the pre-review commits.
+The end-goal is that a pull request, when merged, should have a coherent development story and look as if the code was written correctly the first time.
+
+There is *no need* to retain post-review commits in order to preserve code review discussions.
+So long as comments are made in the 'Conversation' and 'Files changed' tabs of the pull request GitHub will preserve that content.  
