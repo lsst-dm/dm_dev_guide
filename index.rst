@@ -44,3 +44,4 @@ We are building the Stack for the `Large Synoptic Survey Telescope (LSST) <http:
    :name: part-developer-guide
 
    development/docs/index.rst
+   development/git_lfs.rst
