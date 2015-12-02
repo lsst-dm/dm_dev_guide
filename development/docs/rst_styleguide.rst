@@ -307,6 +307,15 @@ Note how cells can be joined by omitting the dividing line.
 The ``=`` characters divide the header from table content.
 Text in the header is set in bold.
 
+You can write tables with multiple header rows, including spans across header cells:
+
+.. literalinclude:: snippets/multi_header_table.rst
+   :language: rst
+
+produces:
+
+.. include:: snippets/multi_header_table.rst
+
 .. _rst-figures:
 
 Images and Figures
