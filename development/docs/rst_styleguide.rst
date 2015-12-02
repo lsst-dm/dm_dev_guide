@@ -2,7 +2,7 @@
 ReStructuredText Style Guide
 ############################
 
-This page describes how reStructuredText (reST) is written for the LSST Stack.
+This page describes how reStructuredText (reST) is written for DM documentation.
 The first sections are example-based introduction to reST markup, while the :ref:`last section documents formatting conventions <rst-formatting-guidelines>`.
 
 For more exhaustive guides to writing reStructuredText, see Sphinx's `reStructuredText Primer <http://sphinx-doc.org/rest.html#explicit-markup>`_ and the `docutils Quick reStructuredText guide <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`_.
