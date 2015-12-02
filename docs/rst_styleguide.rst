@@ -16,6 +16,9 @@ Sample
 
 .. literalinclude:: rst_sample.rst
    :language: rst
+   :lines: 2-
+
+.. lines field above omits :orphan: field from sample display
 
 :doc:`See this sample rendered <rst_sample>`.
 
@@ -111,6 +114,9 @@ We create section hierarchies as follows:
 
 .. literalinclude:: rst_section_sample.rst
    :language: rst
+   :lines: 2-
+
+.. lines field above omits :orphan: field from sample display
 
 :doc:`See this sample rendered <rst_section_sample>`.
 
