@@ -292,25 +292,20 @@ Tables
 
 We recommend that you use the *grid* syntax for tables, since they more flexible than `simple reST tables`_.
 And although not necessary, we suggest you provide a caption using the ``table`` directive, and a label prefixed with "``table-``."
+For example:
 
 .. _simple rest tables: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#simple-tables
 
-.. code-block:: rst
+.. literalinclude:: snippets/basic_table.rst
+   :language: rst
 
-   .. _table-label:
+produces:
 
-   .. table:: Table caption.
-   
-      +------------------------+------------+----------+----------+
-      | Header row, column 1   | Header 2   | Header 3 | Header 4 |
-      | (header rows optional) |            |          |          |
-      +========================+============+==========+==========+
-      | body row 1, column 1   | column 2   | column 2 | column 4 |
-      |                        | with many  |          |          |
-      |                        | rows       |          |          |
-      +------------------------+------------+----------+----------+
-      | body row 2             | ...        | ...      | ...      |
-      +------------------------+------------+----------+----------+
+.. include:: snippets/basic_table.rst
+
+Note how cells can be joined by omitting the dividing line.
+The ``=`` characters divide the header from table content.
+Text in the header is set in bold.
 
 .. _rst-figures:
 
