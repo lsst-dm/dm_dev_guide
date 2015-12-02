@@ -129,7 +129,7 @@ Linking
 External Links
 --------------
 
-Links to external webpages can be made two ways.
+Links to external web pages can be made two ways.
 The first, recommended, way is
 
 .. code-block:: rst
@@ -155,7 +155,7 @@ You may decide to use either method, taking readability into consideration.
 Internal Links to Labels
 ------------------------
 
-Any content block can be labelled.
+Any content block can be labeled.
 For example, to give a section the label ``making-labels``, we write:
 
 .. code-block:: rst
@@ -171,7 +171,7 @@ For example, to give a section the label ``making-labels``, we write:
    hyphens.
    Labels are a **global namespace**, so make them as specific as possible.
 
-Then you can link to any labelled block with the ``:ref:`` role.
+Then you can link to any labeled block with the ``:ref:`` role.
 
 .. code-block:: rst
 
@@ -372,7 +372,7 @@ where
 
 - ``<language>`` can be `any token understood by Pygments`_, particularly ``py`` (python), ``cpp`` (C++), ``java`` (Java), ``js`` (JavaScript) and ``rst`` (reStructuredText). Specify ``none`` to disable highlighting.
 - ``:name:`` is an explicit hyperlink label for the code block.
-- ``:emphasize-lines:`` is an optional sequence of lines to highlight. This can be comma-sparated, with hyphens to indicate spans.
+- ``:emphasize-lines:`` is an optional sequence of lines to highlight. This can be comma-separated, with hyphens to indicate spans.
 
 .. _any token understood by Pygments: http://pygments.org/docs/lexers/
 
@@ -564,7 +564,7 @@ Those making doc edits on GitHub.com will tend to use soft-wrap by default (see 
 
 .. _GitHub Flow in the Browser: https://help.github.com/articles/github-flow-in-the-browser/
 
-When using soft-wrap formatting, you might **write one sentence per line** (i.e., put a linebreak after each sentence).
+When using soft-wrap formatting, you might **write one sentence per line** (i.e., put a line break after each sentence).
 As a writer, this the advantage of making it easier to check the rhythm of your writing, including sentence lengths.
 Shorter sentences are easier to read.
 `One-sentence-per-line`_ is also semantically correct in the sense of git and other version control systems.
@@ -576,7 +576,7 @@ At LSST, we place a **single blank line** between all content blocks, such as di
 Indentation
 -----------
 
-RestructuredText should be indented consistently with the context, which generally means taking visual alignment cues rather than adhering to a fixed indent width.
+ReStructuredText should be indented consistently with the context, which generally means taking visual alignment cues rather than adhering to a fixed indent width.
 
 In directives, align to the directive's name:
 
