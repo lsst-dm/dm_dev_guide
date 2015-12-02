@@ -333,9 +333,17 @@ Images and Figures
 Plain images can be included with the ``image`` directive.
 For example:
 
-.. code-block:: rst
+.. literalinclude:: snippets/image.rst
+   :language: rst
 
-   .. image:: /_static/obs_decam/camera_geometry.png
+.. include:: snippets/image.rst
+
+This example shows how an image can by hyperlinked to any URL with the ``target`` field.
+Internal links, as in the example, must be *relative* to the reST document; Sphinx does not process URLs in an ``image``\ 's ``target`` field.
+
+The ``image`` directive has `more configurable fields <http://docutils.sourceforge.net/docs/ref/rst/directives.html#image>`_.
+If image sizes need to be manipulated from reST, we recommend using ``scale`` since it is responsive.
+We hope to provide better support for responsive image sizing.
 
 Figure Directive
 ----------------
