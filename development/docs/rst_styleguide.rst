@@ -350,15 +350,12 @@ Figure Directive
 
 *Figures* can also be produced, which include captions:
 
-.. code-block:: rst
+.. literalinclude:: snippets/figure.rst
+   :language: rst
 
-   .. figure:: /_static/obs_decam/camera_geometry.png
-      :name: fig-figure-label
-      :alt: DECam focal plane layout. This text is used for for screen readers (accessibility).
+.. include:: snippets/figure.rst
 
-      DECam focal plane layout.
-
-Note that the ``:name:`` field takes the place of a separate `label <rst-internal-links>`_ for hyperlinking.
+Note that the ``:name:`` field takes the place of a separate :ref:`label <rst-internal-links>` for hyperlinking.
 By convention, these labels should be prefixed with "``fig-``."
 
 Note on Paths to Image Files
