@@ -316,6 +316,15 @@ produces:
 
 .. include:: snippets/multi_header_table.rst
 
+In the simplest cases, tables are not required to have headers, or even be inside a ``table`` directive.
+
+.. literalinclude:: snippets/noheader_table.rst
+   :language: rst
+
+produces:
+
+.. include:: snippets/noheader_table.rst
+
 .. _rst-figures:
 
 Images and Figures
