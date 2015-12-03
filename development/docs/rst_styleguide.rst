@@ -464,6 +464,53 @@ produces
     
     print('Delayed for {0:.1f}'.format(t.interval))
 
+.. _rst-literalinclude:
+
+Including source code examples from other files with literalinclude
+-------------------------------------------------------------------
+
+The ``code-block`` directive is great for code examples written in the reStructuredText source file itself.
+You might also want to show a code sample contained in a separate file.
+For this you can use the ``literalinclude`` directive:
+
+.. code-block:: rst
+
+   .. literalinclude:: path/to/example.py
+      :language: py
+
+The source path can either be relative to the reST document, or relative to the documentation root by prefixing the with path '/'.
+
+The ``literalinclude`` directive also supports ``code-block`` fields, such as ``name`` and ``emphasize-lines``.
+In addition, you can selective include ranges of lines with the ``lines`` field.
+For example, to include only lines 10 -- 20:
+
+.. code-block:: rst
+
+   .. literalinclude:: path/to/example.py
+      :language: py
+      :lines: 10-20
+
+To omit the first two lines from a file:
+
+   .. literalinclude:: path/to/example.py
+      :language: py
+      :lines: 2-
+
+Sophisticated inclusion patterns can be achieved by listing multiple spans, such as ``:lines: 3-10,20-``, which shows the first ten lines and all lines after the 20\ :sup:`th`\ . 
+
+When including code example snippets from other files, it may be useful to remove indentation.
+For that, use the ``dedent`` field.
+For example,
+
+.. code-block:: rst
+
+   .. literalinclude:: path/to/example.py
+      :language: py
+      :lines: 5-10
+      :dedent: 4
+
+will show lines 5 -- 10 and remove 4 space characters (presumably because the snippet is inside a Python class or function).
+
 .. _rst-lightweight-code-blocks:
 
 Lightweight syntax for Python code and sessions
