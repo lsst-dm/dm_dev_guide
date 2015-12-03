@@ -48,6 +48,34 @@ Inline markup also needs to be surrounded by white space, though trailing punctu
 You can get around this with an *escaped space* that is otherwise invisible,
 For example ``one\ *word*`` renders as one\ *word*.
 
+.. _rst-inline-semantics:
+
+Other semantic markup
+---------------------
+
+In addition to the fundamental inline typesetting styles above, authors may use additional reST roles to provide semantic meaning to their text.
+The documentation's CSS takes advantage of this semantic meaning to provide visual cues to readers.
+
+Abbreviations
+    ``:abbr:`LSST (Large Synoptic Survey Telescope``` → :abbr:`LSST (Large Synoptic Survey Telescope)` (a tool tip exposes the definition)
+
+Filenames and paths
+    ``:file:`repos.yaml``` → :file:`repos.yaml`
+
+Shell commands
+    ``:command:`git rebase -i master``` → :command:`git rebase -i master`
+
+Environment variables
+    ``:envvar:`EUPS_PATH``` → :envvar:`EUPS_PATH`
+
+User interface labels
+    ``:guilabel:`New Pull Request``` → :guilabel:`New Pull Request`. This markup can be used for button labels, menus, or even text labels in interactive shell programs.
+
+Keyboard commands
+    ``:kbd:`Control-a s``` → :kbd:`Control-a s`. Spell out the keys rather than using Emacs short hand, such as ``C-x``.
+
+To semantically markup Python or C++ code objects, refer to the section on :ref:`rst-code-link`.
+
 .. _rst-lists:
 
 Lists
