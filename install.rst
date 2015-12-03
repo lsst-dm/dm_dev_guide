@@ -10,9 +10,10 @@ In the meantime, Fabio Hernandez of IN2P3 has kindly arranged to make `binary di
 Scientific Linux 6, Scientific Linux 7, CentOS 7, Ubuntu 14.04 and Mac OS X 10.10 are supported with the CernVM FS-based distribution.
 If this binary distribution does not suit your needs, please read on to install the LSST Stack from source.
 
-*************
+.. _source-install-prereqs:
+
 Prerequisites
-*************
+=============
 
 The LSST Stack is officially tested against CentOS 6.6, however stack developers regularly use `a variety of Linux and Mac OS X operating systems <https://docs.google.com/spreadsheets/d/10HKv4s0xY6VlldauR_6_vgwRlvZwSw9bIshoUx7iark/edit#gid=960512304>`_. The following sections detail how to install pre-requisite software for your Debian/Ubuntu-based, RedHat/CentOS-based, or Mac OS X system.
 
@@ -22,8 +23,10 @@ The listed pre-requisites are known to work for v10.1.
 
    Provision the pre-req lists dynamically from the Puppet file. Even better, allow the user to select the platform and pre-filter the page to show only the needed information. See https://github.com/lsst-sqre/puppet-lsststack/blob/master/manifests/params.pp.
 
+.. _source-install-debian-prereqs:
+
 Debian/Ubuntu
-=============
+-------------
 
 Debian/Ubuntu systems use ``apt-get`` to install packages.
 This ``apt-get`` command will provision Debian-type systems for the LSST Stack
@@ -31,17 +34,19 @@ This ``apt-get`` command will provision Debian-type systems for the LSST Stack
 
 .. prompt:: bash
 
-    apt-get install bison cmake curl flex g++ gettext git \
-    libbz2-dev libcurl4-openssl-dev libfontconfig1 libglib2.0-dev \
-    libncurses5-dev libreadline6-dev libx11-dev \
-    libxrender1 libxt-dev m4 make openjdk-7-jre \
-    perl-modules zlib1g-dev -y
+   apt-get install bison cmake curl flex g++ gettext git \
+   libbz2-dev libcurl4-openssl-dev libfontconfig1 libglib2.0-dev \
+   libncurses5-dev libreadline6-dev libx11-dev \
+   libxrender1 libxt-dev m4 make openjdk-7-jre \
+   perl-modules zlib1g-dev -y
 
 The Stack also requires Python 2.7.
 If your system doesn't come with a recent version of Python 2.7, you can elect to allow the stack to install Python locally via Anaconda for you later in the process.
 
+.. _source-install-redhat-prereqs:
+
 RedHat/CentOS
-=============
+-------------
 
 RedHat/CentOS systems use ``yum`` to install packages.
 This ``yum`` command will provision RedHat-type systems for the LSST Stack
@@ -49,17 +54,19 @@ This ``yum`` command will provision RedHat-type systems for the LSST Stack
 
 .. prompt:: bash
 
-    yum install blas bison bzip2 bzip2-devel cmake curl flex \
-    fontconfig freetype-devel gcc-c++ gcc-gfortran gettext git \
-    glib2-devel libXext libXrender libXt-devel libcurl-devel \
-    libuuid-devel make ncurses-devel openssl-devel patch perl \
-    perl-ExtUtils-MakeMaker readline-devel zlib-devel
+   yum install blas bison bzip2 bzip2-devel cmake curl flex \
+   fontconfig freetype-devel gcc-c++ gcc-gfortran gettext git \
+   glib2-devel libXext libXrender libXt-devel libcurl-devel \
+   libuuid-devel make ncurses-devel openssl-devel patch perl \
+   perl-ExtUtils-MakeMaker readline-devel zlib-devel
 
 The Stack also requires Python 2.7.
 If your system doesn't come with a recent version of Python 2.7, you can elect to allow the stack to install Python locally via Anaconda for you later in the process.
 
+.. _source-installi-mac-prereqs:
+
 Mac OS X
-========
+--------
 
 We have tested the stack on Mavericks (10.9) and Yosemite (10.10).
 
@@ -68,41 +75,46 @@ To do this, run from the command line (e.g. ``Terminal.app`` or similar):
 
 .. prompt:: bash
 
-    xcode-select --install
+   xcode-select --install
 
 and follow the on-screen instructions.
 You can verify where the tools are installed by running:
 
 .. prompt:: bash
 
-    xcode-select -p
+   xcode-select -p
 
 .. todo::
 
    Provide pre-req installation procedures for OS X.
    Should Homebrew be the defacto way to install all pre-requisites?
 
+.. _source-install-optional-deps:
+
 Optional Dependencies
-=====================
+---------------------
 
 Although not required, we recommend you install the `matplotlib <http://matplotlib.org>`_ and `scipy <http://scipy.org>`_ Python packages:
 
 .. prompt:: bash
 
-    pip install -U matplotlib scipy
+   pip install -U matplotlib scipy
 
 Note these are included by default in `Anaconda <https://store.continuum.io/cshop/anaconda/>`_, which the LSST Stack *can* install for you.
 
 We also use `SAOImage DS9 <http://ds9.si.edu/site/Home.html>`_ to display images for debugging.
 
-**********************
+.. _install-from-source:
+
 Installing from Source
-**********************
+======================
 
 This section will guide you through installing the *current* release of the LSST Stack from source given that prerequisites have been installed.
 
+.. _install-from-source-dir:
+
 Choose an Installation Directory
-================================
+--------------------------------
 
 First, choose where you want to install the LSST Stack.
 We'll use ``$HOME/lsst_stack`` in this example.
@@ -110,8 +122,8 @@ Create and change into that directory:
 
 .. prompt:: bash
 
-    mkdir -p $HOME/lsst_stack
-    cd $HOME/lsst_stack
+   mkdir -p $HOME/lsst_stack
+   cd $HOME/lsst_stack
 
 .. note::
 
@@ -121,25 +133,29 @@ Create and change into that directory:
    The installation directory must be owned by the group, have the SGID (2000) bit set, and allow group read/write/execute: that is, mode 2775.
    Individual users who install a personal Stack on their own machine need not worry about this.
 
+.. _install-from-source-envvar:
+
 Unset Environment Variables
-===========================
+---------------------------
 
 If you've been running the LSST Stack previously, you may have conflicting environment variables setup.
 To be safe, run:
 
 .. prompt:: bash
 
-    unset LSST_HOME EUPS_PATH LSST_DEVEL EUPS_PKGROOT REPOSITORY_PATH
+   unset LSST_HOME EUPS_PATH LSST_DEVEL EUPS_PKGROOT REPOSITORY_PATH
+
+.. _install-from-source-setup:
 
 Installation Set-up
-===================
+-------------------
 
 Download and run the installation setup script, which installs the basic packages required to install other packages:
 
 .. prompt:: bash
 
-    curl -OL https://sw.lsstcorp.org/eupspkg/newinstall.sh
-    bash newinstall.sh
+   curl -OL https://sw.lsstcorp.org/eupspkg/newinstall.sh
+   bash newinstall.sh
 
 This installs the ``loadLSST.*`` scripts, which you should source to ensure that LSST tools (e.g., the eups command) are included in your path.
 
@@ -156,15 +172,17 @@ Once ``newinstall.sh`` has finished, source the LSST environment to continue the
 
 .. prompt:: bash
 
-    source $LSST_INSTALL_DIR/loadLSST.bash # for bash users
-    source $LSST_INSTALL_DIR/loadLSST.csh  # for csh users
-    source $LSST_INSTALL_DIR/loadLSST.ksh  # for ksh users
-    source $LSST_INSTALL_DIR/loadLSST.zsh  # for zsh users
+   source $LSST_INSTALL_DIR/loadLSST.bash # for bash users
+   source $LSST_INSTALL_DIR/loadLSST.csh  # for csh users
+   source $LSST_INSTALL_DIR/loadLSST.ksh  # for ksh users
+   source $LSST_INSTALL_DIR/loadLSST.zsh  # for zsh users
 
 where ``$LSST_INSTALL_DIR`` is expanded to your installation directory.
 
+.. _install-from-source-packages:
+
 Install Packages
-================
+----------------
 
 Finally, build/install any other components of the LSST Stack that are relevant for your work.
 Many users will want to make use of the pipelines or applications code.
@@ -175,21 +193,22 @@ Installing ``lsst_apps`` may take a little while (about 1.2 hr on a 2014-era iMa
 
 .. prompt:: bash
 
-    eups distrib install -t v10_1 lsst_apps
+   eups distrib install -t v10_1 lsst_apps
 
 After this initial setup, it is a good idea to test the installation.
 See :ref:`testing-your-installation`.
 
+.. install-from-source-loadlsst:
+
 Load the LSST Environment in Each Terminal Session
-==================================================
+--------------------------------------------------
 
 Whenever you want to run the install LSST Stack in a new terminal session, be sure to load the appropriate ``loadLSST.{bash,csh,ksh,zsh}`` script.
 
-.. _testing-your-installation:
+.. _source-install-testing-your-installation:
 
-*************************
 Testing Your Installation
-*************************
+=========================
 
 Choose a directory to install demo data into.
 We'll call this directory ``$DEMO_DATA``.
@@ -198,11 +217,11 @@ Then run:
 
 .. prompt:: bash
 
-    source $LSST_INSTALL_DIR/loadLSST.sh
-    mkdir -p $DEMO_DATA
-    cd $DEMO_DATA
-    curl -L https://github.com/lsst/lsst_dm_stack_demo/archive/10.1.tar.gz | tar xvzf -
-    cd lsst_dm_stack_demo-10.1
+   source $LSST_INSTALL_DIR/loadLSST.sh
+   mkdir -p $DEMO_DATA
+   cd $DEMO_DATA
+   curl -L https://github.com/lsst/lsst_dm_stack_demo/archive/10.1.tar.gz | tar xvzf -
+   cd lsst_dm_stack_demo-10.1
 
 The demo repository consumes roughly 41 MB, contains input images, reference data, and configuration files.
 The demo script will process SDSS images from two fields in Stripe 82, as shown in the following table (filters in parentheses are not processed if run with the ``--small`` option):
@@ -218,8 +237,8 @@ Now setup the processing package and run the demo:
 
 .. prompt:: bash
 
-    setup obs_sdss
-    ./bin/demo.sh # --small to process a subset of images
+   setup obs_sdss
+   ./bin/demo.sh # --small to process a subset of images
 
 For each input image the script performs the following operations:
 
@@ -243,7 +262,7 @@ The ``bin/compare`` script will check whether the output matches the reference t
 
 .. prompt:: bash
 
-    bin/compare detected-sources.txt.expected detected-sources.txt
+   bin/compare detected-sources.txt.expected detected-sources.txt
 
 The script will print "``Ok``" if the demo ran correctly.
 
