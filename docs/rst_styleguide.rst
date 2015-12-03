@@ -27,15 +27,19 @@ Sample
 Inline Text Styling
 ===================
 
-Italics: ``*italic text*`` → *italic text*.
+Italics
+    ``*italic text*`` → *italic text*.
 
-Bold: ``**bold text**`` → **bold text**.
+Bold
+    ``**bold text**`` → **bold text**.
 
-Monospace: ````monospace text```` → ``monospace text``.
-When referring to code objects, it's better to use different markup that links to the object's API documentation.
-This is described below in the :ref:`rst-code-link` section.
+Monospace
+    ````monospace text```` → ``monospace text``.
+    When referring to code objects, it's better to use different markup that links to the object's API documentation.
+    This is described below in the :ref:`rst-code-link` section.
 
-To render inline math, use the ``math`` role: ``:math:`\sqrt{16}``` → :math:`\sqrt{16}`.
+Inline math
+    ``:math:`\sqrt{16}``` → :math:`\sqrt{16}`.
 
 Inline styles can't be nested.
 For example, you *can't* write ``*see :ref:`this page <label>`*``.
