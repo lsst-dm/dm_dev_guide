@@ -581,7 +581,7 @@ Those making doc edits on GitHub.com will tend to use soft-wrap by default (see 
 .. _GitHub Flow in the Browser: https://help.github.com/articles/github-flow-in-the-browser/
 
 When using soft-wrap formatting, you might **write one sentence per line** (i.e., put a line break after each sentence).
-As a writer, this the advantage of making it easier to check the rhythm of your writing, including sentence lengths.
+As a writer, this has the advantage of making it easier to check the rhythm of your writing, including sentence lengths.
 Shorter sentences are easier to read.
 `One-sentence-per-line`_ is also semantically correct in the sense of git and other version control systems.
 
