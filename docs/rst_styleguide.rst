@@ -137,6 +137,20 @@ which renders as:
    #. First thing
    #. Second thing
 
+Definition lists
+----------------
+
+Definition lists are terms with an indented content section.
+
+.. literalinclude:: snippets/def_list.rst
+   :language: rst
+
+produces
+
+.. include:: snippets/def_list.rst
+
+Definition lists are not limited to dictionary-like usage; they can be employed whenever a series of headers with associated micro content is needed.
+
 .. _rst-sectioning:
 
 Sections
