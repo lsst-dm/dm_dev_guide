@@ -1,9 +1,9 @@
-#######################
-The LSST Stack Handbook
-#######################
+##########################
+The LSST Science Pipelines
+##########################
 
-The LSST Stack is a next-generation pipeline for optical astronomy in the big data era.
-We are building the Stack for the `Large Synoptic Survey Telescope (LSST) <http://lsst.org>`_, but our Python API allows the stack to be extended for any optical or near-infrared dataset.
+The LSST Science Pipelines enable optical and near-infrared astronomy in the big data era.
+We are building the Science Pipelines for the `Large Synoptic Survey Telescope (LSST) <http://lsst.org>`_, but our command line task and Python API can extended for any optical or near-infrared dataset.
 
 - Join us on the `LSST Community forum, community.lsst.org <http://community.lsst.org>`_
 - Fork our code on GitHub at https://github.com/lsst

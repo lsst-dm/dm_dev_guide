@@ -1,21 +1,22 @@
-#########################
-Installing the LSST Stack
-#########################
+#####################################
+Installing the LSST Science Pipelines
+#####################################
 
-This page will guide you through installing the LSST Stack from source to use for data processing.
+This page will guide you through installing the LSST Science Pipelines from source to use for data processing.
 Developers should follow :doc:`/development/lsstsw_tutorial` instead.
 
 We are working on methods for binary installation and Docker distribution.
 In the meantime, Fabio Hernandez of IN2P3 has kindly arranged to make `binary distributions of versions v9_2 and v10_1-rc3 available via CernVM FS <https://github.com/airnandez/lsst-cvmfs>`_.
 Scientific Linux 6, Scientific Linux 7, CentOS 7, Ubuntu 14.04 and Mac OS X 10.10 are supported with the CernVM FS-based distribution.
-If this binary distribution does not suit your needs, please read on to install the LSST Stack from source.
+If this binary distribution does not suit your needs, please read on to install the LSST Science Pipelines from source.
 
 .. _source-install-prereqs:
 
 Prerequisites
 =============
 
-The LSST Stack is officially tested against CentOS 6.6, however stack developers regularly use `a variety of Linux and Mac OS X operating systems <https://docs.google.com/spreadsheets/d/10HKv4s0xY6VlldauR_6_vgwRlvZwSw9bIshoUx7iark/edit#gid=960512304>`_. The following sections detail how to install pre-requisite software for your Debian/Ubuntu-based, RedHat/CentOS-based, or Mac OS X system.
+The LSST Science Pipelines are officially tested against CentOS 6.6, however developers regularly use `a variety of Linux and Mac OS X operating systems <https://docs.google.com/spreadsheets/d/10HKv4s0xY6VlldauR_6_vgwRlvZwSw9bIshoUx7iark/edit#gid=960512304>`_.
+The following sections detail how to install pre-requisite software for your Debian/Ubuntu-based, RedHat/CentOS-based, or Mac OS X system.
 
 The listed pre-requisites are known to work for v10.1.
 
@@ -29,7 +30,7 @@ Debian/Ubuntu
 -------------
 
 Debian/Ubuntu systems use ``apt-get`` to install packages.
-This ``apt-get`` command will provision Debian-type systems for the LSST Stack
+This ``apt-get`` command will provision Debian-type systems for the LSST Science Pipelines
 (prepend the command with ``sudo`` if necessary):
 
 .. prompt:: bash
@@ -40,7 +41,7 @@ This ``apt-get`` command will provision Debian-type systems for the LSST Stack
    libxrender1 libxt-dev m4 make openjdk-7-jre \
    perl-modules zlib1g-dev -y
 
-The Stack also requires Python 2.7.
+The Science Pipelines also require Python 2.7.
 If your system doesn't come with a recent version of Python 2.7, you can elect to allow the stack to install Python locally via Anaconda for you later in the process.
 
 .. _source-install-redhat-prereqs:
@@ -49,8 +50,7 @@ RedHat/CentOS
 -------------
 
 RedHat/CentOS systems use ``yum`` to install packages.
-This ``yum`` command will provision RedHat-type systems for the LSST Stack
-(prepend the command with ``sudo`` if necessary):
+This ``yum`` command will provision RedHat-type systems for the LSST Science Pipelines (prepend the command with ``sudo`` if necessary):
 
 .. prompt:: bash
 
@@ -60,7 +60,7 @@ This ``yum`` command will provision RedHat-type systems for the LSST Stack
    libuuid-devel make ncurses-devel openssl-devel patch perl \
    perl-ExtUtils-MakeMaker readline-devel zlib-devel
 
-The Stack also requires Python 2.7.
+The Science Pipelines also require Python 2.7.
 If your system doesn't come with a recent version of Python 2.7, you can elect to allow the stack to install Python locally via Anaconda for you later in the process.
 
 .. _source-installi-mac-prereqs:
@@ -68,7 +68,7 @@ If your system doesn't come with a recent version of Python 2.7, you can elect t
 Mac OS X
 --------
 
-We have tested the stack on Mavericks (10.9) and Yosemite (10.10).
+We have tested the Science Pipelines on OS X Mavericks (10.9) and Yosemite (10.10).
 
 You will need to install developer tools, which we recommend you obtain with Apple's Xcode command line tools package.
 To do this, run from the command line (e.g. ``Terminal.app`` or similar):
@@ -100,7 +100,7 @@ Although not required, we recommend you install the `matplotlib <http://matplotl
 
    pip install -U matplotlib scipy
 
-Note these are included by default in `Anaconda <https://store.continuum.io/cshop/anaconda/>`_, which the LSST Stack *can* install for you.
+Note these are included by default in `Anaconda <https://store.continuum.io/cshop/anaconda/>`_, which the LSST Science Pipelines installer *can* obtain for you.
 
 We also use `SAOImage DS9 <http://ds9.si.edu/site/Home.html>`_ to display images for debugging.
 
@@ -109,14 +109,14 @@ We also use `SAOImage DS9 <http://ds9.si.edu/site/Home.html>`_ to display images
 Installing from Source
 ======================
 
-This section will guide you through installing the *current* release of the LSST Stack from source given that prerequisites have been installed.
+This section will guide you through installing the *current* release of the LSST Science Pipelines from source given that prerequisites have been installed.
 
 .. _install-from-source-dir:
 
 Choose an Installation Directory
 --------------------------------
 
-First, choose where you want to install the LSST Stack.
+First, choose where you want to install the LSST Science Pipelines.
 We'll use ``$HOME/lsst_stack`` in this example.
 Create and change into that directory:
 
@@ -138,7 +138,7 @@ Create and change into that directory:
 Unset Environment Variables
 ---------------------------
 
-If you've been running the LSST Stack previously, you may have conflicting environment variables setup.
+If you've been running the LSST Science Pipelines previously, you may have conflicting environment variables setup.
 To be safe, run:
 
 .. prompt:: bash
@@ -159,7 +159,7 @@ Download and run the installation setup script, which installs the basic package
 
 This installs the ``loadLSST.*`` scripts, which you should source to ensure that LSST tools (e.g., the eups command) are included in your path.
 
-The install script will check your system to ensure that appropriate versions of critical packages are installed on your system, to enable bootstrapping the Stack, including ``git``, and ``python``.
+The install script will check your system to ensure that appropriate versions of critical packages are installed on your system, to enable bootstrapping the Science Pipelines, including ``git``, and ``python``.
 If these packages are not available, the script will offer to install them for you (using the Anaconda Python distribution for the latter packages). 
 
 Allowing the installation of these core packages will not replace or modify any other version of these packages that may be installed on your system.
@@ -184,8 +184,7 @@ where ``$LSST_INSTALL_DIR`` is expanded to your installation directory.
 Install Packages
 ----------------
 
-Finally, build/install any other components of the LSST Stack that are relevant for your work.
-Many users will want to make use of the pipelines or applications code.
+Finally, build/install any other components of the LSST Science Pipelines that are relevant for your work.
 A simple way to ensure that you have a fairly complete set of packages for this need is to install ``lsst_apps``.
 The dependency tree for ``lsst_apps`` ensures that many other packages (about 70, including e.g., ``pipe_tasks``) are also installed. 
 
@@ -196,14 +195,14 @@ Installing ``lsst_apps`` may take a little while (about 1.2 hr on a 2014-era iMa
    eups distrib install -t v10_1 lsst_apps
 
 After this initial setup, it is a good idea to test the installation.
-See :ref:`testing-your-installation`.
+See :ref:`source-install-testing-your-installation`.
 
 .. install-from-source-loadlsst:
 
 Load the LSST Environment in Each Terminal Session
 --------------------------------------------------
 
-Whenever you want to run the install LSST Stack in a new terminal session, be sure to load the appropriate ``loadLSST.{bash,csh,ksh,zsh}`` script.
+Whenever you want to run the installed LSST Science Pipelines in a new terminal session, be sure to load the appropriate ``loadLSST.{bash,csh,ksh,zsh}`` script.
 
 .. _source-install-testing-your-installation:
 

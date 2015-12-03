@@ -59,7 +59,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'LSST Stack'
+project = u'LSST Science Pipelines'
 copyright = u'2015 AURA/LSST'
 author = u'LSST Data Management'
 
