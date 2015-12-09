@@ -473,6 +473,64 @@ For example:
 
 See `GitHub's help for setting up Atom and Sublime Text as Git editors <https://help.github.com/articles/associating-text-editors-with-git/>`_.
 
+.. _git-aliases:
+
+Useful Git aliases and configurations
+-------------------------------------
+
+You can craft custom Git commands (aliases) in your :file:`~/.gitconfig` to refine your workflow.
+When you run an alias (``git <alias> [arguments]``) the alias's name is effectively replaced with the alias's content in the command line statement.
+
+Here are some aliases try in :file:`~/.gitconfig`:
+
+.. use quotes on alias contents to make Pygments highlighter happy
+
+.. code-block:: ini
+
+   [alias]
+       # List things
+       tags = "tag -l"
+       branches = "branch -a"
+       remotes = "remote -v"
+
+       # Shorten common commands
+       co = "checkout"
+       st = "status"
+       br = "branch"
+       ci = "commit"
+       d = "diff"
+
+       # Log that shows titles of last 16 commits
+       l = "log -16 --color=always --all --topo-order --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+
+       # Log that starts a pager with titles of all the commits in your tree
+       ll = log --color=always --all --topo-order --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+       # Log that shows the last 10 commits as a graph
+       lg = "log -10 --color=always --all --graph --topo-order --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+
+       # Log that shows all commits as a graph (using a pager)
+       lgl = "log --color=always --all --graph --topo-order --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+       # Show outgoing commits
+       out = "log @{u}.."
+
+       # Print the title of the current branch; sometimes useful for scripting
+       currentbranch = "!git branch --contains HEAD | grep '*' | tr -s ' ' | cut -d ' ' -f2"
+
+       # Better diffs for prose
+       wdiff = "diff --color-words"
+
+       # Safer pulls; don't do anything other than a fast forward on merge
+       pull = "pull --ff-only"
+
+       # Amend last commit without modifying commit message
+       amend = "!git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend"
+
+       # Create a commit that will be automatically squashed as a fixup when you
+       # run `git rebase --autosquash`
+       fixup = "commit --fixup=HEAD"
+
 .. _git-commit-organization-best-practices:
 
 Appendix: Commit Organization Best Practices
