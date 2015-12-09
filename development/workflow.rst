@@ -456,6 +456,23 @@ Here are some ideas:
 3. `Craft aliases for common workflows <http://git-scm.com/book/en/v2/Git-Basics-Git-Aliases>`_.
 4. Use `hub <https://hub.github.com>`_ to interact with GitHub features from the command line.
 
+.. _git-editor-setup:
+
+Setup your editor
+-----------------
+
+You'll want to configure your preferred editor (or its command line hook) as your Git editor.
+For example:
+
+.. code-block:: text
+
+   git config --global core.editor "vim"
+   git config --global core.editor "emacs"
+   git config --global core.editor "atom --wait"
+   git config --global core.editor "subl -n -w"
+
+See `GitHub's help for setting up Atom and Sublime Text as Git editors <https://help.github.com/articles/associating-text-editors-with-git/>`_.
+
 .. _git-commit-organization-best-practices:
 
 Appendix: Commit Organization Best Practices
