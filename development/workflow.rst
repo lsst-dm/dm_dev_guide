@@ -610,3 +610,54 @@ Conversely, a long message might suggest that the :ref:`commit should be split <
 The code reviewer is responsible for giving feedback on the adequacy of commit messages.
 
 The `OpenStack docs have excellent thoughts on writing great commit messages <https://wiki.openstack.org/wiki/GitCommitMessages#Information_in_commit_messages>`_.
+
+.. _workflow-jira-tips:
+
+Appendix: JIRA Tips
+===================
+
+JIRA is a powerful web app that you can customize to suit your needs.
+This appendix mentions a few ways to improve your workflow, though the `JIRA User Guide <https://confluence.atlassian.com/jira064/jira-user-s-guide-720416011.html>`_ is the definitive resource for power users.
+
+.. _workflow-jira-create-filters:
+
+Creating filters
+----------------
+
+Filters are a great way to maintain dynamic lists of issues for different workflows.
+You can make an issue filter by saving a JIRA search:
+
+1. Open the `Issues page in JIRA <https://jira.lsstcorp.org/issues>`_.
+2. Enter a search term.
+   `You can learn about JIRA's syntax from the docs <https://confluence.atlassian.com/jira064/advanced-searching-720416661.html>`_.
+3. Run the search.
+4. Press the **Save as** button on the search results page.
+
+Your saved filters are accessible from the **Issues** dropdown menu in JIRA, among other places.
+
+You can manage your filters from https://jira.lsstcorp.org/secure/ManageFilters.jspa.
+
+.. _workflow-jira-search-examples:
+
+Example search terms
+--------------------
+
+All of your open issues::
+
+   assignee = currentUser() AND resolution = Unresolved ORDER BY updatedDate DESC
+
+All of your issues that are in progress::
+
+   status in ("In Progress", "In Review", Acknowledged, Reviewed, "Code Review", Blocked, "Awaiting Signoff") AND resolution = Unresolved AND assignee = currentUser() ORDER BY updatedDate DESC
+
+All open issues you have been assigned to review::
+
+   Reviewers in (currentUser()) AND status = "In Review"
+
+Issues where you have been mentioned in the last two weeks::
+
+   text ~ currentUser() AND updatedDate >= -14d ORDER BY updated DESC
+
+Issues match a label::
+
+   labels = label-name
