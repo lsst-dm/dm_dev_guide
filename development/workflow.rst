@@ -146,3 +146,79 @@ In that case, change the ticket's status to **Won't Fix.**
 
 If you discover that a ticket duplicates another one, you can retire the duplicate ticket by marking it as **Invalid.**
 Name the duplicate ticket in the status change comment field.
+
+.. _git-branching:
+
+DM Git Branching Policy
+=======================
+
+Rather than forking LSST's GitHub repositories, DM developers use a *shared repository model* by cloning repositories in the `lsst <https://github.com/lsst>`_, `lsst-dm <https://github.com/lsst>`_, and `lsst-sqre <https://github.com/lsst>`_ GitHub organizations.
+Since the GitHub ``origin`` remotes are shared, it is essential that DM developers adhere to the following naming conventions for branches.
+
+See `RFC-21 <https://jira.lsstcorp.org/browse/RFC-21>`_ for discussion.
+
+.. _git-branch-integration:
+
+The master branch
+-----------------
+
+``master`` is the main integration branch for our repositories.
+The master branch should always be stable and deployable.
+In some circumstances, a ``release`` integration branch may be used by the release manager.
+Development is not done directly on the ``master`` branch, but instead on *ticket branches*.
+
+Documentation edits and additions are the only scenarios where working directly on ``master`` and by-passing the code review process is permitted.
+In most cases, documentation writing benefits from peer editing (code review) and *can* be done on a ticket branch.
+
+The Git history of ``master`` **must never be re-written** with force pushes.
+
+.. _git-branch-user:
+
+User branches
+-------------
+
+You can do experimental, proof-of-concept work in 'user branches.'
+
+These branches are named
+
+.. code-block:: text
+
+   u/{{username}}/{{topic}}
+
+User branches can be pushed to GitHub to enable collaboration and communication.
+Before offering unsolicited code review on your colleagues' user branches, remember that the work is intended to be an early prototype.
+
+Developers can feel free to rebase and force push work to their personal user branches.
+
+A user branch *cannot* be merged into master; it must be converted into a *ticket branch* first.
+
+.. _git-branch-ticket:
+
+Ticket branches
+---------------
+
+Ticket branches are associated with a JIRA ticket.
+Only ticket branches can be merged into ``master``.
+(In other words, developing on a ticket branch is the only way to record earned value for code development.)
+
+If the JIRA ticket is named ``DM-NNNN``, then the ticket branch will be named
+
+.. code-block:: text
+
+   tickets/DM-NNNN
+
+A ticket branch can be made by branching off an existing user branch.
+This is a great way to formalize and shape experimental work into an LSST software contribution.
+
+When code on a ticket branch is ready for review and merging, follow the :ref:`code review process documentation <workflow-code-review>`.
+
+.. _git-branch-sims:
+
+Simulations branches
+--------------------
+
+The LSST Simulations team uses a different branch naming scheme:
+
+.. code-block:: text
+
+   feature/SIM-NNN-{{feature-summary}}
