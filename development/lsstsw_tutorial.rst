@@ -22,7 +22,7 @@ Prerequisites
 
 Before embarking on Stack development, ensure you have all software dependencies installed on your system.
 These dependencies are listed in the :doc:`guide to installing the stack from source </install>`.
-Additionally, you should follow our guide to :ref:`configuring Git, Git LFS and GitHub` to work with DM repositories.
+Additionally, you should follow our guide to :ref:`configuring Git, Git LFS and GitHub` to work with DM repositories. For ``lsstsw``-based development you will need to work in a bash shell.
 
 .. _lsstsw-workflow-obtaining-lsstsw-stack:
 
