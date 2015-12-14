@@ -2,10 +2,10 @@
 ReStructuredText Style Guide
 ############################
 
-This page describes how reStructuredText (reST) is written for DM documentation.
-The first sections are example-based introduction to reST markup, while the :ref:`last section documents formatting conventions <rst-formatting-guidelines>`.
+This page describes how reStructuredText (reST) is written for DM documentation through examples.
+The :ref:`last section documents our formatting conventions <rst-formatting-guidelines>`.
 
-For more exhaustive guides to writing reStructuredText, see Sphinx's `reStructuredText Primer <http://sphinx-doc.org/rest.html#explicit-markup>`_ and the `docutils Quick reStructuredText guide <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`_.
+For more general guides to writing reStructuredText, see Sphinx's `reStructuredText Primer <http://sphinx-doc.org/rest.html#explicit-markup>`_ and the `docutils Quick reStructuredText guide <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`_.
 
 See the pages on :doc:`writing documentation for packages <package_docs>` and :doc:`Python docstrings <py_docs>` for specific reST usage in those contexts.
 
@@ -28,20 +28,19 @@ Inline Text Styling
 ===================
 
 Italics
-    ``*italic text*`` → *italic text*.
+   ``*italic text*`` → *italic text*.
 
 Bold
-    ``**bold text**`` → **bold text**.
+   ``**bold text**`` → **bold text**.
 
 Monospace
-    ````monospace text```` → ``monospace text``.
-    When referring to code objects, it's better to use different markup that links to the object's API documentation.
-    This is described below in the :ref:`rst-code-link` section.
+   ````monospace text```` → ``monospace text``.
+   When referring to code objects, it's better to use markup that links to the object's API documentation (see the :ref:`rst-code-link` section).
 
 Inline math
-    ``:math:`\sqrt{16}``` → :math:`\sqrt{16}`.
+   ``:math:`\sqrt{16}``` → :math:`\sqrt{16}`.
 
-Inline styles can't be nested.
+**Inline styles can't be nested.**
 For example, you *can't* write ``*see :ref:`this page <label>`*``.
 
 Inline markup also needs to be surrounded by white space, though trailing punctuation is fine.
@@ -53,26 +52,26 @@ For example ``one\ *word*`` renders as one\ *word*.
 Other semantic markup
 ---------------------
 
-In addition to the fundamental inline typesetting styles above, authors may use additional reST roles to provide semantic meaning to their text.
+In addition to the fundamental inline typesetting styles above, you may use additional reST roles to provide semantic meaning to the text.
 The documentation's CSS takes advantage of this semantic meaning to provide visual cues to readers.
 
 Abbreviations
-    ``:abbr:`LSST (Large Synoptic Survey Telescope``` → :abbr:`LSST (Large Synoptic Survey Telescope)` (a tool tip exposes the definition)
+   ``:abbr:`LSST (Large Synoptic Survey Telescope``` → :abbr:`LSST (Large Synoptic Survey Telescope)` (a tool tip exposes the definition)
 
 Filenames and paths
-    ``:file:`repos.yaml``` → :file:`repos.yaml`
+   ``:file:`repos.yaml``` → :file:`repos.yaml`
 
 Shell commands
-    ``:command:`git rebase -i master``` → :command:`git rebase -i master`
+   ``:command:`git rebase -i master``` → :command:`git rebase -i master`
 
 Environment variables
-    ``:envvar:`EUPS_PATH``` → :envvar:`EUPS_PATH`
+   ``:envvar:`EUPS_PATH``` → :envvar:`EUPS_PATH`
 
 User interface labels
-    ``:guilabel:`New Pull Request``` → :guilabel:`New Pull Request`. This markup can be used for button labels, menus, or even text labels in interactive shell programs.
+   ``:guilabel:`New Pull Request``` → :guilabel:`New Pull Request`. This markup can be used for button labels, menus, or even text labels in interactive shell programs.
 
 Keyboard commands
-    ``:kbd:`Control-a s``` → :kbd:`Control-a s`. Spell out the keys rather than using Emacs short hand, such as ``C-x``.
+   ``:kbd:`Control-a s``` → :kbd:`Control-a s`. Spell out the keys rather than using Emacs short hand, such as ``C-x``.
 
 To semantically markup Python or C++ code objects, refer to the section on :ref:`rst-code-link`.
 
@@ -81,7 +80,7 @@ To semantically markup Python or C++ code objects, refer to the section on :ref:
 Lists
 =====
 
-Unordered lists can be written as
+Unordered lists can be written as:
 
 .. code-block:: rst
 
@@ -101,19 +100,19 @@ Unordered lists can be written as
 
 which renders as:
 
-   - First item
-   
-     Second paragraph for first item, needs to be consistently indented.
-   - Second item
-   
-   - You can put spaces between items, or not.
-   
-   - Hierarchical lists are also possible
+- First item
 
-     - Put a blank space before the sub-list
-     - And indent the sub-list consistently
-   
-   - Last item.
+  Second paragraph for first item, needs to be consistently indented.
+- Second item
+
+- You can put spaces between items, or not.
+
+- Hierarchical lists are also possible
+
+  - Put a blank space before the sub-list
+  - And indent the sub-list consistently
+
+- Last item.
 
 Enumerated lists can be written similarly:
 
@@ -129,18 +128,19 @@ Enumerated lists can be written similarly:
 
 which renders as:
 
-   1. First thing
-   2. Second thing
-   
-   or automatically enumerated,
-   
-   #. First thing
-   #. Second thing
+1. First thing
+2. Second thing
+
+or automatically enumerated,
+
+#. First thing
+#. Second thing
 
 Definition lists
 ----------------
 
 Definition lists are terms with an indented content section.
+For example:
 
 .. literalinclude:: snippets/def_list.rst
    :language: rst
@@ -149,7 +149,7 @@ produces
 
 .. include:: snippets/def_list.rst
 
-Definition lists are not limited to dictionary-like usage; they can be employed whenever a series of headers with associated micro content is needed.
+Definition lists are not limited to dictionary-like usage; they can be employed whenever a series of terms with associated micro content is needed.
 
 .. _rst-sectioning:
 
@@ -166,9 +166,10 @@ We create section hierarchies as follows:
 
 :doc:`See this sample rendered <rst_section_sample>`.
 
-This specific sequence of section markup styles is not mandated by the reST specification, but we encourage you to use it for consistency across all reST documents.
+This specific sequence of section markup styles is not mandated by the reST specification, but we encourage you to use it for consistency across all DM reST documents.
 
-Note that sections in Python docstrings are a special case. First, :ref:`we do not place a blank space between a section header and the object lists below <py-doc-docstring-rst>`.
+**Sections in Python docstrings are a special case.**
+First, :ref:`we do not place a blank space between a section header and the object lists below <py-doc-docstring-rst>`.
 Second, :ref:`Python docstrings can only use subsection and subsubsection-level headings <py-doc-section-levels>`.
 
 .. _rst-linking:
@@ -182,7 +183,7 @@ External links
 --------------
 
 Links to external web pages can be made two ways.
-The first, recommended, way is
+The first way is:
 
 .. code-block:: rst
 
@@ -223,20 +224,20 @@ For example, to give a section the label ``making-labels``, we write:
    hyphens.
    Labels are a **global namespace**, so make them as specific as possible.
 
-Then you can link to any labeled block with the ``:ref:`` role.
+With the ``:ref:`` role you can link to a labeled block:
 
 .. code-block:: rst
 
    For internal links, :ref:`you'll need to make labels <making-labels>`.
 
-You can also make references with ``:ref:`label-name```, and the link text will automatically be populated with the section title, or figure caption, for example.
+You can also make references with ``:ref:`label-name``` and the link text will automatically be populated with the section title or figure caption, for example.
 
 .. _rst-doc-link:
 
 Internal links to other pages
 -----------------------------
 
-To link to another page in the stack docs, use the ``doc`` role with the **relative path** to the target ``.rst`` document.
+To link to another page in the same doc project, use the ``:doc:`` role with the **relative path** to the target ``.rst`` document.
 
 .. code-block:: rst
 
@@ -249,12 +250,12 @@ Note how the ``.rst`` extension wasn't included.
 Links to code objects
 ---------------------
 
-When describing a code object, you can also link to that object's API definition using a syntax similar to the ``ref`` role used above.
+When describing a code object, you can also link to that object's API definition using a syntax similar to the ``:ref:`` role used above.
 
 
 .. _rst-python-link:
 
-Links to python objects
+Links to Python objects
 -----------------------
 
 Objects can be referenced with these roles:
@@ -296,12 +297,12 @@ Note that Sphinx has several limitations for linking to C++ objects:
 - A specific version of an overloaded function/method cannot be specified.
 - You must escape the opening angle bracket in template classes,
   e.g. ``:cpp:class:`ClassName\<T>```.
-- You cannot link to template classes/functions/aliases/variables, only template instantiations.
+- You cannot link to template classes/functions/aliases/variables---only template instantiations.
 
 Customizing the link text
 -------------------------
 
-By default the full namespace to the object will be shown as the linked text.
+By default the full namespace to the object is shown as the linked text.
 To show only the name of the object itself, prefix the namespace with ``~``.
 For example:
 
@@ -311,7 +312,8 @@ For example:
 
 will be rendered as `sin() <#>`_.
 
-As with the ``ref`` role, it is also possible to provide custom link text, e.g.:
+As with the ``:ref:`` role, it is also possible to provide custom link text.
+For example:
 
 .. code-block:: rst
 
@@ -321,7 +323,6 @@ Default domains
 ---------------
 
 By default, these code referencing roles require a *domain prefix* such as ``py`` or ``cpp`` to specify the language of the object being reference.
-
 This prefix can be omitted when the domain is implicitly set, such as in a Python docstring.
 
 In a reStructuredText document, the domain can be set via the ``default-domain`` directive.
@@ -342,11 +343,11 @@ See `Sphinx's documentation on Domains`_ for more information about referencing 
 Tables
 ======
 
-We recommend that you use the *grid* syntax for tables, since they more flexible than `simple reST tables`_.
-And although not necessary, we suggest you provide a caption using the ``table`` directive, and a label prefixed with "``table-``."
+We recommend that you use the *grid* syntax for tables, since they more flexible than `'simple' reST tables`_.
+And although not necessary, we suggest that you provide a caption using the ``table`` directive and a label prefixed with "``table-``."
 For example:
 
-.. _simple rest tables: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#simple-tables
+.. _`'simple' rest tables`: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#simple-tables
 
 .. literalinclude:: snippets/basic_table.rst
    :language: rst
@@ -400,7 +401,8 @@ We hope to provide better support for responsive image sizing.
 Figure directive
 ----------------
 
-*Figures* can also be produced, which include captions:
+Figures include both an image and a caption.
+For example:
 
 .. literalinclude:: snippets/figure.rst
    :language: rst
@@ -410,7 +412,7 @@ Figure directive
 Note that the ``:name:`` field takes the place of a separate :ref:`label <rst-internal-links>` for hyperlinking.
 By convention, these labels should be prefixed with "``fig-``."
 
-Note on paths to image Files
+Note on paths to image files
 ----------------------------
 
 Images are included in the ``_static/`` directory of the git repository for this documentation project.
@@ -446,7 +448,7 @@ where
 
 .. _any token understood by Pygments: http://pygments.org/docs/lexers/
 
-For example,
+For example:
 
 .. literalinclude:: snippets/py_codeblock_example.rst
    :language: rst
@@ -469,7 +471,7 @@ For this you can use the ``literalinclude`` directive:
    .. literalinclude:: path/to/example.py
       :language: py
 
-The source path can either be relative to the reST document, or relative to the documentation root by prefixing the with path '/'.
+The source path can either be relative to the reST document or relative to the documentation root by prefixing the path with ``/``.
 
 The ``literalinclude`` directive also supports ``code-block`` fields, such as ``name`` and ``emphasize-lines``.
 In addition, you can selective include ranges of lines with the ``lines`` field.
@@ -483,6 +485,8 @@ For example, to include only lines 10 -- 20:
 
 To omit the first two lines from a file:
 
+.. code-block:: rst
+
    .. literalinclude:: path/to/example.py
       :language: py
       :lines: 2-
@@ -490,8 +494,8 @@ To omit the first two lines from a file:
 Sophisticated inclusion patterns can be achieved by listing multiple spans, such as ``:lines: 3-10,20-``, which shows the first ten lines and all lines after the 20\ :sup:`th`\ . 
 
 When including code example snippets from other files, it may be useful to remove indentation.
-For that, use the ``dedent`` field.
-For example,
+Use the ``dedent`` field for that.
+For example:
 
 .. code-block:: rst
 
@@ -583,7 +587,7 @@ Citations can be made as follows:
                    Reference Design and Anticipated Data Products.*
                    `arxiv:0805.2366 <http://arxiv.org/abs/0805.2366>`_
 
-Citations are distinguished from footnotes in that the label *is not* numeric or *does not* begin with a ``#``.
+Citations are distinguished from footnotes in that the label *does not* begin with a ``#``.
 
 In the future, scholarly citations will be easier to include and more 'latex-like' with our `documenteer`_ Sphinx extensions.
 
@@ -605,7 +609,7 @@ Provide comments to fellow writers using ``..``,
 
       The second paragraph.
 
-Avoid using comments to keep around old or alternate versions of text; prefer using git version control instead.
+Avoid using comments to keep around old or alternate versions of text; prefer using Git version control instead.
 
 .. _rst-formatting-guidelines:
 
@@ -619,9 +623,9 @@ When writing reST documentation in Python files, documentation lines should be k
 
 For reStructuredText documents (e.g., ``.rst`` files), reST doesn't care about line formatting.
 Emacs users, for example, are free to use hard-wrap formatting lines at 72 characters if that helps you write docs.
-However, whenever possible, we *encourage* you to use soft-wrapping for your text.
-The has the advantage of letting others format text columns in their editors as they wish
-As well, the GitHub.com code editor does have hard-wrap auto-formatting.
+Whenever possible, we *encourage* you to use soft-wrapping for your text.
+This allows others format text columns in their editors as they wish.
+As well, the GitHub.com code editor does not have hard-wrap auto-formatting.
 Those making doc edits on GitHub.com will tend to use soft-wrap by default (see '`GitHub Flow in the Browser`_').
 
 .. _GitHub Flow in the Browser: https://help.github.com/articles/github-flow-in-the-browser/
@@ -629,7 +633,7 @@ Those making doc edits on GitHub.com will tend to use soft-wrap by default (see 
 When using soft-wrap formatting, you might **write one sentence per line** (i.e., put a line break after each sentence).
 As a writer, this has the advantage of making it easier to check the rhythm of your writing, including sentence lengths.
 Shorter sentences are easier to read.
-`One-sentence-per-line`_ is also semantically correct in the sense of git and other version control systems.
+`One-sentence-per-line`_ is also semantically correct in the sense of Git.
 
 .. _One-sentence-per-line: https://xkcd.com/1285/
 
@@ -657,7 +661,7 @@ In lists, align naturally with the text:
      Another paragraph for the first item.
    - Second item.
 
-And note how that alignment adapts to numbered lists (four spaces are now required):
+Note how that alignment adapts to numbered lists:
 
 .. code-block:: rst
 
@@ -672,9 +676,9 @@ For :ref:`argument lists in Python docstrings <py-docstring-parameters>` we inde
 
    Parameters
    ----------
-   x : float
+   x_coord : float
        Particle's x-coordinate.
-   y : float
+   y_coord : float
        Particle's y-coordinate.
 
 .. _rst-encoding:
