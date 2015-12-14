@@ -178,7 +178,7 @@ Linking
 
 .. _rst-external-links:
 
-External Links
+External links
 --------------
 
 Links to external web pages can be made two ways.
@@ -204,7 +204,7 @@ You may decide to use either method, taking readability into consideration.
 
 .. _rst-internal-links:
 
-Internal Links to Labels
+Internal links to labels
 ------------------------
 
 Any content block can be labeled.
@@ -233,7 +233,7 @@ You can also make references with ``:ref:`label-name```, and the link text will 
 
 .. _rst-doc-link:
 
-Internal Links to other Pages
+Internal links to other pages
 -----------------------------
 
 To link to another page in the stack docs, use the ``doc`` role with the **relative path** to the target ``.rst`` document.
@@ -246,7 +246,7 @@ Note how the ``.rst`` extension wasn't included.
 
 .. _rst-code-link:
 
-Links to Code Objects
+Links to code objects
 ---------------------
 
 When describing a code object, you can also link to that object's API definition using a syntax similar to the ``ref`` role used above.
@@ -254,7 +254,7 @@ When describing a code object, you can also link to that object's API definition
 
 .. _rst-python-link:
 
-Links to Python Objects
+Links to python objects
 -----------------------
 
 Objects can be referenced with these roles:
@@ -268,7 +268,7 @@ Objects can be referenced with these roles:
 - ``:py:data:`pkg.mod.VARIABLE``` to reference a module-level variable ``VARIABLE`` in ``pkg.mod``.
 - ``:py:const:`pkg.mod.CONSTANT``` to reference a module-level *constant* ``CONSTANT`` in ``pkg.mod``.
 
-Namespace Resolution
+Namespace resolution
 ^^^^^^^^^^^^^^^^^^^^
 
 In these examples, the full namespace of each Python object is specified.
@@ -278,7 +278,7 @@ See the `Sphinx documentation <http://sphinx-doc.org/domains.html#cross-referenc
 
 .. _rst-cpp-links:
 
-Links to C++ Objects
+Links to C++ objects
 --------------------
 
 Similarly to Python object links, Sphinx supports a ``cpp`` domain for C++ code that provides the following roles:
@@ -298,7 +298,7 @@ Note that Sphinx has several limitations for linking to C++ objects:
   e.g. ``:cpp:class:`ClassName\<T>```.
 - You cannot link to template classes/functions/aliases/variables, only template instantiations.
 
-Customizing the Link Text
+Customizing the link text
 -------------------------
 
 By default the full namespace to the object will be shown as the linked text.
@@ -317,7 +317,7 @@ As with the ``ref`` role, it is also possible to provide custom link text, e.g.:
 
    :py:func:`Numpy's sine function <numpy.sin>`
 
-Default Domains
+Default domains
 ---------------
 
 By default, these code referencing roles require a *domain prefix* such as ``py`` or ``cpp`` to specify the language of the object being reference.
@@ -397,7 +397,7 @@ The ``image`` directive has `more configurable fields <http://docutils.sourcefor
 If image sizes need to be manipulated from reST, we recommend using ``scale`` since it is responsive.
 We hope to provide better support for responsive image sizing.
 
-Figure Directive
+Figure directive
 ----------------
 
 *Figures* can also be produced, which include captions:
@@ -410,7 +410,7 @@ Figure Directive
 Note that the ``:name:`` field takes the place of a separate :ref:`label <rst-internal-links>` for hyperlinking.
 By convention, these labels should be prefixed with "``fig-``."
 
-Note on Paths to Image Files
+Note on paths to image Files
 ----------------------------
 
 Images are included in the ``_static/`` directory of the git repository for this documentation project.
@@ -612,7 +612,7 @@ Avoid using comments to keep around old or alternate versions of text; prefer us
 RestructuredText Formatting Conventions
 =======================================
 
-Text Wrapping
+Text wrapping
 -------------
 
 When writing reST documentation in Python files, documentation lines should be kept to lengths of :ref:`75 characters or fewer <py-doc-docstring-rst>` (discounting leading indentation).
@@ -679,7 +679,7 @@ For :ref:`argument lists in Python docstrings <py-docstring-parameters>` we inde
 
 .. _rst-encoding:
 
-Encoding and Special Characters
+Encoding and special characters
 -------------------------------
 
 LSST's reStructuredText source files should be encoded as UTF-8 unicode.
