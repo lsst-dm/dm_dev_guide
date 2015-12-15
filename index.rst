@@ -10,8 +10,8 @@ We are building the Science Pipelines for the `Large Synoptic Survey Telescope (
 - Report issues in `JIRA <https://jira.lsstcorp.org/projects/DM/issues/>`_
 - Learn more about LSST Data Management by visiting http://dm.lsst.org
 
-**The current release is 11.1.**
-See what's new in the :doc:`Release Notes <releases/v11_1/notes>`.
+**The current release is 11.0.**
+See what's new in the :doc:`Release Notes <releases/v11_0/notes>`.
 
 .. toctree::
    :maxdepth: 1
@@ -28,10 +28,12 @@ See what's new in the :doc:`Release Notes <releases/v11_1/notes>`.
      :caption: Tutorials
      :name: part-tutorials
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Packages
-   :name: part-packages
+.. 
+  FIXME uncomment this section when tutorials are available
+  .. toctree::
+     :maxdepth: 1
+     :caption: Packages
+     :name: part-packages
 
 .. toctree::
    :maxdepth: 1
@@ -42,9 +44,10 @@ See what's new in the :doc:`Release Notes <releases/v11_1/notes>`.
    development/docs/index.rst
    development/git_lfs.rst
 
-*******
+`The API Reference is currently available from our legacy Doxygen server <https://lsst-web.ncsa.illinois.edu/doxygen/x_masterDoxyDoc/>`_.
+
 Indices
-*******
+=======
 
 * :ref:`genindex`
 * :ref:`modindex`
