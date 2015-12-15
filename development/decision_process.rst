@@ -2,35 +2,66 @@
 Discussion and Decision Making Process
 ######################################
 
+This page describes some of the formal processes we use in Data Management to make decisions.
+Generally, DM teams and staff can implement non-controversial work (see § :ref:`decision-making-empowerment`).
+
+For instances where you have a well-formed proposal that does not meet :ref:`our three-point criteria <decision-making-empowerment>` for independent implementation we use a :ref:`Request for Comments (RFC) <decision-making-rfc>` process.
+
+You may also want to convene members across DM for an in-depth technical discussion.
+The :ref:`Request for Discussion (RFD) <decision-making-rfd>` process facilitates DM-wide discussions in a weekly discussion time slot.
+
 .. _decision-making-empowerment:
 
-1. Empowerment
-==============
+Empowerment
+===========
 
-You are empowered by the DM Project Manager (PM) and Project Scientist (PS) to make decisions on any DM-internal matter, including technical/algorithm issues, process improvements, tool choices, etc., when:
+You are empowered by the DM Project Manager (Jeff Kantor), Project Scientist (Mario Juric) and Project Engineer (Kian-Tat Lim) to make decisions on any DM-internal matter---such as technical/algorithm issues, process improvements, and tool choices---when:
 
-- you are willing and able to do the work to implement the decision yourself or with people who agree with you,
-- you (collectively) are willing and able to fix any problems if it goes wrong, and
-- you believe that all affected parties (including your immediate manager) would not seriously object to your decision and implementation.
+1. you are willing and able to do the work to implement the decision yourself or with people who agree with you,
+2. you (collectively) are willing and able to fix any problems if it goes wrong, and
+3. you believe that all affected parties (including your immediate manager) would not seriously object to your decision and implementation.
 
 .. _decision-making-rfc:
 
-2. Request for Comments Process
-===============================
+Request for Comments (RFC) Process
+==================================
 
-If the above three criteria are not met, perhaps because you don't know all the affected parties or because you don't know their positions, you should publish your proposed decision and implementation as a JIRA issue in the `Request For Comments (RFC) <https://jira.lsstcorp.org/projects/RFC>`_ project with a component of "DM".
-This will trigger postings to the `dm-devel mailing list <https://lists.lsst.org/mailman/listinfo/dm-devel>`_ and the `'Bot: RFC' HipChat room <hipchat://hipchat.com/room/1028779>`_.
+If the :ref:`above criteria <decision-making-empowerment>` are not met, perhaps because you don't know all the affected parties or because you don't know their positions, you should publish your proposed decision and implementation as an RFC-type issue in `JIRA RFC project <https://jira.lsstcorp.org/projects/RFC>`_.
 
+RFCs are used to seek consensus on concrete plans that affect other parties.
 It is usually difficult to determine all the affected parties for published package interfaces. Changes to interfaces should thus typically go through this process.
 
 It's a good idea to contact any affected parties you *do* know about before starting this process to check that your resolution is sensible.
 Your institutional technical manager is always affected, as she or he is responsible for tracking your work schedule.
 If you are proposing work for others, they are obviously affected.
-Your institutional scientist, the DM System Architect (SA, K-T Lim), the DM Interface Scientist (IS, Gregory Dubois-Felsmann), and the DM PS (Mario Juric) are also valuable resources for determining affected parties.
+Your institutional scientist, the DM System Architect (K-T Lim), the Interface Scientist (Gregory Dubois-Felsmann), the Project Engineer (K-T Lim) and the Project Scientist (Mario Juric) are also valuable resources for determining affected parties.
 
 The purpose of an RFC is to inform others about the existence and content of the proposed decision and implementation in order to allow them to evaluate its impact, comment on it, refine it if necessary, and agree (implicitly or explicitly) or object (explicitly) to its execution.
 
-The discussion of the RFC takes place in the medium of your choosing (e.g., a specific mailing list, the RFC JIRA issue itself, a HipChat room, a convened videocon, some combination of those, etc.), but you should be open to private communications as well.
+.. _decision-making-rfc-creating:
+
+Creating an RFC
+---------------
+
+Create an RFC by making a JIRA issue in the `Request For Comments (RFC) <https://jira.lsstcorp.org/projects/RFC>`_ project with a component of "DM."
+This will trigger postings to the `dm-devel mailing list <https://lists.lsst.org/mailman/listinfo/dm-devel>`_ and the `'Bot: RFC' HipChat room <hipchat://hipchat.com/room/1028779>`_.
+
+.. _decision-making-rfc-medium:
+
+RFC discussion medium
+---------------------
+
+The discussion of the RFC takes place in the medium of your choosing (typically this is the RFC issue itself, but other venues such as `community.lsst.org <http://community.lsst.org/c/dm>`_, a convened videocon, or an in-person meeting can be used instead).
+You should be open to private communications as well.
+Discussions should be summarized and persisted to the RFC issue or a `community.lsst.org topic <http://community.lsst.org/c/dm>`_.
+
+.. _decision-making-rfc-consensus:
+
+Role of the Assignee in reaching consensus
+------------------------------------------
+
+The Assignee of an RFC is the person in charge of seeing the proposal to implementation.
+Typically the initial Assignee will be the issue Reporter.
 
 In our RFC process, the opinions of those who will be doing the work (and fixing any problems if something goes wrong) are given more weight.
 In some cases, this may mean that the RFC issue's Assignee passes to someone else.
@@ -39,38 +70,63 @@ The opinions of more senior people or people more experienced in the area should
 The Assignee is responsible for determining when no serious objections remain.
 In particular, there is no need to call for a formal vote on the (refined) resolution.
 If no explicit objections have been raised within, typically, 72 hours for "ordinary" issues and 1 week for "major" issues, the Assignee should assume that there are none.
-This is known as "lazy consensus".
-When this state has been reached, the Assignee is responsible for ensuring that the final consensus has been recorded in the RFC issue before closing it and proceeding with implementation of the decision.
+This is known as "lazy consensus."
+
+Part of the consensus-building process is a clear statement of what the implementation plan will be.
+
+When consensus is established, and a set of implementation tickets is created, the Assignee is responsible for marking the RFC as **Adopted** in JIRA.
+
+Once the RFC is adopted, the Assignee should create tickets that implement the implementation plan.
+Use an 'Is triggered by' JIRA linkage for these tickets.
 
 Be especially careful about not making irreversible changes in the "lazy consensus" time period unless you're absolutely certain there's a general agreement on the stated course of action.
 If you break something, be ready to fix it.
-Apply sound reasoning and good judgement about what may be acceptable and what might be not. Mistakes will happen; accept that occasionally you will be requested to revert an action for which you thought agreement existed, and learn from the experience.
+Apply sound reasoning and good judgment about what may be acceptable and what might be not.
+Mistakes will happen; accept that occasionally you will be requested to revert an action for which you thought agreement existed, and learn from the experience.
 
-.. _decision-making-exceptions-appeals:
+.. _decision-making-rfc-appeals:
 
-3. Exceptions and Appeals
-=========================
+Appeals process
+---------------
 
-Some proposed resolutions may require changes to one or more of the baselined, change-controlled documents describing the Data Management system (those in DocuShare with an LDM- handle or marked as change-controlled in Confluence).
+If you can't converge on a resolution to an RFC that has no serious objections but you still feel that something must be done, you may request that the Project Manager, Project Scientist, and Project Engineer rule on it.
+In most non-trivial cases, they will, with the advice of the Software Architect, empanel a group of experts to which they will delegate the right to make the decision, by voting if need be.
+
+.. _decision-making-rfc-implementation:
+
+RFC implementation
+------------------
+
+An RFC is implemented by completing all tickets that were created when the RFC was adopted.
+
+Once the RFC is implemented, return to the RFC's JIRA issue page and click the "We Shipped It!" button.
+This changes the RFC's status from "Adopted" to "Implemented."
+
+.. _decision-making-rfc-tct:
+
+RFCs that affect change-controlled documents
+--------------------------------------------
+
+Some proposed resolutions may require changes to one or more of the baselined, change-controlled documents describing the Data Management system (those in DocuShare_ with an LDM- handle or marked as change-controlled in Confluence).
 Note that major changes to budget or scope will almost certainly affect one or more LDM- documents.
-In this case only, the DM Technical Control Team (TCT), consisting of the DM PM, PS, SA, and IS, may empanel an ad hoc committee including the lead author of the document and other relevant experts.
-This committee or the TCT itself must *explicitly* approve the change.
-In the case of DM Coding Standards, which are change-controlled Confluence pages, the TCT has, via `RFC-24 <https://jira.lsstcorp.org/browse/RFC-24>`_, delegated all decision-making to the SA, who must explicitly approve any changes.
+In this case only, the `DM Technical Control Team (TCT) <https://confluence.lsstcorp.org/display/DM/Technical+Control+Team>`_, consisting of the Project Manager, Project Scientist, Project Engineer, System Architect, and Interface Scientist, may empanel an ad hoc committee including the lead author of the document and other relevant experts.
+This committee, or the TCT_ itself, must *explicitly* approve the change.
+In the case of DM Coding Standards, which are change-controlled Confluence pages, the TCT_ has, via `RFC-24 <https://jira.lsstcorp.org/browse/RFC-24>`_, delegated all decision-making to the System Architect, who must explicitly approve any changes.
 
 Change-controlled documents with other handles, such as LSE- or LPM-, including inter-subsystem interfaces, have project-wide change control processes.
-Please consult the DM PM, SA, or IS for more information.
+Please consult the TCT_ for more information.
 
-At least one member of the DM TCT will read each RFC to determine if it might affect a change-controlled document.
+At least one member of the DM TCT_ will read each RFC to determine if it might affect a change-controlled document.
 
-If you can't converge on a resolution to an RFC that has no serious objections but you still feel that something must be done, you may request that the DM PM and PS rule on it.
-In most non-trivial cases, they will, with the advice of the SA, impanel a group of experts to which they will delegate the right to make the decision, by voting if need be.
+.. _decision-making-rfc-responsibility:
 
-.. _decision-making-formalities:
+Responsibility and delegation
+-----------------------------
 
-4. Formalities
-==============
-
-For project management purposes, RFCs are formally proposals made to the DM PM and PS who by default are responsible for everything in DM (they "own" all problems).
+For project management purposes, RFCs are formally proposals made to the Project Manager, Project Scientist and Project Engineer who by default are responsible for everything in DM (they "own" all problems).
 As owners, they have the final word in accepting or rejecting all proposals.
-Functionally, they delegate that ownership---the right and responsibility to make decisions---to others within the team (e.g. the SA, IS, group leads, etc.) who are expected to delegate it even further.
-Notifying your institutional technical manager about an RFC serves to inform the DM PM.
+Functionally, they delegate that ownership---the right and responsibility to make decisions---to others within the team (e.g. the System Architect, Interface Scientist, group leads, etc.) who are expected to delegate it even further.
+Notifying your institutional technical manager about an RFC serves to inform the Project Manager.
+
+.. _TCT: https://confluence.lsstcorp.org/display/DM/Technical+Control+Team
+.. _DocuShare: https://docushare.lsstcorp.org
