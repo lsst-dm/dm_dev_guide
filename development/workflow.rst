@@ -271,6 +271,13 @@ To log into Jenkins, you'll use your GitHub credentials (your GitHub account nee
 
 Jenkins finds, builds, and tests your work according to the name of your ticket branch; Stack repositories lacking your ticket branch will fall back to ``master``.
 
+.. figure:: /_static/development/jenkins_ci.png
+
+   Jenkins test submission screen.
+   In this example, the ``tickets/DM-9999`` branches of Stack repositories will be tested.
+   If that branch doesn't exist, the ``tickets/DM-9998`` branch is be used.
+   If neither of those branches exist for a given repository, the ``master`` branch is used.
+
 You can monitor builds in the `Bot: Jenkins <https://lsst.hipchat.com/rooms/show/1648522>`_ HipChat room.
 
 .. _workflow-pr:
