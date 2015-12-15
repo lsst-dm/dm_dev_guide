@@ -354,6 +354,10 @@ GitHub pull requests are ideal venues for discussion since individual commit dif
 Be sure to make comments only from the **Conversation** and **Files changed** tabs---*not the Commits tab*.
 Any comments on code patches from the Commits tab will be lost if the developer amends and force pushes commits to the pull request.
 
+.. figure:: /_static/development/github_pr_comment_areas.png
+
+   Pull request conversations should only happen in 'Conversation' and 'Files changed' tabs; your comments might get lost otherwise.
+
 Code reviews are a collaborative check-and-improve process.
 Reviewers do not hold absolute authority, nor can developers ignore the reviewer's suggestions.
 The aim is to discuss, iterate, and improve the pull request until the work is ready to be deployed on ``master``.
