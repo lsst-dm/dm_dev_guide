@@ -31,6 +31,8 @@ This Guide will help you in contributing to the DM development effort.
    :caption: Coding Guides
    :name: part-coding
 
+   coding/intro.rst
+
 .. toctree::
    :maxdepth: 1
    :caption: Writing Docs
