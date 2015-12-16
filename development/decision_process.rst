@@ -128,5 +128,56 @@ As owners, they have the final word in accepting or rejecting all proposals.
 Functionally, they delegate that ownership---the right and responsibility to make decisions---to others within the team (e.g. the System Architect, Interface Scientist, group leads, etc.) who are expected to delegate it even further.
 Notifying your institutional technical manager about an RFC serves to inform the Project Manager.
 
+.. _decision-making-rfd:
+
+Request for Discussion (RFD) Process
+====================================
+
+.. See RFC-53: https://jira.lsstcorp.org/browse/RFC-53
+
+Requests for Discussion (RFD) are intended to facilitate in-depth technical discussions across DM.
+These might be:
+
+- Detailed design discussions for a component of the system or its interfaces.
+- Design reviews for new code or refactorings of old code.
+- Brainstorming methods to solve difficult problems.
+- "Brain dump" explanations of a design to share knowledge across DM.
+
+.. _decision-making-rfd-creating:
+
+Creating an RFD
+---------------
+
+Create an RFD by making a JIRA issue in the `Request For Comments (RFC) <https://jira.lsstcorp.org/projects/RFC>`_ project with a **component of DM** and a **issue type of RFD**.
+Use the **Location** field to specify the date and time of the discussion (:ref:`see below for time slot <decision-making-rfd-time>`).
+In the RFD's description:
+
+- Summarize the issue, and indicate a desired outcome from the discussions.
+- Include background material (using JIRA attachments, if necessary).
+- Provide a link to the BlueJeans or Google Hangouts room.
+
+Creating an RFD issue will trigger postings to the `dm-devel mailing list <https://lists.lsst.org/mailman/listinfo/dm-devel>`_ and the `'Bot: RFC' HipChat room <hipchat://hipchat.com/room/1028779>`_.
+
+As the discussion organizer, you are responsible for ensuring all required attendees are available for the time slot.
+DM members can comment on the RFD issue to indicate their availability, or whether the subject being discussed has already been resolved or covered elsewhere.
+
+.. _decision-making-rfd-time:
+
+The RFD time slot
+-----------------
+
+RFDs can scheduled for any convenient time, but we do have a weekly reserved time slot on Tuesdays from 12:30 to 2 PM Pacific.
+
+If there are no requests 24 hours before a given time slot, the meeting will be canceled and the time freed up for other activities.
+
+If there are conflicting claims to the RFD time slot, the Project Engineer (K-T Lim) will arbitrate.
+
+.. _decision-making-rfd-followup:
+
+RFD followup
+------------
+
+Tickets or RFCs that arise from an RFD should link back to the RFD issue on JIRA.
+
 .. _TCT: https://confluence.lsstcorp.org/display/DM/Technical+Control+Team
 .. _DocuShare: https://docushare.lsstcorp.org
