@@ -41,6 +41,7 @@ See what's new in the :doc:`Release Notes <releases/v11_0/notes>`.
    :name: part-developer-guide
 
    development/code_of_conduct.rst
+   development/decision_process.rst
    development/lsstsw_tutorial.rst
    development/docs/index.rst
    development/git_lfs.rst
