@@ -40,6 +40,7 @@ See what's new in the :doc:`Release Notes <releases/v11_0/notes>`.
    :caption: Developer Guide
    :name: part-developer-guide
 
+   development/code_of_conduct.rst
    development/lsstsw_tutorial.rst
    development/docs/index.rst
    development/git_lfs.rst
