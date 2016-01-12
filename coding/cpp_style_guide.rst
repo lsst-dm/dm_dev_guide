@@ -1131,6 +1131,8 @@ This is bound to create a conflict.
 Using directives are less likely to cause conflicts, since the compiler will force the user to qualify the name.
 However, code is generally clearer and more precise if they are not used in header files.
 
+See also :ref:`Appendix: On Using 'Using' <style-guide-cpp-using>`.
+
 .. _style-guide-cpp-4-14:
 
 4-14. There SHOULD be a header file for each library that has the name of the library and includes all of the include files necessary to define the public interface.
@@ -2510,7 +2512,7 @@ While it is not expected that we will bring the guts of all legacy code in line 
 .. [Hoff2008] Hoff, Todd. C++ Coding Standard, 2008. Available on-line at:
    http://www.possibility.com/Cpp/CppCodingStandard.htm
 
-.. style-guide-cpp-cpp-11-14:
+.. _style-guide-cpp-cpp-11-14:
 
 Appendix: Policy on using C++11/14 Features
 ===========================================
@@ -2529,3 +2531,25 @@ See also
 Instructions for using devtoolset-3 to obtain a more modern gcc on the LSST cluster machines: https://confluence.lsstcorp.org/display/LDMDG/Developer+Tools+at+NCSA#DeveloperToolsatNCSA-AlternateDevelopmentEnvironment.
 
 C++11 compiler support matrix: http://wiki.apache.org/stdcxx/C++0xCompilerSupport.
+
+.. _style-guide-cpp-using:
+
+Appendix: On Using `Using`
+==========================
+
+C++ provides the ``using`` keyword for use in declarations and directives relating to namespaces.
+This powerful capability can simplify and reduce the verbosity of code, but it can also lead to reliability and maintainability challenges when the source of non-local names is not obvious.
+
+Using-declarations are of the form ``using N::Class;`` or ``using N::function;``.
+These inject a name from a different namespace into the current namespace, where it may be used without qualification.
+
+Using-directives are of the form ``using namespace N;``.
+These inject all the names in the different namespace into the current namespace.
+
+Coding convention :ref:`4-13 <style-guide-cpp-4-13>` bans using using-declarations and using-directives in header files. (It is incorrect about using-directives requiring qualification of names from the different namespace; this may be due to an incorrect analogy with the Python ``import`` statement.)
+
+The LSST convention for ``.cc`` source files that are not included in header files is:
+
+- Using-declarations are acceptable and appropriate for use when the class or function is to be referenced repeatedly.
+- Using-directives are to be avoided except where ``N`` is std. This convention ensures that unfamiliar names will be properly namespace-qualified at least once in the file.
+- Namespace renaming declarations of the form ``namespace Short = Long::Qualified::Name;`` are acceptable to reduce typing.
