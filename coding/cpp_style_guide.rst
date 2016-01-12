@@ -2512,7 +2512,20 @@ While it is not expected that we will bring the guts of all legacy code in line 
 
 .. style-guide-cpp-cpp-11-14:
 
-Appendix: Use of C++11/14 Features
-==================================
+Appendix: Policy on using C++11/14 Features
+===========================================
 
+The C++11 standard and the C++14 improvements to it bring a number of useful language features that make the resulting code more expressive, easier to read, and safer.
+They are becoming well-implemented and widespread.
+C++11/14 features supported by the default compiler provided with the oldest operating system distribution commonly used to install the LSST Stack, currently gcc 4.8.3, may be used at will in ``.cc`` implementation files.
+They may be used in ``.h`` interface header files if:
 
+- the usage is hidden from SWIG, either because they are not in method signatures or because they have been explicitly excluded with ``#ifndef`` SWIG, or
+- SWIG has been empirically shown to work with the code (e.g. by successful buildbot run with appropriate Python-based test cases).
+
+See also
+--------
+
+Instructions for using devtoolset-3 to obtain a more modern gcc on the LSST cluster machines: https://confluence.lsstcorp.org/display/LDMDG/Developer+Tools+at+NCSA#DeveloperToolsatNCSA-AlternateDevelopmentEnvironment.
+
+C++11 compiler support matrix: http://wiki.apache.org/stdcxx/C++0xCompilerSupport.
