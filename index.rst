@@ -1,57 +1,55 @@
-##########################
-The LSST Science Pipelines
-##########################
+#######################
+LSST DM Developer Guide
+#######################
 
-The LSST Science Pipelines enable optical and near-infrared astronomy in the big data era.
-We are building the Science Pipelines for the `Large Synoptic Survey Telescope (LSST) <http://lsst.org>`_, but our command line task and Python API can extended for any optical or near-infrared dataset.
+`LSST Data Management (DM) <http://dm.lsst.org>`_ is building the software that will enable scientific discovery with the Large Synoptic Survey Telescope (`LSST <http://www.lsst.org>`_).
+LSST will collect over 50 PB of raw data, resulting in over 30 trillion observations of 40 billion astronomical sources.
 
-- Join us on the `LSST Community forum, community.lsst.org <http://community.lsst.org>`_
-- Fork our code on GitHub at https://github.com/lsst
-- Report issues in `JIRA <https://jira.lsstcorp.org/projects/DM/issues/>`_
-- Learn more about LSST Data Management by visiting http://dm.lsst.org
+All LSST DM code is open source and available on `GitHub <https://github.com/lsst>`_.
+Our `LSST Science Pipelines <https://github.com/lsst>`_ will implement the core image processing and data analysis algorithms needed to process optical survey imaging data at low latency and unprecedented scale and accuracy.
+`Qserv <http://slac.stanford.edu/exp/lsst/qserv/>`_ is a distributed, shared-nothing SQL database query system to efficiently store, query, and analyze catalogs running into trillions of rows and petabytes of data the LSST will generate.
+`Firefly <https://github.com/lsst/firefly>`_, and other tools, will enable astronomers to query, download, visualize, and analyze LSST data.
 
-**The current release is 11.0.**
-See what's new in the :doc:`Release Notes <releases/v11_0/notes>`.
+This Guide will help you in contributing to the DM development effort.
 
 .. toctree::
    :maxdepth: 1
    :caption: Getting Started
    :name: part-getting-started
 
-   install
-   releases/index
-
-..
-  FIXME uncomment this section when tutorials are available
-  .. toctree::
-     :maxdepth: 1
-     :caption: Tutorials
-     :name: part-tutorials
-
-.. 
-  FIXME uncomment this section when tutorials are available
-  .. toctree::
-     :maxdepth: 1
-     :caption: Packages
-     :name: part-packages
+   code_of_conduct.rst
 
 .. toctree::
    :maxdepth: 1
-   :caption: Developer Guide
-   :name: part-developer-guide
+   :caption: Processes
+   :name: part-processes
 
-   development/code_of_conduct.rst
-   development/decision_process.rst
-   development/workflow.rst
-   development/lsstsw_tutorial.rst
-   development/docs/index.rst
-   development/git_lfs.rst
+   workflow.rst
+   decision_process.rst
 
-`The API Reference is currently available from our legacy Doxygen server <https://lsst-web.ncsa.illinois.edu/doxygen/x_masterDoxyDoc/>`_.
+.. toctree::
+   :maxdepth: 1
+   :caption: Coding Guides
+   :name: part-coding
 
-Indices
-=======
+.. toctree::
+   :maxdepth: 1
+   :caption: Writing Docs
+   :name: part-docs
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   docs/rst_styleguide.rst
+   docs/package_docs.rst
+   docs/py_docs.rst
+   docs/cpp_docs.rst
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Developer Tools
+   :name: part-tools
+
+   git_lfs.rst
+
+.. toctree::
+   :maxdepth: 1
+   :caption: NCSA Services
+   :name: part-ncsa
