@@ -3,7 +3,7 @@ Documenting Stack Packages
 ##########################
 
 The LSST Stack is an aggregation of packages contained in individual git repositories (see `github.com/lsst <https://github.com/lsst>`_).
-This page explains how to organize and write package documentation that can be integrated into the *LSST Stack Handbook*.
+This page explains how to organize and write package documentation that can be integrated into software documentation, such as the `LSST Science Pipelines <http://pipelines.lsst.io>`_ docs.
 In separate pages we cover writing :doc:`docstrings for Python <py_docs>` and :doc:`C++ <cpp_docs>`, respectively.
 We use reStructuredText to markup our documentation; see our :doc:`reStructuredText Style Guide <rst_styleguide>` for more information on this markup language.
 
@@ -44,7 +44,7 @@ From the root GitHub page of a Stack repository (e.g., https://github.com/lsst/a
 The **summary** should be a concise one-sentence description the repository.
 These summaries are critical for browsing repositories at https://github.com/lsst and for GitHub search.
 
-The **hompage** should be set to the :ref:`package's user guide in the Stack Docs <part-packages>`.
+The **hompage** should be set to the package's user guide page in the deployed software documentation (point to the 'latest' branch of the documentation).
 
 .. _pkg-doc-readme:
 
@@ -185,7 +185,7 @@ The Package's User Guide in docs/
 =================================
 
 The heart of a Stack package's documentation are files in the ``docs/`` directory [#]_.
-This content is ingested by Sphinx, our documentation build tool, to :ref:`publish user guides for each package <part-packages>`.
+This content is ingested by Sphinx, our documentation build tool, to publish user guides for each package.
 In the following section we describe how to write the main documentation file, ``docs/index.rst``.
 
 ..

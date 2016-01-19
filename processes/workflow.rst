@@ -1,8 +1,8 @@
-#######################################
-DM's Collaborative Development Workflow
-#######################################
+##########################################################
+DM Development Workflow with Git, GitHub, JIRA and Jenkins
+##########################################################
 
-This page describes our procedures for collaborating on LSST DM software and documentation with `Git <http://git-scm.org>`_, `GitHub <https://github.com>`_ and `JIRA <https://jira.lsstcorp.org/>`_:
+This page describes our procedures for collaborating on LSST DM software and documentation with `Git <http://git-scm.org>`_, `GitHub <https://github.com>`_ and JIRA_:
 
 1. :ref:`Configuring Git for DM development <git-setup>`.
 2. :ref:`Using JIRA for agile development <workflow-jira>`.
@@ -17,7 +17,7 @@ In appendices, we suggest some *best practices* for efficient collaborative deve
 - :ref:`Commit message best practices <git-commit-message-best-practices>`.
 - :ref:`Tips for using JIRA <workflow-jira-tips>`.
 
-You can also read the :doc:`lsstsw Stack Development Tutorial </development/lsstsw_tutorial>` to see how our processes work in a holistic stack development workflow.
+**For more hands-on overview of how the DM development workflow applies to LSST Stack development,** see the `Development Tutorial with lsstsw and lsst-build <http://pipelines.lsst.io/latest/developer/lsstsw_tutorial>`_ in the `Science Pipelines <http://pipelines.lsst.io>`_ documentation.
 
 .. _git-setup:
 
@@ -25,7 +25,7 @@ Git & GitHub Setup
 ==================
 
 You need to install Git version 1.8.2, or later, and the Git LFS client to work with our data repositories.
-See the :doc:`DM Git LFS documentation </development/git_lfs>` for more information on how to install and setup the Git LFS client for your machine.
+See the :doc:`DM Git LFS documentation </tools/git_lfs>` for more information on how to install and setup the Git LFS client for your machine.
 
 We use Git commit authorship metadata to audit copyrights in DM code.
 Ensure that Git is setup to use your *institution-hosted* email address (only AURA employees should use their ``lsst.org`` email addresses) in the :file:`~/.gitconfig` file.
@@ -47,7 +47,7 @@ This step ensures that Git commits you make `directly on GitHub.com <https://hel
 Agile development with JIRA
 ===========================
 
-We use `JIRA <https://jira.lsstcorp.org>`_ to plan, coordinate and report our work.
+We use JIRA_ to plan, coordinate and report our work.
 Your Technical/Control Account Manager (T/CAM) is the best resource for JIRA usage within your local group.
 T/CAMs can consult the `Technical/Control Account Manager Guide <https://confluence.lsstcorp.org/pages/viewpage.action?pageId=21397653>`_.
 This section provides a high-level orientation for everyday DM development work.
@@ -104,7 +104,7 @@ Creating a ticket
 -----------------
 
 You can create a ticket from the `JIRA web app <https://jira.lsstcorp.org>`_ toolbar using the **Create** button.
-For more general information, you can consult the `LSST JIRA wiki <https://confluence.lsstcorp.org/display/JIRAatLSSTUserGuide/JIRA+at+LSST+User%27s+Guide+Home>`_ and Atlassian's docs for `JIRA <https://confluence.atlassian.com/jirasoftwarecloud/jira-software-documentation-764477791.html>`_ and `JIRA Agile <https://confluence.atlassian.com/agile067>`_.
+For more general information, you can consult the `LSST JIRA wiki <https://confluence.lsstcorp.org/display/JIRAatLSSTUserGuide/JIRA+at+LSST+User%27s+Guide+Home>`_ and `Atlassian's docs for JIRA <https://confluence.atlassian.com/jirasoftwarecloud/jira-software-documentation-764477791.html>`_ and `JIRA Agile <https://confluence.atlassian.com/agile067>`_.
 
 JIRA allows a myriad of metadata to be specified when creating a ticket; these are the most relevant fields:
 
@@ -439,7 +439,7 @@ Setup a Git credential helper
 -----------------------------
 
 Rather than entering your GitHub username and password (or 2FA access token) every time you push, you can setup a Git credential helper to manage this for you.
-A credential helper is especially important for working with our :doc:`Git LFS-backed repositories </development/git_lfs>`.
+A credential helper is especially important for working with our :doc:`Git LFS-backed repositories </tools/git_lfs>`.
 
 **Mac users** can use the secure OS X keychain:
 
@@ -685,3 +685,5 @@ Issues where you have been mentioned in the last two weeks::
 Issues match a label::
 
    labels = label-name
+
+.. _JIRA: https://jira.lsstcorp.org/

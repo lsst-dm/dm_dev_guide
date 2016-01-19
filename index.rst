@@ -17,15 +17,14 @@ This Guide will help you in contributing to the DM development effort.
    :caption: Getting Started
    :name: part-getting-started
 
-   code_of_conduct.rst
-
 .. toctree::
    :maxdepth: 1
    :caption: Processes
    :name: part-processes
 
-   workflow.rst
-   decision_process.rst
+   processes/code_of_conduct.rst
+   processes/workflow.rst
+   processes/decision_process.rst
 
 .. toctree::
    :maxdepth: 1
@@ -47,9 +46,14 @@ This Guide will help you in contributing to the DM development effort.
    :caption: Developer Tools
    :name: part-tools
 
-   git_lfs.rst
+   tools/git_lfs.rst
 
 .. toctree::
    :maxdepth: 1
    :caption: NCSA Services
    :name: part-ncsa
+
+.. toctree::
+   :maxdepth: 1
+   :caption: LSST Stack Build System
+   :name: part-stack-build
