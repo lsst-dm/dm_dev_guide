@@ -58,7 +58,7 @@ Only do this for machines where you can ensure some level of security.
 
 .. code-block:: bash
 
-   git config credential.helper store
+   git config --global credential.helper store
 
 Once a credential helper is enabled, the next time you ``git push``, you will add your credentials to the helper.
 
