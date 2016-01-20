@@ -285,6 +285,7 @@ Jenkins finds, builds, and tests your work according to the name of your ticket 
    If neither of those branches exist for a given repository, the ``master`` branch is used.
 
 You can monitor builds in the `Bot: Jenkins <https://lsst.hipchat.com/rooms/show/1648522>`_ HipChat room.
+**If your build failed,** click on the **Console** link in the HipChat message to see a build log.
 
 .. _workflow-pr:
 
