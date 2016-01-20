@@ -326,7 +326,7 @@ We review work before it is merged to ensure that code is maintainable and usabl
 Code reviews should also address whether the code fulfills design and performance requirements.
 
 Ideally the code review *should not be a design review.*
-Before serious coding effort is committed to a ticket, the developer should either undertake an informal design review while creating the JIRA story, or more formally use the :abbr:`RFC (Request for Comment)` and :abbr:`RFD (Request for Discussion)` processes for key design decisions.
+Before serious coding effort is committed to a ticket, the developer should either undertake an informal design review while creating the JIRA story, or more formally use the :abbr:`RFC (Request for Comment)` and :abbr:`RFD (Request for Discussion)` processes (see :doc:`/processes/decision_process`) for key design decisions.
 
 .. TODO: link to RFC/RFC process doc
 
