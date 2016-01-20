@@ -46,7 +46,9 @@ This Guide will help you in contributing to the DM development effort.
    :caption: Developer Tools
    :name: part-tools
 
+   tools/git_setup.rst
    tools/git_lfs.rst
+   tools/jira_tips.rst
 
 .. toctree::
    :maxdepth: 1
