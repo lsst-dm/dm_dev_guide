@@ -346,6 +346,10 @@ Any team member in Data Management can review code; it is perfectly fine to draw
 For major changes, it is good to choose someone more experienced than yourself.
 For minor changes, it may be good to choose someone less experienced than yourself.
 For large changes, more than one reviewer may be assigned, possibly split by area of the code.
+In this case, establish in the review request what each reviewer is responsible for.
+
+**Do not assign multiple reviewers as a way of finding someone to review your work more quickly.**
+It is better to communicate directly with potential reviewers directly to ascertain their availability.
 
 Code reviews performed by peers are useful for a number of reasons:
 
