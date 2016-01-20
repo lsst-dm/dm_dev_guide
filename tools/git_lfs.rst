@@ -2,7 +2,7 @@
 Using Git Large File Storage (LFS) for Data Repositories
 ########################################################
 
-DM uses Git LFS to manage test datasets within our :doc:`normal Git workflow </development/workflow>`.
+DM uses Git LFS to manage test datasets within our :doc:`normal Git workflow </processes/workflow>`.
 `Git LFS is developed by GitHub <https://git-lfs.github.com/>`_, though DM uses its own backend storage infrastructure (see `SQR-001: The Git LFS Architecture <http://sqr-001.lsst.io>`_ for background).
 
 All DM repositories should use Git LFS to store binary data, such as FITS files, for :abbr:`CI (Continuous Integration)`.

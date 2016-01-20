@@ -1,8 +1,8 @@
-#######################################
-DM's Collaborative Development Workflow
-#######################################
+##########################################################
+DM Development Workflow with Git, GitHub, JIRA and Jenkins
+##########################################################
 
-This page describes our procedures for collaborating on LSST DM software and documentation with `Git <http://git-scm.org>`_, `GitHub <https://github.com>`_ and `JIRA <https://jira.lsstcorp.org/>`_:
+This page describes our procedures for collaborating on LSST DM software and documentation with `Git <http://git-scm.org>`_, `GitHub <https://github.com>`_ and JIRA_:
 
 1. :ref:`Configuring Git for DM development <git-setup>`.
 2. :ref:`Using JIRA for agile development <workflow-jira>`.
@@ -10,14 +10,18 @@ This page describes our procedures for collaborating on LSST DM software and doc
 4. :ref:`Preparing code for review <review-preparation>`.
 5. :ref:`Reviewing and merging code <workflow-code-review>`.
 
-In appendices, we suggest some *best practices* for efficient collaborative development:
+In appendices, we suggest some *best practices* for maximizing the usefulness of our Git development history:
 
-- :ref:`Git and GitHub configuration suggestions <git-setup-best-practices>`.
 - :ref:`Commit organization best practices <git-commit-organization-best-practices>`.
 - :ref:`Commit message best practices <git-commit-message-best-practices>`.
-- :ref:`Tips for using JIRA <workflow-jira-tips>`.
 
-You can also read the :doc:`lsstsw Stack Development Tutorial </development/lsstsw_tutorial>` to see how our processes work in a holistic stack development workflow.
+Other related pages:
+
+- :doc:`/tools/git_setup`.
+- :doc:`/tools/git_lfs`.
+- :doc:`/tools/jira_tips`.
+
+**For more hands-on overview of how the DM development workflow applies to LSST Stack development,** see the `Development Tutorial with lsstsw and lsst-build <http://pipelines.lsst.io/latest/developer/lsstsw_tutorial>`_ in the `Science Pipelines <http://pipelines.lsst.io>`_ documentation.
 
 .. _git-setup:
 
@@ -25,7 +29,7 @@ Git & GitHub Setup
 ==================
 
 You need to install Git version 1.8.2, or later, and the Git LFS client to work with our data repositories.
-See the :doc:`DM Git LFS documentation </development/git_lfs>` for more information on how to install and setup the Git LFS client for your machine.
+See the :doc:`DM Git LFS documentation </tools/git_lfs>` for more information on how to install and setup the Git LFS client for your machine.
 
 We use Git commit authorship metadata to audit copyrights in DM code.
 Ensure that Git is setup to use your *institution-hosted* email address (only AURA employees should use their ``lsst.org`` email addresses) in the :file:`~/.gitconfig` file.
@@ -40,17 +44,19 @@ Likewise, in your `GitHub account email settings <https://github.com/settings/em
 We recommend that you set this institutional email as your **Primary GitHub** email address.
 This step ensures that Git commits you make `directly on GitHub.com <https://help.github.com/articles/github-flow-in-the-browser/>`_ (such as quick documentation fixes) and merges made via the 'big green button' have proper authorship metadata.
 
-*See also*: :ref:`git-setup-best-practices`.
+*See also:* :doc:`/tools/git_setup`.
 
 .. _workflow-jira:
 
 Agile development with JIRA
 ===========================
 
-We use `JIRA <https://jira.lsstcorp.org>`_ to plan, coordinate and report our work.
+We use JIRA_ to plan, coordinate and report our work.
 Your Technical/Control Account Manager (T/CAM) is the best resource for JIRA usage within your local group.
 T/CAMs can consult the `Technical/Control Account Manager Guide <https://confluence.lsstcorp.org/pages/viewpage.action?pageId=21397653>`_.
 This section provides a high-level orientation for everyday DM development work.
+
+*See also:* :doc:`/tools/jira_tips`.
 
 .. _workflow-jira-concepts:
 
@@ -104,7 +110,7 @@ Creating a ticket
 -----------------
 
 You can create a ticket from the `JIRA web app <https://jira.lsstcorp.org>`_ toolbar using the **Create** button.
-For more general information, you can consult the `LSST JIRA wiki <https://confluence.lsstcorp.org/display/JIRAatLSSTUserGuide/JIRA+at+LSST+User%27s+Guide+Home>`_ and Atlassian's docs for `JIRA <https://confluence.atlassian.com/jirasoftwarecloud/jira-software-documentation-764477791.html>`_ and `JIRA Agile <https://confluence.atlassian.com/agile067>`_.
+For more general information, you can consult the `LSST JIRA wiki <https://confluence.lsstcorp.org/display/JIRAatLSSTUserGuide/JIRA+at+LSST+User%27s+Guide+Home>`_ and `Atlassian's docs for JIRA <https://confluence.atlassian.com/jirasoftwarecloud/jira-software-documentation-764477791.html>`_ and `JIRA Agile <https://confluence.atlassian.com/agile067>`_.
 
 JIRA allows a myriad of metadata to be specified when creating a ticket; these are the most relevant fields:
 
@@ -279,6 +285,7 @@ Jenkins finds, builds, and tests your work according to the name of your ticket 
    If neither of those branches exist for a given repository, the ``master`` branch is used.
 
 You can monitor builds in the `Bot: Jenkins <https://lsst.hipchat.com/rooms/show/1648522>`_ HipChat room.
+**If your build failed,** click on the **Console** link in the HipChat message to see a build log.
 
 .. _workflow-pr:
 
@@ -320,7 +327,7 @@ We review work before it is merged to ensure that code is maintainable and usabl
 Code reviews should also address whether the code fulfills design and performance requirements.
 
 Ideally the code review *should not be a design review.*
-Before serious coding effort is committed to a ticket, the developer should either undertake an informal design review while creating the JIRA story, or more formally use the :abbr:`RFC (Request for Comment)` and :abbr:`RFD (Request for Discussion)` processes for key design decisions.
+Before serious coding effort is committed to a ticket, the developer should either undertake an informal design review while creating the JIRA story, or more formally use the :abbr:`RFC (Request for Comment)` and :abbr:`RFD (Request for Discussion)` processes (see :doc:`/processes/decision_process`) for key design decisions.
 
 .. TODO: link to RFC/RFC process doc
 
@@ -340,6 +347,10 @@ Any team member in Data Management can review code; it is perfectly fine to draw
 For major changes, it is good to choose someone more experienced than yourself.
 For minor changes, it may be good to choose someone less experienced than yourself.
 For large changes, more than one reviewer may be assigned, possibly split by area of the code.
+In this case, establish in the review request what each reviewer is responsible for.
+
+**Do not assign multiple reviewers as a way of finding someone to review your work more quickly.**
+It is better to communicate directly with potential reviewers directly to ascertain their availability.
 
 Code reviews performed by peers are useful for a number of reasons:
 
@@ -397,163 +408,17 @@ We **always use non-fast forward merges** so that the merge point is marked in G
 .. code-block:: bash
 
    git checkout master
-   git pull  # sanity check
+   git pull  # Sanity check; rebase ticket if master was updated.
    git merge --no-ff tickets/DM-NNNN
    git push
 
 Once the merge has been completed, the developer should mark the JIRA ticket as **Done**.
 
+**GitHub pull request pages also offer a 'big green button' for merging a branch to master**.
+We discourage you from using this button since there isn't a convenient way of knowing that the merged development history graph will be linear from GitHub's interface.
+Rebasing the ticket branch against ``master`` and doing the non-fast forward merging on the command line is the safest workflow.
+
 The ticket branch **should not** be deleted from the GitHub remote.
-
-.. _git-setup-best-practices:
-
-Appendix: Git and GitHub Setup Suggestions
-==========================================
-
-.. _git-learning-resources:
-
-Learning Git
-------------
-
-If you're new to Git, there are many great learning resources, such as
-
-* `Git's online docs <http://git-scm.com/doc>`_, and the associated online `Pro Git <http://git-scm.com/book/en/v2>`_ book by Scott Chacon and Ben Staubb.
-* `GitHub Help <https://help.github.com>`_, which covers fundamental git usage too.
-* `StackOverflow <http://stackoverflow.com/questions/tagged/git?sort=frequent&pageSize=15>`_.
-
-.. _git-github-2fa:
-
-Setup Two-Factor Authentication (2FA) for GitHub
-------------------------------------------------
-
-We encourage you to enable `Two-Factor Authentication (2FA) for GitHub <https://help.github.com/articles/about-two-factor-authentication/>`_ through your `account security settings <https://github.com/settings/security>`_.
-2FA means that you'll have to enter an authentication code when logging into GitHub.com from a new computer.
-Apps like `1Password <https://agilebits.com/onepassword>`_ (see their `guide <https://guides.agilebits.com/1password-ios/5/en/topic/setting-up-one-time-passwords>`_), `Authy <https://www.authy.com>`_, and the Google Authenticator App can help you generate these authentication codes.
-When pushing commits with a 2FA-enabled account, you'll use a personal access token instead of your password.
-You can `create and revoke tokens from your GitHub settings page <https://github.com/settings/tokens>`_.
-To help you automatically authenticate when pushing to GitHub, we encourage you to follow the next step and enable a credential helper.
-
-.. _git-credential-helper:
-
-Setup a Git credential helper
------------------------------
-
-Rather than entering your GitHub username and password (or 2FA access token) every time you push, you can setup a Git credential helper to manage this for you.
-A credential helper is especially important for working with our :doc:`Git LFS-backed repositories </development/git_lfs>`.
-
-**Mac users** can use the secure OS X keychain:
-
-.. code-block:: bash
-
-   git config --global credential.helper osxkeychain  
-
-**Linux users** can use a credential *cache* to temporarily keep credentials in memory.
-To have your credentials cached for 1 hour (3600 seconds):
-
-.. code-block:: bash
-
-   git config --global credential.helper 'cache --timeout=3600'
-
-**Linux users can alternatively** have their `credentials stored on disk <http://git-scm.com/docs/git-credential-store>`_ in a :file:`~/.git-credentials` file.
-Only do this for machines where you can ensure some level of security.
-
-.. code-block:: bash
-
-   git config credential.helper store
-
-Once a credential helper is enabled, the next time you ``git push``, you will add your credentials to the helper.
-
-Remember that if you have 2FA enabled, you will create and use a `personal access token <https://github.com/settings/tokens>`_ instead of your GitHub password.
-
-The DM Git LFS documentation has further information about :ref:`authenticating with our LFS storage backend <git-lfs-auth>`.
-
-.. _git-shell-setup:
-
-Tune your shell for Git
------------------------
-
-You can build an effective development environment and workflow by tuning your Git setup.
-Here are some ideas:
-
-1. `Add git status to your prompt <http://git-scm.com/book/en/v2/Git-in-Other-Environments-Git-in-Bash>`_.
-2. `Enable shell autocompletion <http://git-scm.com/book/en/v2/Git-in-Other-Environments-Git-in-Bash>`_
-3. `Craft aliases for common workflows <http://git-scm.com/book/en/v2/Git-Basics-Git-Aliases>`_.
-4. Use `hub <https://hub.github.com>`_ to interact with GitHub features from the command line.
-
-.. _git-editor-setup:
-
-Setup your editor
------------------
-
-You'll want to configure your preferred editor (or its command line hook) as your Git editor.
-For example:
-
-.. code-block:: text
-
-   git config --global core.editor "vim"
-   git config --global core.editor "emacs"
-   git config --global core.editor "atom --wait"
-   git config --global core.editor "subl -n -w"
-
-See `GitHub's help for setting up Atom and Sublime Text as Git editors <https://help.github.com/articles/associating-text-editors-with-git/>`_.
-
-.. _git-aliases:
-
-Useful Git aliases and configurations
--------------------------------------
-
-You can craft custom Git commands (aliases) in your :file:`~/.gitconfig` to refine your workflow.
-When you run an alias (``git <alias> [arguments]``) the alias's name is effectively replaced with the alias's content in the command line statement.
-
-Here are some aliases try in :file:`~/.gitconfig`:
-
-.. use quotes on alias contents to make Pygments highlighter happy
-
-.. code-block:: ini
-
-   [alias]
-       # List things
-       tags = "tag -l"
-       branches = "branch -a"
-       remotes = "remote -v"
-
-       # Shorten common commands
-       co = "checkout"
-       st = "status"
-       br = "branch"
-       ci = "commit"
-       d = "diff"
-
-       # Log that shows titles of last 16 commits
-       l = "log -16 --color=always --all --topo-order --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
-
-       # Log that starts a pager with titles of all the commits in your tree
-       ll = log --color=always --all --topo-order --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-
-       # Log that shows the last 10 commits as a graph
-       lg = "log -10 --color=always --all --graph --topo-order --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
-
-       # Log that shows all commits as a graph (using a pager)
-       lgl = "log --color=always --all --graph --topo-order --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-
-       # Show outgoing commits
-       out = "log @{u}.."
-
-       # Print the title of the current branch; sometimes useful for scripting
-       currentbranch = "!git branch --contains HEAD | grep '*' | tr -s ' ' | cut -d ' ' -f2"
-
-       # Better diffs for prose
-       wdiff = "diff --color-words"
-
-       # Safer pulls; don't do anything other than a fast forward on merge
-       pull = "pull --ff-only"
-
-       # Amend last commit without modifying commit message
-       amend = "!git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend"
-
-       # Create a commit that will be automatically squashed as a fixup when you
-       # run `git rebase --autosquash`
-       fixup = "commit --fixup=HEAD"
 
 .. _git-commit-organization-best-practices:
 
@@ -635,53 +500,4 @@ The code reviewer is responsible for giving feedback on the adequacy of commit m
 
 The `OpenStack docs have excellent thoughts on writing great commit messages <https://wiki.openstack.org/wiki/GitCommitMessages#Information_in_commit_messages>`_.
 
-.. _workflow-jira-tips:
-
-Appendix: JIRA Tips
-===================
-
-JIRA is a powerful web app that you can customize to suit your needs.
-This appendix mentions a few ways to improve your workflow, though the `JIRA User Guide <https://confluence.atlassian.com/jira064/jira-user-s-guide-720416011.html>`_ is the definitive resource for power users.
-
-.. _workflow-jira-create-filters:
-
-Creating filters
-----------------
-
-Filters are a great way to maintain dynamic lists of issues for different workflows.
-You can make an issue filter by saving a JIRA search:
-
-1. Open the `Issues page in JIRA <https://jira.lsstcorp.org/issues>`_.
-2. Enter a search term.
-   `You can learn about JIRA's syntax from the docs <https://confluence.atlassian.com/jira064/advanced-searching-720416661.html>`_.
-3. Run the search.
-4. Press the **Save as** button on the search results page.
-
-Your saved filters are accessible from the **Issues** dropdown menu in JIRA, among other places.
-
-You can manage your filters from https://jira.lsstcorp.org/secure/ManageFilters.jspa.
-
-.. _workflow-jira-search-examples:
-
-Example search terms
---------------------
-
-All of your open issues::
-
-   assignee = currentUser() AND resolution = Unresolved ORDER BY updatedDate DESC
-
-All of your issues that are in progress::
-
-   status in ("In Progress", "In Review", Acknowledged, Reviewed, "Code Review", Blocked, "Awaiting Signoff") AND resolution = Unresolved AND assignee = currentUser() ORDER BY updatedDate DESC
-
-All open issues you have been assigned to review::
-
-   Reviewers in (currentUser()) AND status = "In Review"
-
-Issues where you have been mentioned in the last two weeks::
-
-   text ~ currentUser() AND updatedDate >= -14d ORDER BY updated DESC
-
-Issues match a label::
-
-   labels = label-name
+.. _JIRA: https://jira.lsstcorp.org/
