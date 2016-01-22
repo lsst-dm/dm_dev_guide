@@ -19,6 +19,13 @@ Style Guides
    python_style_guide
    cpp_style_guide
 
+In addition, the follow coding guides may help you write code for DM:
+
+.. toctree::
+   :maxdepth: 1
+
+   using_cpp_templates
+
 .. _style-guide-rfc-2119:
 
 Stringency Levels

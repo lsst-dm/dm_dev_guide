@@ -34,6 +34,7 @@ This Guide will help you in contributing to the DM development effort.
    coding/intro.rst
    coding/python_style_guide.rst
    coding/cpp_style_guide.rst
+   coding/using_cpp_templates.rst
 
 .. toctree::
    :maxdepth: 1
