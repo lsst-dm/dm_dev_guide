@@ -31,7 +31,34 @@ Once ``git-lfs`` is installed, run
    git config --global lfs.batch false
    git lfs install
 
-to install the necessary hooks in your :file:`~/.gitconfig` file.
+to install the necessary configuration in your :file:`~/.gitconfig` file.
+
+Next add credentials for our git-lfs secondary storage systems to your :file:`~/.gitconfig` file.
+
+.. code-block:: bash
+
+[credential "https://lsst-sqre-prod-git-lfs.s3-us-west-2.amazonaws.com"]
+        helper = store
+[credential "https://s3.lsst.codes"]
+        helper = store
+
+Next add their authentication information to your :file:`~/.git-credentials` file.
+
+.. code-block:: bash
+https://:@lsst-sqre-prod-git-lfs.s3-us-west-2.amazonaws.com
+https://:@s3.lsst.codes
+
+
+If you will be anonymously authenticating then you must configure git to use no username and password with the git-lfs server. Add this to your :file:`~/.gitconfig` file.
+
+.. code-block:: bash
+https://:@lsst-sqre-prod-git-lfs.s3-us-west-2.amazonaws.com
+https://:@s3.lsst.codes
+
+Add this to your :file:`~/.git-credentials` file.
+
+.. code-block:: bash
+https://:@git-lfs.lsst.codes
 
 .. _git-lfs-auth:
 
@@ -61,13 +88,6 @@ For example, run:
 - If you are a member of the LSST GitHub organization you can use your GitHub username and password.
 - If you *also* have `GitHub's two-factor authentication <https://help.github.com/articles/about-two-factor-authentication/>`_ enabled, use a personal access token instead of a password. You can setup a personal token at https://github.com/settings/tokens.
 - If you are only interested in cloning or pulling, the 'Username' and 'Password' can be blank.
-
-Finally, the ``git clone`` will ask you to authenticate to ``s3.lsst.codes``::
-
-   Username for 'https://s3.lsst.codes': <Empty>
-   Password for 'https://s3.lsst.codes': <Empty>
-
-There is no username or password for LSST's S3 service.
 
 Once your credentials are cached, you won't need to repeat this process on your system (:ref:`unless you opted for the cache-based credential helper <git-credential-helper>`).
 
