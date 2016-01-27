@@ -24,12 +24,7 @@ Most package managers also provide the ``git-lfs`` client.
 Since, LFS is a rapidly evolving technology, package managers will help you keep up with new ``git-lfs`` releases.
 For example, Mac users with Homebrew_ can simply run ``brew install git-lfs`` and ``brew upgrade git-lfs``.
 
-.. _git-lfs-config:
-
-Configuring Git and Git LFS
-===========================
-
-Once ``git-lfs`` is installed, run
+Once ``git-lfs`` is installed, run:
 
 .. code-block:: bash
 
@@ -38,67 +33,56 @@ Once ``git-lfs`` is installed, run
 
 to configure Git to use Git LFS in your :file:`~/.gitconfig` file.
 
-Next, we need to tell Git that DM's LFS storage services don't need a password for reading.
-Begin by activating Git's `credential store`_ helper for DM's Git LFS storage services by adding these lines into your :file:`~/.gitconfig` file:
-
-.. code-block:: text
-
-   [credential "https://lsst-sqre-prod-git-lfs.s3-us-west-2.amazonaws.com"]
-           helper = store
-   [credential "https://s3.lsst.codes"]
-           helper = store
-
-Then add DM's Git LFS storage servers to your :file:`~/.git-credentials` file:
-
-.. code-block:: text
-   
-   https://:@lsst-sqre-prod-git-lfs.s3-us-west-2.amazonaws.com
-   https://:@s3.lsst.codes
-
-*Notice that the username is purposefully missing from these lines; this tells the Git credential store that you're opting for anonymous access.*
-
-Next, decide whether you will need to push Git LFS data, or only clone and pull form Git LFS managed repositories.
-This affects how you set up authentication to DM's Git LFS server (we only configured anonymous access to the *storage services* so far).
+Next, decide whether you will need to push Git LFS data, or only clone and pull from Git LFS managed repositories.
+This affects how you set up authentication to DM's Git LFS servers.
 The two configuration options are:
 
-1. :ref:`Anonymous access for read-only LFS users <git-lfs-anon>`
-2. :ref:`Authenticated access for read-write LFS users <git-lfs-auth>`
+1. :ref:`Anonymous access for read-only LFS users <git-lfs-anon>`.
+2. :ref:`Authenticated access for read-write LFS users <git-lfs-auth>`.
 
 .. _git-lfs-anon:
 
 Option 1: Anonymous access for read-only LFS users
 --------------------------------------------------
 
-Follow these configuration instructions if you never intend to create a new Git LFS managed repository for DM, or push changes to LFS managed datasets.
+*Follow these configuration instructions if you never intend to create a new Git LFS managed repository for DM, or push changes to LFS managed datasets.*
 Skip to configuration :ref:`Option 2 <git-lfs-auth>` if this isn't the case for you.
 
-.. If you are anonymously authenticating then you must configure git to use an empty username and password with the git-lfs server. Add this to your :file:`~/.gitconfig` file.
-For anonymous access to DM's Git LFS server, use the now-familiar pattern of activating a `credential store`_ helper by pasting these lines into :file:`~/.gitconfig`:
+First, paste these lines into your :file:`~/.gitconfig` file:
 
-.. code-block:: text
+.. literalinclude:: snippets/git_lfs_gitconfig.txt
+   :language: text
 
-   [credential "https://git-lfs.lsst.codes"]
-           helper = store
+Then paste these lines into your :file:`~/.git-credentials` files (create one, if necessary):
 
-Then add cache anonymous access to the server by adding this line to your :file:`~/.git-credentials` file:
+.. literalinclude:: snippets/git_lfs_git-credentials.txt
+   :language: text
 
-.. code-block:: text
-   
-   https://:@git-lfs.lsst.codes
-
-That's it. You're ready to clone any of DM's Git LFS managed repositories.
+*That's it.*
+You're ready to clone any of DM's Git LFS managed repositories.
 
 .. _git-lfs-auth:
 
 Option 2: Authenticated access for read-write LFS users
 -------------------------------------------------------
 
-**Follow these configuration instructions if you need to create or push changes to a DM Git LFS managed repository.
-Only GitHub users in the LSST GitHub organization can authenticate with DM's storage service.**
+*Follow these configuration instructions if you need to create or push changes to a DM Git LFS managed repository.
+Only GitHub users in the LSST GitHub organization can authenticate with DM's storage service.*
 If you only want read-only access to DM's Git LFS managed repositories, return to :ref:`Option 1 <git-lfs-anon>`.
 
-Git LFS mandates the HTTPS transport protocol.
-Since many HTTPS authentications happen during a single clone, push or fetch operation, it is essential that you use a Git credential helper to work effectively with Git LFS.
+First, paste these lines into your :file:`~/.gitconfig` file:
+
+.. literalinclude:: snippets/git_lfs_gitconfig.txt
+   :language: text
+   :lines: 1-5
+
+Then paste these lines into your :file:`~/.git-credentials` files (create one, if necessary):
+
+.. literalinclude:: snippets/git_lfs_git-credentials.txt
+   :language: text
+   :lines: 1-2
+
+Next, setup a credential helper to manage your GitHub credentials (Git LFS won't use your SSH keys).
 :ref:`We describe how to setup a credential helper for your system in the Git setup guide <git-credential-helper>`.
 
 Once a helper is setup, you can cache your credentials by cloning any of DM's LFS-backed repositories.
@@ -119,6 +103,9 @@ At the prompts, enter your GitHub username and password.
 You can setup a personal token at https://github.com/settings/tokens.
 
 Once your credentials are cached, you won't need to repeat this process on your system (:ref:`unless you opted for the cache-based credential helper <git-credential-helper>`).
+
+*That's it.*
+Read the rest of this page to learn how to work with Git LFS repositories.
 
 .. _git-lfs-using:
 
@@ -213,4 +200,3 @@ New LFS-managed repos should use :file:`.lfsconfig`.
 We also recommend that you include a link to this documentation page in your :file:`README` to help those who aren't familiar with DM's Git LFS.
 
 .. _Homebrew: http://brew.sh
-.. _credential store: http://git-scm.com/docs/git-credential-store
