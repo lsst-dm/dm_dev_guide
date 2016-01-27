@@ -35,7 +35,7 @@ to install the necessary configuration in your :file:`~/.gitconfig` file.
 
 Next add credentials for our git-lfs secondary storage systems to your :file:`~/.gitconfig` file.
 
-.. code-block::
+.. code-block:: text
 
    [credential "https://lsst-sqre-prod-git-lfs.s3-us-west-2.amazonaws.com"]
            helper = store
@@ -44,7 +44,7 @@ Next add credentials for our git-lfs secondary storage systems to your :file:`~/
 
 Next add their authentication information to your :file:`~/.git-credentials` file.
 
-.. code-block::
+.. code-block:: text
    
    https://:@lsst-sqre-prod-git-lfs.s3-us-west-2.amazonaws.com
    https://:@s3.lsst.codes
@@ -52,14 +52,14 @@ Next add their authentication information to your :file:`~/.git-credentials` fil
 
 If you will be anonymously authenticating then you must configure git to use no username and password with the git-lfs server. Add this to your :file:`~/.gitconfig` file.
 
-.. code-block::
+.. code-block:: text
    
    https://:@lsst-sqre-prod-git-lfs.s3-us-west-2.amazonaws.com
    https://:@s3.lsst.codes
 
 Add this to your :file:`~/.git-credentials` file.
 
-.. code-block::
+.. code-block:: text
    
    https://:@git-lfs.lsst.codes
 
