@@ -56,7 +56,9 @@ Next add their authentication information to your :file:`~/.git-credentials` fil
 
 .. _git-lfs-anonymous:
 
-If you will be anonymously authenticating then you must configure git to use no username and password with the git-lfs server. Add this to your :file:`~/.gitconfig` file.
+.. note:: This step is only required if you are anonymously authenticating with Git LFS.
+
+If you are anonymously authenticating then you must configure git to use an empty username and password with the git-lfs server. Add this to your :file:`~/.gitconfig` file.
 
 .. code-block:: text
    
