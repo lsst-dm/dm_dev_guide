@@ -24,27 +24,66 @@ Most package managers also provide the ``git-lfs`` client.
 Since, LFS is a rapidly evolving technology, package managers will help you keep up with new ``git-lfs`` releases.
 For example, Mac users with Homebrew_ can simply run ``brew install git-lfs`` and ``brew upgrade git-lfs``.
 
-Once ``git-lfs`` is installed, run
+Once ``git-lfs`` is installed, run:
 
 .. code-block:: bash
 
    git config --global lfs.batch false
    git lfs install
 
-to install the necessary hooks in your :file:`~/.gitconfig` file.
+to configure Git to use Git LFS in your :file:`~/.gitconfig` file.
+
+Next, decide whether you will need to push Git LFS data, or only clone and pull from Git LFS managed repositories.
+This affects how you set up authentication to DM's Git LFS servers.
+The two configuration options are:
+
+1. :ref:`Anonymous access for read-only LFS users <git-lfs-anon>`.
+2. :ref:`Authenticated access for read-write LFS users <git-lfs-auth>`.
+
+.. _git-lfs-anon:
+
+Option 1: Anonymous access for read-only LFS users
+--------------------------------------------------
+
+*Follow these configuration instructions if you never intend to create a new Git LFS managed repository for DM, or push changes to LFS managed datasets.*
+Skip to configuration :ref:`Option 2 <git-lfs-auth>` if this isn't the case for you.
+
+First, add these lines into your :file:`~/.gitconfig` file:
+
+.. literalinclude:: snippets/git_lfs_gitconfig.txt
+   :language: text
+
+Then add these lines into your :file:`~/.git-credentials` files (create one, if necessary):
+
+.. literalinclude:: snippets/git_lfs_git-credentials.txt
+   :language: text
+
+*That's it.*
+You're ready to clone any of DM's Git LFS managed repositories.
 
 .. _git-lfs-auth:
 
-Setting up Git LFS authentication
-=================================
+Option 2: Authenticated access for read-write LFS users
+-------------------------------------------------------
 
-Credentials are required to push to an LFS-based repository on GitHub.
-Only GitHub users in the LSST GitHub organization can authenticate with DM's storage service.
-(Credentials *are not needed to clone or pull* from LFS-backed repositories.)
+*Follow these configuration instructions if you need to create or push changes to a DM Git LFS managed repository.
+Only GitHub users in the LSST GitHub organization can authenticate with DM's storage service.*
+If you only want read-only access to DM's Git LFS managed repositories, return to :ref:`Option 1 <git-lfs-anon>`.
 
-Git LFS mandates the HTTPS transport protocol.
-Since many HTTPS authentications happen during a single clone, push or fetch operation, it is essential that you use a Git credential helper to work effectively with Git LFS.
-:ref:`We describe how to setup a credential helper for your system in the deverloper workflow documentation <git-credential-helper>`.
+First, add these lines into your :file:`~/.gitconfig` file:
+
+.. literalinclude:: snippets/git_lfs_gitconfig.txt
+   :language: text
+   :lines: 1-5
+
+Then add these lines into your :file:`~/.git-credentials` files (create one, if necessary):
+
+.. literalinclude:: snippets/git_lfs_git-credentials.txt
+   :language: text
+   :lines: 1-2
+
+Next, setup a credential helper to manage your GitHub credentials (Git LFS won't use your SSH keys).
+:ref:`We describe how to setup a credential helper for your system in the Git setup guide <git-credential-helper>`.
 
 Once a helper is setup, you can cache your credentials by cloning any of DM's LFS-backed repositories.
 For example, run:
@@ -55,21 +94,18 @@ For example, run:
 
 ``git clone`` will ask you to authenticate with DM's git-lfs server::
 
-   Username for 'https://git-lfs.lsst.codes': <GitHub username OR blank>
-   Password for 'https://<git>@git-lfs.lsst.codes': <GitHub password, token OR blank>
+   Username for 'https://git-lfs.lsst.codes': <GitHub username>
+   Password for 'https://<git>@git-lfs.lsst.codes': <GitHub password>
 
-- If you are a member of the LSST GitHub organization you can use your GitHub username and password.
-- If you *also* have `GitHub's two-factor authentication <https://help.github.com/articles/about-two-factor-authentication/>`_ enabled, use a personal access token instead of a password. You can setup a personal token at https://github.com/settings/tokens.
-- If you are only interested in cloning or pulling, the 'Username' and 'Password' can be blank.
+At the prompts, enter your GitHub username and password.
 
-Finally, the ``git clone`` will ask you to authenticate to ``s3.lsst.codes``::
-
-   Username for 'https://s3.lsst.codes': <Empty>
-   Password for 'https://s3.lsst.codes': <Empty>
-
-There is no username or password for LSST's S3 service.
+*If you have* `GitHub's two-factor authentication <https://help.github.com/articles/about-two-factor-authentication/>`_ enabled, use a personal access token instead of a password.
+You can setup a personal token at https://github.com/settings/tokens.
 
 Once your credentials are cached, you won't need to repeat this process on your system (:ref:`unless you opted for the cache-based credential helper <git-credential-helper>`).
+
+*That's it.*
+Read the rest of this page to learn how to work with Git LFS repositories.
 
 .. _git-lfs-using:
 
@@ -83,7 +119,7 @@ All of the regular Git commands just work, whether you are working with LFS-mana
 There are two caveats for working with LFS: HTTPS is always used, and Git LFS must be told to track new binary file types.
 
 First, DM's LFS implementation mandates the HTTPS transport protocol.
-Developers used to working with `ssh-agent <http://www.openbsd.org/cgi-bin/man.cgi?query=ssh-agent&sektion=1>`_ for passwordless GitHub interaction should use a :ref:`Git credential helper <git-credential-helper>`, and follow the directions above for configuring their credentials.
+Developers used to working with `ssh-agent <http://www.openbsd.org/cgi-bin/man.cgi?query=ssh-agent&sektion=1>`_ for passwordless GitHub interaction should use a :ref:`Git credential helper <git-credential-helper>`, and follow the :ref:`directions above <git-lfs-auth>` for configuring their credentials.
 
 Note this *does not* preclude using ``git+git`` or ``git+ssh`` for working with a Git remote itself; it is only the LFS traffic that always uses HTTPS.
 
