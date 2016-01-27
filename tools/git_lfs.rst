@@ -24,6 +24,11 @@ Most package managers also provide the ``git-lfs`` client.
 Since, LFS is a rapidly evolving technology, package managers will help you keep up with new ``git-lfs`` releases.
 For example, Mac users with Homebrew_ can simply run ``brew install git-lfs`` and ``brew upgrade git-lfs``.
 
+.. _git-lfs-config:
+
+Configuring Git and Git LFS
+===========================
+
 Once ``git-lfs`` is installed, run
 
 .. code-block:: bash
@@ -90,7 +95,6 @@ For example, run:
 
 - If you are a member of the LSST GitHub organization you can use your GitHub username and password.
 - If you *also* have `GitHub's two-factor authentication <https://help.github.com/articles/about-two-factor-authentication/>`_ enabled, use a personal access token instead of a password. You can setup a personal token at https://github.com/settings/tokens.
-- If you are only interested in cloning or pulling, the 'Username' and 'Password' can be blank.
 
 Once your credentials are cached, you won't need to repeat this process on your system (:ref:`unless you opted for the cache-based credential helper <git-credential-helper>`).
 
