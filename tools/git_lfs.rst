@@ -63,9 +63,9 @@ Next add their authentication information to your :file:`~/.git-credentials` fil
 If you are anonymously authenticating then you must configure git to use an empty username and password with the git-lfs server. Add this to your :file:`~/.gitconfig` file.
 
 .. code-block:: text
-   
-   https://:@lsst-sqre-prod-git-lfs.s3-us-west-2.amazonaws.com
-   https://:@s3.lsst.codes
+
+   [credential "https://git-lfs.lsst.codes"]
+           helper = store
 
 Add this to your :file:`~/.git-credentials` file.
 
