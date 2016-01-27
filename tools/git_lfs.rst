@@ -48,12 +48,12 @@ Option 1: Anonymous access for read-only LFS users
 *Follow these configuration instructions if you never intend to create a new Git LFS managed repository for DM, or push changes to LFS managed datasets.*
 Skip to configuration :ref:`Option 2 <git-lfs-auth>` if this isn't the case for you.
 
-First, paste these lines into your :file:`~/.gitconfig` file:
+First, add these lines into your :file:`~/.gitconfig` file:
 
 .. literalinclude:: snippets/git_lfs_gitconfig.txt
    :language: text
 
-Then paste these lines into your :file:`~/.git-credentials` files (create one, if necessary):
+Then add these lines into your :file:`~/.git-credentials` files (create one, if necessary):
 
 .. literalinclude:: snippets/git_lfs_git-credentials.txt
    :language: text
@@ -70,13 +70,13 @@ Option 2: Authenticated access for read-write LFS users
 Only GitHub users in the LSST GitHub organization can authenticate with DM's storage service.*
 If you only want read-only access to DM's Git LFS managed repositories, return to :ref:`Option 1 <git-lfs-anon>`.
 
-First, paste these lines into your :file:`~/.gitconfig` file:
+First, add these lines into your :file:`~/.gitconfig` file:
 
 .. literalinclude:: snippets/git_lfs_gitconfig.txt
    :language: text
    :lines: 1-5
 
-Then paste these lines into your :file:`~/.git-credentials` files (create one, if necessary):
+Then add these lines into your :file:`~/.git-credentials` files (create one, if necessary):
 
 .. literalinclude:: snippets/git_lfs_git-credentials.txt
    :language: text
