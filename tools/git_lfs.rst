@@ -58,7 +58,7 @@ Next add their authentication information to your :file:`~/.git-credentials` fil
 
 .. note::
 
-   This step is only required if you are anonymously authenticating with Git LFS.
+   Anonymous authentication with the Git LFS server is optional. You will only be able to pull and clone the repository with this configuration.
 
 If you are anonymously authenticating then you must configure git to use an empty username and password with the git-lfs server. Add this to your :file:`~/.gitconfig` file.
 
