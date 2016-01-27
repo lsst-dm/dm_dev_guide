@@ -1,0 +1,12 @@
+# -*- python -*-
+#
+# Setup our environment
+#
+import lsst.SConsUtils as scons
+ 
+env = scons.makeEnv("Foo",
+                    r"$HeadURL$",
+                    [])
+ 
+env.SharedLibrary('Foo', "Foo.cc")
+env.Program(["main.cc"], LIBS="Foo", LIBPATH=".")
