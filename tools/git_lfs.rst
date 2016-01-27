@@ -39,7 +39,7 @@ Once ``git-lfs`` is installed, run
 to configure Git to use Git LFS in your :file:`~/.gitconfig` file.
 
 Next, we need to tell Git that DM's LFS storage services don't need a password for reading.
-Begin by activating Git's `credential store`_ helper for DM's Git LFS storage services by pasting these lines into your :file:`~/.gitconfig` file:
+Begin by activating Git's `credential store`_ helper for DM's Git LFS storage services by adding these lines into your :file:`~/.gitconfig` file:
 
 .. code-block:: text
 
@@ -86,7 +86,7 @@ Then add cache anonymous access to the server by adding this line to your :file:
    
    https://:@git-lfs.lsst.codes
 
-**That's it. You're ready to clone any of DM's Git LFS managed repositories.**
+That's it. You're ready to clone any of DM's Git LFS managed repositories.
 
 .. _git-lfs-auth:
 
