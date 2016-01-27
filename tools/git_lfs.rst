@@ -54,6 +54,7 @@ Next add their authentication information to your :file:`~/.git-credentials` fil
    https://:@lsst-sqre-prod-git-lfs.s3-us-west-2.amazonaws.com
    https://:@s3.lsst.codes
 
+.. _git-lfs-anonymous:
 
 If you will be anonymously authenticating then you must configure git to use no username and password with the git-lfs server. Add this to your :file:`~/.gitconfig` file.
 
@@ -90,11 +91,12 @@ For example, run:
 
 ``git clone`` will ask you to authenticate with DM's git-lfs server::
 
-   Username for 'https://git-lfs.lsst.codes': <GitHub username OR blank>
-   Password for 'https://<git>@git-lfs.lsst.codes': <GitHub password, token OR blank>
+   Username for 'https://git-lfs.lsst.codes': <GitHub username>
+   Password for 'https://<git>@git-lfs.lsst.codes': <GitHub password>
 
 - If you are a member of the LSST GitHub organization you can use your GitHub username and password.
 - If you *also* have `GitHub's two-factor authentication <https://help.github.com/articles/about-two-factor-authentication/>`_ enabled, use a personal access token instead of a password. You can setup a personal token at https://github.com/settings/tokens.
+- If you are only interested in cloning or pulling, :ref:`configure anonymous authentication<git-lfs-anonymous>` for the git-lfs server.
 
 Once your credentials are cached, you won't need to repeat this process on your system (:ref:`unless you opted for the cache-based credential helper <git-credential-helper>`).
 
