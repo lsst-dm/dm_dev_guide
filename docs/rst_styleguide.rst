@@ -144,10 +144,12 @@ For example:
 
 .. literalinclude:: snippets/def_list.rst
    :language: rst
+   :lines: 3-
 
 produces
 
 .. include:: snippets/def_list.rst
+   :start-line: 2
 
 Definition lists are not limited to dictionary-like usage; they can be employed whenever a series of terms with associated micro content is needed.
 
@@ -351,10 +353,12 @@ For example:
 
 .. literalinclude:: snippets/basic_table.rst
    :language: rst
+   :lines: 3-
 
 produces:
 
 .. include:: snippets/basic_table.rst
+   :start-line: 5
 
 Note how cells can be joined by omitting the dividing line.
 The ``=`` characters divide the header from table content.
@@ -364,19 +368,23 @@ You can write tables with multiple header rows, including spans across header ce
 
 .. literalinclude:: snippets/multi_header_table.rst
    :language: rst
+   :lines: 3-
 
 produces:
 
 .. include:: snippets/multi_header_table.rst
+   :start-line: 5
 
 In the simplest cases, tables are not required to have headers, or even be inside a ``table`` directive.
 
 .. literalinclude:: snippets/noheader_table.rst
    :language: rst
+   :lines: 3-
 
 produces:
 
 .. include:: snippets/noheader_table.rst
+   :start-line: 2
 
 .. _rst-figures:
 
@@ -388,8 +396,10 @@ For example:
 
 .. literalinclude:: snippets/image.rst
    :language: rst
+   :lines: 3-
 
 .. include:: snippets/image.rst
+   :start-line: 2
 
 This example shows how an image can by hyperlinked to any URL with the ``target`` field.
 Internal links, as in the example, must be *relative* to the reST document; Sphinx does not process URLs in an ``image``\ 's ``target`` field.
@@ -406,8 +416,10 @@ For example:
 
 .. literalinclude:: snippets/figure.rst
    :language: rst
+   :lines: 3-
 
 .. include:: snippets/figure.rst
+   :start-line: 2
 
 Note that the ``:name:`` field takes the place of a separate :ref:`label <rst-internal-links>` for hyperlinking.
 By convention, these labels should be prefixed with "``fig-``."
@@ -452,10 +464,12 @@ For example:
 
 .. literalinclude:: snippets/py_codeblock_example.rst
    :language: rst
+   :lines: 3-
 
 produces
 
 .. include:: snippets/py_codeblock_example.rst
+   :start-line: 2
 
 .. _rst-literalinclude:
 

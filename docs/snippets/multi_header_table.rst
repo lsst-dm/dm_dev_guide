@@ -1,3 +1,5 @@
+:orphan: True
+
 .. _rst-table-multi-header-example:
 
 .. table:: Table with two header rows, including a span.

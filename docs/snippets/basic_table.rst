@@ -1,3 +1,5 @@
+:orphan: True
+
 .. _table-label:
 
 .. table:: Table caption.

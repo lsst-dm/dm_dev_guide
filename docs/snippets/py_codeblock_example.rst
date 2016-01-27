@@ -1,3 +1,5 @@
+:orphan: True
+
 .. code-block:: py
    :name: context-timer-example
    :emphasize-lines: 4-13,15-17
