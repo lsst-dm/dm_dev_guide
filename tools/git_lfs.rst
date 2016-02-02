@@ -175,13 +175,17 @@ First, initialize the current directory as a repository:
 
    git init .
 
-Make a file called :file:`.lfsconfig` *within the repository*, and write these lines into it:
+Make files called :file:`.lfsconfig` **and** :file:`.gitconfig` *within the repository*, and write these lines into both:
 
 .. code-block:: text
 
    [lfs]
         url = https://git-lfs.lsst.codes
         batch = false
+
+Note that older versions of Git LFS used :file:`.gitconfig` rather than :file:`.lfsconfig`.
+As of Git LFS version 1.1 `.gitconfig has been deprecated <https://github.com/github/git-lfs/pull/837>`_, but support will not be dropped until LFS version 2.
+New repositories should still use both configuration files since DM's Jenkins server still uses a pre-1.1 ``git-lfs`` client.
 
 Next, track some files types.
 For example, to have FITS and ``*.gz`` files tracked by Git LFS,
@@ -191,11 +195,7 @@ For example, to have FITS and ``*.gz`` files tracked by Git LFS,
    git lfs track "*.fits"
    git lfs track "*.gz"
 
-Add and commit the :file:`.lfsconfig` and :file:`.gitattributes` files to your repository.
-
-Note that older versions of Git LFS used :file:`.gitconfig` rather than :file:`.lfsconfig`.
-As of Git LFS version 1.1 `.gitconfig has been deprecated <https://github.com/github/git-lfs/pull/837>`_, but support will not be dropped until LFS version 2.
-New LFS-managed repos should use :file:`.lfsconfig`.
+Add and commit the :file:`.lfsconfig`, :file:`.gitconfig`, and :file:`.gitattributes` files to your repository.
 
 We also recommend that you include a link to this documentation page in your :file:`README` to help those who aren't familiar with DM's Git LFS.
 
