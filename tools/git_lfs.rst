@@ -82,10 +82,10 @@ Then add these lines into your :file:`~/.git-credentials` files (create one, if 
    :language: text
    :lines: 1-2
 
-Next, setup a credential helper to manage your GitHub credentials (Git LFS won't use your SSH keys).
-:ref:`We describe how to setup a credential helper for your system in the Git setup guide <git-credential-helper>`.
+Next, set up a credential helper to manage your GitHub credentials (Git LFS won't use your SSH keys).
+:ref:`We describe how to set up a credential helper for your system in the Git set up guide <git-credential-helper>`.
 
-Once a helper is setup, you can cache your credentials by cloning any of DM's LFS-backed repositories.
+Once a helper is set up, you can cache your credentials by cloning any of DM's LFS-backed repositories.
 For example, run:
 
 .. code-block:: bash
@@ -100,7 +100,7 @@ For example, run:
 At the prompts, enter your GitHub username and password.
 
 *If you have* `GitHub's two-factor authentication <https://help.github.com/articles/about-two-factor-authentication/>`_ enabled, use a personal access token instead of a password.
-You can setup a personal token at https://github.com/settings/tokens.
+You can set up a personal token at https://github.com/settings/tokens.
 
 Once your credentials are cached, you won't need to repeat this process on your system (:ref:`unless you opted for the cache-based credential helper <git-credential-helper>`).
 
@@ -209,6 +209,6 @@ In the repository's :file:`README`, we recommend that you include this section:
    To clone and use this repository, you'll need Git Large File Storage (LFS).
 
    Our [Developer Guide](http://developer.lsst.io/en/latest/tools/git_lfs.html)
-   explains how to setup Git LFS for LSST development.
+   explains how to set up Git LFS for LSST development.
 
 .. _Homebrew: http://brew.sh
