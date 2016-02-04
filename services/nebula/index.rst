@@ -9,3 +9,4 @@ OpenStack allows you to work in a cloud environment with flexible compute instan
    :maxdepth: 2
 
    starting_an_instance
+   starting_an_lsst_stack_snapshot
