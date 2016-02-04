@@ -103,28 +103,15 @@ ensure that adequate test suites exist for the base objects.
 Automated Nightly and On-Demand Testing
 =======================================
 
-.. todo:: Update mention of Buildbot to cover Jenkins.
-
-Buildbot is a system which automates the compile/load/test cycle required to
-validate code changes. In particular, DM buildbot automatically performs unit
-testing on each DM module compiled during the buildbot processing and
-automatically emails the responsible developer of any failure during a
-module's build and test cycle. The rapid notification to developers of failing
+`Jenkins`_ is a system which automates the compile/load/test cycle required to
+validate code changes. In particular, Jenkins automatically performs unit
+testing on each DM module compiled during the Jenkins processing and provides
+rapid notification of failures. This notification to  developers of failing
 builds and unit tests expedites the module's repair and, hopefully, limits the
-time other developers are impacted by the failure.
+time other developers are impacted by the failure. For details, refer to the
+workflow documentation on :ref:`workflow-testing`.
 
-The DM Buildbot setup provides a variety of build configurations:
-
-- a modified trunk module is built using dependencies which are eups-current;
-- a modified trunk module is built using dependencies satisfying the minimal
-  acceptable eups tag rule;
-- a modified trunk module is built using dependencies also built from the trunk.
-
-DM Buildbot initiates, on a nightly basis, a full rebuild for each module for
-each of the configurations above. Buildbot is automatically triggered for
-immediate module testing whenever a change to the module's source is committed
-to the source repository. And finally, at any time, the developer may request
-an on-demand module build.
+.. _Jenkins: https://ci.lsst.codes/
 
 Verifying Test Quality
 ======================
