@@ -80,3 +80,4 @@ This Guide will help you in contributing to the DM development effort.
    :name: part-services
 
    services/lsst-dev.rst
+   services/ncsa_bulk_transfer.rst
