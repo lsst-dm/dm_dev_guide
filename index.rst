@@ -17,6 +17,8 @@ This Guide will help you in contributing to the DM development effort.
    :caption: Getting Started
    :name: part-getting-started
 
+   getting-started/onboarding.rst
+
 .. toctree::
    :maxdepth: 1
    :caption: Processes
@@ -71,7 +73,8 @@ This Guide will help you in contributing to the DM development effort.
    :name: part-build-ci
 
    build-ci/ci_overview.rst
-   
+   build-ci/lsst-dev.rst
+
 .. toctree::
    :maxdepth: 1
    :caption: Developer Services
