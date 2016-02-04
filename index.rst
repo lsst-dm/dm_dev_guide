@@ -50,6 +50,7 @@ This Guide will help you in contributing to the DM development effort.
    docs/package_docs.rst
    docs/py_docs.rst
    docs/cpp_docs.rst
+   docs/technotes.rst
 
 .. toctree::
    :maxdepth: 1
