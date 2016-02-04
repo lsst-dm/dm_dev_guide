@@ -57,6 +57,7 @@ This Guide will help you in contributing to the DM development effort.
    tools/git_setup.rst
    tools/git_lfs.rst
    tools/jira_tips.rst
+   tools/emacs.rst
 
 .. toctree::
    :maxdepth: 1
