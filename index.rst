@@ -70,10 +70,11 @@ This Guide will help you in contributing to the DM development effort.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Build, Test, Release 
+   :caption: Build, Test, Release
    :name: part-build-ci
 
    build-ci/ci_overview.rst
+   build-ci/new_package.rst
 
 .. toctree::
    :maxdepth: 1
