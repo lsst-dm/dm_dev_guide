@@ -28,6 +28,7 @@ This Guide will help you in contributing to the DM development effort.
    processes/workflow.rst
    processes/decision_process.rst
    processes/transferring_code.rst
+   processes/project_planning.rst
    processes/jira_agile.rst
    processes/wiki.rst
 
