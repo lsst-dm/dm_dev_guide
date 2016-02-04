@@ -5,6 +5,13 @@ Using the lsst-dev Server
 ``lsst-dev`` is a cluster of servers run by NCSA for LSST DM development work.
 To get an account, see the :doc:`Onboarding Checklist </getting-started/onboarding>`.
 
+This page help you get started on lsst-dev:
+
+1. :ref:`Setting up SSH Keys <lsst-dev-ssh-keys>`
+2. :ref:`Load the LSST Environment <lsst-dev-loadlsst>`
+3. Setting up developer tools; we recommend the :ref:`alternate toolset <lsst-dev-alt-tools>`
+4. :ref:`Configuring xpra <lsst-dev-xpra>`
+
 Overview of Cluster Resources
 =============================
 
@@ -13,6 +20,8 @@ Overview of Cluster Resources
 - `Real-time system status <http://lsst-web.ncsa.illinois.edu/nagios>`_ (requires login).
 - Reference/test data from SDSS DR7 for Stripe82 is located at: :file:`/lsst7/stripe82/dr7/runs`.
 - Report system issues to ``lsst-admin _at_ ncsa.illinois.edu``
+
+.. _lsst-dev-ssh-keys:
 
 Setting up SSH Keys
 ===================
@@ -80,6 +89,8 @@ For more information on using SSH public/private keys:
 - `Using SSH Public Key Authentication <http://macnugget.org/projects/publickeys/>`_
 - `SSH Public Key Based Authentication Howto <http://www.cyberciti.biz/tips/ssh-public-key-based-authentication-how-to.html>`_
 
+.. _lsst-dev-loadlsst:
+
 Load the LSST Environment
 =========================
 
@@ -92,6 +103,80 @@ You can also following in the `~/.bashrc` file (this is the jist of the :file:`l
    setup anaconda
    setup git
    setup lsst
+.. _lsst-dev-tools:
+
+Developer Tools on lsst-dev
+===========================
+
+Two sets of developer tools are available on ``lsst-dev``.
+DM developers should generally use :ref:`alternate <lsst-dev-alt-tools>` set to get have versions of GCC and Git that are capable of building the Stack and using Git LFS.
+
+.. _lsst-dev-default-tools:
+
+Default Development Tools
+-------------------------
+
+Currently the development servers hosted at NCSA are configured with CentOS 6.x as their operating system.
+
+The following developer packages are installed on each of these servers in their default environment:
+
+- gcc/g++/gfortran - GNU Compiler Collection - version 4.4.7
+- gdb - GNU Debugger - version 7.2
+- gcc-debuginfo
+- glibc-debuginfo
+- compat-glibc
+- compat-gcc-34
+- compat-gcc-34-c++
+- compat-gcc-34-g77
+- compat-libstdc++-296
+- compat-libstdc++-33
+- git - GIT - version 1.7.1
+- valgrind - Tool for finding memory management bugs in programs - version 3.8.1
+- python - version 2.6.6
+- bison - GNU Bison - version 2.4.1
+- byacc - version 1.9
+- flex - flex 2.5.35
+
+.. _lsst-dev-alt-tools:
+
+Alternate Development Tools
+---------------------------
+
+Developer Toolset is an offering for developers on EL (Red Hat, CentOS, SCL) distributions.
+Using a framework called Software Collections, an additional set of tools is installed into the /opt directory, as recommended by the UNIX Filesystem Hierarchy Standard.
+These tools are enabled by the user on demand using the supplied scl utility.
+
+Developer Toolset 3.x provides following tools:
+
+- gcc/g++/gfortran - GNU Compiler Collection - version 4.9.2
+- git - GIT - version 1.9.3
+- gdb - GNU Debugger - version 7.8.2
+- binutils - A GNU collection of binary utilities - version 2.24
+- elfutils - A collection of utilities and DSOs to handle compiled objects - version 0.161
+- dwz - DWARF optimization and duplicate removal tool - version 0.11
+- systemtap - Programmable system-wide instrumentation system - version 2.6
+- valgrind - Tool for finding memory management bugs in programs - version 3.10.1
+- oprofile - System wide profiler - version 0.9.9
+
+To test the alternate devtoolset environment:
+
+.. code-block:: bash
+
+   $ scl enable devtoolset-3 bash
+   $ gcc --version
+   gcc (GCC) 4.9.2 20150212 (Red Hat 4.9.2-6)
+   Copyright (C) 2014 Free Software Foundation, Inc.
+   This is free software; see the source for copying conditions.  There is NO
+   warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+To make use of Git 1.9.x you can also use the Git 1.9 software collection.
+You can enable multiple software collections at the same time, so the following will enable both the ``devtoolset-3`` and ``git19``: 
+
+.. code-block:: bash
+
+   scl enable devtoolset-3 git19 bash
+
+.. _lsst-dev-xpra:
 
 Remote Display with xpra
 ========================
@@ -124,3 +209,4 @@ You may leave that running, or put it in the background and later use:
 Then you can open windows on lsst-dev (with DISPLAY=:10) and they will appear on your machine.
 If you now kill the ``xpra attach`` on your machine, you'll lose those windows.
 When you reattach, they'll reappear.
+
