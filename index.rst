@@ -27,6 +27,7 @@ This Guide will help you in contributing to the DM development effort.
    processes/decision_process.rst
    processes/transferring_code.rst
    processes/jira_agile.rst
+   processes/wiki.rst
 
 .. toctree::
    :maxdepth: 1
