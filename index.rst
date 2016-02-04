@@ -65,10 +65,12 @@ This Guide will help you in contributing to the DM development effort.
 
 .. toctree::
    :maxdepth: 1
-   :caption: NCSA Services
-   :name: part-ncsa
-
+   :caption: Build, Test, Release 
+   :name: part-build-ci
+   
 .. toctree::
    :maxdepth: 1
-   :caption: LSST Stack Build System
-   :name: part-stack-build
+   :caption: Developer Services
+   :name: part-services
+
+
