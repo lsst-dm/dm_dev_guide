@@ -25,6 +25,8 @@ This Guide will help you in contributing to the DM development effort.
    processes/code_of_conduct.rst
    processes/workflow.rst
    processes/decision_process.rst
+   processes/transferring_code.rst
+   processes/jira_agile.rst
 
 .. toctree::
    :maxdepth: 1
@@ -35,6 +37,9 @@ This Guide will help you in contributing to the DM development effort.
    coding/python_style_guide.rst
    coding/cpp_style_guide.rst
    coding/using_cpp_templates.rst
+   coding/using_boost.rst
+   coding/unit_test_policy.rst
+   coding/unit_test_private_functions.rst
 
 .. toctree::
    :maxdepth: 1
@@ -45,6 +50,7 @@ This Guide will help you in contributing to the DM development effort.
    docs/package_docs.rst
    docs/py_docs.rst
    docs/cpp_docs.rst
+   docs/technotes.rst
 
 .. toctree::
    :maxdepth: 1
@@ -54,13 +60,19 @@ This Guide will help you in contributing to the DM development effort.
    tools/git_setup.rst
    tools/git_lfs.rst
    tools/jira_tips.rst
+   tools/emacs.rst
+   tools/vim.rst
 
 .. toctree::
    :maxdepth: 1
-   :caption: NCSA Services
-   :name: part-ncsa
+   :caption: Build, Test, Release 
+   :name: part-build-ci
 
+   build-ci/ci_overview.rst
+   
 .. toctree::
    :maxdepth: 1
-   :caption: LSST Stack Build System
-   :name: part-stack-build
+   :caption: Developer Services
+   :name: part-services
+
+
