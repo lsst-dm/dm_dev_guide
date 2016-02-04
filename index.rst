@@ -67,6 +67,8 @@ This Guide will help you in contributing to the DM development effort.
    :maxdepth: 1
    :caption: Build, Test, Release 
    :name: part-build-ci
+
+   build-ci/ci_overview.rst
    
 .. toctree::
    :maxdepth: 1
