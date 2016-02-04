@@ -82,3 +82,4 @@ This Guide will help you in contributing to the DM development effort.
 
    services/lsst-dev.rst
    services/ncsa_bulk_transfer.rst
+   services/nebula/index.rst
