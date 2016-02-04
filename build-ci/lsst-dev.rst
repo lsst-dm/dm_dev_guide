@@ -5,6 +5,15 @@ Using the lsst-dev Server
 ``lsst-dev`` is a cluster of servers run by NCSA for LSST DM development work.
 To get an account, see the :doc:`Onboarding Checklist </getting-started/onboarding>`.
 
+Overview of Cluster Resources
+=============================
+
+- List of `available development servers <https://confluence.lsstcorp.org/display/LDMDG/DM+Development+Servers>`_ and their intended use.
+- `System announcements <https://confluence.lsstcorp.org/display/LDMDG/DM+System+Announcements>`_ of the status and planned down-time.
+- `Real-time system status <http://lsst-web.ncsa.illinois.edu/nagios>`_ (requires login).
+- Reference/test data from SDSS DR7 for Stripe82 is located at: :file:`/lsst7/stripe82/dr7/runs`.
+- Report system issues to ``lsst-admin _at_ ncsa.illinois.edu``
+
 Setting up SSH Keys
 ===================
 
@@ -114,4 +123,4 @@ You may leave that running, or put it in the background and later use:
 
 Then you can open windows on lsst-dev (with DISPLAY=:10) and they will appear on your machine.
 If you now kill the ``xpra attach`` on your machine, you'll lose those windows.
-When you reattach, they'll reappear. 
+When you reattach, they'll reappear.
