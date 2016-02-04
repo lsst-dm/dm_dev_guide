@@ -25,6 +25,7 @@ This Guide will help you in contributing to the DM development effort.
    processes/code_of_conduct.rst
    processes/workflow.rst
    processes/decision_process.rst
+   processes/transferring_code.rst
 
 .. toctree::
    :maxdepth: 1
