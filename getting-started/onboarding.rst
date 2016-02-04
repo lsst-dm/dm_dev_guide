@@ -13,4 +13,4 @@ NCSA server access
    - Preferred user name
    - At least one public ssh key
 
-   See next: :doc:`/build-ci/lsst-dev`.
+   See next: :doc:`/services/lsst-dev`.

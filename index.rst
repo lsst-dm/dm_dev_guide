@@ -73,11 +73,10 @@ This Guide will help you in contributing to the DM development effort.
    :name: part-build-ci
 
    build-ci/ci_overview.rst
-   build-ci/lsst-dev.rst
 
 .. toctree::
    :maxdepth: 1
    :caption: Developer Services
    :name: part-services
 
-
+   services/lsst-dev.rst
