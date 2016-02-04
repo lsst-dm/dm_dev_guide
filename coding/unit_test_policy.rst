@@ -80,10 +80,8 @@ test harness, which monitors the execution status of individual test cases.
 C++: boost.test
     LSST DM developers should use the `single-header variant`_ of the `Boost Unit
     Test Framework`_. When unit testing C++ private functions using the Boost
-    util test macros, refer to the standard methods described in `private
-    function testing`_.
-
-.. todo:: Migrate private function testing documentation.
+    util test macros, refer to the standard methods described in :doc:`private
+    function testing <unit_test_private_functions>`.
 
 Python: unittest
     LSST DM developers should use the `Python unittest framework`_. The Python
@@ -91,7 +89,6 @@ Python: unittest
 
 .. _single-header variant: http://www.boost.org/doc/libs/1_60_0/libs/test/doc/html/boost_test/usage_variants.html#boost_test.usage_variants.single_header
 .. _Boost Unit Test Framework: http://www.boost.org/doc/libs/1_60_0/libs/test/doc/html/index.html
-.. _private function testing: https://dev.lsstcorp.org/trac/wiki/UnitTestingPrivateFunctions
 .. _Python unittest framework: https://docs.python.org/library/unittest.html
 
 Unit Testing Composite Objects
