@@ -45,6 +45,7 @@ This Guide will help you in contributing to the DM development effort.
    coding/unit_test_policy.rst
    coding/unit_test_private_functions.rst
    coding/unit_test_coverage.rst
+   coding/profiling.rst
 
 .. toctree::
    :maxdepth: 1
