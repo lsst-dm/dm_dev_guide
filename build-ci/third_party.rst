@@ -55,27 +55,26 @@ The :file:`ups/` directory in your repository must contain an EUPS table file
 named following the pattern :file:`packageName.table`. It specifies what other
 packages your package depends on and environment variables that will be set
 when you :command:`setup` your package.  Consider the table file for the
-``healpy`` package, :file:`healpy.table`::
+``sphgeom`` package, :file:`sphgeom.table`::
 
-    setupRequired(python)
-    setupRequired(pykg_config)
-    setupRequired(cfitsio)
-    setupRequired(pyfits)
-    envPrepend(PYTHONPATH, ${PRODUCT_DIR}/lib/python)
+    setupRequired(base)
+    setupRequired(sconsUtils)
+    setupOptional(doxygen)
+
     envPrepend(LD_LIBRARY_PATH, ${PRODUCT_DIR}/lib)
     envPrepend(DYLD_LIBRARY_PATH, ${PRODUCT_DIR}/lib)
+    envPrepend(LSST_LIBRARY_PATH, ${PRODUCT_DIR}/lib)
+    envPrepend(PYTHONPATH, ${PRODUCT_DIR}/python)
 
-This tells EUPS that, in order to setup the ``healpy`` package, it must also
-setup the packages ``python``, ``pykg_config``, ``cfitsio``, and ``pyfits``.
-Furthermore, it adds the location of the `healpy` package (stored in the
-environment variable PRODUCT_DIR at build time) to the environment variables
-:envvar:`PYTHONPATH`, :envvar:`LD_LIBRARY_PATH`, and
-:envvar:`DYLD_LIBRARY_PATH`. These three environment variables are usually set
+This tells EUPS that, in order to setup the ``sphgeom`` package, it must also
+setup the packages ``base``, ``sconsUtils`` and ``doxygen``.  Furthermore, it
+adds the location of the ``sphgeom`` package (stored in the environment
+variable :envvar:`PRODUCT_DIR` at build time) to the environment variables
+:envvar:`PYTHONPATH`, :envvar:`LD_LIBRARY_PATH`, :envvar:`DYLD_LIBRARY_PATH`,
+:envvar:`LSST_LIBRARY_PATH`. These three environment variables are usually set
 for any installed package. We use the pre-defined ``envPrepend`` command so
 that the new :envvar:`PRODUCT_DIR` is prepended to the environment variables
 and does not interfere with the non-stack system of libraries.
-
-.. todo:: Is it necessary to mention :envvar:`LSST_LIBRARY_PATH` here?
 
 :file:`eupspkg.cfg.sh`
 ^^^^^^^^^^^^^^^^^^^^^^
