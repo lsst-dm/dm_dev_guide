@@ -305,9 +305,10 @@ Then:
 
 - :command:`git push`
 
-- See if the stack will build with your branch in `Jenkins`_. For the branch
-  name, specify the branch you created above (i.e. ``tickets/DM-NNNN``),
-  leaving the rest of the fields as they are.
+- See if the stack will build with your branch in :ref:`Jenkins
+  <workflow-testing>`. For the branch name, specify the branch you created
+  above (i.e. ``tickets/DM-NNNN``), leaving the rest of the fields as they
+  are.
 
 - While Jenkins is building, you can test whether the new package solves
   whatever issue caused you to need the upgrade. From within
@@ -328,4 +329,3 @@ Then:
 - Merge to master after tests pass.
 
 .. _installed using the lsstsw tool: http://pipelines.lsst.io/en/latest/development/lsstsw_tutorial.html
-.. _Jenkins: http://pipelines.lsst.io/en/latest/development/lsstsw_tutorial.html#continuous-integration-with-jenkins
