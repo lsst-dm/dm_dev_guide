@@ -522,11 +522,11 @@ Solution:
    The eups-locks remain set until cleared by the owner of the eups
    stack. In this case, that's user 'lsstsw'::
 
-   ssh lsstsw@lsst-dev
-   # The eups DM stack is automatically setup when 'lsstsw' logs in.
-   eups admin listLocks
-   eups admin clearLocks
-   exit
+      ssh lsstsw@lsst-dev
+      # The eups DM stack is automatically setup when 'lsstsw' logs in.
+      eups admin listLocks
+      eups admin clearLocks
+      exit
 
 
 Glossary

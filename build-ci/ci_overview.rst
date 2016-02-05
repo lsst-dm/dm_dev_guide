@@ -17,4 +17,4 @@ Buildbot
 
 Buildbot is the legacy CI system, and most developers should not be
 using it. At this time it is still required for making software
-releases. See the :doc:`Buildbot documentation <deprecated/buildbot.rst>`
+releases. See the :doc:`Buildbot documentation <deprecated/buildbot>`.
