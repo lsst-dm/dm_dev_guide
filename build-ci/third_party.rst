@@ -181,8 +181,6 @@ gzipped tarball in :file:`upstream/`.
 Testing the Package
 ===================
 
-.. todo:: Port lsstsw pages.
-
 .. note::
 
    Development of a third party package should be handled identically to
@@ -191,8 +189,8 @@ Testing the Package
 
 Before finalizing the distribution, it is useful to be able to test that the
 distribution as set up does, in fact, build. This can be accomplished using
-the :command:`lsstsw` build tool: see its `detailed documentation`_ for the
-full story. Broadly, the steps are:
+the :command:`lsstsw` build tool: see its :doc:`detailed documentation
+<lsstsw>` for the full story. Broadly, the steps are:
 
 - Clone and set up the lsstsw package in its own directory using the
   instructions on the lsstsw documentation page pointed to above.
@@ -207,8 +205,6 @@ full story. Broadly, the steps are:
   running OSX and one running a Linux distribution) to make sure that you did
   not accidentally benefit from the system environment of your test machine
   when building.
-
-.. _detailed documentation: https://confluence.lsstcorp.org/display/LDMDG/The+LSST+Software+Build+Tool
 
 Distributing the Package
 ========================
