@@ -500,6 +500,35 @@ product have been built and unit tested successfully. Currently that
 includes all of sims, qserv and lsst_distrib products and their
 dependencies.
 
+.. _buildbot-trouble:
+
+System Troubleshooting
+======================
+
+Shared lock
+-----------
+
+Error::
+
+  eups list: Unable to take shared lock on /lsst/home/lsstsw/stack: an exclusive lock is held by [user=lsstsw,pid=19919]" (see DM stack Build #: 166)
+
+Cause:
+
+  If the buildbot slave is forcefully terminated whilst it is
+  processing an eups-locked action on an eups-stack.
+
+Solution:
+
+   The eups-locks remain set until cleared by the owner of the eups
+   stack. In this case, that's user 'lsstsw'::
+
+   ssh lsstsw@lsst-dev
+   # The eups DM stack is automatically setup when 'lsstsw' logs in.
+   eups admin listLocks
+   eups admin clearLocks
+   exit
+
+
 Glossary
 --------
 
