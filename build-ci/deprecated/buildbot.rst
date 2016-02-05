@@ -99,7 +99,7 @@ The waterfall view is a time-oriented display of multiple Builders'
 progress (aka: the columns) through each Builder's specific build
 steps.
 
-.. image:: /_static/buildbot/Login_TBD.JPG
+.. image:: /_static/buildbot/Login_TBD.jpg
 
 Waterfall Banner
 ^^^^^^^^^^^^^^^^
@@ -199,7 +199,7 @@ address. E.g. http://lsst-buildx.ncsa.illinois.edu:8010/waterfall?reload=60
 .  Note that the view of the Build log (identified as stdio) does
 auto-refresh without intervention.
 
-.. image:: /_static/buildbot/Login_TBD.JPG
+.. image:: /_static/buildbot/Login_TBD.jpg
 
 2. Setup A  Build
 -----------------
@@ -209,7 +209,7 @@ where you enter your build request. This page also links to the
 current and past builds for this Builder.
 
 LSST DM Developer Guide > Triggering a Buildbot Build >
-.. image:: /_static/buildbot/To_Force.JPG
+.. image:: /_static/buildbot/To_Force.jpg
 
 A. Enter your Email Address
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -218,12 +218,12 @@ Buildbot will send you direct email regarding your build's completion
 status.  This field is required and must be formatted: "name
 <user@email.com>".
  
-.. image:: /_static/buildbot/Force_Build_Request_2.JPG
+.. image:: /_static/buildbot/Force_Build_Request_2.jpg
  
 If you resisted using the required email field format, the following
 is displayed.
  
-.. image:: /_static/buildbot/Bad_Login.JPG
+.. image:: /_static/buildbot/Bad_Login.jpg
 
 B. Enter Optional Git-Branch Use
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -239,7 +239,7 @@ and integration run will determine if the provided branches are ready
 for merging into the master stack based on clean compilation, build,
 and unit and end-to-end testing.
  
-.. image:: /_static/buildbot/Force_Build_Request.JPG
+.. image:: /_static/buildbot/Force_Build_Request.jpg
 
 3. Trigger the Build
 --------------------
@@ -250,7 +250,7 @@ view updates to show your job as current (see below).  If there is a
 build in-progress, your build will be entered into the Pending Build
 Requests list; it will be processed in first-in, first out order.
 
-.. image:: /_static/buildbot/Build_Triggered_2.JPG
+.. image:: /_static/buildbot/Build_Triggered_2.jpg
 
 4. Viewing a Build's Status
 ---------------------------
@@ -265,7 +265,7 @@ If you select a Build Number hot-link, you will see a very detailed status repor
 Alternate access to the full build's stdio log is also available from
 the Waterfall view - as shown below.
  
-.. image:: /_static/buildbot/Build_Triggered_2.JPG
+.. image:: /_static/buildbot/Build_Triggered_2.jpg
 
 6 Login and Cancelling a Pending or In-progress Build
 -----------------------------------------------------
@@ -284,7 +284,7 @@ Once your account is setup, enter your username and password into the
 fields at the upper right hand corner and select 'Login'.  The system
 automatically logs you out once a day.
 
-.. image:: /_static/buildbot/Login_IP.JPG
+.. image:: /_static/buildbot/Login_IP.jpg
  
 You are now logged in and ready to let Buildbot know which Build you
 want terminated.
