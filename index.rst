@@ -17,6 +17,8 @@ This Guide will help you in contributing to the DM development effort.
    :caption: Getting Started
    :name: part-getting-started
 
+   getting-started/onboarding.rst
+
 .. toctree::
    :maxdepth: 1
    :caption: Processes
@@ -26,7 +28,9 @@ This Guide will help you in contributing to the DM development effort.
    processes/workflow.rst
    processes/decision_process.rst
    processes/transferring_code.rst
+   processes/project_planning.rst
    processes/jira_agile.rst
+   processes/wiki.rst
 
 .. toctree::
    :maxdepth: 1
@@ -40,6 +44,8 @@ This Guide will help you in contributing to the DM development effort.
    coding/using_boost.rst
    coding/unit_test_policy.rst
    coding/unit_test_private_functions.rst
+   coding/unit_test_coverage.rst
+   coding/profiling.rst
 
 .. toctree::
    :maxdepth: 1
@@ -65,14 +71,19 @@ This Guide will help you in contributing to the DM development effort.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Build, Test, Release 
+   :caption: Build, Test, Release
    :name: part-build-ci
 
    build-ci/ci_overview.rst
-   
+   build-ci/lsstsw.rst
+   build-ci/new_package.rst
+   build-ci/third_party.rst
+
 .. toctree::
    :maxdepth: 1
    :caption: Developer Services
    :name: part-services
 
-
+   services/lsst-dev.rst
+   services/ncsa_bulk_transfer.rst
+   services/nebula/index.rst
