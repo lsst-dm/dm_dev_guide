@@ -75,6 +75,7 @@ This Guide will help you in contributing to the DM development effort.
 
    build-ci/ci_overview.rst
    build-ci/new_package.rst
+   build-ci/third_party.rst
 
 .. toctree::
    :maxdepth: 1
