@@ -1,5 +1,5 @@
 #################################
-Adding a new package to the build
+Adding a New Package to the Build
 #################################
 
 "Top-level products" are the roots of the LSST package hierarchy. They include

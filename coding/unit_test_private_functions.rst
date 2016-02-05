@@ -1,5 +1,5 @@
 ##################################
-Unit-testing private C++ functions
+Unit-Testing Private C++ Functions
 ##################################
 
 .. note:: This material is still in draft.
