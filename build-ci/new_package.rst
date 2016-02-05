@@ -12,10 +12,7 @@ RFC process first to confirm their name and the suitability of their contents.
 DM-written Science Pipelines packages should follow the template in the
 `lsst/templates`_ repository.
 
-.. todo:: Migrate Distributing third-party packages with EUPS.
-
-Third-party packages should be packaged as described in `Distributing
-third-party packages with EUPS`_.
+Third-party packages should be packaged as described in :doc:`third_party`.
 
 The new package must be added to the `etc/repos.yaml file in the lsstsw
 package`_ along with its corresponding GitHub URL. Note that this file is
