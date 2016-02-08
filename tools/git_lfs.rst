@@ -201,7 +201,7 @@ We also recommend that you include a link to this documentation page in your :fi
 
 In the repository's :file:`README`, we recommend that you include this section:
 
-.. code-block:: markdown
+.. code-block:: text
 
    Git LFS
    -------
