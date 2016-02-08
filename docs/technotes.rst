@@ -1,26 +1,21 @@
-###########################
-Technotes: Just Document It
-###########################
+#################################################
+Technotes for Stand-Alone Technical Documentation
+#################################################
 
-Technotes provide a low-barrier way to write documentation and deploy
-it as a readable, referencable and discoverable document. You are
-encouraged to write technotes to capture any type of single-topic
-aspect of software - design decisions, user notes, deployment
-documentation, scientific strategies - if you feel the need to write
-it and it is not obviously belonging to a single code repository, just
-write a technote. 
+Technotes are a way for Data Management team members to write standalone documents that are native to the web, can be cited in literature, and are easy to write, publish, and update.
+Some of the possible applications for technotes are:
 
-Technotes are simple rst files in git repositories. The technote
-documentation platform is documented (aptly enough) in a technote,
-`SQR-000`_.
+- to report the results of a project, such as a data processing or software development experiment,
+- to announce a new technology, serving as a high-level overview complementing software documentation,
+- to propose an architecture, possibly becoming the subject of a request for comment (RFC).
+
+Technotes are simple reStructuredText files in Git repositories that are compiled by Sphinx_ and served by `Read the Docs`_.
+The technote platform is documented in a technote: `SQR-000`_.
 
 .. _SQR-000: http://sqr-000.lsst.io
+.. _Read the Docs: http://readthedocs.org
+.. _Sphinx: http://www.sphinx-doc.org
 
-To boostrap your own technote, use
-<https://github.com/lsst-sqre/lsst-technote-bootstrap>
+**To create a new technote,** follow the `instructions for lsst-technote-bootstrap <https://github.com/lsst-sqre/lsst-technote-bootstrap>`_.
 
-An automatic indexing system for technotes is in progress; an `interim`_
-list of available technotes is maintained manually for now.
-
-.. _interim: https://community.lsst.org/t/listing-of-available-dm-technotes/496
-
+We're working on a live index of technotes, but in the interim a list of available technotes is `available on community.lsst.org <https://community.lsst.org/t/listing-of-available-dm-technotes/496>`_.
