@@ -9,9 +9,9 @@ Changes to the `master` branch are automatically deployed to http://developer.ls
 
 ### Resources for writing reStructuredText
 
-See the [Writing Documentation](#) section of the Developer Guide for an overview of writing reStructuredText.
+See the [Writing Documentation]http://developer.lsst.io/en/latest/docs/rst_styleguide.html) section of the Developer Guide for an overview of writing reStructuredText.
 
-Since this is a Git repository, we recommend following the standard [DM development workflow](#) with JIRA tickets, ticket branches, and code review.
+Since this is a Git repository, we recommend following the standard [DM development workflow](http://developer.lsst.io/en/latest/processes/workflow.html) with JIRA tickets, ticket branches, and code review.
 For very small changes the review process can be by-passed, through review is tremendously beneficial for larger changes.
 Formally there is not requirement to review documentation changes.
 
