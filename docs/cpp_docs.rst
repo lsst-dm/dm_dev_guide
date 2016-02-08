@@ -1,8 +1,11 @@
-.. _doc-cpp-code:
-
 ####################
 Documenting C++ Code
 ####################
+
+.. note::
+
+   This is a preview documentation format specification.
+   Software documentation should currently be written in the format described at https://confluence.lsstcorp.org/display/LDMDG/Documentation+Standards
 
 The LSST Stack uses `Doxygen <http://www.stack.nl/~dimitri/doxygen/>`_ to build C++ API reference documentation by extracting source code comments.
 This page covers the most important concepts in writing Doxygen-friendly C++ comments for the LSST Stack, though `Doxygen's manual <http://www.stack.nl/~dimitri/doxygen/manual.html>`_ is the most comprehensive reference.

@@ -1,8 +1,11 @@
-.. _doc-python-code:
-
 #######################
 Documenting Python Code
 #######################
+
+.. note::
+
+   This is a preview documentation format specification.
+   Software documentation should currently be written in the format described at https://confluence.lsstcorp.org/display/LDMDG/Documentation+Standards#DocumentationStandards-Python
 
 We document Python code in three ways:
 

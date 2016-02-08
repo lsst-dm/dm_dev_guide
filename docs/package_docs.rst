@@ -2,6 +2,11 @@
 Documenting Stack Packages
 ##########################
 
+.. note::
+
+   This is a preview documentation format specification.
+   Software documentation should currently be written in the format described at https://confluence.lsstcorp.org/display/LDMDG/Documentation+Standards
+
 The LSST Stack is an aggregation of packages contained in individual git repositories (see `github.com/lsst <https://github.com/lsst>`_).
 This page explains how to organize and write package documentation that can be integrated into software documentation, such as the `LSST Science Pipelines <http://pipelines.lsst.io>`_ docs.
 In separate pages we cover writing :doc:`docstrings for Python <py_docs>` and :doc:`C++ <cpp_docs>`, respectively.
