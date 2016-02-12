@@ -21,8 +21,43 @@ then needs to be added to the :file:`ups/*.table` file (and possibly the
 :file:`ups/*.cfg` file) of one or more other packages in the stack where it is
 used.
 
+.. _lfs-repos:
+
+Handling Git LFS backed repos
+=================================
+
+New Git LFS (see :doc:`/tools/git_lfs`) backed repos (or existing repos
+being converted to `lfs`) require additional configuration.
+
+- The `repos.yaml`_ entry must declare that the repository is LFS backed.
+
+  .. code-block:: yaml
+
+    afwdata:
+      url: https://github.com/lsst/afwdata.git
+      lfs: true
+
+  See the comment block at the top of `repos.yaml`_ for additional details.
+
+- At present, the EUPS `distrib` packaging mechanism does not support `lfs`
+  backed repos.  These products **must not** be added to any ``top`` level
+  meta-package or as a mandatory (non-``optional``) recursive dependency of a
+  ``top`` level package.
+
+- *Optional* dependencies must be added to `manifest.remap`_ to prevent the
+  creation of broken EUPS `distrib` packages.  Please note that the "self-merge"
+  policy of `RFC-75`_ does not apply to `manifest.remap`_.
+
+  *Unlike changes merged into* `repos.yam`_, *modifications to*
+  `manifest.remap`_ *do not take immediate affect*
+
+  recommend procedure is to attach the modification PR to a DM Jira issue on the
+  ``Continuous Integration`` component.
+
 .. _LSST organization on GitHub: https://github.com/lsst
 .. _lsst/templates: https://github.com/lsst/templates
 .. _Distributing third-party packages with EUPS: https://confluence.lsstcorp.org/display/LDMDG/Distributing+third-party+packages+with+EUPS
 .. _etc/repos.yaml file in the lsstsw package: https://github.com/lsst/lsstsw/blob/master/etc/repos.yaml
+.. _repos.yaml:  https://github.com/lsst/lsstsw/blob/master/etc/repos.yaml
+.. _manifest.remap:  https://github.com/lsst/lsstsw/blob/master/etc/manifest.remap
 .. _RFC-75: https://jira.lsstcorp.org/browse/RFC-75
