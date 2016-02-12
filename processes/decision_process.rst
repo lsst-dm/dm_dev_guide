@@ -1,6 +1,6 @@
-######################################
-Discussion and Decision Making Process
-######################################
+#################################################
+Discussion and Decision Making Process (RFC, RFD)
+#################################################
 
 This page describes some of the formal processes we use in Data Management to make decisions.
 Generally, DM teams and staff can implement non-controversial work (see § :ref:`decision-making-empowerment`).
