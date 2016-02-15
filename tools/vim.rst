@@ -19,7 +19,7 @@ The following configuration file should be placed in :file:`~/.vim/ftplugin/c.vi
    setlocal comments^=s2:/**,mb:*,ex:*/
    syntax match cTodo /\todo/
 
-You may also need to tell vim to intent according to your filetype plugins by adding the following to :file:`~/.vimrc`:
+You may also need to tell vim to indent according to your filetype plugins by adding the following to :file:`~/.vimrc`:
 
 .. code-block:: text
 
