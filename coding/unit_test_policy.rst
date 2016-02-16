@@ -85,8 +85,23 @@ C++: boost.test
     function testing <unit_test_private_functions>`.
 
 Python: unittest
-    LSST DM developers should use `Python's unittest framework`_. The Python
-    inline help feature documents the unittest interface.
+    LSST DM developers should use `Python's unittest framework`_.
+
+    :mod:`lsst.utils.tests` provides several utilities for writing Python tests
+    that developers should make use of. In particular,
+    :class:`lsst.utils.tests.MemoryTestCase` is used to detect memory leaks in
+    C++ objects. :class:`~lsst.utils.tests.MemoryTestCase` should be used in
+    *all* tests, even if C++ code is not explicitly referenced.
+
+    This example shows the basic structure of an LSST Python unit test module,
+    including :class:`~lsst.utils.tests.MemoryTestCase`:
+
+    .. literalinclude:: unit_test_snippets/unittest_runner_example.py
+       :language: python
+       :emphasize-lines: 21
+
+    Note that :class:`~lsst.utils.tests.MemoryTestCase` must always be the
+    final test suite.
 
 .. _single-header variant: http://www.boost.org/doc/libs/1_60_0/libs/test/doc/html/boost_test/usage_variants.html#boost_test.usage_variants.single_header
 .. _Boost Unit Test Framework: http://www.boost.org/doc/libs/1_60_0/libs/test/doc/html/index.html
