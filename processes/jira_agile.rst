@@ -4,7 +4,7 @@ JIRA Agile Usage
 
 - Cycles (aka Releases) occur every 6 months.
 
-- Sprints are two-week, fixed timeframes.
+- Sprints are monthly, fixed timeframes.
 
 - Epics are higher-level features or capabilities that are to be delivered in a
   cycle.  Epic names should be of the form "Area Short Description" (e.g.
