@@ -16,8 +16,8 @@ on Unit Testing and its transition into Integration Testing.
 
 .. _Introduction into testing or why testing is worth the effort: http://www.boost.org/doc/libs/1_36_0/libs/test/doc/html/tutorials/intro-in-testing.html
 
-Types of Unit Test
-==================
+Types of Unit Tests
+===================
 
 Unit tests should be developed from the detailed design of the baseline, i.e.
 from either the structure diagrams or the class/function definitions. The type
@@ -53,6 +53,7 @@ object modification, the current developer should update the test suite to
 validate the changed internals.
 
 .. important::
+
    LSST DM developers are responsible for creating test suites to unit test all
    objects they implement. Additionally, they are responsible for updating an
    object's test suite after modifying the object's source code.
@@ -84,12 +85,12 @@ C++: boost.test
     function testing <unit_test_private_functions>`.
 
 Python: unittest
-    LSST DM developers should use the `Python unittest framework`_. The Python
+    LSST DM developers should use `Python's unittest framework`_. The Python
     inline help feature documents the unittest interface.
 
 .. _single-header variant: http://www.boost.org/doc/libs/1_60_0/libs/test/doc/html/boost_test/usage_variants.html#boost_test.usage_variants.single_header
 .. _Boost Unit Test Framework: http://www.boost.org/doc/libs/1_60_0/libs/test/doc/html/index.html
-.. _Python unittest framework: https://docs.python.org/library/unittest.html
+.. _Python's unittest framework: https://docs.python.org/library/unittest.html
 
 Unit Testing Composite Objects
 ==============================
@@ -105,8 +106,6 @@ Automated Nightly and On-Demand Testing
 
 `Jenkins`_ is a system which automates the compile/load/test cycle required to
 validate code changes. In particular, Jenkins automatically performs unit
-testing on each DM module compiled during the Jenkins processing and provides
-rapid notification of failures. This notification to  developers of failing
 builds and unit tests expedites the module's repair and, hopefully, limits the
 time other developers are impacted by the failure. For details, refer to the
 workflow documentation on :ref:`workflow-testing`.
@@ -144,6 +143,5 @@ code segments which have not been adequately tested and should then revise the
 unit test suite as appropriate. Coverage analysis reports should be generated
 in concert with the routine automated buildbot testing.
 
-Refer to `Coverage Analysis`_ for tools for DM Python and C++ source code.
-
-.. _Coverage Analysis: https://confluence.lsstcorp.org/display/LDMDG/Coverage+Analysis
+Refer to :doc:`Coverage Analysis <unit_test_coverage>` for tools for DM Python
+and C++ source code.
