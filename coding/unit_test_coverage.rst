@@ -14,24 +14,24 @@ through the code and then calculating metrics indicative of the coverage
 achieved during execution.
 
 Coverage analysis examines the output of a code instrumented to record every
-line executed, every conditional branch taken, and every block executed. Then
-using static information such as total number of lines of code, branches, and
-blocks; lists of functions; and class methods, it generates metrics on:
+line executed, every conditional branch taken, and every block executed. It
+then generates metrics on:
 
-- % of statements executed
-- % of methods (and/or functions) executed
-- % of conditional branches executed
-- % of a method's (and/or function's) entry/exit branches taken.
+- Percent of statements executed
+- Percent of methods (and/or functions) executed
+- Percent of conditional branches executed
+- Percent of a method's (and/or function's) entry/exit branches taken.
 
-The metrics give a general idea of the thoroughness of the unit tests. The most
-valuable aspect of most current coverage analysis tools is the color-coded
-report where the statements not exercised and the branches not taken are
-strikingly evident. The color-coded coverage holes clearly show the developer
-where unit tests need improvement.
+The metrics give a general idea of the thoroughness of the unit tests. The
+most valuable aspect of most web-based coverage analysis tools is the
+color-coded report where the statements not exercised and the branches not
+taken are vividly evident. The color-coded coverage holes clearly show the
+developer where unit tests need improvement.
 
-Using the Coverage Analysis reports, the LSST DM developer should determine
+Using the coverage analysis reports, the LSST DM developer should determine
 code segments which have not been adequately tested and should then revise the
-unit test suite as appropriate.
+unit test suite as appropriate. Coverage analysis reports should be generated
+in concert with the routine automated buildbot testing.
 
 DM Coverage Analysis Metrics
 ============================
@@ -178,4 +178,4 @@ routines generated from the SWIG :file:`*.i` source are also instrumented.
 Later when a Python unittester invokes an instrumented C++ routine, the
 coverage is recorded into the well-known coverage data files
 :file:`<src>.gcda` and :file:`<src>.gcno`. Post-processing of the coverage
-data files is done by the developer's choice of C++ coverage analsyis tool.
+data files is done by the developer's choice of C++ coverage analysis tool.
