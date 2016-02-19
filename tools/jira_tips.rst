@@ -44,6 +44,10 @@ All open issues you have been assigned to review::
 
    Reviewers in (currentUser()) AND status = "In Review"
 
+All issues closed in a given month::
+
+   status changed to Done DURING ("2015/12/01", "2015/12/31")
+
 Issues where you have been mentioned in the last two weeks::
 
    text ~ currentUser() AND updatedDate >= -14d ORDER BY updated DESC
@@ -51,3 +55,7 @@ Issues where you have been mentioned in the last two weeks::
 Issues that match a label::
 
    labels = label-name
+
+Issues that are blocked by other issue::
+
+   issueFunction in hasLinks("is blocked by")
