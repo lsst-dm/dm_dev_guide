@@ -43,6 +43,7 @@ This Guide will help you in contributing to the DM development effort.
    coding/using_cpp_templates.rst
    coding/using_boost.rst
    coding/unit_test_policy.rst
+   coding/python_testing.rst
    coding/unit_test_private_functions.rst
    coding/unit_test_coverage.rst
    coding/profiling.rst
