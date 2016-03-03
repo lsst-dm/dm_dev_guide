@@ -99,7 +99,7 @@ You can also following in the `~/.bashrc` file (this is the jist of the :file:`l
 
 .. code-block:: bash
 
-   source ~lsstsw/eups/bin/setups.sh   # bash users
+   source ~lsstsw/eups/current/bin/setups.sh   # bash users
    setup anaconda
    setup git
    setup lsst
