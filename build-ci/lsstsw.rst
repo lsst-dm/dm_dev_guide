@@ -95,10 +95,11 @@ The :command:`rebuild` command is is a wrapper around the lower-level
    in the :file:`etc/repos.yaml` file, you can use it by making a symlink to
    :file:`$LSSTSW/build/afwdata`. In fact it is very useful to store
    ``afwdata`` outside the ``lsstsw`` directory and symlink to it, as it
-   allows you to delete your copy of ``lsstsw`` at any and start fresh,
-   without downloading ``afwdata`` again.  If you don't want a copy of
-   ``afwdata`` at all then you can add it to the :file:`etc/exclusions.txt`
-   file.
+   allows you to delete your copy of ``lsstsw`` at any time to start fresh,
+   without downloading ``afwdata`` again.  To do this, run ``bin/deploy``
+   on your fresh copy of lsstsw, then make a symlink to ``afwdata``
+   in ``lsstsw/build``. If you don't want a copy of ``afwdata`` at all
+   then you can add it to the :file:`etc/exclusions.txt` file.
 
 Customizations are possible by editing the :file:`etc/settings.cfg.sh` file,
 or by running :command:`lsst-build` manually. See the documentation in
