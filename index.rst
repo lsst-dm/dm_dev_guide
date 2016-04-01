@@ -75,6 +75,7 @@ This Guide will help you in contributing to the DM development effort.
    :caption: Build, Test, Release
    :name: part-build-ci
 
+   build-ci/eups_tutorial.rst
    build-ci/ci_overview.rst
    build-ci/lsstsw.rst
    build-ci/new_package.rst
