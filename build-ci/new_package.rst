@@ -48,7 +48,7 @@ being converted to `lfs`) require additional configuration.
   creation of broken EUPS `distrib` packages.  Please note that the "self-merge"
   policy of `RFC-75`_ does not apply to `manifest.remap`_.
 
-  *Unlike changes merged into* `repos.yam`_, *modifications to*
+  *Unlike changes merged into* `repos.yaml`_, *modifications to*
   `manifest.remap`_ *do not take immediate affect*
 
   recommend procedure is to attach the modification PR to a DM Jira issue on the
