@@ -9,7 +9,7 @@ This page help you get started on lsst-dev:
 
 1. :ref:`Setting up SSH Keys <lsst-dev-ssh-keys>`
 2. :ref:`Load the LSST Environment <lsst-dev-loadlsst>`
-3. Setting up developer tools; we recommend the :ref:`alternate toolset <lsst-dev-alt-tools>`
+3. :ref:`lsst-dev-tools`
 4. :ref:`Configuring xpra <lsst-dev-xpra>`
 
 Overview of Cluster Resources
@@ -89,78 +89,20 @@ For more information on using SSH public/private keys:
 - `Using SSH Public Key Authentication <http://macnugget.org/projects/publickeys/>`_
 - `SSH Public Key Based Authentication Howto <http://www.cyberciti.biz/tips/ssh-public-key-based-authentication-how-to.html>`_
 
-.. _lsst-dev-loadlsst:
-
-Load the LSST Environment
-=========================
-
-Do the following to set up your shell for development on the LSST cluster (``lsst-dev``, etc.).
-You can also following in the `~/.bashrc` file (this is the jist of the :file:`loadLSST.sh` script in the distribution):
-
-.. code-block:: bash
-
-   source ~lsstsw/eups/bin/setups.sh   # bash users
-   setup anaconda
-   setup git
-   setup lsst
 .. _lsst-dev-tools:
 
-Developer Tools on lsst-dev
-===========================
+Select Appropriate Developer Tools
+==================================
 
-Two sets of developer tools are available on ``lsst-dev``.
-DM developers should generally use :ref:`alternate <lsst-dev-alt-tools>` set to get have versions of GCC and Git that are capable of building the Stack and using Git LFS.
+The ``lsst-dev`` system is configured with the CentOS 6.7 as its operating system.
+This release of CentOS provides an old set of development tools, centred around version 4.4.7 of the `GNU Compiler Collection`_ (GCC).
+This version of GCC does not satisfy the `prerequisites for building the LSST stack`_.
+Before proceeding, therefore, you should enable the `Red Hat Developer Toolset`_ version 3 (``devtoolset-3``) which has been pre-installed.
+This provides an updated toolchain, including GCC 4.9.2.
 
-.. _lsst-dev-default-tools:
+Enable and test ``devtoolset-3`` using the ``scl`` command as follows (replacing ``bash`` with your shell of choice if necessary):
 
-Default Development Tools
--------------------------
-
-Currently the development servers hosted at NCSA are configured with CentOS 6.x as their operating system.
-
-The following developer packages are installed on each of these servers in their default environment:
-
-- gcc/g++/gfortran - GNU Compiler Collection - version 4.4.7
-- gdb - GNU Debugger - version 7.2
-- gcc-debuginfo
-- glibc-debuginfo
-- compat-glibc
-- compat-gcc-34
-- compat-gcc-34-c++
-- compat-gcc-34-g77
-- compat-libstdc++-296
-- compat-libstdc++-33
-- git - GIT - version 1.7.1
-- valgrind - Tool for finding memory management bugs in programs - version 3.8.1
-- python - version 2.6.6
-- bison - GNU Bison - version 2.4.1
-- byacc - version 1.9
-- flex - flex 2.5.35
-
-.. _lsst-dev-alt-tools:
-
-Alternate Development Tools
----------------------------
-
-Developer Toolset is an offering for developers on EL (Red Hat, CentOS, SCL) distributions.
-Using a framework called Software Collections, an additional set of tools is installed into the /opt directory, as recommended by the UNIX Filesystem Hierarchy Standard.
-These tools are enabled by the user on demand using the supplied scl utility.
-
-Developer Toolset 3.x provides following tools:
-
-- gcc/g++/gfortran - GNU Compiler Collection - version 4.9.2
-- git - GIT - version 1.9.3
-- gdb - GNU Debugger - version 7.8.2
-- binutils - A GNU collection of binary utilities - version 2.24
-- elfutils - A collection of utilities and DSOs to handle compiled objects - version 0.161
-- dwz - DWARF optimization and duplicate removal tool - version 0.11
-- systemtap - Programmable system-wide instrumentation system - version 2.6
-- valgrind - Tool for finding memory management bugs in programs - version 3.10.1
-- oprofile - System wide profiler - version 0.9.9
-
-To test the alternate devtoolset environment:
-
-.. code-block:: bash
+.. prompt:: bash $ auto
 
    $ scl enable devtoolset-3 bash
    $ gcc --version
@@ -169,12 +111,41 @@ To test the alternate devtoolset environment:
    This is free software; see the source for copying conditions.  There is NO
    warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-To make use of Git 1.9.x you can also use the Git 1.9 software collection.
-You can enable multiple software collections at the same time, so the following will enable both the ``devtoolset-3`` and ``git19``: 
+The Developer Toolset includes version 1.9.3 of the `Git`_ version control system.
+If you prefer the (slightly) more recent version 1.9.4, you may also wish to enable the ``git19`` package.
+This may be done at the same time as enabling ``devtoolset-3``.
+
+.. prompt:: bash
+
+   scl enable devtoolset-3 git19 bash
+
+You may wish to automatically enable ``devtoolset-3`` every time you log in to ``lsst-dev`` by adding it to your shell initialization files.
+For example, try adding the following to :file:`~/.profile`:
 
 .. code-block:: bash
 
-   scl enable devtoolset-3 git19 bash
+   exec scl enable devtoolset-3 bash
+
+.. _GNU Compiler Collection: https://gcc.gnu.org/
+.. _prerequisites for building the LSST stack: https://confluence.lsstcorp.org/display/LSWUG/OSes+and+Prerequisites
+.. _Red Hat Developer Toolset: http://developers.redhat.com/products/developertoolset/overview/
+.. _Git: https://www.git-scm.com/
+
+.. _lsst-dev-loadlsst:
+
+Load the LSST Environment
+=========================
+
+Do the following to set up your shell for development on the LSST cluster (``lsst-dev``, etc.).
+You can also following in the `~/.bashrc` file (this is the jist of the :file:`loadLSST.sh` script in the distribution):
+
+.. prompt:: bash
+
+   source ~lsstsw/eups/bin/setups.sh   # bash users
+   setup anaconda
+   setup git
+   setup lsst
+
 
 .. _lsst-dev-xpra:
 
