@@ -136,16 +136,39 @@ For example, try adding the following to :file:`~/.profile`:
 Load the LSST Environment
 =========================
 
-Do the following to set up your shell for development on the LSST cluster (``lsst-dev``, etc.).
-You can also following in the `~/.bashrc` file (this is the jist of the :file:`loadLSST.sh` script in the distribution):
+A ‘shared’ installation of the LSST software stack is installed under :file:`/ssd/lsstsw/stack`.
+This installation is regularly updated to recently weekly builds of the ``lsst_distrib`` top-level package; the most recent build is tagged as ``current``.
+Add this shared stack to your environment and set up the latest build of the LSST applications by running:
 
 .. prompt:: bash
 
-   source ~lsstsw/eups/bin/setups.sh   # bash users
-   setup anaconda
-   setup git
-   setup lsst
+  source /ssd/lsstsw/stack/loadLSST.bash
+  setup lsst_apps
 
+(substitute :file:`loadLSST.csh`, :file:`loadLSST.ksh` or :file:`loadLSST.zsh`, depending on your preferred shell).
+
+Since this stack is shared, all members of the ``lsst`` group have permission to declare products within it, thereby making new products and versions available for other users.
+For example, to share ``myVersion`` of ``myProduct``, which you have built and installed in directory ``productDir``, run:
+
+.. prompt:: bash
+
+   eups declare myProduct myVersion -r productDir
+
+To declare a product for your own use without making it available for others to ``setup``, tag it with your username:
+
+.. prompt:: bash
+
+   eups declare myProduct myVersion -t $(whoami) -r productDir
+
+Please make use of this capability responsibly: make public declarations only of those products which are of general use, and remove them when they become obsolete:
+
+.. prompt:: bash
+
+   eups undeclare myProduct myVersion
+
+Refer to the :doc:`/build-ci/eups_tutorial` for more information on working with EUPS product stacks.
+
+Administators may wish to note that the shared stack is automatically updated using the script :file:`~lsstsw/shared-stack/shared_stack.py`, which is executed nightly by Cron.
 
 .. _lsst-dev-xpra:
 
