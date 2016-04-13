@@ -5,12 +5,15 @@ Using the lsst-dev Server
 ``lsst-dev`` is a cluster of servers run by NCSA for LSST DM development work.
 To get an account, see the :doc:`Onboarding Checklist </getting-started/onboarding>`.
 
-This page help you get started on lsst-dev:
+This page is designed help you get started on ``lsst-dev``:
 
-1. :ref:`Setting up SSH Keys <lsst-dev-ssh-keys>`
-2. :ref:`Load the LSST Environment <lsst-dev-loadlsst>`
-3. :ref:`lsst-dev-tools`
-4. :ref:`Configuring xpra <lsst-dev-xpra>`
+#. :ref:`lsst-dev-overview`
+#. :ref:`lsst-dev-ssh-keys`
+#. :ref:`lsst-dev-tools`
+#. :ref:`lsst-dev-loadlsst`
+#. :ref:`lsst-dev-xpra`
+
+.. _lsst-dev-overview:
 
 Overview of Cluster Resources
 =============================
@@ -23,8 +26,8 @@ Overview of Cluster Resources
 
 .. _lsst-dev-ssh-keys:
 
-Setting up SSH Keys
-===================
+Set up SSH Keys
+===============
 
 You will need to establish public/private keys to access NCSA development machines via SSH.
 Here's how to set up your SSH client to use keys:
@@ -32,9 +35,9 @@ Here's how to set up your SSH client to use keys:
 1. Generate a key pair
 ----------------------
 
-If  you haven't already, generate your key pair on your local machine (you should always use a strong password for your passphrase): 
+If you haven't already, generate your key pair on your local machine (you should always use a strong password for your passphrase):
 
-.. code-block:: bash
+.. prompt:: bash
 
    mkdir ~/.ssh
    chmod 700 ~/.ssh
@@ -42,7 +45,7 @@ If  you haven't already, generate your key pair on your local machine (you shoul
 
 Enter your passphrase at the prompts:
 
-.. code-block:: bash
+.. prompt:: bash $ auto
 
    Generating public/private rsa key pair.
    Enter file in which to save the key (/home/username/.ssh/id_rsa):
@@ -58,29 +61,29 @@ Enter your passphrase at the prompts:
 
 Install the public key on the remote server, :file:`~/.ssh/id_rsa.pub`, to ``lsst-dev.ncsa.illinois.edu``:
 
-.. code-block:: bash
+.. prompt:: bash
 
-   % scp .ssh/id_rsa.pub lsst-dev.ncsa.illinois.edu:mymachine_rsa.pub
-   % ssh lsst-dev.ncsa.illinois.edu
+   scp .ssh/id_rsa.pub lsst-dev.ncsa.illinois.edu:mymachine_rsa.pub
+   ssh lsst-dev.ncsa.illinois.edu
 
 On ``lsst-dev.ncsa.illinois.edu``:
 
-.. code-block:: bash
+.. prompt:: bash
 
-   % touch ~/.ssh/authorized_keys
-   % chmod 600 ~/.ssh/authorized_keys
-   % cat mydevmachine_rsa.pub >> ~/.ssh/authorized_keys
-   % exit
+   touch ~/.ssh/authorized_keys
+   chmod 600 ~/.ssh/authorized_keys
+   cat mydevmachine_rsa.pub >> ~/.ssh/authorized_keys
+   exit
 
 3. Login
 --------
 
 Login without a password to ``lsst-dev``:
 
-.. code-block:: bash
+.. prompt:: bash $ auto
 
-   % ssh lsst-dev.ncsa.illinois.edu
-   Enter passphrase for key '/home/username/.ssh/id_rsa':    # type your key passphrase
+   $ ssh lsst-dev.ncsa.illinois.edu
+   Enter passphrase for key '/home/username/.ssh/id_rsa': # type your key passphrase
 
 For more information on using SSH public/private keys:
 
@@ -172,8 +175,8 @@ Administators may wish to note that the shared stack is automatically updated us
 
 .. _lsst-dev-xpra:
 
-Remote Display with xpra
-========================
+Configure Remote Display with :command:`xpra`
+=============================================
 
 :command:`xpra` can be thought of as "screen for X" and offers advantages over VNC.
 It can be very handy and efficient for remote display to your machine from the LSST cluster (e.g., debugging with :command:`ds9`) because it is much faster than a regular X connection when you don't have a lot of bandwidth (e.g., working remotely), and it saves state between connections.
@@ -181,7 +184,7 @@ Here's how to use it:
 
 On ``lsst-dev``:
 
-.. code-block:: bash
+.. prompt:: bash
 
    xpra start :10
    export DISPLAY=:10
@@ -190,17 +193,16 @@ You may have to choose a different display number (>10) if ``:10`` is already in
 
 On your local machine, do:
 
-.. code-block:: bash
+.. prompt:: bash
 
    xpra attach ssh:lsst-dev:10
 
 You may leave that running, or put it in the background and later use:
 
-.. code-block:: bash
+.. prompt:: bash
 
    xpra detach
 
-Then you can open windows on lsst-dev (with DISPLAY=:10) and they will appear on your machine.
-If you now kill the ``xpra attach`` on your machine, you'll lose those windows.
+Then you can open windows on ``lsst-dev`` (with ``DISPLAY=:10``) and they will appear on your machine.
+If you now kill the :command:`xpra attach` on your machine, you'll lose those windows.
 When you reattach, they'll reappear.
-
