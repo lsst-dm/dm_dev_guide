@@ -84,7 +84,7 @@ These tasks are made much simpler if the code is easily readable and well-docume
 2-2. We are writing C++11/14 with some restrictions.
 ----------------------------------------------------
 
-The official policy on the use of C++11 features is at `Policy on use of C++11/14 language features <style-guide-cpp-cpp-11-14>`_.
+The official policy on the use of C++11 features is at :ref:`Policy on use of C++11/14 language features <style-guide-cpp-cpp-11-14>`.
 
 .. _style-guide-cpp-2-3:
 
