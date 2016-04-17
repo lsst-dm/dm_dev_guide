@@ -40,12 +40,15 @@ Monospace
 Inline math
    ``:math:`\sqrt{16}``` → :math:`\sqrt{16}`.
 
-**Inline styles can't be nested.**
-For example, you *can't* write ``*see :ref:`this page <label>`*``.
+.. note::
 
-Inline markup also needs to be surrounded by white space, though trailing punctuation is fine.
-You can get around this with an *escaped space* that is otherwise invisible,
-For example ``one\ *word*`` renders as one\ *word*.
+   Inline styles can't be nested
+   
+   For example, you *can't* write ``*see :ref:`this page <label>`*``.
+
+   Inline markup also needs to be surrounded by white space, though trailing punctuation is fine.
+   You can get around this with an *escaped space* that is otherwise invisible,
+   For example ``one\ *word*`` renders as one\ *word*.
 
 .. _rst-inline-semantics:
 
@@ -113,6 +116,9 @@ which renders as:
   - And indent the sub-list consistently
 
 - Last item.
+
+There should be a blank line before and after the list to separate the list from paragraphs.
+Blanks lines are allowed *between* list items as well.
 
 Enumerated lists can be written similarly:
 
@@ -386,10 +392,15 @@ produces:
 .. include:: snippets/noheader_table.rst
    :start-line: 2
 
+Be sure to leave a blank line before and after the ``table`` directive.
+
 .. _rst-figures:
 
 Images and Figures
 ==================
+
+Plain images
+------------
 
 Plain images can be included with the ``image`` directive.
 For example:
@@ -408,6 +419,8 @@ The ``image`` directive has `more configurable fields <http://docutils.sourcefor
 If image sizes need to be manipulated from reST, we recommend using ``scale`` since it is responsive.
 We hope to provide better support for responsive image sizing.
 
+Be sure to leave a blank line before and after the ``image`` directive.
+
 Figure directive
 ----------------
 
@@ -423,6 +436,8 @@ For example:
 
 Note that the ``:name:`` field takes the place of a separate :ref:`label <rst-internal-links>` for hyperlinking.
 By convention, these labels should be prefixed with "``fig-``."
+
+Be sure to leave a blank line before and after the ``figure`` directive.
 
 Note on paths to image files
 ----------------------------
@@ -470,6 +485,8 @@ produces
 
 .. include:: snippets/py_codeblock_example.rst
    :start-line: 2
+
+Be sure to leave a blank line before and after the ``code-block`` directive.
 
 .. _rst-literalinclude:
 
