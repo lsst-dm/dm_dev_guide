@@ -38,14 +38,17 @@ Monospace
    When referring to code objects, it's better to use markup that links to the object's API documentation (see the :ref:`rst-code-link` section).
 
 Inline math
-   ``:math:`\sqrt{16}``` → :math:`\sqrt{16}`.
+   ``:math:`\sqrt{16}``` → :math:`\sqrt{16}` (See also the :ref:`Math <rst-math>` section).
 
-**Inline styles can't be nested.**
-For example, you *can't* write ``*see :ref:`this page <label>`*``.
+.. note::
 
-Inline markup also needs to be surrounded by white space, though trailing punctuation is fine.
-You can get around this with an *escaped space* that is otherwise invisible,
-For example ``one\ *word*`` renders as one\ *word*.
+   Inline styles can't be nested
+   
+   For example, you *can't* write ``*see :ref:`this page <label>`*``.
+
+   Inline markup also needs to be surrounded by white space, though trailing punctuation is fine.
+   You can get around this with an *escaped space* that is otherwise invisible,
+   For example ``one\ *word*`` renders as one\ *word*.
 
 .. _rst-inline-semantics:
 
@@ -113,6 +116,9 @@ which renders as:
   - And indent the sub-list consistently
 
 - Last item.
+
+There should be a blank line before and after the list to separate the list from paragraphs.
+Blanks lines are allowed *between* list items as well.
 
 Enumerated lists can be written similarly:
 
@@ -247,6 +253,13 @@ To link to another page in the same doc project, use the ``:doc:`` role with the
 
 Note how the ``.rst`` extension wasn't included.
 
+Links to equations
+------------------
+
+Equations can be linked to using a ``:ref:`` to their label, as described above.
+If the equation with numbered by adding a ``:label:`` field to the math directive itself then that equation can be reference with the ``:eq:`` role.
+See :ref:`rst-math-block-refs` for more information.
+
 .. _rst-code-link:
 
 Links to code objects
@@ -258,7 +271,7 @@ When describing a code object, you can also link to that object's API definition
 .. _rst-python-link:
 
 Links to Python objects
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Objects can be referenced with these roles:
 
@@ -272,7 +285,7 @@ Objects can be referenced with these roles:
 - ``:py:const:`pkg.mod.CONSTANT``` to reference a module-level *constant* ``CONSTANT`` in ``pkg.mod``.
 
 Namespace resolution
-^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""
 
 In these examples, the full namespace of each Python object is specified.
 In some contexts, Sphinx may be able to identify the reference object without the full namespace.
@@ -282,7 +295,7 @@ See the `Sphinx documentation <http://sphinx-doc.org/domains.html#cross-referenc
 .. _rst-cpp-links:
 
 Links to C++ objects
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 Similarly to Python object links, Sphinx supports a ``cpp`` domain for C++ code that provides the following roles:
 
@@ -302,7 +315,7 @@ Note that Sphinx has several limitations for linking to C++ objects:
 - You cannot link to template classes/functions/aliases/variables---only template instantiations.
 
 Customizing the link text
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By default the full namespace to the object is shown as the linked text.
 To show only the name of the object itself, prefix the namespace with ``~``.
@@ -322,7 +335,7 @@ For example:
    :py:func:`Numpy's sine function <numpy.sin>`
 
 Default domains
----------------
+^^^^^^^^^^^^^^^
 
 By default, these code referencing roles require a *domain prefix* such as ``py`` or ``cpp`` to specify the language of the object being reference.
 This prefix can be omitted when the domain is implicitly set, such as in a Python docstring.
@@ -386,10 +399,15 @@ produces:
 .. include:: snippets/noheader_table.rst
    :start-line: 2
 
+Be sure to leave a blank line before and after the ``table`` directive.
+
 .. _rst-figures:
 
 Images and Figures
 ==================
+
+Plain images
+------------
 
 Plain images can be included with the ``image`` directive.
 For example:
@@ -408,6 +426,8 @@ The ``image`` directive has `more configurable fields <http://docutils.sourcefor
 If image sizes need to be manipulated from reST, we recommend using ``scale`` since it is responsive.
 We hope to provide better support for responsive image sizing.
 
+Be sure to leave a blank line before and after the ``image`` directive.
+
 Figure directive
 ----------------
 
@@ -424,6 +444,8 @@ For example:
 Note that the ``:name:`` field takes the place of a separate :ref:`label <rst-internal-links>` for hyperlinking.
 By convention, these labels should be prefixed with "``fig-``."
 
+Be sure to leave a blank line before and after the ``figure`` directive.
+
 Note on paths to image files
 ----------------------------
 
@@ -435,6 +457,87 @@ Package documentation is hosted in ``doc/`` directories of the git repositories 
 For such package documentation, image files should be placed inside a directory in ``doc/_static/`` named for the package itself.
 For example ``doc/_static/obs_decam/`` for the `obs\_decam <https://github.com/lsst/obs_decam>`_ package.
 This nested directory structure is needed to merge package documentation content into the root documentation build.
+
+.. _rst-math:
+
+Math
+====
+
+Sphinx allows you to write math expressions with a LaTeX-like plain text syntax that will be typeset in the browser.
+You can either write *inline* expressions with the ``math`` role, or *block* elements with the ``math`` directive.
+
+.. _rst-math-inline:
+
+Inline math
+-----------
+
+Write inline math expressions with the ``math`` role.
+For example, ``:math:`\sigma_\mathrm{mean} = \sigma / \sqrt{N}``` produces :math:`\sigma_\mathrm{mean} = \sigma / \sqrt{N}`.
+
+.. _rst-math-block:
+
+Block math
+----------
+
+To display math as a block element, use the ``math`` directive (be sure to leave a blank line before and after the ``math`` directive).
+For example:
+
+.. literalinclude:: snippets/math.rst
+   :language: rst
+   :lines: 3-
+
+renders as
+
+.. include:: snippets/math.rst
+   :start-line: 2
+
+.. _rst-math-block-refs:
+
+Referencing equations
+^^^^^^^^^^^^^^^^^^^^^
+
+Notice the ``:label:`` field in the previous sample; it both annotates the equation with a number, and allows the equation to be cross-referenced with the ``eq`` role; for example ```:eq:`math-sample``` produces :eq:`math-sample`.
+Equation references may only be made within the same reStructuredText page as the original ``math`` directive.
+See `the Sphinx docs on Math support <http://www.sphinx-doc.org/en/stable/ext/math.html>`_ for more information.
+
+.. _rst-math-block-multi:
+
+Multiple Equations
+^^^^^^^^^^^^^^^^^^
+
+Multiple equations can appear in the same ``math`` directive.
+Simply include a blank line between each equation (and don't include an equation as a argument of the ``math`` directive itself).
+For example:
+
+.. literalinclude:: snippets/math-multi.rst
+   :language: rst
+   :lines: 3-
+
+renders as
+
+.. include:: snippets/math-multi.rst
+   :start-line: 2
+
+.. _rst-math-block-align:
+
+Aligned Equations
+^^^^^^^^^^^^^^^^^
+
+Often when there are multiple statements in a ``math`` directive it's desirable to align those statements around the equals sign, for example.
+In AMSMath-LaTeX this would be achieved with the ``align`` environment.
+In reStructuredText we can accomplish the same in a ``math`` directive:
+
+.. literalinclude:: snippets/math-align.rst
+   :language: rst
+   :lines: 3-
+
+renders as
+
+.. include:: snippets/math-align.rst
+   :start-line: 2
+
+Notice how the alignment point is marked with an ``&`` and ``\\`` is appended to each math statement *except for the last.*
+Also note how there are no blank lines *between* math statements.
 
 .. _rst-code-blocks:
 
@@ -470,6 +573,8 @@ produces
 
 .. include:: snippets/py_codeblock_example.rst
    :start-line: 2
+
+Be sure to leave a blank line before and after the ``code-block`` directive.
 
 .. _rst-literalinclude:
 
