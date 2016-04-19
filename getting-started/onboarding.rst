@@ -43,8 +43,16 @@ Community.lsst.org
 HipChat
    `HipChat <https://www.hipchat.com/>`_ is DM's internal instant messaging platform.
    Install HipChat on your computer (and phone, if you wish) and then ask your T/CAM for an invitation to DM's group.
-   Some important rooms to follow are 'Data Management,' 'SQuaRE,' 'Bot: Jenkins' and 'Bot: Buildbot Notifications,' 'Meeting du Jour,' 'Tea Time,' and 'Tavern.'
-   Your team may also have specific rooms.
+   Some important rooms to follow are:
+   
+   - 'Data Management' for general DM discussion,
+   - 'Software Development' for anything about writing software,
+   - 'SQuaRE' for developer support services,
+   - 'Bot: Jenkins' for our Continuous Integration system,
+   - 'Tavern' for "water cooler" type talk,
+   - 'Tea Time' for more serious but still non-LSST conversation
+   
+   Your team may also have specific rooms, and you can send private messages to individuals.
 
 Google account for Hangouts
    Many small meetings are conducted on `Google Hangouts <https://hangouts.google.com/>`_, which requires you to have an account with https://google.com.
