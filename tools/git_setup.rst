@@ -1,12 +1,19 @@
-############################
-Git Setup and Best Practices
-############################
+################################
+Git Configuration Best Practices
+################################
 
-This page collects best practices for configuration and using Git for DM development.
+This page collects best practices for configuring Git for DM development.
 
 *See also*:
 
-- :doc:`/processes/workflow` for our :ref:`official Git user.email configuration requirement <git-setup>` as well as policies for `Git branch naming <git-branching>` and :ref:`merging <workflow-code-review-merge>`.
+- :doc:`/processes/workflow` for guidance on how we use Git, including:
+
+  - Our official :ref:`Git user.email configuration requirement <git-setup>`,
+  - :ref:`Git branch naming <git-branching>`,
+  - :ref:`Git branch merging <workflow-code-review-merge>`,
+  - :ref:`Git commit organization best practices <git-commit-organization-best-practices>`, and
+  - :ref:`Commit message best practices <git-commit-message-best-practices>`.
+
 - :doc:`/tools/git_lfs`
 
 .. _git-learning-resources:
