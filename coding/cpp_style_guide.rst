@@ -2463,7 +2463,14 @@ In an international environment English is the preferred language.
    /* if the moon is blue */        ant.pointAt(Planet.VENUS);
    }
    Commenting in the second way makes code difficult to read and difficult to modify.
-   6-25. Comments SHOULD be included relative to their position in the code.
+
+.. _style-guide-cpp-6-25:
+
+6-25. Comments SHOULD be included relative to their position in the code.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: cpp
+
    // YES:
    while (true) {
        // Do something
