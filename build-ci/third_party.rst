@@ -41,6 +41,13 @@ The repository, once created, needs to contain the following directories:
 We discuss the contents of :file:`ups/` and :file:`patches/` in more detail
 below.
 
+.. warning::
+
+   If the root directory of your repository contains any other files (e.g.
+   :file:`README`, :file:`.gitignore`, etc) you will need to give special
+   instructions on how to handle them. See the section on
+   :ref:`build-third-party-other-files`, below.
+
 .. _LSST GitHub organization: https://github.com/lsst
 .. _the table file: https://github.com/lsst/lsst_thirdparty/blob/master/ups/lsst_thirdparty.table
 .. _third party software: https://confluence.lsstcorp.org/display/DM/DM+Third+Party+Software
@@ -176,6 +183,36 @@ gzipped tarball in :file:`upstream/`.
 
    EUPS expects the patches to be formatted according to the output of
    :command:`git diff`, not the output of :command:`diff`.
+
+.. _build-third-party-other-files:
+
+Other Files
+-----------
+
+The form of package that has been constructed is referred to by EUPS as a
+‘tarball-and-patch’ or ‘TaP’ package. Although these are standard for use in
+LSST, they are not the only type of package EUPS supports.
+
+When confronted with a source directory, EUPS attempts to determine what sort
+of package it is dealing with. If it sees *any* files other than the
+directories listed above, it concludes that the package in question is *not* a
+TaP package.
+
+Often, it is desirable to add other files to the package (for example,
+:file:`README` or :file:`.gitignore`). EUPS will then misidentify the package
+type, and the build will fail.
+
+To account for this, it is necessary to explicitly flag this as a TaP package.
+There are two mechanisms for this, depending of the `version of EUPS`_ being
+used. At time of writing, LSST's :doc:`/build-ci/ci_overview` use a version of
+EUPS which only supports the now-deprecated mechanism. Therefore, in the
+interests of future proofing, both:
+
+#. Add the line ``TAP_PACKAGE=1`` to the top of :file:`ups/eupspkg.cfg.sh`;
+#. Add an empty file, :file:`.tap_package`, to the root directory of your
+   package.
+
+.. _version of EUPS: https://github.com/RobertLuptonTheGood/eups/blob/2.0.2/Release_Notes#L21
 
 Testing the Package
 ===================
