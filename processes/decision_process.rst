@@ -102,7 +102,7 @@ Use an **Is triggered by** JIRA linkage for these tickets that refers to the RFC
 RFC implementation
 ------------------
 
-An RFC considered 'implemented' once all tickets that have an **Is triggering** relationship from the RFC are marked as **Done**.
+An RFC is considered 'implemented' once all tickets that have an **Is triggering** relationship from the RFC are marked as **Done**.
 
 Once the RFC is implemented, return to the RFC's JIRA issue page and click the "We Shipped It!" button.
 This changes the RFC's status from **Adopted** to **Implemented.**
