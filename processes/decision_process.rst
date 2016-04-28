@@ -72,17 +72,13 @@ In particular, there is no need to call for a formal vote on the (refined) resol
 If no explicit objections have been raised within, typically, 72 hours for "ordinary" issues and 1 week for "major" issues, the Assignee should assume that there are none.
 This is known as "lazy consensus."
 
-Part of the consensus-building process is a clear statement of what the implementation plan will be.
-
-When consensus is established, and a set of implementation tickets is created, the Assignee is responsible for marking the RFC as **Adopted** in JIRA.
-
-Once the RFC is adopted, the Assignee should create tickets that implement the implementation plan.
-Use an 'Is triggered by' JIRA linkage for these tickets.
-
 Be especially careful about not making irreversible changes in the "lazy consensus" time period unless you're absolutely certain there's a general agreement on the stated course of action.
 If you break something, be ready to fix it.
 Apply sound reasoning and good judgment about what may be acceptable and what might be not.
 Mistakes will happen; accept that occasionally you will be requested to revert an action for which you thought agreement existed, and learn from the experience.
+
+Part of the consensus-building process is a clear statement of what the implementation plan will be.
+This implementation plan is translated into tickets in the :ref:`adoption phase <decision-making-rfc-adoption>`.
 
 .. _decision-making-rfc-appeals:
 
@@ -92,15 +88,24 @@ Appeals process
 If you can't converge on a resolution to an RFC that has no serious objections but you still feel that something must be done, you may request that the Project Manager, Project Scientist, and Project Engineer rule on it.
 In most non-trivial cases, they will, with the advice of the Software Architect, empanel a group of experts to which they will delegate the right to make the decision, by voting if need be.
 
+.. _decision-making-rfc-adoption:
+
+Adopting an RFC
+---------------
+
+When consensus is established the Assignee should create a set of tickets that specify the implementation work, and then mark the RFC as **Adopted** in JIRA.
+
+Use an **Is triggered by** JIRA linkage for these tickets that refers to the RFC.
+
 .. _decision-making-rfc-implementation:
 
 RFC implementation
 ------------------
 
-An RFC is implemented by completing all tickets that were created when the RFC was adopted.
+An RFC considered 'implemented' once all tickets that have an **Is triggering** relationship from the RFC are marked as **Done**.
 
 Once the RFC is implemented, return to the RFC's JIRA issue page and click the "We Shipped It!" button.
-This changes the RFC's status from "Adopted" to "Implemented."
+This changes the RFC's status from **Adopted** to **Implemented.**
 
 .. _decision-making-rfc-tct:
 
