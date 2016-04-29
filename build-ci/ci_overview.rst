@@ -8,6 +8,8 @@ ensure master is always deployable.
 Jenkins
 -------
 
+.. _build-ci-travis:
+
 Travis CI
 ---------
 
