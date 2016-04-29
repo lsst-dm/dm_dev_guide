@@ -2,24 +2,35 @@
 Adding a New Package to the Build
 #################################
 
-"Top-level products" are the roots of the LSST package hierarchy. They include
-``lsst_apps``, ``lsst_distrib``, ``qserv_distrib`` and ``lsst_sims``. Before
-adding a new dependency to any top level product, it must be added to the
-`LSST organization on GitHub`_ and access must be granted to the appropriate
-teams. Both DM-written packages and third-party packages should go through the
-RFC process first to confirm their name and the suitability of their contents.
+New packages intended for distribution to end users should generally be added
+as a dependency of a "top level product": these are the roots of the LSST
+package hierarchy. They include ``lsst_apps``, ``lsst_distrib``,
+``qserv_distrib`` and ``lsst_sims``.
 
-DM-written Science Pipelines packages should follow the template in the
-`lsst/templates`_ repository.
+Before adding a new dependency to any of these products, it must be approved
+through the usual :doc:`/processes/decision_process`: consensus must be
+reached regarding both the name and the suitability of the new package. Before
+adopting the RFC, implementation tickets should be created to cover package
+creation.
 
-Third-party packages should be packaged as described in :doc:`third_party`.
+After approval, code written internally by Data Management should be packaged
+following the template in the `lsst/templates`_ repository. DM packaging of
+third party code should proceed as described in :doc:`third_party`.
+
+New packages must be added to the `LSST organization on GitHub`_ and access
+must be granted to appropriate teams. For DM written code, these include "Data
+Management" and "Overlords"; for third party code, "DM Externals" and
+"Overlords" (but *not* Data Management).
 
 The new package must be added to the `etc/repos.yaml file in the lsstsw
-package`_ along with its corresponding GitHub URL. Note that this file is
-governed by a "self-merge" policy; see `RFC-75`_ for details.  The new package
-then needs to be added to the :file:`ups/*.table` file (and possibly the
-:file:`ups/*.cfg` file) of one or more other packages in the stack where it is
-used.
+package`_ along with its corresponding GitHub URL. This file is
+governed by a "self-merge" policy: upon opening a pull request, it will be
+checked by the :ref:`build-ci-travis` system, and developers may merge without
+further review on success. Refer to `RFC-75`_ for background.
+
+The new package then needs to be added to the :file:`ups/*.table` file (and
+possibly the :file:`ups/*.cfg` file) of one or more other packages in the
+stack where it is used.
 
 .. _lfs-repos:
 

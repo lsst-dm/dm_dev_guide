@@ -251,7 +251,14 @@ an annotated tag to your package repository using::
 
     git tag -a versionNumber -m "Some comment."
 
-The initial versionNumber should match the external package's version number.
+The initial ``versionNumber`` should match the external package's version
+number. If the package does not supply an appropriate version number, one can
+be generated from an upstream git SHA1 or equivalent version control revision
+number: use the format ``0.N.SHA1``, where ``N`` is ``1`` for the first
+release of the package, ``2`` for the second, etc. Note that the version
+number should never start with a letter, as EUPS regards that as semantically
+significant.
+
 If changes are required to the packaging (in the :file:`ups` or
 :file:`patches` directories) but not the external package source (in the
 :file:`upstream` directory), the string ``.lsst1`` (and ``.lsst2`` etc.
