@@ -412,13 +412,21 @@ We **always use non-fast forward merges** so that the merge point is marked in G
    git merge --no-ff tickets/DM-NNNN
    git push
 
-Once the merge has been completed, the developer should mark the JIRA ticket as **Done**.
-
 **GitHub pull request pages also offer a 'big green button' for merging a branch to master**.
 We discourage you from using this button since there isn't a convenient way of knowing that the merged development history graph will be linear from GitHub's interface.
 Rebasing the ticket branch against ``master`` and doing the non-fast forward merging on the command line is the safest workflow.
 
 The ticket branch **should not** be deleted from the GitHub remote.
+
+.. _workflow-announce:
+
+Announce the change
+-------------------
+
+Once the merge has been completed, the developer should mark the JIRA ticket as **Done**.
+If this ticket adds a significant feature or fixes a significant bug, it should be announced in the `DM Notifications category <https://community.lsst.org/c/dm/dm-notifications>`_ of community.lsst.org with tag `dm-dev <https://community.lsst.org/tags/dm-dev>`_.
+In addition, if this update affects users, a short description of its effects from the user point of view should be prepared for the release notes that accompany each major release.
+(Release notes are currently collected via team-specific procedures.)
 
 .. _git-commit-organization-best-practices:
 
