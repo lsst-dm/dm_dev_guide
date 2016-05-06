@@ -463,8 +463,11 @@ This nested directory structure is needed to merge package documentation content
 Math
 ====
 
-Sphinx allows you to write math expressions with a LaTeX-like plain text syntax that will be typeset in the browser.
-You can either write *inline* expressions with the ``math`` role, or *block* elements with the ``math`` directive.
+Sphinx allows you to write math expressions with a LaTeX-like plain text syntax that will be typeset by `MathJax <https://www.mathjax.org>`_ in the browser.
+MathJax supports AMSMath-LaTeX syntax.
+`This website by Dr Carol Burns <http://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm>`_ provides a comprehensive listing of available LaTeX syntax in MathJax, along with examples.
+
+In Sphinx, you can either write *inline* expressions with the ``math`` role, or *block* elements with the ``math`` directive.
 
 .. _rst-math-inline:
 
