@@ -85,8 +85,23 @@ C++: boost.test
     function testing <unit_test_private_functions>`.
 
 Python: unittest
-    LSST DM developers should use `Python's unittest framework`_. The Python
-    inline help feature documents the unittest interface.
+    LSST DM developers should use `Python's unittest framework`_.
+
+    :mod:`lsst.utils.tests` provides several utilities for writing Python tests
+    that developers should make use of. In particular,
+    :class:`lsst.utils.tests.MemoryTestCase` is used to detect memory leaks in
+    C++ objects. :class:`~lsst.utils.tests.MemoryTestCase` should be used in
+    *all* tests, even if C++ code is not explicitly referenced.
+
+    This example shows the basic structure of an LSST Python unit test module,
+    including :class:`~lsst.utils.tests.MemoryTestCase`:
+
+    .. literalinclude:: unit_test_snippets/unittest_runner_example.py
+       :language: python
+       :emphasize-lines: 21
+
+    Note that :class:`~lsst.utils.tests.MemoryTestCase` must always be the
+    final test suite.
 
 .. _single-header variant: http://www.boost.org/doc/libs/1_60_0/libs/test/doc/html/boost_test/usage_variants.html#boost_test.usage_variants.single_header
 .. _Boost Unit Test Framework: http://www.boost.org/doc/libs/1_60_0/libs/test/doc/html/index.html
@@ -122,26 +137,4 @@ instrumented code which records the complete execution path through the code
 and then calculating metrics indicative of the coverage achieved during
 execution.
 
-Coverage Analysis examines the output of a code instrumented to record every
-line executed, every conditional branch taken, and every block executed. Then
-using static information such as total number of: lines of code, branches, and
-blocks; lists of functions and class methods, it generates metrics on:
-
-- Percent of statements executed
-- Percent of methods (and/or functions) executed
-- Percent of conditional branches executed
-- Percent of a method's (and/or function's) entry/exit branches taken.
-
-The metrics give a general idea of the thoroughness of the unit tests. The
-most valuable aspect of most web-based coverage analysis tools is the
-color-coded report where the statements not exercised and the branches not
-taken are vividly evident. The color-coded coverage holes clearly show the
-developer where unit tests need improvement.
-
-Using the Coverage Analysis reports, the LSST DM developer should determine
-code segments which have not been adequately tested and should then revise the
-unit test suite as appropriate. Coverage analysis reports should be generated
-in concert with the routine automated buildbot testing.
-
-Refer to :doc:`Coverage Analysis <unit_test_coverage>` for tools for DM Python
-and C++ source code.
+See :doc:`unit_test_coverage` for more information.
