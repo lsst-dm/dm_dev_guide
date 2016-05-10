@@ -10,12 +10,12 @@ Not all Astropy core packages can be used by default.
 
 The following packages should be used from Astropy in preference to other Python packages:
 
-* ``astropy.io.fits`` instead of ``pyfits`` (use of ``pyfits`` is now deprecated).
+* :mod:`astropy.io.fits` instead of ``pyfits`` (use of ``pyfits`` is now deprecated).
 
 The following packages can be used internally in packages if they do not leak into public APIs:
 
-* ``astropy.coordinates``
-* ``astropy.time``
+* :ref:`astropy.coordinates <astropy:astropy-coordinates>`
+* :ref:`astropy:astropy-time`
 * ``astropy.table``
 * ``astropy.units``
 * ``astropy.units.quantity``
