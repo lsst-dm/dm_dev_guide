@@ -29,7 +29,7 @@ Once ``git-lfs`` is installed, run:
 .. code-block:: bash
 
    git config --global lfs.batch false
-   git lfs init
+   git lfs install
 
 to configure Git to use Git LFS in your :file:`~/.gitconfig` file.
 
