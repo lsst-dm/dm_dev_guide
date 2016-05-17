@@ -18,6 +18,7 @@ This Guide will help you in contributing to the DM development effort.
    :name: part-getting-started
 
    getting-started/onboarding.rst
+   getting-started/resources.rst
 
 .. toctree::
    :maxdepth: 1
