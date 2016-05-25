@@ -360,7 +360,7 @@ shares many concepts.
 :command:`eups distrib` reads details about available packages from a remote
 server. The appropriate location for finding LSST software is
 http://sw.lsstcorp.org/eupspkg. We can use :command:`eups distrib list` to
-list available software, and `eups distrib install` to install it::
+list available software, and :command:`eups distrib install` to install it::
 
    % eups distrib path
    http://sw.lsstcorp.org/eupspkg
