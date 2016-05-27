@@ -67,8 +67,10 @@ Filenames and paths
 Shell commands
    ``:command:`git rebase -i master``` → :command:`git rebase -i master`
 
-Environment variables
-   ``:envvar:`EUPS_PATH``` → :envvar:`EUPS_PATH`
+..
+  FIXME need to clarify that this is actual for linking, no semantics
+  Environment variables
+     ``:envvar:`EUPS_PATH``` → :envvar:`EUPS_PATH`
 
 User interface labels
    ``:guilabel:`New Pull Request``` → :guilabel:`New Pull Request`. This markup can be used for button labels, menus, or even text labels in interactive shell programs.

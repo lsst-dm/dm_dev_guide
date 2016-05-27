@@ -28,7 +28,7 @@ Getting Started
 Having installed the stack, you already have EUPS available. However, its
 internal database is pre-populated with knowledge about the stack packages you
 have installed. For simplicity, we begin by re-targeting it by setting the
-:envvar:`EUPS_PATH` variable::
+``EUPS_PATH`` variable::
 
    % . ${STACK_PATH}/loadLSST.bash
    % eups path
@@ -67,8 +67,8 @@ Adding an EUPS Table File
 
 In order to make our package usable, we need EUPS to ensure:
 
-- That :file:`a.py` is on :envvar:`PYTHONPATH` (so that we can import it);
-- That :file:`bin/a` is on :envvar:`PATH` (so that we can execute it).
+- That :file:`a.py` is on ``PYTHONPATH`` (so that we can import it);
+- That :file:`bin/a` is on ``PATH`` (so that we can execute it).
 
 We communicate this to EUPS through a *table file*, located in the
 :file:`eups` directory within the product (in this case,

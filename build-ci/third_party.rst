@@ -76,11 +76,11 @@ when you :command:`setup` your package.  Consider the table file for the
 This tells EUPS that, in order to setup the ``sphgeom`` package, it must also
 setup the packages ``base``, ``sconsUtils`` and ``doxygen``.  Furthermore, it
 adds the location of the ``sphgeom`` package (stored in the environment
-variable :envvar:`PRODUCT_DIR` at build time) to the environment variables
-:envvar:`PYTHONPATH`, :envvar:`LD_LIBRARY_PATH`, :envvar:`DYLD_LIBRARY_PATH`,
-:envvar:`LSST_LIBRARY_PATH`. These three environment variables are usually set
+variable ``PRODUCT_DIR`` at build time) to the environment variables
+``PYTHONPATH``, ``LD_LIBRARY_PATH``, ``DYLD_LIBRARY_PATH``,
+``LSST_LIBRARY_PATH``. These three environment variables are usually set
 for any installed package. We use the pre-defined ``envPrepend`` command so
-that the new :envvar:`PRODUCT_DIR` is prepended to the environment variables
+that the new ``PRODUCT_DIR`` is prepended to the environment variables
 and does not interfere with the non-stack system of libraries.
 
 :file:`eupspkg.cfg.sh`
@@ -92,7 +92,7 @@ to figure out how to install your package just based on the contents of the
 gzipped tarball in :file:`upstream/`. Sometimes, however, you will need to
 pass some additional commands in by hand. A simple version of this can be seen
 in the :file:`eupspkg.cfg.sh` for the `GalSim`_ package, which passes
-instructions to the `SCons`_ build system using the :envvar:`SCONSFLAGS`
+instructions to the `SCons`_ build system using the ``SCONSFLAGS``
 environment variable::
 
     export SCONSFLAGS=$SCONSFLAGS" USE_UNKNOWN_VARS=true TMV_DIR="$TMV_DIR" \
