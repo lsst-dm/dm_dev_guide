@@ -403,7 +403,7 @@ This is also consistent with :pep:`8` which states:
 
    Comparisons to singletons like ``None`` should always be done with ``is`` or ``is not``, never the equality operators.
 
-For sequences, (:py:class:`str`, :py:class:`list`, :py:class:`tuple`), use the fact that empty sequences are ``False``. 
+For sequences, (`str`, `list`, `tuple`), use the fact that empty sequences are ``False``. 
 
 Yes:
 
@@ -508,7 +508,7 @@ Yes:
    if type(obj) is type(1):
        pass
 
-When checking if an object is a string, keep in mind that it might be a unicode string too! Starting with Python 2.3, :py:class:`str` and :py:class:`unicode` have a common base class, :py:class:`basestring`, so you can do: 
+When checking if an object is a string, keep in mind that it might be a unicode string too! Starting with Python 2.3, `str` and `unicode` have a common base class, `basestring`, so you can do: 
 
 .. code-block:: py
 
@@ -576,7 +576,7 @@ Do not use features that are not available in these versions of Python.
 Python 2.5 improved Exception Handling SHOULD be used
 -----------------------------------------------------
 
-To catch all errors but let :py:exc:`SystemExit` and :py:exc:`KeyboardInterrupt` through, use:
+To catch all errors but let :py:exc:`~exceptions.SystemExit` and :py:exc:`~exceptions.KeyboardInterrupt` through, use:
 
 .. code-block:: py
 
@@ -610,7 +610,7 @@ The ``subprocess`` module SHOULD be used to spawn processes
 -----------------------------------------------------------
 
 Use the :py:mod:`subprocess` module to spawn processes.
-This supersedes and unifies :py:func:`os.system`, :py:func:`os.spawn`, :py:func:`os.popen`, etc..
+This supersedes and unifies :py:func:`os.system`, ``os.spawn``, :py:func:`os.popen`, etc..
 New in Python 2.3.
 
 .. _style-guide-py-9-2:

@@ -168,7 +168,7 @@ again see the :file:`README` for details).
 
 The second command then takes the cloned repositories and the information in
 :file:`manifest.txt` and builds the products, installs them into the stack
-pointed to by :envvar:`EUPS_PATH`, and tags them with a "build ID" (a unique
+pointed to by ``EUPS_PATH``, and tags them with a "build ID" (a unique
 ID computed for each :file:`manifest.txt`, and listed in the
 :file:`manifest.txt` itself as ``BUILD=bNNN``). Therefore, running the two
 commands will build and install a complete, functioning stack for you. The log
@@ -224,7 +224,7 @@ and the distribution server. The old tools (e.g., :command:`submitRelease`,
 The new (automated) workflow is as follows:
 
 #. The new ``lsst-dev`` stack is in :file:`~lsstsw/stack`. Set your
-   :envvar:`EUPS_PATH` to point to it.
+   ``EUPS_PATH`` to point to it.
 
 #. :command:`lsst-build` right now periodically runs from :command:`cron` and
    builds the ``master`` branch any time it changes. The results end up in
