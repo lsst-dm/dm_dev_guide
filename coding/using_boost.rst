@@ -4,26 +4,67 @@ Using Boost
 
 .. _cpp_using_boost:
 
-Certain Boost libraries are recommended; they should be used whenever applicable in preference to any other method of accomplishing the same effect. In general, any library that is tagged with *"Standard .... {something}"* in the `Boost library listing <http://www.boost.org/doc/libs>`_ falls into this category, unless the feature is already supported by the currently-mandated LSST ``g++`` version.
+A Boost library may be used only if:
+
+1. the desired effect cannot be accomplished with a C++11 standard language feature, and
+2. a C++ standard library equivalent is either unavailable or unusable with our minimum supported compiler version (i.e. ``gcc`` version 4.8).
+
+In particular, the following Boost libraries are no longer accepted as they have standard equivalents in gcc 4.8 and above:
+
+``array``
+        use ``<array>``
+
+``bind``
+        prefer C++11 lambda functions instead, but use ``std::bind`` from ``<functional>`` if you must
+
+``cstdint``
+        use ``<cstdint>``
+
+``filesystem``
+        use ``<filesystem>``
+
+``lambda``
+        use C++11 lambda functions
+
+``lexical_cast``
+        use ``std::to_string``, ``std::stoi``, ``std::stod`` etc.
+
+``math``
+        use ``<cmath>`` wherever possible
+
+``noncopyable``
+        use ``= delete`` on the copy constructor and assignment operator
+
+``random``
+        use ``<random>``
+
+``ref``
+        use ``std::forward`` and universal / forwarding references (or ``std::ref`` if you must)
+
+``smart_ptr``
+        use ``std::shared_ptr`` and ``std::unique_ptr`` (and its array specialization) from ``<memory>`` instead of ``boost::shared_ptr``, ``boost::scoped_ptr`` and ``boost::scoped_array``
+
+``static_assert``
+        use C++11 ``static_assert``
+
+``tuple``
+        use ``<tuple>``
+
+``type_traits``
+        use ``<type_traits>``
+
+``unordered_map``
+        use ``<unordered_map>``
+
+Certain Boost libraries are recommended: they should be used whenever applicable in preference to any other method of accomplishing the same effect. In general, any library that is tagged with *"Standard .... {something}"* in the `Boost library listing <http://www.boost.org/doc/libs>`_ falls into this category (unless its use conflicts with the above rules on the availability of standard library / language equivalents).
 Among others, this category includes:
 
 * ``current_function``
 * ``format``
-* ``regex`` (until we adopt ``gcc`` 4.9 as our minimum compiler version, at which point use ``std::regex``)
+* ``regex``
 * ``test``
 
-Libraries that were accepted before we switched to C++11 (in particular made ``gcc`` 4.8 our minimum supported compiler), but have been or are being replaced by ``std::`` equivalents include:
-
-* ``array``: use ``std::array`` from ``<array>``
-* ``cstdint``: use ``<cstdint>``
-* ``filesystem``: use ``<filesystem>``
-* ``noncopyable``: use ``= delete`` on the copy constructor and assignment operator
-* ``smart_ptr``: use ``std::shared_ptr`` and ``std::unique_ptr`` from ``<memory>`` instead of ``boost::shared_ptr`` and ``boost::scoped_ptr``
-* ``static_assert``: use ``static_assert``
-* ``type_traits``: use ``<type_traits>``
-* ``unordered_map``: use ``std::unordered_map`` from ``<unordered_map>``
-
-Additional Boost libraries are considered safe; they may be used freely where applicable.
+Additional Boost libraries are considered safe: they may be used freely where applicable.
 
 * ``any``
 * ``GIL``
