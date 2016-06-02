@@ -4,7 +4,7 @@ Python Unit Testing
 
 This page provides technical guidance to developers writing unit tests for DM's Python code base.
 See :doc:`unit_test_policy` for an overview of LSST Stack testing.
-If you have legacy DM :mod:`unittest` ``suite``-based code (code that sets up a :class:`unittest.TestSuite` object by listing specific test classes and that uses :lfunc:`lsst.utils.tests.run` rather than :func:`unittest.main`) please refer to tech note `SQR-012`_ for porting instructions.
+If you have legacy DM :mod:`unittest` ``suite``-based code (code that sets up a :class:`unittest.TestSuite` object by listing specific test classes and that uses :lfunc:`lsst.utils.tests.run` rather than :func:`unittest.main`), please refer to tech note `SQR-012`_ for porting instructions.
 LSST tests should be written using the :mod:`unittest` framework, with default test discovery, and should support being run using the `pytest`_ test runner.
 
 .. _SQR-012: http://sqr-012.lsst.io
@@ -25,10 +25,10 @@ The important things to note in this example are:
 * If the test is being executed using :command:`python` from the command line the :py:func:`unittest.main` call performs the test discovery and executes the tests, setting exit status to non-zero if any of the tests fail.
 * Test classes are executed in the order in which they appear in the test file.
   In this case the tests in ``DemoTestCase1`` will be executed before those in ``DemoTestCase2``.
-* Test classes must, ultimately, inherit from :class:`unittest.TestCase` in order to be discovered and it is :ref:`recommended <py-utils-tests>` that :lclass:`lsst.utils.tests.TestCase` be used as the base class when :lmod:`~lsst.afw` objects are involved.
+* Test classes must, ultimately, inherit from :class:`unittest.TestCase` in order to be discovered, and it is :ref:`recommended <py-utils-tests>` that :lclass:`lsst.utils.tests.TestCase` be used as the base class when :lmod:`~lsst.afw` objects are involved.
   The tests themselves must be methods of the test class with names that begin with ``test``.
   All other methods and classes will be ignored by the test system but can be used by tests.
-* If a test method completes the test passes, if it throws an uncaught exception the test has failed.
+* If a test method completes, the test passes; if it throws an uncaught exception the test has failed.
 
 Using a more advanced test runner
 =================================
@@ -39,7 +39,7 @@ Using a more advanced test runner
 
 All tests should be written such that they are runnable using `pytest`_, a policy adopted in :jira:`RFC-69`.
 `pytest`_ provides a much richer execution and reporting environment for tests and can be used to run multiple tests files together.
-`pytest`_ test discovery is much more flexible than that provided by :mod:`unittest` but LSST test files should not take advantage of that flexibility as it can lead to inconsistency in test reports that depend on the specific test runner.
+`pytest`_ test discovery is much more flexible than that provided by :mod:`unittest`, but LSST test files should not take advantage of that flexibility as it can lead to inconsistency in test reports that depend on the specific test runner.
 In particular, care must be taken not to have free functions that use a ``test`` prefix or non-\ :class:`~unittest.TestCase` test classes that are named with a ``Test`` prefix in the test files.
 
 .. note::
@@ -64,7 +64,7 @@ and to ensure that the order of test execution does not matter it is useful to s
 
 When writing tests it is important that tests are skipped using the proper :mod:`unittest` :ref:`skipping framework <python:unittest-skipping>` rather than returning from the test early.
 :mod:`unittest` supports skipping of individual tests and entire classes using decorators or skip exceptions.
-LSST code sometimes raises skip exceptions in :meth:`~unittest.TestCase.setUp` or :meth:`~unittest.TestCase.setUpClass` class methods and :mod:`unittest` provides much flexibility in how skipping can be implemented.
+LSST code sometimes raises skip exceptions in :meth:`~unittest.TestCase.setUp` or :meth:`~unittest.TestCase.setUpClass` class methods.
 It is also possible to indicate that a particular test is expected to fail, being reported as an error if the test unexpectedly passes.
 Expected failures can be used to write test code that triggers a reported bug before the fix to the bug has been implemented and without causing the continuous integration system to die.
 One of the primary advantages of using a modern test runner such as `pytest`_ is that it is very easy to generate machine-readable pass/fail/skip/xfail statistics to see how the system is evolving over time.
@@ -73,7 +73,8 @@ Using a shared base class
 =========================
 
 For some tests it is helpful to provide a base class and then share it amongst multiple test classes that are configured with different attributes.
-If this is required be careful to not have helper functions prefixed with ``test`` and do not have the base class named with a ``Test`` prefix and ensure it does not inherit from :class:`~unittest.TestCase`, if you do `pytest`_ will attempt to find tests inside it.
+If this is required, be careful to not have helper functions prefixed with ``test``.
+Do not have the base class named with a ``Test`` prefix and ensure it does not inherit from :class:`~unittest.TestCase`; if you do, `pytest`_ will attempt to find tests inside it and will issue a warning if none can be found.
 Historically LSST code has dealt with this by creating a test suite that only includes the classes to be tested, omitting the base class.
 This does not work in a `pytest`_ environment.
 
@@ -101,7 +102,7 @@ which inherits from the helper class and :class:`unittest.TestCase` and runs a s
 LSST Utility Test Support Classes
 =================================
 
-:lmod:`lsst.utils.tests` provides several utilities functions and classes for writing Python tests that developers should make use of.
+:lmod:`lsst.utils.tests` provides several helpful functions and classes for writing Python tests that developers should make use of.
 
 .. _py-utils-tests:
 
@@ -138,7 +139,7 @@ Testing Executables
 -------------------
 
 In some cases the test to be executed is a shell script or a compiled binary executable.
-In order for the test running environment to be aware of these tests a Python test file must be present that can be run by `pytest`_ to executes these tests in the :mod:`unittest` environment.
+In order for the test running environment to be aware of these tests, a Python test file must be present that can be run by `pytest`_.
 If none of the tests require special arguments and all the files with the executable bit set are to be run, this can be achieved by copying the file :file:`$UTILS_DIR/tests/testExecutables.py` to the relevant :file:`tests` directory.
 The file is reproduced here:
 
@@ -160,7 +161,7 @@ To support this the :lmeth:`~lsst.utils.tests.ExecutableTestCase.assertExecutabl
        self.assertExecutable("binary1", args=None,
                              root_dir=os.path.dirname(__file__))
 
-Where ``binary1`` is the name of the executable relative to the root directory specified in the ``root_dir`` optional argument.
+where ``binary1`` is the name of the executable relative to the root directory specified in the ``root_dir`` optional argument.
 Arguments can be provided to the ``args`` keyword parameter in the form of a sequence of arguments in a list or tuple.
 
 .. note::

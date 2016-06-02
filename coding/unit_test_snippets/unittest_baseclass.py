@@ -1,7 +1,7 @@
 import unittest
 
 
-class BaseClass():
+class BaseClass(object):
     def testParam(self):
         self.assertLess(self.PARAM, 5)
 
