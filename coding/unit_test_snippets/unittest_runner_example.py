@@ -1,31 +1,22 @@
 import unittest
+import lsst.utils.tests
 
-import lsst.utils.tests as utilsTests
+
+def setup_module(module):
+    lsst.utils.tests.init()
 
 
-class DemoTestCase(utilsTests.TestCase):
+class DemoTestCase(lsst.utils.tests.TestCase):
     """Demo test case."""
 
     def testDemo(self):
-        assert True
+        self.assertNotIn("i", "team")
 
 
-def suite():
-    """Returns a suite containing all the test cases in this module."""
-    utilsTests.init()
-
-    suites = []
-    # Test suites for this module here
-    suites += unittest.makeSuite(DemoTestCase)
-    # MemoryTestCase to find C++ memory leaks
-    suites += unittest.makeSuite(utilsTests.MemoryTestCase)
-    return unittest.TestSuite(suites)
-
-
-def run(exit=False):
-    """Run the tests"""
-    utilsTests.run(suite(), exit)
+class MemoryTester(lsst.utils.tests.MemoryTestCase):
+    pass
 
 
 if __name__ == "__main__":
-    run(True)
+    lsst.utils.tests.init()
+    unittest.main()
