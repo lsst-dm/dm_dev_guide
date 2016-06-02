@@ -33,6 +33,10 @@ The important things to note in this example are:
 Using a more advanced test runner
 =================================
 
+.. note::
+   `pytest`_ is not currently installed as part of a LSST stack installation.
+   It can be installed using :command:`conda install pytest` or :command:`pip install pytest`.
+
 All tests should be written such that they are runnable using `pytest`_, a policy adopted in :jira:`RFC-69`.
 `pytest`_ provides a much richer execution and reporting environment for tests and can be used to run multiple tests files together.
 `pytest`_ test discovery is much more flexible than that provided by :mod:`unittest` but LSST test files should not take advantage of that flexibility as it can lead to inconsistency in test reports that depend on the specific test runner.
