@@ -5,6 +5,19 @@ Distributing Third-Party Packages with EUPS
 This page documents how to make a third-party software package install-able
 using the :command:`eups distrib install` command.
 
+Getting Approval
+================
+
+Creating a new third-party package that will be a dependency of the LSST code
+typically requires an :ref:`RFC <decision-making-rfc>`.  If the code is to be
+distributed via :command:`eups`, as this page describes, the license for the
+third-party code should be verified and cited in the text of that RFC.  The
+license must be compatible with the license under which we distribute our code,
+currently GPL3.  See `this page`_ for a list of compatible licenses.
+
+.. _this page: https://www.gnu.org/licenses/license-list.html
+
+
 Creating the Package
 ====================
 
