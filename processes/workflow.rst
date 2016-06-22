@@ -98,6 +98,9 @@ Enhancement
    Like a *bug*, an enhancement is emergent.
    Unlike a bug, an enhancement adds new functionality.
    Enhancements differ from stories in that they have no epic link.
+   
+.. note::
+   Everywhere that it says "enhancement" it should say "improvement" - that is the actual ticket type.
 
 Issue semantics were discussed in `RFC-43 <https://jira.lsstcorp.org/browse/RFC-43>`_.
 
