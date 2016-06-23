@@ -93,16 +93,16 @@ Story
 Bug
    A bug is an emergent (not planned with an epic) ticket that fixes a fault in the software that exists on ``master``.
    Bug tickets are not associated with an epic.
-Enhancement
-   An enhancement is essentially a feature request.
-   Like a *bug*, an enhancement is emergent.
-   Unlike a bug, an enhancement adds new functionality.
-   Enhancements differ from stories in that they have no epic link.
+Improvement
+   An improvement is essentially a feature request.
+   Like a *bug*, an improvement is emergent.
+   Unlike a bug, an improvement adds new functionality.
+   Improvements differ from stories in that they have no epic link.
 
 Issue semantics were discussed in `RFC-43 <https://jira.lsstcorp.org/browse/RFC-43>`_.
 
 As a developer, you can create tickets to work on.
-You can also create bug or enhancement tickets and assign them to others (ideally with some consultation).
+You can also create bug or improvement tickets and assign them to others (ideally with some consultation).
 
 .. _workflow-jira-ticket-creation:
 
@@ -118,7 +118,7 @@ Project
    This should be set to **Data Management**, unless you are creating a ticket for a different LSST subsystem.
 Issue Type
    If the work is associated with an epic, the issue type is a 'Story.'
-   For emergent work, 'Bug' or 'Enhancement' can be used (see above for semantics).
+   For emergent work, 'Bug' or 'Improvement' can be used (see above for semantics).
 Summary
    This is the ticket's title and should be written to help colleagues browsing JIRA dashboards.
 Components
@@ -146,7 +146,7 @@ Linked Issues
    You can also express dependencies to other work using a 'is Blocked by' relationship.
 Epic Link
    If the ticket is a story, you must specify what epic it belongs to with this field.
-   By definition, bug or enhancement-type tickets are not associated with an epic.
+   By definition, bug or improvement-type tickets are not associated with an epic.
 Team
    You must specify which DM team is doing the work with this field, for accounting purposes.
    The owner of the epic should be consistent with the team working on a ticket.
