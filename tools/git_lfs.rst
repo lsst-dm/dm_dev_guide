@@ -219,7 +219,7 @@ In the repository's :file:`README`, we recommend that you include this section:
 
    To clone and use this repository, you'll need Git Large File Storage (LFS).
 
-   Our [Developer Guide](http://developer.lsst.io/tools/git_lfs.html)
+   Our [Developer Guide](https://developer.lsst.io/tools/git_lfs.html)
    explains how to set up Git LFS for LSST development.
 
 .. _Homebrew: http://brew.sh
