@@ -52,6 +52,8 @@ First, add these lines into your :file:`~/.gitconfig` file:
 
 .. literalinclude:: snippets/git_lfs_gitconfig.txt
    :language: text
+   
+*(This example includes the result of the lfs.batch false configuration command.)*
 
 Then add these lines into your :file:`~/.git-credentials` files (create one, if necessary):
 
@@ -74,7 +76,9 @@ First, add these lines into your :file:`~/.gitconfig` file:
 
 .. literalinclude:: snippets/git_lfs_gitconfig.txt
    :language: text
-   :lines: 1-5
+   :lines: 1-8
+
+*(This example includes the result of the lfs.batch false configuration command.)*
 
 Then add these lines into your :file:`~/.git-credentials` files (create one, if necessary):
 
