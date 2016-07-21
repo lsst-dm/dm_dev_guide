@@ -11,6 +11,6 @@ Since LSST is an AURA center, the `AURA standards of workplace conduct provide a
 As stated there, we in DM dedicate ourselves to fostering a civil and inclusive community characterized by mutual respect for the contributions of all individuals.
 As a community, we embrace the values in that document, in addition to any local institutional standards.
 
-Our community is self-regulated, but any issues that cannot be resolved on an individual-to-individual level should be handled through local institutional procedures or---especially if cross-institution or involving the external community---may be brought to the attention of one or more of the DM Project Engineer (Kian-Tat Lim), Project Manager (Jeff Kantor), or Project Scientist (Mario Juric), or the LSST Project Manager (Victor Krabbendam), who will take appropriate action.
+Our community is self-regulated, but any issues that cannot be resolved on an individual-to-individual level should be handled through local institutional procedures or---especially if cross-institution or involving the external community---may be brought to the attention of one or more of the DM Subsystem Lead (Mario Juric), Project Manager (Jacek Becla), or Project Scientist (Zeljko Ivezić), or the LSST Project Manager (Victor Krabbendam), who will take appropriate action.
 
 Please read and reflect upon these standards; strive to uphold them in all your interactions.
