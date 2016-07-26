@@ -15,7 +15,7 @@ The :ref:`Request for Discussion (RFD) <decision-making-rfd>` process facilitate
 Empowerment
 ===========
 
-You are empowered by the DM Project Manager (Jeff Kantor), Project Scientist (Mario Juric) and Project Engineer (Kian-Tat Lim) to make decisions on any DM-internal matter---such as technical/algorithm issues, process improvements, and tool choices---when:
+You are empowered by the DM Subsystem Lead to make decisions on any DM-internal matter---such as technical/algorithm issues, process improvements, and tool choices---when:
 
 1. you are willing and able to do the work to implement the decision yourself or with people who agree with you,
 2. you (collectively) are willing and able to fix any problems if it goes wrong, and
@@ -34,7 +34,7 @@ It is usually difficult to determine all the affected parties for published pack
 It's a good idea to contact any affected parties you *do* know about before starting this process to check that your resolution is sensible.
 Your institutional technical manager is always affected, as she or he is responsible for tracking your work schedule.
 If you are proposing work for others, they are obviously affected.
-Your institutional scientist, the DM System Architect (K-T Lim), the Interface Scientist (Gregory Dubois-Felsmann), the Project Engineer (K-T Lim) and the Project Scientist (Mario Juric) are also valuable resources for determining affected parties.
+Your institutional scientist, the DM System Architect, the Interface Scientist, and the Project Scientist are also valuable resources for determining affected parties.
 
 The purpose of an RFC is to inform others about the existence and content of the proposed decision and implementation in order to allow them to evaluate its impact, comment on it, refine it if necessary, and agree (implicitly or explicitly) or object (explicitly) to its execution.
 
@@ -85,8 +85,8 @@ This implementation plan is translated into tickets in the :ref:`adoption phase 
 Appeals process
 ---------------
 
-If you can't converge on a resolution to an RFC that has no serious objections but you still feel that something must be done, you may request that the Project Manager, Project Scientist, and Project Engineer rule on it.
-In most non-trivial cases, they will, with the advice of the Software Architect, empanel a group of experts to which they will delegate the right to make the decision, by voting if need be.
+If you can't converge on a resolution to an RFC that has no serious objections but you still feel that something must be done, you may request that the DM Technical Control Team (`TCT`_) rule on it by "flagging" it in JIRA.
+In most non-trivial cases, they will empanel a group of experts to which they will delegate the right to make the decision, by voting if need be.
 
 .. _decision-making-rfc-adoption:
 
@@ -114,9 +114,8 @@ RFCs that affect change-controlled documents
 
 Some proposed resolutions may require changes to one or more of the baselined, change-controlled documents describing the Data Management system (those in DocuShare_ with an LDM- handle or marked as change-controlled in Confluence).
 Note that major changes to budget or scope will almost certainly affect one or more LDM- documents.
-In this case only, the `DM Technical Control Team (TCT) <https://confluence.lsstcorp.org/display/DM/Technical+Control+Team>`_, consisting of the Project Manager, Project Scientist, Project Engineer, System Architect, and Interface Scientist, may empanel an ad hoc committee including the lead author of the document and other relevant experts.
-This committee, or the TCT_ itself, must *explicitly* approve the change.
-In the case of DM Coding Standards, which are change-controlled Confluence pages, the TCT_ has, via `RFC-24 <https://jira.lsstcorp.org/browse/RFC-24>`_, delegated all decision-making to the System Architect, who must explicitly approve any changes.
+In this case, the TCT_, or an ad hoc committee they empanel including relevant experts, will decide whether to recommend the change to the Subsystem Lead, who must *explicitly* approve the change.
+In the case of DM Coding Standards, which are change-controlled documents, the Subsystem Lead and TCT_ have, via `RFC-24 <https://jira.lsstcorp.org/browse/RFC-24>`_, delegated all decision-making to the System Architect, who must explicitly approve any changes.
 
 Change-controlled documents with other handles, such as LSE- or LPM-, including inter-subsystem interfaces, have project-wide change control processes.
 Please consult the TCT_ for more information.
@@ -128,9 +127,9 @@ At least one member of the DM TCT_ will read each RFC to determine if it might a
 Responsibility and delegation
 -----------------------------
 
-For project management purposes, RFCs are formally proposals made to the Project Manager, Project Scientist and Project Engineer who by default are responsible for everything in DM (they "own" all problems).
-As owners, they have the final word in accepting or rejecting all proposals.
-Functionally, they delegate that ownership---the right and responsibility to make decisions---to others within the team (e.g. the System Architect, Interface Scientist, group leads, etc.) who are expected to delegate it even further.
+For project management purposes, RFCs are formally proposals made to the Subsystem Lead who by default is responsible for everything in DM (the Subsystem Lead "owns" all problems).
+As owner, the Subsytem Lead has the final word in accepting or rejecting all proposals.
+Functionally, the Subsystem Lead delegates that ownership---the right and responsibility to make decisions---to others within the team (e.g. the System Architect, Interface Scientist, group leads, etc.) who are expected to delegate it even further.
 Notifying your institutional technical manager about an RFC serves to inform the Project Manager.
 
 .. _decision-making-rfd:
@@ -175,7 +174,7 @@ RFDs can scheduled for any convenient time, but we do have a weekly reserved tim
 
 If there are no requests 24 hours before a given time slot, the meeting will be canceled and the time freed up for other activities.
 
-If there are conflicting claims to the RFD time slot, the Project Engineer (K-T Lim) will arbitrate.
+If there are conflicting claims to the RFD time slot, the System Architect will arbitrate.
 
 .. _decision-making-rfd-followup:
 
