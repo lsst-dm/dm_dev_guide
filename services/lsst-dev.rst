@@ -139,8 +139,22 @@ For example, try adding the following to :file:`~/.profile`:
 Load the LSST Environment
 =========================
 
-A ‘shared’ installation of the LSST software stack is installed under :file:`/ssd/lsstsw/stack`.
-This installation is regularly updated to recently weekly builds of the ``lsst_distrib`` top-level package; the most recent build is tagged as ``current``.
+Two ‘shared’ installations of the LSST software stack are available on ``lsst-dev``:
+
+:file:`/ssd/lsstsw/stack/`
+   This is installed on local (SSD) storage.
+   It provides for maximum performance when executing jobs on ``lsst-dev`` directly.
+
+:file:`/nfs/lsst4/lsstsw/stack/`
+   This is installed on networked storage (NFS).
+   As such, it is likely to be slower than local storage when running on ``lsst-dev``.
+   However, the NFS disk is cross-mounted to `other development servers at NCSA`_, including those configured as part of the `HTCondor pool`_.
+   This stack can therefore be relied upon to be consistent when launching jobs across the cluster.
+
+.. _other development servers at NCSA: https://confluence.lsstcorp.org/display/LDMDG/DM+Development+Servers
+.. _HTCondor pool: https://confluence.lsstcorp.org/display/DM/Orchestration
+
+This installation is regularly updated to recent releases and weekly builds of the ``lsst_distrib`` top-level package; the most recent build is tagged as ``current``.
 Add this shared stack to your environment and set up the latest build of the LSST applications by running:
 
 .. prompt:: bash
@@ -148,7 +162,7 @@ Add this shared stack to your environment and set up the latest build of the LSS
   source /ssd/lsstsw/stack/loadLSST.bash
   setup lsst_apps
 
-(substitute :file:`loadLSST.csh`, :file:`loadLSST.ksh` or :file:`loadLSST.zsh`, depending on your preferred shell).
+(substitute :file:`loadLSST.csh`, :file:`loadLSST.ksh` or :file:`loadLSST.zsh`, depending on your preferred shell, and use :file:`/nfs/lsst4/lsstsw/stack/loadLSST.bash` to access the NFS-backed stack).
 
 Since this stack is shared, all members of the ``lsst`` group have permission to declare products within it, thereby making new products and versions available for other users.
 For example, to share ``myVersion`` of ``myProduct``, which you have built and installed in directory ``productDir``, run:
@@ -170,6 +184,8 @@ Please make use of this capability responsibly: make public declarations only of
    eups undeclare myProduct myVersion
 
 Refer to the :doc:`/build-ci/eups_tutorial` for more information on working with EUPS product stacks.
+
+Note that the SSD and NFS-backed stacks are independent: while both will automatically contain the latest LSST software releases, other products declared in a given stack will not automatically become available in the other.
 
 Administators may wish to note that the shared stack is automatically updated using the script :file:`~lsstsw/shared-stack/shared_stack.py`, which is executed nightly by Cron.
 
