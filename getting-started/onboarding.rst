@@ -23,15 +23,14 @@ GitHub and LSST organizations
    Next, ask your T/CAM to add you to the `lsst GitHub organization <https://github.com/lsst>`_ along with any relevant team organizations (send your GitHub username to your T/CAM).
 
 NCSA server access
-   Contact ``lsst-admin _at_ ncsa.illinois.edu`` to request an account on the NCSA cluster, which hosts the reference platform. Include the following in the request:
+   Contact ``lsst-sysadm _at_ ncsa.illinois.edu`` to request an account on the NCSA cluster, which hosts the reference platform. Include the following in the request:
 
    - First and last name
    - Email
    - Phone number
    - Mailing address
    - Sponsoring LSST manager
-   - Preferred user name
-   - At least one public ssh key
+   - LSST Team or project
 
    Also see: :doc:`/services/lsst-dev`.
 
