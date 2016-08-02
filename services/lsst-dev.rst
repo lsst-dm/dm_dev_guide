@@ -22,7 +22,7 @@ Overview of Cluster Resources
 - `System announcements <https://confluence.lsstcorp.org/display/LDMDG/DM+System+Announcements>`_ of the status and planned down-time.
 - `Real-time system status <http://lsst-web.ncsa.illinois.edu/nagios>`_ (requires login).
 - Reference/test data from SDSS DR7 for Stripe82 is located at: :file:`/lsst7/stripe82/dr7/runs`.
-- Report system issues to ``lsst-admin _at_ ncsa.illinois.edu``
+- Report system issues to ``lsst-sysadm _at_ ncsa.illinois.edu``
 
 .. _lsst-dev-ssh-keys:
 

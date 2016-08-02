@@ -17,7 +17,7 @@ Globus Online
 If you don't already have a Globus Online account, you'll need to create one at https://www.globusonline.org/SignIn#step=SignUp.
 
 Authentication is handled by a certificate created locally on the ``lsst-xfer`` system using the local unix account.
-You will need to email ``lsst-admin at ncsa.illinois.edu`` and request them to manually set a password for your unix account on ``lsst-xfer.ncsa.illinois.edu``.
+You will need to email ``lsst-sysadm at ncsa.illinois.edu`` and request them to manually set a password for your unix account on ``lsst-xfer.ncsa.illinois.edu``.
 Once the password is temporarily set, you can change the password by logging into ``lsst-xfer.ncsa.illinois.edu`` with your SSH public key and using the :command:`passwd` command.
 
 The globus connect endpoint has been created as a public endpoint named: ``lsst#lsst-xfer``.
