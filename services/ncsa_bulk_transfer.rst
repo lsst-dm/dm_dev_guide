@@ -7,7 +7,7 @@ The following bulk data transfer clients are configured on ``lsst-xfer.ncsa.illi
 
 - :ref:`Globus Online <ncsa-bulk-globus>`
 - :ref:`iRODS <ncsa-bulk-irods>`
-- :ref:`bbcp <ncsa-bulk-bbcp>`
+- :ref:`BBCP <ncsa-bulk-bbcp>`
 
 .. _ncsa-bulk-globus:
 
@@ -51,9 +51,11 @@ bbcp Client
 BBCP is an alternative to Gridftp when transferring large amounts of data, capable of breaking up your transfer into multiple simultaneous transferring streams, thereby transferring data much faster than single-streaming utilities such as SCP and SFTP.
 
 ``lsst-xfer.ncsa.illinois.edu`` is setup to use TCP ports 65001-65535 for BBCP transfers with the following external networks:
+
 - IN2P3 134.158.0.0/16
 - SLAC 134.79.0.0/16
 - UC Davis 169.237.0.0/16
+
 Additional subnets can be requested by emailing ``lsst-sysadm AT ncsa.illinois.edu``.
 
 See:
