@@ -12,6 +12,9 @@ Our `LSST Science Pipelines <https://github.com/lsst>`_ will implement the core 
 
 This Guide will help you in contributing to the DM development effort.
 
+DM Developers can make this guide better by contributing to the https://github.com/lsst-dm/dm_dev_guide repo.
+The `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ will get you started.
+
 .. toctree::
    :maxdepth: 1
    :caption: Getting Started
