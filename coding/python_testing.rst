@@ -208,6 +208,13 @@ final test suite.
 For the memory test to function properly the :lfunc:`lsst.utils.tests.init()` function must be invoked before any of the tests in the class are executed.
 Since LSST test scripts are required to run properly from the command-line and when called from within `pytest`_, the :lfunc:`~lsst.utils.tests.init()` function has to be in the file twice: once in the :ref:`setup_module <pytest:xunitsetup>` function that is called by `pytest`_ whenever a test module is loaded (`pytest`_ will not use the ``__main__`` code path), and also just before the call to :func:`unittest.main()` call to handle being called with :command:`python`.
 
+Utility initialization
+----------------------
+
+:lfunc:`lsst.utils.tests.init()` does two things: initialize the memory tester as described previously, and initialize :lmod:`lsst.log` by setting up a default configuration that outputs logs to console at :ldata:`lsst.log.INFO` level.
+If you use :lmod:`lsst.log` during tests, you may want to call :lfunc:`lsst.utils.tests.init()` in the tests.
+Customized configuration can be set in each unit test.
+
 Unicode
 =======
 
