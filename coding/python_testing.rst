@@ -6,6 +6,7 @@ This page provides technical guidance to developers writing unit tests for DM's 
 See :doc:`unit_test_policy` for an overview of LSST Stack testing.
 If you have legacy DM :mod:`unittest` ``suite``-based code (code that sets up a :class:`unittest.TestSuite` object by listing specific test classes and that uses :lfunc:`lsst.utils.tests.run` rather than :func:`unittest.main`), please refer to tech note `SQR-012`_ for porting instructions.
 LSST tests should be written using the :mod:`unittest` framework, with default test discovery, and should support being run using the `pytest`_ test runner.
+If you want to jump straight to a full example of the standard LSST Python testing boilerplate without reading the background, read the :ref:`section on memory testing <py-test-mem>` later in this document.
 
 .. _SQR-012: http://sqr-012.lsst.io
 .. _pytest: http://pytest.org
@@ -173,6 +174,8 @@ Arguments can be provided to the ``args`` keyword parameter in the form of a seq
 
 Memory and file descriptor leak testing
 ---------------------------------------
+
+.. _py-test-mem:
 
 :lclass:`lsst.utils.tests.MemoryTestCase` is used to detect memory leaks in C++ objects and leaks in file descriptors.
 :lclass:`~lsst.utils.tests.MemoryTestCase` should be used in *all* test files where :lmod:`~lsst.utils` is in the dependency chain, even if C++ code is not explicitly referenced.
