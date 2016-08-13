@@ -183,7 +183,7 @@ including :lclass:`~lsst.utils.tests.MemoryTestCase`:
 .. literalinclude:: unit_test_snippets/unittest_runner_example.py
    :linenos:
    :language: python
-   :emphasize-lines: 6, 16, 21
+   :emphasize-lines: 12, 17, 21
 
 
 which ends up running the single specified test plus the two running as part of the leak test:
