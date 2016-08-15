@@ -2,10 +2,6 @@ import unittest
 import lsst.utils.tests
 
 
-def setup_module(module):
-    lsst.utils.tests.init()
-
-
 class DemoTestCase(lsst.utils.tests.TestCase):
     """Demo test case."""
 
@@ -15,6 +11,10 @@ class DemoTestCase(lsst.utils.tests.TestCase):
 
 class MemoryTester(lsst.utils.tests.MemoryTestCase):
     pass
+
+
+def setup_module(module):
+    lsst.utils.tests.init()
 
 
 if __name__ == "__main__":
