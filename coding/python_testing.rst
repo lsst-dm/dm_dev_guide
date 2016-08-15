@@ -181,7 +181,7 @@ Memory and file descriptor leak testing
 :lclass:`~lsst.utils.tests.MemoryTestCase` should be used in *all* test files where :lmod:`~lsst.utils` is in the dependency chain, even if C++ code is not explicitly referenced.
 
 This example shows the basic structure of an LSST Python unit test module,
-including :lclass:`~lsst.utils.tests.MemoryTestCase`:
+including :lclass:`~lsst.utils.tests.MemoryTestCase` (the highlighted lines indicate the memory testing modifications):
 
 .. literalinclude:: unit_test_snippets/unittest_runner_example.py
    :linenos:
