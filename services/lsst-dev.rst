@@ -8,6 +8,7 @@ To get an account, see the :doc:`Onboarding Checklist </getting-started/onboardi
 This page is designed help you get started on ``lsst-dev``:
 
 #. :ref:`lsst-dev-overview`
+#. :ref:`lsst-dev-password`
 #. :ref:`lsst-dev-ssh-keys`
 #. :ref:`lsst-dev-tools`
 #. :ref:`lsst-dev-loadlsst`
@@ -24,12 +25,21 @@ Overview of Cluster Resources
 - Reference/test data from SDSS DR7 for Stripe82 is located at: :file:`/lsst7/stripe82/dr7/runs`.
 - Report system issues to ``lsst-sysadm _at_ ncsa.illinois.edu``
 
+.. _lsst-dev-password:
+
+Account Password
+================
+
+You can log into LSST development servers at NCSA with your NCSA account and password. You can reset your NCSA password at the following URL:
+
+   - https://identity.ncsa.illinois.edu/reset
+
 .. _lsst-dev-ssh-keys:
 
 Set up SSH Keys
 ===============
 
-You will need to establish public/private keys to access NCSA development machines via SSH.
+You can establish public/private keys to access NCSA development machines via SSH.
 Here's how to set up your SSH client to use keys:
 
 1. Generate a key pair
