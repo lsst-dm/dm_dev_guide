@@ -433,6 +433,8 @@ In addition, if this update affects users, a short description of its effects fr
 Appendix: Commit Organization Best Practices
 ============================================
 
+.. _git-commit-organization-logical-units:
+
 Commits should represent discrete logical changes to the code
 -------------------------------------------------------------
 

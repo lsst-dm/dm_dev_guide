@@ -2,7 +2,8 @@
 DM Python Style Guide
 #####################
 
-This is the version 5.0 of the DM Python Coding Standard.
+This is the version 6.0 of the DM Python Coding Standard.
+The :doc:`intro` provides the overarching Coding Standards policy applicable to all DM code.
 
 Changes to this document must be approved by the System Architect (`RFC-24 <https://jira.lsstcorp.org/browse/RFC-24>`_).
 To request changes to these standards, please file an :ref:`RFC <decision-making-rfc>`.
@@ -12,16 +13,133 @@ To request changes to these standards, please file an :ref:`RFC <decision-making
 
 .. _style-guide-py-intro:
 
-1. Introduction
-===============
+1. PEP 8 is the Baseline Coding Style
+=====================================
 
-This document gives coding conventions for DM Python code.
-It is a slightly modified version of `Python PEP 8: Style Guide for Python Code <http://www.python.org/dev/peps/pep-0008/>`_ by Guido van Rossum and Barry Warsaw.
-The section on :ref:`Naming Conventions <style-guide-py-naming>` was extracted from `Python Style Guide for Babar <http://www-spires.slac.stanford.edu/BFROOT/www/Computing/Programming/Python/PythonStyleGuide.html>`_ (account required) which is also based on the Python :pep:`8`.
-This document includes changes for consistency with the :doc:`cpp_style_guide` plus some additions and a few changes based the author's Python and C++ experiences. 
-The :doc:`intro` provides the overarching Coding Standards policy applicable to all DM code.
+Data Management's Python coding style is based the `PEP 8 Style Guide for Python Code <https://www.python.org/dev/peps/pep-0008/>`_ with modifications specified in this document.
+
+`PEP 8`_ is used throughout the Python community, and should feel familiar to Python developers.
+DM's deviations to `PEP 8`_ are motivated by consistency with the :doc:`cpp_style_guide`.
+Additional guidelines are included in this document to address specific requirements of the Data Management System.
 
 .. _PEP 8: http://www.python.org/dev/peps/pep-0008/
+
+.. _style-guide-py-flake8:
+
+Code MAY be validated with flake8
+---------------------------------
+
+The flake8_ tool may be used to validate Python source code against the portion of PEP 8 adopted by Data Management.
+In addition, flake8_ statically checks Python for code errors.
+The separate `pep8-naming`_ plugin validates names according to the DM Python coding style.
+
+.. note::
+   
+   Flake8 only validates code against PEP 8 specifications, but does not check the full coding standard listed here.
+
+.. _flake8: https://flake8.readthedocs.io
+.. _pep8-naming: http://pypi.python.org/pypi/pep8-naming
+
+Flake8 installation
+^^^^^^^^^^^^^^^^^^^
+
+Linters are installable with :command:`pip`:
+
+.. code-block:: bash
+
+   pip install flake8
+   pip install pep8-naming
+
+Flake8 command line invocation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: bash
+
+   flake8 --ignore=E133,E226,E228,N802,N803 --max-line-length=110 {{python_dir}}
+
+where ``{{python_dir}}`` is a directory with Python source files.
+
+Flake8 configuration files
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+LSST DM Packages may also include a :file:`setup.cfg` file with `PEP 8`_ exceptions:
+
+.. code-block:: ini
+
+	[flake8]
+	max-line-length = 110
+	ignore = E133, E226, E228, E251, N802, N803
+
+:command:`flake8` can be invoked without arguments when this configuration is present.
+
+Summary of PEP 8 exceptions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+These error codes can be **ignored** by flake8_ when checking DM code against PEP 8 specifications:
+
+E133
+   Closing bracket is missing indentation.
+
+E226
+   Missing whitespace around arithmetic operator.
+
+E228
+   Missing whitespace around bitwise or shift operator.
+
+E251
+   Unexpected spaces around keyword / parameter equals.
+
+N802
+   Function name should be lowercase.
+
+N803
+   Argument name should be lowercase.
+
+.. _style-guide-py-noqa:
+
+Lines that intentionally deviate from DM's PEP 8 MUST include a ``noqa`` comment
+--------------------------------------------------------------------------------
+
+Lines of code may intentionally deviate from our application of PEP 8 (see above) because of limitations in flake8_.
+In such cases, authors must append a ``# noqa`` comment to the line that includes the specific error code being ignored.
+`See the flake8 documentation for details <https://flake8.readthedocs.io/en/latest/user/ignoring-errors.html#in-line-ignoring-errors>`__ .
+This prevents the line from triggering false flake8_ warnings to other developers, while also linting unexpected errors.
+
+For example, to import a module without using it (to build a namespace, as in a :file:`__init__.py`):
+
+.. code-block:: py
+
+   from .module import AClass  # noqa: F401
+
+.. seealso::
+
+   - `flake8 error codes <https://flake8.readthedocs.io/en/latest/user/error-codes.html>`_
+   - `pycodestyle error codes <https://pycodestyle.readthedocs.io/en/latest/intro.html#error-codes>`_
+   - `pep8-naming error codes <https://github.com/PyCQA/pep8-naming#plugin-for-flake8>`_
+
+.. _style-guide-py-autopep8:
+
+autopep8 MAY be used to fix PEP 8 compliance
+--------------------------------------------
+
+Many PEP 8 issues in existing code can be fixed with `autopep8`_:
+
+.. code-block:: bash
+
+   autopep8 {{python_dir}} --in-place --recursive \
+       --ignore E133,E226,E228,N802,N803 --ma-line-length 110
+
+where ``{{python_dir}}`` is a directory with Python source files.
+
+:command:`autopep8` changes must always be validated before committing.
+
+Style changes must be encapsulated in a distinct commit (see :ref:`git-commit-organization-logical-units` in :doc:`Workflow document <../processes/workflow>`).
+
+.. note::
+
+   :command:`autopep8` only fixes PEP 8 issues and does not address other guildelines listed here.
+
+.. _autopep8: https://pypi.python.org/pypi/autopep8
 
 .. _style-guide-py-naming:
 
