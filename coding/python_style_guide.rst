@@ -146,16 +146,16 @@ Style changes must be encapsulated in a distinct commit (see :ref:`git-commit-or
 2. Naming Conventions
 =====================
 
+We follow `PEP 8ʼs naming conventions <https://www.python.org/dev/peps/pep-0008/#naming-conventions>`_, with exceptions listed here.
 The naming conventions for LSST Python and C++ source have been defined to be as similar as the respective languages allow.
-In general, class names are ``CamelCase`` with leading uppercase; all other names in the source are ``camelCase`` with leading lowercase, except for module variables used as module global constants---which should be ``UPPERCASE_WITH_UNDERSCORES``.
+
+In general:
+
+- class names are ``CamelCase`` with leading uppercase,
+- module variables used as module global constants are ``UPPERCASE_WITH_UNDERSCORES``,
+- all other names are ``camelCase`` with leading lowercase.
+
 Names may be decorated with leading and/or trailing underscores.
-
-.. _style-guide-py-2-1:
-
-User-defined names with double leading and trailing underscores MUST NOT be used
---------------------------------------------------------------------------------
-
-Names with double leading and trailing underscores are reserved by Python (e.g. ``__init__``, ``__name__``, ``__str__``).
 
 .. _style-guide-py-2-2:
 
@@ -166,115 +166,44 @@ Names which shadow a python built-in function may cause confusion for readers of
 Creating a more specific identifier is suggested to avoid collisions.
 In the case of *filter*, ``filterName`` may be appropriate; for *filter objects*, something like ``filterObj`` might be appropriate.
 
-.. _style-guide-py-2-3:
-
-Class names SHOULD use CamelCase with leading uppercase
--------------------------------------------------------
-
-Python class names should follow the same conventions as C++ class names---they should be ``CamelCase`` with leading uppercase.
-Note that exceptions are classes and thus follow the same convention.
-
-.. _style-guide-py-2-4:
-
-Exception names relating to errors SHOULD include the suffix Error
-------------------------------------------------------------------
-
-An error exception name SHOULD include the suffix ``Error``.
-
-.. _style-guide-py-2-5:
+.. _style-guide-py-naming-attributes:
 
 Class Attribute Names SHOULD be camelCase with leading lowercase
 ----------------------------------------------------------------
 
----
+`Opposes PEP 8 <https://www.python.org/dev/peps/pep-0008/#id45>`__.
 
-.. _style-guide-py-2-6:
+.. _style-guide-py-naming-functions:
 
 Module methods (free functions) SHOULD be camelCase with leading lowercase
 --------------------------------------------------------------------------
 
----
+`Opposes PEP 8 <https://www.python.org/dev/peps/pep-0008/#id45>`__.
 
-.. _style-guide-py-2-7:
-
-Module constants SHOULD be named in ``UPPERCASE_WITH_UNDERSCORES``
-------------------------------------------------------------------
-
-Modules should not normally expose their variables directly.
-The exception is for variables which are constants: they should be named in ``UPPERCASE_WITH_UNDERSCORES``.
-
-.. _style-guide-py-2-8:
+.. _style-guide-py-naming-class-modules:
 
 Modules which contain class definitions SHOULD be named after the class name
 ----------------------------------------------------------------------------
 
 Modules which contain class definitions should be named after the class name (one module per class).
 
-.. _style-guide-py-2-9:
+.. _style-guide-py-naming-ext-modules:
 
 When a Python module wraps a C/C++ extension module, the C/C++ module SHOULD be named <module>Lib
 -------------------------------------------------------------------------------------------------
 
 When an extension module written in C or C++ has an accompanying Python module that provides a higher level (e.g. more object oriented) interface, the C/C++ module should append ``Lib`` to the module's name (e.g. ``socketLib``).
 
-.. _style-guide-py-2-10:
-
-Single leading underscore SHOULD be used to indicate 'internal use'
--------------------------------------------------------------------
-
-Single leading underscore is a weak 'internal use' indicator for which Python does not mangle the name on use.
-This 'internal use' indicator is useful not only as a visual programming convention but also because ``from M import *`` does not import names starting with an underscore.
-
-.. _style-guide-py-2-11:
-
-Private Class Attribute Names SHOULD be prefixed with a double underscore
--------------------------------------------------------------------------
-
-To make an attribute private, prefix it with double underscore: ``__name``.
-Python mangles attribute names that start with ``__``, thus weakly enforcing privacy.
-
-If your class is intended to be subclassed, and you have attributes that you do not want subclasses to use, name them with double leading underscores and no trailing underscores.
-This invokes Python's name mangling algorithm, where the name of the class is mangled into the attribute name.
-This helps avoid attribute name collisions should subclasses inadvertently contain attributes with the same name.
-
-- Only the simple class name is used in the mangled name, so if a subclass chooses both the same class name and attribute name, you can still get name collisions.
-
-- Name mangling can make certain uses, such as debugging and ``getattr()``, less convenient. However the name mangling algorithm is well documented and easy to perform manually.
-
-- Not everyone likes name mangling. Try to balance the need to avoid accidental name clashes with potential use by advanced callers.
-
-.. _style-guide-py-2-12:
-
-Modules designed for use via ``from M import *`` SHOULD use the ``__all__`` mechanism
--------------------------------------------------------------------------------------
-
-Modules that are designed for use via ``from M import *`` should use the ``__all__`` mechanism to ensure only the globals comprising the public API are exported.
-Failure to use the ``__all__`` mechanism results in all names in the module's namespace, which do not begin with a single ``_``, being exported as global.
-
-.. _style-guide-py-2-13:
-
-``self`` MUST be used for the first argument to instance methods
-----------------------------------------------------------------
-
-Always use ``self`` for the first argument to instance methods.
-
-.. _style-guide-py-2-14:
-
-``cls`` MUST be used for the first argument to class methods
-------------------------------------------------------------
-
-Always use ``cls`` for the first argument to class methods.
-
-.. _style-guide-py-2-15:
+.. _style-guide-py-naming-ambiguous:
 
 Names l (lowercase: el), O (uppercase: oh), I (uppercase: eye) MUST be avoided
 ------------------------------------------------------------------------------
 
-Never use the characters
+Never use these characters as single character variable names:
 
 - ``l`` (lowercase letter el),
 - ``O`` (uppercase letter oh), or
-- ``I`` (uppercase letter eye) as single character variable names.
+- ``I`` (uppercase letter eye).
 
 In some fonts, these characters are indistinguishable from the numerals one and zero.
 When tempted to use ``l``, use ``L`` instead.
