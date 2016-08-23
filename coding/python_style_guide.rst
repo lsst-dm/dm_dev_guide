@@ -348,64 +348,37 @@ No:
 
 .. _style-guide-py-pitfalls:
 
-7. Programming Pitfalls
+6. Programming Pitfalls
 =======================
 
-.. _style-guide-py-7-2:
+.. _style-guide-py-pitfalls-mutables:
 
-A mutable object MUST NOT be used as default in arg list
---------------------------------------------------------
+A mutable object MUST NOT be used as a keyword argument default
+---------------------------------------------------------------
 
-Never use a mutable object as default value in a function or method argument list.
-The problem is that the default value may itself change, leading to subtle bugs.
-This problem bites many new Python programmers, though usually only once.
-To avoid the problem use something like the following: 
+Never use a mutable object as default value for a keyword argument in a function or method.
 
-.. code-block:: py
+When used a mutable is used as a default keyword argument, the default *can* change from one call to another leading to unexpected behavior.
+This issue can be avoided by only using immutable types as default.
 
-   def proclist(alist=None):
-   if alist == None:
-   alist = []
-
-   # if you can tolerate a tuple; tuples are immutable
-   def proclist(alist=()):
-       pass
-
-Rather than the more obvious but dangerously wrong: 
+For example, rather than provide a default empty list:
 
 .. code-block:: py
 
    def proclist(alist=[]):
        pass
 
-.. _style-guide-py-7-3:
-
-Object type comparisons SHOULD always use ``isinstance()``
-----------------------------------------------------------
-
-Object type comparisons should always use :py:func:`isinstance()` instead of comparing types directly. 
-
-Yes:
+this function should create a new list in its internal scope:
 
 .. code-block:: py
 
-   if isinstance(obj, int):
-       pass
+   def proclist(alist=None):
+       if alist is None:
+           alist = []
 
-.. code-block:: py
+.. _style-guide-py-pitfalls-star-args:
 
-   if type(obj) is type(1):
-       pass
-
-When checking if an object is a string, keep in mind that it might be a unicode string too! Starting with Python 2.3, `str` and `unicode` have a common base class, `basestring`, so you can do: 
-
-.. code-block:: py
-
-   if ``isinstance(obj, basestring)``:
-
-.. _style-guide-py-7-4:
-
-In function calls ``*`` and SHOULD be used instead of ``apply``
+In function calls ``*`` SHOULD be used instead of ``apply``
 ---------------------------------------------------------------
 
 In old versions of Python, to call a function with an argument list and/or keyword dictionary you had to write ``apply(func, args, keyargs)``.
