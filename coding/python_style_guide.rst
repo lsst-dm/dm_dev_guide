@@ -456,10 +456,10 @@ The exception hierarchy in Python 2.5 was improved, eliminating the need to use 
 
 .. _style-guide-py-suggested-modules:
 
-9. Suggested Modules
+8. Suggested Modules
 ====================
 
-.. _style-guide-py-9-1:
+.. _style-guide-py-subprocess:
 
 The ``subprocess`` module SHOULD be used to spawn processes
 -----------------------------------------------------------
@@ -468,7 +468,7 @@ Use the :py:mod:`subprocess` module to spawn processes.
 This supersedes and unifies :py:func:`os.system`, ``os.spawn``, :py:func:`os.popen`, etc..
 New in Python 2.3.
 
-.. _style-guide-py-9-2:
+.. _style-guide-py-lambda:
 
 ``lambda`` SHOULD NOT be used
 -----------------------------
@@ -476,27 +476,22 @@ New in Python 2.3.
 Avoid the use of ``lambda``.
 You can almost always write clearer code by using a named function or using the :py:mod:`functools` module to wrap a function.
 
-.. _style-guide-py-9-3:
+.. _style-guide-py-set:
 
 The ``set`` type SHOULD be used for unordered collections
 ---------------------------------------------------------
 
-Use the :py:class`set` type for unordered collections of objects.
+Use the :py:class:`set` type for unordered collections of objects.
 New in Python 2.4 (though available via the ``Set`` module in Python 2.3).
 
-.. _style-guide-py-9-4:
+.. _style-guide-py-argparse:
 
 The ``argparse`` module SHOULD be used for command-line scripts 
 ---------------------------------------------------------------
 
 Use the :py:mod:`argparse` module for command-line scripts.
 
-.. _style-guide-py-9-5:
-
-Pychecker or pylint SHOULD be used to check your code
------------------------------------------------------
-
-Check your code with `pychecker <http://pychecker.sourceforge.net>`_ or `pylint <http://www.pylint.org>`_.
+Command line tasks for pipelines should use :lclass:`lsst.pipe.base.ArgumentParser` instead.
 
 .. _style-guide-py-py3:
 
