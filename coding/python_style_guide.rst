@@ -296,34 +296,6 @@ Within a module, follow the order:
 
 .. note:: Delete mention of test suites?
 
-.. _style-guide-py-string-handling:
-
-5. String Handling
-==================
-
-.. _style-guide-py-string-5-1:
-
-String methods SHOULD be used instead of the string module
-----------------------------------------------------------
-
-Use `string methods <https://docs.python.org/2/library/stdtypes.html#string-methods>`_ instead of the :py:mod:`string` module.
-String methods are always much faster and share the same API with unicode strings.
-
-.. _style-guide-py-string-5-2:
-
-``.startswith()`` and ``.endswith()`` SHOULD be used to check for prefixes or suffixes
---------------------------------------------------------------------------------------
-
-Use :py:meth:`str.startswith()` and :py:meth:`str.endswith()` instead of string slicing to check for prefixes or suffixes; they are cleaner and less error prone.
-
-.. _style-guide-py-string-5-3:
-
-String literals SHOULD NOT rely on trailing whitespace
-------------------------------------------------------
-
-Don't write string literals that rely on significant trailing whitespace.
-Such trailing whitespace is visually indistinguishable and some editors (or more recently, :file:`reindent.py`) will trim them.
-
 .. _style-guide-py-comparisons:
 
 6. Comparisons
