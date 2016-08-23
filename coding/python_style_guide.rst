@@ -251,148 +251,50 @@ Other subtleties have been noted in https://fuhm.net/super-harmful/:
 
 .. _style-guide-py-files:
 
-4. Files
-========
+4. Source Files & Modules
+=========================
 
-.. _style-guide-py-4-1:
+.. _style-guide-py-file-name:
 
-A Python source file name SHOULD be camelCase-with-leading-lowercase and ending in ``.py``
-------------------------------------------------------------------------------------------
+A Python source file name SHOULD be camelCase-with-leading-lowercase and ending in '.py'
+----------------------------------------------------------------------------------------
 
-The name of a file containing a module will be the ``camelCase``-with-leading-lowercase transliteration of the module name.
+A module containing a single class should be a ``camelCase``-with-leading-lowercase transliteration of the class's name.
+
 The name of a test case should be descriptive without the need for a trailing numeral to distinguish one test case from another. 
 
-.. _style-guide-py-4-2:
+.. TODO consider refactoring tests into their own section
+
+.. _style-guide-py-file-encoding:
 
 ASCII Encoding MUST be used for new code
 ----------------------------------------
 
-- Always use ASCII for new python code.
+Always use ASCII for new python code.
 
 - **Do not** include a coding comment (as described in  :pep:`263`) for ASCII files.
 
 - Existing code using Latin-1 encoding (a.k.a. ISO-8859-1) is acceptable so long as it has a proper coding comment. All other code must be converted to ASCII or Latin-1 except for 3rd party packages used "as is."
 
-.. _style-guide-py-4-3:
+.. _style-guide-py-file-order:
 
-DM specified code order SHOULD be followed
-------------------------------------------
+Standard code order SHOULD be followed
+--------------------------------------
 
 Within a module, follow the order: 
 
-1. Shebang line (``#!``), only for executable scripts
-2. Module-level comments
+1. Shebang line, ``#! /usr/bin/env python`` (only for executable scripts)
+2. Module-level comments (such as the `license statement <https://github.com/lsst/templates/blob/master/CopyrightHeader.py>`__)
 3. Module-level docstring
 4. Imports
 5. ``__all__`` statement, if any
-6. Module variables (names start with underscore)
-7. Module functions and classes (names start with underscore)
-8. Public variables
+6. Private module variables (names start with underscore)
+7. Private module functions and classes (names start with underscore)
+8. Public module variables
 9. Public functions and classes
 10. Optional test suites
 
-.. _style-guide-py-4-4:
-
-Imports SHOULD be grouped, in order: standard lib, 3rd party lib, local lib
----------------------------------------------------------------------------
-
-Imports should be grouped in the following order, with each group separated by a blank line:
-
-1. standard library imports
-2. related third party imports
-3. local application/library specific imports
-
-When importing a class from a class-containing module,
-it's usually okay to do this:
-
-.. code-block:: py
-
-   from myclass import MyClass
-   from foo.bar.yourclass import YourClass
-
-But if that causes local name clashes, then do this instead: 
-
-.. code-block:: py
-
-   import myclass
-   import foo.bar.yourclass
-
-and use ``myclass.MyClass`` and ``foo.bar.yourclass.YourClass``. 
-
-Relative imports SHOULD be used when importing another module from the same package
-Consider this layout: 
-
-.. code-block:: text
-
-   mypkg/
-       __init__.py
-       foo.py
-       bar.py
-
-If ``foo`` wants to import ``bar``, the safe way to do this (Python 2.6 and later) is to use relative import:
-
-.. code-block:: py
-
-   from . import bar
-
-Or, if you just want a few symbols from bar, this also works:
-
-.. code-block:: py
-
-   from .bar import thing1, thing2
-
-This avoids any danger of name collision with a module on the python path named bar.
-Relative import statements are richer than suggested by the example; see :pep:`328` for details.
-
-.. _style-guide-py-4-5:
-
-Multiple Statements SHOULD NOT occur on same Line
--------------------------------------------------
-
-Compound statements (multiple statements on the same line) are generally discouraged.
-
-Yes: 
-
-.. code-block:: py
-
-   if foo == 'blah':
-       do_blah_thing()
-       do_one()
-       do_two()
-       do_three()
-
-No:
-
-.. code-block:: py
-
-   if foo == 'blah': do_blah_thing()
-       do_one(); do_two(); do_three()
-
-While sometimes it's okay to put an ``if``/``for``/``while`` with a small body on the same line, never do this for multi-clause statements.
-Also avoid folding such long lines!
-
-Rather not:
-
-.. code-block:: py
-
-   if foo == 'blah': do_blah_thing()
-   for x in lst: total += x
-   while t < 10: t = delay()
-
-Definitely not:
-
-.. code-block:: py
-
-   if foo == 'blah': do_blah_thing()
-   else: do_non_blah_thing()
- 
-   try: something()
-   finally: cleanup()
- 
-   do_one(); do_two(); do_three(long, argument,
-                                list, like, this)
-                            
-   if foo == 'blah': one(); two(); three()
+.. note:: Delete mention of test suites?
 
 .. _style-guide-py-string-handling:
 
