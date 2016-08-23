@@ -386,7 +386,7 @@ Now you can write ``func(*args, keyargs)``, which is faster and clearer.
 
 .. _style-guide-py-recommendations:
 
-8. Programming Recommendations
+7. Programming Recommendations
 ==============================
 
 Try to make your Python code idiomatic (*pythonic*).
@@ -408,7 +408,7 @@ Consider the following, slightly adapted from Tim Peters' `The Zen of Python <ht
 | If the implementation is hard to explain, it's a bad idea. 
 | If the implementation is easy to explain, it may be a good idea.
 
-.. _style-guide-py-8-1:
+.. _style-guide-py-idiomatic-python:
 
 Idiomatic modern Python SHOULD be used
 --------------------------------------
@@ -433,7 +433,7 @@ For example:
 The LSST environment currently supports Python 2.7.x.
 Do not use features that are not available in these versions of Python.
 
-.. _style-guide-py-8-2:
+.. _style-guide-py-exception-handling-syntax:
 
 Python 2.5 improved Exception Handling SHOULD be used
 -----------------------------------------------------
@@ -453,13 +453,6 @@ The exception hierarchy in Python 2.5 was improved, eliminating the need to use 
        raise
        except Exception, e:
            pass
-
-.. _style-guide-py-8-3:
-
-``raise ValueError('message')`` SHOULD be used instead of the deprecated form
------------------------------------------------------------------------------
-
-When raising an exception, use ``raise ValueError('message')`` instead of the older, deprecated form ``raise ValueError, 'message'``.
 
 .. _style-guide-py-suggested-modules:
 
