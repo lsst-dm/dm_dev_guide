@@ -495,15 +495,17 @@ Command line tasks for pipelines should use :lclass:`lsst.pipe.base.ArgumentPars
 
 .. _style-guide-py-py3:
 
-10. Python 3 Idioms
-===================
+9. Python 3 Idioms
+==================
 
 It is possible to write much of the Python code in a way that will run well under both Python 2.7 and Python 3.x, without harming readability (and in some cases, improving it).
-There are other cases where code can be written in a way that helps the 2to3_ code converter produce more efficient code.
+There are other cases where code can be written in a way that helps the futurize_ code converter produce more efficient code.
 
-.. _2to3: https://docs.python.org/2/library/2to3.html
+For more information see http://python3porting.com/toc.html, among several useful references.
 
-.. _style-guide-py-10-1:
+.. _futurize: http://python-future.org/futurize.html
+
+.. _style-guide-py-future-division:
 
 Use ``from __future__ import division``
 ---------------------------------------
@@ -512,25 +514,24 @@ This means ``/`` is floating-point division and ``//`` is truncated integer divi
 This gives more predictable behavior than the old operators, avoiding a common source of obscure bugs.
 It also makes intent of the code more obvious.
 
-.. _style-guide-py-10-2:
+.. _style-guide-py-future-absolute-import:
 
 Use ``from __future__ import absolute_import``
 ----------------------------------------------
 
 In addition, import local modules using relative imports (e.g. ``from . import foo`` or ``from .foo import bar``).
 This results in clearer code and avoids shadowing global modules with local modules.
-It also makes 2to3_ conversion more reliable.
 
-.. _style-guide-py-10-3:
+.. _style-guide-py-future-itervalues:
 
 Use ``itervalues()`` and ``iteritems()`` instead of ``values()`` and ``items()``
 --------------------------------------------------------------------------------
 
 For iterating over dictionary values and items use the above idiom unless you truly need a list.
-This generates more efficient code today and helps 2to3_ generate more efficient code in the future.
-For more information see http://python3porting.com/preparing.html#optional-use-the-iterator-methods-on-dictionaries.
+This generates more efficient code today and helps futurize_ generate more efficient code in the future.
+For more information see http://python-future.org/compatible_idioms.html#iterating-through-dict-keys-values-items.
 
-.. _style-guide-py-10-4:
+.. _style-guide-py-dict-keys:
 
 Avoid ``dict.keys()`` and ``dict.iterkeys()``
 ---------------------------------------------
@@ -551,14 +552,14 @@ To test for inclusion use ``in``:
     
 This is preferred over ``keys()`` and ``iterkeys()`` and avoids the issues mentioned in the previous item.
 
-.. _style-guide-py-10-5:
+.. _style-guide-py-open:
 
 Replace ``file`` with ``open``
 ------------------------------
 
 This is preferred and ``file`` is gone in Python 3.
 
-.. _style-guide-py-10-6:
+.. _style-guide-py-exception-as:
 
 Use ``as`` when catching an exception
 -------------------------------------
@@ -566,7 +567,9 @@ Use ``as`` when catching an exception
 For example, use ``except Exception as e`` or ``except (LookupError, TypeError) as e``.
 The new syntax is clearer, especially when catching multiple exception classes, and the old syntax does not work in Python 3.
 
-.. _style-guide-py-10-7:
+.. note:: Conflicts with :ref:`style-guide-py-exception-handling-syntax`?
+
+.. _style-guide-py-print-function:
 
 Use from ``__future__ import print_function``
 ---------------------------------------------
@@ -574,14 +577,12 @@ Use from ``__future__ import print_function``
 Minor, but provides forward compatibility.
 This will affect very little code since we rarely use print.
 
-.. _style-guide-py-10-8:
+.. _style-guide-py-next:
 
 Use ``next(myIter)`` instead of ``myIter.next()``
 -------------------------------------------------
 
 This is preferred, and the special method ``next`` has been renamed to ``__next__`` in Python 3.
-
-For more information see  http://python3porting.com/toc.html, among several useful references.
 
 .. _style-guide-py-layout:
 
