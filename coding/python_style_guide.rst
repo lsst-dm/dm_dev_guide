@@ -298,19 +298,19 @@ Within a module, follow the order:
 
 .. _style-guide-py-comparisons:
 
-6. Comparisons
+5. Comparisons
 ==============
 
-.. _style-guide-py-6-1:
+.. _style-guide-py-comp-is:
 
 ``is`` and ``is not`` SHOULD only be used if determining if two variables point to same object
 ----------------------------------------------------------------------------------------------
 
-Avoid comparing with ``is`` and ``is not`` unless you really mean it.
-Use ``is`` or ``is not`` only for the very rare case that you need to know that two variables point to the exact same object.
-Usually you only care whether two objects have the same value, in which case use ``==`` or ``!=``.
+Use ``is`` or ``is not`` only for the case that you need to know that two variables point to the exact same object.
 
-.. _style-guide-py-6-2:
+To test equality in *value*, use ``==`` or ``!=`` instead.
+
+.. _style-guide-py-comp-none:
 
 ``is`` and ``is not`` SHOULD be used when comparing to ``None``
 ---------------------------------------------------------------
@@ -320,7 +320,7 @@ There are two reasons:
 1. ``is None`` works with NumPy arrays, whereas ``== None`` does not;
 2. ``is None`` is idiomatic.
 
-This is also consistent with :pep:`8` which states:
+This is also consistent with :pep:`8`, which `states <https://www.python.org/dev/peps/pep-0008/#id49>`__:
 
    Comparisons to singletons like ``None`` should always be done with ``is`` or ``is not``, never the equality operators.
 
@@ -346,42 +346,10 @@ No:
    if not len(seq):
        pass
 
-.. _style-guide-py-6-3:
-
-A conditional test of a boolean value SHOULD not explicitly test against ``True`` or ``False``
-----------------------------------------------------------------------------------------------
-
-Don't compare boolean values to ``True`` or ``False`` using ``==`` (unless it matters, e.g. for tri-state logic).
-
-Yes:
-
-.. code-block:: py
-
-   if greeting:
-
-No:
-
-.. code-block:: py
-
-   if greeting == True:
-       pass
-
-   if greeting is True:
-       pass
-
 .. _style-guide-py-pitfalls:
 
 7. Programming Pitfalls
 =======================
-
-.. _style-guide-py-7-1:
-
-``if x`` SHOULD NOT be used when you mean ``if x != None``
-----------------------------------------------------------
-
-Beware of writing ``if x`` when you mean ``if x != None``.
-This often comes up when testing whether a variable or argument that defaults to ``None`` was set to some other value.
-The other value might have a type (such as a container) that could be ``False`` in a boolean context!
 
 .. _style-guide-py-7-2:
 
