@@ -651,60 +651,12 @@ Consistency with the LSST C++ Coding Standards namespaces exists.
 
 .. _style-guide-py-whitespace:
 
-12. Whitespace
+11. Whitespace
 ==============
 
-.. _style-guide-py-12-1:
+Follow the `PEP 8 whitespace style guidelines <https://www.python.org/dev/peps/pep-0008/#id26>`_, with the following adjustments.
 
-Extraneous Whitespace SHOULD be avoided
----------------------------------------
-
-Avoid extraneous whitespace in the following situations:
-
-- immediately inside parentheses, brackets or braces:
-
-  Yes: ``spam(ham[1], {eggs: 2})``
-
-  No: ``spam( ham[ 1 ], { eggs: 2 } )``
-
-- immediately before a comma, semicolon, or colon: 
-
-  Yes: ``if x == 4: print x, y; x, y = y, x``
-
-  No: ``if x == 4 : print x , y ; x , y = y , x``
-
-- immediately before the open parenthesis that starts the argument list of a function call:
-
-  Yes: ``spam(1)``
-
-  No:  ``spam (1)``
-
-- immediately before the open parenthesis that starts an indexing or slicing: 
-
-  Yes: ``dict['key'] = list[index]``
-
-  No:  ``dict ['key'] = list [index]``
-
-- More than one space around an assignment (or other) operator to align it with another.
-  Make an exception if alignment makes the data significantly clearer (e.g. complex lookup tables).
-
-  Thus: 
-
-  .. code-block:: py
-
-     x = 1
-     y = 2
-     long_variable = 3
-
-  Not this:
-
-  .. code-block:: py
-
-     x             = 1
-     y             = 2
-     long_variable = 3
-
-.. _style-guide-py-12-2:
+.. _style-guide-py-minimal-parens:
 
 The minimum number of parenthesis needed for correctness and readability SHOULD be used
 ---------------------------------------------------------------------------------------
@@ -721,7 +673,7 @@ Less readable:
 
    a = b((self.config.nSigmaToGrow*sigma) + 0.5)
  
-.. _style-guide-py-12-3:
+.. _style-guide-py-operator-whitespace:
 
 Binary operators SHOULD be surrounded by a single space except for [``*``, ``/``, ``**``, ``//``, ``%``\ ]
 ----------------------------------------------------------------------------------------------------------
@@ -746,8 +698,7 @@ Never surround these binary arithmetic operators with whitespace:
 - floor division (``//``),
 - modulus (``%``).
 
-The one exception is assigning values to multiple keyword arguments on a single line, where spaces around "=" obscure the separation between the separate arguments. 
-Thus this: 
+For example:
 
 .. code-block:: py
 
@@ -756,50 +707,44 @@ Thus this:
    x = x*2 - 1
    hypot2 = x*x + y*y
    c = (a + b)*(a - b)
+
+This deviates from PEP 8, which `allows whitespace around these arithmetic operators if they appear alone <https://www.python.org/dev/peps/pep-0008/#id28>`__.
+
+.. _style-guide-py-multiline-assignment-whitespace:
+
+Keyword assignment operators SHOULD be surrounded by a space when statements appear on multiple lines
+-----------------------------------------------------------------------------------------------------
+
+However, if keyword assignments occur on a single line, where should be no additional spaces.
+
+Thus this: 
+
+.. code-block:: py
+
+   # whitespace around multi-line assignment
    funcA(
        karg1 = value1,
        karg2 = value2,
        karg3 = value3,
    )
+
+   # no whitespace around single-line assigment
    funcB(x, y, z, karg1=value1, karg2=value2, karg3=value3)
 
 Not this: 
 
 .. code-block:: py
 
-   i=i+1
-   submitted +=1
-   x = x * 2 - 1
-   hypot2 = x * x + y * y
-   c = (a+b) * (a-b)
    funcA(
        karg1=value1,
        karg2=value2,
        karg3=value3,
    )
+
    aFunction(x, y, z, karg1 = value1, karg2 = value2, karg3 = value3)
+
+`Opposes PEP 8 <https://www.python.org/dev/peps/pep-0008/#id28>`__.
  
-.. _style-guide-py-12-4:
-
-Spaces MUST NOT be used around ``=`` for Default Parameter
-----------------------------------------------------------
-
-Don't use spaces around the ``=`` sign when used to indicate a default parameter value.
-
-Thus this:
-
-.. code-block:: py
-
-   def complex(real, imag=0.0):
-       pass
-
-but not this:
-
-.. code-block:: py
-
-   def complex(real, imag = 0.0):
-       pass
-
 .. _style-guide-py-comments:
 
 13. Comments
