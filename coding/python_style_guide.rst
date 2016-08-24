@@ -747,10 +747,12 @@ Not this:
  
 .. _style-guide-py-comments:
 
-13. Comments
+12. Comments
 ============
 
-.. _style-guide-py-13-1:
+Source code comments should follow `PEP 8's recommendations <https://www.python.org/dev/peps/pep-0008/#id29>`__ with the following additional requirements.
+
+.. _style-guide-py-comment-consistency:
 
 Comments MUST always remain up-to-date with code changes
 --------------------------------------------------------
@@ -758,22 +760,18 @@ Comments MUST always remain up-to-date with code changes
 Comments that contradict the code are worse than no comments.
 Always make a priority of keeping the comments up-to-date when the code changes!
 
-.. _style-guide-py-13-2:
+.. _style-guide-py-comment-sentence-spaces:
 
-Comments SHOULD be complete sentences
--------------------------------------
+Sentences in comments SHOULD NOT be separated by double spaces
+--------------------------------------------------------------
 
-Comments should be complete sentences.
-If a comment is a phrase or sentence, its first word should be capitalized, unless it is an identifier that begins with a lower case letter (never alter the case of identifiers!).
+Following PEP 8, comments should be complete sentences.
 
-If a comment is short, the period at the end can be omitted.
-Block comments generally consist of one or more paragraphs built out of complete sentences, and each sentence should end in a period.
+However, sentences **should not** be separated by two spaces; a single space is sufficient.
 
-You need not use two spaces after a sentence-ending period.
+`This differs from PEP 8 <https://www.python.org/dev/peps/pep-0008/#id29>`__.
 
-When writing English, *Strunk and White* apply.
-
-.. _style-guide-py-13-3:
+.. _style-guide-py-block-comment-indentation:
 
 Block comments SHOULD reference the code following them and SHOULD be indented to the same level
 ------------------------------------------------------------------------------------------------
@@ -781,36 +779,7 @@ Block comments SHOULD reference the code following them and SHOULD be indented t
 Block comments generally apply to some (or all) code that follows them, and are indented to the same level as that code.
 Each line of a block comment starts with a ``#`` and a single space (unless it is indented text inside the comment).
 
-Paragraphs inside a block comment are separated by a line containing a single #.
-
-.. _style-guide-py-13-4:
-
-Inline Comments MAY be sparingly used
--------------------------------------
-
-Use inline comments sparingly.
-Inline comments are unnecessary and in fact distracting if they state the obvious.
-
-Don't do this: 
-
-.. code-block:: py
-
-   x = x + 1      # Increment x
-
-But sometimes, this is useful: 
-
-.. code-block:: py
-
-   x = x + 1      # Compensate for border
-
-.. _style-guide-py-13-5:
-
-Inline comments SHOULD be separated by at least two spaces from the statement
------------------------------------------------------------------------------
-
-An inline comment is a comment on the same line as a statement.
-Inline comments should be separated by at least two spaces from the statement.
-They should start with a ``#`` (i.e., sharp sign and a single space).
+Paragraphs inside a block comment are separated by a line containing a single ``#``.
 
 .. _style-guide-py-docstrings:
 
