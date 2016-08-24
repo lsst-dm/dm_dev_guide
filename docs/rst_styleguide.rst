@@ -179,8 +179,8 @@ We create section hierarchies as follows:
 This specific sequence of section markup styles is not mandated by the reST specification, but we encourage you to use it for consistency across all DM reST documents.
 
 **Sections in Python docstrings are a special case.**
-First, :ref:`we do not place a blank space between a section header and the object lists below <py-doc-docstring-rst>`.
-Second, :ref:`Python docstrings can only use subsection and subsubsection-level headings <py-doc-section-levels>`.
+First, :ref:`we do not place a blank space between a section header and the object lists below <py-docstring-nospace-headers>`.
+Second, :ref:`Python docstrings can only use subsection and subsubsection-level headings <py-docstring-section-levels>`.
 
 .. _rst-linking:
 
@@ -743,7 +743,9 @@ RestructuredText Formatting Conventions
 Text wrapping
 -------------
 
-When writing reST documentation in Python files, documentation lines should be kept to lengths of :ref:`75 characters or fewer <py-doc-docstring-rst>` (discounting leading indentation).
+When writing reST documentation in Python docstrings, documentation lines should be wrapped at lengths of 110 characters for :ref:`consistency with our Python Style Guide <style-guide-py-line-length>`.
+
+.. NOTE: ls.st/rfc-107
 
 For reStructuredText documents (e.g., ``.rst`` files), reST doesn't care about line formatting.
 Emacs users, for example, are free to use hard-wrap formatting lines at 72 characters if that helps you write docs.

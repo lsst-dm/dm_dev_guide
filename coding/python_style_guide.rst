@@ -783,56 +783,22 @@ Paragraphs inside a block comment are separated by a line containing a single ``
 
 .. _style-guide-py-docstrings:
 
-14. Documentation Strings
-=========================
+13. Documentation Strings (docstrings)
+======================================
 
-Read the `DM Documentation Standards <https://dev.lsstcorp.org/trac/wiki/DocumentationStandards>`_ for the definitive formatting guidelines for DM python source files.
+Use **Numpydoc** to format the content of all docstrings.
+The page :doc:`../docs/py_docs` authoritatively describes this format.
+It's guide should be treated as an extension of this Python style guide.
 
-Read :pep:`257` for the pythonic discussion of docstrings.
-This is your main resource for information on writing doc strings.
-Here are a few minor points and emendations:
+See also the :doc:`../docs/rst_styleguide` and the :ref:`rst-formatting-guidelines` section in particular for guidelines on reStructuredText in general.
 
-.. _style-guide-py-14-1:
+.. _style-guide-py-docstring-public-api:
 
 Docstrings SHOULD be written for all public modules, functions, classes, and methods
 ------------------------------------------------------------------------------------
 
 Write docstrings for all public modules, functions, classes, and methods.
+See :doc:`../docs/py_docs`.
 
 Docstrings are not necessary for non-public methods, but you should have a comment that describes what the method does.
 This comment should appear after the ``def`` line.
-
-.. _style-guide-py-14-2:
-
-Docstrings SHOULD start with a 1-line imperative summary ending in a period
----------------------------------------------------------------------------
-
-Start the doc string with a one-line summary, a phrase ending in a period.
-Prescribe the function or method's effect as a command ("Do this", "Return that"), not as a description; e.g. don't write "Returns the pathname ...".
-
-.. _style-guide-py-14-3:
-
-Docstrings for functions, classes, and methods SHOULD include argument descriptions, return value, error conditions
--------------------------------------------------------------------------------------------------------------------
-
-After the docstring's summary line, if more information is wanted (as it usually is), include it after a blank line.
-This usually should include a description of the arguments, return value and important error conditions.
-
-If you mention arguments or other variables, always use their correct case.
-
-Docstrings should not be preceded or followed by a blank line.
-
-.. _style-guide-py-14-4:
-
-Docstrings SHOULD be begin with ``"""`` and terminate with ``"""`` on its own line
-----------------------------------------------------------------------------------
-
-Delimit doc strings with ``"""`` (three double quotes). You may use ``u"""`` for unicode but it is usually preferable to stick to ASCII.
-The terminating """ should be on its own line, even for one-line doc strings (this is a minor departure from :pep:`257`).
-
-.. code-block:: py
-
-   """Return a foobang
-    
-   Optional plotz says to frobnicate the bizbaz first.
-   """
