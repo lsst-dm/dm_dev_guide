@@ -586,31 +586,10 @@ This is preferred, and the special method ``next`` has been renamed to ``__next_
 
 .. _style-guide-py-layout:
 
-11. Layout
+10. Layout
 ==========
 
-.. _style-guide-py-11-1:
-
-Basic indentation MUST be 4 spaces
-----------------------------------
-
-Use 4 spaces per indentation level.
-
-This width provides a good balance between readability and excessive indentation.
-Using spaces instead of tabs assures that the code may be edited with all common editors and displayed with all common displays without special configuration.
-
-For an old code package that you don't wish to alter too far, you may use its existing indentation method with one exception, no tabs.
-
-.. _style-guide-py-11-2:
-
-Use of special character TAB is PROHIBITED
-------------------------------------------
-
-Existing code that mixes tabs and spaces must be converted to use 4 spaces per indentation level.
-
-To check a file you may invoke the Python command line interpreter with the ``-t/-tt`` option, it issues warnings/errors about code that illegally mixes tabs and spaces.
-
-.. _style-guide-py-11-3:
+.. _style-guide-py-line-length:
 
 Line Length MUST be less than or equal to 110 columns
 -----------------------------------------------------
@@ -618,7 +597,9 @@ Line Length MUST be less than or equal to 110 columns
 Limit all lines to a maximum of 110 characters.
 This conforms to the :doc:`cpp_style_guide` (see :ref:`4-6 <style-guide-cpp-4-6>`).
 
-.. _style-guide-py-11-4:
+This differs from the `PEP 8 recommendation of 79 characters <https://www.python.org/dev/peps/pep-0008/#id19>`_.
+
+.. _style-guide-py-implied-continuation:
 
 Python's implied continuation inside parens, brackets and braces SHOULD be used for wrapped lines
 -------------------------------------------------------------------------------------------------
@@ -644,51 +625,14 @@ Make sure to indent the continued line appropriately. Some examples:
             Blob.__init__(self, width, height,
                           color, emphasis, highlight)
 
-.. _style-guide-py-11-5:
+.. _style-guide-py-docstring-blank-lines:
 
-Blank Lines SHOULD be used to enhance readability
--------------------------------------------------
+Blank lines SHOULD NOT be added before or after a docstring
+-----------------------------------------------------------
 
-Use blank lines to make your code readable.
-The following are recommendations:
+Do not use a blank line on either side of a docstring.
 
-- Separate top-level function and class definitions with two blank lines.
-
-- Separate method definitions inside a class by a single blank line.
-
-- Do not use a blank line on either side of a doc string.
-
-- Use blank lines in functions, sparingly, to indicate logical sections.
-
-- Extra blank lines may be used (sparingly) to separate groups of related functions.
-
-- Blank lines may be omitted between a bunch of related one-liners (e.g. a set of dummy implementations).
-
-.. _style-guide-py-11-6:
-
-A package SHOULD be imported on one line
-----------------------------------------
-
-Each package should be imported on one line.
-For example, this is preferred: 
-
-.. code-block:: py
-
-   import os
-   import sys
-   from subprocess import Popen, PIPE
-
-Whereas this is not: 
-
-.. code-block:: py
-
-    # two packages imported on one line
-    import sys, os
-    # one package imported on two lines
-    from subprocess import Popen
-    from subprocess import PIPE
-
-.. _style-guide-py-11-7:
+.. _style-guide-py-cpp-consistency:
 
 Consistency with the DM C++ Coding Guide namespaces SHOULD be followed
 ----------------------------------------------------------------------
@@ -701,7 +645,7 @@ Consistency with the LSST C++ Coding Standards namespaces exists.
 
 - ``import lsst.foo.bar as fooBar`` is analogous to ``namespace fooBar = lsst::foo::bar``
 
-**Disallowed** in both Coding Standards (except in __init__.py library initialization context):
+**Disallowed** in both Coding Standards (except in :file:`__init__.py` library initialization context):
 
 - ``from lsst.foo.bar import *`` is analogous to ``using namespace lsst::foo::bar``
 
