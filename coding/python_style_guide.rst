@@ -234,7 +234,7 @@ In that case, use properties to hide functional implementation behind simple dat
 
 - Note 3: Avoid using properties for computationally expensive operations; the attribute notation makes the caller believe that access is (relatively) cheap.
 
-.. _style-guide-py-3-1:
+.. _style-guide-py-super:
 
 ``super`` SHOULD NOT be used unless the author really understands the implications (e.g. in a well-understood multiple inheritance hierarchy).
 ----------------------------------------------------------------------------------------------------------------------------------------------
