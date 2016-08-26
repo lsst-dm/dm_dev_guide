@@ -272,7 +272,7 @@ Passing the ``--exact`` flag to :command:`setup` on the command line will set
 up only the exact versions that are specified in the expanded table file;
 otherwise, EUPS assumes that any greater version is equally acceptable. For
 example, if we added a ``v3`` of ``a`` and removed ``v2``, an ``--exact``
-setup would baulk::
+setup would balk::
 
    % eups list
    a                     v1
