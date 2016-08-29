@@ -149,455 +149,10 @@ Style changes must be encapsulated in a distinct commit (see :ref:`git-commit-or
 
 .. _autopep8: https://pypi.python.org/pypi/autopep8
 
-.. _style-guide-py-naming:
-
-2. Naming Conventions
-=====================
-
-We follow `PEP 8ʼs naming conventions <https://www.python.org/dev/peps/pep-0008/#naming-conventions>`_, with exceptions listed here.
-The naming conventions for LSST Python and C++ source have been defined to be as similar as the respective languages allow.
-
-In general:
-
-- class names are ``CamelCase`` with leading uppercase,
-- module variables used as module global constants are ``UPPERCASE_WITH_UNDERSCORES``,
-- all other names are ``camelCase`` with leading lowercase.
-
-Names may be decorated with leading and/or trailing underscores.
-
-.. _style-guide-py-2-2:
-
-User defined names SHOULD NOT shadow python built-in functions
---------------------------------------------------------------
-
-Names which shadow a python built-in function may cause confusion for readers of the code.
-Creating a more specific identifier is suggested to avoid collisions.
-In the case of *filter*, ``filterName`` may be appropriate; for *filter objects*, something like ``filterObj`` might be appropriate.
-
-.. _style-guide-py-naming-attributes:
-
-Class Attribute Names SHOULD be camelCase with leading lowercase
-----------------------------------------------------------------
-
-`Opposes PEP 8 <https://www.python.org/dev/peps/pep-0008/#id45>`__.
-Error codes: N802 and N803.
-
-.. _style-guide-py-naming-functions:
-
-Module methods (free functions) SHOULD be camelCase with leading lowercase
---------------------------------------------------------------------------
-
-`Opposes PEP 8 <https://www.python.org/dev/peps/pep-0008/#id45>`__.
-Error code: N802.
-
-.. _style-guide-py-naming-class-modules:
-
-Modules which contain class definitions SHOULD be named after the class name
-----------------------------------------------------------------------------
-
-Modules which contain class definitions should be named after the class name (one module per class).
-
-.. _style-guide-py-naming-ext-modules:
-
-When a Python module wraps a C/C++ extension module, the C/C++ module SHOULD be named <module>Lib
--------------------------------------------------------------------------------------------------
-
-When an extension module written in C or C++ has an accompanying Python module that provides a higher level (e.g. more object oriented) interface, the C/C++ module should append ``Lib`` to the module's name (e.g. ``socketLib``).
-
-.. _style-guide-py-naming-ambiguous:
-
-Names l (lowercase: el), O (uppercase: oh), I (uppercase: eye) MUST be avoided
-------------------------------------------------------------------------------
-
-Never use these characters as single character variable names:
-
-- ``l`` (lowercase letter el),
-- ``O`` (uppercase letter oh), or
-- ``I`` (uppercase letter eye).
-
-In some fonts, these characters are indistinguishable from the numerals one and zero.
-When tempted to use ``l``, use ``L`` instead.
-
-.. _style-guide-py-inheritance:
-
-3. Designing for Inheritance
-============================
-
-Always decide whether a class's methods and instance variables (collectively: "attributes") should be public or non-public.
-If in doubt, choose non-public; it's easier to make it public later than to make a public attribute non-public.
-
-Public attributes are those that you expect unrelated clients of your class to use, with your commitment to avoid backward incompatible changes.
-Non-public attributes are those that are not intended to be used by third parties; you make no guarantees that non-public attributes won't change or even be removed.
-
-We don't use the term "private" here, since no attribute is really private in Python (without a generally unnecessary amount of work).
-Another category of attributes are those that are part of the "subclass API" (often called "protected" in other languages).
-Some classes are designed to be inherited from, either to extend or modify aspects of the class's behavior.
-When designing such a class, take care to make explicit decisions about which attributes are public, which are part of the subclass API, and which are truly only to be used by your base class.
-
-For simple public data attributes, it is best to expose just the attribute name, without complicated accessor/mutator methods.
-Keep in mind that Python provides an easy path to future enhancement, should you find that a simple data attribute needs to grow functional behavior.
-In that case, use properties to hide functional implementation behind simple data attribute access syntax.
-
-- Note 1: Properties only work on new-style classes.
-
-- Note 2: Try to keep the functional behavior side-effect free, although side-effects such as caching are generally fine.
-
-- Note 3: Avoid using properties for computationally expensive operations; the attribute notation makes the caller believe that access is (relatively) cheap.
-
-.. _style-guide-py-super:
-
-``super`` SHOULD NOT be used unless the author really understands the implications (e.g. in a well-understood multiple inheritance hierarchy).
-----------------------------------------------------------------------------------------------------------------------------------------------
-
-Python provides ``super`` so that each parent class' method is only called once (see https://www.python.org/download/releases/2.3/mro/).
-The problem is, if you're going to use super at all, then all parent classes in the chain (also called the Method Resolution Order") need to use super otherwise the chain gets interrupted. 
-Other subtleties have been noted in https://fuhm.net/super-harmful/:
-
-- Never call super with anything but the exact arguments you received, unless you really know what you're doing.
-- When you use it on methods whose acceptable arguments can be altered on a subclass via addition of more optional arguments, always accept ``*args, **kw``, and call ``super`` like ``super(MyClass, self).currentmethod(alltheargsideclared, *args, **kwargs)``.
-  If you don't do this, forbid addition of optional arguments in subclasses.
-- Never use positional arguments in ``__init__`` or ``__new__``.
-  Always use keyword args, and always call them as keywords, and always pass all keywords on to ``super``.
-
-.. _style-guide-py-files:
-
-4. Source Files & Modules
-=========================
-
-.. _style-guide-py-file-name:
-
-A Python source file name SHOULD be camelCase-with-leading-lowercase and ending in '.py'
-----------------------------------------------------------------------------------------
-
-A module containing a single class should be a ``camelCase``-with-leading-lowercase transliteration of the class's name.
-
-The name of a test case should be descriptive without the need for a trailing numeral to distinguish one test case from another. 
-
-.. TODO consider refactoring tests into their own section
-
-.. _style-guide-py-file-encoding:
-
-ASCII Encoding MUST be used for new code
-----------------------------------------
-
-Always use ASCII for new python code.
-
-- **Do not** include a coding comment (as described in  :pep:`263`) for ASCII files.
-
-- Existing code using Latin-1 encoding (a.k.a. ISO-8859-1) is acceptable so long as it has a proper coding comment. All other code must be converted to ASCII or Latin-1 except for 3rd party packages used "as is."
-
-.. _style-guide-py-file-order:
-
-Standard code order SHOULD be followed
---------------------------------------
-
-Within a module, follow the order: 
-
-1. Shebang line, ``#! /usr/bin/env python`` (only for executable scripts)
-2. Module-level comments (such as the `license statement <https://github.com/lsst/templates/blob/master/CopyrightHeader.py>`__)
-3. Module-level docstring
-4. Imports
-5. ``__all__`` statement, if any
-6. Private module variables (names start with underscore)
-7. Private module functions and classes (names start with underscore)
-8. Public module variables
-9. Public functions and classes
-10. Optional test suites
-
-.. note:: Delete mention of test suites?
-
-.. _style-guide-py-comparisons:
-
-5. Comparisons
-==============
-
-.. _style-guide-py-comp-is:
-
-``is`` and ``is not`` SHOULD only be used if determining if two variables point to same object
-----------------------------------------------------------------------------------------------
-
-Use ``is`` or ``is not`` only for the case that you need to know that two variables point to the exact same object.
-
-To test equality in *value*, use ``==`` or ``!=`` instead.
-
-.. _style-guide-py-comp-none:
-
-``is`` and ``is not`` SHOULD be used when comparing to ``None``
----------------------------------------------------------------
-
-There are two reasons:
-
-1. ``is None`` works with NumPy arrays, whereas ``== None`` does not;
-2. ``is None`` is idiomatic.
-
-This is also consistent with :pep:`8`, which `states <https://www.python.org/dev/peps/pep-0008/#id49>`__:
-
-   Comparisons to singletons like ``None`` should always be done with ``is`` or ``is not``, never the equality operators.
-
-For sequences, (`str`, `list`, `tuple`), use the fact that empty sequences are ``False``. 
-
-Yes:
-
-.. code-block:: py
-
-   if not seq:
-       pass
-
-   if seq:
-       pass
-
-No:
-
-.. code-block:: py
-
-   if len(seq):
-       pass
-
-   if not len(seq):
-       pass
-
-.. _style-guide-py-pitfalls:
-
-6. Programming Pitfalls
-=======================
-
-.. _style-guide-py-pitfalls-mutables:
-
-A mutable object MUST NOT be used as a keyword argument default
----------------------------------------------------------------
-
-Never use a mutable object as default value for a keyword argument in a function or method.
-
-When used a mutable is used as a default keyword argument, the default *can* change from one call to another leading to unexpected behavior.
-This issue can be avoided by only using immutable types as default.
-
-For example, rather than provide a default empty list:
-
-.. code-block:: py
-
-   def proclist(alist=[]):
-       pass
-
-this function should create a new list in its internal scope:
-
-.. code-block:: py
-
-   def proclist(alist=None):
-       if alist is None:
-           alist = []
-
-.. _style-guide-py-pitfalls-star-args:
-
-In function calls ``*`` SHOULD be used instead of ``apply``
----------------------------------------------------------------
-
-In old versions of Python, to call a function with an argument list and/or keyword dictionary you had to write ``apply(func, args, keyargs)``.
-Now you can write ``func(*args, keyargs)``, which is faster and clearer.
-
-.. _style-guide-py-recommendations:
-
-7. Programming Recommendations
-==============================
-
-Try to make your Python code idiomatic (*pythonic*).
-Consider the following, slightly adapted from Tim Peters' `The Zen of Python <http://www.python.org/dev/peps/pep-0020>`_:
-
-| Beautiful is better than ugly. 
-| Explicit is better than implicit. 
-| Simple is better than complex. 
-| Complex is better than complicated. 
-| Flat is better than nested. 
-| Sparse is better than dense. 
-| Readability counts. 
-| Special cases aren't special enough to break the rules. 
-| Although practicality beats purity. 
-| Errors should never pass silently. 
-| Unless explicitly silenced. 
-| In the face of ambiguity, refuse the temptation to guess. 
-| There should be one---and preferably only one---obvious way to do it. 
-| If the implementation is hard to explain, it's a bad idea. 
-| If the implementation is easy to explain, it may be a good idea.
-
-.. _style-guide-py-idiomatic-python:
-
-Idiomatic modern Python SHOULD be used
---------------------------------------
-
-The Python language has evolved with time.
-Learn the new features of Python and use them where appropriate to make your code simpler and more readable.
-For example:
-
-- Use iterators, generators (classes that act like iterators) and generator expressions (expressions that act like iterators) to iterate over large data sets efficiently.
-  (New in Python 2.2, except generator expressions were added in 2.4 and generators were slightly enhanced in Python 2.5.)
-
-- Use the ``with`` statement to simplify resource allocation.
-  (New in Python 2.5.)
-  For example to be sure a file will be closed when you are done with it: 
-  
-  .. code-block:: py
-
-     with open('/etc/passwd', 'r') as f:
-         for line in f:
-             pass
-
-The LSST environment currently supports Python 2.7.x.
-Do not use features that are not available in these versions of Python.
-
-.. _style-guide-py-exception-handling-syntax:
-
-Python 2.5 improved Exception Handling SHOULD be used
------------------------------------------------------
-
-To catch all errors but let :py:exc:`~exceptions.SystemExit` and :py:exc:`~exceptions.KeyboardInterrupt` through, use:
-
-.. code-block:: py
-
-   except Exception, e:
-       pass
-
-The exception hierarchy in Python 2.5 was improved, eliminating the need to use this: 
-
-.. code-block:: py
-
-   except (SystemExit, KeyboardInterrupt):
-       raise
-       except Exception, e:
-           pass
-
-.. _style-guide-py-suggested-modules:
-
-8. Suggested Modules
-====================
-
-.. _style-guide-py-subprocess:
-
-The ``subprocess`` module SHOULD be used to spawn processes
------------------------------------------------------------
-
-Use the :py:mod:`subprocess` module to spawn processes.
-This supersedes and unifies :py:func:`os.system`, ``os.spawn``, :py:func:`os.popen`, etc..
-New in Python 2.3.
-
-.. _style-guide-py-lambda:
-
-``lambda`` SHOULD NOT be used
------------------------------
-
-Avoid the use of ``lambda``.
-You can almost always write clearer code by using a named function or using the :py:mod:`functools` module to wrap a function.
-
-.. _style-guide-py-set:
-
-The ``set`` type SHOULD be used for unordered collections
----------------------------------------------------------
-
-Use the :py:class:`set` type for unordered collections of objects.
-New in Python 2.4 (though available via the ``Set`` module in Python 2.3).
-
-.. _style-guide-py-argparse:
-
-The ``argparse`` module SHOULD be used for command-line scripts 
----------------------------------------------------------------
-
-Use the :py:mod:`argparse` module for command-line scripts.
-
-Command line tasks for pipelines should use :lclass:`lsst.pipe.base.ArgumentParser` instead.
-
-.. _style-guide-py-py3:
-
-9. Python 3 Idioms
-==================
-
-It is possible to write much of the Python code in a way that will run well under both Python 2.7 and Python 3.x, without harming readability (and in some cases, improving it).
-There are other cases where code can be written in a way that helps the futurize_ code converter produce more efficient code.
-
-For more information see http://python3porting.com/toc.html, among several useful references.
-
-.. _futurize: http://python-future.org/futurize.html
-
-.. _style-guide-py-future-division:
-
-Use ``from __future__ import division``
----------------------------------------
-
-This means ``/`` is floating-point division and ``//`` is truncated integer division, regardless of the type of numbers being divided.
-This gives more predictable behavior than the old operators, avoiding a common source of obscure bugs.
-It also makes intent of the code more obvious.
-
-.. _style-guide-py-future-absolute-import:
-
-Use ``from __future__ import absolute_import``
-----------------------------------------------
-
-In addition, import local modules using relative imports (e.g. ``from . import foo`` or ``from .foo import bar``).
-This results in clearer code and avoids shadowing global modules with local modules.
-
-.. _style-guide-py-future-itervalues:
-
-Use ``itervalues()`` and ``iteritems()`` instead of ``values()`` and ``items()``
---------------------------------------------------------------------------------
-
-For iterating over dictionary values and items use the above idiom unless you truly need a list.
-This generates more efficient code today and helps futurize_ generate more efficient code in the future.
-For more information see http://python-future.org/compatible_idioms.html#iterating-through-dict-keys-values-items.
-
-.. _style-guide-py-dict-keys:
-
-Avoid ``dict.keys()`` and ``dict.iterkeys()``
----------------------------------------------
-
-For iterating over keys, iterate over the dictionary itself, e.g.:
-
-.. code-block:: py
-
-   for x in mydict:
-       pass
-   
-To test for inclusion use ``in``:
-
-.. code-block:: py
-
-    if key in myDict:
-        pass
-    
-This is preferred over ``keys()`` and ``iterkeys()`` and avoids the issues mentioned in the previous item.
-
-.. _style-guide-py-open:
-
-Replace ``file`` with ``open``
-------------------------------
-
-This is preferred and ``file`` is gone in Python 3.
-
-.. _style-guide-py-exception-as:
-
-Use ``as`` when catching an exception
--------------------------------------
-
-For example, use ``except Exception as e`` or ``except (LookupError, TypeError) as e``.
-The new syntax is clearer, especially when catching multiple exception classes, and the old syntax does not work in Python 3.
-
-.. note:: Conflicts with :ref:`style-guide-py-exception-handling-syntax`?
-
-.. _style-guide-py-print-function:
-
-Use from ``__future__ import print_function``
----------------------------------------------
-
-Minor, but provides forward compatibility.
-This will affect very little code since we rarely use print.
-
-.. _style-guide-py-next:
-
-Use ``next(myIter)`` instead of ``myIter.next()``
--------------------------------------------------
-
-This is preferred, and the special method ``next`` has been renamed to ``__next__`` in Python 3.
-
 .. _style-guide-py-layout:
 
-10. Layout
-==========
+2. Layout
+=========
 
 .. _style-guide-py-line-length:
 
@@ -661,8 +216,8 @@ Consistency with the LSST C++ Coding Standards namespaces exists.
 
 .. _style-guide-py-whitespace:
 
-11. Whitespace
-==============
+3. Whitespace
+=============
 
 Follow the `PEP 8 whitespace style guidelines <https://www.python.org/dev/peps/pep-0008/#id26>`_, with the following adjustments.
 
@@ -756,11 +311,11 @@ Not this:
 
 `Opposes PEP 8 <https://www.python.org/dev/peps/pep-0008/#id28>`__.
 Error code: N251.
- 
+
 .. _style-guide-py-comments:
 
-12. Comments
-============
+4. Comments
+===========
 
 Source code comments should follow `PEP 8's recommendations <https://www.python.org/dev/peps/pep-0008/#id29>`__ with the following additional requirements.
 
@@ -795,12 +350,12 @@ Paragraphs inside a block comment are separated by a line containing a single ``
 
 .. _style-guide-py-docstrings:
 
-13. Documentation Strings (docstrings)
-======================================
+5. Documentation Strings (docstrings)
+=====================================
 
 Use **Numpydoc** to format the content of all docstrings.
 The page :doc:`../docs/py_docs` authoritatively describes this format.
-It's guide should be treated as an extension of this Python style guide.
+Its guidelines should be treated as an extension of this Python style guide.
 
 See also the :doc:`../docs/rst_styleguide` and the :ref:`rst-formatting-guidelines` section in particular for guidelines on reStructuredText in general.
 
@@ -814,3 +369,416 @@ See :doc:`../docs/py_docs`.
 
 Docstrings are not necessary for non-public methods, but you should have a comment that describes what the method does.
 This comment should appear after the ``def`` line.
+
+.. _style-guide-py-naming:
+
+6. Naming Conventions
+=====================
+
+We follow `PEP 8ʼs naming conventions <https://www.python.org/dev/peps/pep-0008/#naming-conventions>`_, with exceptions listed here.
+The naming conventions for LSST Python and C++ source have been defined to be as similar as the respective languages allow.
+
+In general:
+
+- class names are ``CamelCase`` with leading uppercase,
+- module variables used as module global constants are ``UPPERCASE_WITH_UNDERSCORES``,
+- all other names are ``camelCase`` with leading lowercase.
+
+Names may be decorated with leading and/or trailing underscores.
+
+.. _style-guide-py-2-2:
+
+User defined names SHOULD NOT shadow python built-in functions
+--------------------------------------------------------------
+
+Names which shadow a python built-in function may cause confusion for readers of the code.
+Creating a more specific identifier is suggested to avoid collisions.
+In the case of *filter*, ``filterName`` may be appropriate; for *filter objects*, something like ``filterObj`` might be appropriate.
+
+.. _style-guide-py-naming-attributes:
+
+Class Attribute Names SHOULD be camelCase with leading lowercase
+----------------------------------------------------------------
+
+`Opposes PEP 8 <https://www.python.org/dev/peps/pep-0008/#id45>`__.
+Error codes: N802 and N803.
+
+.. _style-guide-py-naming-functions:
+
+Module methods (free functions) SHOULD be camelCase with leading lowercase
+--------------------------------------------------------------------------
+
+`Opposes PEP 8 <https://www.python.org/dev/peps/pep-0008/#id45>`__.
+Error code: N802.
+
+.. _style-guide-py-naming-class-modules:
+
+Modules which contain class definitions SHOULD be named after the class name
+----------------------------------------------------------------------------
+
+Modules which contain class definitions should be named after the class name (one module per class).
+
+.. _style-guide-py-naming-ext-modules:
+
+When a Python module wraps a C/C++ extension module, the C/C++ module SHOULD be named <module>Lib
+-------------------------------------------------------------------------------------------------
+
+When an extension module written in C or C++ has an accompanying Python module that provides a higher level (e.g. more object oriented) interface, the C/C++ module should append ``Lib`` to the module's name (e.g. ``socketLib``).
+
+.. _style-guide-py-naming-ambiguous:
+
+Names l (lowercase: el), O (uppercase: oh), I (uppercase: eye) MUST be avoided
+------------------------------------------------------------------------------
+
+Never use these characters as single character variable names:
+
+- ``l`` (lowercase letter el),
+- ``O`` (uppercase letter oh), or
+- ``I`` (uppercase letter eye).
+
+In some fonts, these characters are indistinguishable from the numerals one and zero.
+When tempted to use ``l``, use ``L`` instead.
+
+.. _style-guide-py-files:
+
+7. Source Files & Modules
+=========================
+
+.. _style-guide-py-file-name:
+
+A Python source file name SHOULD be camelCase-with-leading-lowercase and ending in '.py'
+----------------------------------------------------------------------------------------
+
+A module containing a single class should be a ``camelCase``-with-leading-lowercase transliteration of the class's name.
+
+The name of a test case should be descriptive without the need for a trailing numeral to distinguish one test case from another. 
+
+.. TODO consider refactoring tests into their own section
+
+.. _style-guide-py-file-encoding:
+
+ASCII Encoding MUST be used for new code
+----------------------------------------
+
+Always use ASCII for new python code.
+
+- **Do not** include a coding comment (as described in  :pep:`263`) for ASCII files.
+
+- Existing code using Latin-1 encoding (a.k.a. ISO-8859-1) is acceptable so long as it has a proper coding comment. All other code must be converted to ASCII or Latin-1 except for 3rd party packages used "as is."
+
+.. _style-guide-py-file-order:
+
+Standard code order SHOULD be followed
+--------------------------------------
+
+Within a module, follow the order: 
+
+1. Shebang line, ``#! /usr/bin/env python`` (only for executable scripts)
+2. Module-level comments (such as the `license statement <https://github.com/lsst/templates/blob/master/CopyrightHeader.py>`__)
+3. Module-level docstring
+4. Imports
+5. ``__all__`` statement, if any
+6. Private module variables (names start with underscore)
+7. Private module functions and classes (names start with underscore)
+8. Public module variables
+9. Public functions and classes
+10. Optional test suites
+
+.. FIXME JSick: Delete mention of test suites?
+
+.. _style-guide-py-classes:
+
+8. Classes
+==========
+
+Always decide whether a class's methods and instance variables (collectively: "attributes") should be public or non-public.
+If in doubt, choose non-public; it's easier to make it public later than to make a public attribute non-public.
+
+Public attributes are those that you expect unrelated clients of your class to use, with your commitment to avoid backward incompatible changes.
+Non-public attributes are those that are not intended to be used by third parties; you make no guarantees that non-public attributes won't change or even be removed.
+
+We don't use the term "private" here, since no attribute is really private in Python (without a generally unnecessary amount of work).
+Another category of attributes are those that are part of the "subclass API" (often called "protected" in other languages).
+Some classes are designed to be inherited from, either to extend or modify aspects of the class's behavior.
+When designing such a class, take care to make explicit decisions about which attributes are public, which are part of the subclass API, and which are truly only to be used by your base class.
+
+For simple public data attributes, it is best to expose just the attribute name, without complicated accessor/mutator methods.
+Keep in mind that Python provides an easy path to future enhancement, should you find that a simple data attribute needs to grow functional behavior.
+In that case, use properties to hide functional implementation behind simple data attribute access syntax.
+
+- Note 1: Properties only work on new-style classes.
+
+- Note 2: Try to keep the functional behavior side-effect free, although side-effects such as caching are generally fine.
+
+- Note 3: Avoid using properties for computationally expensive operations; the attribute notation makes the caller believe that access is (relatively) cheap.
+
+.. _style-guide-py-super:
+
+``super`` SHOULD NOT be used unless the author really understands the implications (e.g. in a well-understood multiple inheritance hierarchy).
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+Python provides ``super`` so that each parent class' method is only called once (see https://www.python.org/download/releases/2.3/mro/).
+The problem is, if you're going to use super at all, then all parent classes in the chain (also called the Method Resolution Order") need to use super otherwise the chain gets interrupted. 
+Other subtleties have been noted in https://fuhm.net/super-harmful/:
+
+- Never call super with anything but the exact arguments you received, unless you really know what you're doing.
+- When you use it on methods whose acceptable arguments can be altered on a subclass via addition of more optional arguments, always accept ``*args, **kw``, and call ``super`` like ``super(MyClass, self).currentmethod(alltheargsideclared, *args, **kwargs)``.
+  If you don't do this, forbid addition of optional arguments in subclasses.
+- Never use positional arguments in ``__init__`` or ``__new__``.
+  Always use keyword args, and always call them as keywords, and always pass all keywords on to ``super``.
+
+
+.. _style-guide-py-comparisons:
+
+9. Comparisons
+==============
+
+.. _style-guide-py-comp-is:
+
+``is`` and ``is not`` SHOULD only be used if determining if two variables point to same object
+----------------------------------------------------------------------------------------------
+
+Use ``is`` or ``is not`` only for the case that you need to know that two variables point to the exact same object.
+
+To test equality in *value*, use ``==`` or ``!=`` instead.
+
+.. _style-guide-py-comp-none:
+
+``is`` and ``is not`` SHOULD be used when comparing to ``None``
+---------------------------------------------------------------
+
+There are two reasons:
+
+1. ``is None`` works with NumPy arrays, whereas ``== None`` does not;
+2. ``is None`` is idiomatic.
+
+This is also consistent with :pep:`8`, which `states <https://www.python.org/dev/peps/pep-0008/#id49>`__:
+
+   Comparisons to singletons like ``None`` should always be done with ``is`` or ``is not``, never the equality operators.
+
+For sequences, (`str`, `list`, `tuple`), use the fact that empty sequences are ``False``. 
+
+Yes:
+
+.. code-block:: py
+
+   if not seq:
+       pass
+
+   if seq:
+       pass
+
+No:
+
+.. code-block:: py
+
+   if len(seq):
+       pass
+
+   if not len(seq):
+       pass
+
+.. _style-guide-py-idioms:
+
+10. Idiomatic Python
+====================
+
+Strive to write idiomatic Python.
+Writing Python with accepted patterns makes your code easier for others to understand and often prevents bugs.
+
+`Fluent Python <http://shop.oreilly.com/product/0636920032519.do>`_ by Luciano Ramalho is an excellent guide to writing idiomatic Python.
+
+Idiomatic Python also reduces technical debt, particularly by easing the migration from Python 2.7 to Python 3.
+Codes should be written in a way that helps the futurize_ code converter produce more efficient code.
+For more information see the online book `Supporting Python 3 <http://python3porting.com/toc.html>`_ by Lennart Regebro.
+
+.. _futurize: http://python-future.org/futurize.html
+
+.. _style-guide-py-pitfalls-mutables:
+
+A mutable object MUST NOT be used as a keyword argument default
+---------------------------------------------------------------
+
+Never use a mutable object as default value for a keyword argument in a function or method.
+
+When used a mutable is used as a default keyword argument, the default *can* change from one call to another leading to unexpected behavior.
+This issue can be avoided by only using immutable types as default.
+
+For example, rather than provide a default empty list:
+
+.. code-block:: py
+
+   def proclist(alist=[]):
+       pass
+
+this function should create a new list in its internal scope:
+
+.. code-block:: py
+
+   def proclist(alist=None):
+       if alist is None:
+           alist = []
+
+.. _style-guide-py-star-args:
+
+In function calls ``*`` SHOULD be used instead of ``apply``
+-----------------------------------------------------------
+
+In old versions of Python, to call a function with an argument list and/or keyword dictionary you had to write ``apply(func, args, keyargs)``.
+Now you can write ``func(*args, keyargs)``, which is faster and clearer.
+
+.. _style-guide-py-generators:
+
+Generators SHOULD be used to iterate overlarge data sets efficiently
+--------------------------------------------------------------------
+
+Use iterators, generators (classes that act like iterators) and generator expressions (expressions that act like iterators) to iterate over large data sets efficiently.
+
+.. _style-guide-py-context-managers:
+
+Context managers (``with``) SHOULD be used for resource allocation
+------------------------------------------------------------------
+
+Use the ``with`` statement to simplify resource allocation.
+
+For example to be sure a file will be closed when you are done with it: 
+  
+.. code-block:: py
+
+   with open('/etc/passwd', 'r') as f:
+       for line in f:
+           pass
+
+.. _style-guide-py-exception-handling-syntax:
+
+Python 2.5 improved Exception Handling SHOULD be used
+-----------------------------------------------------
+
+To catch all errors but let :py:exc:`~exceptions.SystemExit` and :py:exc:`~exceptions.KeyboardInterrupt` through, use:
+
+.. code-block:: py
+
+   except Exception, e:
+       pass
+
+The exception hierarchy in Python 2.5 was improved, eliminating the need to use this: 
+
+.. code-block:: py
+
+   except (SystemExit, KeyboardInterrupt):
+       raise
+       except Exception, e:
+           pass
+
+.. _style-guide-py-subprocess:
+
+The ``subprocess`` module SHOULD be used to spawn processes
+-----------------------------------------------------------
+
+Use the :py:mod:`subprocess` module to spawn processes.
+This supersedes and unifies :py:func:`os.system`, ``os.spawn``, :py:func:`os.popen`, etc..
+New in Python 2.3.
+
+.. _style-guide-py-lambda:
+
+``lambda`` SHOULD NOT be used
+-----------------------------
+
+Avoid the use of ``lambda``.
+You can almost always write clearer code by using a named function or using the :py:mod:`functools` module to wrap a function.
+
+.. _style-guide-py-set:
+
+The ``set`` type SHOULD be used for unordered collections
+---------------------------------------------------------
+
+Use the :py:class:`set` type for unordered collections of objects.
+New in Python 2.4 (though available via the ``Set`` module in Python 2.3).
+
+.. _style-guide-py-argparse:
+
+The ``argparse`` module SHOULD be used for command-line scripts 
+---------------------------------------------------------------
+
+Use the :py:mod:`argparse` module for command-line scripts.
+
+Command line tasks for pipelines should use :lclass:`lsst.pipe.base.ArgumentParser` instead.
+
+.. _style-guide-py-future-division:
+
+Use ``from __future__ import division``
+---------------------------------------
+
+This means ``/`` is floating-point division and ``//`` is truncated integer division, regardless of the type of numbers being divided.
+This gives more predictable behavior than the old operators, avoiding a common source of obscure bugs.
+It also makes intent of the code more obvious.
+
+.. _style-guide-py-future-absolute-import:
+
+Use ``from __future__ import absolute_import``
+----------------------------------------------
+
+In addition, import local modules using relative imports (e.g. ``from . import foo`` or ``from .foo import bar``).
+This results in clearer code and avoids shadowing global modules with local modules.
+
+.. _style-guide-py-future-itervalues:
+
+Use ``itervalues()`` and ``iteritems()`` instead of ``values()`` and ``items()``
+--------------------------------------------------------------------------------
+
+For iterating over dictionary values and items use the above idiom unless you truly need a list.
+This generates more efficient code today and helps futurize_ generate more efficient code in the future.
+For more information see http://python-future.org/compatible_idioms.html#iterating-through-dict-keys-values-items.
+
+.. _style-guide-py-dict-keys:
+
+Avoid ``dict.keys()`` and ``dict.iterkeys()``
+---------------------------------------------
+
+For iterating over keys, iterate over the dictionary itself, e.g.:
+
+.. code-block:: py
+
+   for x in mydict:
+       pass
+   
+To test for inclusion use ``in``:
+
+.. code-block:: py
+
+    if key in myDict:
+        pass
+    
+This is preferred over ``keys()`` and ``iterkeys()`` and avoids the issues mentioned in the previous item.
+
+.. _style-guide-py-open:
+
+Replace ``file`` with ``open``
+------------------------------
+
+This is preferred and ``file`` is gone in Python 3.
+
+.. _style-guide-py-exception-as:
+
+Use ``as`` when catching an exception
+-------------------------------------
+
+For example, use ``except Exception as e`` or ``except (LookupError, TypeError) as e``.
+The new syntax is clearer, especially when catching multiple exception classes, and the old syntax does not work in Python 3.
+
+.. note:: Conflicts with :ref:`style-guide-py-exception-handling-syntax`?
+
+.. _style-guide-py-print-function:
+
+Use from ``__future__ import print_function``
+---------------------------------------------
+
+Minor, but provides forward compatibility.
+This will affect very little code since we rarely use print.
+
+.. _style-guide-py-next:
+
+Use ``next(myIter)`` instead of ``myIter.next()``
+-------------------------------------------------
+
+The special method ``next`` has been renamed to ``__next__`` in Python 3.
