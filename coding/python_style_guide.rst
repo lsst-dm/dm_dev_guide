@@ -619,21 +619,6 @@ this function should create a new list in its internal scope:
        if alist is None:
            alist = []
 
-.. _style-guide-py-star-args:
-
-In function calls ``*`` SHOULD be used instead of ``apply``
------------------------------------------------------------
-
-In old versions of Python, to call a function with an argument list and/or keyword dictionary you had to write ``apply(func, args, keyargs)``.
-Now you can write ``func(*args, keyargs)``, which is faster and clearer.
-
-.. _style-guide-py-generators:
-
-Generators SHOULD be used to iterate overlarge data sets efficiently
---------------------------------------------------------------------
-
-Use iterators, generators (classes that act like iterators) and generator expressions (expressions that act like iterators) to iterate over large data sets efficiently.
-
 .. _style-guide-py-context-managers:
 
 Context managers (``with``) SHOULD be used for resource allocation
@@ -649,26 +634,12 @@ For example to be sure a file will be closed when you are done with it:
        for line in f:
            pass
 
-.. _style-guide-py-exception-handling-syntax:
+.. _style-guide-py-open:
 
-Python 2.5 improved Exception Handling SHOULD be used
------------------------------------------------------
+Use ``open`` instead of ``file``
+--------------------------------
 
-To catch all errors but let :py:exc:`~exceptions.SystemExit` and :py:exc:`~exceptions.KeyboardInterrupt` through, use:
-
-.. code-block:: py
-
-   except Exception, e:
-       pass
-
-The exception hierarchy in Python 2.5 was improved, eliminating the need to use this: 
-
-.. code-block:: py
-
-   except (SystemExit, KeyboardInterrupt):
-       raise
-       except Exception, e:
-           pass
+``file`` is gone in Python 3.
 
 .. _style-guide-py-subprocess:
 
@@ -676,15 +647,13 @@ The ``subprocess`` module SHOULD be used to spawn processes
 -----------------------------------------------------------
 
 Use the :py:mod:`subprocess` module to spawn processes.
-This supersedes and unifies :py:func:`os.system`, ``os.spawn``, :py:func:`os.popen`, etc..
-New in Python 2.3.
 
 .. _style-guide-py-lambda:
 
 ``lambda`` SHOULD NOT be used
 -----------------------------
 
-Avoid the use of ``lambda``.
+Avoid the use of `lambda <https://docs.python.org/3/reference/expressions.html#lambda>`__.
 You can almost always write clearer code by using a named function or using the :py:mod:`functools` module to wrap a function.
 
 .. _style-guide-py-set:
@@ -693,7 +662,6 @@ The ``set`` type SHOULD be used for unordered collections
 ---------------------------------------------------------
 
 Use the :py:class:`set` type for unordered collections of objects.
-New in Python 2.4 (though available via the ``Set`` module in Python 2.3).
 
 .. _style-guide-py-argparse:
 
@@ -721,13 +689,29 @@ Use ``from __future__ import absolute_import``
 In addition, import local modules using relative imports (e.g. ``from . import foo`` or ``from .foo import bar``).
 This results in clearer code and avoids shadowing global modules with local modules.
 
+.. _style-guide-py-exception-as:
+
+Use ``as`` when catching an exception
+-------------------------------------
+
+For example, use ``except Exception as e`` or ``except (LookupError, TypeError) as e``.
+The new syntax is clearer, especially when catching multiple exception classes, and required in Python 3.
+
+.. _style-guide-py-generators:
+
+Iterators and generators SHOULD be used to iterate over large data sets efficiently
+-----------------------------------------------------------------------------------
+
+Use iterators, generators (classes that act like iterators) and generator expressions (expressions that act like iterators) to iterate over large data sets efficiently.
+
 .. _style-guide-py-future-itervalues:
 
 Use ``itervalues()`` and ``iteritems()`` instead of ``values()`` and ``items()``
 --------------------------------------------------------------------------------
 
 For iterating over dictionary values and items use the above idiom unless you truly need a list.
-This generates more efficient code today and helps futurize_ generate more efficient code in the future.
+
+This pattern does not apply to code that has already been ported to Python 3 with futurize_
 For more information see http://python-future.org/compatible_idioms.html#iterating-through-dict-keys-values-items.
 
 .. _style-guide-py-dict-keys:
@@ -751,30 +735,14 @@ To test for inclusion use ``in``:
     
 This is preferred over ``keys()`` and ``iterkeys()`` and avoids the issues mentioned in the previous item.
 
-.. _style-guide-py-open:
-
-Replace ``file`` with ``open``
-------------------------------
-
-This is preferred and ``file`` is gone in Python 3.
-
-.. _style-guide-py-exception-as:
-
-Use ``as`` when catching an exception
--------------------------------------
-
-For example, use ``except Exception as e`` or ``except (LookupError, TypeError) as e``.
-The new syntax is clearer, especially when catching multiple exception classes, and the old syntax does not work in Python 3.
-
-.. note:: Conflicts with :ref:`style-guide-py-exception-handling-syntax`?
-
-.. _style-guide-py-print-function:
+.. _style-guide-py-print:
 
 Use from ``__future__ import print_function``
 ---------------------------------------------
 
-Minor, but provides forward compatibility.
-This will affect very little code since we rarely use print.
+The :py:func:`print()` function is required in Python 3.
+
+In general, DM code should be use logging instead of ``print`` statements.
 
 .. _style-guide-py-next:
 
@@ -782,3 +750,4 @@ Use ``next(myIter)`` instead of ``myIter.next()``
 -------------------------------------------------
 
 The special method ``next`` has been renamed to ``__next__`` in Python 3.
+This allows iterators to be advanced with the :py:func:`next` built-in function in both Python 2.7 and Python 3.
