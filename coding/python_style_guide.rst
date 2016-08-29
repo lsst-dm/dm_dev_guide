@@ -75,25 +75,33 @@ LSST DM Packages may also include a :file:`setup.cfg` file with `PEP 8`_ excepti
 Summary of PEP 8 exceptions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-These error codes can be **ignored** by flake8_ when checking DM code against PEP 8 specifications:
+These error codes can be **ignored** by flake8_ when checking DM code against :pep:`8` specifications:
 
 E133
    Closing bracket is missing indentation.
+   This `pycodestyle error`_ (via flake8_) is not part of :pep:`8`.
 
 E226
    Missing whitespace around arithmetic operator.
+   See :ref:`style-guide-py-operator-whitespace`.
 
 E228
    Missing whitespace around bitwise or shift operator.
+   See :ref:`style-guide-py-operator-whitespace`.
 
 E251
    Unexpected spaces around keyword / parameter equals.
+   See :ref:`style-guide-py-multiline-assignment-whitespace`.
 
 N802
    Function name should be lowercase.
+   See :ref:`style-guide-py-naming`.
 
 N803
    Argument name should be lowercase.
+   See :ref:`style-guide-py-naming`.
+
+.. _pycodestyle error: http://pep8.readthedocs.io/en/latest/intro.html#error-codes
 
 .. _style-guide-py-noqa:
 
@@ -172,6 +180,7 @@ Class Attribute Names SHOULD be camelCase with leading lowercase
 ----------------------------------------------------------------
 
 `Opposes PEP 8 <https://www.python.org/dev/peps/pep-0008/#id45>`__.
+Error codes: N802 and N803.
 
 .. _style-guide-py-naming-functions:
 
@@ -179,6 +188,7 @@ Module methods (free functions) SHOULD be camelCase with leading lowercase
 --------------------------------------------------------------------------
 
 `Opposes PEP 8 <https://www.python.org/dev/peps/pep-0008/#id45>`__.
+Error code: N802.
 
 .. _style-guide-py-naming-class-modules:
 
@@ -709,6 +719,7 @@ For example:
    c = (a + b)*(a - b)
 
 This deviates from PEP 8, which `allows whitespace around these arithmetic operators if they appear alone <https://www.python.org/dev/peps/pep-0008/#id28>`__.
+Error codes: N226 and N228.
 
 .. _style-guide-py-multiline-assignment-whitespace:
 
@@ -744,6 +755,7 @@ Not this:
    aFunction(x, y, z, karg1 = value1, karg2 = value2, karg3 = value3)
 
 `Opposes PEP 8 <https://www.python.org/dev/peps/pep-0008/#id28>`__.
+Error code: N251.
  
 .. _style-guide-py-comments:
 
