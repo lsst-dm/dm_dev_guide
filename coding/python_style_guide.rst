@@ -20,18 +20,16 @@ The :doc:`intro` provides the overarching Coding Standards policy applicable to 
 
 Data Management's Python coding style is based the `PEP 8 Style Guide for Python Code <https://www.python.org/dev/peps/pep-0008/>`_ with modifications specified in this document.
 
-`PEP 8`_ is used throughout the Python community, and should feel familiar to Python developers.
-DM's deviations to `PEP 8`_ are motivated by consistency with the :doc:`cpp_style_guide`.
+:pep:`8` is used throughout the Python community and should feel familiar to Python developers.
+DM's deviations from :pep:`8` are primarily motivated by consistency with the :doc:`cpp_style_guide`.
 Additional guidelines are included in this document to address specific requirements of the Data Management System.
-
-.. _PEP 8: http://www.python.org/dev/peps/pep-0008/
 
 .. _style-guide-py-flake8:
 
 Code MAY be validated with flake8
 ---------------------------------
 
-The flake8_ tool may be used to validate Python source code against the portion of PEP 8 adopted by Data Management.
+The flake8_ tool may be used to validate Python source code against the portion of :pep:`8` adopted by Data Management.
 In addition, flake8_ statically checks Python for code errors.
 The separate `pep8-naming`_ plugin validates names according to the DM Python coding style.
 
@@ -143,7 +141,7 @@ For example, to import a module without using it (to build a namespace, as in a 
 autopep8 MAY be used to fix PEP 8 compliance
 --------------------------------------------
 
-Many PEP 8 issues in existing code can be fixed with `autopep8`_:
+Many :pep:`8` issues in existing code can be fixed with `autopep8`_:
 
 .. code-block:: bash
 
@@ -154,7 +152,7 @@ The ``.`` specifies the current directory.
 Together with ``--recursive``, the full tree of Python files will be processed by :command:`autopep8`.
 Alternatively, a single file can be specified in place of ``.``.
 
-:command:`autopep8` changes must always be validated before committing.
+:command:`autopep8`\ ʼs changes must always be validated before committing.
 
 Style changes must be encapsulated in a distinct commit (see :ref:`git-commit-organization-logical-units` in :doc:`Workflow document <../processes/workflow>`).
 
@@ -261,7 +259,7 @@ Follow the `PEP 8 whitespace style guidelines <https://www.python.org/dev/peps/p
 
 .. _style-guide-py-minimal-parens:
 
-The minimum number of parenthesis needed for correctness and readability SHOULD be used
+The minimum number of parentheses needed for correctness and readability SHOULD be used
 ---------------------------------------------------------------------------------------
 
 Yes:
@@ -499,7 +497,7 @@ The name of a test case should be descriptive without the need for a trailing nu
 ASCII Encoding MUST be used for new code
 ----------------------------------------
 
-Always use ASCII for new python code.
+Always use ASCII for new Python code.
 
 - **Do not** include a coding comment (as described in  :pep:`263`) for ASCII files.
 
@@ -530,7 +528,7 @@ Within a module, follow the order:
 8. Classes
 ==========
 
-.. seealso:: `Designing for Inheritance <https://www.python.org/dev/peps/pep-0008/#id47>`__ in :pep:`8` for naming conventions related to public and private class APIs.
+.. seealso:: `Designing for Inheritance <https://www.python.org/dev/peps/pep-0008/#id47>`__ in :pep:`8` describes naming conventions related to public and private class APIs.
 
 .. _style-guide-py-super:
 
@@ -539,16 +537,16 @@ Within a module, follow the order:
 
 Python provides :py:func:`super` so that each parent class' method is only called once.
 
-To use :py:func:`super`, all parent classes in the chain (also called the Method Resolution Order") need to use :py:func:`super` otherwise the chain gets interrupted. 
+To use :py:func:`super`, all parent classes in the chain (also called the Method Resolution Order) need to use :py:func:`super` otherwise the chain gets interrupted. 
 Other subtleties have been noted in `an article by James Knight <https://fuhm.net/super-harmful/>`__:
 
-- Never call super with anything but the exact arguments you received, unless you really know what you're doing.
-- When you use it on methods whose acceptable arguments can be altered on a subclass via addition of more optional arguments, always accept ``*args, **kw``, and call ``super`` like ``super(MyClass, self).currentmethod(alltheargsideclared, *args, **kwargs)``.
+- Never call :py:func:`super` with anything but the exact arguments you received, unless you really know what you're doing.
+- When you use it on methods whose acceptable arguments can be altered on a subclass via addition of more optional arguments, always accept ``*args, **kw``, and call :py:func:`super` like ``super(MyClass, self).currentmethod(alltheargsideclared, *args, **kwargs)``.
   If you don't do this, forbid addition of optional arguments in subclasses.
 - Never use positional arguments in ``__init__`` or ``__new__``.
   Always use keyword args, and always call them as keywords, and always pass all keywords on to :py:func:`super`.
 
-For guidance on successfully using :py:func:`super`, see Raymond Hettinger's article `Super Considered Super! <https://rhettinger.wordpress.com/2011/05/26/super-considered-super/>`__.
+For guidance on successfully using :py:func:`super`, see Raymond Hettinger's article `Super Considered Super! <https://rhettinger.wordpress.com/2011/05/26/super-considered-super/>`__
 
 .. _style-guide-py-comparisons:
 
@@ -557,8 +555,8 @@ For guidance on successfully using :py:func:`super`, see Raymond Hettinger's art
 
 .. _style-guide-py-comp-is:
 
-``is`` and ``is not`` SHOULD only be used if determining if two variables point to same object
-----------------------------------------------------------------------------------------------
+``is`` and ``is not`` SHOULD only be used for determining if two variables point to same object
+-----------------------------------------------------------------------------------------------
 
 Use ``is`` or ``is not`` only for the case that you need to know that two variables point to the exact same object.
 
@@ -578,7 +576,7 @@ This is also consistent with :pep:`8`, which `states <https://www.python.org/dev
 
    Comparisons to singletons like ``None`` should always be done with ``is`` or ``is not``, never the equality operators.
 
-For sequences, (`str`, `list`, `tuple`), use the fact that empty sequences are ``False``. 
+For sequences, (:py:obj:`str`, :py:obj:`list`, :py:obj:`tuple`), use the fact that empty sequences are ``False``. 
 
 Yes:
 
