@@ -5,8 +5,10 @@ DM Python Style Guide
 This is the version 6.0 of the DM Python Coding Standard.
 The :doc:`intro` provides the overarching Coding Standards policy applicable to all DM code.
 
-Changes to this document must be approved by the System Architect (`RFC-24 <https://jira.lsstcorp.org/browse/RFC-24>`_).
-To request changes to these standards, please file an :ref:`RFC <decision-making-rfc>`.
+.. note::
+
+   Changes to this document must be approved by the System Architect (`RFC-24 <https://jira.lsstcorp.org/browse/RFC-24>`_).
+   To request changes to these standards, please file an :ref:`RFC <decision-making-rfc>`.
 
 .. contents::
    :depth: 4
