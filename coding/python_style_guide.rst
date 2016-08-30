@@ -40,6 +40,8 @@ The separate `pep8-naming`_ plugin validates names according to the DM Python co
 .. _flake8: https://flake8.readthedocs.io
 .. _pep8-naming: http://pypi.python.org/pypi/pep8-naming
 
+.. _style-guide-py-flake8-install:
+
 Flake8 installation
 ^^^^^^^^^^^^^^^^^^^
 
@@ -50,19 +52,26 @@ Linters are installable with :command:`pip`:
    pip install flake8
    pip install pep8-naming
 
+.. _style-guide-py-flake8-invoke:
+
 Flake8 command line invocation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
 
-   flake8 --ignore=E133,E226,E228,N802,N803 --max-line-length=110 {{python_dir}}
+   flake8 --ignore=E133,E226,E228,N802,N803 --max-line-length=110 .
 
-where ``{{python_dir}}`` is a directory with Python source files.
+This command lints all Python files in the current directory.
+Alternatively, individual files can be specified in place of ``.``.
+
+The ignored error codes are :ref:`explained below <style-guide-py-ignored-errors>`.
+
+.. _style-guide-py-flake8-config:
 
 Flake8 configuration files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-LSST DM Packages may also include a :file:`setup.cfg` file with `PEP 8`_ exceptions:
+LSST DM Packages may also include a :file:`setup.cfg` file with :pep:`8` exceptions:
 
 .. code-block:: ini
 
@@ -71,6 +80,8 @@ LSST DM Packages may also include a :file:`setup.cfg` file with `PEP 8`_ excepti
 	ignore = E133, E226, E228, E251, N802, N803
 
 :command:`flake8` can be invoked without arguments when this configuration is present.
+
+.. _style-guide-py-ignored-errors:
 
 Summary of PEP 8 exceptions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -134,10 +145,12 @@ Many PEP 8 issues in existing code can be fixed with `autopep8`_:
 
 .. code-block:: bash
 
-   autopep8 {{python_dir}} --in-place --recursive \
-       --ignore E133,E226,E228,N802,N803 --ma-line-length 110
+   autopep8 . --in-place --recursive \
+       --ignore E133,E226,E228,N802,N803 --max-line-length 110
 
-where ``{{python_dir}}`` is a directory with Python source files.
+The ``.`` specifies the current directory.
+Together with ``--recursive``, the full tree of Python files will be processed by :command:`autopep8`.
+Alternatively, a single file can be specified in place of ``.``.
 
 :command:`autopep8` changes must always be validated before committing.
 
