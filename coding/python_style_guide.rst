@@ -297,7 +297,7 @@ Never surround these binary arithmetic operators with whitespace:
 - division (``/``),
 - exponentiation (``**``),
 - floor division (``//``),
-- modulus (``%``).
+- modulus (``%``). Note that a single space **must always** surround ``%`` when used for string formatting.
 
 For example:
 
@@ -308,9 +308,10 @@ For example:
    x = x*2 - 1
    hypot2 = x*x + y*y
    c = (a + b)*(a - b)
+   print('Hello %s' % 'world!')
 
 This deviates from PEP 8, which `allows whitespace around these arithmetic operators if they appear alone <https://www.python.org/dev/peps/pep-0008/#id28>`__.
-Error codes: N226 and N228.
+Error codes: E226 and E228.
 
 .. _style-guide-py-multiline-assignment-whitespace:
 
