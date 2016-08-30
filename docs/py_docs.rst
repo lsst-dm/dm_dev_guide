@@ -467,9 +467,9 @@ An 'Attributes' section, located below the 'Parameters' section, may be used to 
 
    Attributes
    ----------
-   x : float
+   x : `float`
        The X coordinate.
-   y : float
+   y : `float`
        The Y coordinate.
 
 Attributes that are properties and have their :ref:`own docstrings <py-docstring-attribute-constants-structure>` can be simply listed by name:
@@ -539,7 +539,7 @@ Raises
 
    Raises
    ------
-   IOError
+   `IOError`
        If the file could not be read.
 
 This section should be used judiciously---only for errors that are non-obvious or have a large chance of getting raised.
@@ -576,7 +576,7 @@ When referring to an entirely different module or package, use the full namespac
 
 .. code-block:: rst
 
-   astropy.table.Tables : Flexible table data structures
+   `astropy.table.Tables` : Flexible table data structures
 
 Functions may be listed without descriptions; this is preferable if the functionality is clear from the function name:
 
@@ -749,11 +749,11 @@ In general, trust that the tables of contents in the user guide pages will provi
 
        Raises
        ------
-       ValueError : Input angles are outside range.
+       `ValueError` : Input angles are outside range.
        
        See also
        --------
-       GalacticCoordinate
+       `GalacticCoordinate`
 
        Examples
        --------
@@ -794,9 +794,9 @@ A minimal example:
 
        Parameters
        ----------
-       message : str
+       message : `str`
           Log message.
-       level : str
+       level : `str`
           Priority level of the log message.
        """
 
@@ -850,6 +850,6 @@ Acknowledgements
 
 These docstring guidelines are derived/adapted from in the `Numpy <https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt>`_ and `Astropy <http://docs.astropy.org/en/stable/_sources/development/docrules.txt>`_ documentation.
 
-Numpy is Copyright © 2005-2013, NumPy Developers.
+NumPy is Copyright © 2005-2013, NumPy Developers.
 
 Astropy is Copyright © 2011-2015, Astropy Developers.
