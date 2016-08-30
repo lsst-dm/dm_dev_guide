@@ -77,7 +77,7 @@ LSST DM Packages may also include a :file:`setup.cfg` file with :pep:`8` excepti
 
 	[flake8]
 	max-line-length = 110
-	ignore = E133, E226, E228, E251, N802, N803
+	ignore = E133, E226, E228, N802, N803
 
 :command:`flake8` can be invoked without arguments when this configuration is present.
 
@@ -146,7 +146,7 @@ Many PEP 8 issues in existing code can be fixed with `autopep8`_:
 .. code-block:: bash
 
    autopep8 . --in-place --recursive \
-       --ignore E133,E226,E228,N802,N803 --max-line-length 110
+       --ignore E133,E226,E228,N251,N802,N803 --max-line-length 110
 
 The ``.`` specifies the current directory.
 Together with ``--recursive``, the full tree of Python files will be processed by :command:`autopep8`.
