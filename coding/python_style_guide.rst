@@ -528,42 +528,25 @@ Within a module, follow the order:
 8. Classes
 ==========
 
-Always decide whether a class's methods and instance variables (collectively: "attributes") should be public or non-public.
-If in doubt, choose non-public; it's easier to make it public later than to make a public attribute non-public.
-
-Public attributes are those that you expect unrelated clients of your class to use, with your commitment to avoid backward incompatible changes.
-Non-public attributes are those that are not intended to be used by third parties; you make no guarantees that non-public attributes won't change or even be removed.
-
-We don't use the term "private" here, since no attribute is really private in Python (without a generally unnecessary amount of work).
-Another category of attributes are those that are part of the "subclass API" (often called "protected" in other languages).
-Some classes are designed to be inherited from, either to extend or modify aspects of the class's behavior.
-When designing such a class, take care to make explicit decisions about which attributes are public, which are part of the subclass API, and which are truly only to be used by your base class.
-
-For simple public data attributes, it is best to expose just the attribute name, without complicated accessor/mutator methods.
-Keep in mind that Python provides an easy path to future enhancement, should you find that a simple data attribute needs to grow functional behavior.
-In that case, use properties to hide functional implementation behind simple data attribute access syntax.
-
-- Note 1: Properties only work on new-style classes.
-
-- Note 2: Try to keep the functional behavior side-effect free, although side-effects such as caching are generally fine.
-
-- Note 3: Avoid using properties for computationally expensive operations; the attribute notation makes the caller believe that access is (relatively) cheap.
+.. seealso:: `Designing for Inheritance <https://www.python.org/dev/peps/pep-0008/#id47>`__ in :pep:`8` for naming conventions related to public and private class APIs.
 
 .. _style-guide-py-super:
 
 ``super`` SHOULD NOT be used unless the author really understands the implications (e.g. in a well-understood multiple inheritance hierarchy).
 ----------------------------------------------------------------------------------------------------------------------------------------------
 
-Python provides ``super`` so that each parent class' method is only called once (see https://www.python.org/download/releases/2.3/mro/).
-The problem is, if you're going to use super at all, then all parent classes in the chain (also called the Method Resolution Order") need to use super otherwise the chain gets interrupted. 
-Other subtleties have been noted in https://fuhm.net/super-harmful/:
+Python provides :py:func:`super` so that each parent class' method is only called once.
+
+To use :py:func:`super`, all parent classes in the chain (also called the Method Resolution Order") need to use :py:func:`super` otherwise the chain gets interrupted. 
+Other subtleties have been noted in `an article by James Knight <https://fuhm.net/super-harmful/>`__:
 
 - Never call super with anything but the exact arguments you received, unless you really know what you're doing.
 - When you use it on methods whose acceptable arguments can be altered on a subclass via addition of more optional arguments, always accept ``*args, **kw``, and call ``super`` like ``super(MyClass, self).currentmethod(alltheargsideclared, *args, **kwargs)``.
   If you don't do this, forbid addition of optional arguments in subclasses.
 - Never use positional arguments in ``__init__`` or ``__new__``.
-  Always use keyword args, and always call them as keywords, and always pass all keywords on to ``super``.
+  Always use keyword args, and always call them as keywords, and always pass all keywords on to :py:func:`super`.
 
+For guidance on successfully using :py:func:`super`, see Raymond Hettinger's article `Super Considered Super! <https://rhettinger.wordpress.com/2011/05/26/super-considered-super/>`__.
 
 .. _style-guide-py-comparisons:
 
