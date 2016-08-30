@@ -170,25 +170,48 @@ Python's implied continuation inside parens, brackets and braces SHOULD be used 
 -------------------------------------------------------------------------------------------------
 
 The preferred way of wrapping long lines is by using Python's implied line continuation inside parentheses, brackets and braces.
+
 If necessary, you can add an extra pair of parentheses around an expression, but sometimes using a backslash looks better.
-Make sure to indent the continued line appropriately. Some examples:
+In this example, continuation is naturally implied within the ``__init__`` method argument lists, while both ``\`` and parentheses-based continuations are used in the ``if`` statements.
 
 .. code-block:: py
 
-    class Rectangle(Blob):
-        """Documentation for Rectangle.
-        """
-        def __init__(self, width, height,
-                     color='black', emphasis=None, highlight=0):
-            if width == 0 and height == 0 and
-               color == 'red' and emphasis == 'strong' or
-               highlight > 100:
-                raise ValueError("sorry, you lose")
-            if width == 0 and height == 0 and (color == 'red' or
-                                               emphasis is None):
-                raise ValueError("I don't think so")
-            Blob.__init__(self, width, height,
-                          color, emphasis, highlight)
+   class Rectangle(Blob):
+       """Documentation for Rectangle.
+       """
+       def __init__(self, width, height,
+                    color='black', emphasis=None, highlight=0):
+   
+           # Discouraged: continuation with '\'
+           if width == 0 and height == 0 and \
+                  color == 'red' and emphasis == 'strong' or \
+                  highlight > 100:
+               raise ValueError("sorry, you lose")
+   
+           # Preferred: continuation with parentheses
+           if width == 0 and height == 0 and (color == 'red' or
+                                              emphasis is None):
+               raise ValueError("I don't think so")
+   
+           Blob.__init__(self, width, height,
+                         color, emphasis, highlight)
+
+Be aware that the continued line must be distinguished from the following lines through indentation.
+For example, this will generate an E129 error:
+
+.. code-block:: py
+
+   if (width == 0 and
+       height == 0):
+       pass
+
+Instead, the continued line should be indented:
+
+.. code-block:: py
+
+   if (width == 0 and
+           height == 0):
+       pass
 
 .. _style-guide-py-docstring-blank-lines:
 
