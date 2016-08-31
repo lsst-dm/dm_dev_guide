@@ -110,7 +110,7 @@ LSST Utility Test Support Classes
 Special Asserts
 ---------------
 
-Inheriting from :lclass:`lsst.utils.tests.TestCase` rather than :class:`unittest.TestCase` enables two new asserts that are useful for doing element-wise comparison of two :mod:`numpy`-like arrays.
+Inheriting from :lclass:`lsst.utils.tests.TestCase` rather than :class:`unittest.TestCase` enables new asserts that are useful for doing element-wise comparison of two floating-point :mod:`numpy`-like arrays or scalars.
 
 `lsst.utils.tests.TestCase.assertFloatsAlmostEqual <https://lsst-web.ncsa.illinois.edu/doxygen/x_masterDoxyDoc/namespacelsst_1_1utils_1_1tests.html#a09ee2482a2e8d71e8612c0378f4286fc>`_
    Asserts that floating point scalars and/or arrays are equal within the specified tolerance.
