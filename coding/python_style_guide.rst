@@ -152,7 +152,7 @@ Many :pep:`8` issues in existing code can be fixed with `autopep8`_:
 .. code-block:: bash
 
    autopep8 . --in-place --recursive \
-       --ignore E133,E226,E228,N251,N802,N803 --max-line-length 110
+       --ignore E133,E226,E228,E251,N802,N803 --max-line-length 110
 
 The ``.`` specifies the current directory.
 Together with ``--recursive``, the full tree of Python files will be processed by :command:`autopep8`.
@@ -353,7 +353,7 @@ Not this:
    aFunction(x, y, z, karg1 = value1, karg2 = value2, karg3 = value3)
 
 `Opposes PEP 8 <https://www.python.org/dev/peps/pep-0008/#id28>`__.
-Error code: N251.
+Error code: E251.
 
 .. _style-guide-py-comments:
 
