@@ -24,6 +24,43 @@ Data Management's Python coding style is based the `PEP 8 Style Guide for Python
 DM's deviations from :pep:`8` are primarily motivated by consistency with the :doc:`cpp_style_guide`.
 Additional guidelines are included in this document to address specific requirements of the Data Management System.
 
+.. _style-guide-py-ignored-errors:
+
+Exceptions to PEP 8
+-------------------
+
+The following table summarizes all :pep:`8` guidelines are **not followed** by the DM Python Style Guide.
+These exceptions are phrased as error codes that may be ignored by the flake8_ linter (see :ref:`style-guide-py-flake8`).
+
+E133
+   Closing bracket is missing indentation.
+   This `pycodestyle error`_ (via flake8_) is not part of :pep:`8`.
+
+E226
+   Missing whitespace around arithmetic operator.
+   See :ref:`style-guide-py-operator-whitespace`.
+
+E228
+   Missing whitespace around bitwise or shift operator.
+   See :ref:`style-guide-py-operator-whitespace`.
+
+E251
+   Unexpected spaces around keyword / parameter equals.
+   See :ref:`style-guide-py-multiline-assignment-whitespace`.
+
+N802
+   Function name should be lowercase.
+   See :ref:`style-guide-py-naming`.
+
+N803
+   Argument name should be lowercase.
+   See :ref:`style-guide-py-naming`.
+
+Maximum line length
+   See :ref:`style-guide-py-line-length`.
+
+.. _pycodestyle error: http://pep8.readthedocs.io/en/latest/intro.html#error-codes
+
 .. _style-guide-py-flake8:
 
 Code MAY be validated with flake8
@@ -35,7 +72,8 @@ The separate `pep8-naming`_ plugin validates names according to the DM Python co
 
 .. note::
    
-   Flake8 only validates code against PEP 8 specifications, but does not check the full coding standard listed here.
+   Flake8 only validates code against PEP 8 specifications.
+   This style guide includes additional guidelines *are not* automatically linted.
 
 .. _flake8: https://flake8.readthedocs.io
 .. _pep8-naming: http://pypi.python.org/pypi/pep8-naming
@@ -81,38 +119,6 @@ LSST DM Packages may also include a :file:`setup.cfg` file with :pep:`8` excepti
 
 :command:`flake8` can be invoked without arguments when this configuration is present.
 
-.. _style-guide-py-ignored-errors:
-
-Summary of PEP 8 exceptions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-These error codes can be **ignored** by flake8_ when checking DM code against :pep:`8` specifications:
-
-E133
-   Closing bracket is missing indentation.
-   This `pycodestyle error`_ (via flake8_) is not part of :pep:`8`.
-
-E226
-   Missing whitespace around arithmetic operator.
-   See :ref:`style-guide-py-operator-whitespace`.
-
-E228
-   Missing whitespace around bitwise or shift operator.
-   See :ref:`style-guide-py-operator-whitespace`.
-
-E251
-   Unexpected spaces around keyword / parameter equals.
-   See :ref:`style-guide-py-multiline-assignment-whitespace`.
-
-N802
-   Function name should be lowercase.
-   See :ref:`style-guide-py-naming`.
-
-N803
-   Argument name should be lowercase.
-   See :ref:`style-guide-py-naming`.
-
-.. _pycodestyle error: http://pep8.readthedocs.io/en/latest/intro.html#error-codes
 
 .. _style-guide-py-noqa:
 
@@ -158,7 +164,7 @@ Style changes must be encapsulated in a distinct commit (see :ref:`git-commit-or
 
 .. note::
 
-   :command:`autopep8` only fixes PEP 8 issues and does not address other guildelines listed here.
+   :command:`autopep8` only fixes PEP 8 issues and does not address other guidelines listed here.
 
 .. _autopep8: https://pypi.python.org/pypi/autopep8
 
