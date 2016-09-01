@@ -1,11 +1,6 @@
 #######################
-Documenting Python Code
+Documenting Python APIs
 #######################
-
-.. note::
-
-   This is a preview documentation format specification.
-   Software documentation should currently be written in the format described at https://confluence.lsstcorp.org/display/LDMDG/Documentation+Standards#DocumentationStandards-Python
 
 We document Python code in three ways:
 
@@ -21,102 +16,139 @@ We document Python code in three ways:
 
 3. By allowing Python objects to be introspected interactively with the ``__str__`` and ``__repr__`` magic methods.
 
-This page focuses on public code documentation through docstrings, while the latter two are discussed in our Python style guide.
+This page focuses on public code documentation through docstrings, while the latter two are discussed in our :doc:`../coding/python_style_guide`.
 
-.. TODO add link to python style guide.
+Treat the guidelines on this page as an extension of the :doc:`../coding/python_style_guide`.
 
-.. _py-doc-boilerplate:
-
-Boilerplate
-===========
-
-LSST's Python source files begin with a small amount of boilerplate text:
-
-.. Note: should this boilerplate be moved to our coding standard guide?
-
-.. code-block:: python
-
-   #
-   # LSST Data Management System
-   # See COPYRIGHT file at the top of the source tree.
-   #
-   # This product includes software developed by the
-   # LSST Project (http://www.lsst.org/).
-   #
-   # This program is free software: you can redistribute it and/or modify
-   # it under the terms of the GNU General Public License as published by
-   # the Free Software Foundation, either version 3 of the License, or
-   # (at your option) any later version.
-   #
-   # This program is distributed in the hope that it will be useful,
-   # but WITHOUT ANY WARRANTY; without even the implied warranty of
-   # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-   # GNU General Public License for more details.
-   #
-   # You should have received a copy of the LSST License Statement and
-   # the GNU General Public License along with this program. If not,
-   # see <http://www.lsstcorp.org/LegalNotices/>.
-   #
+.. note::
+   Changes to this document must be approved by the System Architect (`RFC-24 <https://jira.lsstcorp.org/browse/RFC-24>`_).
+   To request changes to these standards, please file an :ref:`RFC <decision-making-rfc>`.
 
 .. _py-docstring-basics:
 
-Python Docstring Basics
-=======================
+Basic Format of Docstrings
+==========================
 
 Python docstrings are special strings that form the ``__doc__`` attributes attached to modules, classes, methods and functions.
-Docstrings are specified by `PEP-257`_.
+Docstrings are specified by :pep:`257`.
 
-.. _PEP-257: https://www.python.org/dev/peps/pep-0257/
+.. _py-docstring-triple-double-quotes:
 
-Docstrings are delimited by triple double quotes, ``"""``.
+Docstrings MUST be delimited by double triple quotes
+----------------------------------------------------
+
+Docstrings **must** be delimited by triple double quotes: ``"""``.
 This allows docstrings to span multiple lines.
+You may use ``u"""`` for unicode but it is usually preferable to stick to ASCII.
 
-Single line docstrings should have the delimiters and text all on one line:
+For consistency, *do not* use triple single quotes: ``'''``.
 
-.. code-block:: python
+.. _py-docstring-form:
 
-   """A one-line docstring."""
+Docstrings SHOULD be begin with ``"""`` and terminate with ``"""`` on its own line
+----------------------------------------------------------------------------------
 
-Such single line docstrings should only be considered acceptable for private (read: *undocumented*) APIs or for properties.
-Complete docstrings will span multiple lines.
+The docstring's summary sentence occurs on the same line as the opening ``"""``.
 
-When the docstring spans multiple lines, the first line of text should appear with the opening delimiter.
-The closing delimiter should appear on its own line:
+The terminating ``"""`` should be on its own line, even for 'one-line' docstrings (this is a minor departure from :pep:`257`).
+For example, a one-line docstring:
 
-.. code-block:: python
+.. code-block:: py
 
-   """Summary for a docstring.
-
-   More discussion in addition paragraphs.
-
-   And another paragraph.
+   """Sum numbers in an array.
    """
 
-By convention, the first paragraph of a multi-line docstring should be a single summary sentence.
+(*Note:* one-line docstrings are rarely used for public APIs, see :ref:`py-docstring-sections`.)
 
-**Do not place the opening delimeter on its own line,** as in:
+An example of a multi-paragraph docstring:
 
-.. code-block:: python
+.. code-block:: py
 
+   """Sum numbers in an array.
+
+   Parameters
+   ----------
+   values : iterable
+      Python interable whose values are summed.
+
+   Returns
+   -------
+   sum : `float`
+      Sum of `values`.
    """
-   Summary for a docstring.
 
-   Discussion how how the summary line should start on the same line as the
-   opening delimiter.
+.. _py-docstring-no-blanks:
 
-   And another paragraph.
+Docstrings SHOULD NOT be preceded or followed by a blank line
+-------------------------------------------------------------
+
+For example:
+
+.. code-block:: py
+
+   def sum(values):
+       """Sum numbers in an array.
+
+       Parameters
+       ----------
+       values : iterable
+          Python interable whose values are summed.
+
+       Returns
+       -------
+       sum : `float`
+          Sum of `values`.
+       """
+       pass
+
+.. _py-docstring-indentation:
+
+Docstring content MUST be indented with the code's scope
+--------------------------------------------------------
+
+For example:
+
+.. code-block:: py
+
+   def sum(values):
+       """Sum numbers in an array.
+
+       Parameters
+       ----------
+       values : iterable
+          Python interable whose values are summed.
+       """
+       pass
+
+Not:
+
+.. code-block:: py
+
+   def sum(values):
+       """Sum numbers in an array.
+
+   Parameters
+   ----------
+   values : iterable
+      Python interable whose values are summed.
    """
+       pass
 
 .. _py-docstring-placement:
 
 Docstring Placement
 ===================
 
+.. _py-docstring-module-placement:
+
 Modules
 -------
 
-Module-level docstrings must be placed as close to the top of the Python file as possible: *below* the boilerplate and any ``#!/usr/bin/env python``, but *above* the imports.
-Module-level docstrings should not be indented.
+Module-level docstrings must be placed as close to the top of the Python file as possible: *below* any ``#!/usr/bin/env python`` and license statements, but *above* imports.
+See also: :ref:`style-guide-py-file-order`.
+
+Module docstrings should not be indented.
+For example:
 
 .. code-block:: python
    
@@ -138,10 +170,12 @@ Module-level docstrings should not be indented.
    import lsst.afw.table as afw_table
    # [...]
 
+.. _py-docstring-class-method-function-placement:
+
 Classes, Methods, and Functions
 -------------------------------
 
-Class/method/function docstrings must be placed directly below the class/method/function declaration, and indented to the level of the scope.
+Class/method/function docstrings must be placed directly below the declaration, and indented according to the code scope.
 
 .. code-block:: python
 
@@ -161,6 +195,7 @@ Class/method/function docstrings must be placed directly below the class/method/
            """
            pass
 
+
    def my_function():
        """Summary of my_function.
 
@@ -168,21 +203,23 @@ Class/method/function docstrings must be placed directly below the class/method/
        """
        pass
 
-Note that the class docstring takes the place of a docstring of the ``__init__`` method; ``__init__`` has no docstring.
+Note that the class docstring takes the place of a docstring for the ``__init__`` method; ``__init__`` has no docstring.
 
-.. _py-doc-docstring-rst:
+.. _py-docstring-rst:
 
 ReStructuredText in Docstrings
 ==============================
 
 We use reStructuredText to mark up and give semantic meaning to text in docstrings.
-ReStructuredText is lightweight enough to read in raw form, such as command line terminal printout.
-All of the style guidance for using restructured text from our :doc:`ReStructuredText Style Guide <rst_styleguide>` applies in docstrings with a few exceptions defined here.
+ReStructuredText is lightweight enough to read in raw form, such as command line terminal printouts, but is also parsed and rendered with our Sphinx-based documentation build system.
+All of the style guidance for using reStructuredText from our :doc:`rst_styleguide` applies in docstrings with a few exceptions defined here.
+
+.. _py-docstring-nospace-headers:
 
 No space between headers and paragraphs
 ---------------------------------------
 
-For docstrings the numpydoc standard is to omit any space between a header and the following paragraph.
+For docstrings, the Numpydoc_ standard is to omit any space between a header and the following paragraph.
 
 For example
 
@@ -195,21 +232,21 @@ For example
    A paragraph
    """
 
-This deviation from the normal style guide is in keeping with Python community idioms, and to save vertical space in terminal help printouts.
+This :ref:`deviation from the normal style guide <rst-sectioning>` is in keeping with Python community idioms and to save vertical space in terminal help printouts.
 
-.. _py-doc-section-levels:
+.. _py-docstring-section-levels:
 
 Top level headers are defined with '-'
 --------------------------------------
 
-In docstrings, the top level header is marked up with a ``-``, the third level listed in our ReStructuredTextStyle guide.
+In docstrings, the top level header is marked up with a ``-``, the third level listed in our :ref:`ReStructuredText Style Guide <rst-sectioning>`.
 The header hierarchy is thus:
 
 1. Sections ``-``,
 2. Subsections ``^``,
 3. Subsubsections ``"``.
 
-This deviation from our :ref:`reST style guide <rst-sectioning>` is in keeping with Numpy community idioms, and required by our Sphinx tooling.
+This deviation from our :ref:`reST Style Guide <rst-sectioning>` is in keeping with NumPy community idioms, and required by our Sphinx tooling.
 
 .. FIXME uncomment this when RFC-107 is decided
 ..
@@ -229,47 +266,47 @@ Common Structure of Docstrings
 ==============================
 
 We organize Python docstrings into sections that appear in a common order.
-This format follows the `Numpydoc`_ standard (used by NumPy, SciPy, and Astropy, among other scientific Python packages) rather than the format described in `PEP-287`_.
+This format follows the `Numpydoc`_ standard (used by NumPy, SciPy, and Astropy, among other scientific Python packages) rather than the format described in :pep:`287`.
+The sections and their relative order is:
 
 .. _Numpydoc: https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt
-
-.. _PEP-287: https://www.python.org/dev/peps/pep-0287/
 
 1. :ref:`Short Summary <py-docstring-short-summary>`
 2. :ref:`Deprecation Warning <py-docstring-deprecation>` (if applicable)
 3. :ref:`Extended Summary <py-docstring-extended-summary>` (optional)
-4. :ref:`Parameters <py-docstring-parameters>` (if applicable; for classes, methods and functions)
+4. :ref:`Parameters <py-docstring-parameters>` (if applicable; for classes, methods, and functions)
 5. :ref:`Methods <py-docstring-methods>` (if applicable; for classes)
 6. :ref:`Attributes <py-docstring-attributes>` (if applicable; for classes)
 7. :ref:`Returns <py-docstring-returns>` or :ref:`Yields <py-docstring-yields>` (if applicable; for functions, methods, and generators)
-8. :ref:`Other Parameters <py-docstring-other-parameters>` (if applicable; for classes, methods and functions)
+8. :ref:`Other Parameters <py-docstring-other-parameters>` (if applicable; for classes, methods, and functions)
 9. :ref:`Raises <py-docstring-raises>` (if applicable)
 10. :ref:`See Also <py-docstring-see-also>` (optional)
 11. :ref:`Notes <py-docstring-notes>` (optional)
 12. :ref:`References <py-docstring-references>` (optional)
 13. :ref:`Examples <py-docstring-examples>` (optional)
 
-In the following sections we describe the content of these docstring sections and provide examples of full docstrings composed for classes, methods, functions, and constants.  
+For summaries of how these docstring sections are composed in specific contexts, see:
+
+- :ref:`py-docstring-module-structure`
+- :ref:`py-docstring-class-structure`
+- :ref:`py-docstring-method-function-structure`
+- :ref:`py-docstring-attribute-constants-structure`
 
 .. _py-docstring-short-summary:
 
 Short Summary
 -------------
 
-A one-line summary that does not use variable names or the function name:
+A one-line summary that does not use variable names or the function's name:
 
 .. code-block:: python
 
    def add(a, b):
-       """Sum two numbers."""
+       """Sum two numbers.
+       """
        return a + b
 
-The summary should be written as a present-tense action.
-*Do not write something like "Sums two numbers."*
-
-The one line summary can be used alone only in *extremely* trivial cases, such as Python properties.
-Keep in mind our `style guideline for placing the short summary on the same line as the opening (and closing, if used alone) docstring delimiters <py-docstring-basics>`_.
-In virtually all cases using a full multi-line docstring is the correct thing to do.
+For functions and methods, the summary should be written in the imperative voice (i.e., as a command that the API consumer is giving).
 
 .. _py-docstring-deprecation:
 
@@ -297,8 +334,8 @@ Extended Summary
 ----------------
 
 A few sentences giving an extended description.
-This section should be used to clarify *functionality*, not to discuss implementation detail or background theory, which should rather be explored in the :ref:`Notes <py-docstring-notes>` section below.
-You may refer to the parameters and the function name, but parameter descriptions still belong in the :ref:`Parameters <py-docstring-parameters>` section.
+This section should be used to clarify *functionality*, not to discuss implementation detail or background theory, which should rather be explored in the :ref:`'Notes' <py-docstring-notes>` section below.
+You may refer to the parameters and the function name, but parameter descriptions still belong in the :ref:`'Parameters' <py-docstring-parameters>` section.
 
 .. _py-docstring-parameters:
 
@@ -307,7 +344,7 @@ Parameters
 
 *For functions, methods and classes.*
 
-*Parameters* is a description of the function arguments, keywords and their respective types.
+'Parameters' is a description of a function or method's arguments and their respective types.
 
 .. code-block:: rst
 
@@ -316,36 +353,42 @@ Parameters
    x : type
        Description of parameter `x`.
 
-Notice that the description is **indented by four spaces** from the ``{name} : {type}`` line of each argument.
+Notice that the description is **indented by four spaces** from the prior ``{name} : {type}`` line of each argument.
 If a description spans more than one line, the continuation lines must be indented to the same level.
 
-Arguments should be listed in the same order as they appear in the function signature.
+Arguments should be listed in the same order as they appear in the function or method signature.
 
-When describing an argument in the description, enclose the name of the variable in single backticks (the default role in reST, which is Python-aware in docstrings).
+.. _py-docstring-parameter-types:
 
 Parameter Types
 ^^^^^^^^^^^^^^^
 
-For the parameter types, be as precise as possible.
+Be as precise as possible when describing types for parameters.
+The type description is free-form text, making it possible to list several supported types or indicate nuances.
+Complex and lengthy descriptions can be moved to the *description* field.
 
 .. code-block:: rst
 
    Parameters
    ----------
-   filename : str
+   filename : `str`
        Description of `filename`.
-   copy : bool
+   copy : `bool`
        Description of `copy`.
    dtype : data-type
        Description of `dtype`.
    iterable : iterable object
        Description of `iterable`.
-   shape : int or tuple of int
+   shape : `int` or `tuple` of int
        Description of `shape`.
-   files : list of str
+   files : `list` of `str`
        Description of `files`.
 
-For instances of classes, provide the full namespace to the class.
+Note that concrete types are wrapped in backticks, which is the *default role* in reStructuredText.
+When possible, Sphinx will make a link to the API reference for that object using `intersphinx <http://www.sphinx-doc.org/en/stable/ext/intersphinx.html>`_.
+(In docstrings, ``:py:obj:`` is the :ref:`default role <rst-python-link>`.)
+
+For instances of classes, provide the full namespace to the class, such as ```lsst.afw.table.ExposureTable```.
 
 When a parameter can only assume one of a fixed set of values, those values can be listed in braces:
 
@@ -354,33 +397,34 @@ When a parameter can only assume one of a fixed set of values, those values can 
    order : {'C', 'F', 'A'}
        Description of `order`.
 
+.. _py-docstring-optional:
+
 Optional Parameters
 ^^^^^^^^^^^^^^^^^^^
 
-For keyword arguments, add ``optional`` to the type specification:
+For keyword arguments, add 'optional' to the type specification:
 
 .. code-block:: rst
 
-   x : int, optional
+   x : `int`, optional
 
-Optional keyword parameters have default values, which are displayed as
-part of the function signature. They can also be detailed in the
-description:
+Optional keyword parameters have default values, which are automatically documented as part of the function or method's signature.
+Default values can also be detailed in the description:
 
 .. code-block:: rst
 
    Parameters
    ----------
-   x : type
+   x : `int`, optional
        Description of parameter `x` (the default is -1, which implies summation
        over all axes).
 
+.. _py-docstring-shorthand:
 
 Shorthand
 ^^^^^^^^^
 
-When two or more input parameters have exactly the same type, shape and
-description, they can be combined:
+When two or more consecutive input parameters have exactly the same type, shape and description, they can be combined:
 
 .. code-block:: rst
 
@@ -394,7 +438,7 @@ Methods
 
 *For classes.*
 
-If a class has a very large number of methods, which are hard to discover, an additional *Methods* section *can* be provided to list them:
+If a class has a very large number of methods, which are hard to discover, an additional 'Methods' section *can* be provided to list them:
 
 .. code-block:: rst
 
@@ -405,8 +449,8 @@ If a class has a very large number of methods, which are hard to discover, an ad
    sort(column, order='ascending')
       Sort by `column`
 
-Do not list private methods in the Methods section.
-If it is necessary to explain a private method (use with care!), it can be referred to in the :ref:`Extended Summary <py-docstring-extended-summary>` or :ref:`Notes <py-docstring-notes>` sections.
+Do not list private methods in the 'Methods' section.
+If it is necessary to explain a private method (use with care!), it can be mentioned in the :ref:`Extended Summary <py-docstring-extended-summary>` or :ref:`Notes <py-docstring-notes>` sections.
 
 Do not list ``self`` as the first parameter of a method.
 
@@ -417,20 +461,18 @@ Attributes
 
 *For classes.*
 
-An ``Attributes`` section, located below the ``Parameters`` section, may be
-used to describe class variables:
+An 'Attributes' section, located below the 'Parameters' section, may be used to describe class variables:
 
 .. code-block:: rst
 
    Attributes
    ----------
-   x : float
+   x : `float`
        The X coordinate.
-   y : float
+   y : `float`
        The Y coordinate.
 
-Attributes that are properties and have their own docstrings can be simply
-listed by name:
+Attributes that are properties and have their :ref:`own docstrings <py-docstring-attribute-constants-structure>` can be simply listed by name:
 
 .. code-block:: rst
 
@@ -438,9 +480,9 @@ listed by name:
    ----------
    real
    imag
-   x : float
+   x : `float`
        The X coordinate
-   y : float
+   y : `float`
        The Y coordinate
 
 .. _py-docstring-returns:
@@ -450,7 +492,7 @@ Returns
 
 *For functions and methods*.
 
-*Returns* is an explanation of the returned values and their types, of the same format as `Parameters <py-docstring-parameters>`_.
+'Returns' is an explanation of the returned values and their types, in the same format as :ref:`'Parameters' <py-docstring-parameters>`.
 
 If a sequence of values is returned, each value may be separately listed, in order:
 
@@ -458,9 +500,9 @@ If a sequence of values is returned, each value may be separately listed, in ord
 
    Returns
    -------
-   x : int
+   x : `int`
        Description of x.
-   y : int
+   y : `int`
        Description of y.
 
 If a return type is `dict`, ensure that the key-value pairs are documented in the description.
@@ -472,7 +514,7 @@ Yields
 
 *For generators.*
 
-*Yields* is used identically to `Returns <py-docstring-yields>`_, but for generators.
+'Yields' is used identically to :ref:`'Returns' <py-docstring-yields>`, but for generators.
 
 .. _py-docstring-other-parameters:
 
@@ -481,7 +523,7 @@ Other Parameters
 
 *For classes, methods and functions.*
 
-*Other Parameters* is an optional section used to describe infrequently used parameters.
+'Other Parameters' is an optional section used to describe infrequently used parameters.
 It should only be used if a function has a large number of keyword parameters, to prevent cluttering the :ref:`Parameters <py-docstring-parameters>` section.
 
 .. _py-docstring-raises:
@@ -491,13 +533,13 @@ Raises
 
 *For classes, methods and functions.*
 
-*Raises* is an optional section detailing which errors get raised and under what conditions:
+'Raises' is an optional section detailing which errors get raised and under what conditions:
 
 .. code-block:: rst
 
    Raises
    ------
-   IOError
+   `IOError`
        If the file could not be read.
 
 This section should be used judiciously---only for errors that are non-obvious or have a large chance of getting raised.
@@ -507,7 +549,7 @@ This section should be used judiciously---only for errors that are non-obvious o
 See Also
 --------
 
-*See Also* is an optional section used to refer to related code.
+'See Also' is an optional section used to refer to related code.
 This section can be very useful, but should be used judiciously.
 The goal is to direct users to other functions they may not be aware of, or have easy means of discovering (by looking at the module docstring, for example).
 Routines whose docstrings further explain parameters used by this function are good candidates.
@@ -518,8 +560,8 @@ As an example, for a function such as ``numpy.cos``, we would have
 
    See Also
    --------
-   sin : Compute an element-wise Sine function.
-   tan : Compute an element-wise Tangent function.
+   `sin` : Compute an element-wise Sine function.
+   `tan` : Compute an element-wise Tangent function.
 
 When referring to functions in the same sub-module, no prefix is needed, and the tree is searched upwards for a match.
 
@@ -528,13 +570,13 @@ E.g., whilst documenting a ``lsst.afw.tables`` module, refer to a class in ``lss
 
 .. code-block:: rst
 
-   afw.detection.Footprint : Regular detection footprint.
+   `afw.detection.Footprint` : Regular detection footprint.
 
 When referring to an entirely different module or package, use the full namespace.
 
 .. code-block:: rst
 
-   astropy.table.Tables : Flexible table data structures
+   `astropy.table.Tables` : Flexible table data structures
 
 Functions may be listed without descriptions; this is preferable if the functionality is clear from the function name:
 
@@ -542,9 +584,9 @@ Functions may be listed without descriptions; this is preferable if the function
 
    See Also
    --------
-   func_a : Function a with its description.
-   func_b, func_c, func_d
-   func_e
+   `func_a` : Function a with its description.
+   `func_b`, `func_c`, `func_d`
+   `func_e`
    
 .. _py-docstring-notes:
 
@@ -560,7 +602,7 @@ This section may include mathematical equations, written in `LaTeX <http://www.l
 
   .. math:: X(e^{j\omega } ) = x(n)e^{ - j\omega n}
 
-Equations can also be typeset underneath the math directive:
+Longer equations can also be typeset underneath the math directive:
 
 .. code-block:: rst
 
@@ -571,7 +613,7 @@ Equations can also be typeset underneath the math directive:
      x(n) * y(n) \Leftrightarrow X(e^{j\omega } )Y(e^{j\omega } )\\
      another equation here
 
-Math can furthermore be used inline:
+Math can also be used inline:
 
 .. code-block:: rst
 
@@ -583,6 +625,8 @@ Variable names are displayed in typewriter font, obtained by using ``\mathtt{var
 
    We square the input parameter `alpha` to obtain
    :math:`\mathtt{alpha}^2`.
+
+See :ref:`rst-math` for more details on math typesetting in reStructuredText.
 
 Note that LaTeX is not particularly easy to read, so use equations sparingly.
 
@@ -600,7 +644,7 @@ where filename is a path relative to the reference guide source directory.
 References
 ----------
 
-References cited in the :ref:`Notes <py-docstring-notes>` section may be listed here, e.g. if you cited the article below using the text ``[1]_``, include it as in the list as follows:
+References cited in the :ref:`'Notes' <py-docstring-notes>` section may be listed here, e.g. if you cited the article below using the text ``[1]_``, include it as in the list as follows:
 
 .. code-block:: rst
 
@@ -612,14 +656,17 @@ References cited in the :ref:`Notes <py-docstring-notes>` section may be listed 
 
 Note that Web pages should be referenced with regular inline links.
 
-References are meant to augment the docstring, but should not be required to understand it. References are numbered, starting from one, in the order in which they are cited.
+References are meant to augment the docstring, but should not be required to understand it.
+References are numbered, starting from one, in the order in which they are cited.
+
+We may support `bibtex-based references instead <https://github.com/mcmtroffaes/sphinxcontrib-bibtex>`__ instead of explicitly writing bibliographies in docstrings.
 
 .. _py-docstring-examples:
 
 Examples
 --------
 
-*Examples* is an optional section for examples, using the `doctest <http://docs.python.org/library/doctest.html>`_ format.
+'Examples' is an optional section for examples, using the `doctest <http://docs.python.org/library/doctest.html>`_ format.
 These examples do not replace unit tests, but *are* intended to be tested to ensure documentation and code is consistent.
 While optional, this section is very strongly encouraged.
 
@@ -647,6 +694,8 @@ It is not necessary to use the doctest markup ``<BLANKLINE>`` to indicate empty 
 
 .. The examples may assume that ``import numpy as np`` is executed before the example code.
 
+.. _py-docstring-module-structure:
+
 Documenting Modules
 ===================
 
@@ -659,6 +708,8 @@ Module docstrings contain the following sections:
 4. :ref:`See Also <py-docstring-see-also>` (optional)
 
 .. TODO Provide an example
+
+.. _py-docstring-class-structure:
 
 Documenting Classes
 ===================
@@ -680,7 +731,7 @@ Class docstrings contain the following sections:
 12. :ref:`Examples <py-docstring-examples>` (optional)
 
 Note that the `Methods <py-docstring-methods>`_ section is only used if the method list is extremely long.
-In general, trust that the tables to contents in the user guide pages will provide useful summaries of a class's methods.
+In general, trust that the tables of contents in the user guide pages will provide useful summaries of a class's methods.
 
 .. code-block:: python
 
@@ -698,11 +749,11 @@ In general, trust that the tables to contents in the user guide pages will provi
 
        Raises
        ------
-       ValueError : Input angles are outside range.
+       `ValueError` : Input angles are outside range.
        
        See also
        --------
-       GalacticCoordinate
+       `GalacticCoordinate`
 
        Examples
        --------
@@ -715,6 +766,7 @@ In general, trust that the tables to contents in the user guide pages will provi
        def __init__(self, ra, dec, frame='icrs'):
            pass
 
+.. _py-docstring-method-function-structure:
 
 Documenting Methods and Functions
 =================================
@@ -742,15 +794,16 @@ A minimal example:
 
        Parameters
        ----------
-       message : str
+       message : `str`
           Log message.
-       level : str
+       level : `str`
           Priority level of the log message.
        """
 
+.. _py-docstring-attribute-constants-structure:
 
-Documenting constants, class properties, attributes
-===================================================
+Documenting Constants, Class Properties, and Attributes
+=======================================================
 
 Constants in modules, and properties and attributes in classes are all similar in that their values are accessed with arguments.
 At minimum, constants/properties/attributes should have a summary line, but can also have a more complete structure with sections:
@@ -797,6 +850,6 @@ Acknowledgements
 
 These docstring guidelines are derived/adapted from in the `Numpy <https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt>`_ and `Astropy <http://docs.astropy.org/en/stable/_sources/development/docrules.txt>`_ documentation.
 
-Numpy is Copyright © 2005-2013, NumPy Developers.
+NumPy is Copyright © 2005-2013, NumPy Developers.
 
-Astropy is Copyright (c) 2011-2015, Astropy Developers.
+Astropy is Copyright © 2011-2015, Astropy Developers.
