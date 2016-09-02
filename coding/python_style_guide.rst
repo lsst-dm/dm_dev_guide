@@ -643,6 +643,40 @@ For more information see the online book `Supporting Python 3 <http://python3por
 
 .. _futurize: http://python-future.org/futurize.html
 
+Supporting Python 2.7 and 3.x simultaneously
+---------------------------------------------
+
+The ``future`` package MUST be used to provide compatibility functionality with Python 2.7
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We use the `future <http://python-future.org/>`_ package to provide a means for writing code using Python 3 idioms that will also work on Python 2.7.
+Details on the process for migrating a 2.7 codebase to support both versions can be found in `SQR-014 <https://sqr-014.lsst.io>`_.
+
+.. _style-guide-py-future-absolute-import:
+.. _style-guide-py-future-division:
+.. _style-guide-py-print:
+
+``__future__`` MUST be used to import Python 3 behavior in all files where the related functionality is used
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Code that is to be used on Python 2.7 and 3.x should import ``division``, ``print_function`` and ``absolute_import`` from the :mod:`__future__` package where appropriate.
+This means ``/`` is floating-point division and ``//`` is truncated integer division, regardless of the type of numbers being divided and matches the Python 3 behavior.
+
+In addition, import local modules using relative imports (e.g. ``from . import foo`` or ``from .foo import bar``).
+This results in clearer code and avoids shadowing global modules with local modules.
+
+The :py:func:`print()` function is required in Python 3.
+In general, DM code should use logging instead of ``print`` functions.
+
+
+.. _style-guide-py-future-itervalues:
+
+``itervalues()`` and ``iteritems()`` CANNOT be used
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Python 3 does not support the ``iter`` variants.
+For more information on how to handle this efficiently in Python 2 see http://python-future.org/compatible_idioms.html#iterating-through-dict-keys-values-items.
+
 .. _style-guide-py-pitfalls-mutables:
 
 A mutable object MUST NOT be used as a keyword argument default
@@ -683,12 +717,32 @@ For example to be sure a file will be closed when you are done with it:
        for line in f:
            pass
 
-.. _style-guide-py-open:
+.. _style-guide-py-dict-keys:
 
-Use ``open`` instead of ``file``
---------------------------------
+Avoid ``dict.keys()`` when iterating over keys or checking membership
+---------------------------------------------------------------------
 
-``file`` is gone in Python 3.
+For iterating over keys, iterate over the dictionary itself, e.g.:
+
+.. code-block:: py
+
+   for x in mydict:
+       pass
+
+To test for inclusion use ``in``:
+
+.. code-block:: py
+
+    if key in myDict:
+        pass
+
+This is preferred over :meth:`~dict.keys`. Use :meth:`~dict.keys` when storing the keys for later access:
+
+.. code-block:: py
+
+    k = list(mydict.keys())
+
+where :class:`list` ensures that a view or iterator is not being retained.
 
 .. _style-guide-py-subprocess:
 
@@ -721,82 +775,9 @@ Use the :py:mod:`argparse` module for command-line scripts.
 
 Command line tasks for pipelines should use :lclass:`lsst.pipe.base.ArgumentParser` instead.
 
-.. _style-guide-py-future-division:
-
-Use ``from __future__ import division``
----------------------------------------
-
-This means ``/`` is floating-point division and ``//`` is truncated integer division, regardless of the type of numbers being divided.
-This gives more predictable behavior than the old operators, avoiding a common source of obscure bugs.
-It also makes intent of the code more obvious.
-
-.. _style-guide-py-future-absolute-import:
-
-Use ``from __future__ import absolute_import``
-----------------------------------------------
-
-In addition, import local modules using relative imports (e.g. ``from . import foo`` or ``from .foo import bar``).
-This results in clearer code and avoids shadowing global modules with local modules.
-
-.. _style-guide-py-exception-as:
-
-Use ``as`` when catching an exception
--------------------------------------
-
-For example, use ``except Exception as e`` or ``except (LookupError, TypeError) as e``.
-The new syntax is clearer, especially when catching multiple exception classes, and required in Python 3.
-
 .. _style-guide-py-generators:
 
 Iterators and generators SHOULD be used to iterate over large data sets efficiently
 -----------------------------------------------------------------------------------
 
 Use iterators, generators (classes that act like iterators) and generator expressions (expressions that act like iterators) to iterate over large data sets efficiently.
-
-.. _style-guide-py-future-itervalues:
-
-Use ``itervalues()`` and ``iteritems()`` instead of ``values()`` and ``items()``
---------------------------------------------------------------------------------
-
-For iterating over dictionary values and items use the above idiom unless you truly need a list.
-
-This pattern does not apply to code that has already been ported to Python 3 with futurize_
-For more information see http://python-future.org/compatible_idioms.html#iterating-through-dict-keys-values-items.
-
-.. _style-guide-py-dict-keys:
-
-Avoid ``dict.keys()`` and ``dict.iterkeys()``
----------------------------------------------
-
-For iterating over keys, iterate over the dictionary itself, e.g.:
-
-.. code-block:: py
-
-   for x in mydict:
-       pass
-
-To test for inclusion use ``in``:
-
-.. code-block:: py
-
-    if key in myDict:
-        pass
-
-This is preferred over ``keys()`` and ``iterkeys()`` and avoids the issues mentioned in the previous item.
-
-.. _style-guide-py-print:
-
-Use from ``__future__ import print_function``
----------------------------------------------
-
-The :py:func:`print()` function is required in Python 3.
-
-In general, DM code should be use logging instead of ``print`` statements.
-
-.. _style-guide-py-next:
-
-Use ``next(myIter)`` instead of ``myIter.next()``
--------------------------------------------------
-
-The special method ``next`` has been renamed to ``__next__`` in Python 3.
-This allows iterators to be advanced with the :py:func:`next` built-in function in both Python 2.7 and Python 3.
