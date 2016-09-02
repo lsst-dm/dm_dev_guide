@@ -71,7 +71,7 @@ In addition, flake8_ statically checks Python for code errors.
 The separate `pep8-naming`_ plugin validates names according to the DM Python coding style.
 
 .. note::
-   
+
    Flake8 only validates code against PEP 8 specifications.
    This style guide includes additional guidelines *are not* automatically linted.
 
@@ -200,18 +200,18 @@ In this example, continuation is naturally implied within the ``__init__`` metho
        """
        def __init__(self, width, height,
                     color='black', emphasis=None, highlight=0):
-   
+
            # Discouraged: continuation with '\'
            if width == 0 and height == 0 and \
                   color == 'red' and emphasis == 'strong' or \
                   highlight > 100:
                raise ValueError("sorry, you lose")
-   
+
            # Preferred: continuation with parentheses
            if width == 0 and height == 0 and (color == 'red' or
                                               emphasis is None):
                raise ValueError("I don't think so")
-   
+
            Blob.__init__(self, width, height,
                          color, emphasis, highlight)
 
@@ -279,12 +279,12 @@ Less readable:
 .. code-block:: py
 
    a = b((self.config.nSigmaToGrow*sigma) + 0.5)
- 
+
 .. _style-guide-py-operator-whitespace:
 
 Binary operators SHOULD be surrounded by a single space except for [``*``, ``/``, ``**``, ``//``, ``%``\ ]
 ----------------------------------------------------------------------------------------------------------
- 
+
 Always surround these binary operators with a single space on either side; this helps the user see where one token ends and another begins:
 
 - assignment (``=``),
@@ -326,7 +326,7 @@ Keyword assignment operators SHOULD be surrounded by a space when statements app
 
 However, if keyword assignments occur on a single line, where should be no additional spaces.
 
-Thus this: 
+Thus this:
 
 .. code-block:: py
 
@@ -340,7 +340,7 @@ Thus this:
    # no whitespace around single-line assigment
    funcB(x, y, z, karg1=value1, karg2=value2, karg3=value3)
 
-Not this: 
+Not this:
 
 .. code-block:: py
 
@@ -494,7 +494,7 @@ A Python source file name SHOULD be camelCase-with-leading-lowercase and ending 
 
 A module containing a single class should be a ``camelCase``-with-leading-lowercase transliteration of the class's name.
 
-The name of a test case should be descriptive without the need for a trailing numeral to distinguish one test case from another. 
+The name of a test case should be descriptive without the need for a trailing numeral to distinguish one test case from another.
 
 .. TODO consider refactoring tests into their own section
 
@@ -514,7 +514,7 @@ Always use ASCII for new Python code.
 Standard code order SHOULD be followed
 --------------------------------------
 
-Within a module, follow the order: 
+Within a module, follow the order:
 
 1. Shebang line, ``#! /usr/bin/env python`` (only for executable scripts)
 2. Module-level comments (such as the `license statement <https://github.com/lsst/templates/blob/master/CopyrightHeader.py>`__)
@@ -543,7 +543,7 @@ Within a module, follow the order:
 
 Python provides :py:func:`super` so that each parent class' method is only called once.
 
-To use :py:func:`super`, all parent classes in the chain (also called the Method Resolution Order) need to use :py:func:`super` otherwise the chain gets interrupted. 
+To use :py:func:`super`, all parent classes in the chain (also called the Method Resolution Order) need to use :py:func:`super` otherwise the chain gets interrupted.
 Other subtleties have been noted in `an article by James Knight <https://fuhm.net/super-harmful/>`__:
 
 - Never call :py:func:`super` with anything but the exact arguments you received, unless you really know what you're doing.
@@ -582,7 +582,7 @@ This is also consistent with :pep:`8`, which `states <https://www.python.org/dev
 
    Comparisons to singletons like ``None`` should always be done with ``is`` or ``is not``, never the equality operators.
 
-For sequences, (:py:obj:`str`, :py:obj:`list`, :py:obj:`tuple`), use the fact that empty sequences are ``False``. 
+For sequences, (:py:obj:`str`, :py:obj:`list`, :py:obj:`tuple`), use the fact that empty sequences are ``False``.
 
 Yes:
 
@@ -652,8 +652,8 @@ Context managers (``with``) SHOULD be used for resource allocation
 
 Use the ``with`` statement to simplify resource allocation.
 
-For example to be sure a file will be closed when you are done with it: 
-  
+For example to be sure a file will be closed when you are done with it:
+
 .. code-block:: py
 
    with open('/etc/passwd', 'r') as f:
@@ -691,7 +691,7 @@ Use the :py:class:`set` type for unordered collections of objects.
 
 .. _style-guide-py-argparse:
 
-The ``argparse`` module SHOULD be used for command-line scripts 
+The ``argparse`` module SHOULD be used for command-line scripts
 ---------------------------------------------------------------
 
 Use the :py:mod:`argparse` module for command-line scripts.
@@ -751,14 +751,14 @@ For iterating over keys, iterate over the dictionary itself, e.g.:
 
    for x in mydict:
        pass
-   
+
 To test for inclusion use ``in``:
 
 .. code-block:: py
 
     if key in myDict:
         pass
-    
+
 This is preferred over ``keys()`` and ``iterkeys()`` and avoids the issues mentioned in the previous item.
 
 .. _style-guide-py-print:
