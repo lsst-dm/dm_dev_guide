@@ -15,6 +15,29 @@ The :doc:`intro` provides the overarching Coding Standards policy applicable to 
 
 .. _style-guide-py-intro:
 
+0. Python Version
+=================
+
+.. _style-guide-py-version:
+
+All DM Python code MUST work with Python 3
+------------------------------------------
+
+All the Python code written by LSST Data Management must be runnable using Python 3.
+Python 2 will cease to be supported before LSST is operational (:pep:`373`).
+The current baseline version is Python 3.5.
+
+DM Python library code with an external user base MUST support Python 2.7 and 3.x
+---------------------------------------------------------------------------------
+
+During construction we are expecting external users to be experimenting with some of the DM code and LSST DM library code is being used in their applications.
+This user community is currently transitioning from Python 2.7 to Python 3.x, and we should ensure that code works on both Python versions until our dependencies drop support for Python 2.7.
+In particular, the Science Pipelines code (commonly referred to as ``lsst_distrib``) must support 2.7 and 3.x.
+
+Standalone applications, code providing services, and internal programs and modules (such as Qserv, SQuaSH and ``dax``) do not have to support Python 2.
+If code is currently supporting both 2.7 and 3.x, dropping support for Python 2.7 requires an :ref:`RFC <decision-making-rfc>`.
+New code that has never supported Python 2.7 and which will not be externally usable library code or a dependency of a package that supports 2.7 does not require an RFC to request that 2.7 is not supported.
+
 1. PEP 8 is the Baseline Coding Style
 =====================================
 
@@ -71,7 +94,7 @@ In addition, flake8_ statically checks Python for code errors.
 The separate `pep8-naming`_ plugin validates names according to the DM Python coding style.
 
 .. note::
-   
+
    Flake8 only validates code against PEP 8 specifications.
    This style guide includes additional guidelines *are not* automatically linted.
 
@@ -200,18 +223,18 @@ In this example, continuation is naturally implied within the ``__init__`` metho
        """
        def __init__(self, width, height,
                     color='black', emphasis=None, highlight=0):
-   
+
            # Discouraged: continuation with '\'
            if width == 0 and height == 0 and \
                   color == 'red' and emphasis == 'strong' or \
                   highlight > 100:
                raise ValueError("sorry, you lose")
-   
+
            # Preferred: continuation with parentheses
            if width == 0 and height == 0 and (color == 'red' or
                                               emphasis is None):
                raise ValueError("I don't think so")
-   
+
            Blob.__init__(self, width, height,
                          color, emphasis, highlight)
 
@@ -279,12 +302,12 @@ Less readable:
 .. code-block:: py
 
    a = b((self.config.nSigmaToGrow*sigma) + 0.5)
- 
+
 .. _style-guide-py-operator-whitespace:
 
 Binary operators SHOULD be surrounded by a single space except for [``*``, ``/``, ``**``, ``//``, ``%``\ ]
 ----------------------------------------------------------------------------------------------------------
- 
+
 Always surround these binary operators with a single space on either side; this helps the user see where one token ends and another begins:
 
 - assignment (``=``),
@@ -326,7 +349,7 @@ Keyword assignment operators SHOULD be surrounded by a space when statements app
 
 However, if keyword assignments occur on a single line, where should be no additional spaces.
 
-Thus this: 
+Thus this:
 
 .. code-block:: py
 
@@ -340,7 +363,7 @@ Thus this:
    # no whitespace around single-line assigment
    funcB(x, y, z, karg1=value1, karg2=value2, karg3=value3)
 
-Not this: 
+Not this:
 
 .. code-block:: py
 
@@ -494,7 +517,7 @@ A Python source file name SHOULD be camelCase-with-leading-lowercase and ending 
 
 A module containing a single class should be a ``camelCase``-with-leading-lowercase transliteration of the class's name.
 
-The name of a test case should be descriptive without the need for a trailing numeral to distinguish one test case from another. 
+The name of a test case should be descriptive without the need for a trailing numeral to distinguish one test case from another.
 
 .. TODO consider refactoring tests into their own section
 
@@ -514,7 +537,7 @@ Always use ASCII for new Python code.
 Standard code order SHOULD be followed
 --------------------------------------
 
-Within a module, follow the order: 
+Within a module, follow the order:
 
 1. Shebang line, ``#! /usr/bin/env python`` (only for executable scripts)
 2. Module-level comments (such as the `license statement <https://github.com/lsst/templates/blob/master/CopyrightHeader.py>`__)
@@ -543,7 +566,7 @@ Within a module, follow the order:
 
 Python provides :py:func:`super` so that each parent class' method is only called once.
 
-To use :py:func:`super`, all parent classes in the chain (also called the Method Resolution Order) need to use :py:func:`super` otherwise the chain gets interrupted. 
+To use :py:func:`super`, all parent classes in the chain (also called the Method Resolution Order) need to use :py:func:`super` otherwise the chain gets interrupted.
 Other subtleties have been noted in `an article by James Knight <https://fuhm.net/super-harmful/>`__:
 
 - Never call :py:func:`super` with anything but the exact arguments you received, unless you really know what you're doing.
@@ -582,7 +605,7 @@ This is also consistent with :pep:`8`, which `states <https://www.python.org/dev
 
    Comparisons to singletons like ``None`` should always be done with ``is`` or ``is not``, never the equality operators.
 
-For sequences, (:py:obj:`str`, :py:obj:`list`, :py:obj:`tuple`), use the fact that empty sequences are ``False``. 
+For sequences, (:py:obj:`str`, :py:obj:`list`, :py:obj:`tuple`), use the fact that empty sequences are ``False``.
 
 Yes:
 
@@ -620,6 +643,40 @@ For more information see the online book `Supporting Python 3 <http://python3por
 
 .. _futurize: http://python-future.org/futurize.html
 
+Supporting Python 2.7 and 3.x simultaneously
+---------------------------------------------
+
+The ``future`` package MUST be used to provide compatibility functionality with Python 2.7
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We use the `future <http://python-future.org/>`_ package to provide a means for writing code using Python 3 idioms that will also work on Python 2.7.
+Details on the process for migrating a 2.7 codebase to support both versions can be found in `SQR-014 <https://sqr-014.lsst.io>`_.
+
+.. _style-guide-py-future-absolute-import:
+.. _style-guide-py-future-division:
+.. _style-guide-py-print:
+
+``__future__`` MUST be used to import Python 3 behavior in all files where the related functionality is used
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Code that is to be used on Python 2.7 and 3.x should import ``division``, ``print_function`` and ``absolute_import`` from the :mod:`__future__` package where appropriate.
+This means ``/`` is floating-point division and ``//`` is truncated integer division, regardless of the type of numbers being divided and matches the Python 3 behavior.
+
+In addition, import local modules using relative imports (e.g. ``from . import foo`` or ``from .foo import bar``).
+This results in clearer code and avoids shadowing global modules with local modules.
+
+The :py:func:`print()` function is required in Python 3.
+In general, DM code should use logging instead of ``print`` functions.
+
+
+.. _style-guide-py-future-itervalues:
+
+``itervalues()`` and ``iteritems()`` CANNOT be used
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Python 3 does not support the ``iter`` variants.
+For more information on how to handle this efficiently in Python 2 see http://python-future.org/compatible_idioms.html#iterating-through-dict-keys-values-items.
+
 .. _style-guide-py-pitfalls-mutables:
 
 A mutable object MUST NOT be used as a keyword argument default
@@ -652,20 +709,40 @@ Context managers (``with``) SHOULD be used for resource allocation
 
 Use the ``with`` statement to simplify resource allocation.
 
-For example to be sure a file will be closed when you are done with it: 
-  
+For example to be sure a file will be closed when you are done with it:
+
 .. code-block:: py
 
    with open('/etc/passwd', 'r') as f:
        for line in f:
            pass
 
-.. _style-guide-py-open:
+.. _style-guide-py-dict-keys:
 
-Use ``open`` instead of ``file``
---------------------------------
+Avoid ``dict.keys()`` when iterating over keys or checking membership
+---------------------------------------------------------------------
 
-``file`` is gone in Python 3.
+For iterating over keys, iterate over the dictionary itself, e.g.:
+
+.. code-block:: py
+
+   for x in mydict:
+       pass
+
+To test for inclusion use ``in``:
+
+.. code-block:: py
+
+    if key in myDict:
+        pass
+
+This is preferred over :meth:`~dict.keys`. Use :meth:`~dict.keys` when storing the keys for later access:
+
+.. code-block:: py
+
+    k = list(mydict.keys())
+
+where :class:`list` ensures that a view or iterator is not being retained.
 
 .. _style-guide-py-subprocess:
 
@@ -691,37 +768,12 @@ Use the :py:class:`set` type for unordered collections of objects.
 
 .. _style-guide-py-argparse:
 
-The ``argparse`` module SHOULD be used for command-line scripts 
+The ``argparse`` module SHOULD be used for command-line scripts
 ---------------------------------------------------------------
 
 Use the :py:mod:`argparse` module for command-line scripts.
 
 Command line tasks for pipelines should use :lclass:`lsst.pipe.base.ArgumentParser` instead.
-
-.. _style-guide-py-future-division:
-
-Use ``from __future__ import division``
----------------------------------------
-
-This means ``/`` is floating-point division and ``//`` is truncated integer division, regardless of the type of numbers being divided.
-This gives more predictable behavior than the old operators, avoiding a common source of obscure bugs.
-It also makes intent of the code more obvious.
-
-.. _style-guide-py-future-absolute-import:
-
-Use ``from __future__ import absolute_import``
-----------------------------------------------
-
-In addition, import local modules using relative imports (e.g. ``from . import foo`` or ``from .foo import bar``).
-This results in clearer code and avoids shadowing global modules with local modules.
-
-.. _style-guide-py-exception-as:
-
-Use ``as`` when catching an exception
--------------------------------------
-
-For example, use ``except Exception as e`` or ``except (LookupError, TypeError) as e``.
-The new syntax is clearer, especially when catching multiple exception classes, and required in Python 3.
 
 .. _style-guide-py-generators:
 
@@ -729,51 +781,3 @@ Iterators and generators SHOULD be used to iterate over large data sets efficien
 -----------------------------------------------------------------------------------
 
 Use iterators, generators (classes that act like iterators) and generator expressions (expressions that act like iterators) to iterate over large data sets efficiently.
-
-.. _style-guide-py-future-itervalues:
-
-Use ``itervalues()`` and ``iteritems()`` instead of ``values()`` and ``items()``
---------------------------------------------------------------------------------
-
-For iterating over dictionary values and items use the above idiom unless you truly need a list.
-
-This pattern does not apply to code that has already been ported to Python 3 with futurize_
-For more information see http://python-future.org/compatible_idioms.html#iterating-through-dict-keys-values-items.
-
-.. _style-guide-py-dict-keys:
-
-Avoid ``dict.keys()`` and ``dict.iterkeys()``
----------------------------------------------
-
-For iterating over keys, iterate over the dictionary itself, e.g.:
-
-.. code-block:: py
-
-   for x in mydict:
-       pass
-   
-To test for inclusion use ``in``:
-
-.. code-block:: py
-
-    if key in myDict:
-        pass
-    
-This is preferred over ``keys()`` and ``iterkeys()`` and avoids the issues mentioned in the previous item.
-
-.. _style-guide-py-print:
-
-Use from ``__future__ import print_function``
----------------------------------------------
-
-The :py:func:`print()` function is required in Python 3.
-
-In general, DM code should be use logging instead of ``print`` statements.
-
-.. _style-guide-py-next:
-
-Use ``next(myIter)`` instead of ``myIter.next()``
--------------------------------------------------
-
-The special method ``next`` has been renamed to ``__next__`` in Python 3.
-This allows iterators to be advanced with the :py:func:`next` built-in function in both Python 2.7 and Python 3.
