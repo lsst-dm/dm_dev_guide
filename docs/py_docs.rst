@@ -34,7 +34,7 @@ Docstrings are specified by :pep:`257`.
 
 .. _py-docstring-triple-double-quotes:
 
-Docstrings MUST be delimited by double triple quotes
+Docstrings MUST be delimited by triple double quotes
 ----------------------------------------------------
 
 Docstrings **must** be delimited by triple double quotes: ``"""``.
@@ -45,7 +45,7 @@ For consistency, *do not* use triple single quotes: ``'''``.
 
 .. _py-docstring-form:
 
-Docstrings SHOULD be begin with ``"""`` and terminate with ``"""`` on its own line
+Docstrings SHOULD begin with ``"""`` and terminate with ``"""`` on its own line
 ----------------------------------------------------------------------------------
 
 The docstring's summary sentence occurs on the same line as the opening ``"""``.
