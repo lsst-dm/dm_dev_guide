@@ -45,7 +45,7 @@ New code that has never supported Python 2.7 and which will not be externally us
 1. PEP 8 is the Baseline Coding Style
 =====================================
 
-Data Management's Python coding style is based the `PEP 8 Style Guide for Python Code <https://www.python.org/dev/peps/pep-0008/>`_ with modifications specified in this document.
+Data Management's Python Coding Style is based on the `PEP 8 Style Guide for Python Code <https://www.python.org/dev/peps/pep-0008/>`_ with modifications specified in this document.
 
 :pep:`8` is used throughout the Python community and should feel familiar to Python developers.
 DM's deviations from :pep:`8` are primarily motivated by consistency with the :doc:`cpp_style_guide`.
@@ -56,8 +56,8 @@ Additional guidelines are included in this document to address specific requirem
 Exceptions to PEP 8
 -------------------
 
-The following table summarizes all :pep:`8` guidelines are **not followed** by the DM Python Style Guide.
-These exceptions are phrased as error codes that may be ignored by the flake8_ linter (see :ref:`style-guide-py-flake8`).
+The following table summarizes all :pep:`8` guidelines that are **not followed** by the DM Python Style Guide.
+These exceptions are organized by error codes that may be ignored by the flake8_ linter (see :ref:`style-guide-py-flake8`).
 
 E133
    Closing bracket is missing indentation.
@@ -94,13 +94,13 @@ Code MAY be validated with flake8
 ---------------------------------
 
 The flake8_ tool may be used to validate Python source code against the portion of :pep:`8` adopted by Data Management.
-In addition, flake8_ statically checks Python for code errors.
-The separate `pep8-naming`_ plugin validates names according to the DM Python coding style.
+Additionally, flake8_ statically checks Python for code errors.
+The separate `pep8-naming`_ plugin validates names according to the DM Python Style Guide.
 
 .. note::
 
    Flake8 only validates code against PEP 8 specifications.
-   This style guide includes additional guidelines *are not* automatically linted.
+   This style guide includes additional guidelines that *are not* automatically linted.
 
 .. _flake8: https://flake8.readthedocs.io
 .. _pep8-naming: http://pypi.python.org/pypi/pep8-naming
@@ -129,7 +129,7 @@ Flake8 command line invocation
 This command lints all Python files in the current directory.
 Alternatively, individual files can be specified in place of ``.``.
 
-The ignored error codes are :ref:`explained below <style-guide-py-ignored-errors>`.
+The ignored error codes are :ref:`explained above <style-guide-py-ignored-errors>`.
 
 .. _style-guide-py-flake8-config:
 
@@ -151,7 +151,7 @@ LSST DM Packages may also include a :file:`setup.cfg` file with :pep:`8` excepti
 Lines that intentionally deviate from DM's PEP 8 MUST include a ``noqa`` comment
 --------------------------------------------------------------------------------
 
-Lines of code may intentionally deviate from our application of PEP 8 (see above) because of limitations in flake8_.
+Lines of code may intentionally deviate from our application of PEP 8 because of limitations in flake8_.
 In such cases, authors must append a ``# noqa`` comment to the line that includes the specific error code being ignored.
 `See the flake8 documentation for details <https://flake8.readthedocs.io/en/latest/user/ignoring-errors.html#in-line-ignoring-errors>`__ .
 This prevents the line from triggering false flake8_ warnings to other developers, while also linting unexpected errors.
@@ -186,7 +186,7 @@ Alternatively, a single file can be specified in place of ``.``.
 
 :command:`autopep8`\ ʼs changes must always be validated before committing.
 
-Style changes must be encapsulated in a distinct commit (see :ref:`git-commit-organization-logical-units` in :doc:`Workflow document <../processes/workflow>`).
+Style changes must be encapsulated in a distinct commit (see :ref:`git-commit-organization-logical-units` in :doc:`../processes/workflow`).
 
 .. note::
 
@@ -278,7 +278,7 @@ Consistency with the LSST C++ Coding Standards namespaces exists.
 
 - ``import lsst.foo.bar as fooBar`` is analogous to ``namespace fooBar = lsst::foo::bar``
 
-**Disallowed** in both Coding Standards (except in :file:`__init__.py` library initialization context):
+**Disallowed** in both Coding Standards (except in :file:`__init__.py` library initialization contexts):
 
 - ``from lsst.foo.bar import *`` is analogous to ``using namespace lsst::foo::bar``
 
@@ -401,7 +401,7 @@ Always make a priority of keeping the comments up-to-date when the code changes!
 Sentences in comments SHOULD NOT be separated by double spaces
 --------------------------------------------------------------
 
-Following PEP 8, comments should be complete sentences.
+Following :pep:`8`, comments should be complete sentences.
 
 However, sentences **should not** be separated by two spaces; a single space is sufficient.
 
@@ -424,9 +424,11 @@ Paragraphs inside a block comment are separated by a line containing a single ``
 
 Use **Numpydoc** to format the content of all docstrings.
 The page :doc:`../docs/py_docs` authoritatively describes this format.
-Its guidelines should be treated as an extension of this Python style guide.
+Its guidelines should be treated as an extension of this Python Style Guide.
 
-See also the :doc:`../docs/rst_styleguide` and the :ref:`rst-formatting-guidelines` section in particular for guidelines on reStructuredText in general.
+.. seealso::
+
+   The :doc:`../docs/rst_styleguide`---and the :ref:`rst-formatting-guidelines` section in particular---provide guidelines on reStructuredText in general.
 
 .. _style-guide-py-docstring-public-api:
 
@@ -592,7 +594,7 @@ For guidance on successfully using :py:func:`super`, see Raymond Hettinger's art
 
 Use ``is`` or ``is not`` only for the case that you need to know that two variables point to the exact same object.
 
-To test equality in *value*, use ``==`` or ``!=`` instead.
+To test for equality in *value*, use ``==`` or ``!=`` instead.
 
 .. _style-guide-py-comp-none:
 
@@ -688,9 +690,9 @@ A mutable object MUST NOT be used as a keyword argument default
 Never use a mutable object as default value for a keyword argument in a function or method.
 
 When used a mutable is used as a default keyword argument, the default *can* change from one call to another leading to unexpected behavior.
-This issue can be avoided by only using immutable types as default.
+This issue can be avoided by only using immutable types as defaults.
 
-For example, rather than provide a default empty list:
+For example, rather than provide an empty list as a default:
 
 .. code-block:: py
 
