@@ -69,7 +69,7 @@ An example of a multi-paragraph docstring:
    Parameters
    ----------
    values : iterable
-      Python interable whose values are summed.
+      Python iterable whose values are summed.
 
    Returns
    -------
