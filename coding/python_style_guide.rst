@@ -140,12 +140,11 @@ LSST DM Packages may also include a :file:`setup.cfg` file with :pep:`8` excepti
 
 .. code-block:: ini
 
-	[flake8]
-	max-line-length = 110
-	ignore = E133, E226, E228, N802, N803
+   [flake8]
+   max-line-length = 110
+   ignore = E133, E226, E228, N802, N803
 
 :command:`flake8` can be invoked without arguments when this configuration is present.
-
 
 .. _style-guide-py-noqa:
 
