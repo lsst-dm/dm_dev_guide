@@ -77,12 +77,12 @@ An example of a multi-paragraph docstring:
       Sum of `values`.
    """
 
-.. _py-docstring-no-blanks:
+.. _py-docstring-blank-lines:
 
-Docstrings SHOULD NOT be preceded or followed by a blank line
--------------------------------------------------------------
+Docstrings of methods and functions SHOULD NOT be preceded or followed by a blank line
+--------------------------------------------------------------------------------------
 
-For example:
+Inside a function or method, there should be no blank lines surrounding the docstring.
 
 .. code-block:: py
 
@@ -100,6 +100,29 @@ For example:
           Sum of `values`.
        """
        pass
+
+.. _py-docstring-class-blank-lines:
+
+Docstrings of classes SHOULD be followed, but not preceded, by a blank line
+---------------------------------------------------------------------------
+
+Like method and function docstrings, the docstring should immediately follow the class definition, without a blank space.
+However, there should be a **single blank line before following code** such as class variables or the ``__init__`` method.
+
+.. code-block:: py
+
+   class Point(object):
+       """Point in a 2D cartesian space.
+
+       Parameters
+       ----------
+       x, y : `float`
+          Coordinate of the point.
+       """
+
+       def __init__(x, y):
+           self.x = x
+           self.y = y
 
 .. _py-docstring-indentation:
 
