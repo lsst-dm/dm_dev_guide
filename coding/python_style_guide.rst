@@ -199,6 +199,10 @@ Style changes must be encapsulated in a distinct commit (see :ref:`git-commit-or
 2. Layout
 =========
 
+.. seealso::
+
+   :doc:`../docs/py_docs` provides guidelines for the :ref:`layout of docstrings <py-docstring-basics>`.
+
 .. _style-guide-py-line-length:
 
 Line Length MUST be less than or equal to 110 columns
@@ -257,13 +261,6 @@ Instead, the continued line should be indented:
    if (width == 0 and
            height == 0):
        pass
-
-.. _style-guide-py-docstring-blank-lines:
-
-Blank lines SHOULD NOT be added before or after a docstring
------------------------------------------------------------
-
-Do not use a blank line on either side of a docstring.
 
 .. _style-guide-py-cpp-consistency:
 
