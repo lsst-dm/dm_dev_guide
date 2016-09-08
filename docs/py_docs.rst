@@ -92,7 +92,7 @@ For example:
        Parameters
        ----------
        values : iterable
-          Python interable whose values are summed.
+          Python iterable whose values are summed.
 
        Returns
        -------
@@ -116,7 +116,7 @@ For example:
        Parameters
        ----------
        values : iterable
-          Python interable whose values are summed.
+          Python iterable whose values are summed.
        """
        pass
 
@@ -130,7 +130,7 @@ Not:
    Parameters
    ----------
    values : iterable
-      Python interable whose values are summed.
+      Python iterable whose values are summed.
    """
        pass
 
