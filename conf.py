@@ -378,11 +378,12 @@ epub_exclude_files = ['search.html']
 # If false, no index is generated.
 # epub_use_index = True
 
-
-# Example configuration for intersphinx: refer to the Python standard library.
+# Intersphinx configuration.
+# http://www.sphinx-doc.org/en/stable/ext/intersphinx.html
 intersphinx_mapping = {
     'python': ('https://docs.python.org/2.7', None),
     'astropy': ('http://docs.astropy.org/en/stable/', None),
     'numpy': ('http://docs.scipy.org/doc/numpy/', None),
     'pytest': ('http://pytest.org/latest', None),
+    'pipelines': ('https://pipelines.lsst.io', None)
 }

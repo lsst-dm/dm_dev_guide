@@ -2532,12 +2532,11 @@ They may be used in ``.h`` interface header files if:
 - the usage is hidden from SWIG, either because they are not in method signatures or because they have been explicitly excluded with ``#ifndef`` SWIG, or
 - SWIG has been empirically shown to work with the code (e.g. by successful buildbot run with appropriate Python-based test cases).
 
-See also
---------
+.. seealso::
 
-Instructions for using devtoolset-3 to obtain a more modern gcc on the LSST cluster machines: https://confluence.lsstcorp.org/display/LDMDG/Developer+Tools+at+NCSA#DeveloperToolsatNCSA-AlternateDevelopmentEnvironment.
-
-C++11 compiler support matrix: http://wiki.apache.org/stdcxx/C++0xCompilerSupport.
+   - :ref:`pipelines:source-install-redhat-legacy` from the `LSST Science Pipelines <https://pipelines.lsst.io>`__ documentation.
+   - :doc:`../services/lsst-dev` provides :ref:`instructions for using devtoolset-3 <lsst-dev-tools>` to obtain a more modern GCC on LSST cluster machines.
+   - C++11 compiler support matrix: http://wiki.apache.org/stdcxx/C++0xCompilerSupport.
 
 .. _style-guide-cpp-using:
 
