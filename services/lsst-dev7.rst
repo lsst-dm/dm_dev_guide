@@ -261,7 +261,7 @@ The wrapper script :file:`exec_sdss_i.sh` used in this example could serve to
     inputdir="/scratch/daues/data/stripe82/dr7/runs/"
     outdir="/scratch/daues/output/"
 
-    /usr/bin/time -p processCcd.py  ${inputdir}  --id $1 $2 $3 $4 --output ${outdir}/${SLURM_JOB_ID}/${SLURM_PROCID}
+    processCcd.py  ${inputdir}  --id $1 $2 $3 $4 --output ${outdir}/${SLURM_JOB_ID}/${SLURM_PROCID}
 
 
 
