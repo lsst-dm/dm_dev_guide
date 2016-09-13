@@ -10,6 +10,7 @@ This page is designed help you get started on ``lsst-dev7`` and the ``Verificati
 #. :ref:`lsst-dev7-overview`
 #. :ref:`lsst-dev7-password`
 #. :ref:`lsst-dev7-gpfs`
+#. :ref:`lsst-dev7-stack`
 #. :ref:`lsst-dev7-slurm`
 
 
@@ -22,9 +23,9 @@ Overview of the Verification Cluster
 ``Verification Cluster``.  ``lsst-dev7`` is described in further detail on the
 page of `available development servers <https://confluence.lsstcorp.org/display/LDMDG/DM+Development+Servers>`_ .
 
-The ``Verification Cluster`` consists of 48  Dell C6320 nodes with 24 physical cores (2 sockets, 12 cores per processor) and 128 GB RAM.  As such the ``Verification Cluster``  provides a total of 1152 cores. 
+The ``Verification Cluster`` consists of 48  Dell C6320 nodes with 24 physical cores (2 sockets, 12 cores per processor) and 128 GB RAM.  As such, the system provides a total of 1152 cores. 
 
-``lsst-dev7`` and the ``Verification Cluster`` run the Simple Linux Utility for Resource Management (SLURM) cluster management and job scheduling system.  ``lsst-dev7`` runs the SLURM controller, enabling LSST DM users to submit SLURM jobs from ``lsst-dev7`` to the ``Verification Cluster``.
+The ``Verification Cluster`` runs the Simple Linux Utility for Resource Management (SLURM) cluster management and job scheduling system.  ``lsst-dev7`` runs the SLURM controller and serves as the login or head node , enabling LSST DM users to submit SLURM jobs to the ``Verification Cluster``.
 
 ``lsst-dev7`` and the ``Verification Cluster`` provide a 300 TB General Parallel File System (GPFS) to provided shared-disk across all of the nodes. 
 
@@ -66,7 +67,15 @@ directories as $HOME, but this transition has not yet been scheduled.
 
 Project managed datasets will be stored within the :file:`/datasets` space.  GPFS has a capacity of 300 TB and :file:`/datasets` , :file:`/scratch`, and the 'GPFS home' directories are each allocated a siginficant fraction of the total. 
 
+.. _lsst-dev7-stack:
 
+Shared Software Stack in GPFS
+=============================
+A shared software stack on the GPFS file systems, suitable for computation on the 
+``Verification Cluster``, has been provided and is maintained by Science Pipelines/John Swinbank and
+is available under :file:`/software/lsstsw`.  This stack may be initialized via:  ::
+
+     % .  /software/lsstsw/stack/loadLSST.bash
 
 
 .. _lsst-dev7-slurm:
@@ -75,8 +84,8 @@ SLURM Job Submission
 ====================
 
 Documentation on using SLURM client commands and submitting jobs may be found
-at standard locations (e.g., a `quickstart guide <http://slurm.schedmd.com/quickstart.html>`_ ).
-In addition to the basic SLURM clients commands, there are higher level tools
+at standard locations (e.g., a `quickstart guide <http://slurm.schedmd.com/quickstart.html>`_).
+In addition to the basic SLURM client commands, there are higher level tools
 that can serve to distribute jobs to a SLURM cluster, with one example being 
 the combination of `pipe_drivers <https://github.com/lsst/pipe_drivers>`_ and 
 `ctrl_pool   <https://github.com/lsst/ctrl_pool>`_ within LSST DM. 
@@ -126,8 +135,7 @@ command ``squeue`` :
 
 For a single task on a single node: ::
 
-    Job description file  test1.sl :
-    ---------------------------
+    % cat test1.sl
     #!/bin/bash -l
     #SBATCH -p debug
     #SBATCH -N 1
@@ -136,15 +144,13 @@ For a single task on a single node: ::
     #SBATCH -J job1
 
     srun sleep.sh
-    ---------------------------
 
-    Simple test script  sleep.sh  :
-    ---------------------------
+
+    % cat sleep.sh 
     #!/bin/bash 
     hostname -f
     echo "Sleeping for 30 ... "
     sleep 30
-    ---------------------------
 
 
     Submit with : 
@@ -157,14 +163,13 @@ For a single task on a single node: ::
 
 This example job was assigned jobid 109 by the SLURM scheduler, and consequently the standard output and error of the job were written to a default file :file:`slurm-109.out` in the current working directory. ::
 
-    % more slurm-109.out 
+    % cat slurm-109.out 
      lsst-verify-worker11.ncsa.illinois.edu
      Sleeping for 30 ... 
 
 To distribute this script for execution to 6 nodes by 24 tasks per node (total 144 tasks), the form of the job description is:  ::
 
-    Job description file  test144.sl :
-    ---------------------------
+    % cat test144.sl 
     #!/bin/bash -l
     #SBATCH -p debug
     #SBATCH -N 6
@@ -173,7 +178,7 @@ To distribute this script for execution to 6 nodes by 24 tasks per node (total 1
     #SBATCH -J job2
 
     srun sleep.sh
-    ---------------------------
+
 
     Submit with : 
     % sbatch test144.sl 
@@ -206,8 +211,8 @@ One can observe that after the job resources have been granted, the user shell i
 the login node ``lsst-dev7``. The command ``srun`` can be utilized to run commands on the job's allocated 
 compute nodes. Commands issued without ``srun``  will still be executed locally on ``lsst-dev7``. 
 
-SLURM Example Executing Tasks with Different Data
--------------------------------------------------
+SLURM Example Executing Tasks with Different Arguments
+------------------------------------------------------
 
 In order to submit multiple tasks that each have distinct command line arguments (e.g., data ids),
 one can utilize the ``srun`` command with the ``--multi-prog`` option.   With this option, rather than 
@@ -215,8 +220,7 @@ specifying a single script or binary for ``srun`` to execute, a filename is prov
 of  the ``--multi-prog`` option. In this scenario an example job description file is:   :: 
 
 
-    Job description file  test1_24.sl :
-    ---------------------------
+    % cat test1_24.sl
     #!/bin/bash -l
 
     #SBATCH -p debug
@@ -226,17 +230,14 @@ of  the ``--multi-prog`` option. In this scenario an example job description fil
     #SBATCH -J sdss24
 
     srun --output job%j-%2t.out --ntasks=24 --multi-prog cmds.24.conf
-    ---------------------------
 
 This description specifies that 24 tasks will be executed on a single node, 
-and the output from each of the tasks will be written to a unique filename with format specified
-by the argument to ``--output``. The 24 tasks to be executed are specified in the file
+and the standard output/error from each of the tasks will be written to a unique filename with format specified by the argument to ``--output``. The 24 tasks to be executed are specified in the file
 :file:`cmds.24.conf`  provided as the argument to the  ``--multi-prog`` option. This
-commands file will have a format that maps SLURM process ids to programs to execute
+commands file will have a format that maps SLURM process ids (SLURM_PROCID) to programs to execute
 and their commands line arguments.  An example command file has the form : ::
 
-    commands file   cmds.24.conf :
-    ---------------------------
+    % cat cmds.24.conf
     0 /scratch/daues/exec_sdss_i.sh run=4192 filter=r camcol=1 field=300
     1 /scratch/daues/exec_sdss_i.sh run=4192 filter=r camcol=4 field=300
     2 /scratch/daues/exec_sdss_i.sh run=4192 filter=g camcol=4 field=297
@@ -245,27 +246,22 @@ and their commands line arguments.  An example command file has the form : ::
     ...
     22 /scratch/daues/exec_sdss_i.sh run=4192 filter=u camcol=4 field=303
     23 /scratch/daues/exec_sdss_i.sh run=4192 filter=i camcol=4 field=298
-    ---------------------------
 
 
 The wrapper script :file:`exec_sdss_i.sh` used in this example could serve to
-"set up the stack" and place the data ids on the command of :file:`processCcd.py` : ::
+"set up the stack" and place the data ids on the command line of :file:`processCcd.py` : ::
 
-    simple wrapper script for processCcd.py  :
-    --------------------------------------------
+    % cat exec_sdss_i.sh 
     #!/bin/bash
-
-    # Source env script that holds the resulting environment from e.g., 
-    #    source loadLSST.bash
-    #    setup lsst_distrib
-    #    setup astrometry_net_data 
+    # Source an environment setup script that holds the resulting env vars from e.g., 
+    #  . ${STACK_PATH}/loadLSST.bash
+    #  setup lsst_distrib
     source /software/daues/envDir/env_lsststack.sh
 
     inputdir="/scratch/daues/data/stripe82/dr7/runs/"
     outdir="/scratch/daues/output/"
 
     /usr/bin/time -p processCcd.py  ${inputdir}  --id $1 $2 $3 $4 --output ${outdir}/${SLURM_JOB_ID}/${SLURM_PROCID}
-    --------------------------------------------
 
 
 
