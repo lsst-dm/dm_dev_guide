@@ -43,7 +43,7 @@ The repository, once created, needs to contain the following directories:
     version that is not a distributed package (e.g. ``master``), you can create
     the correct type of repository from within a clone of the package with, e.g.::
 
-    git archive --format=tar --prefix=astrometry.net-68b1/ HEAD | gzip > astrometry.net-68b1.tar.gz
+        git archive --format=tar --prefix=astrometry.net-68b1/ HEAD | gzip > astrometry.net-68b1.tar.gz
 
 :file:`ups/`
     This directory should contain the packages EUPS table file as well as an
