@@ -252,7 +252,7 @@ is effectively how Jenkins does it, instead using :file:`_eupspkg/`):
 - :command:`eupspkg -e -v 1 config`
 - :command:`eupspkg -e -v 1 build`
 - :command:`eupspkg -e -v 1 install`
-- :command:`setup -r _eupspkg/binary` to set up the newly built version.
+- :command:`setup -r _eupspkg/binary/yourPackage/tickets.DM-NNNN` to set up the newly built version.
 - Run your tests.
 - When your local tests pass, :command:`git push`.
 - See if the stack will build with your branch in :ref:`Jenkins
