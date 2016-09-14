@@ -39,7 +39,11 @@ The repository, once created, needs to contain the following directories:
     third-party package.  Literally, that is all it should contain.  The code
     should not be altered from whatever is distributed by the package's
     author.  Any changes that need to be made to the source code should be
-    done with patches in the patches/ directory.
+    done with patches in the patches/ directory. If you are testing out a
+    version that is not a distributed package (e.g. ``master``), you can create
+    the correct type of repository from within a clone of the package with, e.g.::
+
+        git archive --format=tar --prefix=astrometry.net-68b1/ HEAD | gzip > astrometry.net-68b1.tar.gz
 
 :file:`ups/`
     This directory should contain the packages EUPS table file as well as an
@@ -183,14 +187,21 @@ Sometimes, it will be necessary to change the source code in the gzipped
 tarball stored in :file:`upstream/` to make the package installable and
 runnable with the stack.  If this is necessary, it is done using the
 :command:`patch` command, which applies diffs to source code files. For each
-change that needs to be made to the source code, generate a patch file using
-the command::
+logical change that needs to be made to the source code (possibly affecting multiple files), generate a patch file by following these instructions:
 
-    git diff -u originalFile correctedFile > someFileName.patch
+#. Untar the tarball you're trying to patch (e.g., :file:`astrometry.net-0.50.tar.gz`). It will generate a directory (e.g., :file:`astrometry.net-0.50/`) with the source.
+#. Make a copy of that directory::
 
-Save the :file:`someFileName.patch` files in the :file:`patches/` directory of
-the repository. EUPS will know to apply these patches after it unpacks the
-gzipped tarball in :file:`upstream/`.
+    cp -a astrometry.net-0.50 astrometry.net-0.50.orig
+
+#. Make any changes you need to the source in :file:`astrometry.net-0.50/`
+#. Create a patch :command:`diff -ru` and move it into the patches/ subdirectory::
+
+    diff -ru astrometry.net-0.50.orig astrometry.net-0.50 > blah.patch
+
+EUPS will apply these patches after it unpacks the gzipped tarball in :file:`upstream/`.
+Patches are applied in alphabetical order, so it can be useful to start your patches
+with, e.g. :file:`000-something.patch`, :file:`001-somethingelse.patch`.
 
 .. note::
 
@@ -227,33 +238,57 @@ interests of future proofing, both:
 
 .. _version of EUPS: https://github.com/RobertLuptonTheGood/eups/blob/2.0.2/Release_Notes#L21
 
-Testing the Package
+Testing the package
 ===================
 
-.. note::
+If you've created a new external package or updated an existing package, you need
+to test whether the new package builds and works. From within
+:file:`build/yourPackage` (add `-r` to build in the current directory, which
+is effectively how Jenkins does it, instead using :file:`_eupspkg/`):
 
-   Development of a third party package should be handled identically to
-   development of LSST software: work on a development branch and merge to
-   master only after a successful build and a review.
+- :command:`rm -r _eupspkg`
+- :command:`eupspkg -e -v 1 fetch`
+- :command:`eupspkg -e -v 1 prep`
+- :command:`eupspkg -e -v 1 config`
+- :command:`eupspkg -e -v 1 build`
+- :command:`eupspkg -e -v 1 install`
+- :command:`setup -r _eupspkg/binary` to set up the newly built version.
+- Run your tests.
+- When your local tests pass, :command:`git push`.
+- See if the stack will build with your branch in :ref:`Jenkins
+  <workflow-testing>`. For the branch name, specify the branch you created
+  above (i.e. ``tickets/DM-NNNN``), leaving the rest of the fields as they
+  are.
+- Merge to master after Jenkins passes and your changes are reviewed.
 
-Before finalizing the distribution, it is useful to be able to test that the
-distribution as set up does, in fact, build. This can be accomplished using
-the :command:`lsstsw` build tool: see its :doc:`detailed documentation
-<lsstsw>` for the full story. Broadly, the steps are:
+Updating the Package
+====================
 
-- Clone and set up the lsstsw package in its own directory using the
-  instructions on the lsstsw documentation page pointed to above.
+To update the version of your external package after a new upstream release,
+start with a copy of the LSST stack (`installed using the lsstsw tool`_).
+Then:
 
-- In the :command:`lsstsw` package, use the command::
+- Create a ticket for the package update (and/or an :ref:`RFC
+  <decision-making-rfc>`, if it may cause more trouble), and note the ticket
+  number ``NNNN``.
 
-      ./bin/rebuild -r yourBranch yourPackage
+- :command:`cd build/yourPackage`
 
-  to build the development branch of your package.
+- :command:`git checkout -b tickets/DM-NNNN` (where ``NNNN`` is the ticket number above)
 
-- Ideally, you should try this process on at least two different machines (one
-  running OSX and one running a Linux distribution) to make sure that you did
-  not accidentally benefit from the system environment of your test machine
-  when building.
+- :command:`git clean -id`
+
+- Download a copy of the tarball from wherever the external package is
+  distributed. Don't unzip or untar it.
+
+- :command:`git rm` the copy of the tarball that is currently in
+  :file:`upstream/`.
+- Copy the new version of the external tarball into
+  :file:`upstream/` and :command:`git add` it.
+
+- :command:`git commit`
+
+Now test your package by following the instructions above.
 
 Distributing the Package
 ========================
@@ -324,60 +359,5 @@ special permissions): see the :doc:`documentation on using this machine
   using::
 
       eups distrib install -t yourTag packageName
-
-Updating the Package
-====================
-
-.. note::
-
-   These instructions are still under construction.
-
-To update the version of your external package after a new upstream release,
-start with a copy of the LSST stack (`installed using the lsstsw tool`_).
-Then:
-
-- Create a ticket for the package update (and/or an :ref:`RFC
-  <decision-making-rfc>`, if it may cause more trouble), and note the ticket
-  number ``NNNN``.
-
-- :command:`cd build/yourPackage`
-
-- :command:`git checkout -b tickets/DM-NNNN` (where ``NNNN`` is the ticket number above)
-
-- :command:`git clean -id`
-
-- Download a copy of the tarball from wherever the external package is
-  distributed. Don't unzip or untar it.
-
-- :command:`git rm` the copy of the tarball that is currently in
-  :file:`upstream/`. Copy the new version of the external tarball into
-  :file:`upstream/` and :command:`git add` it.
-
-- :command:`git commit`
-
-- :command:`git push`
-
-- See if the stack will build with your branch in :ref:`Jenkins
-  <workflow-testing>`. For the branch name, specify the branch you created
-  above (i.e. ``tickets/DM-NNNN``), leaving the rest of the fields as they
-  are.
-
-- While Jenkins is building, you can test whether the new package solves
-  whatever issue caused you to need the upgrade. From within
-  :file:`build/yourPackage`:
-
-    - :command:`eupspkg -er -v 1 prep`
-    - :command:`eupspkg -er -v 1 config`
-    - :command:`eupspkg -er -v 1 build`
-    - :command:`eupspkg -er -v 1 install`
-    - :command:`eupspkg -er -v 1 decl`
-    - :command:`eups list yourPackage` should now show a new version named
-      ``tickets/DM-NNNN-gBLAHBLAH`` where ``gBLAHBLAH`` is the git has
-      revision of the package.
-    - :command:`setup lsst_apps -t YOURTAG`
-    - :command:`setup yourPackage tickets/DM-NNNN-gBLAHBLAH`
-    - Run your tests.
-
-- Merge to master after tests pass.
 
 .. _installed using the lsstsw tool: http://pipelines.lsst.io/en/latest/development/lsstsw_tutorial.html
