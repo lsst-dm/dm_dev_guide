@@ -72,7 +72,7 @@ Project managed datasets will be stored within the :file:`/datasets` space.  GPF
 Shared Software Stack in GPFS
 =============================
 A shared software stack on the GPFS file systems, suitable for computation on the 
-``Verification Cluster``, has been provided and is maintained by Science Pipelines/John Swinbank and
+``Verification Cluster``, has been provided and is maintained by Science Pipelines and
 is available under :file:`/software/lsstsw`.  This stack may be initialized via:  ::
 
      % .  /software/lsstsw/stack/loadLSST.bash
@@ -93,37 +93,38 @@ For exhaustive documentation and specific use cases, we refer the user
 to such resources. On this page we display some simple examples for 
 getting started with submitting jobs to the ``Verification Cluster``. 
 
-To examine the current state of the nodes in the ``Verification Cluster``, 
+To examine the current state and availability of the nodes in the ``Verification Cluster``, 
 one can use the SLURM command  ``sinfo``::
 
      % sinfo 
      PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
-     debug*       up   infinite     34  down* lsst-verify-worker[05,10,17-48]
-     debug*       up   infinite     14   idle lsst-verify-worker[01-04,06-09,11-16]
+     debug*       up   infinite      6  fail* lsst-verify-worker[05,10,17,23,27,47]
+     debug*       up   infinite     42   idle lsst-verify-worker[01-04,06-09,11-16,18-22,24-26,28-46,48]
 
      % sinfo  -N -l --states="idle"
-     Wed Aug 31 13:02:35 2016
-     NODELIST              NODES PARTITION       STATE CPUS    S:C:T MEMORY TMP_DISK WEIGHT FEATURES REASON              
-     lsst-verify-worker01      1    debug*        idle   48   48:1:1      1        0      1   (null) none                
-     lsst-verify-worker02      1    debug*        idle   48   48:1:1      1        0      1   (null) none                
-     lsst-verify-worker03      1    debug*        idle   48   48:1:1      1        0      1   (null) none                
-     lsst-verify-worker04      1    debug*        idle   48   48:1:1      1        0      1   (null) none                
-     lsst-verify-worker06      1    debug*        idle   48   48:1:1      1        0      1   (null) none                
-     lsst-verify-worker07      1    debug*        idle   48   48:1:1      1        0      1   (null) none                
-     lsst-verify-worker08      1    debug*        idle   48   48:1:1      1        0      1   (null) none                
-     lsst-verify-worker09      1    debug*        idle   48   48:1:1      1        0      1   (null) none                
-     lsst-verify-worker11      1    debug*        idle   48   48:1:1      1        0      1   (null) none                
-     lsst-verify-worker12      1    debug*        idle   48   48:1:1      1        0      1   (null) none                
-     lsst-verify-worker13      1    debug*        idle   48   48:1:1      1        0      1   (null) none                
-     lsst-verify-worker14      1    debug*        idle   48   48:1:1      1        0      1   (null) none                
-     lsst-verify-worker15      1    debug*        idle   48   48:1:1      1        0      1   (null) none                
-     lsst-verify-worker16      1    debug*        idle   48   48:1:1      1        0      1   (null) none        
+     Thu Sep 15 08:28:52 2016
+     NODELIST              NODES PARTITION       STATE CPUS    S:C:T MEMORY TMP_DISK WEIGHT FEATURES REASON
+     lsst-verify-worker01      1    debug*        idle   48   48:1:1      1        0      1   (null) none
+     lsst-verify-worker02      1    debug*        idle   48   48:1:1      1        0      1   (null) none
+     lsst-verify-worker03      1    debug*        idle   48   48:1:1      1        0      1   (null) none
+     lsst-verify-worker04      1    debug*        idle   48   48:1:1      1        0      1   (null) none
+     lsst-verify-worker06      1    debug*        idle   48   48:1:1      1        0      1   (null) none
+     lsst-verify-worker07      1    debug*        idle   48   48:1:1      1        0      1   (null) none
+     lsst-verify-worker08      1    debug*        idle   48   48:1:1      1        0      1   (null) none
+     lsst-verify-worker09      1    debug*        idle   48   48:1:1      1        0      1   (null) none
+     lsst-verify-worker11      1    debug*        idle   48   48:1:1      1        0      1   (null) none
+     ... 
+     lsst-verify-worker40      1    debug*        idle   48   48:1:1      1        0      1   (null) none
+     lsst-verify-worker41      1    debug*        idle   48   48:1:1      1        0      1   (null) none
+     lsst-verify-worker42      1    debug*        idle   48   48:1:1      1        0      1   (null) none
+     lsst-verify-worker43      1    debug*        idle   48   48:1:1      1        0      1   (null) none
+     lsst-verify-worker44      1    debug*        idle   48   48:1:1      1        0      1   (null) none
+     lsst-verify-worker45      1    debug*        idle   48   48:1:1      1        0      1   (null) none
+     lsst-verify-worker46      1    debug*        idle   48   48:1:1      1        0      1   (null) none
+     lsst-verify-worker48      1    debug*        idle   48   48:1:1      1        0      1   (null) none
 
 
-In this view ``sinfo`` shows the nodes to reside within a single partition ``debug``, 
-and the worker nodes show 48 possible hyperthreads on a node (in the future this 
-may be reduced to reflect the actual 24 physical cores). The SLURM configuration 
-currently does not perform accounting, and places no quotas on users' total time usage. 
+In this view ``sinfo`` shows the nodes to reside within a single partition ``debug``, and the worker nodes show 48 possible hyperthreads on a node (in the future this may be reduced to reflect the actual 24 physical cores per node). At the time of this ``sinfo`` invocation there were 42 verification nodes available, shown by the "idle" state.  The SLURM configuration currently does not perform accounting, and places no quotas on users' total time usage. 
 
 Simple SLURM jobs
 -----------------------------
