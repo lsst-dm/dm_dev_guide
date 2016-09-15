@@ -77,12 +77,12 @@ An example of a multi-paragraph docstring:
       Sum of `values`.
    """
 
-.. _py-docstring-no-blanks:
+.. _py-docstring-blank-lines:
 
-Docstrings SHOULD NOT be preceded or followed by a blank line
--------------------------------------------------------------
+Docstrings of methods and functions SHOULD NOT be preceded or followed by a blank line
+--------------------------------------------------------------------------------------
 
-For example:
+Inside a function or method, there should be no blank lines surrounding the docstring.
 
 .. code-block:: py
 
@@ -92,7 +92,7 @@ For example:
        Parameters
        ----------
        values : iterable
-          Python interable whose values are summed.
+          Python iterable whose values are summed.
 
        Returns
        -------
@@ -100,6 +100,29 @@ For example:
           Sum of `values`.
        """
        pass
+
+.. _py-docstring-class-blank-lines:
+
+Docstrings of classes SHOULD be followed, but not preceded, by a blank line
+---------------------------------------------------------------------------
+
+Like method and function docstrings, the docstring should immediately follow the class definition, without a blank space.
+However, there should be a **single blank line before following code** such as class variables or the ``__init__`` method.
+
+.. code-block:: py
+
+   class Point(object):
+       """Point in a 2D cartesian space.
+
+       Parameters
+       ----------
+       x, y : `float`
+          Coordinate of the point.
+       """
+
+       def __init__(x, y):
+           self.x = x
+           self.y = y
 
 .. _py-docstring-indentation:
 
@@ -116,7 +139,7 @@ For example:
        Parameters
        ----------
        values : iterable
-          Python interable whose values are summed.
+          Python iterable whose values are summed.
        """
        pass
 
@@ -130,7 +153,7 @@ Not:
    Parameters
    ----------
    values : iterable
-      Python interable whose values are summed.
+      Python iterable whose values are summed.
    """
        pass
 
@@ -266,7 +289,7 @@ Common Structure of Docstrings
 ==============================
 
 We organize Python docstrings into sections that appear in a common order.
-This format follows the `Numpydoc`_ standard (used by NumPy, SciPy, and Astropy, among other scientific Python packages) rather than the format described in :pep:`287`.
+This format follows the `Numpydoc`_ format (used by NumPy, SciPy, and Astropy, among other scientific Python packages) rather than the format described in :pep:`287`.
 The sections and their relative order is:
 
 .. _Numpydoc: https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt
@@ -667,7 +690,7 @@ Examples
 --------
 
 'Examples' is an optional section for examples, using the `doctest <http://docs.python.org/library/doctest.html>`_ format.
-These examples do not replace unit tests, but *are* intended to be tested to ensure documentation and code is consistent.
+These examples do not replace unit tests, but *are* intended to be tested to ensure documentation and code are consistent.
 While optional, this section is very strongly encouraged.
 
 When multiple examples are provided, they should be separated by blank lines.
@@ -777,7 +800,7 @@ Method and function docstrings contain the following sections:
 2. :ref:`Deprecation Warning <py-docstring-deprecation>` (if applicable)
 3. :ref:`Extended Summary <py-docstring-extended-summary>` (optional)
 4. :ref:`Parameters <py-docstring-parameters>` (if applicable)
-5. :ref:`Returns <py-docstring-returns>` or `Yields <py-docstring-yields>` (if applicable)
+5. :ref:`Returns <py-docstring-returns>` or :ref:`Yields <py-docstring-yields>` (if applicable)
 6. :ref:`Other Parameters <py-docstring-other-parameters>` (if applicable)
 7. :ref:`Raises <py-docstring-raises>` (if applicable)
 8. :ref:`See Also <py-docstring-see-also>` (optional)
@@ -817,7 +840,7 @@ At minimum, constants/properties/attributes should have a summary line, but can 
 
 In the short summary, a description of the type should be included:
 
-.. code-block:: rst
+.. code-block:: py
 
    NAME = 'LSST'
    """Name of the project (str)"""
@@ -825,7 +848,7 @@ In the short summary, a description of the type should be included:
 Note that class attributes can alternatively be documented in an :ref:`Attributes <py-docstring-attributes>` section of the class's docstring.
 This is particularly useful when the attribute is not set in the class scope, but rather in a method such as ``__init__``.
 
-.. code-block:: rst
+.. code-block:: py
 
    class Answer(object):
        """Container for the answer.
@@ -848,7 +871,7 @@ This is particularly useful when the attribute is not set in the class scope, bu
 Acknowledgements
 ================
 
-These docstring guidelines are derived/adapted from in the `Numpy <https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt>`_ and `Astropy <http://docs.astropy.org/en/stable/_sources/development/docrules.txt>`_ documentation.
+These docstring guidelines are derived/adapted from the `NumPy <https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt>`_ and `Astropy <http://docs.astropy.org/en/stable/_sources/development/docrules.txt>`_ documentation.
 
 NumPy is Copyright © 2005-2013, NumPy Developers.
 

@@ -43,6 +43,14 @@ example::
     export EUPS_PATH=$LSSTSW/stack
     . $LSSTSW/bin/setup.sh
 
+.. DO NOT use double quotes in examples -- it activates syntax highlighting
+
+::
+
+    setenv LSSTSW <where you've set it up>
+    setenv EUPS_PATH $LSSTSW/stack
+    source $LSSTSW/bin/setup.csh
+
 .. note::
 
    It is only necessary to run :command:`deploy` once, although it is clever
