@@ -45,7 +45,7 @@ Here's how to set up your SSH client to use keys:
 1. Generate a key pair
 ----------------------
 
-If you haven't already, generate your key pair on your local machine (you should always use a strong password for your passphrase):
+If you haven't already, generate your key pair on your local machine (you should always use a strong password for your passphrase). On most machines, you can use OpenSSH:
 
 .. prompt:: bash
 
@@ -65,6 +65,10 @@ Enter your passphrase at the prompts:
    Your public key has been saved in /home/username/.ssh/id_rsa.pub.
    The key fingerprint is:
    a1:b2:c3:45:67:89:d1:e2:f3:54:76:98:00:aa:bb:01 username@hostname.lsstcorp.org
+
+.. note::
+
+   If you used a program other than OpenSSH for this step, make sure your public key is formatted as a single line (most SSH clients provide it as an option). Otherwise, the next step will not work.
 
 2. Install the public key on lsst-dev
 -------------------------------------
