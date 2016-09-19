@@ -20,7 +20,7 @@ GitHub and LSST organizations
    If you don't have one already, create an account on https://github.org.
    Also see the :doc:`/tools/git_setup` page for recommendations on setting up two-factor authentication and credential helpers for GitHub.
 
-   Next, ask your T/CAM to add you to the `lsst GitHub organization <https://github.com/lsst>`_ along with any relevant team organizations (send your GitHub username to your T/CAM).
+   Next, ask your T/CAM to add you to the `lsst <https://github.com/lsst>`__ and `lsst-dm <https://github.com/lsst>`__ GitHub organizations, along with any relevant team organizations (send your GitHub username to your T/CAM).
 
 NCSA server access
    Contact ``lsst-account _at_ ncsa.illinois.edu`` to request an account on the NCSA cluster, which hosts the reference platform. Include the following in the request:
@@ -36,8 +36,12 @@ NCSA server access
 
 Community.lsst.org
    https://community.lsst.org is LSST's public-facing discussion and support forum.
-   Create an account there, and let your T/CAM know your username so you can be added to the ``LSST`` and ``LSSTDM`` groups.
    Browse the `forum-howto <https://community.lsst.org/tags/forum-howto>`_ tag to learn how to use the platform.
+   
+   Create an account, and let your T/CAM know your username to get access to internal discussion categories.
+   
+   T/CAMs: add users via the `LSST <https://community.lsst.org/groups/LSST>`__ and `LSSTDM <https://community.lsst.org/groups/LSSTDM>`__ group pages.
+   
 
 HipChat
    `HipChat <https://www.hipchat.com/>`_ is DM's internal instant messaging platform.
