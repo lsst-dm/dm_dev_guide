@@ -3,15 +3,12 @@ Developer Onboarding Checklist
 ##############################
 
 *Welcome to Data Management*.
-This page will help you get the necessary accounts and point you to important resources and documentation.
-
-Accounts
-========
+This page will help you get the necessary accounts.
 
 .. _getting-started-lsst-account:
 
 LSST account
-------------
+============
 
 Contact ``lsst-sysadmins _at_ lsst.org`` to get a unified LSST account.
 This gives you access to:
@@ -21,7 +18,7 @@ This gives you access to:
 - The Confluence wiki: https://confluence.lsstcorp.org
 
 GitHub and LSST organizations
------------------------------
+=============================
 
 If you don't have one already, create an account on https://github.com.
 
@@ -33,7 +30,7 @@ Next, ask your T/CAM to add you to the `lsst <https://github.com/lsst>`__ and `l
    - :doc:`/tools/git_lfs` page for configuring Git LFS for DM.
 
 NCSA server access
-------------------
+==================
 
 Contact ``lsst-account _at_ ncsa.illinois.edu`` to request an account on the NCSA cluster, which hosts the reference platform.
 Include the following in the request:
@@ -50,7 +47,7 @@ Include the following in the request:
    :doc:`/services/lsst-dev`.
 
 Community.lsst.org
-------------------
+==================
 
 https://community.lsst.org is LSST's public-facing discussion and support forum.
 Browse the `forum-howto <https://community.lsst.org/tags/forum-howto>`_ tag to learn how to use the platform.
@@ -61,7 +58,7 @@ Create an account, and let your T/CAM know your username to get access to intern
    
 
 HipChat
--------
+=======
 
 `HipChat <https://www.hipchat.com/>`_ is DM's internal instant messaging platform.
 Install HipChat on your computer (and phone, if you wish) and then ask your T/CAM for an invitation to DM's group.
@@ -77,13 +74,13 @@ Some important rooms to follow are:
 Your team may also have specific rooms, and you can send private messages to individuals.
 
 Google account for Hangouts
----------------------------
+===========================
 
 Many small meetings are conducted on `Google Hangouts <https://hangouts.google.com/>`_, which requires you to have an account with https://google.com.
 The meeting convener will pass around a Hangouts room URL to attendees.
 
 Mailing lists
--------------
+=============
 
 We don't use mailing lists for conversations, but they're still used for notifications about conversations happening on https://community.lsst.org.
 You should be subscribed to these lists as soon as you get an :ref:`LSST acccount <getting-started-lsst-account>`:
