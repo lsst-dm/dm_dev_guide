@@ -52,6 +52,7 @@ The `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ w
    coding/unit_test_private_functions.rst
    coding/unit_test_coverage.rst
    coding/profiling.rst
+   coding/logging.rst
 
 .. toctree::
    :maxdepth: 1
