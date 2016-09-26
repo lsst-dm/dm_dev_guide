@@ -127,7 +127,7 @@ Simple SLURM jobs
 -----------------------------
 
 In submitting SLURM jobs to the ``Verification Cluster`` it is advisable to have the 
-software stack, data, and any utilities stored on the GPFS :file:`/scratch` , :file:`/datasets` , :file:`/software` , and/or the 'GPFS home' spaces so that all are reachable from ``lsst-dev7`` and each of the worker nodes.  Some simple SLURM job description files that make use of the ``srun`` command 
+software stack, data, and any utilities stored on the GPFS :file:`/scratch` , :file:`/datasets` , and/or :file:`/software` spaces so that all are reachable from ``lsst-dev7`` and each of the worker nodes.  Some simple SLURM job description files that make use of the ``srun`` command 
 are shown in this section. These are submitted to the queue from a standard login shell on the front end ``lsst-dev7`` using the SLURM client command ``sbatch``, and their status can be checked with the 
 command ``squeue`` :
 
