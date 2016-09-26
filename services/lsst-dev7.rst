@@ -27,7 +27,7 @@ The ``Verification Cluster`` consists of 48  Dell C6320 nodes with 24 physical c
 
 The ``Verification Cluster`` runs the Simple Linux Utility for Resource Management (SLURM) cluster management and job scheduling system.  ``lsst-dev7`` runs the SLURM controller and serves as the login or head node , enabling LSST DM users to submit SLURM jobs to the ``Verification Cluster``.
 
-``lsst-dev7`` and the ``Verification Cluster`` provide a 300 TB General Parallel File System (GPFS) to provided shared-disk across all of the nodes. 
+``lsst-dev7`` and the ``Verification Cluster`` utilize the General Parallel File System (GPFS) to provided shared-disk across all of the nodes.  The GPFS will have spaces for archived datasets and scratch space per user to support computation/analysis.
 
 The legacy NFS /home directories are available on the front end ``lsst-dev7`` (serving as the current
 home directories), but are not mounted on the compute nodes of the ``Verification Cluster``. 
@@ -50,22 +50,19 @@ You can log into LSST development servers at NCSA such as ``lsst-dev7`` with you
 GPFS Directory Spaces
 =====================
 
-GPFS is available under :file:`/gpfs/fs0/` on  the ``Verification Cluster``. For convenience the 
-bind mounts  :file:`/scratch`  ,  :file:`/datasets` ,  and :file:`/software`  
-have been created to provide views into corresponding spaces under this directory.
-Users will find directories
+GPFS is available on the login node ``lsst-dev7`` and on all of the compute nodes of the ``Verification Cluster``. For convenience the bind mounts  :file:`/scratch`  ,  :file:`/datasets` ,  and :file:`/software`  have been created to provide views into corresponding spaces in GPFS.  Users will find directories
 
 :file:`/scratch/<username>` 
 
 ready and available for use.  The per user :file:`/scratch` space is volatile with a 180 day purge policy
 and is not backed up. 
 
-Complementing the scratch space, users also have available a 
-'GPFS home' space :file:`/gpfs/fs0/home/<username>` for more permanent work space and storage.
-The system roadmap projects these spaces replacing the current NFS home 
-directories as $HOME, but this transition has not yet been scheduled. 
+Project managed datasets will be stored within the :file:`/datasets` space.  The population of 
+:file:`/datasets` with reference data collections is still in the early stages; a first 
+example is the SDSS DR7 Stripe82 data, which can be found at 
 
-Project managed datasets will be stored within the :file:`/datasets` space.  GPFS has a capacity of 300 TB and :file:`/datasets` , :file:`/scratch`, and the 'GPFS home' directories are each allocated a siginficant fraction of the total. 
+:file:`/datasets/stripe82/dr7/runs` 
+
 
 .. _lsst-dev7-stack:
 
