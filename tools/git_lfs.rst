@@ -22,7 +22,7 @@ If you downloaded the binary release, install ``git-lfs`` by running the provide
 
 Most package managers also provide the ``git-lfs`` client.
 Since, LFS is a rapidly evolving technology, package managers will help you keep up with new ``git-lfs`` releases.
-For example, Mac users with Homebrew_ can simply run ``brew install git-lfs`` and ``brew upgrade git-lfs``.
+For example, Mac users with Homebrew_ can simply run ``brew install git-lfs`` (and later update to a new version with ``brew upgrade git-lfs``).
 
 Once ``git-lfs`` is installed, run:
 
