@@ -29,8 +29,8 @@ If you're new to Git, there are many great learning resources, such as
 
 .. _git-github-2fa:
 
-Setup Two-Factor Authentication (2FA) for GitHub
-================================================
+Set up Two-Factor Authentication (2FA) for GitHub
+=================================================
 
 We encourage you to enable `Two-Factor Authentication (2FA) for GitHub <https://help.github.com/articles/about-two-factor-authentication/>`_ through your `account security settings <https://github.com/settings/security>`_.
 2FA means that you'll have to enter an authentication code when logging into GitHub.com from a new computer.
@@ -41,10 +41,10 @@ To help you automatically authenticate when pushing to GitHub, we encourage you 
 
 .. _git-credential-helper:
 
-Setup a Git credential helper
-=============================
+Set up a Git credential helper
+==============================
 
-Rather than entering your GitHub username and password (or 2FA access token) every time you push, you can setup a Git credential helper to manage this for you.
+Rather than entering your GitHub username and password (or 2FA access token) every time you push, you can set up a Git credential helper to manage this for you.
 A credential helper is especially important for working with our :doc:`Git LFS-backed repositories </tools/git_lfs>`.
 
 **Mac users** can use the secure OS X keychain:
@@ -88,8 +88,8 @@ Here are some ideas:
 
 .. _git-editor-setup:
 
-Setup your editor
-=================
+Set up your editor
+==================
 
 You'll want to configure your preferred editor (or its command line hook) as your Git editor.
 For example:
