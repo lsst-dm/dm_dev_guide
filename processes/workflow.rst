@@ -21,8 +21,6 @@ Other related pages:
 - :doc:`/tools/git_lfs`.
 - :doc:`/tools/jira_tips`.
 
-**For more hands-on overview of how the DM development workflow applies to LSST Stack development,** see the `Development Tutorial with lsstsw and lsst-build <http://pipelines.lsst.io/latest/developer/lsstsw_tutorial>`_ in the `Science Pipelines <http://pipelines.lsst.io>`_ documentation.
-
 .. _git-setup:
 
 Git & GitHub Setup
