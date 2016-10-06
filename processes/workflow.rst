@@ -21,28 +21,18 @@ Other related pages:
 - :doc:`/tools/git_lfs`.
 - :doc:`/tools/jira_tips`.
 
-**For more hands-on overview of how the DM development workflow applies to LSST Stack development,** see the `Development Tutorial with lsstsw and lsst-build <http://pipelines.lsst.io/latest/developer/lsstsw_tutorial>`_ in the `Science Pipelines <http://pipelines.lsst.io>`_ documentation.
-
 .. _git-setup:
 
 Git & GitHub Setup
 ==================
 
-You need to install Git version 1.8.2, or later, and the Git LFS client to work with our data repositories.
-See the :doc:`DM Git LFS documentation </tools/git_lfs>` for more information on how to install and setup the Git LFS client for your machine.
+You need to install Git version 1.8.2, or later, and the :ref:`Git LFS client <git-lfs-install>` to work with our data repositories.
 
-We use Git commit authorship metadata to audit copyrights in DM code.
-Ensure that Git is setup to use your *institution-hosted* email address (only AURA employees should use their ``lsst.org`` email addresses) in the :file:`~/.gitconfig` file.
-You can do this from the command line:
+Follow these steps to configure your Git environment for DM work:
 
-.. code-block:: bash
-
-   git config --global user.name "Your Name"
-   git config --global user.email "your_email@institution.edu"
-
-Likewise, in your `GitHub account email settings <https://github.com/settings/emails>`_, add your institution-hosted email.
-We recommend that you set this institutional email as your **Primary GitHub** email address.
-This step ensures that Git commits you make `directly on GitHub.com <https://help.github.com/articles/github-flow-in-the-browser/>`_ (such as quick documentation fixes) and merges made via the 'big green button' have proper authorship metadata.
+1. :ref:`Install Git LFS <git-lfs-install>` with authenticated access.
+2. :ref:`Set Git and GitHub to use your institution-hosted email address <git-setup-institutional-email>`.
+3. :ref:`Set Git to use 'plain' pushes <git-setup-plain-pushes>`.
 
 *See also:* :doc:`/tools/git_setup`.
 

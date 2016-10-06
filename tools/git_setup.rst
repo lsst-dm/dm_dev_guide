@@ -1,14 +1,16 @@
-################################
-Git Configuration Best Practices
-################################
+#############################################
+Git Configuration Standards & Recommentations
+#############################################
 
-This page collects best practices for configuring Git for DM development.
+This page collects advice for configuring Git for DM development.
+
+Some of these configurations are mentioned in the :doc:`DM Development Workflow <../processes/workflow>`.
+Such configurations are labeled on as page as **required** (as opposed to recommended practices).
 
 *See also*:
 
 - :doc:`/processes/workflow` for guidance on how we use Git, including:
 
-  - Our official :ref:`Git user.email configuration requirement <git-setup>`,
   - :ref:`Git branch naming <git-branching>`,
   - :ref:`Git branch merging <workflow-code-review-merge>`,
   - :ref:`Git commit organization best practices <git-commit-organization-best-practices>`, and
@@ -27,10 +29,56 @@ If you're new to Git, there are many great learning resources, such as
 * `GitHub Help <https://help.github.com>`_, which covers fundamental git usage too.
 * `StackOverflow <http://stackoverflow.com/questions/tagged/git?sort=frequent&pageSize=15>`_.
 
+.. _git-setup-institutional-email:
+
+Use your institution's email with Git & GitHub
+==============================================
+
+We use Git commit authorship metadata to audit copyrights in DM code (`RFC-45 <https://jira.lsstcorp.org/browse/RFC-45>`_, for background).
+
+In Git (required configuration)
+-------------------------------
+
+Ensure that Git is set up to use your *institution-hosted* email address (only AURA employees should use their ``lsst.org`` email addresses) in the :file:`~/.gitconfig` file.
+You can do this from the command line:
+
+.. code-block:: bash
+
+   git config --global user.name "Your Name"
+   git config --global user.email "your_email@institution.edu"
+
+On GitHub
+---------
+
+Likewise, in your `GitHub account email settings <https://github.com/settings/emails>`_, add your institution-hosted email.
+We recommend that you set this institutional email as your **Primary GitHub** email address.
+
+This step ensures that Git commits you make `directly on GitHub.com <https://help.github.com/articles/github-flow-in-the-browser/>`_ (such as quick documentation fixes) and merges made via the 'big green button' have proper authorship metadata.
+
+.. _git-setup-plain-pushes:
+
+Configure 'plain' pushes in Git (required for Git prior to v2.0)
+================================================================
+
+Ensure that ``git push`` only pushes your currently checked-out branch by running this command:
+
+.. code-block:: bash
+
+   git config --global push.default simple
+
+This command modifies :file:`~/.gitconfig`.
+
+.. note::
+
+   This behavior is the default for Git v2.0 and later.
+
+   In earlier versions of Git, ``push.default=matching`` was the default.
+   See the `git-config <https://git-scm.com/docs/git-config>`_ documentation for details.
+
 .. _git-github-2fa:
 
-Setup Two-Factor Authentication (2FA) for GitHub
-================================================
+Set up Two-Factor Authentication (2FA) for GitHub
+=================================================
 
 We encourage you to enable `Two-Factor Authentication (2FA) for GitHub <https://help.github.com/articles/about-two-factor-authentication/>`_ through your `account security settings <https://github.com/settings/security>`_.
 2FA means that you'll have to enter an authentication code when logging into GitHub.com from a new computer.
@@ -41,10 +89,10 @@ To help you automatically authenticate when pushing to GitHub, we encourage you 
 
 .. _git-credential-helper:
 
-Setup a Git credential helper
-=============================
+Set up a Git credential helper
+==============================
 
-Rather than entering your GitHub username and password (or 2FA access token) every time you push, you can setup a Git credential helper to manage this for you.
+Rather than entering your GitHub username and password (or 2FA access token) every time you push, you can set up a Git credential helper to manage this for you.
 A credential helper is especially important for working with our :doc:`Git LFS-backed repositories </tools/git_lfs>`.
 
 **Mac users** can use the secure OS X keychain:
@@ -88,8 +136,8 @@ Here are some ideas:
 
 .. _git-editor-setup:
 
-Setup your editor
-=================
+Set up your editor
+==================
 
 You'll want to configure your preferred editor (or its command line hook) as your Git editor.
 For example:
