@@ -1,14 +1,16 @@
-################################
-Git Configuration Best Practices
-################################
+#############################################
+Git Configuration Standards & Recommentations
+#############################################
 
-This page collects best practices for configuring Git for DM development.
+This page collects advice for configuring Git for DM development.
+
+Some of these configurations are mentioned in the :doc:`DM Development Workflow <../processes/workflow>`.
+Such configurations are labeled on as page as **required** (as opposed to recommended practices).
 
 *See also*:
 
 - :doc:`/processes/workflow` for guidance on how we use Git, including:
 
-  - Our official :ref:`Git user.email configuration requirement <git-setup>`,
   - :ref:`Git branch naming <git-branching>`,
   - :ref:`Git branch merging <workflow-code-review-merge>`,
   - :ref:`Git commit organization best practices <git-commit-organization-best-practices>`, and
@@ -26,6 +28,52 @@ If you're new to Git, there are many great learning resources, such as
 * `Git's online docs <http://git-scm.com/doc>`_, and the associated online `Pro Git <http://git-scm.com/book/en/v2>`_ book by Scott Chacon and Ben Staubb.
 * `GitHub Help <https://help.github.com>`_, which covers fundamental git usage too.
 * `StackOverflow <http://stackoverflow.com/questions/tagged/git?sort=frequent&pageSize=15>`_.
+
+.. _git-setup-institutional-email:
+
+Use your institution's email with Git & GitHub
+==============================================
+
+We use Git commit authorship metadata to audit copyrights in DM code (`RFC-45 <https://jira.lsstcorp.org/browse/RFC-45>`_, for background).
+
+In Git (required configuration)
+-------------------------------
+
+Ensure that Git is set up to use your *institution-hosted* email address (only AURA employees should use their ``lsst.org`` email addresses) in the :file:`~/.gitconfig` file.
+You can do this from the command line:
+
+.. code-block:: bash
+
+   git config --global user.name "Your Name"
+   git config --global user.email "your_email@institution.edu"
+
+On GitHub
+---------
+
+Likewise, in your `GitHub account email settings <https://github.com/settings/emails>`_, add your institution-hosted email.
+We recommend that you set this institutional email as your **Primary GitHub** email address.
+
+This step ensures that Git commits you make `directly on GitHub.com <https://help.github.com/articles/github-flow-in-the-browser/>`_ (such as quick documentation fixes) and merges made via the 'big green button' have proper authorship metadata.
+
+.. _git-setup-plain-pushes:
+
+Configure 'plain' pushes in Git (required for Git prior to v2.0)
+================================================================
+
+Ensure that ``git push`` only pushes your currently checked-out branch by running this command:
+
+.. code-block:: bash
+
+   git config --global push.default simple
+
+This command modifies :file:`~/.gitconfig`.
+
+.. note::
+
+   This behavior is the default for Git v2.0 and later.
+
+   In earlier versions of Git, ``push.default=matching`` was the default.
+   See the `git-config <https://git-scm.com/docs/git-config>`_ documentation for details.
 
 .. _git-github-2fa:
 
