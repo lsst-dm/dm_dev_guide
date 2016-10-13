@@ -35,6 +35,10 @@ The `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ w
    processes/jira_agile.rst
    processes/wiki.rst
 
+.. seealso::
+
+   `DMTN-027: Renaming an LSST git Repository <https://dmtn-027.lsst.io>`_.
+
 .. toctree::
    :maxdepth: 1
    :caption: Coding Guides
