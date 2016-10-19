@@ -79,7 +79,7 @@ Test suite execution should be managed by a testing framework, also known as a
 test harness, which monitors the execution status of individual test cases.
 
 C++: boost.test
-    LSST DM developers should use the `single-header variant`_ of the `Boost Unit
+    LSST DM developers should use the `shared-library variant`_ of the `Boost Unit
     Test Framework`_. When unit testing C++ private functions using the Boost
     util test macros, refer to the standard methods described in :doc:`private
     function testing <unit_test_private_functions>`.
@@ -89,6 +89,7 @@ Python: unittest
     Details on particular conventions to use for LSST DM code are :doc:`described later <python_testing>`.
 
 .. _single-header variant: http://www.boost.org/doc/libs/1_60_0/libs/test/doc/html/boost_test/usage_variants.html#boost_test.usage_variants.single_header
+.. _shared-library variant: http://www.boost.org/doc/libs/1_60_0/libs/test/doc/html/boost_test/usage_variants.html#boost_test.usage_variants.shared_lib
 .. _Boost Unit Test Framework: http://www.boost.org/doc/libs/1_60_0/libs/test/doc/html/index.html
 
 Unit Testing Composite Objects
