@@ -221,8 +221,9 @@ Utility initialization
 ----------------------
 
 :lfunc:`lsst.utils.tests.init()` does two things: initialize the memory tester as described previously, and initialize :lmod:`lsst.log` by setting up a default configuration that outputs logs to console at :ldata:`lsst.log.INFO` level.
-If you use :lmod:`lsst.log` during tests, you may want to call :lfunc:`lsst.utils.tests.init()` in the tests.
 Customized configuration can be set in each unit test.
+For example, ``lsst.log.setLevel('', lsst.log.TRACE)`` sets the root logger to :ldata:`lsst.log.TRACE` level.
+See :doc:`logging` for more details in logging use.
 
 Unicode
 =======
