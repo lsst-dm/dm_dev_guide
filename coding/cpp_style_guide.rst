@@ -296,7 +296,7 @@ If the specialization uses an incoming template parameter, the suffix ``T`` is p
 3-6. Names representing namespaces MUST be camelCase with leading lowercase letter and based on component or directory name.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The original package developer will specify in the ``.cc`` file the preferred abbreviation to use and, optionally, also use it throughout his code.
+The original package developer will specify in the ``.cc`` file the preferred abbreviation to use and, optionally, also use it throughout their code.
 The original developer may consider using the following guideline to fabricate the name:
 
 - remove the preliminary 'lsst';
