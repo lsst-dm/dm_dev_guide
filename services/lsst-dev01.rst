@@ -1,6 +1,6 @@
-#######################################################
+########################################################
 Using the lsst-dev01 Server and the Verification Cluster
-#######################################################
+########################################################
 
 ``lsst-dev01`` and the ``Verification Cluster`` is a cluster of servers run by NCSA for LSST DM development work.
 To get an account, see the :doc:`Onboarding Checklist </getting-started/onboarding>`.
