@@ -1,56 +1,56 @@
-#######################################################
-Using the lsst-dev7 Server and the Verification Cluster
-#######################################################
+########################################################
+Using the lsst-dev01 Server and the Verification Cluster
+########################################################
 
-``lsst-dev7`` and the ``Verification Cluster`` is a cluster of servers run by NCSA for LSST DM development work.
+``lsst-dev01`` and the ``Verification Cluster`` is a cluster of servers run by NCSA for LSST DM development work.
 To get an account, see the :doc:`Onboarding Checklist </getting-started/onboarding>`.
 
-This page is designed help you get started on ``lsst-dev7`` and the ``Verification Cluster``:
+This page is designed help you get started on ``lsst-dev01`` and the ``Verification Cluster``:
 
-#. :ref:`lsst-dev7-overview`
-#. :ref:`lsst-dev7-password`
-#. :ref:`lsst-dev7-gpfs`
-#. :ref:`lsst-dev7-stack`
-#. :ref:`lsst-dev7-slurm`
+#. :ref:`lsst-dev01-overview`
+#. :ref:`lsst-dev01-password`
+#. :ref:`lsst-dev01-gpfs`
+#. :ref:`lsst-dev01-stack`
+#. :ref:`lsst-dev01-slurm`
 
 
-.. _lsst-dev7-overview:
+.. _lsst-dev01-overview:
 
 Overview of the Verification Cluster
 ====================================
 
-``lsst-dev7`` is a system with 24 cores, 256 GB RAM, running CentOS 7.2 that serves as the front end of the 
-``Verification Cluster``.  ``lsst-dev7`` is described in further detail on the
+``lsst-dev01`` is a system with 24 cores, 256 GB RAM, running CentOS 7.2 that serves as the front end of the 
+``Verification Cluster``.  ``lsst-dev01`` is described in further detail on the
 page of `available development servers <https://confluence.lsstcorp.org/display/LDMDG/DM+Development+Servers>`_ .
 
 The ``Verification Cluster`` consists of 48  Dell C6320 nodes with 24 physical cores (2 sockets, 12 cores per processor) and 128 GB RAM.  As such, the system provides a total of 1152 cores. 
 
-The ``Verification Cluster`` runs the Simple Linux Utility for Resource Management (SLURM) cluster management and job scheduling system.  ``lsst-dev7`` runs the SLURM controller and serves as the login or head node , enabling LSST DM users to submit SLURM jobs to the ``Verification Cluster``.
+The ``Verification Cluster`` runs the Simple Linux Utility for Resource Management (SLURM) cluster management and job scheduling system.  ``lsst-dev01`` runs the SLURM controller and serves as the login or head node , enabling LSST DM users to submit SLURM jobs to the ``Verification Cluster``.
 
-``lsst-dev7`` and the ``Verification Cluster`` utilize the General Parallel File System (GPFS) to provided shared-disk across all of the nodes.  The GPFS will have spaces for archived datasets and scratch space per user to support computation/analysis.
+``lsst-dev01`` and the ``Verification Cluster`` utilize the General Parallel File System (GPFS) to provided shared-disk across all of the nodes.  The GPFS will have spaces for archived datasets and scratch space per user to support computation/analysis.
 
-The legacy NFS /home directories are available on the front end ``lsst-dev7`` (serving as the current
+The legacy NFS /home directories are available on the front end ``lsst-dev01`` (serving as the current
 home directories), but are not mounted on the compute nodes of the ``Verification Cluster``. 
 
 Report system issues to ``lsst-sysadm _at_ ncsa.illinois.edu``
 
 
-.. _lsst-dev7-password:
+.. _lsst-dev01-password:
 
 Account Password
 ================
 
-You can log into LSST development servers at NCSA such as ``lsst-dev7`` with your NCSA account and password. You can reset your NCSA password at the following URL:
+You can log into LSST development servers at NCSA such as ``lsst-dev01`` with your NCSA account and password. You can reset your NCSA password at the following URL:
 
    - https://identity.ncsa.illinois.edu/reset
 
 
-.. _lsst-dev7-gpfs:
+.. _lsst-dev01-gpfs:
 
 GPFS Directory Spaces
 =====================
 
-GPFS is available on the login node ``lsst-dev7`` and on all of the compute nodes of the ``Verification Cluster``. For convenience the bind mounts  :file:`/scratch`  ,  :file:`/datasets` ,  and :file:`/software`  have been created to provide views into corresponding spaces in GPFS.  Users will find directories
+GPFS is available on the login node ``lsst-dev01`` and on all of the compute nodes of the ``Verification Cluster``. For convenience the bind mounts  :file:`/scratch`  ,  :file:`/datasets` ,  and :file:`/software`  have been created to provide views into corresponding spaces in GPFS.  Users will find directories
 
 :file:`/scratch/<username>` 
 
@@ -64,7 +64,7 @@ example is the SDSS DR7 Stripe82 data, which can be found at
 :file:`/datasets/stripe82/dr7/runs` 
 
 
-.. _lsst-dev7-stack:
+.. _lsst-dev01-stack:
 
 Shared Software Stack in GPFS
 =============================
@@ -75,7 +75,7 @@ is available under :file:`/software/lsstsw`.  This stack may be initialized via:
      % .  /software/lsstsw/stack/loadLSST.bash
 
 
-.. _lsst-dev7-slurm:
+.. _lsst-dev01-slurm:
 
 SLURM Job Submission
 ====================
@@ -127,8 +127,8 @@ Simple SLURM jobs
 -----------------------------
 
 In submitting SLURM jobs to the ``Verification Cluster`` it is advisable to have the 
-software stack, data, and any utilities stored on the GPFS :file:`/scratch` , :file:`/datasets` , and/or :file:`/software` spaces so that all are reachable from ``lsst-dev7`` and each of the worker nodes.  Some simple SLURM job description files that make use of the ``srun`` command 
-are shown in this section. These are submitted to the queue from a standard login shell on the front end ``lsst-dev7`` using the SLURM client command ``sbatch``, and their status can be checked with the 
+software stack, data, and any utilities stored on the GPFS :file:`/scratch` , :file:`/datasets` , and/or :file:`/software` spaces so that all are reachable from ``lsst-dev01`` and each of the worker nodes.  Some simple SLURM job description files that make use of the ``srun`` command 
+are shown in this section. These are submitted to the queue from a standard login shell on the front end ``lsst-dev01`` using the SLURM client command ``sbatch``, and their status can be checked with the 
 command ``squeue`` :
 
 For a single task on a single node: ::
@@ -200,14 +200,14 @@ For a single node: ::
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
                108     debug     bash    daues  R       0:58      1 lsst-verify-worker01
     % hostname -f
-    lsst-dev7.ncsa.illinois.edu
+    lsst-dev01.ncsa.illinois.edu
 
     % srun hostname -f
     lsst-verify-worker01.ncsa.illinois.edu
 
 One can observe that after the job resources have been granted, the user shell is still on 
-the login node ``lsst-dev7``. The command ``srun`` can be utilized to run commands on the job's allocated 
-compute nodes. Commands issued without ``srun``  will still be executed locally on ``lsst-dev7``. 
+the login node ``lsst-dev01``. The command ``srun`` can be utilized to run commands on the job's allocated 
+compute nodes. Commands issued without ``srun``  will still be executed locally on ``lsst-dev01``. 
 
 SLURM Example Executing Tasks with Different Arguments
 ------------------------------------------------------
