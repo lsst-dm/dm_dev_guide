@@ -6,9 +6,10 @@ This page describes our procedures for collaborating on LSST DM software and doc
 
 1. :ref:`Configuring Git for DM development <git-setup>`.
 2. :ref:`Using JIRA for agile development <workflow-jira>`.
-3. :ref:`Policies for naming and using Git branches <git-branching>`.
-4. :ref:`Preparing code for review <review-preparation>`.
-5. :ref:`Reviewing and merging code <workflow-code-review>`.
+3. :ref:`DM GitHub organizations <github-orgs>`.
+4. :ref:`Policies for naming and using Git branches <git-branching>`.
+5. :ref:`Preparing code for review <review-preparation>`.
+6. :ref:`Reviewing and merging code <workflow-code-review>`.
 
 In appendices, we suggest some *best practices* for maximizing the usefulness of our Git development history:
 
@@ -156,12 +157,60 @@ In that case, change the ticket's status to **Won't Fix.**
 If you discover that a ticket duplicates another one, you can retire the duplicate ticket by marking it as **Invalid.**
 Name the duplicate ticket in the status change comment field.
 
+.. _github-orgs:
+
+DM GitHub Organizations
+=======================
+
+DM's Git repositories are available from three GitHub organizations: `lsst <https://github.com/lsst>`__, `lsst-dm <https://github.com/lsst-dm>`__, and `lsst-sqre <https://github.com/lsst-sqre>`__.
+LSST DM source code is publicly available and open source.
+
+You should already be a member of the `lsst <https://github.com/lsst>`__ and `lsst-dm <https://github.com/lsst-dm>`__ GitHub organizations.
+If you cannot create repositories or push to repositories there, ask your T/CAM to :ref:`add you to these organizations <getting-started-github>`.
+
+lsst GitHub organization
+------------------------
+
+The `lsst <https://github.com/lsst>`__ GitHub organization is for public-facing code and documentation repositories.
+Specifically, packages in main EUPS distributions are available from the `lsst <https://github.com/lsst>`__ organization, along with official documents (including LDM design documentation).
+
+lsst-dm GitHub organization
+---------------------------
+
+The `lsst-dm <https://github.com/lsst-dm>`__ GitHub organization is for miscellaneous Data Management projects:
+
+- EUPS packages that are not yet part of the official distribution. Projects can be incubated in `lsst-dm <https://github.com/lsst-dm>`__ and later migrated to the `lsst <https://github.com/lsst>`__ organization.
+- Retired projects and EUPS packages (these have names prefixed with "legacy").
+- Prototypes, internal experiments, and other types of ad-hoc projects.
+- Internal documentation, including DMTN technotes and this DM Developer Guide.
+
+lsst-sqre GitHub organization
+-----------------------------
+
+The `lsst-sqre <https://github.com/lsst-sqre>`__ GitHub organization is used by the SQuaRE team for operational services and internal experiments.
+SQuaRE's technical notes (SQR) are also available in `lsst-sqre <https://github.com/lsst-sqre>`__.
+
+Upstream repositories and organizations
+---------------------------------------
+
+Whenever possible, DM developers should contribute to the third-party open source codebases used by the LSST Stack.
+Since this type of development is typically done with a fork-and-PR workflow, the third-party repo should be forked into an LSST organization, usually `lsst-dm <https://github.com/lsst>`__ or `lsst-sqre <https://github.com/lsst-sqre>`__.
+Doing upstream development in an LSST GitHub organization lets the team more easily identify what work is being done.
+
+Personal GitHub repositories
+----------------------------
+
+Use personal repositories for side projects done after hours or on "science time."
+Work by DM staff that is delivered to LSST in ticketed work **can't** be developed in personal GitHub repositories outside of the `lsst <https://github.com/lsst>`__, `lsst-dm <https://github.com/lsst-dm>`__, and `lsst-sqre <https://github.com/lsst-sqre>`__ GitHub organizations, though.
+
+Community contributors can of course use personal repositories (and forks of LSST repositories) to make contributions to LSST.
+
 .. _git-branching:
 
 DM Git Branching Policy
 =======================
 
-Rather than forking LSST's GitHub repositories, DM developers use a *shared repository model* by cloning repositories in the `lsst <https://github.com/lsst>`_, `lsst-dm <https://github.com/lsst>`_, and `lsst-sqre <https://github.com/lsst>`_ GitHub organizations.
+Rather than forking LSST's GitHub repositories, DM developers use a *shared repository model* by cloning repositories in the `lsst <https://github.com/lsst>`_, `lsst-dm <https://github.com/lsst>`_, and `lsst-sqre <https://github.com/lsst-sqre>`_ GitHub organizations.
 Since the GitHub ``origin`` remotes are shared, it is essential that DM developers adhere to the following naming conventions for branches.
 
 See `RFC-21 <https://jira.lsstcorp.org/browse/RFC-21>`_ for discussion.
