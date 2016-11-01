@@ -7,16 +7,35 @@ Documenting C++ Code
    This is a preview documentation format specification.
    Software documentation should currently be written in the format described at https://confluence.lsstcorp.org/display/LDMDG/Documentation+Standards
 
-The LSST Stack uses `Doxygen <http://www.stack.nl/~dimitri/doxygen/>`_ to build C++ API reference documentation by extracting source code comments.
-This page covers the most important concepts in writing Doxygen-friendly C++ comments for the LSST Stack, though `Doxygen's manual <http://www.stack.nl/~dimitri/doxygen/manual.html>`_ is the most comprehensive reference.
 
-Note that LSST uses `Markdown-formatted Doxygen comment blocks <http://www.doxygen.nl/manual/markdown.html>`_.
+We document C++ code in two ways:
+
+1. By writing *documentation blocks* for all public or protected C++ components (namespaces, types, methods, functions, and constants).
+
+   The LSST Stack uses `Doxygen <http://www.doxygen.org/>`_ to build C++ API reference documentation from comment blocks. This documentation is exposed to users in a variety of contexts, from developers reading the code to readers of the `Stack Documentation <https://lsst-web.ncsa.illinois.edu/doxygen/x_masterDoxyDoc/>`_.
+
+   Doxygen comment blocks are the public specification of our C++ API.
+
+2. By commenting our code internally with C++ comments (``//`` or ``/* .. */``).
+
+   These comments are meant to be read only by developers reading and editing the source code.
+
+This page focuses on public code documentation using Doxygen, while internal comments are discussed in our :doc:`../coding/cpp_style_guide`.
+
+Treat the guidelines on this page as an extension of the :doc:`../coding/cpp_style_guide`.
+
+.. note::
+
+   Changes to this document must be approved by the System Architect (`RFC-24 <https://jira.lsstcorp.org/browse/RFC-24>`_).
+   To request changes to these standards, please file an :ref:`RFC <decision-making-rfc>`.
 
 This document is ported from original documentation in Confluence; https://confluence.lsstcorp.org/display/LDMDG/Documentation+Standards.
-**This guide will evolve as a mechanism to document C++ APIs wrapped in Python in developed.**
+**This guide will evolve as a mechanism to document C++ APIs wrapped in Python is developed.**
 
-Boilerplate for Header (.h) and Source (.cpp) Files
-===================================================
+.. _cpp-file-boilerplate:
+
+Boilerplate for Header (.h) and Source (.cc) Files
+==================================================
 
 The beginning of both header and source code files should include
 
@@ -26,61 +45,123 @@ The beginning of both header and source code files should include
 
       // -*- lsst-c++ -*-
 
-2. A copyright and license block
+2. A copyright and license block (note: **NOT** a Doxygen comment block)
 
    .. code-block:: cpp
 
       /*
-      * LSST Data Management System
-      * See COPYRIGHT file at the top of the source tree.
-      *
-      * This product includes software developed by the
-      * LSST Project (http://www.lsst.org/).
-      *
-      * This program is free software: you can redistribute it and/or modify
-      * it under the terms of the GNU General Public License as published by
-      * the Free Software Foundation, either version 3 of the License, or
-      * (at your option) any later version.
-      *
-      * This program is distributed in the hope that it will be useful,
-      * but WITHOUT ANY WARRANTY; without even the implied warranty of
-      * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-      * GNU General Public License for more details.
-      *
-      * You should have received a copy of the LSST License Statement and
-      * the GNU General Public License along with this program. If not,
-      * see <http://www.lsstcorp.org/LegalNotices/>.
-      */
+       * LSST Data Management System
+       * Copyright 2008-2017 AURA/LSST.
+       *
+       * This product includes software developed by the
+       * LSST Project (http://www.lsst.org/).
+       *
+       * This program is free software: you can redistribute it and/or modify
+       * it under the terms of the GNU General Public License as published by
+       * the Free Software Foundation, either version 3 of the License, or
+       * (at your option) any later version.
+       *
+       * This program is distributed in the hope that it will be useful,
+       * but WITHOUT ANY WARRANTY; without even the implied warranty of
+       * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+       * GNU General Public License for more details.
+       *
+       * You should have received a copy of the LSST License Statement and
+       * the GNU General Public License along with this program. If not,
+       * see <http://www.lsstcorp.org/LegalNotices/>.
+       */
 
-File Description Comment for Header Files
-=========================================
+.. _cpp-doxygen-basics:
 
-After the boilerplate, any C++ header file should have a Doxygen-style comment block (that begins with ``/**``) that includes the following fields:
+Basic Format of Documentation Blocks
+====================================
 
-1. ``@file`` giving the file's name
+This page covers the most important concepts in writing Doxygen-friendly C++ comments for the LSST Stack, though `Doxygen's manual <http://www.doxygen.org/manual/>`_ is the most comprehensive reference.
 
-2. ``@brief`` to provide a synopsis of the file for Doxygen's index. This should be a line, at most.
+.. _cpp-doxygen-javadoc:
 
-3. ``@ingroup`` to specify the name of the LSST Stack package containing this file (see :ref:`below <doc-cpp-package-definition>`).
+Documentation MUST be delimited in Javadoc style
+------------------------------------------------
 
-4. ``@author`` to provide the name of the file's primary author.
+Multi-line documentation blocks must begin with ``/**`` and end in ``*/``. Single-line documentation blocks must begin with ``///``. For consistency, do not begin documentation blocks with ``/*!`` or ``//!``.
+
+(*Note:* one-line documentation blocks are rarely used for public APIs, see :ref:`cpp-doxygen-sections`.)
+
+Under certain circumstances, single-line documentation blocks may begin with ``///<`` instead of ``///``. These cases are indicated below.
+
+.. _cpp-doxygen-form:
+
+Multi-line documentation delimiters SHOULD be on their own lines
+----------------------------------------------------------------
+
+A multi-line documentation block's summary sentence should occur on the line after the opening ``/**``, and the terminating ``*/`` should be on its own line. An example:
+
+.. code-block:: cpp
+
+   /**
+    * Sum numbers in a vector.
+    *
+    * This sum is the arithmetic sum, not some other kind of sum that only
+    * mathematicians have heard of.
+    *
+    * @param values Container whose values are summed.
+    * @return sum of `values`, or 0.0 if `values` is empty.
+    */
+
+.. _cpp-doxygen-tag:
+
+Documentation MUST use Javadoc-style tags
+-----------------------------------------
+
+Documentation blocks must use tags such as ``@see`` or ``@param`` in place of ``\see`` or ``\param``.
+This is both for internal consistency and to avoid conflicts with other tools that give special treatment to ``\word``.
+
+.. _cpp-doxygen-styling:
+
+Documentation SHOULD use Markdown for formatting
+------------------------------------------------
+
+LSST uses `Markdown-formatted Doxygen comment blocks <http://www.doxygen.org/manual/markdown.html>`_. If a particular format cannot be expressed using Markdown, you MAY use `Doxygen's built-in formatting <http://www.doxygen.org/manual/commands.html>`_ or, if necessary, `HTML markup <http://www.doxygen.org/manual/htmlcmds.html>`_.
+
+.. _cpp-doxygen-headeronly:
+
+Documentation MUST appear where a component is first declared
+-------------------------------------------------------------
+
+In general, this means documentation blocks will appear in header (``.h``) files rather than source (``.cc``) files. This keeps all the documentation with the API and avoids certain false alarms when Doxygen parses C++11 code.
+
+.. _cpp-doxygen-indentation:
+
+Documentation MUST appear before the declaration it describes, and with the same indentation
+--------------------------------------------------------------------------------------------
 
 For example:
 
 .. code-block:: cpp
 
    /**
-    * @file ExampleClass.cc
+    * Sum numbers in a vector.
     *
-    * @brief This message displayed in Doxygen Files index
-    *
-    * @ingroup PackageName
-    * (Note: this needs exactly one @defgroup somewhere)
-    *
-    * @author Joe Smith
-    * Contact: js@lsst.org
-    *
+    * @param values Container whose values are summed.
+    * @return sum of `values`, or 0.0 if `values` is empty.
     */
+   double sum(std::vector<double> & const values) {
+       ...
+   }
+
+Not:
+
+.. code-block:: cpp
+
+   double sum(std::vector<double> & const values) {
+       /**
+        * Sum numbers in a vector.
+        *
+        * @param values Container whose values are summed.
+        * @return sum of `values`, or 0.0 if `values` is empty.
+        */
+       ...
+   }
 
 .. _doc-cpp-package-definition:
 
