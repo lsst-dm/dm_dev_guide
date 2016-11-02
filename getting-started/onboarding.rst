@@ -17,6 +17,8 @@ This gives you access to:
 - The JIRA project management app: http://jira.lsstcorp.org/
 - The Confluence wiki: https://confluence.lsstcorp.org
 
+.. _getting-started-github:
+
 GitHub and LSST organizations
 =============================
 
