@@ -59,21 +59,27 @@ Create an account, and let your T/CAM know your username to get access to intern
 **T/CAMs:** add users via the `LSST <https://community.lsst.org/groups/LSST>`__ and `LSSTDM <https://community.lsst.org/groups/LSSTDM>`__ group pages.
    
 
-HipChat
-=======
+Slack
+=====
 
-`HipChat <https://www.hipchat.com/>`_ is DM's internal instant messaging platform.
-Install HipChat on your computer (and phone, if you wish) and then ask your T/CAM for an invitation to DM's group.
-Some important rooms to follow are:
-   
-- 'Data Management' for general DM discussion.
-- 'Software Development' for anything about writing software.
-- 'SQuaRE' for developer support services.
-- 'Bot: Jenkins' for our Continuous Integration system.
-- 'Tavern' for "water cooler" type talk.
-- 'Tea Time' for more serious but still non-LSST conversation.
-   
-Your team may also have specific rooms, and you can send private messages to individuals.
+`Slack <https://slack.com/>`_ is LSST's real-time chat platform.
+It is used across the project and by external science collaborations.
+Install Slack on your computer (and phone, if you wish), then ask your T/CAM for access to the ‘LSSTC’ team.
+
+Channels which have been set up specifically for Data Management related discussion can be identified by a ‘dm-’ prefix.
+Important channels you may wish to follow include:
+
+- ‘announce-everyone’ for project-wide announcements.
+- ‘lsst-travel’ for help with travel on project business.
+- ‘lsst-newchannels’ for notifications of new channels.
+- ‘software-dev’ for anything about writing software.
+- ‘dm’ for general DM discussion.
+- ‘dm-square’ for developer support services.
+- ‘dm-jenkins’ for automatic notifications from our Continuous Integration system.
+- ‘dm-tavern’ for “water cooler” type talk.
+- ‘dm-tea-time’ for more serious but still non-LSST conversation.
+
+Your team may also have specific channels, and you can send private messages to individuals.
 
 Google account for Hangouts
 ===========================
