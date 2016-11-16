@@ -1,8 +1,11 @@
-########################################################
-Using the lsst-dev01 Server and the Verification Cluster
-########################################################
+###################################################################
+Using the lsst-dev (lsst-dev01) Server and the Verification Cluster
+###################################################################
 
 ``lsst-dev01`` and the ``Verification Cluster`` is a cluster of servers run by NCSA for LSST DM development work.
+The cname ``lsst-dev`` now directs to ``lsst-dev01`` following the recent release, and this system now serves
+as the primary development server for the team. 
+
 To get an account, see the :doc:`Onboarding Checklist </getting-started/onboarding>`.
 
 This page is designed help you get started on ``lsst-dev01`` and the ``Verification Cluster``:
@@ -22,6 +25,7 @@ Overview of the Verification Cluster
 ``lsst-dev01`` is a system with 24 cores, 256 GB RAM, running CentOS 7.2 that serves as the front end of the 
 ``Verification Cluster``.  ``lsst-dev01`` is described in further detail on the
 page of `available development servers <https://confluence.lsstcorp.org/display/LDMDG/DM+Development+Servers>`_ .
+
 
 The ``Verification Cluster`` consists of 48  Dell C6320 nodes with 24 physical cores (2 sockets, 12 cores per processor) and 128 GB RAM.  As such, the system provides a total of 1152 cores. 
 
