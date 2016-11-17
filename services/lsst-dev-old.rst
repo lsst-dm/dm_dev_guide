@@ -2,7 +2,7 @@
 Using the lsst-dev-old Server
 #############################
 
-``The lsst-dev-old system is no longer supported and will be permanently retired on January 19, 2017".
+``The lsst-dev-old system is no longer supported and will be permanently retired on January 19, 2017.``
 
 ``lsst-dev-old`` is the legacy developement server/cluster of servers run by NCSA for LSST DM development work.
 This system remains available during the current transition period as developers migrate to the new 
