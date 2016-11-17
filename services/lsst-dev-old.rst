@@ -6,7 +6,7 @@ Using the lsst-dev-old Server
 
 ``lsst-dev-old`` is the legacy developement server/cluster of servers run by NCSA for LSST DM development work.
 This system remains available during the current transition period as developers migrate to the new 
-`lsst-dev and the Verification Cluster. <https://developer.lsst.io/services/verification.html>`_
+`lsst-dev01 and the Verification Cluster. <https://developer.lsst.io/services/verification.html>`_
 
 This page is designed to assist developers in their work on ``lsst-dev-old``:
 
