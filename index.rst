@@ -96,7 +96,7 @@ The `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ w
    :caption: Developer Services
    :name: part-services
 
-   services/lsst-dev.rst
    services/verification.rst
+   services/lsst-dev-old.rst
    services/ncsa_bulk_transfer.rst
    services/nebula/index.rst

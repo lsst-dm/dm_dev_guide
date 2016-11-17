@@ -1,20 +1,23 @@
-#########################
-Using the lsst-dev Server
-#########################
+#############################
+Using the lsst-dev-old Server
+#############################
 
-``lsst-dev`` is a cluster of servers run by NCSA for LSST DM development work.
-To get an account, see the :doc:`Onboarding Checklist </getting-started/onboarding>`.
+``The lsst-dev-old system is no longer supported and will be permanently retired on January 19, 2017.``
 
-This page is designed help you get started on ``lsst-dev``:
+``lsst-dev-old`` is the legacy developement server/cluster of servers run by NCSA for LSST DM development work.
+This system remains available during the current transition period as developers migrate to the new 
+`lsst-dev01 and the Verification Cluster. <https://developer.lsst.io/services/verification.html>`_
 
-#. :ref:`lsst-dev-overview`
-#. :ref:`lsst-dev-password`
-#. :ref:`lsst-dev-ssh-keys`
-#. :ref:`lsst-dev-tools`
-#. :ref:`lsst-dev-loadlsst`
-#. :ref:`lsst-dev-xpra`
+This page is designed to assist developers in their work on ``lsst-dev-old``:
 
-.. _lsst-dev-overview:
+#. :ref:`lsst-dev-old-overview`
+#. :ref:`lsst-dev-old-password`
+#. :ref:`lsst-dev-old-ssh-keys`
+#. :ref:`lsst-dev-old-tools`
+#. :ref:`lsst-dev-old-loadlsst`
+#. :ref:`lsst-dev-old-xpra`
+
+.. _lsst-dev-old-overview:
 
 Overview of Cluster Resources
 =============================
@@ -25,7 +28,7 @@ Overview of Cluster Resources
 - Reference/test data from SDSS DR7 for Stripe82 is located at: :file:`/lsst7/stripe82/dr7/runs`.
 - Report system issues to ``lsst-sysadm _at_ ncsa.illinois.edu``
 
-.. _lsst-dev-password:
+.. _lsst-dev-old-password:
 
 Account Password
 ================
@@ -34,7 +37,7 @@ You can log into LSST development servers at NCSA with your NCSA account and pas
 
    - https://identity.ncsa.illinois.edu/reset
 
-.. _lsst-dev-ssh-keys:
+.. _lsst-dev-old-ssh-keys:
 
 Set up SSH Keys
 ===============
@@ -70,17 +73,17 @@ Enter your passphrase at the prompts:
 
    If you used a program other than OpenSSH for this step, make sure your public key is formatted as a single line (most SSH clients provide it as an option). Otherwise, the next step will not work.
 
-2. Install the public key on lsst-dev
--------------------------------------
+2. Install the public key on lsst-dev-old
+-----------------------------------------
 
-Install the public key on the remote server, :file:`~/.ssh/id_rsa.pub`, to ``lsst-dev.ncsa.illinois.edu``:
+Install the public key on the remote server, :file:`~/.ssh/id_rsa.pub`, to ``lsst-dev-old.ncsa.illinois.edu``:
 
 .. prompt:: bash
 
-   scp .ssh/id_rsa.pub lsst-dev.ncsa.illinois.edu:mymachine_rsa.pub
-   ssh lsst-dev.ncsa.illinois.edu
+   scp .ssh/id_rsa.pub lsst-dev-old.ncsa.illinois.edu:mymachine_rsa.pub
+   ssh lsst-dev-old.ncsa.illinois.edu
 
-On ``lsst-dev.ncsa.illinois.edu``:
+On ``lsst-dev-old.ncsa.illinois.edu``:
 
 .. prompt:: bash
 
@@ -92,11 +95,11 @@ On ``lsst-dev.ncsa.illinois.edu``:
 3. Login
 --------
 
-Login without a password to ``lsst-dev``:
+Login without a password to ``lsst-dev-old``:
 
 .. prompt:: bash $ auto
 
-   $ ssh lsst-dev.ncsa.illinois.edu
+   $ ssh lsst-dev-old.ncsa.illinois.edu
    Enter passphrase for key '/home/username/.ssh/id_rsa': # type your key passphrase
 
 For more information on using SSH public/private keys:
@@ -106,12 +109,12 @@ For more information on using SSH public/private keys:
 - `Using SSH Public Key Authentication <http://macnugget.org/projects/publickeys/>`_
 - `SSH Public Key Based Authentication Howto <http://www.cyberciti.biz/tips/ssh-public-key-based-authentication-how-to.html>`_
 
-.. _lsst-dev-tools:
+.. _lsst-dev-old-tools:
 
 Select Appropriate Developer Tools
 ==================================
 
-The ``lsst-dev`` system is configured with the CentOS 6.7 as its operating system.
+The ``lsst-dev-old`` system is configured with the CentOS 6.7 as its operating system.
 This release of CentOS provides an old set of development tools, centred around version 4.4.7 of the `GNU Compiler Collection`_ (GCC).
 This version of GCC does not satisfy the `prerequisites for building the LSST stack`_.
 Before proceeding, therefore, you should enable the `Red Hat Developer Toolset`_ version 3 (``devtoolset-3``) which has been pre-installed.
@@ -136,7 +139,7 @@ This may be done at the same time as enabling ``devtoolset-3``.
 
    scl enable devtoolset-3 git19 bash
 
-You may wish to automatically enable ``devtoolset-3`` every time you log in to ``lsst-dev`` by adding it to your shell initialization files.
+You may wish to automatically enable ``devtoolset-3`` every time you log in to ``lsst-dev-old`` by adding it to your shell initialization files.
 For example, try adding the following to :file:`~/.profile`:
 
 .. code-block:: bash
@@ -148,20 +151,20 @@ For example, try adding the following to :file:`~/.profile`:
 .. _Red Hat Developer Toolset: http://developers.redhat.com/products/developertoolset/overview/
 .. _Git: https://www.git-scm.com/
 
-.. _lsst-dev-loadlsst:
+.. _lsst-dev-old-loadlsst:
 
 Load the LSST Environment
 =========================
 
-Two ‘shared’ installations of the LSST software stack are available on ``lsst-dev``:
+Two ‘shared’ installations of the LSST software stack are available on ``lsst-dev-old``:
 
 :file:`/ssd/lsstsw/stack/`
    This is installed on local (SSD) storage.
-   It provides for maximum performance when executing jobs on ``lsst-dev`` directly.
+   It provides for maximum performance when executing jobs on ``lsst-dev-old`` directly.
 
 :file:`/nfs/lsst4/lsstsw/stack/`
    This is installed on networked storage (NFS).
-   As such, it is likely to be slower than local storage when running on ``lsst-dev``.
+   As such, it is likely to be slower than local storage when running on ``lsst-dev-old``.
    However, the NFS disk is cross-mounted to `other development servers at NCSA`_, including those configured as part of the `HTCondor pool`_.
    This stack can therefore be relied upon to be consistent when launching jobs across the cluster.
 
@@ -203,7 +206,7 @@ Note that the SSD and NFS-backed stacks are independent: while both will automat
 
 Administators may wish to note that the shared stack is automatically updated using the script :file:`~lsstsw/shared-stack/shared_stack.py`, which is executed nightly by Cron.
 
-.. _lsst-dev-xpra:
+.. _lsst-dev-old-xpra:
 
 Configure Remote Display with :command:`xpra`
 =============================================
@@ -212,7 +215,7 @@ Configure Remote Display with :command:`xpra`
 It can be very handy and efficient for remote display to your machine from the LSST cluster (e.g., debugging with :command:`ds9`) because it is much faster than a regular X connection when you don't have a lot of bandwidth (e.g., working remotely), and it saves state between connections.
 Here's how to use it:
 
-On ``lsst-dev``:
+On ``lsst-dev-old``:
 
 .. prompt:: bash
 
@@ -225,7 +228,7 @@ On your local machine, do:
 
 .. prompt:: bash
 
-   xpra attach ssh:lsst-dev:10
+   xpra attach ssh:lsst-dev-old:10
 
 You may leave that running, or put it in the background and later use:
 
@@ -233,6 +236,6 @@ You may leave that running, or put it in the background and later use:
 
    xpra detach
 
-Then you can open windows on ``lsst-dev`` (with ``DISPLAY=:10``) and they will appear on your machine.
+Then you can open windows on ``lsst-dev-old`` (with ``DISPLAY=:10``) and they will appear on your machine.
 If you now kill the :command:`xpra attach` on your machine, you'll lose those windows.
 When you reattach, they'll reappear.

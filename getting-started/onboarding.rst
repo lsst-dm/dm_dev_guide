@@ -46,7 +46,7 @@ Include the following in the request:
 
 .. seealso::
 
-   :doc:`/services/lsst-dev`.
+   :doc:`/services/lsst-dev-old`.
 
 Community.lsst.org
 ==================
