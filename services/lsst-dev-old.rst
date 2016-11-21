@@ -2,11 +2,13 @@
 Using the lsst-dev-old Server
 #############################
 
-``The lsst-dev-old system is no longer supported and will be permanently retired on January 19, 2017.``
+.. warning::
 
-``lsst-dev-old`` is the legacy developement server/cluster of servers run by NCSA for LSST DM development work.
+   The lsst-dev-old system is no longer supported and will be permanently retired on January 19, 2017.
+
+``lsst-dev-old`` is the legacy development server/cluster of servers run by NCSA for LSST DM development work.
 This system remains available during the current transition period as developers migrate to the new 
-`lsst-dev01 and the Verification Cluster. <https://developer.lsst.io/services/verification.html>`_
+:doc:`lsst-dev01 and the Verification Cluster <verification>`.
 
 This page is designed to assist developers in their work on ``lsst-dev-old``:
 
@@ -26,7 +28,7 @@ Overview of Cluster Resources
 - `System announcements <https://confluence.lsstcorp.org/display/LDMDG/DM+System+Announcements>`_ of the status and planned down-time.
 - `Real-time system status <http://lsst-web.ncsa.illinois.edu/nagios>`_ (requires login).
 - Reference/test data from SDSS DR7 for Stripe82 is located at: :file:`/lsst7/stripe82/dr7/runs`.
-- Report system issues to ``lsst-sysadm _at_ ncsa.illinois.edu``
+- Report system issues to ``lsst-sysadm _at_ ncsa.illinois.edu``.
 
 .. _lsst-dev-old-password:
 
@@ -115,7 +117,7 @@ Select Appropriate Developer Tools
 ==================================
 
 The ``lsst-dev-old`` system is configured with the CentOS 6.7 as its operating system.
-This release of CentOS provides an old set of development tools, centred around version 4.4.7 of the `GNU Compiler Collection`_ (GCC).
+This release of CentOS provides an old set of development tools, centered around version 4.4.7 of the `GNU Compiler Collection`_ (GCC).
 This version of GCC does not satisfy the `prerequisites for building the LSST stack`_.
 Before proceeding, therefore, you should enable the `Red Hat Developer Toolset`_ version 3 (``devtoolset-3``) which has been pre-installed.
 This provides an updated toolchain, including GCC 4.9.2.
