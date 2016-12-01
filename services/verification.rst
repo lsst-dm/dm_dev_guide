@@ -22,10 +22,9 @@ This page is designed help you get started on ``lsst-dev01`` and the ``Verificat
 Overview of the Verification Cluster
 ====================================
 
-``lsst-dev01`` is a system with 24 cores, 256 GB RAM, running CentOS 7.2 that serves as the front end of the 
-``Verification Cluster``.  ``lsst-dev01`` is described in further detail on the
+``lsst-dev01`` is a system with 24 cores, 256 GB RAM, running the latest CentOS 7.x that serves as the front end of the 
+``Verification Cluster``.  ``lsst-dev01`` is described in further detail at :doc:`lsst-dev01` and on the
 page of `available development servers <https://confluence.lsstcorp.org/display/LDMDG/DM+Development+Servers>`_ .
-
 
 The ``Verification Cluster`` consists of 48  Dell C6320 nodes with 24 physical cores (2 sockets, 12 cores per processor) and 128 GB RAM.  As such, the system provides a total of 1152 cores. 
 
