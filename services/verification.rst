@@ -10,14 +10,14 @@ To get an account, see the :doc:`Onboarding Checklist </getting-started/onboardi
 
 This page is designed help you get started on ``lsst-dev01`` and the ``Verification Cluster``:
 
-#. :ref:`lsst-dev01-overview`
-#. :ref:`lsst-dev01-password`
-#. :ref:`lsst-dev01-gpfs`
-#. :ref:`lsst-dev01-stack`
-#. :ref:`lsst-dev01-slurm`
+#. :ref:`verification-overview`
+#. :ref:`verification-password`
+#. :ref:`verification-gpfs`
+#. :ref:`verification-stack`
+#. :ref:`verification-slurm`
 
 
-.. _lsst-dev01-overview:
+.. _verification-overview:
 
 Overview of the Verification Cluster
 ====================================
@@ -38,7 +38,7 @@ home directories), but are not mounted on the compute nodes of the ``Verificatio
 Report system issues to ``lsst-sysadm _at_ ncsa.illinois.edu``
 
 
-.. _lsst-dev01-password:
+.. _verification-password:
 
 Account Password
 ================
@@ -48,7 +48,7 @@ You can log into LSST development servers at NCSA such as ``lsst-dev01`` with yo
    - https://identity.ncsa.illinois.edu/reset
 
 
-.. _lsst-dev01-gpfs:
+.. _verification-gpfs:
 
 GPFS Directory Spaces
 =====================
@@ -67,7 +67,7 @@ example is the SDSS DR7 Stripe82 data, which can be found at
 :file:`/datasets/stripe82/dr7/runs` 
 
 
-.. _lsst-dev01-stack:
+.. _verification-stack:
 
 Shared Software Stack in GPFS
 =============================
@@ -78,7 +78,7 @@ is available under :file:`/software/lsstsw`.  This stack may be initialized via:
      % .  /software/lsstsw/stack/loadLSST.bash
 
 
-.. _lsst-dev01-slurm:
+.. _verification-slurm:
 
 SLURM Job Submission
 ====================
