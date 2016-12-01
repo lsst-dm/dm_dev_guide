@@ -2535,7 +2535,7 @@ They may be used in ``.h`` interface header files if:
 .. seealso::
 
    - :ref:`pipelines:source-install-redhat-legacy` from the `LSST Science Pipelines <https://pipelines.lsst.io>`__ documentation.
-   - :doc:`../services/lsst-dev-old` provides :ref:`instructions for using devtoolset-3 <lsst-dev-old-tools>` to obtain a more modern GCC on LSST cluster machines.
+   - :doc:`/services/lsst-dev` provides :ref:`instructions for using devtoolset-3 <lsst-dev-tools>` to obtain a more modern GCC on LSST cluster machines.
    - C++11 compiler support matrix: http://wiki.apache.org/stdcxx/C++0xCompilerSupport.
 
 .. _style-guide-cpp-using:
