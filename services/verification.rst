@@ -1,12 +1,12 @@
 ###################################################################
-Using the lsst-dev01 Server and the Verification Cluster
+Using the Verification Cluster
 ###################################################################
 
-``lsst-dev01`` and the ``Verification Cluster`` is a cluster of servers run by NCSA for LSST DM development work.
+The ``Verification Cluster`` is a cluster of servers run by NCSA for LSST DM development work.
 
 To get an account, see the :doc:`Onboarding Checklist </getting-started/onboarding>`.
 
-This page is designed help you get started on ``lsst-dev01`` and the ``Verification Cluster``:
+This page is designed help you get started on the ``Verification Cluster``:
 
 #. :ref:`verification-overview`
 #. :ref:`verification-password`
