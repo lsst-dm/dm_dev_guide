@@ -3,8 +3,8 @@ Using the lsst-dev Server
 #############################
 
 ``lsst-dev`` is the development server/cluster of servers run by NCSA for LSST DM development work.
-The cname ``lsst-dev`` directs to ``lsst-dev01`` following the recent release, and this system now serves as the primary development server for the team.
-For information about the previous CentOS 6 version of this server, see :doc:`lsst-dev-old`.
+The cname ``lsst-dev.ncsa.illinois.edu`` directs to ``lsst-dev01.ncsa.illinois.edu`` and this system serves as the primary development server for the team.
+(For information about the previous CentOS 6 version of this server, see :doc:`lsst-dev-old`.)
 
 To get an account, see the :doc:`Onboarding Checklist </getting-started/onboarding>`.
 
