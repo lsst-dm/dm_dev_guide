@@ -116,8 +116,8 @@ Select Appropriate Developer Tools
 
 The ``lsst-dev01`` system is configured with the latest CentOS 7.x as its operating system.
 This release of CentOS provides an old set of development tools, centered around version 4.8.5 of the `GNU Compiler Collection`_ (GCC).
-This version of GCC does not satisfy the `prerequisites for building the LSST stack`_.
-Before proceeding, therefore, you should enable the `Red Hat Developer Toolset`_ version 3 (``devtoolset-3``) which has been pre-installed.
+While this version of GCC does satisfy the `prerequisites for building the LSST stack`_, it is still rather out of date.
+Therefore, you could enable the `Red Hat Developer Toolset`_ version 3 (``devtoolset-3``) which has been pre-installed.
 This provides an updated toolchain, including GCC 4.9.2.
 
 Enable and test ``devtoolset-3`` using the ``scl`` command as follows (replacing ``bash`` with your shell of choice if necessary):
