@@ -165,12 +165,11 @@ Two ‘shared’ installations of the LSST software stack are available on ``lss
 :file:`/software/lsstsw/stack/`
    This is installed on networked storage (GPFS).
    As such, it may be slightly slower than local storage when running on ``lsst-dev01``.
-   However, the ``/software`` GPFS disk is cross-mounted to `other development servers at NCSA`_, including those configured as part of the `HTCondor pool`_ and `Verification Cluster`_..
+   However, the ``/software`` GPFS disk is cross-mounted to `other development servers at NCSA`_, including those configured as part of the `HTCondor pool`_ and :doc:`Verification Cluster<./verification>`.
    This stack can therefore be relied upon to be consistent when launching jobs across the cluster.
 
 .. _other development servers at NCSA: https://confluence.lsstcorp.org/display/LDMDG/DM+Development+Servers
 .. _HTCondor pool: https://confluence.lsstcorp.org/display/DM/Orchestration
-.. _Verification Cluster: :doc:`verification`
 
 This installation is regularly updated to recent releases and weekly builds of the ``lsst_distrib`` top-level package; the most recent build is tagged as ``current``.
 Add this shared stack to your environment and set up the latest build of the LSST applications by running:
