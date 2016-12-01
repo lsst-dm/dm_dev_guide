@@ -318,7 +318,7 @@ repository. Push your tags to the remote repository using::
 
 Now you must log onto ``lsst-dev`` as the user ``lsstsw`` (this will require
 special permissions): see the :doc:`documentation on using this machine
-<../services/lsst-dev-old>`. Once logged in as ``lsstsw``, the steps are:
+</services/lsst-dev>`. Once logged in as ``lsstsw``, the steps are:
 
 - Build your package with the command::
 

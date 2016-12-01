@@ -10,14 +10,14 @@ To get an account, see the :doc:`Onboarding Checklist </getting-started/onboardi
 
 This page is designed to assist developers in their work on ``lsst-dev01``:
 
-#. :ref:`lsst-dev01-overview`
-#. :ref:`lsst-dev01-password`
-#. :ref:`lsst-dev01-ssh-keys`
-#. :ref:`lsst-dev01-tools`
-#. :ref:`lsst-dev01-loadlsst`
-#. :ref:`lsst-dev01-xpra`
+#. :ref:`lsst-dev-overview`
+#. :ref:`lsst-dev-password`
+#. :ref:`lsst-dev-ssh-keys`
+#. :ref:`lsst-dev-tools`
+#. :ref:`lsst-dev-loadlsst`
+#. :ref:`lsst-dev-xpra`
 
-.. _lsst-dev01-overview:
+.. _lsst-dev-overview:
 
 Overview of Cluster Resources
 =============================
@@ -28,7 +28,7 @@ Overview of Cluster Resources
 - Reference/test data from SDSS DR7 for Stripe82 is located at: :file:`/lsst7/stripe82/dr7/runs`.
 - Report system issues to ``lsst-sysadm _at_ ncsa.illinois.edu``.
 
-.. _lsst-dev01-password:
+.. _lsst-dev-password:
 
 Account Password
 ================
@@ -37,7 +37,7 @@ You can log into LSST development servers at NCSA with your NCSA account and pas
 
    - https://identity.ncsa.illinois.edu/reset
 
-.. _lsst-dev01-ssh-keys:
+.. _lsst-dev-ssh-keys:
 
 Set up SSH Keys
 ===============
@@ -109,7 +109,7 @@ For more information on using SSH public/private keys:
 - `Using SSH Public Key Authentication <http://macnugget.org/projects/publickeys/>`_
 - `SSH Public Key Based Authentication Howto <http://www.cyberciti.biz/tips/ssh-public-key-based-authentication-how-to.html>`_
 
-.. _lsst-dev01-tools:
+.. _lsst-dev-tools:
 
 Select Appropriate Developer Tools
 ==================================
@@ -151,7 +151,7 @@ For example, try adding the following to :file:`~/.profile`:
 .. _Red Hat Developer Toolset: http://developers.redhat.com/products/developertoolset/overview/
 .. _Git: https://www.git-scm.com/
 
-.. _lsst-dev01-loadlsst:
+.. _lsst-dev-loadlsst:
 
 Load the LSST Environment
 =========================
@@ -206,7 +206,7 @@ Note that the SSD and GPFS-backed stacks are independent: while both will automa
 
 Administators may wish to note that the shared stack is automatically updated using the script :file:`~lsstsw/shared-stack/shared_stack.py`, which is executed nightly by Cron.
 
-.. _lsst-dev01-xpra:
+.. _lsst-dev-xpra:
 
 Configure Remote Display with :command:`xpra`
 =============================================

@@ -66,7 +66,7 @@ Security groups
 .. image:: /_static/services/nebula/nebula_intro_s4.png
 
 The second Panel of the Launch Instance interface has fields pertinent to secure access and firewall type configuration.
-First, select a "Key Pair" to be used for ssh access to the instance (refer to the separate page :ref:`Generating or Uploading a Key Pair <lsst-dev-old-ssh-keys>` for background).
+First, select a "Key Pair" to be used for ssh access to the instance (refer to the separate page :ref:`Generating or Uploading a Key Pair <lsst-dev-ssh-keys>` for background).
 Second, selecting the proper Security Groups is important to prevent problems/blockers down the line.
 To enable ssh access into the instance after startup, select the ``remote SSH`` security group.
 If the instance may run web servers/services, select ``remote http``, ``remote https``, to ensure that the standard ports will be open.
