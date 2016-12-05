@@ -3,7 +3,10 @@ Developer Onboarding Checklist
 ##############################
 
 *Welcome to Data Management*.
-This page will help you get the necessary accounts.
+This page will give you an overview of the accounts you'll have as a member of DM.
+
+Some things you can set up yourself, but many accounts require action by your manager.
+We've given them a handy :ref:`onboarding-tcam-checklist` at the bottom.
 
 .. _getting-started-lsst-account:
 
@@ -95,3 +98,22 @@ You should be subscribed to these lists as soon as you get an :ref:`LSST acccoun
 
 - `dm-devel <https://lists.lsst.org/mailman/listinfo/dm-devel>`_
 - `dm-staff <https://lists.lsst.org/mailman/listinfo/dm-staff>`_ (internal list)
+
+.. _onboarding-tcam-checking:
+
+Checklist for T/CAMs
+====================
+
+Here's what T/CAMs need to do to get their new hire started:
+
+#. Fill out the `Project onboarding form <https://project.lsst.org/onboarding/form>`__.
+
+#. Add the hire as a member of the 'Data Management' team in each these GitHub organizations:
+
+   - `github.com/lsst <https://github.com/orgs/lsst/teams/data-management>`__.
+   - `github.com/lsst-dm <https://github.com/orgs/lsst-dm/teams/data-management>`__.
+
+#. Add the hire as a member of these Community forum groups:
+
+   - `LSST <https://community.lsst.org/groups/LSST>`__.
+   - `LSSTDM <https://community.lsst.org/groups/LSSTDM>`__.
