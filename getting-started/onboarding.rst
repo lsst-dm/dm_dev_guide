@@ -53,20 +53,23 @@ Slack
 
 `Slack <https://slack.com/>`_ is LSST's real-time chat platform.
 It is used across the project and by external science collaborations.
-Install Slack on your computer (and phone, if you wish), then ask your T/CAM for access to the ‘LSSTC’ team.
 
-Channels which have been set up specifically for Data Management related discussion can be identified by a ‘dm-’ prefix.
-Important channels you may wish to follow include:
+Ask your T/CAM for access to the ‘lsstc’ Slack team.
+You can access it online at https://lsstc.slack.com, and through `Slack's mobile and desktop apps <https://get.slack.help/hc/en-us/articles/201746897-Slack-apps-for-computers-phones-tablets>`__.
+Slack's `online help <https://get.slack.help/hc/en-us>`__ is a great way to learn Slack's features.
 
-- ‘announce-everyone’ for project-wide announcements.
-- ‘lsst-travel’ for help with travel on project business.
-- ‘lsst-newchannels’ for notifications of new channels.
-- ‘software-dev’ for anything about writing software.
-- ‘dm’ for general DM discussion.
-- ‘dm-square’ for developer support services.
-- ‘dm-jenkins’ for automatic notifications from our Continuous Integration system.
-- ‘dm-tavern’ for “water cooler” type talk.
-- ‘dm-tea-time’ for more serious but still non-LSST conversation.
+Channels set up specifically for Data Management related discussion have a ‘dm-’ prefix.
+Some important channels are:
+
+- `announce-everyone <https://lsstc.slack.com/archives/announce-everyone>`__ for project-wide announcements.
+- `lsst-travel <https://lsstc.slack.com/archives/lsst-travel>`__ for help with travel on project business.
+- `lsst-newchannels <https://lsstc.slack.com/archives/lsst-newchannels>`__ for notifications of new channels.
+- `software-dev <https://lsstc.slack.com/archives/software-dev>`__ for anything about writing software.
+- `dm <https://lsstc.slack.com/archives/dm>`__ for general DM discussion.
+- `dm-square <https://lsstc.slack.com/archives/dm-square>`__ for developer support services.
+- `dm-jenkins <https://lsstc.slack.com/archives/dm-jenkins>`__ for automatic notifications from our Continuous Integration system.
+- `dm-tavern <https://lsstc.slack.com/archives/dm-tavern>`__ for “water cooler” type talk.
+- `dm-tea-time <https://lsstc.slack.com/archives/dm-tea-team>`__ for more serious but still non-LSST conversation.
 
 Your team may also have specific channels, and you can send private messages to individuals.
 
