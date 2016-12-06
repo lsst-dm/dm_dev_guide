@@ -13,7 +13,7 @@ We've given them a handy :ref:`onboarding-tcam-checklist` at the bottom.
 LSST account
 ============
 
-Contact ``lsst-sysadmins _at_ lsst.org`` to get a unified LSST account.
+Your manager will request an LSST single sign-on account for you.
 This gives you access to:
 
 - The internal project website, including travel requests: http://project.lsst.org
@@ -37,19 +37,8 @@ Next, ask your T/CAM to add you to the `lsst <https://github.com/lsst>`__ and `l
 NCSA server access
 ==================
 
-Contact ``lsst-account _at_ ncsa.illinois.edu`` to request an account on the NCSA cluster, which hosts the reference platform.
-Include the following in the request:
-
-- First and last name
-- Email
-- Phone number
-- Mailing address
-- Sponsoring LSST manager
-- LSST Team or project
-
-.. seealso::
-
-   :doc:`/services/lsst-dev`.
+You'll also get an account on the NCSA developer infrastructure.
+See :doc:`/services/lsst-dev` for login details.
 
 Community.lsst.org
 ==================
@@ -58,9 +47,6 @@ https://community.lsst.org is LSST's public-facing discussion and support forum.
 Browse the `forum-howto <https://community.lsst.org/tags/forum-howto>`_ tag to learn how to use the platform.
    
 Create an account, and let your T/CAM know your username to get access to internal discussion categories.
-   
-**T/CAMs:** add users via the `LSST <https://community.lsst.org/groups/LSST>`__ and `LSSTDM <https://community.lsst.org/groups/LSSTDM>`__ group pages.
-   
 
 Slack
 =====
@@ -99,7 +85,7 @@ You should be subscribed to these lists as soon as you get an :ref:`LSST acccoun
 - `dm-devel <https://lists.lsst.org/mailman/listinfo/dm-devel>`_
 - `dm-staff <https://lists.lsst.org/mailman/listinfo/dm-staff>`_ (internal list)
 
-.. _onboarding-tcam-checking:
+.. _onboarding-tcam-checklist:
 
 Checklist for T/CAMs
 ====================
