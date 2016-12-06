@@ -34,6 +34,7 @@ The `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ w
    processes/project_planning.rst
    processes/jira_agile.rst
    processes/wiki.rst
+   processes/presenting-at-conferences.rst
 
 .. seealso::
 
