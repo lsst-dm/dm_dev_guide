@@ -35,6 +35,7 @@ The `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ w
    processes/jira_agile.rst
    processes/wiki.rst
    processes/presenting-at-conferences.rst
+   processes/publication-policy.rst
 
 .. seealso::
 

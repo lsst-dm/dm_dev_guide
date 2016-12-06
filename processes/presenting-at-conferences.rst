@@ -4,6 +4,11 @@ Presenting at Conferences
 
 This is our playbook for presenting on behalf of DM at both project and public meetings.
 
+.. seealso::
+
+   Conference proceedings papers are coordinated by the LSST Project Publication Board.
+   See :doc:`publication-policy` for more information.
+
 .. _presenting-interaction-report:
 
 Interaction report
