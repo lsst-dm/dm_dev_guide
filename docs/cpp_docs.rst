@@ -163,7 +163,391 @@ Not:
        ...
    }
 
-.. _doc-cpp-package-definition:
+.. _cpp-doxygen-sections:
+
+Common Structure of Documentation Blocks
+========================================
+
+We organize Doxygen comment blocks into sections that appear in a common order. This format is analogous to the one adopted for the :ref:`Python documentation <py-docstring-sections>`.
+The sections and their relative order are:
+
+1. :ref:`cpp-doxygen-short-summary`
+2. :ref:`cpp-doxygen-deprecation` (if applicable)
+3. :ref:`cpp-doxygen-extended-summary` (recommended)
+4. :ref:`cpp-doxygen-tparameters` (if applicable; for classes, methods, and functions)
+5. :ref:`cpp-doxygen-parameters` (if applicable; for methods and functions)
+6. :ref:`cpp-doxygen-returns` (if applicable; for methods and functions)
+7. :ref:`cpp-doxygen-throws` (if applicable; for methods and functions)
+8. :ref:`cpp-doxygen-exceptsafe` (optional; for methods and functions)
+9. :ref:`cpp-doxygen-related` (if applicable; for functions)
+10. :ref:`cpp-doxygen-initializer` (optional; for constants)
+11. :ref:`cpp-doxygen-see-also` (optional)
+12. :ref:`cpp-doxygen-notes` (optional)
+13. :ref:`cpp-doxygen-references` (optional)
+14. :ref:`cpp-doxygen-examples` (optional)
+
+For summaries of how these sections are composed in specific contexts, see:
+
+- :ref:`cpp-doxygen-package-definition`
+- :ref:`cpp-doxygen-class-structure`
+- :ref:`cpp-doxygen-method-function-structure`
+- :ref:`cpp-doxygen-attribute-constants-structure`
+
+.. _cpp-doxygen-short-summary:
+
+Short Summary
+-------------
+
+A one-line summary that does not use variable names or the function's name. This summary will appear in lists of class/namespace members.
+
+.. code-block:: cpp
+
+   /// Sum two numbers.
+   double add(double a, double b);
+
+For functions and methods, the summary should be written in the imperative voice (i.e., as a command that the API consumer is giving). Getters and other methods that are more naturally described as values rather than actions may ignore this rule.
+
+.. _cpp-doxygen-deprecation:
+
+Deprecation Warning
+-------------------
+
+A ``@deprecated`` tag (where applicable) to warn users that the component is deprecated. The text that follows the tag should include:
+
+1. In what stack version the object was deprecated, and when it will be removed.
+2. Reason for deprecation if this is useful information (object is superseded, duplicates functionality found elsewhere, etc.).
+3. New recommended way of obtaining the same functionality.
+
+.. code-block:: cpp
+
+   /**
+    * @deprecated Deprecated in 11_0. `ndobj_old` will be removed in 12_0; it
+    *     is replaced by `ndobj_new` because the latter works also with array
+    *     subclasses.
+    */
+
+.. _cpp-doxygen-extended-summary:
+
+Extended Summary
+----------------
+
+A few sentences giving an extended description.
+This section should be used to clarify *functionality*, not to discuss implementation detail or background theory, which should rather be explored in the :ref:`cpp-doxygen-notes` section below.
+You may refer to the parameters and the function name, but parameter descriptions still belong in the :ref:`cpp-doxygen-parameters` section unless they are very lengthy.
+
+This section may include mathematical equations to describe the behavior of a class or method, but be sure to put math that pertains only to the implementation in the :ref:`cpp-doxygen-notes` section rather than the extended description.
+Equations may be written in `LaTeX <http://www.latex-project.org/>`_ format:
+
+.. code-block:: cpp
+
+   /**
+    * The FFT is a fast implementation of the discrete Fourier transform:
+    * @f[ X(e^{j\omega } ) = x(n)e^{ - j\omega n} @f]
+    */
+
+LaTeX environments can also be used:
+
+.. code-block:: cpp
+
+   /**
+    * The discrete-time Fourier time-convolution property states that
+    * @f{eqnarray*}
+    * x(n) * y(n) \Leftrightarrow X(e^{j\omega } )Y(e^{j\omega } )\\
+    * another equation here
+    * @f}
+    */
+
+Math can also be used inline:
+
+.. code-block:: cpp
+
+   /**
+    * Fit a model of the form @f$y = a x + b@f$ to the data.
+    */
+
+Note that LaTeX is not particularly easy to read, so use equations judiciously. In particular, do not use inline LaTeX just to add Greek or other special symbols; prefer `HTML character entities <http://www.doxygen.org/manual/htmlcmds.html>`_ or Unicode instead.
+
+Doxygen recovers poorly from typos in formulas; you may need to manually delete ``docs/html/formula.repository`` if it contains a bad formula.
+
+Images are allowed, but should not be central to the explanation; users viewing the documentation as text must be able to comprehend its meaning without resorting to an image viewer.
+These additional illustrations are included using:
+
+.. code-block:: cpp
+
+   /**
+    * @image html filename ["caption"]
+    */
+
+where ``filename`` is a path relative to the project root directory.
+
+.. _cpp-doxygen-tparameters:
+
+Template Parameters
+-------------------
+
+A series of ``@tparam`` tags, usually one for each template parameter. Each tag should have a description following the parameter name. You do *not* usually need to document default values; Doxygen will provide the default automatically. If the description extends over multiple lines, each line after the first must be indented.
+
+Parameters should be listed in the same order as they appear in the class, function, or method signature.
+
+.. code-block:: cpp
+
+   /**
+    * Storage for arbitrary data with log(N) lookup.
+    *
+    * ...
+    *
+    * @tparam T the type of data stored in the table
+    * @tparam ComparatorT callable defining a strict weak ordering for objects
+    *     of type `T`. Its `operator()` must accept two `T` and return `true`
+    *     if and only if the first argument comes before the second. It must
+    *     not throw exceptions.
+    */
+   template <typename T, typename ComparatorT = std::less<T>>
+   class LookupTable
+   {
+       ...
+   }
+
+When two or more consecutive template parameters have *exactly* the same description, they can be combined:
+
+.. code-block:: cpp
+
+   /**
+    * @tparam T,U the types of the pair components
+    */
+
+Do not use a space between the parameters, or Doxygen will not parse the command correctly.
+
+.. _cpp-doxygen-tparameters-specializations:
+
+Template Specializations
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+When a partial template specialization reuses parameters from the full template, there is no need to redocument each parameter. If you are omitting the parameters, the documentation must include a cross-reference to the full template, possibly as part of the :ref:`cpp-doxygen-see-also` section.
+
+You must redocument the parameters if the template specialization redefines any parameters (e.g., if the generic parameter ``T`` becomes ``T*`` in the specialization) or if it places additional restrictions on their values.
+
+.. _cpp-doxygen-parameters:
+
+Function/Method Parameters
+--------------------------
+
+A series of ``@param`` tags, usually one for each parameter. Each tag should have a description following the parameter name. You do *not* usually need to document default arguments; Doxygen will provide the default automatically. If the description extends over multiple lines, each line after the first must be indented.
+
+Parameters should be listed in the same order as they appear in the function or method signature.
+
+``@param`` should be given with the ``[in]``, ``[out]``, or ``[in,out]`` tag if the function method contains any output parameters. The ``[in]`` tag is optional if all parameters are input, even if other functions or methods in the same class or package use output parameters.
+
+.. code-block:: cpp
+
+   /**
+    * Compute mean and standard deviation for a collection of data.
+    *
+    * @param[out] mean the mean of `data`, or `NaN` if `data` is empty
+    * @param[out] stdDev the unbiased (sample) standard deviation, or `NaN`
+    *     if `data` contains fewer than 2 elements
+    * @param[in] data the data to analyze
+    */
+   void computeStatistics(double & mean, double & stdDev, std::vector<double> const & data);
+
+When two or more consecutive parameters have *exactly* the same description, they can be combined:
+
+.. code-block:: cpp
+
+   /**
+    * @param x,y the coordinates where the function is evaluated
+    */
+
+Do not use a space between the parameters, or Doxygen will not parse the command correctly.
+
+.. _cpp-doxygen-parameters-inline:
+
+Annotating Parameters with Inline Comments (historical)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+An alternative to the ``@param`` tag is to use an inline comment after each parameter, one per line.
+These comments are prefixed with ``///<``.
+
+This style is permitted for historical reasons, but should not be used in new code.
+If the parameter descriptions are too long to fit in a single line of source, the ``@param`` documentation method *must* be used.
+
+.. _cpp-doxygen-returns:
+
+Returns
+-------
+
+A ``@returns`` tag, followed by a description similar to the one for :ref:`cpp-doxygen-parameters`. If the returned value is a map, ensure that the key-value pairs are documented in the description.
+
+For consistency with Python documentation, always use ``@returns`` and not the synonymous ``@return``.
+
+.. _cpp-doxygen-throws:
+
+Throws
+------
+
+A series of ``@throws`` tags, one for each type of exception (see :ref:`the style guide <style-guide-cpp-5-36>`). Each tag should have a description following the exception type. If the description extends over multiple lines, each line after the first must be indented.
+
+.. code-block:: cpp
+
+   /**
+    * Write an image to disk.
+    *
+    * @throws IoError Thrown if `fileName` could not be written to.
+    */
+   void writeImage(std::string const & fileName);
+
+Doxygen will render one or more ``@throws`` tags as a table of exceptions and descriptions, so do not treat ``@throws`` as the first word of the description.
+
+For consistency with Python documentation, always use ``@throws`` and not the synonymous ``@throw`` or ``@exception``.
+
+.. _cpp-doxygen-exceptsafe:
+
+Exception Safety
+----------------
+
+Whether or not there are any ``@throws`` tags for specific exceptions, a function or method should have an ``@exceptsafe`` tag.
+The description following the tag should describe the level of exception safety provided by the function or method.
+
+The following terms may be used for brevity:
+
+no-throw
+    The function is guaranteed to always return without throwing an exception.
+strong
+    If the function throws an exception, the program will be in the same state as before the call; i.e., failed calls have no side effects.
+basic
+    If the function throws an exception, the program will be in a valid state, but not necessarily a predictable one. No memory, file descriptors, locks, or other resources will be leaked.
+none
+    If the function throws an exception, objects may be corrupted and unsafe to use, or resources may be leaked.
+
+Examples:
+
+.. code-block:: cpp
+
+   /**
+    * Image associated with this map.
+    *
+    * @exceptsafe Shall not throw exceptions.
+    */
+   ImageF getImage() const noexcept;
+
+.. code-block:: cpp
+
+   /**
+    * Apply a user-specified transformation to an image.
+    *
+    * @exceptsafe If `transform` provides basic exception safety, then this
+    *     method shall provide strong exception safety. Otherwise, it provides
+    *     no exception safety guarantee.
+    */
+   template <class Func>
+   ImageF transformImage(Func const & transform) const;
+
+.. _cpp-doxygen-related:
+
+Helper Functions
+----------------
+
+Some operations on a class, particularly arithmetic operators, must be implemented as standalone functions even though they are *conceptually* part of the class. These functions should have the ``@relatesalso`` tag, followed by the name of the appropriate class. They will appear on the class's documentation page under the heading "Related Functions". Use this tag sparingly.
+
+For internal consistency, always use ``@relatesalso`` and not the synonymous ``@relatedalso``.
+
+Examples:
+
+.. code-block:: cpp
+
+   /**
+    * Add two images pixel-by-pixel.
+    *
+    * @relatesalso ImageF
+    */
+   ImageF operator+(ImageF const & lhs, ImageF const & rhs);
+
+.. _cpp-doxygen-initializer:
+
+Initializer Declaration
+-----------------------
+
+By default, Doxygen shows the values of constants unless they are very long. The ``@showinitializer`` and ``@hideinitializer`` tags override this behavior.
+
+.. code-block:: cpp
+
+   /**
+    * Maximum number of simultaneous readers supported.
+    *
+    * @hideinitializer
+    */
+   int const MAX_READERS = 16;    // Value is implementation detail and subject to change
+
+.. _cpp-doxygen-see-also:
+
+See Also
+--------
+
+'See Also' is an optional section used to refer to related code.
+This section can be very useful, but should be used judiciously.
+The goal is to direct users to other functions they may not be aware of, or have easy means of discovering (by looking at the class or package documentation, for example).
+Functions whose documentation further explains parameters used by this function are good candidates.
+
+List each class, function, or method using a ``@see`` tag:
+
+.. code-block:: cpp
+
+   /**
+    * Compute an element-wise cosine.
+    *
+    * @see sin
+    * @see tan
+    */
+   vector<double> cos(vector<double> const & angles);
+
+Prefix objects from other namespaces appropriately by their greatest common namespace. For example, while documenting a ``lsst::afw::tables`` module, refer to a class in ``lsst::afw::detection`` by ``afw::detection::Footprint``. When referring to an entirely different module or package, use the full namespace.
+
+For internal consistency, always use ``@see`` and not the synonymous ``@sa``.
+
+.. _cpp-doxygen-notes:
+
+Notes
+-----
+
+*Notes* is an optional section that provides additional information about the code, possibly including a discussion of the algorithm or known limitations of the code. The notes must be prefixed by a ``@note`` or ``@warning`` command. Equations or images may be used as described in :ref:`cpp-doxygen-extended-summary`.
+
+For internal consistency, always use ``@note`` and not the synonymous ``@remark`` or ``@remarks``.
+
+.. _cpp-doxygen-references:
+
+References
+----------
+
+References can be included either in the :ref:`'Notes' <cpp-doxygen-notes>` section or in a separate list below them. A reference consists of the ``@cite`` tag, followed by a BibTeX label. Bibfiles must be listed in the ``CITE_BIB_FILES`` configuration tag in ``doc/doxygen.conf.in``.
+
+Note that Web pages should be referenced with regular inline links.
+
+References are meant to augment the documentation, but should not be required to understand it.
+
+.. _cpp-doxygen-examples:
+
+Examples
+--------
+
+'Examples' is an optional section for examples. This section is very strongly encouraged.
+
+Examples should be prefixed by ``@code`` and suffixed by ``@endcode``:
+
+.. code-block:: cpp
+
+   /**
+    * @code
+    * auto cosines = cos(angles);
+    * @endcode
+    *
+    * Comment explaining the second example.
+    *
+    * @code
+    * auto cosines = cos(radians(angles));
+    * @endcode
+    */
+
+.. _cpp-doxygen-package-definition:
 
 Package Documentation / Definition
 ==================================
@@ -186,6 +570,8 @@ For example:
     *
     * @brief Provide some stuff to do stuff
     */
+
+.. _cpp-doxygen-class-structure:
 
 Class Definitions
 =================
@@ -213,6 +599,8 @@ For example:
        public:
    }
 
+.. _cpp-doxygen-method-function-structure:
+
 Function/Method Definitions
 ===========================
 
@@ -237,26 +625,6 @@ An example of a Doxygen comment for a function:
    */
    void TraceImpl::setVerbosity(const std::string &name, const int verbosity) {
    }
-
-Annotating Arguments with Inline Comments (optional)
-----------------------------------------------------
-
-If the argument descriptions are very short, you may choose to annotate arguments with inline comments after each argument, one per line.
-These comments are prefixed with ``///< set:``.
-
-For example:
-
-.. code-block:: cpp
-
-   /** Set a component's verbosity.
-   *
-   * If no verbosity is specified, inherit from parent
-   */
-   void TraceImpl::setVerbosity(const std::string &name, ///< component of interest
-                                const int verbosity) { ///< desired trace verbosity
-   }
-
-If the argument descriptions are too long to fit in a single line of source, the ``@param`` documenation method should be used.
 
 Overloaded Function/Methods Definitions
 =======================================
