@@ -9,6 +9,32 @@ This is our playbook for presenting on behalf of DM at both project and public m
    Conference proceedings papers are coordinated by the LSST Project Publication Board.
    See :doc:`publication-policy` for more information.
 
+.. _presenting-confluence-meeting-page:
+
+Sign up for a meeting on Confluence (required)
+==============================================
+
+DM tracks meetings, along with who will attend them, at https://confluence.lsstcorp.org/display/DM/DM+Meetings.
+
+If you're interesting in attending a meeting, add your name to the column "Expressed Interest in Attending."
+
+Once your travel is approved (see :ref:`Travel requests <presenting-travel-requests>`), move your name to the "Attending" column.
+
+*This is a required step.*
+
+.. _presenting-travel-requests:
+
+Travel requests (required)
+==========================
+
+You'll need to fill out a *travel request* (TR) to travel to a meeting.
+The TR both lets the project approve the expense and puts the Project travel coordinator to work on booking your itinerary.
+Instructions for submitting TRs are at https://project.lsst.org/travel/travel-requests.
+
+After your trip, you'll need to also fill out a *travel expense report* (TER). Instructions for filing TERs are at https://project.lsst.org/travel/reimbursement.
+
+*These are required steps.*
+
 .. _presenting-interaction-report:
 
 Interaction report
@@ -57,6 +83,8 @@ Write your summary as a new topic in the `LSST Project <https://community.lsst.o
 If multiple team members attended the same meeting, you can either collate your post beforehand, or post multiple replies within the same topic thread.
 
 Tag your topic with ‘`conference-report <http://community.lsst.org/tags/conference-report>`_\ ’ so it's easy to find later.
+
+Also add a link to your meeting report to https://confluence.lsstcorp.org/display/DM/DM+Meetings.
 
 .. note::
 
@@ -142,6 +170,11 @@ Once all the metadata is filled in, click **Save** *and then* click **Publish.**
    However, you *can't* change the uploaded artifact itself.
 
 .. _presenting-zenodo-sharing:
+
+Link from the DM Meetings page
+------------------------------
+
+Once your slides are archived, link to them from the DM Meetings page, https://confluence.lsstcorp.org/display/DM/DM+Meetings.
 
 Sharing your work
 -----------------
