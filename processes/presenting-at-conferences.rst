@@ -1,8 +1,8 @@
-#########################
-Presenting at Conferences
-#########################
+#######################################
+Attending and Presenting at Conferences
+#######################################
 
-This is our playbook for presenting on behalf of DM at both project and public meetings.
+This is our playbook for going to Project and public meetings, and presenting on behalf of DM.
 
 .. seealso::
 
@@ -20,8 +20,6 @@ If you're interesting in attending a meeting, add your name to the column "Expre
 
 Once your travel is approved (see :ref:`Travel requests <presenting-travel-requests>`), move your name to the "Attending" column.
 
-*This is a required step.*
-
 .. _presenting-travel-requests:
 
 Travel requests (required)
@@ -31,36 +29,32 @@ You'll need to fill out a *travel request* (TR) to travel to a meeting.
 The TR both lets the project approve the expense and puts the Project travel coordinator to work on booking your itinerary.
 Instructions for submitting TRs are at https://project.lsst.org/travel/travel-requests.
 
-After your trip, you'll need to also fill out a *travel expense report* (TER). Instructions for filing TERs are at https://project.lsst.org/travel/reimbursement.
-
-*These are required steps.*
-
-.. _presenting-interaction-report:
-
-Interaction report
-==================
-
-As DM team members, we work within an NSF and DOE funded MREFC construction project.
-It's important that we're consistent with the Project when we speak in public and with government officials.
-As you're preparing your presentation:
-
-- `File an interaction report <https://project.lsst.org/interactions>`__. Interaction reports are required when presenting at a public meeting or with government officials.
-- Use and refer to the Project's `pre-approved material <https://project.lsst.org/preapproved>`__ for presentations, including schedule information.
-- Use the Project's `Key Numbers <https://confluence.lsstcorp.org/display/LKB/LSST+Key+Numbers>`__.
+After your trip, you'll need to also fill out a *travel expense report* (TER).
+Instructions for filing TERs are at https://project.lsst.org/travel/reimbursement.
 
 .. _presenting-templates:
 
-Slide templates and stock
-=========================
+Slide templates (required)
+==========================
 
 If the meeting doesn't have a specific slide template, use the `Project's templates and stock slides <https://project.lsst.org/documents/stock-slides-templates>`__.
 
-The Project `image and video gallery <https://www.lsst.org/gallery/image-gallery>`__ is also an excellent source of content.
+.. _presenting-key-numbers:
+
+Key numbers and stock graphics (as needed)
+==========================================
+
+You must ensure that any LSST performance characteristics you state are consistent with the Project's `Key Numbers`_.
+These numbers are rigorously vetted and maintained.
+
+If you need visualizations or photos of the telescope, the Project `image and video gallery <https://www.lsst.org/gallery/image-gallery>`__ is also an excellent resource.
+
+.. _Key Numbers: https://confluence.lsstcorp.org/display/LKB/LSST+Key+Numbers
 
 .. _presenting-slack:
 
-Slack during the meeting
-========================
+Slack during the meeting (optional)
+===================================
 
 You might want to create a dedicated Slack channel for the meeting you're attending.
 Use this channel to coordinate with other on-site LSST folks and to live-blog for the rest of the team.
@@ -73,11 +67,20 @@ Here's how to make the channel:
 
 .. _presenting-report:
 
-Summarize the meeting on the Community forum
-============================================
+Summarize the meeting on the Community forum (by request)
+=========================================================
 
 Once the meeting is over, it's a great idea to write down what happened.
 This record helps the rest of the team benefit from your experience.
+
+Policy on requesting a summary
+------------------------------
+
+Conference summaries are a great idea, but you're not required to write one.
+DM team members can ask each other to write summaries of their meeting experience by writing a JIRA ticket and assigning it to the attendee.
+
+How to write the summary
+------------------------
 
 Write your summary as a new topic in the `LSST Project <https://community.lsst.org/c/lsst-project>`__ category on the Community forum.
 If multiple team members attended the same meeting, you can either collate your post beforehand, or post multiple replies within the same topic thread.
@@ -93,8 +96,8 @@ Also add a link to your meeting report to https://confluence.lsstcorp.org/displa
 
 .. _presenting-zenodo:
 
-Upload slides to the LSST DM Zenodo Community
-=============================================
+Upload slides to the LSST DM Zenodo Community (required)
+========================================================
 
 .. https://zenodo.org/deposit/new?c=lsst-dm
 .. Upload PDF and source (keynote or powerpoint version)
@@ -171,15 +174,15 @@ Once all the metadata is filled in, click **Save** *and then* click **Publish.**
 
 .. _presenting-zenodo-sharing:
 
-Link from the DM Meetings page
-------------------------------
+Link from the DM Meetings page (required)
+-----------------------------------------
 
 Once your slides are archived, link to them from the DM Meetings page, https://confluence.lsstcorp.org/display/DM/DM+Meetings.
 
-Sharing your work
------------------
+Sharing your work (optional)
+----------------------------
 
-Now that your presentation is durably archived you can share it widely:
+Some ideas:
 
 - Add the URL of your presentation's Zenodo page to your :ref:`Community conference report <presenting-report>`.
   Discourse will helpfully embed a preview of your slides.
