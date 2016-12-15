@@ -94,15 +94,23 @@ Also add a link to your meeting report to https://confluence.lsstcorp.org/displa
    The `LSST Project <https://community.lsst.org/c/lsst-project>`__ forum category is only visible to LSST staff (including DM, but other Project subsystems too).
    This venue gives you license to frankly assess reaction from the community to LSST and other projects.
 
+.. _presenting-proceedings:
+
+Submit proceedings papers (required)
+====================================
+
+If you are writing a proceedings paper in conjunction with your presentation, you'll need to submit it to the LSST Publication Board before submitting it to the publisher.
+See :doc:`publication-policy` for details.
+
+After Publication Board approval, proceedings papers should be submitted to https://arXiv.org if the agreement with the publisher allows.
+*We don't use Zenodo for proceedings.*
+
 .. _presenting-zenodo:
 
-Upload slides to the LSST DM Zenodo Community (required)
-========================================================
+Upload slides and posters to the LSST DM Zenodo Community (required)
+====================================================================
 
-.. https://zenodo.org/deposit/new?c=lsst-dm
-.. Upload PDF and source (keynote or powerpoint version)
-
-DM collects conference material (slide decks, in particular) in the `Large Synoptic Survey Telescope Data Management community on Zenodo <https://zenodo.org/communities/lsst-dm/>`__.
+DM collects conference presentation material (slide decks and posters, but **not** proceedings) in the `Large Synoptic Survey Telescope Data Management community on Zenodo <https://zenodo.org/communities/lsst-dm/>`__.
 Zenodo archives and provides Digital Object Identifiers (DOIs) for scientific artifacts.
 DOIs let you to robustly cite artifacts in scientific literature.
 
@@ -115,7 +123,7 @@ Zenodo submission procedure
 ---------------------------
 
 If you haven't already, create an account at https://zenodo.org.
-You might want to login with your existing `GitHub <https://github.com>`__ or `ORCiD <http://orcid.org>`__ accounts.
+You might want to log in with your existing `GitHub <https://github.com>`__ or `ORCiD <http://orcid.org>`__ accounts.
 
 To start your upload, go to this dedicated page for LSST DM: https://zenodo.org/deposit/new?c=lsst-dm.
 
@@ -123,7 +131,7 @@ Next, fill out each relevant section of the submission page:
 
 - **Files.** For presentations, include both the original source files (such as PowerPoint or Keynote documents) **and** an exported PDF version.
 
-- **Upload type.** Typically choose **Presentation** for conference presentation material. If you have multiple types of artifacts from the same event (such as a slide deck, a video of your presentation, and a proceedings paper) it's best to submit each separately. Reach out to `#dm-docs <https://lsstc.slack.com/archives/dm-docs>`__ for advice.
+- **Upload type.** Typically choose **Presentation** or **Poster** for conference presentation material. If you have multiple types of artifacts from the same event it's best to submit each separately. Reach out to `#dm-docs <https://lsstc.slack.com/archives/dm-docs>`__ for advice.
 
 - **Basic information.**
 
@@ -143,7 +151,7 @@ Next, fill out each relevant section of the submission page:
 
 - **Communities.** Ensure that **Large Synoptic Survey Telescope Data Management** is included here (it's added by default by using the `DM upload page <https://zenodo.org/deposit/new?c=lsst-dm>`__). Your meeting might have also have a Zenodo community that you should add.
 
-- **Related/alternate identifiers.** This is an optional section where you can connect your upload to other artifacts. For example, if the proceedings paper is on `arXiv.org <https://arxiv.org>`__, you could provide the arXiv ID and say it "is a supplement to this upload." Use as many related identifiers as necessary. Again, reach out to `#dm-docs <https://lsstc.slack.com/archives/dm-docs>`__ for advice.
+- **Related/alternate identifiers.** This is an optional section where you can connect your upload to other artifacts. For example, if presentation you're uploading to Zenodo is associated with a proceedings paper on `arXiv.org <https://arxiv.org>`__, you could provide the arXiv ID and say it "is a supplement to this upload." Use as many related identifiers as necessary. Again, reach out to `#dm-docs <https://lsstc.slack.com/archives/dm-docs>`__ for advice.
 
 - **References.** You might choose to provide your reference list here, but it's not necessary.
 

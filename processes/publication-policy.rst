@@ -1,3 +1,5 @@
+.. _publication-policy:
+
 #################################
 Publishing Papers and Proceedings
 #################################
