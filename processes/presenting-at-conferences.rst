@@ -41,11 +41,13 @@ If the meeting doesn't have a specific slide template, use the `Project's templa
 
 .. _presenting-key-numbers:
 
-Key numbers and stock graphics (as needed)
-==========================================
+Key numbers, pre-approved material, and stock graphics (as needed)
+==================================================================
 
 You must ensure that any LSST performance characteristics you state are consistent with the Project's `Key Numbers`_.
 These numbers are rigorously vetted and maintained.
+
+The Project also maintains a collection of `pre-approved material <https://project.lsst.org/preapproved>`__ for presentations, including project status, schedule, and general background.
 
 If you need visualizations or photos of the telescope, the Project `image and video gallery <https://www.lsst.org/gallery/image-gallery>`__ is also an excellent resource.
 
