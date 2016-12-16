@@ -5,8 +5,10 @@ Developer Onboarding Checklist
 *Welcome to Data Management*.
 This page will give you an overview of the accounts you'll have as a member of DM.
 
-Some things you can set up yourself, but many accounts require action by your manager.
-We've given them a handy :ref:`onboarding-tcam-checklist` at the bottom.
+.. note::
+
+   Some things you can set up yourself, but many accounts require action by your manager.
+   We've given them a handy :ref:`onboarding-tcam-checklist` at the bottom.
 
 .. _getting-started-lsst-account:
 
@@ -19,6 +21,15 @@ This gives you access to:
 - The internal project website, including travel requests: http://project.lsst.org
 - The JIRA project management app: http://jira.lsstcorp.org/
 - The Confluence wiki: https://confluence.lsstcorp.org
+
+NCSA server access
+==================
+
+You'll also get an account on the NCSA developer infrastructure.
+Your NCSA username will match your LSST account.
+
+NCSA will email you with details on setting up a password.
+Then, see :doc:`/services/lsst-dev` for login details.
 
 .. _getting-started-github:
 
@@ -33,12 +44,6 @@ Next, ask your T/CAM to add you to the `lsst <https://github.com/lsst>`__ and `l
 
    - :doc:`/tools/git_setup` page for recommendations on setting up two-factor authentication and credential helpers for GitHub.
    - :doc:`/tools/git_lfs` page for configuring Git LFS for DM.
-
-NCSA server access
-==================
-
-You'll also get an account on the NCSA developer infrastructure.
-See :doc:`/services/lsst-dev` for login details.
 
 Community.lsst.org
 ==================
@@ -70,6 +75,7 @@ Some important channels are:
 - `dm-jenkins <https://lsstc.slack.com/archives/dm-jenkins>`__ for automatic notifications from our Continuous Integration system.
 - `dm-tavern <https://lsstc.slack.com/archives/dm-tavern>`__ for “water cooler” type talk.
 - `dm-tea-time <https://lsstc.slack.com/archives/dm-tea-team>`__ for more serious but still non-LSST conversation.
+- `dm-admin-support <https://lsstc.slack.com/archives/dm-admin-support>`__ to contact DM's administrator.
 
 Your team may also have specific channels, and you can send private messages to individuals.
 
@@ -88,6 +94,27 @@ You should be subscribed to these lists as soon as you get an :ref:`LSST acccoun
 - `dm-devel <https://lists.lsst.org/mailman/listinfo/dm-devel>`_
 - `dm-staff <https://lists.lsst.org/mailman/listinfo/dm-staff>`_ (internal list)
 
+DM calendars
+============
+
+DM maintains calendars of meetings and staff travel on Google.
+To get access, send your Google username to our admin in `#dm-admin-support <https://lsstc.slack.com/archives/dm-admin-support>`__ on Slack.
+
+Checklist for hires
+===================
+
+In summary, here are the things you can do to get started:
+
+#. Send a profile photo to your T/CAM for our `team page <https://confluence.lsstcorp.org/display/DM/The+Team>`__.
+
+#. Send your GitHub username to your T/CAM.
+
+#. Send your https://community.lsst.org username to your T/CAM.
+
+#. Follow emailed directions to set up your LSST account (including email), NCSA account, and Slack account.
+
+#. Once you're on Slack, send your Google username to `#dm-admin-support <https://lsstc.slack.com/archives/dm-admin-support>`__ to access DM calendars.
+
 .. _onboarding-tcam-checklist:
 
 Checklist for T/CAMs
@@ -96,6 +123,12 @@ Checklist for T/CAMs
 Here's what T/CAMs need to do to get their new hire started:
 
 #. Fill out the `Project onboarding form <https://project.lsst.org/onboarding/form>`__.
+
+   There's no need to upload a photo to DocuShare, see the next step instead.
+
+#. Add the new hire to the DM Team Google spreadsheet with time allocation information.
+
+#. Ask your new hire for a profile photo and add it to https://confluence.lsstcorp.org/display/DM/The+Team.
 
 #. Add the hire as a member of the 'Data Management' team in each these GitHub organizations:
 
@@ -108,3 +141,18 @@ Here's what T/CAMs need to do to get their new hire started:
    - `LSSTDM <https://community.lsst.org/groups/LSSTDM>`__.
 
 #. Give the hire's email address to a Slack administrator: `@brianv0 <https://lsstc.slack.com/team/brianv0>`__, `@jonathansick <https://lsstc.slack.com/team/jonathansick>`__, and `@frossie <https://lsstc.slack.com/team/frossie>`__ can make Slack accounts.
+
+.. _onboarding-admin-checklist:
+
+Checklist for the DM Admin
+==========================
+
+Here's what the DM admin does:
+
+#. After the onboarding form is received, send a welcome email to the hire with bullet points about the travel profile, Google calendar access, ContactDB info, and other miscellaneous project into. CC this to the supervisor.
+
+#. Add a photo to the DM staff gallery, if not already done by the T/CAM.
+
+#. Notify the Weekly Digest editor and travel coordinator.
+
+#. Provide Google calendar access to DM Meetings and DM Travel.
