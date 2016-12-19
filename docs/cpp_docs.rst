@@ -549,38 +549,57 @@ Examples should be prefixed by ``@code`` and suffixed by ``@endcode``:
 
 .. _cpp-doxygen-package-definition:
 
-Package Documentation / Definition
-==================================
+Documenting/Defining Packages
+=============================
 
 Each LSST package corresponds to a group in Doxygen.
 We declare this package in the root header file for a package, usually named ``package.h``.
 
-In this header file, below the preamble, provide a Doxygen comment block that declares the package with the fields:
+In this header file, below the boilerplate but above any ``#include`` statements or other code, provide a Doxygen comment block that declares the package with the fields:
 
-1. ``@defgroup`` followed by the ``PackageName`` and  ``PackageTitle``
-
-2. ``@brief`` to provide a one-line description of the package.
+1. ``@defgroup`` followed by machine-readable and human-readable names for the package
+2. :ref:`cpp-doxygen-short-summary` (must be prefixed by ``@brief`` because the summary is not the first line.)
+3. :ref:`cpp-doxygen-deprecation` (if applicable)
+4. :ref:`cpp-doxygen-extended-summary` (recommended)
+5. :ref:`cpp-doxygen-see-also` (optional)
 
 For example:
 
 .. code-block:: cpp
 
    /**
-    * @defgroup PackageName PackageTitle
+    * @defgroup afw LSST Framework
     *
-    * @brief Provide some stuff to do stuff
+    * @brief LSST data management: astronomical framework, including images and tables
     */
+
+Header files that belong to the package should have a Doxygen comment like
+
+.. code-block:: cpp
+
+   /**
+    * @addtogroup group
+    *
+    * @{
+    */
+
+before any documented code, and a Doxygen comment with a ``@}`` after any documented code. Everything between the ``@{`` and the ``@}`` will be listed on the module page.
 
 .. _cpp-doxygen-class-structure:
 
-Class Definitions
-=================
+Documenting Classes
+===================
 
-Where a class is *defined* (usually in a header file), provide a Doxygen block preceeding the class that includes
+Class documentation blocks are placed immediately before the class declaration, and serve to document the class as a whole rather than individual methods.
 
-1. A one-line description of the class.
-
-2. A paragraph (or more) describing the class. Markdown can be used to provide nuanced typography.
+1. :ref:`cpp-doxygen-short-summary`
+2. :ref:`cpp-doxygen-deprecation` (if applicable)
+3. :ref:`cpp-doxygen-extended-summary` (recommended)
+4. :ref:`cpp-doxygen-tparameters` (if applicable)
+5. :ref:`cpp-doxygen-see-also` (optional)
+6. :ref:`cpp-doxygen-notes` (optional)
+7. :ref:`cpp-doxygen-references` (optional)
+8. :ref:`cpp-doxygen-examples` (optional)
 
 For example:
 
@@ -595,59 +614,120 @@ For example:
     * list "utils.dlist", and the code to destroy a list "utils.dlist.del"
     *
     */
-   class TraceImpl {
+   class TraceImpl
+   {
        public:
+           ...
    }
 
 .. _cpp-doxygen-method-function-structure:
 
-Function/Method Definitions
-===========================
+Documenting Methods and Functions
+=================================
 
-Where a function or class method is *defined*, provide a Doxygen block preceeding that class that includes
+All public or protected methods and all functions must be preceded by a documentation block.
+Method or function documentation blocks contain the following sections:
 
-1. A one-line description of the function/method
+1. :ref:`cpp-doxygen-short-summary`
+2. :ref:`cpp-doxygen-deprecation` (if applicable)
+3. :ref:`cpp-doxygen-extended-summary` (recommended)
+4. :ref:`cpp-doxygen-tparameters` (if applicable)
+5. :ref:`cpp-doxygen-parameters` (if applicable)
+6. :ref:`cpp-doxygen-returns` (if applicable)
+7. :ref:`cpp-doxygen-throws` (if applicable)
+8. :ref:`cpp-doxygen-exceptsafe` (optional)
+9. :ref:`cpp-doxygen-related` (if applicable; for functions only)
+10. :ref:`cpp-doxygen-see-also` (optional)
+11. :ref:`cpp-doxygen-notes` (optional)
+12. :ref:`cpp-doxygen-references` (optional)
+13. :ref:`cpp-doxygen-examples` (optional)
 
-2. Optionally, a paragraph or more with detailed descriptions of the function/method. Markdown can be used here.
-
-3. ``@param`` statements describing each function/method argument. Optionally, inline comments can be used (see below).
-
-An example of a Doxygen comment for a function:
+An example:
 
 .. code-block:: cpp
 
-   /** Set a component's verbosity.
-   *
-   * If no verbosity is specified, inherit from parent
-   *
-   * @param name component of interest
-   * @param verbosity desired trace verbosity
-   */
-   void TraceImpl::setVerbosity(const std::string &name, const int verbosity) {
-   }
+   /**
+    * Read an image from disk.
+    *
+    * @param fileName the file to read. Must be either absolute or relative to
+    *     the program working directory.
+    *
+    * @return the image stored in `fileName`. If the image on disk does not
+    *     have `double` pixels, they will be cast to `double`.
+    *
+    * @throws IoError Thrown if `fileName` does not exist or is not readable.
+    *
+    * @exceptsafe Strong exception guarantee.
+    */
+   lsst::afw::image::Image<double> loadImage(std::string const & fileName);
 
-Overloaded Function/Methods Definitions
-=======================================
+.. _cpp-doxygen-method-function-overloads:
 
-'`@overload`` may be used when two methods/functions are effectively the same but have different parameters list for reasons of convenience.
+Overloaded Function/Method Definitions
+--------------------------------------
+
+``@overload`` may be used when two methods/functions are effectively the same but have different parameter lists for reasons of convenience.
+Use this tag **only** when the specification of the abbreviated overload can be easily inferred from the fully documented one.
+
+The text generated by the ``@overload`` tag tells readers to see the method "above".
+Because Doxygen sorts the detailed documentation of namespace and class members, you should check the generated documentation to make sure the fully documented overload appears before any that use the ``@overload`` tag.
 
 For example:
 
 .. code-block:: cpp
 
    /**
-    * seconds from midnight
+    * Sum numbers in a vector.
+    *
+    * @param values Container whose values are summed.
+    * @return sum of `values`, or 0.0 if `values` is empty.
+    *
+    * @exceptsafe This function does not throw exceptions.
     */
-   long GetTime(void){
-       return secondFromMidnight(CURRENT);
-   }
+   double add(std::vector<double> const & values);
+
    /**
-    # @overload void GetTime(int &hours, int &minutes, int &seconds)
+    * Sum numbers in an array.
+    *
+    * @overload double add(std::vector<double> const &)
     */
-   void GetTime(int &hours, ///< set: current hour
-                int &minutes, ///< set: current minutes
-                int &seconds) { ///< set: current seconds
-    hours = _hours;
-    minutes = _minutes;
-    seconds = _seconds;
-   }
+   double add(double[] const values, size_t nValues);
+
+.. _cpp-doxygen-attribute-constants-structure:
+
+Documenting Constants, Variables, and Data Members
+==================================================
+
+All non-private constants, variables, or data members must be preceded by a documentation block.
+At minimum, constants/variables/data members should have a summary line, but can also have a more complete structure:
+
+1. :ref:`cpp-doxygen-short-summary`
+2. :ref:`cpp-doxygen-deprecation` (if applicable)
+3. :ref:`cpp-doxygen-extended-summary` (optional)
+4. :ref:`cpp-doxygen-initializer` (optional; for constants only)
+5. :ref:`cpp-doxygen-notes` (optional)
+6. :ref:`cpp-doxygen-references` (optional)
+7. :ref:`cpp-doxygen-examples` (optional)
+
+For example:
+
+.. code-block:: cpp
+
+   /// Flag set if background subtraction should not be done.
+   const int NO_BACKGROUND = 1 << 3;
+
+.. _cpp-doxygen-attribute-constants-inline:
+
+Annotating Constants and Variables with Inline Comments (optional)
+------------------------------------------------------------------
+
+If the constant, variable, or data member descriptions are very short, you may choose to annotate them with inline comments after each value, one per line.
+These comments are prefixed with ``///<``.
+
+For example:
+
+.. code-block:: cpp
+
+   const int NO_BACKGROUND = 1 << 3;        ///< Skip background subtraction
+
+If the descriptions are too long to fit in a single line of source, ordinary documentation blocks before each value must be used.
