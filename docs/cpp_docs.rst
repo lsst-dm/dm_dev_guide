@@ -190,6 +190,7 @@ For summaries of how these sections are composed in specific contexts, see:
 
 - :ref:`cpp-doxygen-package-definition`
 - :ref:`cpp-doxygen-class-structure`
+- :ref:`cpp-doxygen-enum-structure`
 - :ref:`cpp-doxygen-method-function-structure`
 - :ref:`cpp-doxygen-attribute-constants-structure`
 
@@ -587,8 +588,8 @@ before any documented code, and a Doxygen comment with a ``@}`` after any docume
 
 .. _cpp-doxygen-class-structure:
 
-Documenting Classes
-===================
+Documenting Classes and Type Aliases
+====================================
 
 Class documentation blocks are placed immediately before the class declaration, and serve to document the class as a whole rather than individual methods.
 
@@ -619,6 +620,67 @@ For example:
        public:
            ...
    }
+
+Type alias declarations and typedefs should also be documented, although just a short summary is usually sufficient.
+Doxygen will automatically provide links to the types being renamed, if their documentation is available.
+
+.. _cpp-doxygen-enum-structure:
+
+Documenting Enumerated Types
+============================
+
+An enumerated type is a type, and should be documented similarly to a class:
+
+1. :ref:`cpp-doxygen-short-summary`
+2. :ref:`cpp-doxygen-deprecation` (if applicable)
+3. :ref:`cpp-doxygen-extended-summary` (recommended)
+4. :ref:`cpp-doxygen-see-also` (optional)
+5. :ref:`cpp-doxygen-notes` (optional)
+6. :ref:`cpp-doxygen-references` (optional)
+
+In addition, each value of the type should be documented. A short description is almost always sufficient.
+
+For example:
+
+.. code-block:: cpp
+
+   /**
+    * Supported coordinate systems for flux-conserving transformations.
+    *
+    * These values are used in arguments to various functions in this package.
+    * Unless otherwise stated, these functions do not validate whether the data
+    * set makes sense in the "from" coordinates.
+    */
+   enum class CoordType
+   {
+       /// Untransformed detector coordinates.
+       PIXEL,
+       /// Idealized detector coordinates after applying a distortion correction.
+       WARP_PIXEL,
+       /// Equatorial J2000.0 coordinates.
+       SKY_WCS
+   };
+
+.. _cpp-doxygen-enum-inline:
+
+Annotating Enum Values with Inline Comments (optional)
+------------------------------------------------------
+
+If the value descriptions are very short, you may choose to annotate values with inline comments after each constant, one per line.
+These comments are prefixed with ``///<``.
+
+For example:
+
+.. code-block:: cpp
+
+   enum class CoordType
+   {
+       PIXEL,    ///< Untransformed detector coordinates
+       WARP_PIXEL,    ///< Distortion-corrected detector coordinates
+       SKY_WCS    ///< Equatorial J2000.0 coordinates
+   };
+
+If the constant descriptions are too long to fit in a single line of source, ordinary documentation blocks before each constant must be used.
 
 .. _cpp-doxygen-method-function-structure:
 
