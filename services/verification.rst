@@ -64,6 +64,7 @@ example is the SDSS DR7 Stripe82 data, which can be found at
 
 :file:`/datasets/stripe82/dr7/runs` 
 
+To add/change/delete datasets, see :doc:`Common Dataset Organization and Policy </services/datasets>`.
 
 .. _verification-stack:
 
