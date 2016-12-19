@@ -112,3 +112,25 @@ Caveats / Implementation Details for PRIVATE
 - Data retention in ``private/`` is not guaranteed (points to scratch, points to home and user leaves, user erroneously deletes repo, etc)
 - Data in ``private/`` is not immutable
 - ``private/`` entries do not require Jira tickets for creation/deletion/modification
+
+In other words, if:
+
+- you need to do some private work that you don't want to disappear, symlink into ``~/``.
+- you need to so some private work that does not fit into your home quota (to be 1TB), symlink to ``/scratch/`` (180 days purge).
+- you need something to be maintained/shared/immutable/managed, create a ticket and move to PUBLIC.
+- you place actual data in ``private/``, you will be asked to move/delete/clean it in some way.
+
+Examples on Running Tasks with the Common Dataset
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For each cameara, there is one single URI as the main :lmod:`butler` repo root (``/datasets/<camera>/repo``).
+
+Currently our task framework tools support putting outputs in a new repo by specifying a path (``--output``) or specifying a symbolic name for outputs to go to a common place (``--rerun``).
+
+To use ``--rerun`` for private runs, you can create a link without a ticket:
+``/datasets/hsc/repo/rerun/private/jalt/first_attempt -> /scratch/jalt/rerun_output_location``
+and then you can run tasks:
+
+.. prompt:: bash
+
+   processXXX.py /datasets/hsc/repo/ --rerun private/jalt/first_attempt ...
