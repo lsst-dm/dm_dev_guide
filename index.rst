@@ -100,6 +100,7 @@ The `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ w
 
    services/lsst-dev.rst
    services/verification.rst
+   services/datasets.rst
    services/ncsa_bulk_transfer.rst
    services/lsst-dev-old.rst
    services/nebula/index.rst
