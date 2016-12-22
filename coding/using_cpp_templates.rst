@@ -113,7 +113,7 @@ We're not using ``export``, but the compiler doesn't know that when it compiles 
 .. code-block:: cpp
 
    // out.h:
-   template<class T> void out(const T& t);
+   template <class T> void out(const T& t);
 
    // user1.c:
    #include "out.h"
