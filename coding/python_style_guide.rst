@@ -783,3 +783,42 @@ Iterators and generators SHOULD be used to iterate over large data sets efficien
 -----------------------------------------------------------------------------------
 
 Use iterators, generators (classes that act like iterators) and generator expressions (expressions that act like iterators) to iterate over large data sets efficiently.
+
+.. _style-guide-py-disabled-code:
+
+``if False:`` and ``if True:`` SHOULD NOT be used
+-------------------------------------------------
+
+Code must not be placed inside ``if False:`` or ``if True:`` blocks, nor left commented out.
+Instead, debugging code and alternative implementations must be placed inside a "named" ``if`` statement.
+Such blocks should have a comment describing why they are disabled.
+They may have a comment describing the conditions under which said code can be removed (like the completion of a ticket or a particular date).
+For example, for code that will likely be removed in the future, once testing is completed:
+
+.. code-block:: py
+
+    # Delete old_thing() and the below "if" statement once all unittests are finished (DM-123456).
+    use_old_method = False
+    if use_old_method:
+        old_thing()
+    else:
+        new_thing()
+
+It is often beneficial to lift such debugging flags into the method's keyword arguments to allow users to decide which branch to run. For example:
+
+.. code-block:: py
+
+    def foo(x, debug_plots=False):
+        do_thing()
+        if debug_plots:
+            plot_thing()
+
+or, using ``lsstDebug``, which can be controlled as part of a command line task:
+
+.. code-block:: py
+
+    import lsstDebug
+    def foo(x):
+        do_thing()
+        if lsstDebug.Info(__name__).debug_plots:
+            plot_thing()
