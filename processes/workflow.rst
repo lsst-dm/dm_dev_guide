@@ -418,6 +418,23 @@ Any comments on code patches from the Commits tab will be lost if the developer 
 
    Pull request conversations should only happen in 'Conversation' and 'Files changed' tabs; your comments might get lost otherwise.
 
+Reviewers should use GitHub's `line comments`_ to discuss specific pieces of code.
+As line comments are addressed, the developer may use GitHub's `emoji reactions`_ to indicate that the work is done (the "👍" works well).
+Responding to each line comment isn't required, but it can help a developer track progress in addressing comments.
+We discourage replies that merely say "Done" since *text* replies generate email traffic; emoji reactions aren't emailed.
+Of course, use text replies if a discussion is required.
+
+.. _line comments: https://help.github.com/articles/commenting-on-a-pull-request/#adding-line-comments-to-a-pull-request
+.. _emoji reactions: https://help.github.com/articles/about-discussions-in-issues-and-pull-requests/
+
+.. figure:: /_static/processes/workflow/reaction@2x.gif
+
+   GitHub PR reactions are recommended for checking off completion of individual comments.
+
+Another effective way to track progress towards addressing general review comments is with `Markdown task lists`_.
+
+.. _Markdown task lists: https://help.github.com/articles/about-task-lists/
+
 Resolving a review
 ^^^^^^^^^^^^^^^^^^
 
