@@ -405,6 +405,9 @@ The System Architect can intervene, however, if a developer is overburdened with
 Code review discussion
 ----------------------
 
+Using GitHub pull requests
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Code review discussion should happen on the GitHub pull request, with the reviewer giving a discussion summary and conclusive thumbs-up on the JIRA ticket.
 
 GitHub pull requests are ideal venues for discussion since individual commit diffs can be annotated and referenced.
@@ -415,6 +418,9 @@ Any comments on code patches from the Commits tab will be lost if the developer 
 
    Pull request conversations should only happen in 'Conversation' and 'Files changed' tabs; your comments might get lost otherwise.
 
+Resolving a review
+^^^^^^^^^^^^^^^^^^
+
 Code reviews are a collaborative check-and-improve process.
 Reviewers do not hold absolute authority, nor can developers ignore the reviewer's suggestions.
 The aim is to discuss, iterate, and improve the pull request until the work is ready to be deployed on ``master``.
@@ -424,12 +430,16 @@ If the review becomes stuck on a design decision, that aspect of the review can 
 If an issue is outside the ticket's scope, the reviewer should file a new ticket.
 
 Once the iterative review process is complete, the reviewer should switch the JIRA ticket's state to **Reviewed**.
-If there are multiple reviewers, our convention is that each review removes her/his name from the Reviewers list to indicate sign-off; the final reviewer switches the status to 'Reviewed.'
-This indicates the ticket is ready to be merged.
 
 Note that in many cases the reviewer will mark a ticket as **Reviewed** before seeing the requested changes implemented.
 This convention is used when the review comments are non-controversial; the developer can simply implement the necessary changes and self-merge.
 The reviewer does not need to be consulted for final approval in this case.
+
+Resolving with multiple reviewers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If there are multiple reviewers, our convention is that each review removes their name from the Reviewers list to indicate sign-off; the final reviewer switches the status to **Reviewed.**
+This indicates the ticket is ready to be merged.
 
 .. _workflow-code-review-merge:
 
