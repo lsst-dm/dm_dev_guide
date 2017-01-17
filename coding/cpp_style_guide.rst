@@ -117,8 +117,6 @@ See :ref:`Deviating from the DM Style Guides <style-guide-deviations>`.
 
 - Keep functions short and with a single purpose.
 
-The process combines UML modeling and C++ programming, they are integrated and reinforce each other.
-This process integration is documented in `LSST Prototyping Environment <https://dev.lsstcorp.org/trac/wiki/PrototypingEnvironment>`_.
 
 .. _style-guide-cpp-3:
 
