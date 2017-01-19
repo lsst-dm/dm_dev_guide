@@ -3,7 +3,7 @@ Developer Onboarding Checklist
 ##############################
 
 *Welcome to Data Management*.
-This page will give you an overview of the accounts you'll have as a member of DM.
+This page gives you an overview of the accounts you'll have as a member of DM.
 
 .. note::
 
@@ -19,13 +19,20 @@ Your manager will request an LSST single sign-on account for you.
 This gives you access to:
 
 - The internal project website, including travel requests: http://project.lsst.org
+- Email: https://mail.lsst.org/owa
 - The JIRA project management app: http://jira.lsstcorp.org/
 - The Confluence wiki: https://confluence.lsstcorp.org
+- The DocuShare document archive: http://docushare.lsstcorp.org
+
+You can always update your LSST password at https://lsstsspc.lsst.org/.
+
+Finally, read over the LSST Project's `New Employee Onboarding <https://project.lsst.org/onboarding>`_ page.
+That will get you up to speed with the LSST Project; the rest of this page is specific to DM.
 
 NCSA server access
 ==================
 
-You'll also get an account on the NCSA developer infrastructure.
+You'll also get an account for the developer infrastructure at NCSA.
 Your NCSA username will match your LSST account.
 
 NCSA will email you with details on setting up a password.
@@ -88,10 +95,11 @@ The meeting convener will pass around a Hangouts room URL to attendees.
 Mailing lists
 =============
 
-We don't use mailing lists for conversations, but they're still used for notifications about conversations happening on https://community.lsst.org.
+We don't use mailing lists for conversations, but they're still used for notifications about :ref:`RFCs <decision-making-rfc>` and conversations happening on https://community.lsst.org.
 You should be subscribed to these lists as soon as you get an :ref:`LSST acccount <getting-started-lsst-account>`:
 
 - `dm-devel <https://lists.lsst.org/mailman/listinfo/dm-devel>`_
+- `dm-announce <https://lists.lsst.org/mailman/listinfo/dm-announce>`_
 - `dm-staff <https://lists.lsst.org/mailman/listinfo/dm-staff>`_ (internal list)
 
 DM calendars
@@ -124,7 +132,8 @@ Here's what T/CAMs need to do to get their new hire started:
 
 #. Fill out the `Project onboarding form <https://project.lsst.org/onboarding/form>`__.
 
-   There's no need to upload a photo to DocuShare, see the next step instead.
+   - There's no need to upload a photo to DocuShare, see the next step instead.
+   - Under "User should belong to which Mailing Lists," add ``dm-devel`` and ``dm-announce``. IT automatically adds DM hires to ``dm-staff``.
 
 #. Add the new hire to the DM Team Google spreadsheet with time allocation information.
 
@@ -147,7 +156,7 @@ Here's what T/CAMs need to do to get their new hire started:
 Checklist for the DM Admin
 ==========================
 
-Here's what the DM admin does:
+Here's what the awesome DM admin does:
 
 #. After the onboarding form is received, send a welcome email to the hire with bullet points about the travel profile, Google calendar access, ContactDB info, and other miscellaneous project into. CC this to the supervisor.
 
@@ -156,3 +165,5 @@ Here's what the DM admin does:
 #. Notify the Weekly Digest editor and travel coordinator.
 
 #. Provide Google calendar access to DM Meetings and DM Travel.
+
+For details on LSST IT's account onboarding procedures, see `Account Management in the IT Support Confluence <https://confluence.lsstcorp.org/display/IT/Account+Management>`_.
