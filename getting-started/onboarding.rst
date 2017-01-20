@@ -19,7 +19,7 @@ Your manager will request an LSST single sign-on account for you.
 This gives you access to:
 
 - The internal project website, including travel requests: http://project.lsst.org
-- Email: https://mail.lsst.org/owa
+- Email (for AURA employees): https://mail.lsst.org/owa
 - The JIRA project management app: http://jira.lsstcorp.org/
 - The Confluence wiki: https://confluence.lsstcorp.org
 - The DocuShare document archive: http://docushare.lsstcorp.org
