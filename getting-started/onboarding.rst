@@ -3,19 +3,40 @@ Developer Onboarding Checklist
 ##############################
 
 *Welcome to Data Management*.
-This page will help you get the necessary accounts.
+This page gives you an overview of the accounts you'll have as a member of DM.
+
+.. note::
+
+   Some things you can set up yourself, but many accounts require action by your manager.
+   We've given them a handy :ref:`onboarding-tcam-checklist` at the bottom.
 
 .. _getting-started-lsst-account:
 
 LSST account
 ============
 
-Contact ``lsst-sysadmins _at_ lsst.org`` to get a unified LSST account.
+Your manager will request an LSST single sign-on account for you.
 This gives you access to:
 
 - The internal project website, including travel requests: http://project.lsst.org
+- Email: https://mail.lsst.org/owa
 - The JIRA project management app: http://jira.lsstcorp.org/
 - The Confluence wiki: https://confluence.lsstcorp.org
+- The DocuShare document archive: http://docushare.lsstcorp.org
+
+You can always update your LSST password at https://lsstsspc.lsst.org/.
+
+Finally, read over the LSST Project's `New Employee Onboarding <https://project.lsst.org/onboarding>`_ page.
+That will get you up to speed with the LSST Project; the rest of this page is specific to DM.
+
+NCSA server access
+==================
+
+You'll also get an account for the developer infrastructure at NCSA.
+Your NCSA username will match your LSST account.
+
+NCSA will email you with details on setting up a password.
+Then, see :doc:`/services/lsst-dev` for login details.
 
 .. _getting-started-github:
 
@@ -31,23 +52,6 @@ Next, ask your T/CAM to add you to the `lsst <https://github.com/lsst>`__ and `l
    - :doc:`/tools/git_setup` page for recommendations on setting up two-factor authentication and credential helpers for GitHub.
    - :doc:`/tools/git_lfs` page for configuring Git LFS for DM.
 
-NCSA server access
-==================
-
-Contact ``lsst-account _at_ ncsa.illinois.edu`` to request an account on the NCSA cluster, which hosts the reference platform.
-Include the following in the request:
-
-- First and last name
-- Email
-- Phone number
-- Mailing address
-- Sponsoring LSST manager
-- LSST Team or project
-
-.. seealso::
-
-   :doc:`/services/lsst-dev`.
-
 Community.lsst.org
 ==================
 
@@ -55,29 +59,30 @@ https://community.lsst.org is LSST's public-facing discussion and support forum.
 Browse the `forum-howto <https://community.lsst.org/tags/forum-howto>`_ tag to learn how to use the platform.
    
 Create an account, and let your T/CAM know your username to get access to internal discussion categories.
-   
-**T/CAMs:** add users via the `LSST <https://community.lsst.org/groups/LSST>`__ and `LSSTDM <https://community.lsst.org/groups/LSSTDM>`__ group pages.
-   
 
 Slack
 =====
 
 `Slack <https://slack.com/>`_ is LSST's real-time chat platform.
 It is used across the project and by external science collaborations.
-Install Slack on your computer (and phone, if you wish), then ask your T/CAM for access to the ‘LSSTC’ team.
 
-Channels which have been set up specifically for Data Management related discussion can be identified by a ‘dm-’ prefix.
-Important channels you may wish to follow include:
+Ask your T/CAM for access to the ‘lsstc’ Slack team.
+You can access it online at https://lsstc.slack.com, and through `Slack's mobile and desktop apps <https://get.slack.help/hc/en-us/articles/201746897-Slack-apps-for-computers-phones-tablets>`__.
+Slack's `online help <https://get.slack.help/hc/en-us>`__ is a great way to learn Slack's features.
 
-- ‘announce-everyone’ for project-wide announcements.
-- ‘lsst-travel’ for help with travel on project business.
-- ‘lsst-newchannels’ for notifications of new channels.
-- ‘software-dev’ for anything about writing software.
-- ‘dm’ for general DM discussion.
-- ‘dm-square’ for developer support services.
-- ‘dm-jenkins’ for automatic notifications from our Continuous Integration system.
-- ‘dm-tavern’ for “water cooler” type talk.
-- ‘dm-tea-time’ for more serious but still non-LSST conversation.
+Channels set up specifically for Data Management related discussion have a ‘dm-’ prefix.
+Some important channels are:
+
+- `announce-everyone <https://lsstc.slack.com/archives/announce-everyone>`__ for project-wide announcements.
+- `lsst-travel <https://lsstc.slack.com/archives/lsst-travel>`__ for help with travel on project business.
+- `lsst-newchannels <https://lsstc.slack.com/archives/lsst-newchannels>`__ for notifications of new channels.
+- `software-dev <https://lsstc.slack.com/archives/software-dev>`__ for anything about writing software.
+- `dm <https://lsstc.slack.com/archives/dm>`__ for general DM discussion.
+- `dm-square <https://lsstc.slack.com/archives/dm-square>`__ for developer support services.
+- `dm-jenkins <https://lsstc.slack.com/archives/dm-jenkins>`__ for automatic notifications from our Continuous Integration system.
+- `dm-tavern <https://lsstc.slack.com/archives/dm-tavern>`__ for “water cooler” type talk.
+- `dm-tea-time <https://lsstc.slack.com/archives/dm-tea-team>`__ for more serious but still non-LSST conversation.
+- `dm-admin-support <https://lsstc.slack.com/archives/dm-admin-support>`__ to contact DM's administrator.
 
 Your team may also have specific channels, and you can send private messages to individuals.
 
@@ -90,8 +95,75 @@ The meeting convener will pass around a Hangouts room URL to attendees.
 Mailing lists
 =============
 
-We don't use mailing lists for conversations, but they're still used for notifications about conversations happening on https://community.lsst.org.
+We don't use mailing lists for conversations, but they're still used for notifications about :ref:`RFCs <decision-making-rfc>` and conversations happening on https://community.lsst.org.
 You should be subscribed to these lists as soon as you get an :ref:`LSST acccount <getting-started-lsst-account>`:
 
 - `dm-devel <https://lists.lsst.org/mailman/listinfo/dm-devel>`_
+- `dm-announce <https://lists.lsst.org/mailman/listinfo/dm-announce>`_
 - `dm-staff <https://lists.lsst.org/mailman/listinfo/dm-staff>`_ (internal list)
+
+DM calendars
+============
+
+DM maintains calendars of meetings and staff travel on Google.
+To get access, send your Google username to our admin in `#dm-admin-support <https://lsstc.slack.com/archives/dm-admin-support>`__ on Slack.
+
+Checklist for hires
+===================
+
+In summary, here are the things you can do to get started:
+
+#. Send a profile photo to your T/CAM for our `team page <https://confluence.lsstcorp.org/display/DM/The+Team>`__.
+
+#. Send your GitHub username to your T/CAM.
+
+#. Send your https://community.lsst.org username to your T/CAM.
+
+#. Follow emailed directions to set up your LSST account (including email), NCSA account, and Slack account.
+
+#. Once you're on Slack, send your Google username to `#dm-admin-support <https://lsstc.slack.com/archives/dm-admin-support>`__ to access DM calendars.
+
+.. _onboarding-tcam-checklist:
+
+Checklist for T/CAMs
+====================
+
+Here's what T/CAMs need to do to get their new hire started:
+
+#. Fill out the `Project onboarding form <https://project.lsst.org/onboarding/form>`__.
+
+   - There's no need to upload a photo to DocuShare, see the next step instead.
+   - Under "User should belong to which Mailing Lists," add ``dm-devel`` and ``dm-announce``. IT automatically adds DM hires to ``dm-staff``.
+
+#. Add the new hire to the DM Team Google spreadsheet with time allocation information.
+
+#. Ask your new hire for a profile photo and add it to https://confluence.lsstcorp.org/display/DM/The+Team.
+
+#. Add the hire as a member of the 'Data Management' team in each these GitHub organizations:
+
+   - `github.com/lsst <https://github.com/orgs/lsst/teams/data-management>`__.
+   - `github.com/lsst-dm <https://github.com/orgs/lsst-dm/teams/data-management>`__.
+
+#. Add the hire as a member of these Community forum groups:
+
+   - `LSST <https://community.lsst.org/groups/LSST>`__.
+   - `LSSTDM <https://community.lsst.org/groups/LSSTDM>`__.
+
+#. Give the hire's email address to a Slack administrator: `@brianv0 <https://lsstc.slack.com/team/brianv0>`__, `@jonathansick <https://lsstc.slack.com/team/jonathansick>`__, and `@frossie <https://lsstc.slack.com/team/frossie>`__ can make Slack accounts.
+
+.. _onboarding-admin-checklist:
+
+Checklist for the DM Admin
+==========================
+
+Here's what the awesome DM admin does:
+
+#. After the onboarding form is received, send a welcome email to the hire with bullet points about the travel profile, Google calendar access, ContactDB info, and other miscellaneous project into. CC this to the supervisor.
+
+#. Add a photo to the DM staff gallery, if not already done by the T/CAM.
+
+#. Notify the Weekly Digest editor and travel coordinator.
+
+#. Provide Google calendar access to DM Meetings and DM Travel.
+
+For details on LSST IT's account onboarding procedures, see `Account Management in the IT Support Confluence <https://confluence.lsstcorp.org/display/IT/Account+Management>`_.
