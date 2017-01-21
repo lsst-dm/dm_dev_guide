@@ -410,14 +410,6 @@ Using GitHub pull requests
 
 Code review discussion should happen on the GitHub pull request, with the reviewer giving a discussion summary and conclusive thumbs-up on the JIRA ticket.
 
-GitHub pull requests are ideal venues for discussion since individual commit diffs can be annotated and referenced.
-Be sure to make comments only from the **Conversation** and **Files changed** tabs---*not the Commits tab*.
-Any comments on code patches from the Commits tab will be lost if the developer amends and force pushes commits to the pull request.
-
-.. figure:: /_static/processes/workflow/github_pr_comment_areas.png
-
-   Pull request conversations should only happen in 'Conversation' and 'Files changed' tabs; your comments might get lost otherwise.
-
 When conducting an extensive code review in a PR, reviewers should use GitHub's `"Start a review" feature <github-review>`_.
 This mode lets the reviewer queue multiple comments that are only sent once the review is submitted.
 Note that GitHub allows a reviewer to classify a code review: "Comment," "Approve," or "Request changes."
