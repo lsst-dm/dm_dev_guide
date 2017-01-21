@@ -405,15 +405,39 @@ The System Architect can intervene, however, if a developer is overburdened with
 Code review discussion
 ----------------------
 
+Using GitHub pull requests
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Code review discussion should happen on the GitHub pull request, with the reviewer giving a discussion summary and conclusive thumbs-up on the JIRA ticket.
 
-GitHub pull requests are ideal venues for discussion since individual commit diffs can be annotated and referenced.
-Be sure to make comments only from the **Conversation** and **Files changed** tabs---*not the Commits tab*.
-Any comments on code patches from the Commits tab will be lost if the developer amends and force pushes commits to the pull request.
+When conducting an extensive code review in a PR, reviewers should use GitHub's `"Start a review" feature <github-review>`_.
+This mode lets the reviewer queue multiple comments that are only sent once the review is submitted.
+Note that GitHub allows a reviewer to classify a code review: "Comment," "Approve," or "Request changes."
+While useful, this feature doesn't replace JIRA for formally :ref:`marking a ticket as being reviewed <workflow-resolving-review>`.
 
-.. figure:: /_static/development/github_pr_comment_areas.png
+.. _github-review: https://help.github.com/articles/reviewing-proposed-changes-in-a-pull-request/
 
-   Pull request conversations should only happen in 'Conversation' and 'Files changed' tabs; your comments might get lost otherwise.
+Reviewers should use GitHub's `line comments`_ to discuss specific pieces of code.
+As line comments are addressed, the developer may use GitHub's `emoji reactions`_ to indicate that the work is done (the "👍" works well).
+Responding to each line comment isn't required, but it can help a developer track progress in addressing comments.
+We discourage replies that merely say "Done" since *text* replies generate email traffic; emoji reactions aren't emailed.
+Of course, use text replies if a discussion is required.
+
+.. _line comments: https://help.github.com/articles/commenting-on-a-pull-request/#adding-line-comments-to-a-pull-request
+.. _emoji reactions: https://help.github.com/articles/about-discussions-in-issues-and-pull-requests/
+
+.. figure:: /_static/processes/workflow/reaction@2x.gif
+
+   GitHub PR reactions are recommended for checking off completion of individual comments.
+
+Another effective way to track progress towards addressing general review comments is with `Markdown task lists`_.
+
+.. _Markdown task lists: https://help.github.com/articles/about-task-lists/
+
+.. _workflow-resolving-review:
+
+Resolving a review
+^^^^^^^^^^^^^^^^^^
 
 Code reviews are a collaborative check-and-improve process.
 Reviewers do not hold absolute authority, nor can developers ignore the reviewer's suggestions.
@@ -424,12 +448,16 @@ If the review becomes stuck on a design decision, that aspect of the review can 
 If an issue is outside the ticket's scope, the reviewer should file a new ticket.
 
 Once the iterative review process is complete, the reviewer should switch the JIRA ticket's state to **Reviewed**.
-If there are multiple reviewers, our convention is that each review removes her/his name from the Reviewers list to indicate sign-off; the final reviewer switches the status to 'Reviewed.'
-This indicates the ticket is ready to be merged.
 
 Note that in many cases the reviewer will mark a ticket as **Reviewed** before seeing the requested changes implemented.
 This convention is used when the review comments are non-controversial; the developer can simply implement the necessary changes and self-merge.
 The reviewer does not need to be consulted for final approval in this case.
+
+Resolving with multiple reviewers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If there are multiple reviewers, our convention is that each review removes their name from the Reviewers list to indicate sign-off; the final reviewer switches the status to **Reviewed.**
+This indicates the ticket is ready to be merged.
 
 .. _workflow-code-review-merge:
 
