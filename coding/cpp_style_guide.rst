@@ -1972,6 +1972,31 @@ For example, the fits i/o code in ``lsst::afw::image`` uses ``boost::gil`` inter
 In keeping with the boost convention, such global information should be consigned to a ``*::`` detail namespace (in this case, ``lsst::afw::image::detail``).
 We should, of course, strive to minimize the amount of such information. 
 
+5-44. The ``override`` specifier SHOULD be used whenever the intention is to override a function from a base class
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Add the ``override`` specifier to the member function declaration of any member function that should override
+a function from a base class.
+This ensures that the function is virtual and that it overrides a function from the base class.
+
+Because ``override`` already implies ``virtual``, virtual should not be included as well.
+
+.. code-block:: cpp
+
+   class Base
+   {
+   public:
+        virtual void foo();
+   };
+    
+   class Derived: public Base
+   {
+   public:
+        void foo() override;
+
+        void bar();
+   };
+
 .. _style-guide-cpp-layout-comments:
 
 6. Layout and Comments
