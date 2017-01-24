@@ -49,6 +49,7 @@ The `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ w
    coding/intro.rst
    coding/python_style_guide.rst
    coding/cpp_style_guide.rst
+   coding/pybind11_style_guide.rst
    coding/using_cpp_templates.rst
    coding/using_boost.rst
    coding/using_astropy.rst
