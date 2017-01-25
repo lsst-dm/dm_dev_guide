@@ -121,6 +121,7 @@ Change-controlled documents with other handles, such as LSE- or LPM-, including 
 Please consult the TCT_ for more information.
 
 At least one member of the DM TCT_ will read each RFC to determine if it might affect a change-controlled document.
+If you know that the RFC involves a change-controlled document, you can immediately :ref:`flag it <decision-making-rfc-appeals>` yourself.
 
 .. _decision-making-rfc-responsibility:
 
