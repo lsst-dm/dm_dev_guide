@@ -44,7 +44,7 @@ Creating an RFC
 ---------------
 
 Create an RFC by making a JIRA issue in the `Request For Comments (RFC) <https://jira.lsstcorp.org/projects/RFC>`_ project with a component of "DM."
-This will trigger postings to the `dm-devel mailing list <https://lists.lsst.org/mailman/listinfo/dm-devel>`_ and the `'Bot: RFC' HipChat room <hipchat://hipchat.com/room/1028779>`_.
+This will trigger postings to the `dm-devel mailing list <https://lists.lsst.org/mailman/listinfo/dm-devel>`_ and the `'#dm' Slack room <https://lsstc.slack.com/messages/dm/>`_.
 
 .. _decision-making-rfc-medium:
 
@@ -160,7 +160,7 @@ In the RFD's description:
 - Include background material (using JIRA attachments, if necessary).
 - Provide a link to the BlueJeans or Google Hangouts room.
 
-Creating an RFD issue will trigger postings to the `dm-devel mailing list <https://lists.lsst.org/mailman/listinfo/dm-devel>`_ and the `'Bot: RFC' HipChat room <hipchat://hipchat.com/room/1028779>`_.
+Creating an RFD issue will trigger postings to the `dm-devel mailing list <https://lists.lsst.org/mailman/listinfo/dm-devel>`_ and the `'#dm' Slack room <https://lsstc.slack.com/messages/dm/>`_.
 
 As the discussion organizer, you are responsible for ensuring all required attendees are available for the time slot.
 DM members can comment on the RFD issue to indicate their availability, or whether the subject being discussed has already been resolved or covered elsewhere.
