@@ -153,18 +153,18 @@ These might be:
 Creating an RFD
 ---------------
 
-Create an RFD by making a JIRA issue in the `Request For Comments (RFC) <https://jira.lsstcorp.org/projects/RFC>`_ project with a **component of DM** and a **issue type of RFD**.
-Use the **Location** field to specify the date and time of the discussion (:ref:`see below for time slot <decision-making-rfd-time>`).
+Create an RFD by making a post on Community in the  `DM RFD category <https://community.lsst.org/c/dm/dm-rfd>`_.
+A `template is provided in the post <https://community.lsst.org/new-topic?category=data%20management/dm%20rfd>`_ to allow you to suggest the date and time of the discussion (:ref:`see below for time slot <decision-making-rfd-time>`), the medium for the discussion, and to specify the suggested audience.
 In the RFD's description:
 
 - Summarize the issue, and indicate a desired outcome from the discussions.
-- Include background material (using JIRA attachments, if necessary).
+- Include background material (using attachments, if necessary).
 - Provide a link to the BlueJeans or Google Hangouts room.
 
 Creating an RFD issue will trigger postings to the `dm-devel mailing list <https://lists.lsst.org/mailman/listinfo/dm-devel>`_ and the `'#dm' Slack room <https://lsstc.slack.com/messages/dm/>`_.
 
 As the discussion organizer, you are responsible for ensuring all required attendees are available for the time slot.
-DM members can comment on the RFD issue to indicate their availability, or whether the subject being discussed has already been resolved or covered elsewhere.
+DM members can comment on the RFD to indicate their availability, or whether the subject being discussed has already been resolved or covered elsewhere.
 
 .. _decision-making-rfd-time:
 
@@ -182,7 +182,7 @@ If there are conflicting claims to the RFD time slot, the System Architect will 
 RFD followup
 ------------
 
-Tickets or RFCs that arise from an RFD should link back to the RFD issue on JIRA.
+Tickets or RFCs that arise from an RFD should link back to the RFD issue on community.lsst.org and the Community post can be used to continue the discussion following the meeting.
 
 .. _TCT: https://confluence.lsstcorp.org/display/DM/Technical+Control+Team
 .. _DocuShare: https://docushare.lsstcorp.org
