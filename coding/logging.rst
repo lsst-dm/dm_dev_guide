@@ -38,8 +38,11 @@ For example:
 
    logger = lsst.log.Log.getLogger("meas.algorithms.starSelector")
    logger.info("This is information about the star selector algorithm execution. %f", 3.14)
+   logger.infof("This is information about the star selector algorithm execution. {}", 3.14)
 
-In Python, use a ``%``-format string in the message and pass in additional arguments containing variable information, which :lmod:`lsst.log` will internally merge into the message string with ``%`` formatting if the log record is to be printed.
+In Python, two string formatting options can be used for log messages.
+The standard methods, such as :lmod:`~lsst.log.info` and :lmod:`~lsst.log.warn`, use a ``%``-format string in the message and pass in additional arguments containing variable information, which :lmod:`lsst.log` will internally merge into the message string with ``%`` formatting if the log record is to be printed.
+Another set of methods with a trailing ``f``, for example :lmod:`~lsst.log.infof` and :lmod:`~lsst.log.warnf`, can use :meth:`~str.format` string interpolation using curly braces.
 
 To specify the threshold or the lowest-severity log messages a logger handles, :lmeth:`setLevel` can be used:
 
@@ -97,6 +100,7 @@ For example:
 
    debugLogger = lsst.log.Log.getLogger("meas.algorithms.starSelector.catalogReader")
    debugLogger.debug("Catalog reading took %f seconds", finish - start)
+   debugLogger.debugf("Took {} seconds and found {count} sources", elapsed, count=nstars)
 
 The idea here is that the author understands the intent of the log message and can simply name it, without worrying about its relative importance or priority compared with other log messages in the same component.
 A person debugging the code would typically be looking at it and so would be able to determine the appropriate name to enable.
@@ -109,7 +113,7 @@ Pipeline tasks (subclasses of :lclass:`lsst.pipe.base.Task` or :lclass:`lsst.pip
 
 .. code-block:: python
 
-   self.log.debug("Coadding %d exposures", len(calExpRefList))
+   self.log.debugf("Coadding {} exposures", len(calExpRefList))
    self.log.info("Not applying color terms because %s", applyCTReason)
    self.log.warn("Failed to make a psfCandidate from star %d: %s", star.getId(), err)
 
@@ -137,7 +141,7 @@ and in Python:
    traceLogger = lsst.log.Log.getLogger("TRACE2.meas.algorithms.starSelector")
    traceLogger.debug("On %d-th iteration of star selection", iteration)
    innerTraceLogger = lsst.log.getLogger("TRACE2.meas.algorithms.starSelector.catalogReader")
-   innerTraceLogger.debug("Reading catalog %s", catalogName)
+   innerTraceLogger.debugf("Reading catalog {}", catalogName)
    # Or log to a component directly
    lsst.log.log("TRACE4.meas.algorithms.starSelector.psfCandidate", lsst.log.DEBUG, "Making a psfCandidate from star %d", starId)
 
