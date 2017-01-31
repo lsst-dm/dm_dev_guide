@@ -242,6 +242,9 @@ With the ``:ref:`` role you can link to a labeled block:
 
 You can also make references with ``:ref:`label-name``` and the link text will automatically be populated with the section title or figure caption, for example.
 
+Remember that labels are **global** across a Sphinx documentation project.
+With labels, you can link to sections in other pages.
+
 .. _rst-doc-link:
 
 Internal links to other pages
