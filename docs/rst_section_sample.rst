@@ -12,11 +12,7 @@ named labels, which appear before the heading. We encourage you to add labels
 to all sections so that they can be referenced. Names are global, so be
 specific. See :ref:`Internal Links to Labels <rst-internal-links>` for
 more information. The following section heading has a label named
-"``section-headings-example-section-heading``":
-
-Sections in Python docstrings are a special case. We do not put a blank space
-between a headline and object lists below, and we do not add explicit section
-labels. See the :doc:`docstring style guide <py_docs>` for more information.
+"``section-headings-example-section``".
 
 .. _section-headings-example-section:
 
@@ -48,3 +44,8 @@ Sub-sub-subsection Heading
 """"""""""""""""""""""""""
 
 Nam tincidunt congue enim, ut porta lorem lacinia consectetur.
+
+
+Sections in Python docstrings are a special case. We do not put a blank space
+between a headline and object lists below, and we do not add explicit section
+labels. See the :doc:`docstring style guide <py_docs>` for more information.
