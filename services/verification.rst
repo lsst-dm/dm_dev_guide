@@ -211,6 +211,12 @@ One can observe that after the job resources have been granted, the user shell i
 the login node ``lsst-dev01``. The command ``srun`` can be utilized to run commands on the job's allocated 
 compute nodes. Commands issued without ``srun``  will still be executed locally on ``lsst-dev01``. 
 
+You can also use ``srun`` without first being allocated resources (via ``salloc``).
+For example, to immediately obtain a command-line prompt on a compute node: ::
+
+    % srun -I --pty bash
+
+
 SLURM Example Executing Tasks with Different Arguments
 ------------------------------------------------------
 
