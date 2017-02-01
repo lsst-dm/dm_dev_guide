@@ -20,11 +20,11 @@ This page is designed help you get started on the ``Verification Cluster``:
 Overview of the Verification Cluster
 ====================================
 
-``lsst-dev01`` is a system with 24 cores, 256 GB RAM, running the latest CentOS 7.x that serves as the front end of the 
+``lsst-dev01`` is a system with 24 physical cores, 256 GB RAM, running the latest CentOS 7.x that serves as the front end of the
 ``Verification Cluster``.  ``lsst-dev01`` is described in further detail at :doc:`lsst-dev` and on the
 page of `available development servers <https://confluence.lsstcorp.org/display/LDMDG/DM+Development+Servers>`_ .
 
-The ``Verification Cluster`` consists of 48  Dell C6320 nodes with 24 physical cores (2 sockets, 12 cores per processor) and 128 GB RAM.  As such, the system provides a total of 1152 cores. 
+The ``Verification Cluster`` consists of 48  Dell C6320 nodes with 24 physical cores (2 sockets, 12 cores per processor) and 128 GB RAM.  As such, the system provides a total of 1152 physical cores. Due to hyperthreading, each physical core appears as 2 Linux cores, so users can access 48 logical or virtual cores per node.
 
 The ``Verification Cluster`` runs the Simple Linux Utility for Resource Management (SLURM) cluster management and job scheduling system.  ``lsst-dev01`` runs the SLURM controller and serves as the login or head node , enabling LSST DM users to submit SLURM jobs to the ``Verification Cluster``.
 
