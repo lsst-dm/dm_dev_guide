@@ -64,7 +64,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'LSST DM Developer Guide'
-copyright = u'2016 AURA/LSST'
+copyright = u'2016-2017 Association of Universities for Research in Astronomy, Inc.'
 author = u'LSST Data Management'
 
 # The version info for the project you're documenting, acts as replacement for
