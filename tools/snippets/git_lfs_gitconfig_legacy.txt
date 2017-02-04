@@ -1,5 +1,12 @@
+[lfs]
+    batch = false
+
 # Cache anonymous access to DM Git LFS S3 servers
 [credential "https://lsst-sqre-prod-git-lfs.s3-us-west-2.amazonaws.com"]
     helper = store
 [credential "https://s3.lsst.codes"]
+    helper = store
+
+# Cache anonymous access to DM Git LFS server
+[credential "https://git-lfs.lsst.codes"]
     helper = store
