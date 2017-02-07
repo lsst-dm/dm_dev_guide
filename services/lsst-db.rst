@@ -34,7 +34,9 @@ Then, log into MySQL:
    mysql -h lsst-db.ncsa.illinois.edu -u<userName> -p
    Password: <type temporary mysql password>
 
-And then, set a new password ::
+And then, set a new password:
+
+.. prompt:: bash $ auto
 
    mysql> set password = password('theNewPassword');
 
