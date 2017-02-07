@@ -1,6 +1,6 @@
-#############################
+########################
 Using the lsst-db Server
-#############################
+########################
 
 ``lsst-db`` is the development MySQL database server run by NCSA for LSST DM development work.
 The cname ``lsst-db.ncsa.illinois.edu`` directs to ``lsst10.ncsa.illinois.edu``.
@@ -17,11 +17,11 @@ This page is designed to assist developers in their work with ``lsst-db``:
 Account Password
 ================
 
-The lsst-db server does NOT use your NCSA account.
+The ``lsst-db`` server does NOT use your NCSA account.
 
 After you receive your initial temporary password, change it as soon as possible as follows.
 
-Set the MYSQL_HISTFILE environment variable to /dev/null (By doing it you will prevent the command with your new password from being saved in clear-text history file.).
+Set the ``MYSQL_HISTFILE`` environment variable to :file:`/dev/null` (By doing it you will prevent the command with your new password from being saved in clear-text history file.).
 
 .. code-block:: bash
 
@@ -39,7 +39,6 @@ And then, set a new password:
 .. code-block:: bash
 
    set password = password('theNewPassword');
-
 
 .. _lsst-db-auth:
 
@@ -67,5 +66,3 @@ You will also need to create a ``db-auth.paf`` file, because the ``pex_persisten
           password: <password> 
        }
    }
-
-

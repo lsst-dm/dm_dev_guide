@@ -1,6 +1,6 @@
-#############################
+#########################
 Using the lsst-dev Server
-#############################
+#########################
 
 ``lsst-dev`` is the development server/cluster of servers run by NCSA for LSST DM development work.
 The cname ``lsst-dev.ncsa.illinois.edu`` directs to ``lsst-dev01.ncsa.illinois.edu`` and this system serves as the primary development server for the team.
@@ -73,7 +73,7 @@ Enter your passphrase at the prompts:
    If you used a program other than OpenSSH for this step, make sure your public key is formatted as a single line (most SSH clients provide it as an option). Otherwise, the next step will not work.
 
 2. Install the public key on lsst-dev01
------------------------------------------
+---------------------------------------
 
 Install the public key on the remote server, :file:`~/.ssh/id_rsa.pub`, to ``lsst-dev01.ncsa.illinois.edu``:
 
@@ -203,7 +203,7 @@ Refer to the :doc:`/build-ci/eups_tutorial` for more information on working with
 
 Note that the SSD and GPFS-backed stacks are independent: while both will automatically contain the latest LSST software releases, other products declared in a given stack will not automatically become available in the other.
 
-Administators may wish to note that the shared stack is automatically updated using the script :file:`~lsstsw/shared-stack/shared_stack.py`, which is executed nightly by Cron.
+Administrators may wish to note that the shared stack is automatically updated using the script :file:`~lsstsw/shared-stack/shared_stack.py`, which is executed nightly by Cron.
 
 .. _lsst-dev-xpra:
 
