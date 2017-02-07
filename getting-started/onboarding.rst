@@ -31,8 +31,8 @@ That will get you up to speed with the LSST Project; the rest of this page is sp
 
 .. _getting-started-ncsa:
 
-NCSA Resources
-==================
+NCSA resources
+==============
 
 You'll also need account(s) for the LSST infrastructures hosted at NCSA:
 
