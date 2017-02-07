@@ -34,9 +34,7 @@ Then, log into MySQL:
    mysql -h lsst-db.ncsa.illinois.edu -u<userName> -p
    Password: <type temporary mysql password>
 
-And then, set a new password:
-
-.. prompt:: bash
+And then, set a new password ::
 
    mysql> set password = password('theNewPassword');
 
@@ -57,7 +55,7 @@ Create a ``db-auth.py`` configuration file with your mysql host, user, password 
 
 You will also need to create a ``db-auth.paf`` file, because the ``pex_persistence`` package hasn't been updated to use Config.  This file also belongs in ``$HOME/.lsst``, and requires permissions 600.
 
-.. prompt:: python
+.. prompt:: YAML
 
    database: {
        authInfo: {
