@@ -23,13 +23,13 @@ After you receive your initial temporary password, change it as soon as possible
 
 Set the MYSQL_HISTFILE environment variable to /dev/null (By doing it you will prevent the command with your new password from being saved in clear-text history file.).
 
-.. prompt:: bash
+.. code-block:: bash
 
    export MYSQL_HISTFILE=/dev/null
 
 Then, log into MySQL:
 
-.. prompt:: bash
+.. code-block:: bash
 
    mysql -h lsst-db.ncsa.illinois.edu -u<userName> -p
    Password: <type temporary mysql password>
