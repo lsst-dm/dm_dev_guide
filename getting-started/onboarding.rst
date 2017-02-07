@@ -29,7 +29,7 @@ You can always update your LSST password at https://lsstsspc.lsst.org/.
 Finally, read over the LSST Project's `New Employee Onboarding <https://project.lsst.org/onboarding>`_ page.
 That will get you up to speed with the LSST Project; the rest of this page is specific to DM.
 
-.. _getting-started-github:
+.. _getting-started-ncsa:
 
 NCSA Resources
 ==================
