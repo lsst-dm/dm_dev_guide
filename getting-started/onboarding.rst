@@ -29,14 +29,22 @@ You can always update your LSST password at https://lsstsspc.lsst.org/.
 Finally, read over the LSST Project's `New Employee Onboarding <https://project.lsst.org/onboarding>`_ page.
 That will get you up to speed with the LSST Project; the rest of this page is specific to DM.
 
-NCSA server access
+.. _getting-started-ncsa:
+
+NCSA Resources
 ==================
 
-You'll also get an account for the developer infrastructure at NCSA.
-Your NCSA username will match your LSST account.
+You'll also need account(s) for the LSST infrastructures hosted at NCSA:
 
-NCSA will email you with details on setting up a password.
-Then, see :doc:`/services/lsst-dev` for login details.
+- Development Servers (`lsst-dev </services/lsst-dev.html>`_)
+- MySQL Database (`lsst-db </services/lsst-db.html>`_)
+- `Nebula OpenStack </services/nebula/index.html>`_
+
+If you are missing any of these accounts, you can request one by sending the following to ``lsst-account _at_ ncsa.illinois.edu``:
+- First and last name		
+- Email		
+- Sponsoring LSST manager		
+- LSST-DM subteam or project
 
 .. _getting-started-github:
 
