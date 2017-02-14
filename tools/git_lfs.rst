@@ -19,6 +19,9 @@ Git LFS requires Git version 1.8.2 or later to be installed.
 
 Download and install the ``git-lfs`` client by visiting the `Git LFS <https://git-lfs.github.com>`_ homepage.
 If you downloaded the binary release, install ``git-lfs`` by running the provided :file:`install.sh`.
+The LSST Git LFS system requires a minimum ``git-lfs`` `client version of 1.1.0 <https://github.com/git-lfs/git-lfs/releases/tag/v1.1.0>`_.
+It is recommended that users use the current stable ``git-lfs`` `client version <https://github.com/git-lfs/git-lfs/releases/latest>`_.
+Newer client versions support the more efficient batch API and have many bug fixes and performance improvements.
 
 Most package managers also provide the ``git-lfs`` client.
 Since, LFS is a rapidly evolving technology, package managers will help you keep up with new ``git-lfs`` releases.
@@ -28,7 +31,6 @@ Once ``git-lfs`` is installed, run:
 
 .. code-block:: bash
 
-   git config --global lfs.batch false
    git lfs install
 
 to configure Git to use Git LFS in your :file:`~/.gitconfig` file.
@@ -52,8 +54,6 @@ First, add these lines into your :file:`~/.gitconfig` file:
 
 .. literalinclude:: snippets/git_lfs_gitconfig.txt
    :language: text
-   
-*(This example includes the result of the earlier 'lfs.batch false' configuration command.)*
 
 Then add these lines into your :file:`~/.git-credentials` files (create one, if necessary):
 
@@ -77,8 +77,6 @@ First, add these lines into your :file:`~/.gitconfig` file:
 .. literalinclude:: snippets/git_lfs_gitconfig.txt
    :language: text
    :lines: 1-8
-
-*(This example includes the result of the earlier 'lfs.batch false' configuration command.)*
 
 Then add these lines into your :file:`~/.git-credentials` files (create one, if necessary):
 
@@ -111,6 +109,22 @@ Once your credentials are cached, you won't need to repeat this process on your 
 *That's it.*
 Read the rest of this page to learn how to work with Git LFS repositories.
 
+.. note:: **Legacy Git LFS client differences**
+
+   *Follow these configuration instructions if you are using a version of the Git LFS client less than 1.3.*
+
+   The legacy Git LFS client has two configuration differences. First, your :file:`~/.gitconfig` file must have an lfs section that sets the batch option to false. Second, your :file:`~/.git-credentials` and :file:`~/.gitconfig` files must include credentials for `the git-lfs server <https://git-lfs.lsst.codes>`_.
+
+   First, add these lines into your :file:`~/.gitconfig` file if you are using a legacy Git LFS client:
+
+   .. literalinclude:: snippets/git_lfs_gitconfig_legacy.txt
+      :language: text
+
+   Then add these lines into your :file:`~/.git-credentials` file (create one, if necessary) if you are using a legacy Git LFS client:
+
+   .. literalinclude:: snippets/git_lfs_git-credentials_legacy.txt
+      :language: text
+   
 .. _git-lfs-using:
 
 Using Git LFS-enabled repositories
@@ -179,17 +193,15 @@ First, initialize the current directory as a repository:
 
    git init .
 
-Make files called :file:`.lfsconfig` **and** :file:`.gitconfig` *within the repository*, and write these lines into both:
+Make a file called :file:`.lfsconfig` *within the repository*, and write these lines into it:
 
 .. code-block:: text
 
    [lfs]
         url = https://git-lfs.lsst.codes
-        batch = false
 
 Note that older versions of Git LFS used :file:`.gitconfig` rather than :file:`.lfsconfig`.
 As of Git LFS version 1.1 `.gitconfig has been deprecated <https://github.com/github/git-lfs/pull/837>`_, but support will not be dropped until LFS version 2.
-New repositories should still use both configuration files since DM's Jenkins server still uses a pre-1.1 ``git-lfs`` client.
 
 Next, track some files types.
 For example, to have FITS and ``*.gz`` files tracked by Git LFS,
@@ -199,7 +211,7 @@ For example, to have FITS and ``*.gz`` files tracked by Git LFS,
    git lfs track "*.fits"
    git lfs track "*.gz"
 
-Add and commit the :file:`.lfsconfig`, :file:`.gitconfig`, and :file:`.gitattributes` files to your repository.
+Add and commit the :file:`.lfsconfig` and :file:`.gitattributes` files to your repository.
 
 You can then push the repo up to github with
 
