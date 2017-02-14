@@ -23,8 +23,9 @@ Preserving integrity of design intent is important. The creation of a piece of s
 This gains more importance as the key form of these descriptions is an operational (imperative) form, which will decide how a system will react to specified (an, in some cases, unexpected) external stimuli.
 
 This document is strongly based on (verily, virtually identical to) the `CARMA <http://www.mmarray.org/workinggroups/computing/cppstyle.html>`_ [Pound]_ C++ Coding Standards which, in turn, was strongly based on Geosoft [Geosoft]_ and `ALMA C++ Coding Standards <https://science.nrao.edu/facilities/alma/aboutALMA/Technology/ALMA_Computing_Memo_Series/0009/2001-06-06.pdf>`_ [Bridger2001]_.
+The layout section of this document is also based on the `Google C++ Style Guide <https://google.github.io/styleguide/cppguide.html>`_ [Google]_.
 We have taken the CARMA HTML document and changed it in places to match LSST's needs.
-CARMA, Geosoft and ALMA retain their respective copyrights where appropriate.
+CARMA, Geosoft, ALMA and Google retain their respective copyrights where appropriate.
 
 .. _style-guide-cpp-intro:
 
@@ -32,7 +33,7 @@ CARMA, Geosoft and ALMA retain their respective copyrights where appropriate.
 ===============
 
 This document lists C++ coding recommendations common in the C++ development community.
-The recommendations are based on established standards collected from a number of sources, individual experience, local requirements/needs, as well as suggestions given in [McConnell2004]_, [Henricson1992]_, [Henricson1992]_ and [Hoff2008]_.
+The recommendations are based on established standards collected from a number of sources, individual experience, local requirements/needs, as well as suggestions given in [McConnell2004]_, [Henricson1992]_, [Henricson1992]_, [Hoff2008]_ and [Google]_. 
 
 While a given development environment (IDE) can improve the readability of code by access visibility, color coding, automatic formatting and so on, the programmer should never rely on such features.
 Source code should always be considered larger than the IDE it is developed within and should be written in a way that maximizes its readability independent of any IDE.
@@ -172,14 +173,14 @@ The Database Schema document should be reviewed for existing appropriate names
 
 .. code-block:: cpp
 
-   class Line, SavingsAccount
-    
+   class Line, SavingsAccount;
+   
    struct {
        float bar;
-       int  yoMama;
+       int yoMama;
    } Foo;
    Foo myFoo;
- 
+
    typedef Vector<Frame> FrameVector;
 
 Common practice in the C++ development community.
@@ -217,8 +218,8 @@ In many cases implementing the value as a method is a better choice:
 
 .. code-block:: cpp
 
-   int getMaxIterations() {     // NOT: int const MAX_ITERATIONS = 25
-     return 25;
+   int getMaxIterations() {  // NOT: int const MAX_ITERATIONS = 25
+       return 25;
    }
 
 This form is both easier to read, and it ensures a unified interface towards class values.
@@ -227,7 +228,7 @@ Note that this rule applies only to ``const`` variables that represent constants
 .. code-block:: cpp
 
    void foo(string const& filename);
-   float const r2 = r*r;           // radius^2
+   float const r2 = r * r;  // radius^2
 
 .. _style-guide-cpp-3-4:
 
@@ -240,15 +241,15 @@ Do not put a space between the function name and the opening parenthesis when de
 
    class GoodClass {
    public:
-       void const getPublic() {}           // OK
+       void const getPublic() {}  // OK
    protected:
-       void const getProtected() {}        // OK
+       void const getProtected() {}  // OK
    private:
-       void const _getPrivate() {}         // OK
+       void const _getPrivate() {}  // OK
    };
-    
-   void getName() {...}                    // OK
-   void computeTotalWidth() {...}          // OK
+   
+   void getName() { ... }            // OK
+   void computeTotalWidth() { ... }  // OK
 
 Refer to :ref:`Rule 3-10 <style-guide-cpp-3-10>` for a discussion on the leading underscore requirement for private member functions.
 
@@ -267,8 +268,8 @@ For example:
 .. code-block:: cpp
 
    Box b;
-   b.dilateBy(a); // b is modified
-   Box c = b.dilatedBy(a); // a modified copy of b is assigned to c
+   b.dilateBy(a);           // b is modified
+   Box c = b.dilatedBy(a);  // a modified copy of b is assigned to c
 
 .. _style-guide-cpp-3-5:
 
@@ -305,7 +306,7 @@ The original developer may consider using the following guideline to fabricate t
 
 .. code-block:: cpp
 
-   namespace pexLog = lsst:pwx:logging;
+   namespace pexLog = lsst::pex::logging;
    namespace afwMath = lsst::afw::math;
 
 Three options are available for using a namespace when defining symbols
@@ -314,23 +315,25 @@ Three options are available for using a namespace when defining symbols
 
    .. code-block:: cpp
 
-      lsst::foo::bar::myFunction(...) {...};
+      lsst::foo::bar::myFunction(...) { ... }
 
 2. Use an abbreviation for the namespace
 
    .. code-block:: cpp
 
       namespace fooBar = lsst::foo::bar;
-      fooBar::myFunction(...) {...};
+      fooBar::myFunction(...) { ... };
 
 3. Put the definitions into a namespace block
 
    .. code-block:: cpp
    
-      namespace lsst{
-      namespace foo{
-      namespace bar{   
-         myFunction(...) {...};
+      namespace lsst {
+      namespace foo {
+      namespace bar {
+
+      myFunction(...) { ... };
+
       }}}  // lsst::foo::bar
 
 .. _style-guide-cpp-3-7:
@@ -340,10 +343,9 @@ Three options are available for using a namespace when defining symbols
 
 .. code-block:: cpp
 
-   template<typename T> ...             // acceptable
-   template<typename T> ...             // acceptable
-   template<typename C, typename D> ... // acceptable
-   template<class PixelType> ...  // acceptable, user-defined class only
+   template <typename T> ...             // acceptable
+   template <typename C, typename D> ... // acceptable
+   template <class PixelType> ...  // acceptable, user-defined class only
 
 Common practices in the C++ development community.
 Regarding the use of ``typename`` versus ``class``, we will adopt the convention of using ``typename`` in all cases except where the intent is ONLY a user-defined class and not primitives.
@@ -393,11 +395,10 @@ This requirement is intended to highlight that these functions are in the root n
 
 .. code-block:: cpp
 
-   class SomeClass
-   {
+   class SomeClass {
    private:
-       int  _length;
-       int  _computeBlob();
+       int _length;
+       int _computeBlob();
    }
 
 Apart from its name and its type, the scope of a variable or method is its most important feature.
@@ -408,9 +409,7 @@ A side effect of the underscore naming convention is that it nicely resolves the
 
 .. code-block:: cpp
 
-   void setDepth(int depth){
-       _depth = depth;
-   }
+   void setDepth(int depth) { _depth = depth; }
 
 An issue is whether the underscore should be added as a prefix or as a suffix.
 Both practices are commonly used.
@@ -444,7 +443,7 @@ Non-generic variables have a role. These variables can often be named by combini
 .. code-block:: cpp
 
    Point startingPoint, centerPoint;
-   Name  loginName;
+   Name loginName;
 
 .. _style-guide-cpp-3-12:
 
@@ -534,8 +533,8 @@ For example:
 
 .. code-block:: cpp
 
-   employee.getName();       matrix.getElement (2, 4);
-   employee.setName(name);   matrix.setElement (2, 4, value);
+   employee.getName();       matrix.getElement(2, 4);
+   employee.setName(name);   matrix.setElement(2, 4, value);
 
 Common practice in the C++ development community.
 In Java this convention has become more or less standard.
@@ -644,7 +643,7 @@ If the C++ data is maintained in an array indexed by filter, this rule doesn't a
 
 .. code-block:: cpp
 
-   for (vector<MyClass>::iterator listIter = list.begin(); listIter != list.end(); listIter++){
+   for (vector<MyClass>::iterator listIter = list.begin(); listIter != list.end(); listIter++) {
        Element element = *listIter;
        // ...
    }
@@ -740,9 +739,10 @@ Where possible, put enums in appropriate classes, in which case the ``GRADE_*`` 
 .. code-block:: cpp
 
    class Grade {
-         enum { HIGH, MIDDLE, LOW };
-    
-         Grade() {} Etc. ...
+       enum { HIGH, MIDDLE, LOW };
+   
+       Grade() {}
+       ...
    };
 
 This gives additional information of where the declaration can be found, which constants belongs together, and what concept the constants represent.
@@ -767,7 +767,7 @@ Exception classes are really not part of the main design of the program, and nam
 
 .. code-block:: cpp
 
-   double & getElevation(unsigned int antennaId), void pointAntenna(Source const & source)
+   double& getElevation(unsigned int antennaId), void pointAntenna(Source const &source)
 
 Increase readability.
 Makes it clear what the unit should do and especially all the things it is not supposed to do. This again makes it easier to keep the code clean of side effects.
@@ -912,13 +912,12 @@ Each logical group of functions should have a common comment above the group exp
 
    class MyClass {
    public:
-       int doSomethingComplicated() { // NO!
+       int doSomethingComplicated() {  // NO!
            float a = exp(-h*nu/(k*T));
-           float foobar = computeFooBar(a,PI/4);
+           float foobar = computeFooBar(a, PI/4);
            ...
            return value;
        }
-    
    }
 
 The header files should declare an interface, the source file should implement it.
@@ -938,9 +937,9 @@ In :file:`MyString.h`:
 
    template <typename CharType>
    class MyString {
-   //...
-   }
-   extern template class MyString<char>;//Inhibits implicit MyString<char>
+       //...
+   };
+   extern template class MyString<char>;  // Inhibits implicit MyString<char>
 
 We expect to freely use template classes in the framework and possibly elsewhere in the application layer.
 There will be many template class declarations and many instantiations of them.
@@ -967,24 +966,22 @@ If an in-line function has a body of more than 5 lines, it should be placed outs
 
    #ifndef LSST_FOO_H
    #define LSST_FOO_H
-    
+   
    class Foo {
    public:
        Foo();
        virtual ~Foo() {}
        int getValue() const { return _value; }
        inline int getAnotherValue() const;
-    
+   
    private:
        int _value;
        int _anotherValue;
    };
-    
-   int Foo::getAnotherValue() const {
-     return _anotherValue;
-   }
-    
-   #endif // LSST_FOO_H
+   
+   int Foo::getAnotherValue() const { return _anotherValue; }
+   
+   #endif  // LSST_FOO_H
 
 Empty constructor:
 
@@ -1156,7 +1153,7 @@ Double quotes should be used to delimit those paths which refer to any code inst
 
 .. code-block:: cpp
 
-   #include  "boost/any"
+   #include "boost/any"
    #include "lsst/afw/image/image.h"
    #include "vw/image.h"
 
@@ -1193,17 +1190,19 @@ Member declarations should be done with data members first, then member function
 
 .. code-block:: cpp
 
-   class MyClass{
+   class MyClass {
    public:
        int anInt;
        int doSomething();
+   
    protected:
        float aFloat;
        float doSomethingElse();
+   
    private:
        char _aChar;
        char doSomethingPrivately();
-     ...
+       ...
    }
 
 The ordering is *most public first* so people who only wish to use the class can stop reading when they reach the protected/private sections.
@@ -1234,7 +1233,7 @@ Never rely on implicit type conversion.
 
 .. code-block:: cpp
 
-   floatValue = static_cast<float> (intValue);    // YES!
+   floatValue = static_cast<float>(intValue);     // YES!
    floatValue = intValue;                         // NO!
    floatValue = (float)intValue;                  // NO C-style casts!
 
@@ -1254,7 +1253,7 @@ Maybe there is a better way to do things.
 
 .. code-block:: cpp
 
-   int i=0;
+   int i = 0;
    float aFloat = 0.0;
    int *i = 0          // 0 preferred pointer initialization, not NULL
 
@@ -1332,8 +1331,8 @@ Unrelated variables should not be declared in the same statement.
 
 .. code-block:: cpp
 
-   float  x, y, z;
-   float  revenueJanuary, revenueFebruary, revenueMarch;
+   float x, y, z;
+   float revenueJanuary, revenueFebruary, revenueMarch;
 
 The common requirement of having declarations on separate lines is not useful in the situations like the ones above.
 It enhances readability to group variables like this.
@@ -1528,7 +1527,7 @@ should be replaced by:
 
 .. code-block:: cpp
 
-   bool const isFinished    = (elementNo < 0) || (elementNo > maxElement);
+   bool const isFinished = (elementNo < 0) || (elementNo > maxElement);
    bool const isRepeatedEntry = elementNo == lastElement;
    if (isFinished || isRepeatedEntry) {
        ...
@@ -1564,11 +1563,11 @@ This is important for both the readability and performance.
 
    //YES:
    if (isDone) {
-     doCleanup()
+     doCleanup();
    }
     
    // Also OK:
-   if ( isDone) doCleanup();
+   if (isDone) doCleanup();
 
 This is useful when using a symbolic debugger: when written on a single line, it is not apparent whether the test is true or not.
 
@@ -1580,12 +1579,12 @@ This is useful when using a symbolic debugger: when written on a single line, it
 .. code-block:: cpp
 
    // NO!
-   if ((fileHandle = open (fileName, "w"))) {
+   if ((fileHandle = open(fileName, "w"))) {
        ...
    }
     
    // YES:
-   fileHandle = open (fileName, "w");
+   fileHandle = open(fileName, "w");
    if (fileHandle) {
        ...
    }
@@ -1624,11 +1623,13 @@ A programmer must never rely on this feature, since this might be confusing for 
 
 .. code-block:: cpp
 
-   void MyDerivedClass::foo( double /* scalefactor */ ) { // OK
-       };
-     
-       void MyDerivedClass::foo( double ) { // OK
-       };
+   void MyDerivedClass::foo(double /* scalefactor */) {
+           // OK
+   };
+   
+   void MyDerivedClass::foo(double) {
+           // OK
+   };
 
 This is common in template specializations and derived methods, where a variable is needed for some cases but not all.
 In order to remind the developer of the significance of the missing parameter, an in-line C comment may be used.
@@ -1676,7 +1677,7 @@ Use the ``const`` version where possible.
 .. code-block:: cpp
 
    Antenna& getAntenna(unsigned int i);
-   Antenna const & getAntenna(unsigned int i) const;
+   Antenna const& getAntenna(unsigned int i) const;
 
 The first example returns internal data.
 If the class containing the function is constant, you can only call functions that have the trailing ``const`` label.
@@ -1688,9 +1689,9 @@ For example:
    class Telescope {
        Antenna& getAntenna(unsigned int i);
    };
- 
+   
    const Telescope tel = obs.getTelescope();
-   Antenna const & ant = tel.getAntenna(1); // ERROR!
+   Antenna const& ant = tel.getAntenna(1);  // ERROR!
 
 .. _style-guide-cpp-constructors:
 
@@ -1709,25 +1710,28 @@ A default constructor must be provided. Avoid implicit copy constructors.
    class Year {
    private:
        int y;
+   
    public:
-       explicit Year(int i) : y(i) { }
+       explicit Year(int i) : y(i) {}
    };
-    
-       Year y1 = 1947; // illegal
-       Year y2 = Year(1947); // OK
-       Year y3(1947);  // Better
-    
+   
+   Year y1 = 1947;        // illegal
+   Year y2 = Year(1947);  // OK
+   Year y3(1947);         // Better
+   
    // Example of unintended result and no error reported
    class String {
        int size;
        char *p;
+   
    public:
-       String(int sz);    // constructor and implicit conversions
-   }
-   void f(){
+       String(int sz);  // constructor and implicit conversions
+   };
+
+   void f() {
        String s(10);
-       s = 100;         // programmer's typo not detected; 100 is
-                        // converted to a String and then assigned to s!
+       s = 100;  // programmer's typo not detected; 100 is
+                 // converted to a String and then assigned to s!
    }
 
 This avoids implicit type conversions (see :ref:`Rule 5-3 <style-guide-cpp-5-3>`).
@@ -1757,24 +1761,21 @@ In the example below, without a virtual destructor, the proper destructor will n
 
 .. code-block:: cpp
 
-   class Base
-   {
+   class Base {
    public:
-       Base() { }
-       ~Base() {}      // Should be:   virtual ~Base() { }
+       Base() {}
+       ~Base() {}  // Should be:   virtual ~Base() { }
    };
-    
-   class Derived: public Base
-   {
+   
+   class Derived : public Base {
    public:
-        Derived() { }
-        ~Derived() { }
+       Derived() {}
+       ~Derived() {}
    };
-    
-   void main()
-   {
+   
+   void main() {
        Base *b = new Derived();
-       delete b;      // Will not call Derived::~Derived() unless 'virtual ~Base()' was defined !
+       delete b;  // Will not call Derived::~Derived() unless 'virtual ~Base()' was defined !
    }
 
 .. _style-guide-cpp-misc:
@@ -1877,8 +1878,8 @@ Hence the ``@throw`` requirement.
 .. code-block:: cpp
 
    try {
-       } catch (ExceptionClass &) {      // OK
-       };
+   } catch (ExceptionClass &) {  // OK
+   };
 
 Although C++ allows omission of the variable name, some compilers generate warnings if a named variable is not accessed.
 This Rule will reduce unnecessary compiler warnings.
@@ -1983,18 +1984,16 @@ Because ``override`` already implies ``virtual``, virtual should not be included
 
 .. code-block:: cpp
 
-   class Base
-   {
+   class Base {
    public:
-        virtual void foo();
+       virtual void foo();
    };
-    
-   class Derived: public Base
-   {
+   
+   class Derived : public Base {
    public:
-        void foo() override;
-
-        void bar();
+       void foo() override;
+   
+       void bar();
    };
 
 .. _style-guide-cpp-layout-comments:
@@ -2006,6 +2005,17 @@ Because ``override`` already implies ``virtual``, virtual should not be included
 
 6.1. Layout
 -----------
+
+.. _style-guide-cpp-6-0:
+
+6-0. Layout MAY be automated with clang-format using the LSST configuration.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The easiest way to comply with the :ref:`layout rules <style-guide-cpp-layout>` is to use `clang-format <http://clang.llvm.org/docs/ClangFormat.html>`_.
+
+The intent is that all of the layout rules are compatible with clang-format using the LSST configuration; if any conflicts arise, this rule ensures that the clang-format result is permitted to be used notwithstanding any other.
+
+See :ref:`here <using_clang_format>` for instructions.
 
 .. _style-guide-cpp-6-1:
 
@@ -2079,86 +2089,87 @@ Example 2 adds an additional line without significant increase in readability.
 
 .. code-block:: cpp
 
-   class SomeClass :
-       public  BaseClass1,
-       public  BaseClass2,
-       private BaseClass3
-   {
+   class SomeClass : public BaseClass1, public BaseClass2, private BaseClass3 {
    public:
        SomeClass() {}
+   
    protected:
        ...
+   
    private:
        ...
    };
 
 Note that:
 
-- Like functions, the opening brace is at the same indentation as the class keyword
-- any subclasses are indented one block and their visibility is explicitly qualified
-- The declarations public, protected and private are left-justified to the same indentation as class.
-- If ``SomeClass`` is not derived from anything, the opening brace should still line up with class
-
-For historical reasons, the format:
-
-.. code-block:: cpp
-
-   class SomeClass : public BaseClass1, BaseClass2, private BaseClass3 {
-   public:
-       SomeClass() {}
-   protected:
-       ...
-   private:
-       ...
-   };
-
-is permitted but not encouraged, and should not be used in new code.
+  - Any base class name should be on the same line as the subclass name,
+    subject to the 110-column limit.
+  - The ``public:``, ``protected:``, and ``private:`` keywords should not be indented.
+  - Except for the first instance, these keywords should be preceded by a blank line.
+    This rule is optional in small classes.
+  - Do not leave a blank line after these keywords.
+  - The ``public`` section should be first, followed by the ``protected`` and finally the ``private`` section.
 
 .. _style-guide-cpp-6-6:
 
 6-6. Function declarations MAY have any of the following three forms:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: cpp
-
-   /**
-    * Documentation
-    */
-   void someMethod(type arg,               ///< Helpful comment about arg
-                   type2 arg2              ///< Helpful comment about arg2
-                  )
-   {
-       ...
-   }
-
-Note that:
-
-- The first argument immediately follows the opening paren of the argument list, and other arguments are aligned with it
-- The closing paren of the argument list is on a line by itself, and lines up with the opening paren
-- If there are no arguments, the function may be written as ``void someOtherMethod()``, but the opening brace still gets a line of its own
-- The opening brace is aligned with the return type
+Return type on the same line as function name, parameters on the same line if they fit.
 
 .. code-block:: cpp
 
-   /**
-    * Documentation
-    */
-   void someMethod(
-       type arg,                       ///< Helpful comment about arg
-       type2 arg2                      ///< Helpful comment about arg2
-   ) {
-       ...
-   }
+  ReturnType ClassName::functionName(Type parName1, Type parName2) {
+      doSomething();
+      ...
+  }
+
+If you have too much text to fit on one line:
+
+.. code-block:: cpp
+
+  ReturnType ClassName::reallyLongFunctionName(Type parName1, Type parName2,
+                                               Type parName3) {
+      doSomething();
+      ...
+  }
+
+or if you cannot fit even the first parameter:
+
+.. code-block:: cpp
+
+  ReturnType LongClassName::reallyReallyReallyLongFunctionName(
+          Type parName1, Type parName2, Type parName3) {  // 8 space indent
+      doSomething();  // 4 space indent
+      ...
+  }
+
+Some points to note:
+
+- If you cannot fit the return type and the function name on a single line, break between them.
+- If you break after the return type of a function declaration or definition, do not indent.
+- The open parenthesis is always on the same line as the function name.
+- There is never a space between the function name and the open parenthesis.
+- There is never a space between the parentheses and the parameters.
+- The open curly brace is always on the end of the last line of the function declaration, not the start of the next line.
+- The close curly brace is either on the last line by itself or on the same line as the open curly brace.
+- There should be a space between the close parenthesis and the open curly brace.
+- All parameters should be aligned if possible.
+- Default indentation is 4 spaces.
+- Wrapped parameters have a 8 space indent.
 
 Documentation for function arguments may be placed after the arguments, as shown here, or in the main documentation block using ``@param``.
 
 .. code-block:: cpp
 
-   void someMethod(type arg) {
+   /**
+     * Documentation
+     */
+   void someMethod(type arg,   ///< Helpful comment about arg
+                   type2 arg2  ///< Helpful comment about arg2
+                   ) {
        ...
    }
-
-The third form is permitted only for functions with a small number of arguments.
 
 .. _style-guide-cpp-6-7:
 
@@ -2168,7 +2179,7 @@ The third form is permitted only for functions with a small number of arguments.
 .. code-block:: cpp
 
    if (condition) {
-       statements;
+       ...
    }
     
    if (condition) {
@@ -2178,12 +2189,11 @@ The third form is permitted only for functions with a small number of arguments.
    }
     
    if (condition) {
-       statements;
+       ...
    } else if (condition) {
-    
-       statements;
+       ...
    } else {
-       statements;
+       ...
    }
 
 This is equivalent to the Sun recommendation. 
@@ -2203,14 +2213,26 @@ This follows from the general block rule above.
 
 .. _style-guide-cpp-6-9:
 
-6-9. Empty loops SHOULD be avoided. But if needed, empty loops MUST be clearly identified and on a single line:
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6-9. Empty loops SHOULD be avoided. But if needed, empty loops MUST be clearly identified
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Empty loop bodies should use an empty pair of braces or continue, but not a single semicolon.
 
 .. code-block:: cpp
 
-   for (initialization; condition; update) {}// do nothing here
+  while (condition) {
+      // Repeat test until it returns false.
+  }
+
+  for (int i = 0; i < kSomeNumber; ++i) {}  // Good - one newline is also OK.
+
+  while (condition) continue;  // Good - continue indicates no logic.
 
 This emphasizes that the statement is empty and it makes it obvious for the reader that this is intentional.
+
+.. code-block:: cpp
+
+  while (condition);  // Bad - looks like part of do/while loop.
 
 .. _style-guide-cpp-6-10:
 
@@ -2245,28 +2267,28 @@ This follows from the general block rule above.
 
 .. code-block:: cpp
 
-   switch (condition) {
-     case ABC:
-       statements;
-       // Fallthrough
-    
-     case DEF:
-       statements;
-       break;
-    
-     case XYZ:
-       statements;
-       break;
-    
-     default:
-       statements;
-       break;
-   }
+  switch (condition) {
+      case ABC:
+          statements;
+      // Fallthrough
+  
+      case DEF:
+          statements;
+          break;
+  
+      case XYZ:
+          statements;
+          break;
+  
+      default:
+          statements;
+          break;
+  }
 
-Note that each ``case`` keyword is indented 2 spaces relative to the ``switch`` statement as a whole and the statement blocks are indented one indention (4 spaces).
+Note that each ``case`` keyword is indented 4 spaces relative to the ``switch`` statement as a whole and the statement blocks are also indented 4 spaces.
 This makes the entire ``switch`` statement stand out.
 
-The explicit 'Fallthrough' comment should be included whenever there is a ``case``` statement without a 'break' statement.
+The explicit 'Fallthrough' comment should be included whenever there is a ``case``` statement without a ``break`` statement.
 Leaving the ``break`` out is a common error, and it must be made clear that it is intentional when it is not there.
 
 .. _style-guide-cpp-6-13:
@@ -2276,13 +2298,14 @@ Leaving the ``break`` out is a common error, and it must be made clear that it i
 
 .. code-block:: cpp
 
-   try {
-       statements;
-   } catch ( std::logic_error const & logicError ) {
-       statements; // stifling the exception
-   } catch ( ... ) {
-       statements; throw;
-   }
+  try {
+      statements;
+  } catch (std::logic_error const& logicError) {
+      statements;  // stifling the exception
+  } catch (...) {
+      statements;
+      throw;
+  }
 
 This follows partly from the general block rule above.
 The discussion about closing brackets for 'if-else' statements apply to the 'try-catch' statements.
@@ -2312,9 +2335,9 @@ However, the use of brackets in the above cases would make it trivial to add sta
 
 .. code-block:: cpp
 
-   void MyClass::myMethod (void){
-       ...
-   }
+  void MyClass::myMethod(void) {
+      ...
+  }
 
 This is general practice.
 
@@ -2325,8 +2348,8 @@ This is general practice.
 
 .. code-block:: cpp
 
-   a = b(nSigmaToGrow*sigma + 0.5)   // YES
-   a = b((nSigmaToGrow*sigma) + 0.5) // NO
+  a = b(nSigmaToGrow * sigma + 0.5);    // YES
+  a = b((nSigmaToGrow * sigma) + 0.5);  // NO
  
 .. _style-guide-cpp-whitespace:
 
@@ -2338,7 +2361,11 @@ This is general practice.
 6-16. The following white space conventions SHOULD be followed:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- Conventional operators should be surrounded by a space character (except * and / and %)
+- Assignment operators always have spaces around them.
+- Other binary operators usually have spaces around them, but it's
+  OK to remove spaces around ``*``, ``/`` and ``%``.
+- Parentheses should have no internal padding.
+- No spaces separating unary operators and their arguments.
 - C++ reserved words should be followed by a white space.
 - Commas should be followed by a white space.
 - Colons should be surrounded by white space.
@@ -2346,8 +2373,9 @@ This is general practice.
 
 .. code-block:: cpp
 
-   a = (b + c)*d;              // NOT:   a=(b+c)*d
-   a = y%4 == 0                // NOT:   a = y % 4 == 0
+   v = w * x + y / z;          // GOOD
+   v = w*x + y/z;              // OK TOO
+   v = w * (x + z);            // GOOD (no padding)
    while (true) {              // NOT:   while(true) ...
    doSomething(a, b, c, d);    // NOT:   doSomething(a,b,c,d);
    for (i = 0; i < 10; i++) {  // NOT:   for (i=0;i<10;i++){
@@ -2374,66 +2402,43 @@ However, this must be balanced with being able to see more of the code at a glan
 
 .. _style-guide-cpp-6-20:
 
-6-20. Variables in declarations SHOULD be left aligned where possible.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6-20.
+^^^^^
 
-.. code-block:: cpp
-
-   AsciiFile  *file;
-   int        nPoints;
-   float      x, y;
-
-Enhance readability.
-The variables are easier to spot from the types by alignment.
+*Deleted*
 
 .. _style-guide-cpp-6-21a:
 
-6-21a. Alignment SHOULD be used wherever it enhances readability.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+6-21a.
+^^^^^^
 
-.. code-block:: cpp
-
-   if      (a == lowValue)    computeSomething();
-   else if (a == mediumValue) computeSomethingElse();
-   else if (a == highValue)   computeSomethingElseYet();
-    
-   value = (potential        * oilDensity)   / constant1 +
-           (depth            * waterDensity) / constant2 +
-           (zCoordinateValue * gasDensity)   / constant3;
-    
-   minPosition     = computeDistance(min,     x, y, z);
-   averagePosition = computeDistance(average, x, y, z);
-    
-   switch (value) {
-       case PHASE_OIL   : strcpy(string, "Oil");   break;
-       case PHASE_WATER : strcpy(string, "Water"); break;
-       case PHASE_GAS   : strcpy(string, "Gas");   break;
-   }
-
-There are a number of places in the code where white space can be included to enhance readability even if this violates common guidelines.
-Many of these cases have to do with code alignment.
-General guidelines on code alignment are difficult to give, but the examples above should give a general clue. 
+*Deleted*
 
 .. _style-guide-cpp-6-21b:
 
 6-21b. Nested namespaces SHOULD be aligned left with each level of nesting on a new line.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The closing braces should all appear on one line and should be commented with the full nested namespace.
+The contents of namespaces are not indented.
+The closing braces may all appear on one line and should be commented with the full nested namespace.
 
 .. code-block:: cpp
 
-   namespace lsst {
-   namespace level1 {
-   namespace level2 {
-    
-      class MyClass {
-         // ...
-      };
-    
-   }}} // lsst::level1::level2
+  namespace lsst {
+  namespace level1 {
+  namespace level2 {
+
+  class MyClass {
+      // ...
+  };
+
+  }}}  // lsst::level1::level2
 
 This is a common practice in the C++ community, until the proposed ``level1::level2::level3`` syntax is supported.
+
+.. note::
+
+  For compatibility with ``clang-format`` the closing braces may also each be on a line by themselves.
 
 .. _style-guide-cpp-comments:
 
@@ -2463,31 +2468,37 @@ In an international environment English is the preferred language.
 6-24. Block comments MUST never be mixed with lines of code.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+This:
+
 .. code-block:: cpp
 
-   This:
    /* Get an antenna reference
     * and if it is pointed at the Sun,
     * point it at the moon, after checking
     * to see if the moon is blue.
     */
-    
-   Antenna & = getAntenna("bima.ant1");
+   
+   Antenna& ant = getAntenna("bima.ant1");
    bool moonIsBlue = (Planet.MOON.getColor() == "blue");
-   if(ant.isPointedAt(Planet.SUN) && moonIsBlue) {
+   if (ant.isPointedAt(Planet.SUN) && moonIsBlue) {
        ant.pointAt(Planet.MOON);
    } else {
        ant.pointAt(Planet.VENUS);
    }
-   Not this:
-   /* Get antenna reference */ Antenna &ant = getAntenna("bima.ant1");
+
+Not this:
+
+.. code-block:: cpp
+
+   /* Get antenna reference */ Antenna& ant = getAntenna("bima.ant1");
    /* and if it is pointed  */ bool moonIsBlue = (Planet.MOON.getColor() == "blue");
-   /* at the Sun, point it */  if(ant.isPointedAt(Planet.SUN) && moonIsBlue) {
-   /* at the moon */                ant.pointAt(Planet.MOON);
+   /* at the Sun, point it */  if (ant.isPointedAt(Planet.SUN) && moonIsBlue) {
+   /* at the moon */               ant.pointAt(Planet.MOON);
    /* after checking */        } else {
-   /* if the moon is blue */        ant.pointAt(Planet.VENUS);
-   }
-   Commenting in the second way makes code difficult to read and difficult to modify.
+   /* if the moon is blue */       ant.pointAt(Planet.VENUS);
+                               }
+
+Commenting in the second way makes code difficult to read and difficult to modify.
 
 .. _style-guide-cpp-6-25:
 
@@ -2501,7 +2512,7 @@ In an international environment English is the preferred language.
        // Do something
        something();
    }
-    
+   
    // NOT:
    while (true) {
    // Do something now
@@ -2543,6 +2554,9 @@ While it is not expected that we will bring the guts of all legacy code in line 
 
 .. [Hoff2008] Hoff, Todd. C++ Coding Standard, 2008. Available on-line at:
    http://www.possibility.com/Cpp/CppCodingStandard.htm
+
+.. [Google] Google C++ Style Guide, 2017. Available on-line at:
+   https://google.github.io/styleguide/cppguide.html
 
 .. _style-guide-cpp-cpp-11-14:
 

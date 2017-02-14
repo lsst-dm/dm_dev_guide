@@ -3,7 +3,7 @@
 
 #include <cstddef>
 
-template<typename T>
+template <typename T>
 class Foo {
 public:
     explicit Foo();
@@ -12,18 +12,21 @@ public:
 
     inline T getVal() const;
     void setVal(T val);
+
 private:
     T _val;
 };
 //
 // Inlined functions need to be in the .h file (maybe in the class definition itself)
 //
-template<typename T>
-inline T Foo<T>::getVal() const { return _val; }
+template <typename T>
+inline T Foo<T>::getVal() const {
+    return _val;
+}
 //
 // Declare a templated function
 //
-template<typename T>
+template <typename T>
 size_t mySizeof(void);
 //
 // Provide a declaration for explicitly-instantiated version[s] of mySizeof()
@@ -37,5 +40,5 @@ size_t mySizeof(void);
 #if 0
 extern template size_t mySizeof<float>(void);
 #endif
- 
+
 #endif

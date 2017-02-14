@@ -327,3 +327,18 @@ While there are modules (e.g., `autopair <https://github.com/capitaomorte/autopa
            ((looking-at "[]})]") (forward-char) (backward-sexp 1))
            (t (message "Point not at a parenthesis."))))
    (global-set-key "\C-xp" 'paren-match)
+
+.. _clang_format_emacs_integration:
+
+Clang-format integration
+------------------------
+
+There is an integration for Emacs. It can be found at ``clang/tools/clang-format/clang-format.el`` and used by adding this to your ``.emacs``:
+
+.. code-block:: text
+
+  (load "<path-to-clang>/tools/clang-format/clang-format.el")
+  (global-set-key [C-M-tab] 'clang-format-region)
+
+This binds the function ``clang-format-region`` to ``C-M-tab``, which then formats the current line or selected region.
+
