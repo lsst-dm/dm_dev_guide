@@ -3,10 +3,13 @@ Logging
 #######
 
 This page provides guidance to developers for using logging with :lmod:`lsst.log`  in the Science Pipelines code base.
+For reference documentation on the logging framework refer to the `Doxygen page on logging`_.
+
 Developers are encouraged to insert log messages whenever and wherever they might be useful, with appropriate component names and levels.
 
 Whether using :lmod:`lsst.log` or any other logging mechanism, timestamps recorded in logs should use Internet `RFC 3339`_ format, which is sortable and includes the timezone.  See the discussion in `DM-1203`_ for history.
 
+.. _Doxygen page on logging: https://lsst-web.ncsa.illinois.edu/doxygen/x_masterDoxyDoc/log.html
 .. _RFC 3339: http://tools.ietf.org/html/rfc3339
 .. _DM-1203: https://jira.lsstcorp.org/browse/DM-1203
 
