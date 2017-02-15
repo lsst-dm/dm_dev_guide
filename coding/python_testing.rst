@@ -2,6 +2,11 @@
 Python Unit Testing
 ###################
 
+.. note::
+
+   Changes to this document must be approved by the System Architect (`RFC-24 <https://jira.lsstcorp.org/browse/RFC-24>`_).
+   To request changes to these policies, please file an :ref:`RFC <decision-making-rfc>`.
+
 This page provides technical guidance to developers writing unit tests for DM's Python code base.
 See :doc:`unit_test_policy` for an overview of LSST Stack testing.
 If you have legacy DM :mod:`unittest` ``suite``-based code (code that sets up a :class:`unittest.TestSuite` object by listing specific test classes and that uses :lfunc:`lsst.utils.tests.run` rather than :func:`unittest.main`), please refer to tech note `SQR-012`_ for porting instructions.
