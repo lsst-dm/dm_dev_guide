@@ -1833,11 +1833,15 @@ Only in some very few cases (for instance breaking out of deeply nested structur
 
 .. _style-guide-cpp-5-34:
 
-5-34. ``0`` SHOULD be used instead of ``NULL``.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5-34. ``nullptr`` SHOULD be used instead of ``0`` and ``NULL``.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``NULL`` is part of the standard C library, but is made obsolete in C++.
-However, it is still frequently used, so ``NULL`` is permitted as long as it is not ``typedef``\ 'd or ``#define``'d to something other than ``0``.
+* ``nullptr`` is more explicit
+* Template type deduction deduces the wrong, integral instead of pointer, type for ``0`` and ``NULL``
+* Overload resolution of integral and pointer arguments picks the wrong overload with ``0`` and ``NULL``
+* ``NULL`` is part of the standard C library, but is made obsolete in C++
+
+See e.g. Meyers, *Effective Modern C++*, item 8.
 
 .. _style-guide-cpp-5-35:
 
