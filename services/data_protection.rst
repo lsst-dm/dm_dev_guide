@@ -43,7 +43,7 @@ Per-Capability Acceptable use
 
  - ``/software`` - Central location for maintenance of project-shared software installations that require access from multiple capabilities (ie batch, Nebula). Access is provided to all project members, however, maintenance of the software is based on project role which is subject to change control procedures.
 
- - ``/sui`` - hared storage for ephemeral data for the purpose of supporting SUI/T in the PDAC enclave.
+ - ``/sui`` - Shared storage for ephemeral data for the purpose of supporting SUI/T in the PDAC enclave.
 
  - ``/scratch`` - Ephemeral big-data storage for use in computation and other project-related activities.
 
@@ -71,7 +71,7 @@ Disaster Recovery:
     This tier does not allow for user-requested data restoration; it is a recovery mechanism 
     for catastrophic failure only and limits project value loss due to the failure.
 
-Protection:  
+No Protection:  
     Data in this tier comes with no integrity or availability assurance beyond standard, 
     best-practice data storage techniques. 
 
