@@ -59,23 +59,23 @@ data than as described. Data owners requiring a greater level of assurance shoul
 Protection Capabilities
 -----------------------
 
- - 30 day self-serve restore(*). 
-Data locations supporting this tier of protection allow 
+ - 30 day self-serve restore.  Data locations supporting this tier of protection allow 
 for users to retrieve, at their discretion and leisure, a previous data copy limited to 
 a maximum age of 30 days. Data set versions are captured at a maximum of one per day.
 
- - Disaster Recovery. 
-Data locations supporting this tier of protection provide 
+
+ - Disaster Recovery.  Data locations supporting this tier of protection provide 
 disjoint-technology protection from data loss, accidental or otherwise, to restore 
 to a point-in-time no greater than 30 days old. The particular point-in-time is subject 
 to capability limitations. This tier does not allow for user-requested data restoration; 
 it is a recovery mechanism for catastrophic failure only and limits project value loss due to the failure.
 
- - No Protection. 
-Data in this tier comes with no integrity or availability assurance beyond 
+
+ - No Protection.  Data in this tier comes with no integrity or availability assurance beyond 
 standard, best-practice data storage techniques. 
 
-(*) Note that these capability offerings, although in conformance with data storage best 
+
+Note that these capability offerings, although in conformance with data storage best 
 practices, are limited to the proper service of underlying technology and supporting 
 infrastructure. NCSA makes no claims nor accepts further liability for loss of data within these offerings.
 
