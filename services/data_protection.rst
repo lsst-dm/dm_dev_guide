@@ -87,7 +87,7 @@ announcements and will be documented on this page.
 
 
 Per File System Data Protection
-------------------------------
+-------------------------------
 
  - ``/datasets`` : Disaster Recovery only, no purging.
  - ``/home`` : 30 day self-serve restore + Disaster Recovery, no purging
