@@ -24,6 +24,7 @@ This document will not attempt to explain full details of how to use :mod:`unitt
 A simple :mod:`unittest` example is shown below:
 
 .. literalinclude:: unit_test_snippets/unittest_basic_example.py
+   :linenos:
    :language: python
 
 The important things to note in this example are:
@@ -34,6 +35,10 @@ The important things to note in this example are:
 * Test classes must, ultimately, inherit from :class:`unittest.TestCase` in order to be discovered, and it is :ref:`recommended <py-utils-tests>` that :lclass:`lsst.utils.tests.TestCase` be used as the base class when :lmod:`~lsst.afw` objects are involved.
   The tests themselves must be methods of the test class with names that begin with ``test``.
   All other methods and classes will be ignored by the test system but can be used by tests.
+* Specific test asserts, such as :meth:`~unittest.TestCase.assertGreater`, :meth:`~unittest.TestCase.assertIsNone` or :meth:`~unittest.TestCase.assertIn`, should be used wherever possible.
+  It is always better to use a specific assert because the error message will contain more useful detail and the intent is more obvious to someone reading the code.
+  Only use :meth:`~unittest.TestCase.assertTrue` or :meth:`~unittest.TestCase.assertFalse` if you are checking a boolean value, or a complex statement that is unsupported by other asserts.
+* When testing that an exception is raised always use :meth:`~unittest.TestCase.assertRaises` as a context manager, as shown in line 10 of the above example.
 * If a test method completes, the test passes; if it throws an uncaught exception the test has failed.
 
 Using a more advanced test runner
