@@ -103,5 +103,6 @@ The `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ w
    services/lsst-db.rst
    services/verification.rst
    services/datasets.rst
+   services/data_protection.rst
    services/ncsa_bulk_transfer.rst
    services/nebula/index.rst
