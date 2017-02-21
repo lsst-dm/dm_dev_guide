@@ -7,6 +7,8 @@ class DemoTestCase1(unittest.TestCase):
 
     def testDemo(self):
         self.assertGreater(10, 5)
+        with self.assertRaises(TypeError):
+            1 + "2"
 
 
 class DemoTestCase2(unittest.TestCase):
@@ -17,6 +19,7 @@ class DemoTestCase2(unittest.TestCase):
 
     def testDemo2(self):
         self.assertAlmostEqual(3.14, math.pi, places=2)
+
 
 if __name__ == "__main__":
     unittest.main()
