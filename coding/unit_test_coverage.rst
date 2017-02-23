@@ -174,7 +174,7 @@ coverage analysis tools.
 
 As usual, the developer instruments the C++ routines for coverage analysis at
 compilation time by building with :command:`scons profile=gcov`. The C++
-routines generated from the SWIG :file:`*.i` source are also instrumented.
+routines generated from the pybind11 source are also instrumented.
 Later when a Python unittester invokes an instrumented C++ routine, the
 coverage is recorded into the well-known coverage data files
 :file:`<src>.gcda` and :file:`<src>.gcno`. Post-processing of the coverage
