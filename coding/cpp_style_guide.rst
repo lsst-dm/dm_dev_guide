@@ -117,8 +117,6 @@ See :ref:`Deviating from the DM Style Guides <style-guide-deviations>`.
 
 - Keep functions short and with a single purpose.
 
-The process combines UML modeling and C++ programming, they are integrated and reinforce each other.
-This process integration is documented in `LSST Prototyping Environment <https://dev.lsstcorp.org/trac/wiki/PrototypingEnvironment>`_.
 
 .. _style-guide-cpp-3:
 
@@ -1740,6 +1738,58 @@ This avoids implicit type conversions (see :ref:`Rule 5-3 <style-guide-cpp-5-3>`
 The declaration of ``y1`` would be legal had ``explicit`` not been used.
 This type of implicit conversion can result in incorrect and unintentional side effects.
 
+
+.. _style-guide-cpp-5-27a:
+
+5-27a.  Constructor calls SHOULD use C++98 syntax when possible.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+While C++11 introduces a new syntax for "uniform initialization" using braces, C++ objects in LSST code should be initialized using syntax that is valid in C++98 whenever possible, with brace initialization used only when necessary, such as when initializing aggregates or containers that take ``std::initializer_list`` arguments.
+
+In particular, default constructors should be called with no parentheses or braces. This avoids most occurrences of the `most-vexing parse problem <https://en.wikipedia.org/wiki/Most_vexing_parse>`_:
+
+.. _
+
+.. code-block:: cpp
+
+    Foo foo;   // good
+    Foo foo{}; // discouraged to maintain consistency
+    Foo foo(); // actually incorrect; declares a function
+
+Constructors with one or more arguments should be called with parentheses:
+
+.. code-block:: cpp
+
+    Foo foo(a, b, c);   // good
+    Foo foo{a, b, c};   // discouraged; ambiguous (for readers)
+
+POD `aggregates <http://en.cppreference.com/w/cpp/language/aggregate_initialization>`_ and containers with constructors that take a ``std::initializer_list`` should EITHER use parentheses around the argument list and braces around the initializer list argument OR assignment-like syntax with braces (to mimic C array initialization):
+
+.. code-block:: cpp
+
+    std::vector<int> v = {0, 1, 2}; // good
+    std::vector<int> v({0, 1, 2});  // also good
+    std::vector<int> v{0, 1, 2};    // discouraged; ambiguous (for readers)
+
+Non-aggregate PODs should be constructed using an assignment-like syntax (note that this does not actually invoke the assignment operator):
+
+.. code-block:: cpp
+
+    double a = 4;           // good
+    double a{4};            // discouraged to maintain consistency
+    double a = {4};         // discouraged to maintain consistency
+
+Classes with constructors should not be initialized using an assignment-like syntax (except for containers being initialized like C arrays, as above), as this requires a copy or move constructor to be defined that may otherwise not be needed:
+
+.. code-block:: cpp
+
+    auto foo = Foo(); // discouraged; requires copy or move constructor
+
+Braced initialization may also be used in any context where the C++98 initialization pattern yields incorrect or confusing code (such as more complicated versions of most-vexing parse, or templates that must handle both classes with constructors and aggregates). We expect these contexts to be rare, and they should be accompanied by a code comment.
+
+While all of the above examples show objects being initialized in regular code, the same guidelines apply to the initialization of data members in an initialization list (though the assignment-like syntax can not be used in that context).
+
+
 .. _style-guide-cpp-5-28:
 
 5-28. Destructors MUST NOT throw exceptions.
@@ -2582,6 +2632,8 @@ They may be used in ``.h`` interface header files if:
    - :ref:`pipelines:source-install-redhat-legacy` from the `LSST Science Pipelines <https://pipelines.lsst.io>`__ documentation.
    - :doc:`/services/lsst-dev` provides :ref:`instructions for using devtoolset-3 <lsst-dev-tools>` to obtain a more modern GCC on LSST cluster machines.
    - C++11 compiler support matrix: http://wiki.apache.org/stdcxx/C++0xCompilerSupport.
+
+C++11 uniform initialization syntax should in general *not* be preferred over C++98 construction syntax; see rule :ref:`5-27a <style-guide-cpp-5-27a>`.
 
 .. _style-guide-cpp-using:
 
