@@ -60,6 +60,7 @@ The `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ w
    coding/unit_test_coverage.rst
    coding/profiling.rst
    coding/logging.rst
+   coding/python_wrappers_for_cpp_with_pybind11.rst
 
 .. toctree::
    :maxdepth: 1
