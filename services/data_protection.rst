@@ -47,6 +47,8 @@ Per-Capability Acceptable use
 
  - ``/scratch`` - Ephemeral big-data storage for use in computation and other project-related activities.
 
+ - ``/project`` - Long term big-data storage for use in computation and other project-related activities.
+
 .. _protection-dataprot:
 
 Data Protection Capabilities
@@ -99,11 +101,12 @@ the filesystem. Purges operate on files only; directories will never be removed 
 Per File System Data Protection
 -------------------------------
 
- - ``/datasets`` - Disaster Recovery only, no purging.
+ - ``/datasets`` - Disaster Recovery only, no purging
  - ``/home`` - 30 day self-serve restore + Disaster Recovery, no purging
  - ``/software`` - 30 day self-serve restore + Disaster Recovery, no purging
  - ``/sui`` - No Protection, no purging
  - ``/scratch`` -  No Protection, 180-day purge policy
+ - ``/project`` -  No Protection, no purging
 
 Capacity Restrictions
 ---------------------
@@ -118,7 +121,6 @@ members to further consider retention of ephemeral data.
  - ``/software`` - No quota. Usage subject to project approval procedures.
  - ``/sui`` - No quota. Usage limited to current allocation.
  - ``/scratch`` - No quota. Usage limited by purge procedures.
-
-
+ - ``/project`` - No quota.
 
 
