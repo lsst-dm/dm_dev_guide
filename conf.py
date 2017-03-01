@@ -135,6 +135,18 @@ else:
     html_theme = 'sphinx_rtd_theme'
     html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
+html_context = {
+    # Enable "Edit in GitHub" link
+    'display_github': True,
+    # https://{{ github_host|default("github.com") }}/{{ github_user }}/
+    #     {{ github_repo }}/blob/
+    #     {{ github_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}
+    'github_user': 'lsst-dm',
+    'github_repo': 'dm_dev_guide',
+    # TRAVIS_BRANCH is available in CI, but master is a safe default
+    'github_version': os.getenv('TRAVIS_BRANCH', default='master') + '/'
+}
+
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
