@@ -103,6 +103,10 @@
 
             <span style="display: block; margin-top: 2em">{{ project }}</span>
           </a>
+        </div>
+
+        {# <div class="wy-side-nav-search" style="background-color: #343131; text-align: left"> #}
+        <div class="wy-side-nav-search" style="background-color: #343131; text-align: left">
 
           {% if theme_display_version %}
             {%- set nav_version = version %}
@@ -111,10 +115,18 @@
             {% endif %}
             {% if nav_version %}
               <div class="version">
-                {{ nav_version }}
+                Edition: <span style="color: rgb(179, 179, 179)">{{ nav_version }}</span>
               </div>
             {% endif %}
           {% endif %}
+
+          <div class="wy-menu wy-menu-vertical" style="padding-left: 0; left-margin: 0; right-margin: auto; margin-bottom: 1em">
+            <ul>
+              <li class="toctree-l1">
+                <a href="https://developer.lsst.io/v" class="reference internal" style="padding-left: 0;">Change edition</a>
+              </li>
+            </ul>
+          </div>
 
           {% include "searchbox.html" %}
 
