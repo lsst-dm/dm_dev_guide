@@ -24,7 +24,7 @@ This gives you access to:
 - The Confluence wiki: https://confluence.lsstcorp.org
 - The DocuShare document archive: http://docushare.lsstcorp.org
 
-You can always update your LSST password at https://lsstsspc.lsst.org/.
+You can always update your LSST password at https://lsstsspc.lsst.org/lsstsspc.
 
 Finally, read over the LSST Project's `New Employee Onboarding <https://project.lsst.org/onboarding>`_ page.
 That will get you up to speed with the LSST Project; the rest of this page is specific to DM.
