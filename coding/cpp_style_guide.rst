@@ -777,7 +777,7 @@ Makes it clear what the unit should do and especially all the things it is not s
 3-32. Parameters in functions SHOULD be declared in order of output, input, default input.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Keeps inputs together and when SWIG is used avoids moving output parameters out of the middle of the list.
+Keeps inputs together.
 
 .. _style-guide-cpp-3-33:
 
@@ -2621,11 +2621,7 @@ Appendix: Policy on using C++11/14 Features
 
 The C++11 standard and the C++14 improvements to it bring a number of useful language features that make the resulting code more expressive, easier to read, and safer.
 They are becoming well-implemented and widespread.
-C++11/14 features supported by the default compiler provided with the oldest operating system distribution commonly used to install the LSST Stack, currently gcc 4.8.3, may be used at will in ``.cc`` implementation files.
-They may be used in ``.h`` interface header files if:
-
-- the usage is hidden from SWIG, either because they are not in method signatures or because they have been explicitly excluded with ``#ifndef`` SWIG, or
-- SWIG has been empirically shown to work with the code (e.g. by successful buildbot run with appropriate Python-based test cases).
+C++11/14 features supported by the default compiler provided with the oldest operating system distribution commonly used to install the LSST Stack, currently gcc 4.8.3, may be used at will in ``.cc`` and ``.h`` files.
 
 .. seealso::
 
