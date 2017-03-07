@@ -227,6 +227,10 @@ final test suite.
 For the memory test to function properly the :lfunc:`lsst.utils.tests.init()` function must be invoked before any of the tests in the class are executed.
 Since LSST test scripts are required to run properly from the command-line and when called from within `pytest`_, the :lfunc:`~lsst.utils.tests.init()` function has to be in the file twice: once in the :ref:`setup_module <pytest:xunitsetup>` function that is called by `pytest`_ whenever a test module is loaded (`pytest`_ will not use the ``__main__`` code path), and also just before the call to :func:`unittest.main()` call to handle being called with :command:`python`.
 
+.. note::
+   As in the example above, Python tests explicitly should not contain a shebang (``#!/usr/bin/env python``) and should not be executable (run directly with ``./testExample.py``).
+   This avoids problems encountered running tests on macOS and helps ensure consistency in the way that tests are executed, following `RFC-215 <https://jira.lsstcorp.org/browse/RFC-215>`_.
+
 Unicode
 =======
 
