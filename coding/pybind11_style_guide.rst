@@ -105,7 +105,7 @@ Using pure-Python modules only when necessary minimizes the number of source fil
 Pybind11 headers should precede all other headers in the include ordering
 -------------------------------------------------------------------------
 
-``pybind11.h`` includes ``Python.h`` and `must hence be included before all other headers <https://docs.python.org/3/c-api/intro.html#include-files>`.
+``pybind11.h`` includes ``Python.h`` and `must hence be included before all other headers <https://docs.python.org/3/c-api/intro.html#include-files>`_.
 To keep a reasonable grouping, all other pybind11 headers should be included in this same include block.
 
 .. _style-guide-pybind11-import:
@@ -224,7 +224,7 @@ For example:
         .def("foo", &Example::foo)
         .def("bar", &Example::bar);
 
-This syntax is essentially always used with ``enum`` (see `enum syntax <style-guide-pybind11-enum-scoping>`).
+This syntax is essentially always used with ``enum`` (see :ref:`enum syntax <style-guide-pybind11-enum-scoping>`).
 
 .. _style-guide-pybind11-lambda-self-argument:
 
@@ -255,7 +255,7 @@ Names of generic class types SHOULD be called "Class"
 
 It is sometimes desirable to give a class type a generic name (either as ``typename``, ``typedef`` or ``using`` alias).
 In such cases prefer to call the type ``Class``.
-This is especially common in `declare functions <style-guide-pybind11-declare-template-wrappers>`.
+This is especially common in :ref:`declare functions <style-guide-pybind11-declare-template-wrappers>`.
 
 .. _style-guide-pybind11-class-object-alias:
 
@@ -263,7 +263,7 @@ Names of generic pybind11 class types SHOULD be called "PyClass"
 ----------------------------------------------------------------
 
 When a generic type name or alias refers to a ``pybind11::class_<Ts...>`` object prefer to call it ``PyClass``.
-This is especially again common in `declare functions <style-guide-pybind11-declare-template-wrappers>`.
+This is especially again common in :ref:`declare functions <style-guide-pybind11-declare-template-wrappers>`.
 
 Organization
 ============
