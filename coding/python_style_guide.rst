@@ -557,6 +557,7 @@ A Python source file name SHOULD be camelCase-with-leading-lowercase and ending 
 
 A module containing a single class should be a ``camelCase``-with-leading-lowercase transliteration of the class's name.
 
+Test files must have the form ``test_{description}.py`` for compatibility with Pytest.
 The name of a test case should be descriptive without the need for a trailing numeral to distinguish one test case from another.
 
 .. TODO consider refactoring tests into their own section

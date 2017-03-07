@@ -23,12 +23,13 @@ This document will not attempt to explain full details of how to use :mod:`unitt
 
 A simple :mod:`unittest` example is shown below:
 
-.. literalinclude:: unit_test_snippets/unittest_basic_example.py
+.. literalinclude:: unit_test_snippets/test_basic_example.py
    :linenos:
    :language: python
 
 The important things to note in this example are:
 
+* Test file names must begin with ``test_`` for maximum compatibility with `pytest`_.
 * If the test is being executed using :command:`python` from the command line the :py:func:`unittest.main` call performs the test discovery and executes the tests, setting exit status to non-zero if any of the tests fail.
 * Test classes are executed in the order in which they appear in the test file.
   In this case the tests in ``DemoTestCase1`` will be executed before those in ``DemoTestCase2``.
@@ -65,13 +66,13 @@ To run `pytest`_ use the :command:`py.test` executable:
 
 .. code-block:: shell
 
-   $ py.test tests/*.py
+   $ py.test
 
-and to ensure that the order of test execution does not matter it is useful to sometimes run the tests in reverse order:
+to run all files in the ``tests`` directory named ``test_*.py``. To ensure that the order of test execution does not matter it is useful to sometimes run the tests in reverse order by listing the test files manually:
 
 .. code-block:: shell
 
-   $ py.test `ls -r tests/*.py`
+   $ py.test `ls -r tests/test_*.py`
 
 When writing tests it is important that tests are skipped using the proper :mod:`unittest` :ref:`skipping framework <python:unittest-skipping>` rather than returning from the test early.
 :mod:`unittest` supports skipping of individual tests and entire classes using decorators or skip exceptions.
@@ -91,21 +92,21 @@ This does not work in a `pytest`_ environment.
 
 Consider the following test code:
 
-.. literalinclude:: unit_test_snippets/unittest_baseclass.py
+.. literalinclude:: unit_test_snippets/test_baseclass.py
    :language: python
 
 which inherits from the helper class and :class:`unittest.TestCase` and runs a single test without attempting to run any tests in ``BaseClass``.
 
 .. code-block:: shell
 
-   $ py.test -v coding/unit_test_snippets/unittest_baseclass.py
+   $ py.test -v coding/unit_test_snippets/test_baseclass.py
    ======================================= test session starts ========================================
    platform darwin -- Python 3.4.3, pytest-2.9.1, py-1.4.30, pluggy-0.3.1 -- /usr/local/bin/python3.4
    cachedir: coding/unit_test_snippets/.cache
    rootdir: coding/unit_test_snippets, inifile:
    collected 1 items
 
-   coding/unit_test_snippets/unittest_baseclass.py::ThisIsTest1::testParam PASSED
+   coding/unit_test_snippets/test_baseclass.py::ThisIsTest1::testParam PASSED
 
    ===================================== 1 passed in 0.02 seconds =====================================
 
@@ -157,10 +158,10 @@ Testing Executables
 
 In some cases the test to be executed is a shell script or a compiled binary executable.
 In order for the test running environment to be aware of these tests, a Python test file must be present that can be run by `pytest`_.
-If none of the tests require special arguments and all the files with the executable bit set are to be run, this can be achieved by copying the file :file:`$UTILS_DIR/tests/testExecutables.py` to the relevant :file:`tests` directory.
+If none of the tests require special arguments and all the files with the executable bit set are to be run, this can be achieved by copying the file :file:`$UTILS_DIR/tests/test_executables.py` to the relevant :file:`tests` directory.
 The file is reproduced here:
 
-.. literalinclude:: unit_test_snippets/testExecutables.py
+.. literalinclude:: unit_test_snippets/test_executables.py
    :linenos:
    :language: python
    :emphasize-lines: 8-9
@@ -199,7 +200,7 @@ Memory and file descriptor leak testing
 This example shows the basic structure of an LSST Python unit test module,
 including :lclass:`~lsst.utils.tests.MemoryTestCase` (the highlighted lines indicate the memory testing modifications):
 
-.. literalinclude:: unit_test_snippets/unittest_runner_example.py
+.. literalinclude:: unit_test_snippets/test_runner_example.py
    :linenos:
    :language: python
    :emphasize-lines: 12, 17, 21
@@ -209,16 +210,16 @@ which ends up running the single specified test plus the two running as part of 
 
 .. code-block:: shell
 
-   $ py.test -v unittest_runner_example.py
+   $ py.test -v test_runner_example.py
    ============================= test session starts ==============================
    platform darwin -- Python 2.7.11, pytest-2.8.5, py-1.4.31, pluggy-0.3.1 -- ~/lsstsw/miniconda/bin/python
    cachedir: .cache
    rootdir: .../coding/unit_test_snippets, inifile:
    collected 3 items
 
-   unittest_runner_example.py::DemoTestCase::testDemo PASSED
-   unittest_runner_example.py::MemoryTester::testFileDescriptorLeaks <- .../lsstsw/stack/DarwinX86/utils/12.0.rc1+f79d1f7db4/python/lsst/utils/tests.py PASSED
-   unittest_runner_example.py::MemoryTester::testLeaks <- .../lsstsw/stack/DarwinX86/utils/12.0.rc1+f79d1f7db4/python/lsst/utils/tests.py PASSED
+   test_runner_example.py::DemoTestCase::testDemo PASSED
+   test_runner_example.py::MemoryTester::testFileDescriptorLeaks <- .../lsstsw/stack/DarwinX86/utils/12.0.rc1+f79d1f7db4/python/lsst/utils/tests.py PASSED
+   test_runner_example.py::MemoryTester::testLeaks <- .../lsstsw/stack/DarwinX86/utils/12.0.rc1+f79d1f7db4/python/lsst/utils/tests.py PASSED
 
    =========================== 3 passed in 0.28 seconds ===========================
 
