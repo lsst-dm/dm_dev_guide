@@ -366,11 +366,11 @@ For example:
 
     namespace lsst {
     namespace sphgeom {
-    namespace {
+    namespace python {
      
     ...  // declare functions...
      
-    }  // <anonymous>
+    }  // python
     }  // sphgeom
     }  // lsst
 
