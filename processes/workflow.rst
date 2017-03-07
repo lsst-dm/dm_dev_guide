@@ -323,8 +323,8 @@ Jenkins finds, builds, and tests your work according to the name of your ticket 
    If that branch doesn't exist, the ``tickets/DM-9998`` branch is be used.
    If neither of those branches exist for a given repository, the ``master`` branch is used.
 
-You can monitor builds in the `Bot: Jenkins <https://lsst.hipchat.com/rooms/show/1648522>`_ HipChat room.
-**If your build failed,** click on the **Console** link in the HipChat message to see a build log.
+You can monitor builds in the `#dm-jenkins <https://lsstc.slack.com/messages/dm-jenkins>`_ Slack channel.
+**If your build failed,** click on the **Console** link in the Slack message to see a build log.
 
 .. _workflow-pr:
 
