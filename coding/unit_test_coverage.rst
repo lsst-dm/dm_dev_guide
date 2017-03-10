@@ -31,7 +31,7 @@ developer where unit tests need improvement.
 Using the coverage analysis reports, the LSST DM developer should determine
 code segments which have not been adequately tested and should then revise the
 unit test suite as appropriate. Coverage analysis reports should be generated
-in concert with the routine automated buildbot testing.
+in concert with the routine automated CI testing.
 
 DM Coverage Analysis Metrics
 ============================
