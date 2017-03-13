@@ -822,3 +822,31 @@ or, using ``lsstDebug``, which can be controlled as part of a command line task:
         do_thing()
         if lsstDebug.Info(__name__).debug_plots:
             plot_thing()
+
+
+.. _style-guide-py-properties:
+
+Properties SHOULD be used when they behave like regular instance attributes
+---------------------------------------------------------------------------
+
+Properties SHOULD be added to Python objects to provide syntactic sugar for a getter (and possibly setter) when all of the following conditions are true:
+
+ - The getter method must return the same type the setter method accepts, or the types must have very similar interfaces (e.g. because they are part of the same class hierarchy, or they share an important common interface, such as a Python Sequence).
+
+ - Either the returned object must be immutable or modifying it must modify the object on which the property is defined in the expected way. Note that it may be useful to have a getter return an immutable object (e.g. ``tuple`` instead of ``list``) to meet this criterion. This prevents confusing behavior in which ``a.b.c = v`` could be a silent no-op.
+
+ - The getter (and setter, if it exists) must be computationally trivial; either the direct return of an internal object or an extremely simple calculation (e.g. the width of a bounding box from its starting and ending x coordinates). In general, getter methods that begin with something other than "get" should not have associated properties.
+
+Some examples:
+
+ - ``Image.getBBox()`` SHOULD NOT have an associated property, because the returned object (``Box2I``) is mutable, but modifying it does not modify the bounding box of the ``Image``.
+
+ - ``Psf.computeShape()`` SHOULD NOT have an associated property, because the getter is not computationally trivial - as suggested by the method name.
+
+ - ``Image.getArray()`` SHOULD have an associated property, because the returned object is a view that can be modified to modify the original image.
+
+ - ``Exposure.getWcs()`` SHOULD have an associated property, because the returned object is a data member of the ``Exposure`` that is returned via ``shared_ptr`` in C++, which allows modifications to the ``Wcs`` to automatically affect the ``Exposure``.
+
+Note that C++ getters that return STL container types cannot have properties in Python unless the usual pybind11 conversion (which typically yields ``list``, ``dict``, or ``set`` objects) is augmented with a conversion to an immutable type (such as ``tuple`` or ``frozenset``), because these conversions otherwise always yield mutable objects that do not modify the parent.
+
+The existing getters and setters MUST NOT be removed when defining a property.
