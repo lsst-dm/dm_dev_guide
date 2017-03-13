@@ -71,7 +71,9 @@ The `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ w
    docs/package_docs.rst
    docs/py_docs.rst
    docs/cpp_docs.rst
+   docs/jsdoc.rst
    docs/technotes.rst
+   
 
 .. toctree::
    :maxdepth: 1
