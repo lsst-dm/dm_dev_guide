@@ -39,44 +39,44 @@ Frequently used tags
 
     Note: You can not define more than one namespace in one jsdoc block like this:
 
-    /\*\* 
+    .. code-block:: js
 
-    \*\@namespace firefly
+       /** 
 
-    \*\@namespace firefly.util
+       *@namespace firefly
 
-    \*\@namespace firefly.action
+       *@namespace firefly.util
 
-    \*/
+       *@namespace firefly.action
+
+       */
 
     The jsdoc will only document firefly.action, the last one in the
     block. To define more than one namespaces in one file you need to:
 
-    /\*\*\@namespace firefly\*/
+    .. code-block:: js
 
-    /\*\*\@namespace firefly.action\*/
+       /**@namespace firefly*/
 
-    /\*\*\@namespace firefly.ui\*/
+       /**@namespace firefly.action*/
+
+       /**@namespace firefly.ui*/
 
 @param
-
     This tag requires you to specify the name of the parameter you are
     documenting. You can also include the parameter's type, enclosed in
     curly brackets, and a description of the parameter. You can use \|
     to specify more than one type such as {type1\|type2\|type3}.
 
 @static
-
     This tag indicates that a symbol is contained within a parent and
     can be accessed without instantiating the parent.
 
 @summary
-
     This tag is a shorter version of the full description. It can be
     added to any doclet.
 
 @typedef [<type>] <namepath>
-
     This tag is useful for documenting custom types, particularly if you
     wish to refer to them repeatedly. These types can then be used
     within other tags expecting a type, such
@@ -137,7 +137,7 @@ Start from scratch:
 
 1. Add the dependent libraries to package.json
 
-    .. code-block:: json
+    .. code-block:: text 
 
        "eslint-plugin-jsx-a11y": "^0.6.2",
 
@@ -164,20 +164,20 @@ Start from scratch:
 
    .. code-block:: bash
 
-      ./node\_modules/.bin/jsdoc –c path/to/your-configuration-file
+      ./node_modules/.bin/jsdoc –c path/to/your-configuration-file
 
 
-    (Note. Use any command line options to override the options defined in the configuration file.)
+   (Note. Use any command line options to override the options defined in the configuration file.)
 
 7. To check the available command line options:
 
    .. code-block:: bash
 
-      ./node\_modules/.bin/jsdoc -h
+      ./node_modules/.bin/jsdoc -h
 
 References:
 ^^^^^^^^^^^^^^^^^^^^^^
 
-    http://usejsdoc.org/
+    - http://usejsdoc.org/
 
-    https://github.com/jsdoc3/jsdoc/blob/master/README.md
+    - https://github.com/jsdoc3/jsdoc/blob/master/README.md
