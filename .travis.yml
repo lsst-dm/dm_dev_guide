@@ -8,7 +8,8 @@ install:
   - pip install -r requirements.txt
   - pip install "ltd-mason>=0.2,<0.3"
 script:
-  - sphinx-build -b html -a -n -W -d _build/doctree . _build/html
+  # TODO Add -W flag (DM-9815)
+  - sphinx-build -b html -a -n -d _build/doctree . _build/html
 after_success:
   - ltd-mason-travis --html-dir _build/html
 env:
