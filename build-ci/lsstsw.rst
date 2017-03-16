@@ -225,8 +225,8 @@ something above ``afw`` has changed, the build time drops to ~10-ish minutes.
    The material below is old and may be outdated; refer to the
    :doc:`ci_overview` documentation for the current story.
 
-This machinery is now also installed into :file:`~lsstsw`, and Buildbot will
-use it from there. Buildbot will ultimately manage both the ``lsst-dev`` stack
+This machinery is now also installed into :file:`~lsstsw`, and CI will
+use it from there. CI will ultimately manage both the ``lsst-dev`` stack
 and the distribution server. The old tools (e.g., :command:`submitRelease`,
 ...) are gone. The old stack (the one in :file:`/lsst/DC3/....`) will be gone as well.
 The new (automated) workflow is as follows:
