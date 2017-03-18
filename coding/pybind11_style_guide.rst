@@ -593,3 +593,34 @@ Module docstrings SHOULD be empty
 ---------------------------------
 
 Wrapper module docstrings are not visible by users (since all classes are lifted into the package namespace by ``__init__.py``), and hence do not need to follow the usual requirements for module-level docstrings.  Empty docstrings are preferable to trivial strings that just duplicate information implicit in the naming conventions (e.g. "The 'thing' module provides wrappers for thing.h").
+
+.. _style-guide-pybind11-str:
+
+Classes SHOULD define ``__str__`` to return a human readable string representation of the object
+------------------------------------------------------------------------------------------------
+
+``__str__`` is intended to return a human readable string representation of the object.
+Typically this can be the output of ``operator<<``:
+
+.. code-block:: cpp
+
+    cls.def("__str__", [](Class const& self) {
+        std::ostringstream os;
+        os << self;
+        return os.str();
+    });
+
+.. _style-guide-pybind11-repr:
+
+Classes SHOULD define ``__repr__`` to return a minimal summary of the object including the fully-qualified name of the class
+----------------------------------------------------------------------------------------------------------------------------
+
+``__repr__`` is intended to return a **minimal** summary of the object. It MUST include the fully-qualified name of the class, but MAY be defined to include per-instance values or a summary thereof.
+For small objects, producing a string that can be passed to ``eval`` to reproduce the object is often a good guideline:
+
+.. code-block:: cpp
+
+    clsPoint2D.def("__str__", [](Point2D const& self) {
+        return py::str("lsst.afw.geom.Point2D(%d, %d)").format(self.getX(), self.getY());
+    });
+
