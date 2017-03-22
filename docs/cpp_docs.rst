@@ -531,20 +531,18 @@ Examples
 
 'Examples' is an optional section for examples. This section is very strongly encouraged.
 
-Examples should be prefixed by ``@code`` and suffixed by ``@endcode``:
+Examples should use Markdown formatting for code blocks (i.e., indented by four extra spaces):
 
 .. code-block:: cpp
 
    /**
-    * @code
-    * auto cosines = cos(angles);
-    * @endcode
+    * This is an amazing function! For example:
+    *
+    *     auto cosines = cos(angles);
     *
     * Comment explaining the second example.
     *
-    * @code
-    * auto cosines = cos(radians(angles));
-    * @endcode
+    *     auto cosines = cos(radians(angles));
     */
 
 .. _cpp-doxygen-package-definition:
