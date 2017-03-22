@@ -2,12 +2,6 @@
 Documenting C++ Code
 ####################
 
-.. note::
-
-   This is a preview documentation format specification.
-   Software documentation should currently be written in the format described at https://confluence.lsstcorp.org/display/LDMDG/Documentation+Standards
-
-
 We document C++ code in two ways:
 
 1. By writing *documentation blocks* for all public or protected C++ components (namespaces, types, methods, functions, and constants).
@@ -29,7 +23,6 @@ Treat the guidelines on this page as an extension of the :doc:`../coding/cpp_sty
    Changes to this document must be approved by the System Architect (`RFC-24 <https://jira.lsstcorp.org/browse/RFC-24>`_).
    To request changes to these standards, please file an :ref:`RFC <decision-making-rfc>`.
 
-This document is ported from original documentation in Confluence; https://confluence.lsstcorp.org/display/LDMDG/Documentation+Standards.
 **This guide will evolve as a mechanism to document C++ APIs wrapped in Python is developed.**
 
 .. _cpp-file-boilerplate:
@@ -206,6 +199,8 @@ A one-line summary that does not use variable names or the function's name. This
    /// Sum two numbers.
    double add(double a, double b);
 
+Brief summaries will end at a period followed by whitespace, or at a new line, whichever comes first. You can ignore periods that shouldn't end the description by following them with a backslash and a space (as in ``"e.g.\ "``).
+
 For functions and methods, the summary should be written in the imperative voice (i.e., as a command that the API consumer is giving). Getters and other methods that are more naturally described as values rather than actions may ignore this rule.
 
 .. _cpp-doxygen-deprecation:
@@ -336,6 +331,7 @@ Function/Method Parameters
 A series of ``@param`` tags, usually one for each parameter. Each tag should have a description following the parameter name. You do *not* usually need to document default arguments; Doxygen will provide the default automatically. If the description extends over multiple lines, each line after the first must be indented.
 
 Parameters should be listed in the same order as they appear in the function or method signature.
+Make sure to keep the parameter list in sync with the actual parameters; Doxygen will issue a warning if they don't match.
 
 ``@param`` should be given with the ``[in]``, ``[out]``, or ``[in,out]`` tag if the function method contains any output parameters. The ``[in]`` tag is optional if all parameters are input, even if other functions or methods in the same class or package use output parameters.
 
@@ -489,7 +485,9 @@ This section can be very useful, but should be used judiciously.
 The goal is to direct users to other functions they may not be aware of, or have easy means of discovering (by looking at the class or package documentation, for example).
 Functions whose documentation further explains parameters used by this function are good candidates.
 
-List each class, function, or method using a ``@see`` tag:
+This section can also refer to arbitrary pages using a URL or a Markdown-style link.
+
+List each class, function, method, or link using a ``@see`` tag:
 
 .. code-block:: cpp
 
@@ -498,6 +496,7 @@ List each class, function, or method using a ``@see`` tag:
     *
     * @see sin
     * @see tan
+    * @see [numpy.vectorize](https://docs.scipy.org/doc/numpy/reference/generated/numpy.vectorize.html)
     */
    vector<double> cos(vector<double> const & angles);
 
