@@ -136,15 +136,24 @@ The ignored error codes are :ref:`explained above <style-guide-py-ignored-errors
 Flake8 configuration files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-LSST DM Packages may also include a :file:`setup.cfg` file with :pep:`8` exceptions:
+:command:`flake8` can be invoked without arguments when a configuration file is present.
+This configuration, included in a :file:`setup.cfg` file at the root of code repositories, is consistent with the style guide:
 
 .. code-block:: ini
 
    [flake8]
    max-line-length = 110
    ignore = E133, E226, E228, N802, N803
+   exclude =
+     bin,
+     doc,
+     **/*/__init__.py,
+     **/*/version.py,
+     tests/.tests
 
-:command:`flake8` can be invoked without arguments when this configuration is present.
+The ``exclude`` field lists paths that are not usefully linted by :command:`flake8` in DM Stack repositories.
+Auto-generated Python should not be linted (including :file:`bin/` for Stack packages with :file:`bin.src/` directories).
+We also discourage linting :file:`__init__.py` modules due to the abundance of :pep:`8` exceptions typically involved.
 
 .. _style-guide-py-noqa:
 
