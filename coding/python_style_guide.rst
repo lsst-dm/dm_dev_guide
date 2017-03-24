@@ -189,7 +189,7 @@ For example, to import a module without using it (to build a namespace, as in a 
 autopep8 MAY be used to fix PEP 8 compliance
 --------------------------------------------
 
-Many :pep:`8` issues in existing code can be fixed with `autopep8`_:
+Many :pep:`8` issues in existing code can be fixed with `autopep8`_ version 1.2 or newer:
 
 .. code-block:: bash
 
