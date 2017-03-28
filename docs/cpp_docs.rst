@@ -316,6 +316,10 @@ Do not use a space between the parameters, or Doxygen will not parse the command
 
 .. _cpp-doxygen-tparameters-specializations:
 
+.. note::
+
+   Doxygen will not properly parse parameter descriptions that have multiple paragraphs. If your template parameters require a lengthy explanation, put the explanation in the :ref:`cpp-doxygen-extended-summary` and refer to it from the parameter descriptions.
+
 Template Specializations
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -356,6 +360,10 @@ When two or more consecutive parameters have *exactly* the same description, the
     */
 
 Do not use a space between the parameters, or Doxygen will not parse the command correctly.
+
+.. note::
+
+   Doxygen will not properly parse parameter descriptions that have multiple paragraphs. If your function's input requires a lengthy explanation, put the explanation in the :ref:`cpp-doxygen-extended-summary` and refer to it from the parameter descriptions.
 
 .. _cpp-doxygen-parameters-inline:
 
