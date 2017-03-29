@@ -75,16 +75,22 @@ E251
    Unexpected spaces around keyword / parameter equals.
    See :ref:`style-guide-py-multiline-assignment-whitespace`.
 
+Maximum line length
+   See :ref:`style-guide-py-line-length`.
+
+Additionally, packages listed in :ref:`style-guide-py-sci-pi-naming` should disable the following rules:
+
 N802
    Function name should be lowercase.
-   See :ref:`style-guide-py-naming`.
+   See :ref:`style-guide-py-sci-pi-naming`.
 
 N803
    Argument name should be lowercase.
-   See :ref:`style-guide-py-naming`.
+   See :ref:`style-guide-py-sci-pi-naming`.
 
-Maximum line length
-   See :ref:`style-guide-py-line-length`.
+N806
+   Variable in function should be lowercase.
+   See :ref:`style-guide-py-sci-pi-naming`.
 
 .. _pycodestyle error: http://pep8.readthedocs.io/en/latest/intro.html#error-codes
 
@@ -124,12 +130,13 @@ Flake8 command line invocation
 
 .. code-block:: bash
 
-   flake8 --ignore=E133,E226,E228,N802,N803 --max-line-length=110 .
+   flake8 --ignore=E133,E226,E228 --max-line-length=110 .
 
 This command lints all Python files in the current directory.
 Alternatively, individual files can be specified in place of ``.``.
 
 The ignored error codes are :ref:`explained above <style-guide-py-ignored-errors>`.
+N802, N803, and N806 can be added to this list for some packages.
 
 .. _style-guide-py-flake8-config:
 
@@ -467,40 +474,42 @@ This comment should appear after the ``def`` line.
 =====================
 
 We follow `PEP 8ʼs naming conventions <https://www.python.org/dev/peps/pep-0008/#naming-conventions>`_, with exceptions listed here.
-The naming conventions for LSST Python and C++ source have been defined to be as similar as the respective languages allow.
+C++ source code included within a Python package would normally follow the naming conventions of the Python package for APIs that are to be visible to Python users.
 
-In general:
+All LSST Python source code is consistent with :pep:`8` naming in the following ways:
 
 - class names are ``CamelCase`` with leading uppercase,
 - module variables used as module global constants are ``UPPERCASE_WITH_UNDERSCORES``,
-- all other names are ``camelCase`` with leading lowercase.
+
+Some packages, for historical reasons, do not fully adhere to :pep:`8`.
+These packages, and the associated naming conventions, are described in :ref:`style-guide-py-sci-pi-naming`.
+Code in other packages SHOULD be consistent within a top-level package built by Jenkins, or within a distinct service, and it is RECOMMENDED that :pep:`8` naming convention be adopted for these, whilst understanding that it may be difficult to modify existing packages.
+Consistency within a package is important.
+Within these stated constraints new packages SHOULD use :pep:`8` naming conventions.
 
 Names may be decorated with leading and/or trailing underscores.
 
-.. _style-guide-py-2-2:
+.. _style-guide-py-sci-pi-naming:
 
-User defined names SHOULD NOT shadow python built-in functions
---------------------------------------------------------------
+Naming Conventions for Science Pipelines
+----------------------------------------
 
-Names which shadow a python built-in function may cause confusion for readers of the code.
-Creating a more specific identifier is suggested to avoid collisions.
-In the case of *filter*, ``filterName`` may be appropriate; for *filter objects*, something like ``filterObj`` might be appropriate.
+For historical reasons, Science Pipelines code (nominally, all packages included in the ``lsst_apps`` metapackage, as well as ``meas_*``, ``pipe_*``, and ``obs_*`` and all dependencies), uses ``camelCase`` rather than completely adhering to :pep:`8`-style.
+
+:pep:`8` style is used in the following cases:
+
+- class names are ``CamelCase`` with leading uppercase,
+- module variables used as module global constants are ``UPPERCASE_WITH_UNDERSCORES``,
+
+but all other names are ``camelCase`` with leading lowercase.
+In particular:
 
 .. _style-guide-py-naming-attributes:
-
-Class Attribute Names SHOULD be camelCase with leading lowercase
-----------------------------------------------------------------
-
-`Opposes PEP 8 <https://www.python.org/dev/peps/pep-0008/#id45>`__.
-Error codes: N802 and N803.
-
 .. _style-guide-py-naming-functions:
 
-Module methods (free functions) SHOULD be camelCase with leading lowercase
---------------------------------------------------------------------------
-
-`Opposes PEP 8 <https://www.python.org/dev/peps/pep-0008/#id45>`__.
-Error code: N802.
+- Class Attribute Names SHOULD be camelCase with leading lowercase (Error code: N803).
+- Module methods (free functions) SHOULD be camelCase with leading lowercase (Error code: N802)
+- Compound variable names SHOULD be camelCase with leading lowercase (Error code: N806).
 
 .. _style-guide-py-naming-class-modules:
 
@@ -509,12 +518,25 @@ Modules which contain class definitions SHOULD be named after the class name
 
 Modules which contain class definitions should be named after the class name (one module per class).
 
+.. _style-guide-py-2-2:
+
+User defined names SHOULD NOT shadow python built-in functions
+--------------------------------------------------------------
+
+Names which shadow a python built-in function may cause confusion for readers of the code.
+Creating a more specific identifier is suggested to avoid collisions.
+In the case of *filter*, ``filter_name`` may be appropriate; for *filter objects*, something like ``filter_obj`` might be appropriate.
+
 .. _style-guide-py-naming-ext-modules:
 
 When a Python module wraps a C/C++ extension module, the C/C++ module SHOULD be named <module>Lib
 -------------------------------------------------------------------------------------------------
 
 When an extension module written in C or C++ has an accompanying Python module that provides a higher level (e.g. more object oriented) interface, the C/C++ module should append ``Lib`` to the module's name (e.g. ``socketLib``).
+
+.. warning::
+
+  I think this rule has changed now that we use pybind11.
 
 .. _style-guide-py-naming-ambiguous:
 
@@ -529,6 +551,10 @@ Never use these characters as single character variable names:
 
 In some fonts, these characters are indistinguishable from the numerals one and zero.
 When tempted to use ``l``, use ``L`` instead.
+
+.. note::
+
+  This matches the `PEP 8 standard <https://www.python.org/dev/peps/pep-0008/#id38>`_ but is repeated here for emphasis.
 
 .. _style-guide-py-files:
 
