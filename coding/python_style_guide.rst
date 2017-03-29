@@ -423,6 +423,20 @@ Each line of a block comment starts with a ``#`` and a single space (unless it i
 
 Paragraphs inside a block comment are separated by a line containing a single ``#``.
 
+To-do comments SHOULD include a Jira issue key
+----------------------------------------------
+
+If the commented code is a workaround for a known issue, this rule makes it easier to find and remove the workaround once the issue has been resolved.
+If the commented code itself is the problem, this rule ensures the issue will be reported on Jira, making it more likely to be fixed in a timely manner.
+
+.. code-block:: py
+
+   # TODO: workaround for DM-6789
+
+.. code-block:: py
+
+   # TODO: DM-12345 is triggered by this line
+
 .. _style-guide-py-docstrings:
 
 5. Documentation Strings (docstrings)
