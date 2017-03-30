@@ -527,17 +527,6 @@ Names which shadow a python built-in function may cause confusion for readers of
 Creating a more specific identifier is suggested to avoid collisions.
 In the case of *filter*, ``filter_name`` may be appropriate; for *filter objects*, something like ``filter_obj`` might be appropriate.
 
-.. _style-guide-py-naming-ext-modules:
-
-When a Python module wraps a C/C++ extension module, the C/C++ module SHOULD be named <module>Lib
--------------------------------------------------------------------------------------------------
-
-When an extension module written in C or C++ has an accompanying Python module that provides a higher level (e.g. more object oriented) interface, the C/C++ module should append ``Lib`` to the module's name (e.g. ``socketLib``).
-
-.. warning::
-
-  I think this rule has changed now that we use pybind11.
-
 .. _style-guide-py-naming-ambiguous:
 
 Names l (lowercase: el), O (uppercase: oh), I (uppercase: eye) MUST be avoided
