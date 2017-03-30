@@ -227,7 +227,7 @@ Line Length MUST be less than or equal to 110 columns
 Limit all lines to a maximum of 110 characters.
 This conforms to the :doc:`cpp_style_guide` (see :ref:`4-6 <style-guide-cpp-4-6>`).
 
-This differs from the `PEP 8 recommendation of 79 characters <https://www.python.org/dev/peps/pep-0008/#id19>`_.
+This differs from the `PEP 8 recommendation of 79 characters <https://www.python.org/dev/peps/pep-0008/#maximum-line-length>`_.
 
 .. _style-guide-py-implied-continuation:
 
@@ -300,7 +300,7 @@ Consistency with the LSST C++ Coding Standards namespaces exists.
 3. Whitespace
 =============
 
-Follow the `PEP 8 whitespace style guidelines <https://www.python.org/dev/peps/pep-0008/#id26>`_, with the following adjustments.
+Follow the `PEP 8 whitespace style guidelines <https://www.python.org/dev/peps/pep-0008/#whitespace-in-expressions-and-statements>`_, with the following adjustments.
 
 .. _style-guide-py-minimal-parens:
 
@@ -355,7 +355,7 @@ For example:
    c = (a + b)*(a - b)
    print('Hello %s' % 'world!')
 
-This deviates from PEP 8, which `allows whitespace around these arithmetic operators if they appear alone <https://www.python.org/dev/peps/pep-0008/#id28>`__.
+This deviates from PEP 8, which `allows whitespace around these arithmetic operators if they appear alone <https://www.python.org/dev/peps/pep-0008/#other-recommendations>`__.
 Error codes: E226 and E228.
 
 .. _style-guide-py-multiline-assignment-whitespace:
@@ -391,7 +391,7 @@ Not this:
 
    aFunction(x, y, z, karg1 = value1, karg2 = value2, karg3 = value3)
 
-`Opposes PEP 8 <https://www.python.org/dev/peps/pep-0008/#id28>`__.
+`Opposes PEP 8 <https://www.python.org/dev/peps/pep-0008/#other-recommendations>`__.
 Error code: E251.
 
 .. _style-guide-py-comments:
@@ -399,7 +399,7 @@ Error code: E251.
 4. Comments
 ===========
 
-Source code comments should follow `PEP 8's recommendations <https://www.python.org/dev/peps/pep-0008/#id29>`__ with the following additional requirements.
+Source code comments should follow `PEP 8's recommendations <https://www.python.org/dev/peps/pep-0008/#comments>`__ with the following additional requirements.
 
 .. _style-guide-py-comment-consistency:
 
@@ -418,7 +418,7 @@ Following :pep:`8`, comments should be complete sentences.
 
 However, sentences **should not** be separated by two spaces; a single space is sufficient.
 
-`This differs from PEP 8 <https://www.python.org/dev/peps/pep-0008/#id29>`__.
+`This differs from PEP 8 <https://www.python.org/dev/peps/pep-0008/#comments>`__.
 
 .. _style-guide-py-block-comment-indentation:
 
@@ -543,7 +543,7 @@ When tempted to use ``l``, use ``L`` instead.
 
 .. note::
 
-  This matches the `PEP 8 standard <https://www.python.org/dev/peps/pep-0008/#id38>`_ but is repeated here for emphasis.
+  This matches the `PEP 8 standard <https://www.python.org/dev/peps/pep-0008/#names-to-avoid>`_ but is repeated here for emphasis.
 
 .. _style-guide-py-files:
 
@@ -597,7 +597,7 @@ Within a module, follow the order:
 8. Classes
 ==========
 
-.. seealso:: `Designing for Inheritance <https://www.python.org/dev/peps/pep-0008/#id47>`__ in :pep:`8` describes naming conventions related to public and private class APIs.
+.. seealso:: `Designing for Inheritance <https://www.python.org/dev/peps/pep-0008/#designing-for-inheritance>`__ in :pep:`8` describes naming conventions related to public and private class APIs.
 
 .. _style-guide-py-super:
 
@@ -641,7 +641,7 @@ There are two reasons:
 1. ``is None`` works with NumPy arrays, whereas ``== None`` does not;
 2. ``is None`` is idiomatic.
 
-This is also consistent with :pep:`8`, which `states <https://www.python.org/dev/peps/pep-0008/#id49>`__:
+This is also consistent with :pep:`8`, which `states <https://www.python.org/dev/peps/pep-0008/#programming-recommendations>`__:
 
    Comparisons to singletons like ``None`` should always be done with ``is`` or ``is not``, never the equality operators.
 
