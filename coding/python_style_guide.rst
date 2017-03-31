@@ -75,16 +75,22 @@ E251
    Unexpected spaces around keyword / parameter equals.
    See :ref:`style-guide-py-multiline-assignment-whitespace`.
 
+Maximum line length
+   See :ref:`style-guide-py-line-length`.
+
+Additionally, packages listed in :ref:`style-guide-py-sci-pi-naming` should disable the following rules:
+
 N802
    Function name should be lowercase.
-   See :ref:`style-guide-py-naming`.
+   See :ref:`style-guide-py-sci-pi-naming`.
 
 N803
    Argument name should be lowercase.
-   See :ref:`style-guide-py-naming`.
+   See :ref:`style-guide-py-sci-pi-naming`.
 
-Maximum line length
-   See :ref:`style-guide-py-line-length`.
+N806
+   Variable in function should be lowercase.
+   See :ref:`style-guide-py-sci-pi-naming`.
 
 .. _pycodestyle error: http://pep8.readthedocs.io/en/latest/intro.html#error-codes
 
@@ -124,12 +130,13 @@ Flake8 command line invocation
 
 .. code-block:: bash
 
-   flake8 --ignore=E133,E226,E228,N802,N803 --max-line-length=110 .
+   flake8 --ignore=E133,E226,E228 --max-line-length=110 .
 
 This command lints all Python files in the current directory.
 Alternatively, individual files can be specified in place of ``.``.
 
 The ignored error codes are :ref:`explained above <style-guide-py-ignored-errors>`.
+N802, N803, and N806 can be added to this list for some packages.
 
 .. _style-guide-py-flake8-config:
 
@@ -220,7 +227,7 @@ Line Length MUST be less than or equal to 110 columns
 Limit all lines to a maximum of 110 characters.
 This conforms to the :doc:`cpp_style_guide` (see :ref:`4-6 <style-guide-cpp-4-6>`).
 
-This differs from the `PEP 8 recommendation of 79 characters <https://www.python.org/dev/peps/pep-0008/#id19>`_.
+This differs from the `PEP 8 recommendation of 79 characters <https://www.python.org/dev/peps/pep-0008/#maximum-line-length>`_.
 
 .. _style-guide-py-implied-continuation:
 
@@ -293,7 +300,7 @@ Consistency with the LSST C++ Coding Standards namespaces exists.
 3. Whitespace
 =============
 
-Follow the `PEP 8 whitespace style guidelines <https://www.python.org/dev/peps/pep-0008/#id26>`_, with the following adjustments.
+Follow the `PEP 8 whitespace style guidelines <https://www.python.org/dev/peps/pep-0008/#whitespace-in-expressions-and-statements>`_, with the following adjustments.
 
 .. _style-guide-py-minimal-parens:
 
@@ -348,7 +355,7 @@ For example:
    c = (a + b)*(a - b)
    print('Hello %s' % 'world!')
 
-This deviates from PEP 8, which `allows whitespace around these arithmetic operators if they appear alone <https://www.python.org/dev/peps/pep-0008/#id28>`__.
+This deviates from PEP 8, which `allows whitespace around these arithmetic operators if they appear alone <https://www.python.org/dev/peps/pep-0008/#other-recommendations>`__.
 Error codes: E226 and E228.
 
 .. _style-guide-py-multiline-assignment-whitespace:
@@ -384,7 +391,7 @@ Not this:
 
    aFunction(x, y, z, karg1 = value1, karg2 = value2, karg3 = value3)
 
-`Opposes PEP 8 <https://www.python.org/dev/peps/pep-0008/#id28>`__.
+`Opposes PEP 8 <https://www.python.org/dev/peps/pep-0008/#other-recommendations>`__.
 Error code: E251.
 
 .. _style-guide-py-comments:
@@ -392,7 +399,7 @@ Error code: E251.
 4. Comments
 ===========
 
-Source code comments should follow `PEP 8's recommendations <https://www.python.org/dev/peps/pep-0008/#id29>`__ with the following additional requirements.
+Source code comments should follow `PEP 8's recommendations <https://www.python.org/dev/peps/pep-0008/#comments>`__ with the following additional requirements.
 
 .. _style-guide-py-comment-consistency:
 
@@ -411,7 +418,7 @@ Following :pep:`8`, comments should be complete sentences.
 
 However, sentences **should not** be separated by two spaces; a single space is sufficient.
 
-`This differs from PEP 8 <https://www.python.org/dev/peps/pep-0008/#id29>`__.
+`This differs from PEP 8 <https://www.python.org/dev/peps/pep-0008/#comments>`__.
 
 .. _style-guide-py-block-comment-indentation:
 
@@ -467,40 +474,42 @@ This comment should appear after the ``def`` line.
 =====================
 
 We follow `PEP 8ʼs naming conventions <https://www.python.org/dev/peps/pep-0008/#naming-conventions>`_, with exceptions listed here.
-The naming conventions for LSST Python and C++ source have been defined to be as similar as the respective languages allow.
+C++ source code included within a Python package SHOULD follow the naming conventions of the Python package for APIs that are to be visible to Python users.
 
-In general:
+All LSST Python source code is consistent with :pep:`8` naming in the following ways:
 
 - class names are ``CamelCase`` with leading uppercase,
 - module variables used as module global constants are ``UPPERCASE_WITH_UNDERSCORES``,
-- all other names are ``camelCase`` with leading lowercase.
+
+Some packages, for historical reasons, do not fully adhere to :pep:`8`.
+These packages, and the associated naming conventions, are described in :ref:`style-guide-py-sci-pi-naming`.
+Naming style SHOULD be consistent within a top-level package built by Jenkins, or within a distinct service, and it is RECOMMENDED that :pep:`8` naming convention be adopted, whilst understanding that it may be difficult to modify existing packages.
+Consistency within a package is mandatory.
+Within these stated constraints new packages SHOULD use :pep:`8` naming conventions.
 
 Names may be decorated with leading and/or trailing underscores.
 
-.. _style-guide-py-2-2:
+.. _style-guide-py-sci-pi-naming:
 
-User defined names SHOULD NOT shadow python built-in functions
---------------------------------------------------------------
+Naming Conventions for Science Pipelines
+----------------------------------------
 
-Names which shadow a python built-in function may cause confusion for readers of the code.
-Creating a more specific identifier is suggested to avoid collisions.
-In the case of *filter*, ``filterName`` may be appropriate; for *filter objects*, something like ``filterObj`` might be appropriate.
+For historical reasons, Science Pipelines code (nominally, all packages included in the ``lsst_apps`` metapackage, as well as ``meas_*``, ``pipe_*``, and ``obs_*`` and all dependencies), does not completely adhere to :pep:`8`-style.
+
+:pep:`8` style is used in the following cases:
+
+- class names are ``CamelCase`` with leading uppercase,
+- module variables used as module global constants are ``UPPERCASE_WITH_UNDERSCORES``,
+
+but all other names are ``camelCase`` with leading lowercase.
+In particular:
 
 .. _style-guide-py-naming-attributes:
-
-Class Attribute Names SHOULD be camelCase with leading lowercase
-----------------------------------------------------------------
-
-`Opposes PEP 8 <https://www.python.org/dev/peps/pep-0008/#id45>`__.
-Error codes: N802 and N803.
-
 .. _style-guide-py-naming-functions:
 
-Module methods (free functions) SHOULD be camelCase with leading lowercase
---------------------------------------------------------------------------
-
-`Opposes PEP 8 <https://www.python.org/dev/peps/pep-0008/#id45>`__.
-Error code: N802.
+- Class Attribute Names SHOULD be camelCase with leading lowercase (Error code: N803).
+- Module methods (free functions) SHOULD be camelCase with leading lowercase (Error code: N802)
+- Compound variable names SHOULD be camelCase with leading lowercase (Error code: N806).
 
 .. _style-guide-py-naming-class-modules:
 
@@ -509,12 +518,14 @@ Modules which contain class definitions SHOULD be named after the class name
 
 Modules which contain class definitions should be named after the class name (one module per class).
 
-.. _style-guide-py-naming-ext-modules:
+.. _style-guide-py-2-2:
 
-When a Python module wraps a C/C++ extension module, the C/C++ module SHOULD be named <module>Lib
--------------------------------------------------------------------------------------------------
+User defined names SHOULD NOT shadow python built-in functions
+--------------------------------------------------------------
 
-When an extension module written in C or C++ has an accompanying Python module that provides a higher level (e.g. more object oriented) interface, the C/C++ module should append ``Lib`` to the module's name (e.g. ``socketLib``).
+Names which shadow a python built-in function may cause confusion for readers of the code.
+Creating a more specific identifier is suggested to avoid collisions.
+For example, in the case of *filter*, ``filter_name`` may be appropriate; for *filter objects*, something like ``filter_obj`` might be appropriate.
 
 .. _style-guide-py-naming-ambiguous:
 
@@ -529,6 +540,10 @@ Never use these characters as single character variable names:
 
 In some fonts, these characters are indistinguishable from the numerals one and zero.
 When tempted to use ``l``, use ``L`` instead.
+
+.. note::
+
+  This matches the `PEP 8 standard <https://www.python.org/dev/peps/pep-0008/#names-to-avoid>`_ but is repeated here for emphasis.
 
 .. _style-guide-py-files:
 
@@ -582,7 +597,7 @@ Within a module, follow the order:
 8. Classes
 ==========
 
-.. seealso:: `Designing for Inheritance <https://www.python.org/dev/peps/pep-0008/#id47>`__ in :pep:`8` describes naming conventions related to public and private class APIs.
+.. seealso:: `Designing for Inheritance <https://www.python.org/dev/peps/pep-0008/#designing-for-inheritance>`__ in :pep:`8` describes naming conventions related to public and private class APIs.
 
 .. _style-guide-py-super:
 
@@ -626,7 +641,7 @@ There are two reasons:
 1. ``is None`` works with NumPy arrays, whereas ``== None`` does not;
 2. ``is None`` is idiomatic.
 
-This is also consistent with :pep:`8`, which `states <https://www.python.org/dev/peps/pep-0008/#id49>`__:
+This is also consistent with :pep:`8`, which `states <https://www.python.org/dev/peps/pep-0008/#programming-recommendations>`__:
 
    Comparisons to singletons like ``None`` should always be done with ``is`` or ``is not``, never the equality operators.
 
