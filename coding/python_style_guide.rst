@@ -474,7 +474,7 @@ This comment should appear after the ``def`` line.
 =====================
 
 We follow `PEP 8ʼs naming conventions <https://www.python.org/dev/peps/pep-0008/#naming-conventions>`_, with exceptions listed here.
-C++ source code included within a Python package would normally follow the naming conventions of the Python package for APIs that are to be visible to Python users.
+C++ source code included within a Python package SHOULD follow the naming conventions of the Python package for APIs that are to be visible to Python users.
 
 All LSST Python source code is consistent with :pep:`8` naming in the following ways:
 
@@ -483,8 +483,8 @@ All LSST Python source code is consistent with :pep:`8` naming in the following 
 
 Some packages, for historical reasons, do not fully adhere to :pep:`8`.
 These packages, and the associated naming conventions, are described in :ref:`style-guide-py-sci-pi-naming`.
-Code in other packages SHOULD be consistent within a top-level package built by Jenkins, or within a distinct service, and it is RECOMMENDED that :pep:`8` naming convention be adopted for these, whilst understanding that it may be difficult to modify existing packages.
-Consistency within a package is important.
+Naming style SHOULD be consistent within a top-level package built by Jenkins, or within a distinct service, and it is RECOMMENDED that :pep:`8` naming convention be adopted, whilst understanding that it may be difficult to modify existing packages.
+Consistency within a package is mandatory.
 Within these stated constraints new packages SHOULD use :pep:`8` naming conventions.
 
 Names may be decorated with leading and/or trailing underscores.
@@ -494,7 +494,7 @@ Names may be decorated with leading and/or trailing underscores.
 Naming Conventions for Science Pipelines
 ----------------------------------------
 
-For historical reasons, Science Pipelines code (nominally, all packages included in the ``lsst_apps`` metapackage, as well as ``meas_*``, ``pipe_*``, and ``obs_*`` and all dependencies), uses ``camelCase`` rather than completely adhering to :pep:`8`-style.
+For historical reasons, Science Pipelines code (nominally, all packages included in the ``lsst_apps`` metapackage, as well as ``meas_*``, ``pipe_*``, and ``obs_*`` and all dependencies), does not completely adhere to :pep:`8`-style.
 
 :pep:`8` style is used in the following cases:
 
@@ -525,7 +525,7 @@ User defined names SHOULD NOT shadow python built-in functions
 
 Names which shadow a python built-in function may cause confusion for readers of the code.
 Creating a more specific identifier is suggested to avoid collisions.
-In the case of *filter*, ``filter_name`` may be appropriate; for *filter objects*, something like ``filter_obj`` might be appropriate.
+For example, in the case of *filter*, ``filter_name`` may be appropriate; for *filter objects*, something like ``filter_obj`` might be appropriate.
 
 .. _style-guide-py-naming-ambiguous:
 
