@@ -589,9 +589,6 @@ Within a module, follow the order:
 8. Private module functions and classes (names start with underscore)
 9. Public module variables
 10. Public functions and classes
-11. Optional test suites
-
-.. FIXME JSick: Delete mention of test suites?
 
 .. _style-guide-py-classes:
 
