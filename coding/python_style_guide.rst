@@ -582,13 +582,14 @@ Within a module, follow the order:
 1. Shebang line, ``#! /usr/bin/env python`` (only for executable scripts)
 2. Module-level comments (such as the `license statement <https://github.com/lsst/templates/blob/master/CopyrightHeader.py>`__)
 3. Module-level docstring
-4. Imports
-5. ``__all__`` statement, if any
-6. Private module variables (names start with underscore)
-7. Private module functions and classes (names start with underscore)
-8. Public module variables
-9. Public functions and classes
-10. Optional test suites
+4. ``from __future__ import absolute_import, division, print_function``
+5. ``__all__ = [...]`` statement, if present
+6. Imports (except ``from __future__ import...``)
+7. Private module variables (names start with underscore)
+8. Private module functions and classes (names start with underscore)
+9. Public module variables
+10. Public functions and classes
+11. Optional test suites
 
 .. FIXME JSick: Delete mention of test suites?
 
