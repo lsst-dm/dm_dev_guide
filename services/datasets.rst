@@ -33,7 +33,7 @@ Some data resides within ``/datasets`` which does not adhere to this format; the
 The following are currently exempted:
 
 - ``/datasets/all-sky``
-- ``/datasets/all-sky-ASIVA``
+- ``/datasets/public_html``
 
 Immutability/Sharing
 --------------------
