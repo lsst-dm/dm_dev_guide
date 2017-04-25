@@ -114,7 +114,7 @@ You should be subscribed to these lists as soon as you get an :ref:`LSST acccoun
 Calendars
 =========
 
-LSST has [Project](https://project.lsst.org/node/1) and [DM-specific calendars](https://project.lsst.org/content/dm-team-calendar) that you can view on the Project website or add to your own Google calendar.
+LSST has `Project <https://project.lsst.org/node/1>`_ and `DM-specific calendars <https://project.lsst.org/content/dm-team-calendar>`_ that you can view on the Project website or add to your own Google calendar.
 
 Checklist for hires
 ===================
