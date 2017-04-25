@@ -111,11 +111,10 @@ You should be subscribed to these lists as soon as you get an :ref:`LSST acccoun
 - `dm-announce <https://lists.lsst.org/mailman/listinfo/dm-announce>`_
 - `dm-staff <https://lists.lsst.org/mailman/listinfo/dm-staff>`_ (internal list)
 
-DM calendars
-============
+Calendars
+=========
 
-DM maintains calendars of meetings and staff travel on Google.
-To get access, send your Google username to our admin in `#dm-admin-support <https://lsstc.slack.com/archives/dm-admin-support>`__ on Slack.
+LSST has `Project <https://project.lsst.org/node/1>`_ and `DM-specific calendars <https://project.lsst.org/content/dm-team-calendar>`_ that you can view on the Project website or add to your own Google calendar.
 
 Checklist for hires
 ===================
@@ -129,8 +128,6 @@ In summary, here are the things you can do to get started:
 #. Send your https://community.lsst.org username to your T/CAM.
 
 #. Follow emailed directions to set up your LSST account (including email), NCSA account, and Slack account.
-
-#. Once you're on Slack, send your Google username to `#dm-admin-support <https://lsstc.slack.com/archives/dm-admin-support>`__ to access DM calendars.
 
 .. _onboarding-tcam-checklist:
 
@@ -171,8 +168,8 @@ Here's what the awesome DM admin does:
 
 #. Add a photo to the DM staff gallery, if not already done by the T/CAM.
 
-#. Notify the Weekly Digest editor and travel coordinator.
+#. Notify the LSST Digest editor and travel administrator.
 
-#. Provide Google calendar access to DM Meetings and DM Travel.
+#. Provide Google calendar access to DM Meetings and DM Travel/Vacation for DMLT members.
 
 For details on LSST IT's account onboarding procedures, see `Account Management in the IT Support Confluence <https://confluence.lsstcorp.org/display/IT/Account+Management>`_.
