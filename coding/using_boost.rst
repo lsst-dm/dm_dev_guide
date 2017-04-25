@@ -12,16 +12,16 @@ Using Boost
 
 A Boost library may be used only if:
 
-1. the desired effect cannot be accomplished with a C++11 standard language feature, and
-2. a C++ standard library equivalent is either unavailable or unusable with our minimum supported compiler version (i.e. ``gcc`` version 4.8).
+1. the desired effect cannot be accomplished with a C++14 standard language feature, and
+2. a C++ standard library equivalent is either unavailable or unusable with our minimum required compiler version (i.e. ``gcc`` version 6.3.1).
 
-In particular, the following Boost libraries are no longer accepted as they have standard equivalents in gcc 4.8 and above:
+In particular, the following Boost libraries are no longer accepted as they have standard equivalents in gcc 6.3.1 and above:
 
 ``array``
         use ``<array>``
 
 ``bind``
-        prefer C++11 lambda functions instead, but use ``std::bind`` from ``<functional>`` if you must
+        prefer C++14 lambda functions instead, but use ``std::bind`` from ``<functional>`` if you must
 
 ``cstdint``
         use ``<cstdint>``
@@ -30,7 +30,7 @@ In particular, the following Boost libraries are no longer accepted as they have
         use ``<filesystem>``
 
 ``lambda``
-        use C++11 lambda functions
+        use C++14 lambda functions
 
 ``lexical_cast``
         use ``std::to_string``, ``std::stoi``, ``std::stod`` etc.
@@ -51,7 +51,7 @@ In particular, the following Boost libraries are no longer accepted as they have
         use ``std::shared_ptr`` and ``std::unique_ptr`` (and its array specialization) from ``<memory>`` instead of ``boost::shared_ptr``, ``boost::scoped_ptr`` and ``boost::scoped_array``
 
 ``static_assert``
-        use C++11 ``static_assert``
+        use C++14 ``static_assert``
 
 ``tuple``
         use ``<tuple>``
