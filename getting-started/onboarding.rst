@@ -170,6 +170,6 @@ Here's what the awesome DM admin does:
 
 #. Notify the LSST Digest editor and travel administrator.
 
-#. Provide Google calendar access to DM Meetings and DM Travel/Vacation for DMLT members.
+#. Provide Google calendar access to DM Meetings and DM Travel/Vacation for T/CAMs and DMLT members.
 
 For details on LSST IT's account onboarding procedures, see `Account Management in the IT Support Confluence <https://confluence.lsstcorp.org/display/IT/Account+Management>`_.
