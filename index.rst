@@ -111,6 +111,7 @@ The `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ w
    services/data_protection.rst
    services/ncsa_bulk_transfer.rst
    services/nebula/index.rst
+   services/orchestration/index.rst
 
 .. toctree::
    :maxdepth: 1
