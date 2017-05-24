@@ -40,7 +40,7 @@ Then you can write your task to optionally enable a display (or whatever) by doi
 
 Refer to the `task documentation <http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/group___l_s_s_t__task__documentation.html>`_ and look for “debug variables” to discover what debugging options are available for existing ``Task``\s.
 
-In order to load your specific debugging configuration, create a ``debug.py`` in your working directory, and put something like this in it::
+In order to load your specific debugging configuration, create a ``debug.py`` somewhere in your ``PYTHONPATH``, and put something like this in it::
 
    import lsstDebug
    def DebugInfo(name):
