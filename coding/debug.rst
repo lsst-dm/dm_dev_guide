@@ -54,4 +54,4 @@ In order to load your specific debugging configuration, create a ``debug.py`` in
 That should enable debugging the ``display`` attribute when you are running inside ``lsst.meas.astrom.astrometry``, and disable it elsewhere.
 Of course, you can also return arbitrarily more complex objects, doing things like specifying the frame to display on etc.
 
-You may use the ``-d`` command line argument to pass a path to :file:`debug.py` to a command line task, rather than relying on it being found in your working directory.
+You must use the ``--debug`` command line argument to ask a command line task to import your :file:`debug.py` file.
