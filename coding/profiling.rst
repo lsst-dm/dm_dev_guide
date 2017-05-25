@@ -107,11 +107,13 @@ Put an ``@profile`` decorator on the function of interest, and run:
 C++ Profiling
 =============
 
-Profiling C++ code can be done with **igprof**: 
+igprof
+------
+
+Profiling C++ code can be done with `igprof <http://igprof.org>`_:
 
 .. code-block:: bash
 
-   setup igprof v5.9.6
    igprof -pp -z -o igprof-mosaic.pp.gz python `which mosaic.py` /data3a/work/price/SUPA-MIT/rerun/cosmos --id field=COSMOS filter=W-S-I+ expTime=120.0 --clobber-config
    igprof-analyse -d -v -g igprof-mosaic.pp.gz > igprof-mosaic.pp.txt
 
