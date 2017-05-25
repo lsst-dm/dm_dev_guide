@@ -128,3 +128,21 @@ A slightly more complete command is
 .. code-block:: bash
 
    (export IFS=:; while true ; do for DIR in $LD_LIBRARY_PATH ; do find $DIR -name "*.so" -exec cat {} > /dev/null \; ; done; sleep 5; done) &
+
+sprof
+-----
+
+sprof is part of glibc, so should be available on most Linux systems.
+Unlike its cousin, gprof, it does not require recompilation and it works on shared libraries, so can be used with your current stack setup, whatever that may be.
+Unfortunately, it allows profiling only one shared library at a time, but generally the shared library of interest can be identified using python profiling.
+Here's an example using sprof to profile the CModel code in meas_modelfit (which is exercised by ``measureCoaddSources.py``):
+
+.. code-block:: bash
+
+    export LD_PROFILE=libmeas_modelfit.so
+    export LD_PROFILE_OUTPUT=`pwd`
+    measureCoaddSources.py /scratch/pprice/ci_hsc/DATA --rerun ci_hsc --id patch=5,4 tract=0 filter=HSC-I
+    sprof -p -q libmeas_modelfit.so libmeas_modelfit.so.profile > libmeas_modelfit.so.profile.txt
+
+The output of sprof contains a cumulative profile at the top, followed by the caller/callee profiles.
+
