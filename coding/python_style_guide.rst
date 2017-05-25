@@ -363,7 +363,7 @@ Error codes: E226 and E228.
 Keyword assignment operators SHOULD be surrounded by a space when statements appear on multiple lines
 -----------------------------------------------------------------------------------------------------
 
-However, if keyword assignments occur on a single line, where should be no additional spaces.
+However, if keyword assignments occur on a single line there should be no additional spaces.
 
 Thus this:
 
