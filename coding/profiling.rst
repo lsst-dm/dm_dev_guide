@@ -87,6 +87,13 @@ For more details on pstats and python profiling in general see http://docs.pytho
 
 A potentially useful tool for visualising the results is http://www.vrplumber.com/programming/runsnakerun/.
 
+Another useful tool for visualising the call graph is `gprof2dot <https://github.com/jrfonseca/gprof2dot>`_:
+
+.. code-block:: bash
+
+    gprof2dot -f pstats -e 0.01 cprofile-mosaic.dat | dot -Tpng -o cprofile-mosaic.png
+
+
 Line profiling
 --------------
 
