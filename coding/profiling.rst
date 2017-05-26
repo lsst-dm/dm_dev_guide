@@ -94,6 +94,18 @@ Another useful tool for visualising the call graph is `gprof2dot <https://github
     gprof2dot -f pstats -e 0.01 cprofile-mosaic.dat | dot -Tpng -o cprofile-mosaic.png
 
 
+Stack profiling
+---------------
+
+The LSST stack contains some support for obtaining a python profile easily:
+
+* ``CmdLineTask`` (the front-end to scripts such as ``processCcd.py`` in pipe_tasks) supports a ``--profile`` command-line argument specifying a filename to which to write the profile.
+* ``BatchCmdLineTask`` (the front-end to scripts such as ``singleFrameDriver.py`` in pipe_drivers) supports a ``--batch-profile`` command-line argument switch. The profile is written to ``profile-<job>-<hostname>-<pid>.dat``.
+* `ci_hsc <http://github.com/LSST/ci_hsc>`_ (an integration test package, driven by SCons) supports a ``--enable-profile`` command-line argument specifying a base filename for the profiles (default is ``profile``). The profiles are written to ``<base>-<sequenceNumber>-<script>.pstats``. This is useful for profiling the entire stack.
+
+All of the above profile outputs can be read using ``pstats``.
+
+
 Line profiling
 --------------
 
