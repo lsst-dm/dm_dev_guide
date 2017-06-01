@@ -9,7 +9,7 @@ Developers are encouraged to insert log messages whenever and wherever they migh
 
 Whether using :lmod:`lsst.log` or any other logging mechanism, timestamps recorded in logs should use Internet `RFC 3339`_ format, which is sortable and includes the timezone.  See the discussion in `DM-1203`_ for history.
 
-.. _Doxygen page on logging: https://lsst-web.ncsa.illinois.edu/doxygen/x_masterDoxyDoc/log.html
+.. _Doxygen page on logging: http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/log.html
 .. _RFC 3339: http://tools.ietf.org/html/rfc3339
 .. _DM-1203: https://jira.lsstcorp.org/browse/DM-1203
 
@@ -79,7 +79,7 @@ The following shows an example to get a logger object and log using it:
    LOGL_DEBUG(_log, "St. Dev = %g", sd);
 
 
-The full list of available macros and more details of the :lmod:`lsst.log` features are described in its `package documentation <https://lsst-web.ncsa.illinois.edu/doxygen/x_masterDoxyDoc/log.html>`_.
+The full list of available macros and more details of the :lmod:`lsst.log` features are described in its `package documentation <http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/x_masterDoxyDoc/log.html>`_.
 
 Getting a logger object and logging to that is preferred over logging using a string as the logger name, but the latter can also be used.
 For example:

@@ -4,7 +4,7 @@ Debugging Tasks with ``lsstDebug``
 
 .. note::
 
-   See also the `Doxygen documentation on lsstDebug <https://lsst-web.ncsa.illinois.edu/doxygen/x_masterDoxyDoc/base_debug.html>`_.
+   See also the `Doxygen documentation on lsstDebug <http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/base_debug.html>`_.
 
 In your ``Task`` code, if you ``import lsstDebug`` then call::
 
@@ -38,7 +38,7 @@ Then you can write your task to optionally enable a display (or whatever) by doi
    else:
       self.log.debug("I would show you a pretty picture here if you enabled debugging.")
 
-Refer to the `task documentation <https://lsst-web.ncsa.illinois.edu/doxygen/x_masterDoxyDoc/group___l_s_s_t__task__documentation.html>`_ and look for “debug variables” to discover what debugging options are available for existing ``Task``\s.
+Refer to the `task documentation <http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/group___l_s_s_t__task__documentation.html>`_ and look for “debug variables” to discover what debugging options are available for existing ``Task``\s.
 
 In order to load your specific debugging configuration, create a ``debug.py`` in your working directory, and put something like this in it::
 

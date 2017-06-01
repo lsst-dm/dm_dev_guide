@@ -6,7 +6,7 @@ We document C++ code in two ways:
 
 1. By writing *documentation blocks* for all public or protected C++ components (namespaces, types, methods, functions, and constants).
 
-   The LSST Stack uses `Doxygen <http://www.doxygen.org/>`_ to build C++ API reference documentation from comment blocks. This documentation is exposed to users in a variety of contexts, from developers reading the code to readers of the `Stack Documentation <https://lsst-web.ncsa.illinois.edu/doxygen/x_masterDoxyDoc/>`_.
+   The LSST Stack uses `Doxygen <http://www.doxygen.org/>`_ to build C++ API reference documentation from comment blocks. This documentation is exposed to users in a variety of contexts, from developers reading the code to readers of the `Stack Doxygen Documentation <http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/>`_.
 
    Doxygen comment blocks are the public specification of our C++ API.
 

@@ -123,18 +123,18 @@ Special Asserts
 
 Inheriting from :lclass:`lsst.utils.tests.TestCase` rather than :class:`unittest.TestCase` enables new asserts that are useful for doing element-wise comparison of two floating-point :mod:`numpy`-like arrays or scalars.
 
-`lsst.utils.tests.TestCase.assertFloatsAlmostEqual <https://lsst-web.ncsa.illinois.edu/doxygen/x_masterDoxyDoc/namespacelsst_1_1utils_1_1tests.html#a09ee2482a2e8d71e8612c0378f4286fc>`_
+`lsst.utils.tests.TestCase.assertFloatsAlmostEqual`_
    Asserts that floating point scalars and/or arrays are equal within the specified tolerance.
    The default tolerance is significantly tighter than the tolerance used by :meth:`unittest.TestCase.assertAlmostEqual` or :func:`numpy.testing.assert_almost_equal`; if you are replacing either of those methods you may have to specify ``rtol`` and/or ``atol`` to prevent failing asserts.
-`lsst.utils.tests.TestCase.assertFloatsEqual <https://lsst-web.ncsa.illinois.edu/doxygen/x_masterDoxyDoc/namespacelsst_1_1utils_1_1tests.html#a0e354bcea6ba8c11238882ede5058c03>`_
+`lsst.utils.tests.TestCase.assertFloatsEqual`_
    Asserts that floating point scalars and/or arrays are identically equal.
-`lsst.utils.tests.TestCase.assertFloatsNotEqual <https://lsst-web.ncsa.illinois.edu/doxygen/x_masterDoxyDoc/namespacelsst_1_1utils_1_1tests.html#a4fc68518d134e3656499898653a3bce3>`_
+`lsst.utils.tests.TestCase.assertFloatsNotEqual`_
    Asserts that floating point scalars and/or arrays are not equal.
 
 Note that :lmeth:`~lsst.utils.tests.TestCase.assertClose` and :lmeth:`~lsst.utils.tests.TestCase.assertNotClose` methods have been deprecated by the above methods.
 
 Additionally, :lmod:`~lsst.afw` provides additional asserts that get loaded into :lclass:`lsst.utils.tests.TestCase` when the associated module is loaded.
-These include methods for `Coords <https://lsst-web.ncsa.illinois.edu/doxygen/x_masterDoxyDoc/namespacelsst_1_1afw_1_1coord_1_1utils.html>`_, `Geom (Angles, Pairs, Boxes) <https://lsst-web.ncsa.illinois.edu/doxygen/x_masterDoxyDoc/namespacelsst_1_1afw_1_1geom_1_1utils.html>`_, and `Images <https://lsst-web.ncsa.illinois.edu/doxygen/x_masterDoxyDoc/namespacelsst_1_1afw_1_1image_1_1test_utils.html>`_, such as:
+These include methods for `Coords`_, `Geom (Angles, Pairs, Boxes)`_, and `Images`_, such as:
 
 :lmeth:`~lsst.afw.coord.utils.assertCoordsNearlyEqual`
    Assert that two coords represent nearly the same point on the sky (provided by :lmod:`lsst.afw.coord.utils`).
@@ -239,3 +239,10 @@ For example,
 * file paths should be generated that include spaces as well as international characters,
 * accented characters should be included for name strings, and
 * unit strings should include the µm if appropriate.
+
+.. _`lsst.utils.tests.TestCase.assertFloatsAlmostEqual`: http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/namespacelsst_1_1utils_1_1tests.html#a09ee2482a2e8d71e8612c0378f4286fc
+.. _`lsst.utils.tests.TestCase.assertFloatsEqual`: http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/namespacelsst_1_1utils_1_1tests.html#a0e354bcea6ba8c11238882ede5058c03
+.. _`lsst.utils.tests.TestCase.assertFloatsNotEqual`: http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/x_masterDoxyDoc/namespacelsst_1_1utils_1_1tests.html#a4fc68518d134e3656499898653a3bce3
+.. _`Coords`: http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/x_masterDoxyDoc/namespacelsst_1_1afw_1_1coord_1_1utils.html
+.. _`Geom (Angles, Pairs, Boxes)`: http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/namespacelsst_1_1afw_1_1geom_1_1utils.html
+.. _`Images`: http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/x_masterDoxyDoc/namespacelsst_1_1afw_1_1image_1_1test_utils.html
