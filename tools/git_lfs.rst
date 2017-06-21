@@ -24,25 +24,15 @@ Examples of LFS-backed repositories are `lsst/afw <https://github.com/lsst/afw>`
 Installing Git LFS
 ==================
 
+Download and install the :command:`git-lfs` client by visiting the `Git LFS <https://git-lfs.github.com>`_ homepage.
+Many package managers, like Homebrew_ on the Mac, also provide :command:`git-lfs` (``brew install git-lfs`` for example).
+
+We recommend using the latest Git LFS client.
+The *minimum* usable client version for LSST is git-lfs v1.1.0.
+
 Git LFS requires Git version 1.8.2 or later to be installed.
 
-Download and install the ``git-lfs`` client by visiting the `Git LFS <https://git-lfs.github.com>`_ homepage.
-If you downloaded the binary release, install ``git-lfs`` by running the provided :file:`install.sh`.
-The LSST Git LFS system requires a minimum ``git-lfs`` `client version of 1.1.0 <https://github.com/git-lfs/git-lfs/releases/tag/v1.1.0>`_.
-It is recommended that users use the current stable ``git-lfs`` `client version <https://github.com/git-lfs/git-lfs/releases/latest>`_.
-Newer client versions support the more efficient batch API and have many bug fixes and performance improvements.
-
-Most package managers also provide the ``git-lfs`` client.
-Since, LFS is a rapidly evolving technology, package managers will help you keep up with new ``git-lfs`` releases.
-For example, Mac users with Homebrew_ can simply run ``brew install git-lfs`` (and later update to a new version with ``brew upgrade git-lfs``).
-
-Once ``git-lfs`` is installed, run:
-
-.. code-block:: bash
-
-   git lfs install
-
-to configure Git to use Git LFS in your :file:`~/.gitconfig` file.
+Before you can use Git LFS with LSST data you'll need to configure by following the next section.
 
 .. _git-lfs-config:
 
