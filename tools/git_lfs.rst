@@ -1,5 +1,5 @@
 ########################################################
-Using Git Large File Storage (LFS) for Data Repositories
+Using Git LFS (Large File Storage) for data repositories
 ########################################################
 
 This page describes how to use Git LFS for DM development.
