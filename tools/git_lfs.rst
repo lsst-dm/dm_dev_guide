@@ -101,7 +101,7 @@ Once your credentials are cached, you won't need to repeat this process on your 
    **Working with GitHub Two Factor Authentication**
 
    If you have `GitHub's two-factor authentication <https://help.github.com/articles/about-two-factor-authentication/>`_ enabled, use a personal access token instead of a password.
-   You can set up a personal token at https://github.com/settings/tokens.
+   You can set up a personal token at https://github.com/settings/tokens with ``read:org`` permissions.
 
 .. _git-lfs-using:
 
