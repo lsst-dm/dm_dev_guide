@@ -1,6 +1,8 @@
 ########################################################
-Using Git Large File Storage (LFS) for Data Repositories
+Using Git LFS (Large File Storage) for data repositories
 ########################################################
+
+This page describes how to use Git LFS for DM development.
 
 DM uses Git LFS to manage test datasets within our :doc:`normal Git workflow </processes/workflow>`.
 `Git LFS is developed by GitHub <https://git-lfs.github.com/>`_, though DM uses its own backend storage infrastructure (see `SQR-001: The Git LFS Architecture <http://sqr-001.lsst.io>`_ for background).
@@ -8,47 +10,38 @@ DM uses Git LFS to manage test datasets within our :doc:`normal Git workflow </p
 All DM repositories should use Git LFS to store binary data, such as FITS files, for :abbr:`CI (Continuous Integration)`.
 Examples of LFS-backed repositories are `lsst/afw <https://github.com/lsst/afw>`_, `lsst/hsc_ci <https://github.com/lsst/ci_hsc>`_, `lsst/testdata_decam <https://github.com/lsst/testdata_decam>`_ and `lsst/testdata_cfht <https://github.com/lsst/testdata_cfht>`_.
 
-This page describes how to use Git LFS for DM development.
+**On this page**
+
+- :ref:`git-lfs-install`
+- :ref:`git-lfs-config`
+- :ref:`git-lfs-auth`
+- :ref:`git-lfs-using`
+- :ref:`git-lfs-tracking`
+- :ref:`git-lfs-create`
 
 .. _git-lfs-install:
 
 Installing Git LFS
 ==================
 
+Download and install the :command:`git-lfs` client by visiting the `Git LFS <https://git-lfs.github.com>`_ homepage.
+Many package managers, like Homebrew_ on the Mac, also provide :command:`git-lfs` (``brew install git-lfs`` for example).
+
+We recommend using the latest Git LFS client.
+The *minimum* usable client version for LSST is git-lfs v1.1.0.
+
 Git LFS requires Git version 1.8.2 or later to be installed.
 
-Download and install the ``git-lfs`` client by visiting the `Git LFS <https://git-lfs.github.com>`_ homepage.
-If you downloaded the binary release, install ``git-lfs`` by running the provided :file:`install.sh`.
-The LSST Git LFS system requires a minimum ``git-lfs`` `client version of 1.1.0 <https://github.com/git-lfs/git-lfs/releases/tag/v1.1.0>`_.
-It is recommended that users use the current stable ``git-lfs`` `client version <https://github.com/git-lfs/git-lfs/releases/latest>`_.
-Newer client versions support the more efficient batch API and have many bug fixes and performance improvements.
+Before you can use Git LFS with LSST data you'll need to configure by following the next section.
 
-Most package managers also provide the ``git-lfs`` client.
-Since, LFS is a rapidly evolving technology, package managers will help you keep up with new ``git-lfs`` releases.
-For example, Mac users with Homebrew_ can simply run ``brew install git-lfs`` (and later update to a new version with ``brew upgrade git-lfs``).
+.. _git-lfs-config:
 
-Once ``git-lfs`` is installed, run:
+Configuring Git LFS for LSST
+============================
 
-.. code-block:: bash
-
-   git lfs install
-
-to configure Git to use Git LFS in your :file:`~/.gitconfig` file.
-
-Next, decide whether you will need to push Git LFS data, or only clone and pull from Git LFS managed repositories.
-This affects how you set up authentication to DM's Git LFS servers.
-The two configuration options are:
-
-1. :ref:`Anonymous access for read-only LFS users <git-lfs-anon>`.
-2. :ref:`Authenticated access for read-write LFS users <git-lfs-auth>`.
-
-.. _git-lfs-anon:
-
-Option 1: Anonymous access for read-only LFS users
---------------------------------------------------
-
-*Follow these configuration instructions if you never intend to create a new Git LFS managed repository for DM, or push changes to LFS managed datasets.*
-Skip to configuration :ref:`Option 2 <git-lfs-auth>` if this isn't the case for you.
+LSST uses its own Git LFS servers.
+This section describes how to configure Git LFS to pull from LSST's servers.
+If you are running an older client, version 1.2 or earlier, follow the note at the end of this section.
 
 First, add these lines into your :file:`~/.gitconfig` file:
 
@@ -59,72 +52,57 @@ Then add these lines into your :file:`~/.git-credentials` files (create one, if 
 
 .. literalinclude:: snippets/git_lfs_git-credentials.txt
    :language: text
+
+Trying cloning a small data repository to test your configuration:
+
+.. code-block:: bash
+
+   git clone https://github.com/lsst/testdata_decam
 
 *That's it.*
-You're ready to clone any of DM's Git LFS managed repositories.
 
+.. note::
+
+   **Configuration for Git LFS v1.2 and earlier***
+
+   The legacy Git LFS client (versions *earlier* than 1.3) has two configuration differences compared to the modern configuration described above.
+   
+   First, add these lines into your :file:`~/.gitconfig` file:
+
+   .. literalinclude:: snippets/git_lfs_gitconfig_legacy.txt
+      :language: text
+
+   Then add these lines into your :file:`~/.git-credentials` file (create one, if necessary):
+
+   .. literalinclude:: snippets/git_lfs_git-credentials_legacy.txt
+      :language: text
+   
 .. _git-lfs-auth:
 
-Option 2: Authenticated access for read-write LFS users
--------------------------------------------------------
+Authenticating for push access
+==============================
 
-*Follow these configuration instructions if you need to create or push changes to a DM Git LFS managed repository.
-Only GitHub users in the LSST GitHub organization can authenticate with DM's storage service.*
-If you only want read-only access to DM's Git LFS managed repositories, return to :ref:`Option 1 <git-lfs-anon>`.
+If you want to push to a LSST Git LFS-backed repository you'll need to add configurations.
 
-First, add these lines into your :file:`~/.gitconfig` file:
-
-.. literalinclude:: snippets/git_lfs_gitconfig.txt
-   :language: text
-   :lines: 1-8
-
-Then add these lines into your :file:`~/.git-credentials` files (create one, if necessary):
-
-.. literalinclude:: snippets/git_lfs_git-credentials.txt
-   :language: text
-   :lines: 1-2
-
-Next, set up a credential helper to manage your GitHub credentials (Git LFS won't use your SSH keys).
+First, set up a credential helper to manage your GitHub credentials (Git LFS won't use your SSH keys).
 :ref:`We describe how to set up a credential helper for your system in the Git set up guide <git-credential-helper>`.
 
-Once a helper is set up, you can cache your credentials by cloning any of DM's LFS-backed repositories.
-For example, run:
-
-.. code-block:: bash
-
-   git clone https://github.com/lsst/testdata_decam.git
-
-``git clone`` will ask you to authenticate with DM's git-lfs server::
+Then the next time you run a Git command that requires authentication, Git will ask you to authenticate with LSST's Git LFS server::
 
    Username for 'https://git-lfs.lsst.codes': <GitHub username>
    Password for 'https://<git>@git-lfs.lsst.codes': <GitHub password>
 
 At the prompts, enter your GitHub username and password.
 
-*If you have* `GitHub's two-factor authentication <https://help.github.com/articles/about-two-factor-authentication/>`_ enabled, use a personal access token instead of a password.
-You can set up a personal token at https://github.com/settings/tokens.
-
 Once your credentials are cached, you won't need to repeat this process on your system (:ref:`unless you opted for the cache-based credential helper <git-credential-helper>`).
 
-*That's it.*
-Read the rest of this page to learn how to work with Git LFS repositories.
+.. note::
 
-.. note:: **Legacy Git LFS client differences**
+   **Working with GitHub Two Factor Authentication**
 
-   *Follow these configuration instructions if you are using a version of the Git LFS client less than 1.3.*
+   If you have `GitHub's two-factor authentication <https://help.github.com/articles/about-two-factor-authentication/>`_ enabled, use a personal access token instead of a password.
+   You can set up a personal token at https://github.com/settings/tokens with ``read:org`` permissions.
 
-   The legacy Git LFS client has two configuration differences. First, your :file:`~/.gitconfig` file must have an lfs section that sets the batch option to false. Second, your :file:`~/.git-credentials` and :file:`~/.gitconfig` files must include credentials for `the git-lfs server <https://git-lfs.lsst.codes>`_.
-
-   First, add these lines into your :file:`~/.gitconfig` file if you are using a legacy Git LFS client:
-
-   .. literalinclude:: snippets/git_lfs_gitconfig_legacy.txt
-      :language: text
-
-   Then add these lines into your :file:`~/.git-credentials` file (create one, if necessary) if you are using a legacy Git LFS client:
-
-   .. literalinclude:: snippets/git_lfs_git-credentials_legacy.txt
-      :language: text
-   
 .. _git-lfs-using:
 
 Using Git LFS-enabled repositories
