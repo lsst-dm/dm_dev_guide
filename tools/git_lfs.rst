@@ -36,8 +36,27 @@ Before you can use Git LFS with LSST data you'll need to configure by following 
 
 .. _git-lfs-config:
 
-Configuring Git LFS for LSST
-============================
+Configuring Git LFS
+===================
+
+.. _git-lfs-basic-config:
+
+Basic configuration
+-------------------
+
+After you've installed Git LFS, run:
+
+.. code-block:: bash
+
+   git lfs install
+
+This is the regular Git LFS configuration step that adds a ``filter "lfs"`` section to :file:`~/.gitconfig`.
+Additional configurations for LSST are next.
+
+.. _git-lfs-config-lsst:
+
+Configuration for LSST
+----------------------
 
 LSST uses its own Git LFS servers.
 This section describes how to configure Git LFS to pull from LSST's servers.
