@@ -14,6 +14,7 @@ This page is designed to assist developers in their work on ``lsst-dev01``:
 #. :ref:`lsst-dev-ssh-keys`
 #. :ref:`lsst-dev-tools`
 #. :ref:`lsst-dev-loadlsst`
+#. :ref:`lsst-dev-gitlfs`
 #. :ref:`lsst-dev-xpra`
 
 .. _lsst-dev-overview:
@@ -208,6 +209,22 @@ Refer to the :doc:`/build-ci/eups_tutorial` for more information on working with
 Note that the SSD and GPFS-backed stacks are independent: while both will automatically contain the latest LSST software releases, other products declared in a given stack will not automatically become available in the other.
 
 Administrators may wish to note that the shared stack is automatically updated using the script :file:`~lsstsw/shared-stack/shared_stack.py`, which is executed nightly by Cron.
+
+.. _lsst-dev-gitlfs:
+
+Configure Git LFS
+=================
+
+You can get Git LFS through EUPS:
+
+.. code-block:: bash
+
+   setup git_lfs
+
+The first time you use Git LFS you'll need to configure it by following these steps from DM's :doc:`Git LFS guide <../tools/git_lfs>`:
+
+1. :ref:`git-lfs-basic-config`
+2. :ref:`git-lfs-config`
 
 .. _lsst-dev-xpra:
 
