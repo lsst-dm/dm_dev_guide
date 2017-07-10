@@ -101,7 +101,7 @@ Trying cloning a small data repository to test your configuration:
 Authenticating for push access
 ==============================
 
-If you want to push to a LSST Git LFS-backed repository you'll need to add configurations.
+If you want to push to a LSST Git LFS-backed repository you'll need to configure and cache your credentials.
 
 First, set up a credential helper to manage your GitHub credentials (Git LFS won't use your SSH keys).
 :ref:`We describe how to set up a credential helper for your system in the Git set up guide <git-credential-helper>`.
@@ -109,7 +109,7 @@ First, set up a credential helper to manage your GitHub credentials (Git LFS won
 Then the next time you run a Git command that requires authentication, Git will ask you to authenticate with LSST's Git LFS server::
 
    Username for 'https://git-lfs.lsst.codes': <GitHub username>
-   Password for 'https://<git>@git-lfs.lsst.codes': <GitHub password>
+   Password for 'https://<git>@git-lfs.lsst.codes': <GitHub password or token>
 
 At the prompts, enter your GitHub username and password.
 
