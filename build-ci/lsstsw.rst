@@ -249,3 +249,32 @@ The new (automated) workflow is as follows:
    tag there. These are a build of master as of yesterday, which I Git-tagged
    as ``8.0.0.0``. Consider this a release candidate for Winter'14, and take a
    look.  I'll proceed to build an EUPS distribution as well soon.
+
+Updating your EUPS version
+==========================
+
+In order to install a new version of EUPS, first check your current
+installed version with the '-V' flag::
+
+    % eups -V
+
+Next, define the relevant environment variable as so: :command:`export
+EUPS_VERSION=x.y.z` (where `x.y.z` is the version you would like to
+install).  Then install the new EUPS version by changing to your
+${LSSTSW} directory and doing::
+
+    % ./bin/deploy
+
+there.  This will install that version of EUPS and set your default
+version to it, henceforth.
+
+Older versions will still be available under ${LSSTSW}/eups, and you
+can switch back to those by simply setting again :command:`export
+EUPS_VERSION=a.b.c`, opening a new terminal window, and then executing
+`source $LSSTSW/bin/setup.sh` in that window to make `a.b.c` the
+default version.  Opening any new terminal window from here will keep
+using this version, also.
+
+The simplest place to find all available versions of EUPS is by looking at `this page`_ on github.
+
+.. _this page: https://github.com/RobertLuptonTheGood/eups/releases
