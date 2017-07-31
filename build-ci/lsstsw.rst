@@ -269,11 +269,9 @@ there.  This will install that version of EUPS and set your default
 version to it, henceforth.
 
 Older versions will still be available under ${LSSTSW}/eups, and you
-can switch back to those by simply setting again :command:`export Old
-versions of EUPS will still be available under ${LSSTSW}/eups, and you
 can switch back to those by simply setting again :command:`export
-EUPS_VERSION=x.y.z`, opening a new terminal window, and then executing
-`source $LSSTSW/bin/setup.sh` in that window to make `x.y.z` the
+EUPS_VERSION=a.b.c`, opening a new terminal window, and then executing
+`source $LSSTSW/bin/setup.sh` in that window to make `a.b.c` the
 default version.  Opening any new terminal window from here will keep
 using this version, also.
 
