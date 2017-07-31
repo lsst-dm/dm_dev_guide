@@ -199,7 +199,9 @@ A one-line summary that does not use variable names or the function's name. This
    /// Sum two numbers.
    double add(double a, double b);
 
-Brief summaries will end at a period followed by whitespace, or at a new line, whichever comes first. You can ignore periods that shouldn't end the description by following them with a backslash and a space (as in ``"e.g.\ "``).
+By default, brief summaries will end at a period followed by whitespace, or at a new line, whichever comes first. You can ignore periods that shouldn't end the description by following them with a backslash and a space (as in ``"e.g.\ "``).
+
+Brief summaries should be short enough to fit on one line. If you must have a summary that extends over multiple lines, you must prefix the summary by ``@brief``, which will cause the summary to end at the next blank line rather than the next line break.
 
 For functions and methods, the summary should be written in the imperative voice (i.e., as a command that the API consumer is giving). Getters and other methods that are more naturally described as values rather than actions may ignore this rule.
 
@@ -309,10 +311,8 @@ When two or more consecutive template parameters have *exactly* the same descrip
 .. code-block:: cpp
 
    /**
-    * @tparam T,U the types of the pair components
+    * @tparam T, U the types of the pair components
     */
-
-Do not use a space between the parameters, or Doxygen will not parse the command correctly.
 
 .. _cpp-doxygen-tparameters-specializations:
 
@@ -337,7 +337,7 @@ A series of ``@param`` tags, usually one for each parameter. Each tag should hav
 Parameters should be listed in the same order as they appear in the function or method signature.
 Make sure to keep the parameter list in sync with the actual parameters; Doxygen will issue a warning if they don't match.
 
-``@param`` should be given with the ``[in]``, ``[out]``, or ``[in,out]`` tag if the function method contains any output parameters. The ``[in]`` tag is optional if all parameters are input, even if other functions or methods in the same class or package use output parameters.
+``@param`` should be given with the ``[in]``, ``[out]``, or ``[in, out]`` tag if the function method contains any output parameters. The ``[in]`` tag is optional if all parameters are input, even if other functions or methods in the same class or package use output parameters.
 
 .. code-block:: cpp
 
@@ -356,10 +356,8 @@ When two or more consecutive parameters have *exactly* the same description, the
 .. code-block:: cpp
 
    /**
-    * @param x,y the coordinates where the function is evaluated
+    * @param x, y the coordinates where the function is evaluated
     */
-
-Do not use a space between the parameters, or Doxygen will not parse the command correctly.
 
 .. note::
 
@@ -397,10 +395,12 @@ A series of ``@throws`` tags, one for each type of exception (see :ref:`the styl
    /**
     * Write an image to disk.
     *
-    * @throws IoError Thrown if `fileName` could not be written to.
+    * @throws lsst::pex::exceptions::IoError Thrown if `fileName` could not be
+    *     written to.
     */
    void writeImage(std::string const & fileName);
 
+Exception classes must be namespace-qualified using the same rules as :ref:`@see <cpp-doxygen-see-also>`.
 Doxygen will render one or more ``@throws`` tags as a table of exceptions and descriptions, so do not treat ``@throws`` as the first word of the description.
 
 For consistency with Python documentation, always use ``@throws`` and not the synonymous ``@throw`` or ``@exception``.
@@ -509,6 +509,7 @@ List each class, function, method, or link using a ``@see`` tag:
    vector<double> cos(vector<double> const & angles);
 
 Prefix objects from other namespaces appropriately by their greatest common namespace. For example, while documenting a ``lsst::afw::tables`` module, refer to a class in ``lsst::afw::detection`` by ``afw::detection::Footprint``. When referring to an entirely different module or package, use the full namespace.
+Do not use namespace abbreviations, as Doxygen has trouble resolving them.
 
 For internal consistency, always use ``@see`` and not the synonymous ``@sa``.
 
@@ -756,7 +757,7 @@ For example:
    /**
     * Sum numbers in an array.
     *
-    * @overload double add(std::vector<double> const &)
+    * @overload
     */
    double add(double[] const values, size_t nValues);
 
