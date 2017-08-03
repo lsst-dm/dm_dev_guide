@@ -17,8 +17,8 @@ also being able to reproduce their results from last year. EUPS aims to make
 this situation tractable.
 
 Here, we provide a tutorial-based introduction to basic EUPS functionality.
-Throughout, we use the ``%`` symbol to represent a shell prompt (i.e., this
-preceeds commands one might type into a terminal).
+Throughout, we use the ``%`` symbol to represent a shell prompt (i.e., it
+precedes commands one might type into a terminal).
 
 .. _EUPS: https://github.com/RobertLuptonTheGood/eups
 
@@ -39,7 +39,7 @@ have installed. For simplicity, we begin by re-targeting it by setting the
    % eups path
    /tmp/eups_demo
 
-Observe that the majority of EUPS commands follow pattern :command:`eups
+Observe that the majority of EUPS commands follow the pattern :command:`eups
 <verb> <options>` (reminiscent of Git, for example). :command:`(un)setup` is
 the exception.
 
@@ -305,7 +305,7 @@ This says:
 - If possible, set up the version specified on the command line;
 - Otherwise, set up an explicit version specified elsewhere (e.g. in the table
   file);
-- Otherwise, choose a version based on an expression (e.g. >= 2.0) specified
+- Otherwise, choose a version based on an expression (e.g., ``>= 2.0``) specified
   in the table file or elsewhere;
 - Otherwise, set up the version tagged ``current``.
 
