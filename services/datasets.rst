@@ -16,7 +16,7 @@ All data added to ``/datasets`` must adhere to the following format (caps are to
   (:lmod:`butler` root)
 - RERUN = REPO/rerun/PUBLIC | REPO/rerun/PRIVATE
   (processed results)
-- PUBLIC = <ticket>/PRIVATE
+- PUBLIC = <ticket>/PRIVATE | <tag>/PRIVATE (ex. 'HSC-RC'; RFC needed for new tags)
 - PRIVATE = private/<user> | ""
   (:ref:`see details below <CaveatForPrivate>`)
 - PREPROCESSED = preprocessed/<label>/ | preprocessed/<label>/<date>/
