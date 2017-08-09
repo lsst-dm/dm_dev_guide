@@ -22,11 +22,11 @@ must be granted to appropriate teams. For DM written code, these include "Data
 Management" and "Overlords"; for third party code, "DM Externals" and
 "Overlords" (but *not* Data Management).
 
-The new package must be added to the `etc/repos.yaml file in the lsstsw
-package`_ along with its corresponding GitHub URL. This file is
-governed by a "self-merge" policy: upon opening a pull request, it will be
-checked by the :ref:`build-ci-travis` system, and developers may merge without
-further review on success. Refer to `RFC-75`_ for background.
+The new package must be added to the `etc/repos.yaml file in the lsst/repos
+repository`_ along with its corresponding GitHub URL. This file is governed by
+a "self-merge" policy: upon opening a pull request, it will be checked by the
+:ref:`build-ci-travis` system, and developers may merge without further review
+on success. Refer to `RFC-75`_ for background.
 
 The new package then needs to be added to the :file:`ups/*.table` file (and
 possibly the :file:`ups/*.cfg` file) of one or more other packages in the
@@ -68,7 +68,7 @@ being converted to `lfs`) require additional configuration.
 .. _LSST organization on GitHub: https://github.com/lsst
 .. _lsst/templates: https://github.com/lsst/templates
 .. _Distributing third-party packages with EUPS: https://confluence.lsstcorp.org/display/LDMDG/Distributing+third-party+packages+with+EUPS
-.. _etc/repos.yaml file in the lsstsw package: https://github.com/lsst/lsstsw/blob/master/etc/repos.yaml
-.. _repos.yaml:  https://github.com/lsst/lsstsw/blob/master/etc/repos.yaml
+.. _etc/repos.yaml file in the lsst/repos repository: https://github.com/lsst/repos/blob/master/etc/repos.yaml
+.. _repos.yaml: https://github.com/lsst/repos/blob/master/etc/repos.yaml
 .. _manifest.remap:  https://github.com/lsst/lsstsw/blob/master/etc/manifest.remap
 .. _RFC-75: https://jira.lsstcorp.org/browse/RFC-75
