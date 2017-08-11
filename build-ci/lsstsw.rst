@@ -33,6 +33,7 @@ This will:
 - Download and install `EUPS`_ in :file:`./eups`;
 - Make an empty stack directory in :file:`./stack`, with a default
   :file:`manifest.remap`;
+- Download and install a copy of `etc/repos.yaml` from `lsst/repos`;
 - Run :command:`git clone lsst_build master`
 - Run :command:`git clone versiondb master`
 
