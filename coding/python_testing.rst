@@ -9,7 +9,7 @@ Python Unit Testing
 
 This page provides technical guidance to developers writing unit tests for DM's Python code base.
 See :doc:`unit_test_policy` for an overview of LSST Stack testing.
-LSST tests should be written using the :mod:`unittest` framework, with default test discovery, and should support being run using the `pytest`_ test runner and from the command line.
+LSST tests should be written using the :mod:`unittest` framework, with default test discovery, and should support being run using the `pytest`_ test runner as well as from the command line.
 If you want to jump straight to a full example of the standard LSST Python testing boilerplate without reading the background, read the :ref:`section on memory testing <py-test-mem>` later in this document.
 
 .. _SQR-012: http://sqr-012.lsst.io
@@ -28,7 +28,7 @@ A simple :mod:`unittest` example is shown below:
 
 The important things to note in this example are:
 
-* Test file names must begin with ``test_`` to allow `pytest`_ to automatically detect them without requiring an explicit list of tests be supplied.
+* Test file names must begin with ``test_`` to allow `pytest`_ to automatically detect them without requiring an explicit test list, which can be hard to maintain and can lead to missed tests.
 * If the test is being executed using :command:`python` from the command line the :py:func:`unittest.main` call performs the test discovery and executes the tests, setting exit status to non-zero if any of the tests fail.
 * Test classes are executed in the order in which they appear in the test file.
   In this case the tests in ``DemoTestCase1`` will be executed before those in ``DemoTestCase2``.
@@ -47,57 +47,71 @@ Supporting Pytest
 .. note::
   `pytest`_ and its plugins are standard stack EUPS packages and do not have to be installed separately.
 
-All LSST products that are built using :command:`scons` will execute Python tests using `pytest`_ and all tests should be written such that they are runnable using `pytest`_, a policy adopted in :jira:`RFC-69`.
+All LSST products that are built using :command:`scons` will execute Python tests using `pytest`_ so all tests should be written using it.
 `pytest`_ provides a much richer execution and reporting environment for tests and can be used to run multiple test files together.
 
 The `pytest`_ scheme for discovering tests inside Python modules is much more flexible than that provided by :mod:`unittest`, but LSST test files should not take advantage of that flexibility as it can lead to inconsistency in test reports that depend on the specific test runner, and it is required that an individual test file can be executed by running it directly with :command:`python`.
 In particular, care must be taken not to have free functions that use a ``test`` prefix or non-\ :class:`~unittest.TestCase` test classes that are named with a ``Test`` prefix in the test files.
 
+.. note::
+  When :command:`pytest` is run by :command:`scons` full warnings are reported, including :py:class:`~exceptions.DeprecationWarning`.
+  Previously these warnings were hidden in the test output but now they are more obvious, allowing you to fix any problems early.
+
+The tests/SConscript file
+-------------------------
+
 The behavior of `pytest`_ when invoked by :command:`scons` is controlled by the :file:`tests/SConscript` file.
-At its simplest, this file should contain the following to enable testing:
+At minimum this file should contain the following to enable testing with automated test discovery:
 
 .. code-block:: python
 
    from lsst.sconsUtils import scripts
-   scripts.BasicSConscript.tests()
+   scripts.BasicSConscript.tests(pyList=[])
 
-When the ``tests`` target is executed the Python test files will be located with a glob for ``*.py`` in the :file:`tests` directory and the tests will be run with a single invocation of :command:`pytest` using the number of subprocesses matching the ``-j`` argument given to :command:`scons`.
-This is the classical method for test discovery but the preferred approach now is for packages to support automatic test discovery using `pytest`_ as described below.
+``pyList`` is used to specify which Python test files to run.
+Here the empty list is interpreted as "allow :command:`pytest` to automatically discover tests"
+:command:`pytest` will scan the directory tree itself to find tests and will run them all together using the number of subprocesses matching the ``-j`` argument given to :command:`scons`.
+For this mode to work, all test files must be named :file:`test_*.py`.
 
-The test file discovery mode can be controlled with two arguments to the :lmeth:`~lsst.sconsUtils.scripts.BasicSConscript.tests` method:
+If ``pyList=None`` (the historical default) is used, the :command:`scons` ``tests`` target will be used to locate test files using a glob for ``*.py`` in the :file:`tests` directory.
+This list will then be passed explicitly to the :command:`pytest` command, bypassing its automatic test discovery.
+
+Automatic test discovery is preferred as this ensures that there is no difference between running the tests with :command:`scons` and running them with :command:`pytest` without arguments, and it enables the possibility of adjusting :command:`pytest` test discovery to add additional testing of all Python files in the package.
+
+Running tests standalone
+------------------------
+
+``pySingles`` is an optional argument to the :lmeth:`~lsst.sconsUtils.scripts.BasicSConscript.tests` method that can be used for the rare cases where a test must be run standalone and not with other test files in a shared process.
 
 .. code-block:: python
 
    scripts.BasicSConscript.tests(pyList=[], pySingles=["testSingle.py"])
 
-``pyList`` is used to specify which Python test files to run.
-Here the empty list is interpreted as "allow :command:`pytest` to automatically discover tests", whereas, for backwards compatibility reasons, the default of ``pyList=None`` is interpreted as "allow :lmeth:`~lsst.sconsUtils.scripts.BasicSConscript.tests` to automatically discover tests", as described above.
-For this mode to work, all test files must be named :file:`test_*.py`.
-
-``pySingles`` is an optional argument that can be used for the rare cases where a test must be run standalone and not with other test files in a shared process.
 The tests are still run using :command:`pytest` but executed one at a time without using any multi-process execution.
 Use of this should be extremely rare.
 In the :lmod:`~lsst.base` package one test file is used to confirm that the LSST import code is working; this can only be tested if we know that it hasn't previously been imported as part of another test.
-The other reason, so far, to run a test standalone is for test classes that dynamically generate large amounts of test data in setup.
+The other reason, so far, to run a test standalone is for test classes that dynamically generate large amounts of test data during the set up phase.
 Until it is possible to pin test classes to a particular process with ``pytest-xdist``, tests such as these interact badly when test methods within the class are allocated to different subprocesses since each subprocess will generate the test files.
 This can use significantly more disk and CPU when the test runs, and can even cause Jenkins to fail.
 It is important to ensure that any files listed in ``pySingles`` should be named such that they will not be discovered by `pytest`_.
 The convention is to name these files :file:`test*.py` without the underscore.
 
-.. note::
-  When :command:`pytest` is run by :command:`scons` full warnings are reported, including :py:class:`~exceptions.DeprecationWarning`.
-  Usually these warnings are hidden in the test output but now they are more obvious, allowing you to fix any problems early.
-
 Where does the output go?
-=========================
+-------------------------
 
 When :command:`scons` runs any tests, the output from those tests is written to the :file:`tests/.tests` directory, and a file is created for each test that is executed.
+For the usual case where :command:`pytest` is running on multiple test files at once, there is a single file created, :file:`pytest-*.out`, in that directory, along with an XML file containing the test output in JUnit format.
 If a test command fails, that output is renamed to have a :file:`.failed` extension and is reported by :command:`scons`.
-For the case where :command:`pytest` is running multiple of the test files, there is a single file created in the :file:`tests/.tests` directory, along with an XML file containing the test output in JUnit format.
-For convenience the output from the main :command:`pytest` run (as opposed to the rare standalone usages) is also written to standard output so is visible in the log or in the shell along with other :command:`scons` output.
+
+For convenience the output from the main :command:`pytest` run (as opposed to the rare standalone usages) is also written to standard output so it is visible in the log or in the shell along with other :command:`scons` output.
 
 Common Issues
 =============
+
+This section describes some common problems that are encountered when using `pytest`_.
+
+Testing global state
+--------------------
 
 `pytest`_ can run tests from more than one file in a single invocation and this can be used to verify that there is no state contaminating later tests.
 To run `pytest`_ use the :command:`pytest` executable:
@@ -118,6 +132,8 @@ to run all files in the ``tests`` directory named ``test_*.py``. To ensure that 
   In particular, if you install the, otherwise excellent, ``pytest-random-order`` plugin to randomize your tests, this will most likely break your builds as it interacts badly with ``pytest-xdist`` used by :command:`scons` when ``-j`` is used.
   You can install it temporarily for investigative purposes so long as it is uninstalled afterwards.
 
+Test Skipping and Expected Failures
+-----------------------------------
 
 When writing tests it is important that tests are skipped using the proper :mod:`unittest` :ref:`skipping framework <python:unittest-skipping>` rather than returning from the test early.
 :mod:`unittest` supports skipping of individual tests and entire classes using decorators or skip exceptions.
