@@ -23,8 +23,8 @@ To illustrate how wrapping is done we will recreate the example wrappers from th
 Wrapping a simple class
 -----------------------
 
-We start by wrapping the basic ``ExampleOne`` class from the `stack packge template example`_.
-It's header file looks like:
+We start by wrapping the basic ``ExampleOne`` class from the `stack package template example`_.
+Its header file looks like:
 
 .. code-block:: cpp
 
