@@ -359,11 +359,11 @@ shares many concepts.
 
 :command:`eups distrib` reads details about available packages from a remote
 server. The appropriate location for finding LSST software is
-http://sw.lsstcorp.org/eupspkg. We can use :command:`eups distrib list` to
+https://eups.lsst.codes/stack/src. We can use :command:`eups distrib list` to
 list available software, and :command:`eups distrib install` to install it::
 
    % eups distrib path
-   http://sw.lsstcorp.org/eupspkg
+   https://eups.lsst.codes/stack/src
 
    % eups distrib list lsst_apps
    lsst_apps            generic    8.0.0.1+2
@@ -375,7 +375,7 @@ list available software, and :command:`eups distrib install` to install it::
 Note that :command:`eups distrib list` does not list tags, even though
 :command:`eups distrib install` accepts a tag as a command line option (``-t
 v11_0``). The most convenient way to see a list of available tags is to visit
-the distribution server (https://sw.lsstcorp.org/eupspkg/tags/) in a web
+the distribution server (https://eups.lsst.codes/stack/src/tags) in a web
 browser.
 
 Further Information
