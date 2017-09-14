@@ -23,7 +23,7 @@ Developer Workflow
 ==================
 
 The development of change-controlled documents differs from :ref:`that of code <git-branching>`, in that some documents under development can take a long time to evolve and can be developed under multiple stories (ticket branches), and by multiple authors.
-Repositories associated with change-controlled documents should therefore use two protected branches: ``master`` should correspond solely to an archived instance of the document on DocuShare, and ``draft`` is a development branch that should be used as the document evolves.
+Repositories associated with change-controlled documents should therefore use two protected branches: ``master`` should correspond solely to an archived and approved instance of the document on DocuShare, and ``draft`` is a development branch that should be used as the document evolves.
 Ticket branches should branch from ``draft`` and should follow standard :ref:`DM branching policies <git-branching>`.
 
 .. warning::
@@ -45,7 +45,7 @@ During development:
 * Specify a date using :code:`\today` so that the built document continues to have an updated date for each change (we do not automatically insert a date based on the state of the git repository).
 * Update the change record but do not specify a version number.
   The version number will be added during the release process.
-* New references should be added to a local :file:`ldm-nnn.bib` file and that file should be added to the bibliography search path.
+* New references should be added to a local bib file and that file should be added to the bibliography search path.
 * If the document is receiving minor edits consider using the :code:`\newtext` and :code:`\oldtext` macros to indicate text changes.
   For larger changes the :command:`latexdiff-vc` command may be helpful when preparing for an RFC or change request submission.
 
@@ -59,7 +59,10 @@ Once the document change is approved the CCB shall nominate someone to prepare t
 The release process for a document consists of (starting on the LCR/RFC ticket branch):
 
 * Remove ``lsstdraft`` modifier and set the date to the approval date.
-* Disable development notes (see below for alternate approach).
+
+.. note::
+  If you use the ``\XXX`` command or ``draftnote`` environment, these notes will be hidden automatically when draft mode is removed from the document.
+
 * Move references to the shared bibliography files in the ``lsst-texmf`` package.
   References should be added in the correct files and should be placed in the file based on alphabetical ordering of the keys.
   There should be no local bib file in a released document.
@@ -72,7 +75,4 @@ The release process for a document consists of (starting on the LCR/RFC ticket b
 * For DM change-controlled documents upload the PDF to DocuShare and make it the preferred version.
   Update the RFC to indicate that it has been Implemented.
 * Add a tag to the merge commit on ``master`` of the form ``docushare-vNN`` where ``NN`` corresponds to the DocuShare version of the document.
-
-.. note::
-  I think that we should use the LDM-151 scheme for hiding notes for released documents but trigger this on whether draft mode is enabled or not, rather than using a separate variable.
-  We may want to distinguish document asides that should be included in the final released version of the document and asides that are used as development commentary.
+  This tag should be created for any version of a document that is uploaded to Docushare, including drafts that are created to support an RFC or LCR.
