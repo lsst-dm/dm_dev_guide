@@ -2,10 +2,10 @@
 Writing Change-Controlled Documents
 ###################################
 
-Change-controlled documents are documents that require approval from the Change Control Board (CCB) before they can be released.
-The project-wide change control process is described in `LPM-19`_, with the process for managing documents being described in `LPM-51`_, and covers those documents using DocuShare handles "LSE" or "LPM", that must be approved by the Project `CCB`_.
-For Data Management, these documents have the DocuShare handle "LDM" and they must be approved by the DM CCB using the :ref:`RFC <decision-making-rfc>` process.
-These change-controlled documents can be written using the Word templates defined in `Document-9224`_, but the preference within Data Management is to write change-controlled documents in LaTeX using the ``lsstdoc`` document class provided by the `lsst-texmf`_ package, and to develop these documents using ``git`` repositories within the LSST organization on `GitHub`_.
+Change-controlled documents are documents that require approval from a Change Control Board (CCB) before they can be released.
+The project-wide change control process is described in `LPM-19`_, with the process for managing documents being described in `LPM-51`_, and covers those documents using DocuShare handles "LSE" or "LPM" that must be approved by the Project `CCB`_.
+For Data Management, these documents have the DocuShare handle "LDM", and they must be approved by the DM CCB using the :ref:`RFC <decision-making-rfc>` process.
+These change-controlled documents can be written using the Word templates defined in `Document-9224`_, but the preference within Data Management is to write change-controlled documents in LaTeX using the ``lsstdoc`` document class provided by the `lsst-texmf`_ package and to develop these documents using ``git`` repositories within the LSST organization on `GitHub`_.
 
 .. _CCB: https://project.lsst.org/groups/ccb/
 .. _Document-9224: https://ls.st/Document-9224
@@ -16,18 +16,22 @@ These change-controlled documents can be written using the Word templates define
 .. _LDM-294: https://ls.st/LDM-294
 
 .. note::
-  The definition of which types of documents should be change-controlled is defined in `LDM-294`_.
+  The definition of which types of documents should be change-controlled is located in `LDM-294`_.
 
 
 Developer Workflow
 ==================
 
 The development of change-controlled documents differs from :ref:`that of code <git-branching>`, in that some documents under development can take a long time to evolve and can be developed under multiple stories (ticket branches), and by multiple authors.
-Repositories associated with change-controlled documents should therefore use two protected branches: ``master`` should correspond solely to an archived and approved instance of the document on DocuShare, and ``draft`` is a development branch that should be used as the document evolves.
-Ticket branches should branch from ``draft`` and should follow standard :ref:`DM branching policies <git-branching>`.
+Repositories associated with change-controlled documents should therefore use two protected branches: ``master`` should correspond solely to an archived and approved instance of the document on DocuShare, and ``draft`` is a long-lived integration branch that can be used as the document evolves.
 
-.. warning::
-  Need to understand whether we need to handle two independent edits to an LDM that will be submitted as two distinct RFCs in parallel.
+There can be cases where some minor fixes to a controlled document must be made whilst more major changes are being developed using the ``draft`` branch.
+It is therefore allowed for ticket branches to be created off of ``master`` if the changes are shortly going to be sent for CCB approval.
+This is the usual workflow for controlled documents generated from the SysML model where the content is developed in an external tool and only exported to latex periodically.
+
+Since neither ``draft`` nor ``master`` can be rewritten, it is important that if branches are created off of ``master`` and the content is still present in ``draft``, that ``master`` be merged back into the ``draft`` branch to ensure that ``draft`` is using a consistent version of the baseline.
+Given this requirement, it is preferred that ``draft`` be used in the usual case.
+Regardless of which base branch is used, ticket branches should follow standard :ref:`DM branching policies <git-branching>`.
 
 Once a document handle has been issued a repository can be created in the ``lsst`` GitHub organization using a repository name that matches the handle.
 If the document exists in a pre-existing repository, it should be renamed to the handle and, if necessary, moved to the correct organization.
