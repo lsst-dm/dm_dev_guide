@@ -27,6 +27,14 @@ All the Python code written by LSST Data Management must be runnable using Pytho
 Python 2 will cease to be supported before LSST is operational (:pep:`373`).
 The current baseline version is Python 3.6.
 
+.. _style-guide-py-version-py3-usage:
+
+Python 3 MUST be used for all integration testing and services
+--------------------------------------------------------------
+
+From 2018 January 1 the baselined version of Python 3 must be used for all services, integration tests, end-to-end processing tests, and data challenges.
+Python 2 shall only be used when validating compatibility of code described in the next section.
+
 .. _style-guide-py-version-external-users:
 
 DM Python library code with an external user base MUST support Python 2.7 and 3.x
