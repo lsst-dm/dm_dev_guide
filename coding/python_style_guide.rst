@@ -25,7 +25,7 @@ All DM Python code MUST work with Python 3
 
 All the Python code written by LSST Data Management must be runnable using Python 3.
 Python 2 will cease to be supported before LSST is operational (:pep:`373`).
-The current baseline version is Python 3.5.
+The current baseline version is Python 3.6.
 
 .. _style-guide-py-version-external-users:
 
