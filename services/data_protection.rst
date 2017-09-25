@@ -92,10 +92,9 @@ A purge policy defines how and when specific files will be removed from
 the filesystem. Purges operate on files only; directories will never be removed by an automated purge.
 
 180-day Purge:   
-    The targeted purge policy for  ``/scratch`` will remove files that have not been used for 
-    greater than 180 days. The exact details of the implementation (date last modified, date 
-    last accessed, etc) are still being investigated.  The implementation details and the date 
-    on which the process begins will appear in forthcoming announcements and will be documented on this page. 
+    **Effective October 1, 2017,** a weekly automated process will delete files in :file:`/scratch` and its subdirectories with modification dates > 180 days.
+    Please keep in mind that :file:`/scratch` is a place for ephemeral files.
+    Use :file:`/datasets` or :file:`/project`  as appropriate for data you need to keep.
 
 
 Per File System Data Protection
