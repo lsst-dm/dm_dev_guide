@@ -4,6 +4,24 @@
 Writing change-controlled documentation
 #######################################
 
+Change-controlled documents are documents that require approval from a Change Control Board (CCB) before they can be released.
+The project-wide change control process is described in `LPM-19`_, with the process for managing documents being described in `LPM-51`_, and covers those documents using DocuShare handles ``LSE`` or ``LPM`` that must be approved by the Project `CCB`_.
+For Data Management, these documents have the DocuShare handle ``LDM`` and must be approved by the DM CCB using the :ref:`RFC <decision-making-rfc>` process.
+The DM document management process is formally described in `LDM-294`_.
+
+Change-controlled documents can be written using the Word templates defined in `Document-9224`_, but the preference within Data Management is to write change-controlled documents in LaTeX using the `lsstdoc document class`_ provided by the `lsst-texmf`_ package and to develop these documents using Git repositories within the LSST organization on GitHub (https://github.com/lsst).
+
+This page describes the development and release processes of change-controlled documents produced by DM.
+
+.. _CCB: https://project.lsst.org/groups/ccb/
+.. _Document-9224: https://ls.st/Document-9224
+.. _lsst-texmf: https://lsst-texmf.lsst.io
+.. _lsstdoc document class: https://lsst-texmf.lsst.io/lsstdoc.html
+.. _LPM-19: https://ls.st/LPM-19
+.. _LPM-51: https://ls.st/LPM-51
+.. _GitHub: https://github.com/lsst
+.. _LDM-294: https://ls.st/LDM-294
+
 .. _ccd-regular:
 
 Regular development
