@@ -172,3 +172,64 @@ Hotfixes cannot be made from ``master`` because significant edits may have been 
    When the CCB approves the fix, the release manager creates a ``tickets/DM-9`` branch to update the document's version history table and the document version and merges that ticket branch back to the ``tickets/RFC-2`` release branch.
    The release manager creates the ``docushare-v5`` tag to submit the finalized document to DocuShare and also tags the semantic version (``v1.1``).
    Finally, the release manager backports commits ``F`` and ``G`` with the fix and revised change history table back to the ``master`` branch.
+
+
+.. _ccd-git-api:
+
+Summary of the Git tag and branch API
+=====================================
+
+In the change-controlled documentation Git workflow, branches and tags form an API that is used by DM's infrastructure to automate documentation management.
+This section summarizes the intents of each type of branch and tag.
+
+.. _ccd-docushare-tag:
+
+DocuShare tags
+--------------
+
+DocuShare tags are formatted as ``docushare-vN`` where ``N`` corresponds to a document version number in DocuShare.
+DocuShare version numbers increment by one each time a new version of a document for a given handle is uploaded to DocuShare.
+Note that DocuShare version numbers are distinct from :ref:`semantic version numbers <ccd-semantic-tag>`.
+
+Since DocuShare version numbers are only created once a file is uploaded to DocuShare, we always create DocuShare tags for the next available available DocuShare version, and upload the corresponding PDF to DocuShare.
+This procedure is illustrated in the following sequence:
+
+1. The newest existing version of a document in DocuShare is version 5.
+2. The release manager creates the tag ``docushare-v6`` and uploads the associated PDF built by a continuous integration system to DocuShare.
+3. That upload becomes version 6.
+
+.. _ccd-semantic-tag:
+
+Semantic version tags
+---------------------
+
+Semantic version tags are formatted as ``v<major>.<minor>``.
+The meanings of semantic document versions are described in `LPM-51`_.
+
+Note that only the LSST project librarian can assign a semantic version to a released document.
+This happens when the CCB baselines a document.
+Thus the semantic version Git tag is applied when the librarian sets the preferred document version in DocuShare.
+
+By definition, for each semantic version tag there is always a corresponding :ref:`DocuShare tag <ccd-docushare-tag>` at the same commit.
+
+On LSST the Docs, the default version of a document shown at the root URL (for example, https://ldm-151.lsst.io) is always the most recent semantic version.
+
+.. _ccd-release-branch:
+
+Release branches
+----------------
+
+Submissions to the DM CCB have an associated RFC and submission to the project CCB have an associated LCR.
+Work related to a release is done on a release branch named after the RFC or LCR number: ``tickets/RFC-N`` or ``tickets/LCR-N``.
+These release branches are never merged back to the ``master`` branch.
+Instead, amendments are backported to ``master`` using :command:`git cherry-pick`.
+
+Note that because creating an RFC or LCR requires a document in DocuShare, release branches are only created after the initial :ref:`DocuShare tag <ccd-docushare-tag>` is created.
+
+.. _ccd-master-branch:
+
+master branch
+-------------
+
+The ``master`` branch is the main development branch where individual ticket branches are integrated.
+The document on the ``master`` branch is understood to be peer-reviewed but not baselined by the CCB.
