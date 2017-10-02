@@ -485,6 +485,14 @@ Rebasing the ticket branch against ``master`` and doing the non-fast forward mer
 
 The ticket branch **should not** be deleted from the GitHub remote.
 
+.. _workflow-fixing-breakage-master:
+
+Fixing a breakage on master
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In rare cases, despite the pre-merge integration testing process described :ref:`above <workflow-testing>`, a merge to master might accidentally contain an error and "break the build".
+If this occurs, the merge may be reverted by anyone who notices the breakage and verifies that the merge is the cause -- unless a fix can be created, tested, reviewed, and merged very promptly.
+
 .. _workflow-announce:
 
 Announce the change
