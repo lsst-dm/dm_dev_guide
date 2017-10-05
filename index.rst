@@ -85,6 +85,7 @@ The `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ w
    tools/git_lfs.rst
    tools/jira_tips.rst
    tools/clang_format.rst
+   tools/sublime.rst
    tools/emacs.rst
    tools/vim.rst
 
