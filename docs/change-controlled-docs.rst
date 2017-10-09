@@ -11,7 +11,16 @@ The DM document management process is formally described in `LDM-294`_.
 
 Change-controlled documents can be written using the Word templates defined in `Document-9224`_, but the preference within Data Management is to write change-controlled documents in LaTeX using the `lsstdoc document class`_ provided by the `lsst-texmf`_ package and to develop these documents using Git repositories within the LSST organization on GitHub (https://github.com/lsst).
 
-This page describes the development and release processes of change-controlled documents produced by DM.
+This page describes the development and release processes of change-controlled documents produced by DM:
+
+- :ref:`ccd-drafting`
+- :ref:`ccd-release`
+- :ref:`ccd-hotfix`
+
+Additional subprocedures and references:
+
+- :ref:`ccd-docushare-upload`
+- :ref:`ccd-git-api`
 
 .. _CCB: https://project.lsst.org/groups/ccb/
 .. _Document-9224: https://ls.st/Document-9224
@@ -22,12 +31,12 @@ This page describes the development and release processes of change-controlled d
 .. _GitHub: https://github.com/lsst
 .. _LDM-294: https://ls.st/LDM-294
 
-.. _ccd-regular:
+.. _ccd-drafting:
 
-Regular development
-===================
+Drafting workflow
+=================
 
-Develop change-controlled documents using :doc:`DM's standard workflow <../processes/workflow>`.
+Write change-controlled documents using :doc:`DM's standard workflow <../processes/workflow>`.
 That is:
 
 1. Create a ticket branch from ``master``.
@@ -36,143 +45,217 @@ That is:
 4. Rebase and merge the ticket branch to ``master``.
 
 Merging to ``master`` does not denote acceptance by a CCB.
-Instead, it adds to the changeset that will be included in the next CCB review.
-
-.. figure:: ccd-develop.svg
-   :name: fig-ccd-develop
-   :align: center
-   :target: ccd-develop.svg
-   :alt: Git commit tree showing two ticket branches merged to master.
-
-   Example of Git branches during document development.
-   Authors write and edit the document on individual ticket branches (``tickets/DM-1`` and ``tickets/DM-2``) that they merge to ``master``, following DM's regular :doc:`code workflow <../processes/workflow>`.
-
-.. _ccd-submit:
-
-Submitting a document to the CCB
-================================
-
-Establishing a new baselined version of the document begins with submitting it to the CCB.
-The release manager is responsible for orchestrating this process.
-
-1. Choose a commit on ``master`` where the document's content is ready for CCB review.
-2. Create a :ref:`DocuShare tag <ccd-docushare-tag>` at the commit.
-   DocuShare tags are formatted as ``docushare-vN``, where ``N`` is the next-available document version number in DocuShare.
-3. Upload the PDF built by CI for the ``docushare-vN`` tag to DocuShare.
-   By definition, this uploaded document should become version ``N`` in DocuShare.
-4. For LDM documents, create a DM RFC.
-   For project documents (LSE), create an LCR.
-5. Once the RFC or LCR number is known, create a branch from the ``docushare-vN`` tag named ``tickets/RFC-N`` or ``tickets/LCR-N``.
-   This :ref:`release branch <ccd-release-branch>` initially has no new commits on it.
-
-.. figure:: ccd-submit.svg
-   :name: fig-ccd-submit
-   :align: center
-   :target: ccd-submit.svg
-   :alt: Git commit tree showing a docushare-v1 tag added to the head of the master branch.
-
-   Example Git tree showing document submission to the CCB.
-   The release manager creates a ``docushare-v1`` tag from the head of the ``master`` branch, since ``1`` is the next-available version number for the document in DocuShare.
-   The release manager submits the PDF built from the ``docushare-v1`` tag to the CCB (as an RFC or an LCR).
-   Finally, since the submission is ``RFC-1`` the release manager creates the ``tickets/RFC-1`` :ref:`release branch <ccd-release-branch>` from ``docushare-v1`` tag.
-
-.. _ccd-edit:
-
-Addressing CCB feedback
-=======================
-
-The CCB may request amendments before the document can be baselined.
-
-1. Create a ticket branch from the ``tickets/RFC-N`` or ``tickets/LCR-N`` :ref:`release branch <ccd-release-branch>`.
-2. Commit amendments to that ticket branch and peer review.
-3. Rebase and merge the ticket branch onto the ``tickets/RFC-N`` or ``tickets/LCR-N`` :ref:`release branch <ccd-release-branch>`.
-4. Multiple ticket branches can be created and merged to the :ref:`release branch <ccd-release-branch>` if the CCB's requests are being addressed by multiple authors working on separate parts of the document.
-5. The release manager creates a new :ref:`DocuShare tag <ccd-docushare-tag>` (``docushare-vN``) from the head of the :ref:`release branch <ccd-release-branch>`, uploads the revised document to DocuShare, and notifies the CCB.
-
-.. figure:: ccd-amend.svg
-   :name: fig-amend
-   :align: center
-   :target: ccd-amend.svg
-   :alt: Git commit tree showing amendments and resubmission to a CCB.
-
-   Example Git tree showing how CCB feedback is addressed on a :ref:`release branch <ccd-release-branch>`.
-   Two authors address CCB feedback by creating separate ticket branches (``tickets/DM-3`` and ``tickets/DM-4``) from the :ref:`release branch <ccd-release-branch>` (``tickets/RFC-1``) that are merged back to the ``tickets/RFC-1`` :ref:`release branch <ccd-release-branch>`.
-   The release manager resubmits the amended document to the CCB by creating a :ref:`docushare tag <ccd-release-branch>` (``docushare-v2``) and uploading version 2 of the document to DocuShare.
+Instead, it adds to the changeset that will be included in the next CCB review (see next).
 
 .. _ccd-release:
 
-Releasing a new baselined version of the document
-=================================================
+Releasing a new version from the master branch
+==============================================
 
-When the CCB baselines (accepts) the new document, the project librarian designates the baselined document with a semantic version.
-The DM release manager is responsible for releasing a document.
+Follow these steps to submit a document to the CCB and release a new baselined version:
 
-1. From the head of the :ref:`release branch <ccd-release-branch>` (``tickets/RFC-N`` or ``tickets/LCR-N``), add a commit that:
+1. Check out the head of the ``master`` branch and follow the procedure in :ref:`ccd-docushare-upload`.
 
-	- Updates the semantic version of the document to the one designated by the project librarian.
-	- Updates the change history table to reflect the new version.
-	- Fixes the document's date to the date of baselining.
-	- Removes the "draft" watermark (for example, by removing ``draft`` from the `document class's arguments <https://lsst-texmf.lsst.io/lsstdoc.html#document-preamble>`_).
+   You can get the PDF for the DocuShare upload either by building the document locally or downloading it from the document's landing page at ``https://<handle>.lsst.io/v/master``.
 
-2. Create a new :ref:`DocuShare tag <ccd-docushare-tag>` (``docushare-vN``) and upload the document to DocuShare.
+2. Submit a request to the CCB.
+   The procedure depends on the CCB:
 
-3. Once the project librarian has set that DocuShare version as the preferred version, create a :ref:`semantic version tag <ccd-semantic-tag>` (formatted ``v<major>.<minor>``) at the same commit as the corresponding DocuShare tag.
+   - For project documents (such as ``LPM``, ``LSE``), create an `LCR <https://project.lsst.org/groups/ccb/>`_ with a pointer to the new document version in DocuShare.
+   - For DM documents (``LDM`` and ``DMTR``), create an :ref:`RFC <decision-making-rfc-creating>` with a pointer to the new document in DocuShare.
+     Set the JIRA state to "flagged" to notify the DM CCB.
 
-4. Create a new ticket branch from the **head** of the ``master`` branch.
-   Cherry pick amendment commits from the :ref:`release branch <ccd-release-branch>` onto that ticket branch.
-   Also include a commit that updates the document change history table.
-   Merge that ticket branch to ``master``.
+3. Create a release branch based off the same commit as the DocuShare tag:
 
-**Notes:**
+   - For a project document:
 
-- The :ref:`release branch <ccd-release-branch>` is never merged back to ``master``.
-  Amendments get back to ``master`` through cherry picking commits from the :ref:`release branch <ccd-release-branch>`.
-- Development is allowed to happen on the ``master`` branch while CCB review is simultaneously happening on a :ref:`release branch <ccd-release-branch>`.
-  This means that the DM release manager is responsible for properly addressing conflicts while cherry picking amendments back to ``master``.
+     .. code-block:: bash
 
-.. figure:: ccd-release.svg
-   :name: fig-release
-   :align: center
-   :target: ccd-release.svg
-   :alt: Git commit tree showing a document release.
+        git checkout -b tickets/LCR-<N>
+        git push -u
 
-   Example Git tree showing how a document is released and baselined.
-   The release manager creates a ticket branch (``tickets/DM-6``) from the current :ref:`release branch <ccd-release-branch>` (``tickets/RFC-1``).
-   Commit ``D`` updates the document's history table.
-   Commit ``E`` sets the document's version of removes the draft watermark.
-   Once this ticket branch is merged to the :ref:`release branch <ccd-release-branch>`, the release manager uploads it to DocuShare (using a ``docushare-v3`` tag) and also tags the document's semantic version (``v1.0``).
-   Finally, the release manager backports the amendment commits (``A``, ``B``, ``C``, and ``D`` --- but not ``E`` where the draft watermark was removed) to the ``master`` branch using a ticket branch (``tickets/DM-7``).
+   - For a DM document:
+
+     .. code-block:: bash
+
+        git checkout -b tickets/RFC-<N>
+        git push -u
+
+   Replace ``<N>`` with the LCR or RFC number.
+
+4. When the CCB responds, they may ask for changes.
+   For minor and straightforward changes, you may commit changes to the release branch.
+   For more complex changes, or when multiple people  are working in parallel to address requests, use a ticket branch-based workflow instead.
+   Create the ticket branch from the head of the release branch and merge back to the release branch.
+
+   When issues are addressed, notify the CCB:
+
+   - For a project document, :ref:`create a new DocuShare upload <ccd-docushare-upload>` and notify the CCB.
+
+   - For a DM document, create a comment on the RFC confirming the changes and link to the ``https://<handle>.lsst.io/v/RFC-<n>`` landing page for the release branch.
+     You don't need to create intermediate DocuShare versions for the DM CCB.
+
+   Repeat this step for each round of CCB feedback.
+
+5. When the CCB approves document you create a release:
+
+   1. Make two commits to the head of the release branch.
+      In the first commit:
+
+      - Update `document's change record <https://lsst-texmf.lsst.io/lsstdoc.html#document-preamble>`_.
+        The Project librarian or DM release manager, through the CCB, determines the document's semantic version.
+      
+      In the second commit:
+
+      - Remove the ``lsstdraft`` option from the document class.
+      - Set the ``\date`` command using a YYYY-MM-DD format.
+
+   2. :ref:`Create a new DocuShare upload <ccd-docushare-upload>`.
+      At this stage, the Project librarian will review the change record's content (for project documents).
+      If changes are needed, repeat the previous step and this one.
+
+   3. Once the Project librarian or DM documentalist has uploaded the document and made it the new preferred version, create a :ref:`semantic version tag <ccd-semantic-tag>` at the same commit as the DocuShare tag:
+
+      .. code-block:: bash
+
+         git tag -a v<major>.<minor>
+         git push --tags
+
+      In your command, replace ``<major>.<minor>`` with the semantic version.
+
+      Format the Git tag message as:
+
+      .. code-block:: text
+
+         v<major.minor>
+
+         https://docushare.lsst.org/docushare/dsweb/Get/Version-<...>
+
+      The URL should point to the DocuShare version (same as the DocuShare tag).
+
+   4. Backport the amendment commits made on the release branch back to the ``master`` branch:
+
+      1. Create a user branch from the ``master`` branch:
+
+         .. code-block:: bash
+
+            git checkout master
+            git checkout -b u/<username>/v<major>.<minor>-backport
+
+      2. Cherry-pick commits from the release branch onto the new backport branch.
+         For example:
+
+         .. code-block:: bash
+
+            git cherry-pick <commit-sha>
+         
+         **Do not** backport the commit that removed the ``lsstdraft`` option and set the ``\date``.
+
+      3. Push the backport branch to GitHub for continuous integration validation, rebase, and merge to master.
+         For example:
+
+         .. code-block:: bash
+
+            git checkout master
+            git pull
+            git checkout u/<username>/v<major>.<minor>-backport
+            git rebase -i master
+            git push -u  # --force
+            git checkout master
+            git merge --no-ff u/<username>/v<major>.<minor>-backport
+            git push
 
 .. _ccd-hotfix:
 
-Hotfixing a baselined document
-==============================
+Hotfixing a released document
+=============================
 
-It may be necessary to release a minor update to a baselined document (to fix typos, for example).
-This is done by creating a branch based off the prior :ref:`release branch <ccd-release-branch>`.
-Hotfixes cannot be made from ``master`` because significant edits may have been merged in the time since the document was baselined.
+The procedure above (:ref:`ccd-release`) describes how to make a new version of a document from the ``master`` branch.
+Sometimes it is necessary to hotfix a released document to fix a typo or make a similar minor change.
+In these cases you may not want to make a new release from the ``master`` branch because ``master`` has substantive, and unrelated, new content.
+Instead, you may hotfix a document from the release branch.
 
-1. Create a ticket branch from the :ref:`semantic version tag <ccd-semantic-tag>` of the prior release.
-2. Commit fixes to that ticket branch and have the changes peer reviewed.
-3. Create a :ref:`DocuShare tag <ccd-docushare-tag>` (``docushare-vN``) and upload the document to DocuShare.
-4. Create an RFC or LCR proposing the changes to the CCB.
-5. Once the RFC or LCR number is known, create a new :ref:`release branch <ccd-release-branch>` (``tickets/RFC-N`` or ``tickets/LCR-N``) from the ``docushare-vN`` tag created in Step 3.
-6. The remaining process of releasing this document, upon CCB approval, is the same as in :ref:`ccd-release`.
+.. note::
 
-.. figure:: ccd-hotfix.svg
-   :name: fig-hotfix
-   :align: center
-   :target: ccd-hotfix.svg
-   :alt: Git commit tree showing a hotfix to a baselined document.
+   If no changes have been merged to ``master`` since the document was released, you can follow the regular procedure for :ref:`ccd-release`.
 
-   Example Git tree showing how a baselined document is hotfixed.
-   Since the fix is to the ``v1.0`` release, the author creates a ticket branch (``tickets/DM-8``) from the ``v1.0`` tag and commits the fix to it.
-   Next, the release manager tags the fixed document as ``docushare-v4`` to upload a new DocuShare version and create a submission to the CCB.
-   When the RFC number is known, the release manager creates a :ref:`release branch <ccd-release-branch>` from the ``v1.0`` tag (``tickets/RFC-2``) and merges the ``tickets/DM-8`` branch to the new :ref:`release branch <ccd-release-branch>`.
-   When the CCB approves the fix, the release manager creates a ``tickets/DM-9`` branch to update the document's version history table and the document version and merges that ticket branch back to the ``tickets/RFC-2`` :ref:`release branch <ccd-release-branch>`.
-   The release manager creates the ``docushare-v5`` tag to submit the finalized document to DocuShare and also tags the semantic version (``v1.1``).
-   Finally, the release manager backports commits ``F`` and ``G`` with the fix and revised change history table back to the ``master`` branch.
+Follow these steps to hotfix a document:
 
+1. Check out the head of the release branch for the version being fixed:
+
+   - For a project document:
+
+     .. code-block:: bash
+
+        git checkout tickets/LCR-<prev>
+
+   - For a DM document:
+
+     .. code-block:: bash
+
+        git checkout tickets/RFC-<prev>
+
+   ``<prev>`` is the RFC or LCR number of the document release being fixed.
+
+2. Create a ticket branch (the JIRA ticket is scoped for implementing the fix and coordinating the release):
+
+   .. code-block:: bash
+
+      git checkout -b tickets/DM-<N>
+      git push -u
+
+3. Commit fixes onto that ``tickets/DM-<N>`` branch and push to GitHub.
+
+4. Follow the steps in :ref:`ccd-release`, noting that the base branch is now ``tickets/DM-<N>``, not ``master``.
+   In the last step, the amendment commits (such as those on the ``tickets/DM-<N>`` branch and on the release branch) are still backported to ``master``.
+   The hotfix release branch is not merged onto the previous release branch.
+
+.. _ccd-docushare-upload:
+
+Uploading to DocuShare
+======================
+
+Follow these steps to upload a draft or released document to DocuShare:
+
+1. Send the PDF of the document to a person able to upload to DocuShare:
+
+   - For project documents (such as LPM and LSE), email the PDF to the LSST librarian.
+
+   - For DM documents (such as LDM and DMTR), email the PDF to a DM documentalist.
+
+2. Wait for the documentalist or librarian to upload the document and verify that it appears on the Version page of the document on DocuShare.
+   You can find the document version page with the short link ``https://ls.st/<handle>*``.
+   For example, `https://ls.st/ldm-151* <https://ls.st/ldm-151*>`_.
+
+3. Tag the commit that produced the DocuShare upload.
+   This tag is formatted as ``docushare-v<N>`` where ``<N>`` is the version number for that document’s handle.
+   This is the number of the upload shown on the document’s DocuShare version page (see note).
+
+   .. code-block:: bash
+
+      git tag -a docushare-v<N>
+      git push --tags
+
+   Format the Git tag message as:
+
+   .. code-block:: text
+
+      DocuShare v<N>
+
+      https://docushare.lsst.org/<version-URL>
+
+   The version URL in the commit message is the URL of that version in DocuShare (see note).
+
+.. note::
+
+   The number ``<N>`` in the ``docushare-v<N>`` tag is the number that appears in the **Version** column of the document’s version page.
+   You can get to a document’s version page using the ``*`` shortlink (for example `https://ls.st/LDM-151* <https://ls.st/LDM-151*>`__).
+
+   The version URL used in the body of the tag message is the URL that the version number links to on the document’s version page.
+
+.. seealso::
+
+   :ref:`ccd-docushare-tag` (API reference).
 
 .. _ccd-git-api:
 
@@ -187,16 +270,11 @@ This section summarizes the intents of each type of branch and tag.
 DocuShare tags
 --------------
 
-DocuShare tags are formatted as ``docushare-vN`` where ``N`` corresponds to a document version number in DocuShare.
+DocuShare tags are formatted as ``docushare-v<N>`` where ``<N>`` corresponds to a document version number in DocuShare.
 DocuShare version numbers increment by one each time a new version of a document for a given handle is uploaded to DocuShare.
 Note that DocuShare version numbers are distinct from :ref:`semantic version numbers <ccd-semantic-tag>`.
 
-Since DocuShare version numbers are only created once a file is uploaded to DocuShare, we always create DocuShare tags for the next available available DocuShare version, and upload the corresponding PDF to DocuShare.
-This procedure is illustrated in the following sequence:
-
-1. The newest existing version of a document in DocuShare is version 5.
-2. The release manager creates the tag ``docushare-v6`` and uploads the associated PDF built by a continuous integration system to DocuShare.
-3. That upload becomes version 6.
+See :ref:`ccd-docushare-upload` for details on how the tag is made.
 
 .. _ccd-semantic-tag:
 
@@ -206,13 +284,15 @@ Semantic version tags
 Semantic version tags are formatted as ``v<major>.<minor>``.
 The meanings of semantic document versions are described in `LPM-51`_.
 
-Note that only the LSST project librarian can assign a semantic version to a released document.
-This happens when the CCB baselines a document.
-Thus the semantic version Git tag is applied when the librarian sets the preferred document version in DocuShare.
+Semantic versions are determined when the CCB baselines a document.
+For project documents, the LSST project librarian determines the version number.
+For DM documents, the DM release manager determines the version.
 
 By definition, for each semantic version tag there is always a corresponding :ref:`DocuShare tag <ccd-docushare-tag>` at the same commit.
 
 On LSST the Docs, the default version of a document shown at the root URL (for example, https://ldm-151.lsst.io) is always the most recent semantic version.
+
+See :ref:`ccd-release` for details on how the tag is made.
 
 .. _ccd-release-branch:
 
