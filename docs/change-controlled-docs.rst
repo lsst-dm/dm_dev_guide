@@ -67,7 +67,7 @@ Follow these steps to submit a document to the CCB and release a new baselined v
    The procedure depends on the CCB:
 
    - For project documents (such as ``LPM``, ``LSE``), create an `LCR <https://project.lsst.org/groups/ccb/>`_ with a pointer to the new document version in DocuShare.
-   - For DM documents (``LDM`` and ``DMTR``), create an :ref:`RFC <decision-making-rfc-creating>` with a pointer to the new document in DocuShare.
+   - For DM documents (``LDM``), create an :ref:`RFC <decision-making-rfc-creating>` with a pointer to the new document in DocuShare.
      Set the JIRA state to "flagged" to notify the DM CCB.
 
 3. Create a release branch based off the same commit as the DocuShare tag:
@@ -226,7 +226,7 @@ Follow these steps to upload a draft or released document to DocuShare:
 
    - For project documents (such as LPM and LSE), email the PDF to the LSST librarian.
 
-   - For DM documents (such as LDM and DMTR), email the PDF to a DM documentalist.
+   - For DM documents (LDM), email the PDF to a DM documentalist.
 
 2. Wait for the documentalist or librarian to upload the document and verify that it appears on the Version page of the document on DocuShare.
    You can find the document version page with the short link ``https://ls.st/<handle>*``.
