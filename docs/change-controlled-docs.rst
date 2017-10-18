@@ -16,10 +16,9 @@ Per `LPM-51`_ §5.2, the CCB responsible for a document is prescribed by the doc
 Data Management documents (``LDM`` handle) must be approved by the DM CCB using the :ref:`RFC <decision-making-rfc>` process (see `LDM-294`_).
 Documents with ``LSE`` (Systems Engineering) and ``LPM`` (Project Management) handles must be approved by the Project `CCB`_.
 
-Change-controlled documents can be written using the Word templates defined in `Document-9224`_, but the preference within Data Management is to write change-controlled documents in LaTeX using the `lsstdoc document class`_ provided by the `lsst-texmf`_ package and to develop these documents using Git repositories within the LSST organization on GitHub (https://github.com/lsst).
-
 These are the main change-controlled document handling procedures:
 
+- :ref:`ccd-formats`
 - :ref:`ccd-drafting`
 - :ref:`ccd-release`
 - :ref:`ccd-hotfix`
@@ -37,6 +36,32 @@ Additional subprocedures and references:
 .. _LPM-51: https://ls.st/LPM-51
 .. _GitHub: https://github.com/lsst
 .. _LDM-294: https://ls.st/LDM-294
+
+.. _ccd-formats:
+
+Document formats
+================
+
+Change controlled documents can be written as Word documents or as LaTeX projects in GitHub repositories.
+
+LaTeX documents
+---------------
+
+LaTeX is the recommended (though not required) format for Data Management documents.
+LaTeX documents must use the `lsstdoc document class`_ provided by the `lsst-texmf`_ package.
+The source content for LaTeX documents must be managed by Git and hosted in the LSST organization on GitHub (https://github.com/lsst).
+A document's GitHub repository is named after the document's handle (see https://github.com/lsst/LDM-151 for example).
+
+Word documents
+--------------
+
+The project's template for Word documents is available as `Document-9224`_ in DocuShare.
+Due to their nature, Word documents are not managed in Git repositories.
+The release process described on this page is explicitly for Git-based documents, but the principles still apply (DM's Git-based release workflow is compatible with the project's general workflow described in `LPM-51`_).
+Where the release procedure calls for a DocuShare upload, provide **both** the rendered PDF and the original Word file to the DM documentalist.
+
+`LPM-51`_ recommends that draft documents always be uploaded to DocuShare at least every three months if there are draft changes.
+This guideline is especially important for Word documents that do not benefit from GitHub's collaborative features.
 
 .. _ccd-drafting:
 
