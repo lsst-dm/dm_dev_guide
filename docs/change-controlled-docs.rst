@@ -8,14 +8,17 @@
 Writing change-controlled documentation
 #######################################
 
-Change-controlled documents are documents that require approval from a Change Control Board (CCB) before they can be released.
-The project-wide change control process is described in `LPM-19`_, with the process for managing documents being described in `LPM-51`_, and covers those documents using DocuShare handles ``LSE`` or ``LPM`` that must be approved by the Project `CCB`_.
-For Data Management, these documents have the DocuShare handle ``LDM`` and must be approved by the DM CCB using the :ref:`RFC <decision-making-rfc>` process.
-The DM document management process is formally described in `LDM-294`_.
+Change-controlled documents require approval from a Change Control Board (CCB) before they can be released.
+The project-wide change control process is described in `LPM-19`_ and the process for managing documents is described in `LPM-51`_.
+This page describes the specific development and release processes for change-controlled documents produced by DM.
+
+Per `LPM-51`_ §5.2, the CCB responsible for a document is prescribed by the document's handle.
+Data Management documents (``LDM`` handle) must be approved by the DM CCB using the :ref:`RFC <decision-making-rfc>` process (see `LDM-294`_).
+Documents with ``LSE`` (Systems Engineering) and ``LPM`` (Project Management) handles must be approved by the Project `CCB`_.
 
 Change-controlled documents can be written using the Word templates defined in `Document-9224`_, but the preference within Data Management is to write change-controlled documents in LaTeX using the `lsstdoc document class`_ provided by the `lsst-texmf`_ package and to develop these documents using Git repositories within the LSST organization on GitHub (https://github.com/lsst).
 
-This page describes the development and release processes of change-controlled documents produced by DM:
+These are the main change-controlled document handling procedures:
 
 - :ref:`ccd-drafting`
 - :ref:`ccd-release`
@@ -65,7 +68,7 @@ Follow these steps to submit a document to the CCB and release a new baselined v
 2. Submit a request to the CCB.
    The procedure depends on the CCB:
 
-   - For project documents (such as ``LPM``, ``LSE``), create an `LCR <https://project.lsst.org/groups/ccb/>`_ with a pointer to the new document version in DocuShare.
+   - For project documents (``LPM`` and ``LSE``), create an `LCR <https://project.lsst.org/groups/ccb/>`_ with a pointer to the new document version in DocuShare.
    - For DM documents (``LDM``), create an :ref:`RFC <decision-making-rfc-creating>` with a pointer to the new document in DocuShare.
      Set the JIRA state to "flagged" to notify the DM CCB.
 
@@ -223,7 +226,7 @@ Follow these steps to upload a draft or released document to DocuShare:
 
 1. Send the PDF of the document to a person able to upload to DocuShare:
 
-   - For project documents (such as LPM and LSE), email the PDF to the LSST librarian.
+   - For project documents (``LPM`` and ``LSE``), email the PDF to the LSST librarian.
 
    - For DM documents (LDM), email the PDF to a DM documentalist.
 
