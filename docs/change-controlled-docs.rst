@@ -269,7 +269,9 @@ Follow these steps to upload a draft or released document to DocuShare:
 
    - For project documents (``LPM`` and ``LSE``), email the PDF to the LSST librarian.
 
-   - For DM documents (LDM), email the PDF to a DM documentalist.
+   - For DM documents (``LDM``), send a message to the `#dm-docushare <slack-dm-docushare>`_ Slack channel.
+     If the built PDF is not available from the ``lsst.io`` landing page (because it is a Word document) you can share the PDF through Slack itself.
+     A DM documentalist will process your request.
 
 2. Wait for the documentalist or librarian to upload the document and verify that it appears on the Version page of the document on DocuShare.
    You can find the document version page with the short link ``https://ls.st/<handle>*``.
@@ -293,6 +295,8 @@ Follow these steps to upload a draft or released document to DocuShare:
       https://docushare.lsst.org/<version-URL>
 
    The version URL in the commit message is the URL of that version in DocuShare (see note).
+
+.. _slack-dm-docushare: https://lsstc.slack.com/messages/C7LTT2RJ7/
 
 .. note::
 
