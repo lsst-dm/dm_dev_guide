@@ -9,14 +9,15 @@ Writing change-controlled documentation
 #######################################
 
 Change-controlled documents require approval from a Change Control Board (CCB) before they can be released.
-The project-wide change control process is described in `LPM-19`_ and the process for managing documents is described in `LPM-51`_.
-This page describes the specific development and release processes for change-controlled documents produced by DM.
+Data Management documents must be approved by the DM CCB using the :ref:`RFC <decision-making-rfc>` process (see `LDM-294`_).
+Project-level documents must be approved by the `Project CCB`_.
+Overall, the project-wide change control process is described in `LPM-19`_ and the process for managing documents is described in `LPM-51`_.
 
-Per `LPM-51`_ §5.2, the CCB responsible for a document is prescribed by the document's handle.
-Data Management documents (``LDM`` handle) must be approved by the DM CCB using the :ref:`RFC <decision-making-rfc>` process (see `LDM-294`_).
-Documents with ``LSE`` (Systems Engineering) and ``LPM`` (Project Management) handles must be approved by the Project `CCB`_.
+.. Due to an inconsistency in LPM-51 we cannot state that an LDM document is managed by the DM CCB.
+.. Thus we're avoiding making statements that match handles to the controlling board altogether at the moment.
+.. Discussion: https://ls.st/std
 
-These are the main change-controlled document handling procedures:
+This page describes the specific development and release processes for change-controlled documents produced by DM:
 
 - :ref:`ccd-formats`
 - :ref:`ccd-drafting`
@@ -28,7 +29,7 @@ Additional subprocedures and references:
 - :ref:`ccd-docushare-upload`
 - :ref:`ccd-git-api`
 
-.. _CCB: https://project.lsst.org/groups/ccb/
+.. _Project CCB: https://project.lsst.org/groups/ccb/
 .. _Document-9224: https://ls.st/Document-9224
 .. _lsst-texmf: https://lsst-texmf.lsst.io
 .. _lsstdoc document class: https://lsst-texmf.lsst.io/lsstdoc.html
@@ -98,8 +99,8 @@ Follow these steps to submit a document to the CCB and release a new baselined v
 2. Submit a request to the CCB.
    The procedure depends on the CCB:
 
-   - For project documents (``LPM`` and ``LSE``), create an `LCR <https://project.lsst.org/groups/ccb/>`_ with a pointer to the new document version in DocuShare.
-   - For DM documents (``LDM``), create an :ref:`RFC <decision-making-rfc-creating>` with a pointer to the new document in DocuShare.
+   - For project documents, create an `LCR <https://project.lsst.org/groups/ccb/>`_ with a pointer to the new document version in DocuShare.
+   - For DM documents, create an :ref:`RFC <decision-making-rfc-creating>` with a pointer to the new document in DocuShare.
      Set the JIRA state to "flagged" to notify the DM CCB.
 
 3. Create a release branch based off the same commit as the DocuShare tag:
@@ -272,9 +273,9 @@ Follow these steps to upload a draft or released document to DocuShare:
 
 1. Send the PDF of the document to a person able to upload to DocuShare:
 
-   - For project documents (``LPM`` and ``LSE``), email the PDF to the LSST librarian.
+   - For project documents, email the PDF to the LSST librarian.
 
-   - For DM documents (``LDM``), send a message to the `#dm-docushare <slack-dm-docushare>`_ Slack channel.
+   - For DM documents, send a message to the `#dm-docushare <slack-dm-docushare>`_ Slack channel.
      If the built PDF is not available from the ``lsst.io`` landing page (because it is a Word document) you can share the PDF through Slack itself.
      A DM documentalist will process your request.
 
@@ -356,7 +357,7 @@ See :ref:`ccd-release` for details on how the tag is made.
 Release branches
 ----------------
 
-Submissions to the DM CCB have an associated RFC and submission to the project CCB have an associated LCR.
+Submissions to the DM CCB have an associated RFC and submissions to the `Project CCB`_ have an associated LCR.
 Work related to a release is done on a release branch named after the RFC or LCR number: ``tickets/RFC-N`` or ``tickets/LCR-N``.
 These release branches are never merged back to the ``master`` branch.
 Instead, amendments are backported to ``master`` using :command:`git cherry-pick`.
