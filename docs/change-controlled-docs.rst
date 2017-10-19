@@ -136,7 +136,7 @@ Follow these steps to submit a document to the CCB and release a new baselined v
    For extremely minor changes (on the scale of a typo), you may commit directly to the release branch rather than create a JIRA ticket.
    Exercise caution not to push a commit that breaks the LaTeX build (you may not revert a commit already pushed to a release branch on GitHub).
 
-   When issues are addressed, notify the CCB:
+   When the issues are addressed, notify the CCB:
 
    - For a project document, :ref:`create a new DocuShare upload <ccd-docushare-upload>` and notify the CCB.
 
@@ -145,7 +145,7 @@ Follow these steps to submit a document to the CCB and release a new baselined v
 
    Repeat this step for each round of CCB feedback.
 
-5. When the CCB approves document you create a release:
+5. When the CCB approves the document, create a release:
 
    1. Make two commits to the head of the release branch.
       In the first commit:
