@@ -116,9 +116,25 @@ Follow these steps to submit a document to the CCB and release a new baselined v
    Replace ``<N>`` with the LCR or RFC number.
 
 4. When the CCB responds, they may ask for changes.
-   For minor and straightforward changes, you may commit changes to the release branch.
-   For more complex changes, or when multiple people  are working in parallel to address requests, use a ticket branch-based workflow instead.
-   Create the ticket branch from the head of the release branch and merge back to the release branch.
+   In general, use a ticket branch to address these changes.
+   Multiple people may address separate sets of requests in parallel with multiple ticket branches.
+   Merge these ticket branches back into the release branch.
+   For example:
+
+   .. code-block:: bash
+
+      git checkout tickets/RFC-<N>
+      git checkout -b tickets/DM-<M>
+      # edit and commit
+      git checkout tickets/RFC-<N>
+      git pull
+      git checkout tickets/DM-<M>
+      git rebase -i tickets/RFC-<N>
+      git checkout tickets/RFC-<N>
+      git merge --no-ff tickets/DM-<M>
+
+   For extremely minor changes (on the scale of a typo), you may commit directly to the release branch rather than create a JIRA ticket.
+   Exercise caution not to push a commit that breaks the LaTeX build (you may not revert a commit already pushed to a release branch on GitHub).
 
    When issues are addressed, notify the CCB:
 
