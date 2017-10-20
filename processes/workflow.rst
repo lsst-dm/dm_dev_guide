@@ -43,8 +43,8 @@ Agile development with JIRA
 ===========================
 
 We use JIRA_ to plan, coordinate and report our work.
-Your Technical/Control Account Manager (T/CAM) is the best resource for JIRA usage within your local group.
-T/CAMs can consult the `Technical/Control Account Manager Guide <https://confluence.lsstcorp.org/pages/viewpage.action?pageId=21397653>`_.
+Your Technical/Control Account Manager (T/CAM) is the best resource for help with JIRA within your local group.
+T/CAMs can consult `DMTN-020 <https://dmtn-020.lsst.io/>`_
 This section provides a high-level orientation for everyday DM development work.
 
 *See also:* :doc:`/tools/jira_tips`.
