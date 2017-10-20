@@ -101,7 +101,7 @@ Creating a ticket
 -----------------
 
 You can create a ticket from the `JIRA web app <https://jira.lsstcorp.org>`_ toolbar using the **Create** button.
-For more general information, you can consult the `LSST JIRA wiki <https://confluence.lsstcorp.org/display/JIRAatLSSTUserGuide/JIRA+at+LSST+User%27s+Guide+Home>`_ and `Atlassian's docs for JIRA <https://confluence.atlassian.com/jirasoftwarecloud/jira-software-documentation-764477791.html>`_ and `JIRA Agile <https://confluence.atlassian.com/agile067>`_.
+For more general information, you can consult `Atlassian's docs for JIRA <https://confluence.atlassian.com/jirasoftwarecloud/jira-software-documentation-764477791.html>`_ and `JIRA Agile <https://confluence.atlassian.com/agile067>`_.
 
 JIRA allows a myriad of metadata to be specified when creating a ticket; these are the most relevant fields:
 
