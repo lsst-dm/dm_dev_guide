@@ -211,7 +211,7 @@ Note that there are SublimeLinter plugins for other languages (e.g. Restructured
  ``Python PEP8 Autoformat`` lets one bulk reformat a number of python files to match a style.
  Use these settings to match LSST's python style when auto formatting:
 
-.. code-block::
+.. code-block:: json
 
     {
         // list codes for fixes; used by --ignore and --select
