@@ -77,12 +77,12 @@ series
 title
    Title of the technote.
    The title doesn't include the handle (DMTN, SQR, or SMTN).
-   You can update the title later by modifying the metadata file.
+   You can update the title later by modifying the :ref:`metadata file <technote-rst-metadata>`.
 
 description
    Short abstract for the technote.
    The description is used both as an abstract in the technote itself and in the technote's README.
-   You can update the description later by editing the technote and the metadata file.
+   You can update description later by editing the technote and the :ref:`metadata file <technote-rst-metadata>`.
 
 SQuaRE Bot prepares technotes in the background after you make your request.
 Go to the GitHub organization for your :ref:`document series <technote-series>` to find your new technote repository.
@@ -136,3 +136,12 @@ For example:
    :cite:`2007PASP..119.1462B`
 
 In-text citations are numbered, not author-year style.
+
+.. _technote-rst-metadata:
+
+Editing metadata in reStructuredText technotes
+==============================================
+
+ReStructuredText-format technotes use a :file:`metadata.yaml` in their repositories to describe attributes like the document's title, author list, and abstract.
+To change the technote's title or author list, for example, commit a change to the :file:`metadata.yaml` file.
+See the comments in :file:`metadata.yaml` for a description of these fields.
