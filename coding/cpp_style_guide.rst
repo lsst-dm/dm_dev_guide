@@ -2620,8 +2620,6 @@ While it is not expected that we will bring the guts of all legacy code in line 
 .. [Henricson1992] Henricson, M., & Nyquist, E. Programming in C++, Rules and Recommendations, (Alvsjo, Sweden: Ellemtel Telecommmunication Systems Laboratories), 1992. Available on-line at:
  http://www.mmarray.org/workinggroups/computing/ellemtel.pdf
 
-.. [Eckel2000] Eckel, Bruce. Thinking in C++, (2nd Ed; Englewood Cliffs, NJ: Prentice Hall), 2000. Available on-line at: http://www.eckelobjects.com
-
 .. [Hoff2008] Hoff, Todd. C++ Coding Standard, 2008. Available on-line at:
    http://www.possibility.com/Cpp/CppCodingStandard.htm
 
