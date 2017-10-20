@@ -131,7 +131,7 @@ Components
 Assignee
    Typically you will assign yourself (or your T/CAM will assign you) to a ticket.
    You can also assign tickets to others.
-   If you are uncertain about who the assignee should be you can allow the ticket to be automatically assigned (which defaults to the component's T/CAM; `RFC-51 <https://jira.lsstcorp.org/browse/RFC-51>`_).
+   If you are uncertain about who the assignee should be you can allow the ticket to be automatically assigned.
 Story Points
    Use this field, at ticket creation time, to **estimate** the amount of effort involved to accomplish the work.
    Keep in mind how *velocity* (see above) converts story points into real-world days.
