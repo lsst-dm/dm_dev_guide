@@ -30,6 +30,25 @@ Consider these alternatives:
 
 .. _SQR-000: https://sqr-000.lsst.io
 
+.. _technote-series:
+
+Technote series
+===============
+
+- **Data Management Technical Notes (DMTN).**
+  This is the general purpose technote series for the DM team.
+  DMTN technotes are hosted in the https://github.com/lsst-dm organization.
+  `Find DMTN technotes <https://github.com/search?o=desc&q=org%3Alsst-dm+dmtn-&s=updated&type=Repositories>`_.
+
+- **SQuaRE Technical Notes (SQR).**
+  This series is for technotes about SQuaRE products and services.
+  SQR technotes are hosted in the https://github.com/lsst-sqre organization.
+  `Find SQR technotes <https://github.com/search?o=desc&q=org%3Alsst-sqre+sqr-&s=updated&type=Repositories>`_.
+
+- **Simulations Technical Notes (SMTN)**
+  This series is for technotes by the LSST Simulations team.
+  SMTN technotes are hosted in the https://github.com/lsst-sims organization.
+  `Find SMTN technotes <https://github.com/search?o=desc&q=org%3Alsst-sims+smtn-&s=updated&type=Repositories>`_.
+
 **To create a new technote,** follow the `instructions for lsst-technote-bootstrap <https://github.com/lsst-sqre/lsst-technote-bootstrap>`_.
 
-We're working on a live index of technotes, but in the interim a list of available technotes is `available on community.lsst.org <https://community.lsst.org/t/listing-of-available-dm-technotes/496>`_.
