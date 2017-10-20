@@ -74,7 +74,7 @@ The `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ w
    docs/cpp_docs.rst
    docs/jsdoc.rst
    docs/technotes.rst
-   
+   docs/change_controlled.rst
 
 .. toctree::
    :maxdepth: 1
