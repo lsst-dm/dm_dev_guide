@@ -99,3 +99,40 @@ Create a LaTeX technote
 Technotes can be written as LaTeX documents that are published to the web as PDFs inside landing pages.
 
 Follow the `lsst-texmf documentation <https://lsst-texmf.lsst.io/templates/document.html>`_ to create a new LaTeX-formatted technote.
+
+.. _technote-rst-bib:
+
+Using bibliographies in reStructuredText technotes
+==================================================
+
+The lsst-texmf project includes `shared BibTeX bibliographic databases <https://lsst-texmf.lsst.io/lsstdoc.html#bibliographies>`_.
+You can also use these bibliographies from reStructuredText technotes.
+
+First, add or uncomment the ``bibliography`` directive at the bottom of your technote's :file:`index.rst` file:
+
+.. code-block:: rst
+
+   .. bibliography:: local.bib lsstbib/books.bib lsstbib/lsst.bib lsstbib/lsst-dm.bib lsstbib/refs.bib lsstbib/refs_ads.bib
+      :encoding: latex+latin
+      :style: lsst_aa
+
+.. note::
+
+   Only include the :file:`local.bib` file if your technote's repository has one.
+   Use :file:`local.bib` to temporarily store bib items before you permanently `transfer them to the lsst-texmf project <https://lsst-texmf.lsst.io/developer.html#updating-bibliographies>`_.
+
+The bibliographies in the :file:`lsstbib` directory are copies from the https://github.com/lsst/lsst-texmf repository.
+Refresh the copies maintained in your technote's repository by running this command:
+
+.. code-block:: bash
+
+   make refresh-bib
+
+To make citations in the technote's text, use the ``cite`` role.
+For example:
+
+.. code-block:: rst
+
+   :cite:`2007PASP..119.1462B`
+
+In-text citations are numbered, not author-year style.
