@@ -103,15 +103,28 @@ Creating a ticket
 You can create a ticket from the `JIRA web app <https://jira.lsstcorp.org>`_ toolbar using the **Create** button.
 For more general information, you can consult `Atlassian's docs for JIRA <https://confluence.atlassian.com/jirasoftwarecloud/jira-software-documentation-764477791.html>`_ and `JIRA Agile <https://confluence.atlassian.com/agile067>`_.
 
-JIRA allows a myriad of metadata to be specified when creating a ticket; these are the most relevant fields:
+JIRA allows a myriad of metadata to be specified when creating a ticket.
+At a minimum, you should specify:
 
 Project
-   This should be set to **Data Management**, unless you are creating a ticket for a different LSST subsystem.
+   For normal work, this should be set to **Data Management**.
+   It may occasionally be appropriate to use another project; for example,
+   when requesting work from another LSST subsystem or when filing an :doc:`RFC <decision_process>`.
 Issue Type
    If the work is associated with an epic, the issue type is a 'Story.'
    For emergent work, 'Bug' or 'Improvement' can be used (see above for semantics).
 Summary
    This is the ticket's title and should be written to help colleagues browsing JIRA dashboards.
+Description
+   The description should provide a clear description of the deliverable that can serve as a definition of 'Done.'
+   This will prevent scope creep in your implementation and the code review.
+   For stories, you can outline your implementation design in this field.
+   For bug reports, include any information needed to diagnose and reproduce the issue.
+   Feel free to use `Atlassian markup syntax <https://jira.lsstcorp.org/secure/WikiRendererHelpAction.jspa?section=texteffects>`_.
+
+In addition, you may be able to provide some or all of the following.
+While, in general, it's helpful to provide as much information as you can, don't worry about leaving some fields blank: the T/CAMs will ensure the work gets picked up and assigned to the right place, and empty metadata is better than bad medadata.
+
 Components
    You should choose from the pre-populated list of components to specify what part of the DM system the ticket relates to.
    If in doubt, ask your T/CAM.
@@ -119,12 +132,6 @@ Assignee
    Typically you will assign yourself (or your T/CAM will assign you) to a ticket.
    You can also assign tickets to others.
    If you are uncertain about who the assignee should be you can allow the ticket to be automatically assigned (which defaults to the component's T/CAM; `RFC-51 <https://jira.lsstcorp.org/browse/RFC-51>`_).
-Description
-   The description should provide a clear description of the deliverable that can serve as a definition of 'Done.'
-   This will prevent scope creep in your implementation and the code review.
-   For stories, you can outline your implementation design in this field.
-   For bug reports, include any information needed to diagnose and reproduce the issue.
-   Feel free to use `Atlassian markup syntax <https://jira.lsstcorp.org/secure/WikiRendererHelpAction.jspa?section=texteffects>`_. 
 Story Points
    Use this field, at ticket creation time, to **estimate** the amount of effort involved to accomplish the work.
    Keep in mind how *velocity* (see above) converts story points into real-world days.
@@ -139,7 +146,7 @@ Epic Link
    If the ticket is a story, you must specify what epic it belongs to with this field.
    By definition, bug or improvement-type tickets are not associated with an epic.
 Team
-   You must specify which DM team is doing the work with this field, for accounting purposes.
+   Specify which DM team is doing the work with this field, for accounting purposes.
    The owner of the epic should be consistent with the team working on a ticket.
 
 .. _workflow-jira-ticket-status:
