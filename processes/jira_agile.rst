@@ -20,6 +20,8 @@ Key Concepts
 - Stories and story points should not be changed once work on a story has
   started.
 
+.. _jira-teams:
+
 Teams
 =====
 
@@ -43,6 +45,8 @@ External                           None (see below)
 ================================== ===================
 
 The “External” team is used to label work done by individuals who are not funded by LSST.
+
+.. _jira-labels:
 
 Labels
 ======

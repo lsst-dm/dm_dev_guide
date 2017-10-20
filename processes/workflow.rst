@@ -137,7 +137,7 @@ Story Points
    Keep in mind how *velocity* (see above) converts story points into real-world days.
 Labels
    Think of labels as tags that you can use to sort your personal work.
-   Unlike the Component and Epic fields, you are free to create and use labels in any way you see fit.
+   Unlike the Component and Epic fields, you are free to create and use labels in any way you see fit, but you should also refer to this list of :ref:`common labels <jira-labels>`.
 Linked Issues
    You can express relationships between JIRA issues with this field.
    For example, work that implements an RFC should link to that RFC.
@@ -146,8 +146,8 @@ Epic Link
    If the ticket is a story, you must specify what epic it belongs to with this field.
    By definition, bug or improvement-type tickets are not associated with an epic.
 Team
-   Specify which DM team is doing the work with this field, for accounting purposes.
-   The owner of the epic should be consistent with the team working on a ticket.
+   Specify which DM team is responsible for doing the work.
+   Refer to the list of :ref:`supported teams <jira-teams>`.
 
 .. _workflow-jira-ticket-status:
 
