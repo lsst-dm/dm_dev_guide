@@ -116,39 +116,41 @@ Select Appropriate Developer Tools
 
 The ``lsst-dev01`` system is configured with the latest CentOS 7.x as its operating system.
 This release of CentOS provides an old set of development tools, centered around version 4.8.5 of the `GNU Compiler Collection`_ (GCC).
-While this version of GCC does satisfy the `prerequisites for building the LSST stack`_, it is still rather out of date.
-However, this version of GCC is used for building the :ref:`shared stacks <lsst-dev-loadlsst>` available on the machine and must be used if building against those stacks.
-It is also used by the ``lsstsw`` account that builds releases.
+Updated toolchains are made available through the “Software Collection” system.
+The following Software Collections are currently available:
 
-If you prefer, you can enable the `Red Hat Developer Toolset`_ version 3 (``devtoolset-3``) which has been pre-installed.
-This provides an updated toolchain, including GCC 4.9.2.
-If you enable this, you must not use the shared stack; instead you must build your own version of the entire stack using this toolchain.
+================ ================================================
+Name             Description
+================ ================================================
+``devtoolset-3`` Updated compiler toolchain providing GCC 4.9.2.
+``devtoolset-4`` Updated compiler toolchain providing GCC 5.3.1.
+``devtoolset-6`` Updated compiler toolchain providing GCC 6.3.1.
+``devtoolset-7`` Updated compiler toolchain providing GCC 7.1.1.
+``git19``        The `Git`_ version control system version 1.9.4.
+================ ================================================
 
-Enable and test ``devtoolset-3`` using the ``scl`` command as follows (replacing ``bash`` with your shell of choice if necessary):
+To enable a particular Software Collection use the ``scl`` command. For example:
 
 .. prompt:: bash $ auto
 
-   $ scl enable devtoolset-3 bash
+   $ scl enable devtoolset-6 bash
    $ gcc --version
-   gcc (GCC) 4.9.2 20150212 (Red Hat 4.9.2-6)
-   Copyright (C) 2014 Free Software Foundation, Inc.
+   gcc (GCC) 6.3.1 20170216 (Red Hat 6.3.1-3)
+   Copyright (C) 2016 Free Software Foundation, Inc.
    This is free software; see the source for copying conditions.  There is NO
    warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-The Developer Toolset includes version 1.9.3 of the `Git`_ version control system.
-If you prefer the (slightly) more recent version 1.9.4, you may also wish to enable the ``git19`` package.
-This may be done at the same time as enabling ``devtoolset-3``.
+.. warning::
 
-.. prompt:: bash
+   Code compiled by different versions of GCC may not be compatible: it is generally better to stick to a particular toolchain for a given project.
+   In particular, if you are using a :ref:`shared stack <lsst-dev-loadlsst>` you *must* use the matching toolchain.
 
-   scl enable devtoolset-3 git19 bash
-
-You may wish to automatically enable ``devtoolset-3`` every time you log in to ``lsst-dev01`` by adding it to your shell initialization files.
+You may wish to automatically a particular Software Colllection every time you log in to ``lsst-dev01`` by adding it to your shell initialization files.
 For example, try adding the following to :file:`~/.profile`:
 
 .. code-block:: bash
 
-   exec scl enable devtoolset-3 bash
+   exec scl enable devtoolset-6 bash
 
 .. _GNU Compiler Collection: https://gcc.gnu.org/
 .. _prerequisites for building the LSST stack: https://confluence.lsstcorp.org/display/LSWUG/OSes+and+Prerequisites
