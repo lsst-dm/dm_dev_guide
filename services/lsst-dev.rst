@@ -223,7 +223,7 @@ Administrators may wish to note that the shared stack is automatically updated u
 Configure Git LFS
 =================
 
-You can get Git LFS through EUPS:
+After you have initialized a shared stack, you can enable Git LFS using EUPS:
 
 .. code-block:: bash
 
