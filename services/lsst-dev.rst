@@ -162,55 +162,61 @@ For example, try adding the following to :file:`~/.profile`:
 Load the LSST Environment
 =========================
 
-Two ‘shared’ installations of the LSST software stack are available on ``lsst-dev01``:
+We provide ready-to-use “shared” versions of the LSST software stack to enable developers to get up and running quickly with no installation step.
+Each shared stack includes a fully fledged Miniconda-based Python environment, a selection of additional development tools, and a selection of builds of the lsst_distrib meta-package.
+The currently maintained stacks are regularly updated to include the latest weekly release, which is tagged as ``current``.
 
-:file:`/ssd/lsstsw/stack/`
-   This is installed on local (SSD) storage.
-   It provides for maximum performance when executing jobs on ``lsst-dev01`` directly.
+The following stacks are currently maintained:
 
-:file:`/software/lsstsw/stack/`
-   This is installed on networked storage (GPFS).
-   As such, it may be slightly slower than local storage when running on ``lsst-dev01``.
-   However, the ``/software`` GPFS disk is cross-mounted to `other development servers at NCSA`_, including those configured as part of the `HTCondor pool`_ and :doc:`Verification Cluster <verification>`.
-   This stack can therefore be relied upon to be consistent when launching jobs across the cluster.
+======================================== ============== ================ =======================================================================================================================================================================================================================
+Path                                     Python Version Toolchain        Description
+======================================== ============== ================ =======================================================================================================================================================================================================================
+:file:`/ssd/lsstsw/stack2_20171021`      2              ``devtoolset-6`` Located on local, SSD based storage attached to the `lsst-dev01` system: it will support fast interactive use on that machine, but is not accessible across the network.
+:file:`/ssd/lsstsw/stack3_20171021`      3              ``devtoolset-6`` Located on local, SSD based storage attached to the `lsst-dev01` system: it will support fast interactive use on that machine, but is not accessible across the network.
+:file:`/software/lsstsw/stack2_20171022` 2              ``devtoolset-6`` Located on GPFS-based network storage; as such, it is cross-mounted across a variety of LSST systems at NCSA including those configured as part of the `HTCondor pool`_ and :doc:`Verification Cluster <verification>`.
+:file:`/software/lsstsw/stack3_20171023` 3              ``devtoolset-6`` Located on GPFS-based network storage; as such, it is cross-mounted across a variety of LSST systems at NCSA including those configured as part of the `HTCondor pool`_ and :doc:`Verification Cluster <verification>`.
+======================================== ============== ================ =======================================================================================================================================================================================================================
 
-.. _other development servers at NCSA: https://confluence.lsstcorp.org/display/LDMDG/DM+Development+Servers
-.. _HTCondor pool: https://confluence.lsstcorp.org/display/DM/Orchestration
+.. note::
 
-This installation is regularly updated to recent releases and weekly builds of the ``lsst_distrib`` top-level package; the most recent build is tagged as ``current``.
-Add this shared stack to your environment and set up the latest build of the LSST applications by running:
+   When using a shared stack, you *must* use the corresponding developer toolchain. See above for details on how to :ref:`lsst-dev-tools`.
+
+In addition, the following symbolic links point to particular versions of the stack:
+
+=============================== =====================================================================================================
+Path                            Description
+=============================== =====================================================================================================
+:file:`/ssd/lsstsw/stack`       The latest version of the stack on local storage using our standard Python version (currently 3).
+:file:`/ssd/lsstsw/stack2`      The latest version of the stack on local storage and based on Python 2.
+:file:`/ssd/lsstsw/stack3`      The latest version of the stack on local storage and based on Python 3.
+:file:`/software/lsstsw/stack`  The latest version of the stack on networked storage using our standard Python version (currently 3).
+:file:`/software/lsstsw/stack2` The latest version of the stack on networked storage and based on Python 2.
+:file:`/software/lsstsw/stack3` The latest version of the stack on networked storage and based on Python 3.
+=============================== =====================================================================================================
+
+Add a shared stack to your environment and set up the latest build of the LSST applications by running, for example:
 
 .. prompt:: bash
 
   source /ssd/lsstsw/stack/loadLSST.bash
   setup lsst_apps
 
-(substitute :file:`loadLSST.csh`, :file:`loadLSST.ksh` or :file:`loadLSST.zsh`, depending on your preferred shell, and use :file:`/software/lsstsw/stack/loadLSST.bash` to access the GPFS-backed stack).
+(substitute :file:`loadLSST.csh`, :file:`loadLSST.ksh` or :file:`loadLSST.zsh`, depending on your preferred shell).
 
-Since this stack is shared, all members of the ``lsst`` group have permission to declare products within it, thereby making new products and versions available for other users.
-For example, to share ``myVersion`` of ``myProduct``, which you have built and installed in directory ``productDir``, run:
+Although the latest weeklies of LSST software are regularly installed into the shared stacks, the rest of their contents is held fixed (to avoid API or ABI incompatibilities with old stack builds).
+We therefore periodically retire old stacks and replace them with new ones.
+The following unmaintained shared stacks are available for archival purposes:
 
-.. prompt:: bash
-
-   eups declare myProduct myVersion -r productDir
-
-To declare a product for your own use without making it available for others to ``setup``, tag it with your username:
-
-.. prompt:: bash
-
-   eups declare myProduct myVersion -t $(whoami) -r productDir
-
-Please make use of this capability responsibly: make public declarations only of those products which are of general use, and remove them when they become obsolete:
-
-.. prompt:: bash
-
-   eups undeclare myProduct myVersion
-
-Refer to the :doc:`/build-ci/eups_tutorial` for more information on working with EUPS product stacks.
-
-Note that the SSD and GPFS-backed stacks are independent: while both will automatically contain the latest LSST software releases, other products declared in a given stack will not automatically become available in the other.
+===================================== ============== ============================================================
+Path                                  Toolchain      Description
+===================================== ============== ============================================================
+:file:`/ssd/lsstsw/stack_20170409`    System default The default local stack until 2017-10-29, based on Python 2.
+:file:`/ssd/lsstsw/stack3_2017-09-11` System default A prototype Python 3-based stack from September 2017.
+===================================== ============== ============================================================
 
 Administrators may wish to note that the shared stack is automatically updated using the script :file:`~lsstsw/shared-stack/shared_stack.py`, which is executed nightly by Cron.
+
+.. _HTCondor pool: https://confluence.lsstcorp.org/display/DM/Orchestration
 
 .. _lsst-dev-gitlfs:
 
