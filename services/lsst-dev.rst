@@ -145,17 +145,42 @@ To enable a particular Software Collection use the ``scl`` command. For example:
    Code compiled by different versions of GCC may not be compatible: it is generally better to stick to a particular toolchain for a given project.
    In particular, if you are using a :ref:`shared stack <lsst-dev-loadlsst>` you *must* use the matching toolchain.
 
-You may wish to automatically a particular Software Colllection every time you log in to ``lsst-dev01`` by adding it to your shell initialization files.
-For example, try adding the following to :file:`~/.profile`:
+You may wish to automatically enable a particular software collection every time you log in to ``lsst-dev01`` and other LSST systems.
+Take care if you do this: it's easy to accidentally to either start recursively spawning shells and run out of resources or lock yourself out of machines which don't have the particular collection you're interested in installed.
+If you are using `Bash`_ — the default shell on ``lsst-dev01`` — try placing the following at the end of :file:`~/.bash_profile` and customising the list of ``desired_scls``.
 
 .. code-block:: bash
 
-   exec scl enable devtoolset-6 bash
+   # User-specified space-delimited list of SCLs to enable.
+   desired_scls="git19 devtoolset-6"
+
+   # Only do anything if /usr/bin/scl is executable.
+   if [ -x /usr/bin/scl ]; then
+
+       # Select the union of the user's desired SCLs with those which are both
+       # available and not currently enabled.
+       avail_scls=$(scl --list)
+       for scl in $desired_scls; do
+           if [[ $avail_scls =~ $scl && ! $X_SCLS =~ $scl ]]; then
+               scls[${#scls[@]}]=$scl
+           fi
+       done
+
+       # Use `tty -s` to output messages only if connected to a terminal;
+       # avoids causing problems for non-interactive sessions.
+       if [ ${#scls[@]} != 0 ]; then
+           tty -s && echo "Enabling ${scls[@]}."
+           exec scl enable ${scls[@]} bash
+       else
+           tty -s && echo "No software collections to enable."
+       fi
+   fi
 
 .. _GNU Compiler Collection: https://gcc.gnu.org/
 .. _prerequisites for building the LSST stack: https://confluence.lsstcorp.org/display/LSWUG/OSes+and+Prerequisites
 .. _Red Hat Developer Toolset: http://developers.redhat.com/products/developertoolset/overview/
 .. _Git: https://www.git-scm.com/
+.. _Bash: https://www.gnu.org/software/bash/
 
 .. _lsst-dev-loadlsst:
 
