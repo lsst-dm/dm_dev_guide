@@ -116,106 +116,139 @@ Select Appropriate Developer Tools
 
 The ``lsst-dev01`` system is configured with the latest CentOS 7.x as its operating system.
 This release of CentOS provides an old set of development tools, centered around version 4.8.5 of the `GNU Compiler Collection`_ (GCC).
-While this version of GCC does satisfy the `prerequisites for building the LSST stack`_, it is still rather out of date.
-However, this version of GCC is used for building the :ref:`shared stacks <lsst-dev-loadlsst>` available on the machine and must be used if building against those stacks.
-It is also used by the ``lsstsw`` account that builds releases.
+Updated toolchains are made available through the “Software Collection” system.
+The following Software Collections are currently available:
 
-If you prefer, you can enable the `Red Hat Developer Toolset`_ version 3 (``devtoolset-3``) which has been pre-installed.
-This provides an updated toolchain, including GCC 4.9.2.
-If you enable this, you must not use the shared stack; instead you must build your own version of the entire stack using this toolchain.
+================ ================================================
+Name             Description
+================ ================================================
+``devtoolset-3`` Updated compiler toolchain providing GCC 4.9.2.
+``devtoolset-4`` Updated compiler toolchain providing GCC 5.3.1.
+``devtoolset-6`` Updated compiler toolchain providing GCC 6.3.1.
+``devtoolset-7`` Updated compiler toolchain providing GCC 7.1.1.
+``git19``        The `Git`_ version control system version 1.9.4.
+================ ================================================
 
-Enable and test ``devtoolset-3`` using the ``scl`` command as follows (replacing ``bash`` with your shell of choice if necessary):
+To enable a particular Software Collection use the ``scl`` command. For example:
 
 .. prompt:: bash $ auto
 
-   $ scl enable devtoolset-3 bash
+   $ scl enable devtoolset-6 bash
    $ gcc --version
-   gcc (GCC) 4.9.2 20150212 (Red Hat 4.9.2-6)
-   Copyright (C) 2014 Free Software Foundation, Inc.
+   gcc (GCC) 6.3.1 20170216 (Red Hat 6.3.1-3)
+   Copyright (C) 2016 Free Software Foundation, Inc.
    This is free software; see the source for copying conditions.  There is NO
    warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-The Developer Toolset includes version 1.9.3 of the `Git`_ version control system.
-If you prefer the (slightly) more recent version 1.9.4, you may also wish to enable the ``git19`` package.
-This may be done at the same time as enabling ``devtoolset-3``.
+.. warning::
 
-.. prompt:: bash
+   Code compiled by different versions of GCC may not be compatible: it is generally better to stick to a particular toolchain for a given project.
+   In particular, if you are using a :ref:`shared stack <lsst-dev-loadlsst>` you *must* use the matching toolchain.
 
-   scl enable devtoolset-3 git19 bash
-
-You may wish to automatically enable ``devtoolset-3`` every time you log in to ``lsst-dev01`` by adding it to your shell initialization files.
-For example, try adding the following to :file:`~/.profile`:
+You may wish to automatically enable a particular software collection every time you log in to ``lsst-dev01`` and other LSST systems.
+Take care if you do this: it's easy to accidentally to either start recursively spawning shells and run out of resources or lock yourself out of machines which don't have the particular collection you're interested in installed.
+If you are using `Bash`_ — the default shell on ``lsst-dev01`` — try placing the following at the end of :file:`~/.bash_profile` and customising the list of ``desired_scls``.
 
 .. code-block:: bash
 
-   exec scl enable devtoolset-3 bash
+   # User-specified space-delimited list of SCLs to enable.
+   desired_scls="git19 devtoolset-6"
+
+   # Only do anything if /usr/bin/scl is executable.
+   if [ -x /usr/bin/scl ]; then
+
+       # Select the union of the user's desired SCLs with those which are both
+       # available and not currently enabled.
+       avail_scls=$(scl --list)
+       for scl in $desired_scls; do
+           if [[ $avail_scls =~ $scl && ! $X_SCLS =~ $scl ]]; then
+               scls[${#scls[@]}]=$scl
+           fi
+       done
+
+       # Use `tty -s` to output messages only if connected to a terminal;
+       # avoids causing problems for non-interactive sessions.
+       if [ ${#scls[@]} != 0 ]; then
+           tty -s && echo "Enabling ${scls[@]}."
+           exec scl enable ${scls[@]} bash
+       else
+           tty -s && echo "No software collections to enable."
+       fi
+   fi
 
 .. _GNU Compiler Collection: https://gcc.gnu.org/
 .. _prerequisites for building the LSST stack: https://confluence.lsstcorp.org/display/LSWUG/OSes+and+Prerequisites
 .. _Red Hat Developer Toolset: http://developers.redhat.com/products/developertoolset/overview/
 .. _Git: https://www.git-scm.com/
+.. _Bash: https://www.gnu.org/software/bash/
 
 .. _lsst-dev-loadlsst:
 
 Load the LSST Environment
 =========================
 
-Two ‘shared’ installations of the LSST software stack are available on ``lsst-dev01``:
+We provide ready-to-use “shared” versions of the LSST software stack to enable developers to get up and running quickly with no installation step.
+Each shared stack includes a fully fledged Miniconda-based Python environment, a selection of additional development tools, and a selection of builds of the lsst_distrib meta-package.
+The currently maintained stacks are regularly updated to include the latest weekly release, which is tagged as ``current``.
 
-:file:`/ssd/lsstsw/stack/`
-   This is installed on local (SSD) storage.
-   It provides for maximum performance when executing jobs on ``lsst-dev01`` directly.
+The following stacks are currently maintained:
 
-:file:`/software/lsstsw/stack/`
-   This is installed on networked storage (GPFS).
-   As such, it may be slightly slower than local storage when running on ``lsst-dev01``.
-   However, the ``/software`` GPFS disk is cross-mounted to `other development servers at NCSA`_, including those configured as part of the `HTCondor pool`_ and :doc:`Verification Cluster <verification>`.
-   This stack can therefore be relied upon to be consistent when launching jobs across the cluster.
+======================================== ============== ================ =======================================================================================================================================================================================================================
+Path                                     Python Version Toolchain        Description
+======================================== ============== ================ =======================================================================================================================================================================================================================
+:file:`/ssd/lsstsw/stack2_20171021`      2              ``devtoolset-6`` Located on local, SSD based storage attached to the `lsst-dev01` system: it will support fast interactive use on that machine, but is not accessible across the network.
+:file:`/ssd/lsstsw/stack3_20171021`      3              ``devtoolset-6`` Located on local, SSD based storage attached to the `lsst-dev01` system: it will support fast interactive use on that machine, but is not accessible across the network.
+:file:`/software/lsstsw/stack2_20171022` 2              ``devtoolset-6`` Located on GPFS-based network storage; as such, it is cross-mounted across a variety of LSST systems at NCSA including those configured as part of the `HTCondor pool`_ and :doc:`Verification Cluster <verification>`.
+:file:`/software/lsstsw/stack3_20171023` 3              ``devtoolset-6`` Located on GPFS-based network storage; as such, it is cross-mounted across a variety of LSST systems at NCSA including those configured as part of the `HTCondor pool`_ and :doc:`Verification Cluster <verification>`.
+======================================== ============== ================ =======================================================================================================================================================================================================================
 
-.. _other development servers at NCSA: https://confluence.lsstcorp.org/display/LDMDG/DM+Development+Servers
-.. _HTCondor pool: https://confluence.lsstcorp.org/display/DM/Orchestration
+.. note::
 
-This installation is regularly updated to recent releases and weekly builds of the ``lsst_distrib`` top-level package; the most recent build is tagged as ``current``.
-Add this shared stack to your environment and set up the latest build of the LSST applications by running:
+   When using a shared stack, you *must* use the corresponding developer toolchain. See above for details on how to :ref:`lsst-dev-tools`.
+
+In addition, the following symbolic links point to particular versions of the stack:
+
+=============================== =====================================================================================================
+Path                            Description
+=============================== =====================================================================================================
+:file:`/ssd/lsstsw/stack`       The latest version of the stack on local storage using our standard Python version (currently 3).
+:file:`/ssd/lsstsw/stack2`      The latest version of the stack on local storage and based on Python 2.
+:file:`/ssd/lsstsw/stack3`      The latest version of the stack on local storage and based on Python 3.
+:file:`/software/lsstsw/stack`  The latest version of the stack on networked storage using our standard Python version (currently 3).
+:file:`/software/lsstsw/stack2` The latest version of the stack on networked storage and based on Python 2.
+:file:`/software/lsstsw/stack3` The latest version of the stack on networked storage and based on Python 3.
+=============================== =====================================================================================================
+
+Add a shared stack to your environment and set up the latest build of the LSST applications by running, for example:
 
 .. prompt:: bash
 
   source /ssd/lsstsw/stack/loadLSST.bash
   setup lsst_apps
 
-(substitute :file:`loadLSST.csh`, :file:`loadLSST.ksh` or :file:`loadLSST.zsh`, depending on your preferred shell, and use :file:`/software/lsstsw/stack/loadLSST.bash` to access the GPFS-backed stack).
+(substitute :file:`loadLSST.csh`, :file:`loadLSST.ksh` or :file:`loadLSST.zsh`, depending on your preferred shell).
 
-Since this stack is shared, all members of the ``lsst`` group have permission to declare products within it, thereby making new products and versions available for other users.
-For example, to share ``myVersion`` of ``myProduct``, which you have built and installed in directory ``productDir``, run:
+Although the latest weeklies of LSST software are regularly installed into the shared stacks, the rest of their contents is held fixed (to avoid API or ABI incompatibilities with old stack builds).
+We therefore periodically retire old stacks and replace them with new ones.
+The following unmaintained shared stacks are available for archival purposes:
 
-.. prompt:: bash
-
-   eups declare myProduct myVersion -r productDir
-
-To declare a product for your own use without making it available for others to ``setup``, tag it with your username:
-
-.. prompt:: bash
-
-   eups declare myProduct myVersion -t $(whoami) -r productDir
-
-Please make use of this capability responsibly: make public declarations only of those products which are of general use, and remove them when they become obsolete:
-
-.. prompt:: bash
-
-   eups undeclare myProduct myVersion
-
-Refer to the :doc:`/build-ci/eups_tutorial` for more information on working with EUPS product stacks.
-
-Note that the SSD and GPFS-backed stacks are independent: while both will automatically contain the latest LSST software releases, other products declared in a given stack will not automatically become available in the other.
+===================================== ============== ============================================================
+Path                                  Toolchain      Description
+===================================== ============== ============================================================
+:file:`/ssd/lsstsw/stack_20170409`    System default The default local stack until 2017-10-29, based on Python 2.
+:file:`/ssd/lsstsw/stack3_2017-09-11` System default A prototype Python 3-based stack from September 2017.
+===================================== ============== ============================================================
 
 Administrators may wish to note that the shared stack is automatically updated using the script :file:`~lsstsw/shared-stack/shared_stack.py`, which is executed nightly by Cron.
+
+.. _HTCondor pool: https://confluence.lsstcorp.org/display/DM/Orchestration
 
 .. _lsst-dev-gitlfs:
 
 Configure Git LFS
 =================
 
-You can get Git LFS through EUPS:
+After you have initialized a shared stack, you can enable Git LFS using EUPS:
 
 .. code-block:: bash
 
