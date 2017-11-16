@@ -589,7 +589,7 @@ Standard code order SHOULD be followed
 Within a module, follow the order:
 
 1. Shebang line, ``#! /usr/bin/env python`` (only for executable scripts)
-2. Module-level comments (such as the `license statement <https://github.com/lsst/templates/blob/master/CopyrightHeader.py>`__)
+2. Module-level comments (such as the `license statement <https://github.com/lsst/templates/tree/master/file_templates/stack_license_py>`__)
 3. Module-level docstring
 4. ``from __future__ import absolute_import, division, print_function``
 5. ``__all__ = [...]`` statement, if present
