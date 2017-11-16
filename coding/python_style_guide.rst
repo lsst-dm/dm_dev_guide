@@ -589,7 +589,7 @@ Standard code order SHOULD be followed
 Within a module, follow the order:
 
 1. Shebang line, ``#! /usr/bin/env python`` (only for executable scripts)
-2. Module-level comments (such as the `license statement <https://github.com/lsst/templates/blob/master/CopyrightHeader.py>`__)
+2. Module-level comments (such as the `license statement <https://github.com/lsst/templates/tree/master/file_templates/stack_license_py>`__)
 3. Module-level docstring
 4. ``from __future__ import absolute_import, division, print_function``
 5. ``__all__ = [...]`` statement, if present
@@ -652,7 +652,7 @@ This is also consistent with :pep:`8`, which `states <https://www.python.org/dev
 
    Comparisons to singletons like ``None`` should always be done with ``is`` or ``is not``, never the equality operators.
 
-For sequences, (:py:obj:`str`, :py:obj:`list`, :py:obj:`tuple`), use the fact that empty sequences are ``False``.
+For sequences, (``str``, ``list``, ``tuple``), use the fact that empty sequences are ``False``.
 
 Yes:
 
@@ -789,7 +789,7 @@ This is preferred over :meth:`~dict.keys`. Use :meth:`~dict.keys` when storing t
 
     k = list(mydict.keys())
 
-where :class:`list` ensures that a view or iterator is not being retained.
+where ``list`` ensures that a view or iterator is not being retained.
 
 .. _style-guide-py-subprocess:
 
