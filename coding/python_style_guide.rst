@@ -652,7 +652,7 @@ This is also consistent with :pep:`8`, which `states <https://www.python.org/dev
 
    Comparisons to singletons like ``None`` should always be done with ``is`` or ``is not``, never the equality operators.
 
-For sequences, (:py:obj:`str`, :py:obj:`list`, :py:obj:`tuple`), use the fact that empty sequences are ``False``.
+For sequences, (``str``, ``list``, ``tuple``), use the fact that empty sequences are ``False``.
 
 Yes:
 
@@ -789,7 +789,7 @@ This is preferred over :meth:`~dict.keys`. Use :meth:`~dict.keys` when storing t
 
     k = list(mydict.keys())
 
-where :class:`list` ensures that a view or iterator is not being retained.
+where ``list`` ensures that a view or iterator is not being retained.
 
 .. _style-guide-py-subprocess:
 
