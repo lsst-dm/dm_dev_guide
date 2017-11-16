@@ -90,19 +90,19 @@ To easily open files in SublimeText from the command-line, there is a ``subl`` `
 
 Some packages (installable via Package Control) that may help your development include,
 
-* ``Git Gutter`` to put marks next to the line numbers that identify added/modified/removed lines since the last git commit.
-* ``OmniMarkupPreviewer`` to allow live-view of formatted RestructuredText, MarkDown, etc. in a web browser.
+* ``Git Gutter`` to put marks next to the line numbers that identify added/modified/removed lines since the last Git commit.
+* ``OmniMarkupPreviewer`` to allow live-view of formatted reStructuredText, Markdown, and so on, in a web browser.
 
 .. _sublime-cpp:
 
 C++
 ===
 
-The  :ref:`clang-format <using_clang_format>` plugin can help you automatically keep your C++ in line with the DM coding style.
-Once you have clang-format configured on your sytem, install the Sublime package with the Package Manager: `Clang Format <https://packagecontrol.io/packages/Clang%20Format>`_.
+The  :ref:`clang-format <using_clang_format>` plugin can help you automatically keep your C++ in line with the :doc:`/coding/cpp_style_guide`.
+Once you have clang-format configured on your system, install the Sublime package with the Package Manager: `Clang Format <https://packagecontrol.io/packages/Clang%20Format>`_.
 
 There are two required settings to make Clang Format find the binary and configuration file: ``"binary"`` and ``"style": "File"``.
-On Ubuntu, ``binary`` should be ``clang-format-5.0``, while on macOS it should be ``/usr/local/bin/clang-format`` if you installed via homebrew.
+On Ubuntu, ``binary`` should be ``clang-format-5.0``, while on macOS it should be ``/usr/local/bin/clang-format`` if you installed via `Homebrew <https://brew.sh>`_.
 In addition, you configure your Clang Format (``clang-format.sublime-settings``) to automatically format on save.
 
 .. code-block:: json
@@ -114,15 +114,16 @@ In addition, you configure your Clang Format (``clang-format.sublime-settings``)
     }
 
 You can also set C++ syntax-specific settings to override the general settings above.
-Syntax-specific settings are defined by opening a file in the desired language and selecting `Preferences->Settings - Syntax-Specific`.
+Syntax-specific settings are defined by opening a file in the desired language and selecting ``Preferences -> Settings - Syntax-Specific``.
 For example, to have only one ruler at the C++ boundary:
 
 .. code-block:: json
 
-    // These settings override both User and Default settings for the C++ syntax
     {
         "rulers": [110]
     }
+
+These settings override both user and default settings for the C++ syntax.
 
 .. _sublime-python:
 
@@ -136,7 +137,7 @@ The built-in python syntax highlighting works well, but here are some potentiall
 SublimeLinter-flake8
 --------------------
 
-LSST uses ``flake8`` to check that our python code conforms to our :ref:`style guide <style-guide-py-version>`.
+LSST :ref:`uses flake8 <style-guide-py-flake8>` to check that our python code conforms to our :doc:`/coding/python_style_guide`.
 You can get SublimeText to check your python code inline and mark lines that do not follow our style with the `SublimeLinter <http://www.sublimelinter.com/en/latest/>`_ package.
 Install ``SublimeLinter`` and ``SublimeLinter-flake8`` via Package Control.
 Use the following configuration to conform to LSST's python style, to mark failing lines, and to provide a summary of failures on save that will let you go directly to those lines.
@@ -208,10 +209,10 @@ Note that there are SublimeLinter plugins for other languages (e.g. Restructured
     }
 
 
- ``Python PEP8 Autoformat`` lets one bulk reformat a number of python files to match a style.
- Use these settings to match LSST's python style when auto formatting:
+``Python PEP8 Autoformat`` lets one bulk reformat a number of python files to match a style.
+Use these settings to match LSST's python style when auto formatting:
 
-.. code-block:: json
+.. code-block:: text
 
     {
         // list codes for fixes; used by --ignore and --select
