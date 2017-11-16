@@ -66,7 +66,7 @@ being converted to `lfs`) require additional configuration.
   ``Continuous Integration`` component.
 
 .. _LSST organization on GitHub: https://github.com/lsst
-.. _lsst/templates: https://github.com/lsst/templates
+.. _lsst/templates: https://github.com/lsst/templates/tree/master/project_templates/stack_package
 .. _Distributing third-party packages with EUPS: https://confluence.lsstcorp.org/display/LDMDG/Distributing+third-party+packages+with+EUPS
 .. _etc/repos.yaml file in the lsst/repos repository: https://github.com/lsst/repos/blob/master/etc/repos.yaml
 .. _repos.yaml: https://github.com/lsst/repos/blob/master/etc/repos.yaml
