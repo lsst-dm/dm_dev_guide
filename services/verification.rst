@@ -51,12 +51,14 @@ You can log into LSST development servers at NCSA such as ``lsst-dev01`` with yo
 GPFS Directory Spaces
 =====================
 
-GPFS is available on the login node ``lsst-dev01`` and on all of the compute nodes of the ``Verification Cluster``. For convenience the bind mounts  :file:`/scratch`  ,  :file:`/datasets` ,  and :file:`/software`  have been created to provide views into corresponding spaces in GPFS.  Users will find directories
+GPFS is available on the login node ``lsst-dev01`` and on all of the compute nodes of the ``Verification Cluster``. For convenience the bind mounts  :file:`/scratch`  , :file:`/project` , :file:`/datasets` ,  and :file:`/software`  have been created to provide views into corresponding spaces in GPFS.  Users will find directories
 
 :file:`/scratch/<username>` 
 
 ready and available for use.  The per user :file:`/scratch` space is volatile with a 180 day purge policy
-and is not backed up. 
+and is not backed up.
+The :file:`/project` space is volatile, not backed up, and has no purge policy; cooperative self-management of this space for longer-lived but non-permanent files is expected.
+As examples, :file:`/project/<username>` directories could be created, or, for shared data, :file:`/project/<projectname>` directories might be appropriate.
 
 Project managed datasets will be stored within the :file:`/datasets` space.  The population of 
 :file:`/datasets` with reference data collections is still in the early stages; a first 
