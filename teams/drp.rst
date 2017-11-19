@@ -10,6 +10,23 @@ Please ask Jim, Robert or John for access.
 Use it to share details of any substantial travel plans: vacations, conferences, etc.
 It is not expected that you record the minutiae of everyday life: please don't bother telling us about your trip to the dentist, DMV, etc!
 
+JIRA Usage
+==========
+
+Use the following JIRA labels to identify related work.
+Please feel free to define more labels as needed; list those which might be of interested to others here.
+See also the project-wide :ref:`jira-labels`.
+
+==================== =============================================================================================================================================
+Label                Meaning
+==================== =============================================================================================================================================
+``auxtel``           Work related to the Auxiliary Telescope.
+``galmodel``         Work related to galaxy model fitting.
+``hsc``              Work requested and/or carried out by the HSC team.
+``pfs``              Work requested and/or carried out by the PFS team.
+``SciencePipelines`` Work which should be performed by either AP (02C.03) or DRP (02C.04), but it's not (yet) clear which so we can't easily set the “team” field.
+==================== =============================================================================================================================================
+
 Princeton HPC Systems
 =====================
 
