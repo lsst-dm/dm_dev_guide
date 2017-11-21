@@ -53,6 +53,8 @@ BBCP is an alternative to Gridftp when transferring large amounts of data, capab
 - IN2P3 134.158.0.0/16
 - SLAC 134.79.0.0/16
 - UC Davis 169.237.0.0/16
+- UW 140.142.0.0/16
+- UW 205.175.96.0/19
 
 Additional subnets can be requested by emailing ``lsst-sysadm AT ncsa.illinois.edu``.
 
