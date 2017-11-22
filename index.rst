@@ -96,7 +96,7 @@ The `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ w
 
    build-ci/platforms.rst
    build-ci/eups_tutorial.rst
-   build-ci/ci_overview.rst
+   build-ci/jenkins.rst
    build-ci/lsstsw.rst
    build-ci/new_package.rst
    build-ci/third_party.rst

@@ -7,12 +7,12 @@ Introduction
 
 The :command:`lsst-build` tool recursively clones, builds, and installs the
 LSST Stack.  While the motivation for its creation was to serve as a backend
-for the :doc:`continuous integration system <ci_overview>`, anyone may
+for the :doc:`continuous integration system <jenkins>`, anyone may
 download and run it to do stack-wide integration builds (including building
 with alternative versions of external packages, etc.). The core tool lives in
 the `lsst_build repository`_.
 
-Howevever the :command:`lsstsw` tool provides a more convenient way to set up
+However the :command:`lsstsw` tool provides a more convenient way to set up
 a personal build environment. It is available from the `lsstsw repository`_::
 
     git clone https://github.com/lsst/lsstsw.git
@@ -224,7 +224,7 @@ something above ``afw`` has changed, the build time drops to ~10-ish minutes.
 .. warning::
 
    The material below is old and may be outdated; refer to the
-   :doc:`ci_overview` documentation for the current story.
+   :doc:`Jenkins <jenkins>` documentation for the current story.
 
 This machinery is now also installed into :file:`~lsstsw`, and CI will
 use it from there. CI will ultimately manage both the ``lsst-dev`` stack
