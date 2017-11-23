@@ -4,6 +4,7 @@ Jenkins ci.lsst.codes Overview
 
 Data Management operates a Jenkins continuous integration cluster at https://ci.lsst.codes.
 You will typically use Jenkins to run the ``stack-os-matrix`` job to build and run unit tests in the LSST Stack as part of `DM's development workflow <processes/workflow.rst>`_.
+See :doc:`jenkins-stack-os-matrix` for details.
 
 Logging in
 ==========
@@ -113,6 +114,7 @@ stack-os-matrix
 ---------------
 
 `stack-os-matrix`_ is the job that DM developers must run to ensure tests pass before merging changes to any LSST EUPS Stack package.
+For details on how to run this job, see :doc:`jenkins-stack-os-matrix`.
 
 .. _jenkins-job-science-pipelines-lsst-distrib:
 
