@@ -318,20 +318,13 @@ A common pattern is:
 Testing with Jenkins
 --------------------
 
-Use `Jenkins at ci.lsst.codes <https://ci.lsst.codes/job/stack-os-matrix/build?delay=0sec>`_ to run the Stack's tests with your ticket branch work.
-To log into Jenkins, you'll use your GitHub credentials (your GitHub account needs to be a member of the `lsst <https://github.com/lsst>`_ organization).
+Start a :doc:`stack-os-matrix Jenkins job <../build-ci/jenkins-stack-os-matrix>` to run the Stack's tests with your ticket branch work.
 
-Jenkins finds, builds, and tests your work according to the name of your ticket branch; Stack repositories lacking your ticket branch will fall back to ``master``.
+To learn more about DM's Jenkins continuous integration service, see :doc:`../build-ci/jenkins`.
+Then follow the steps listed in :doc:`../build-ci/jenkins-stack-os-matrix` to run the tests.
 
-.. figure:: /_static/development/jenkins_ci.png
-
-   Jenkins test submission screen.
-   In this example, the ``tickets/DM-9999`` branches of Stack repositories will be tested.
-   If that branch doesn't exist, the ``tickets/DM-9998`` branch is be used.
-   If neither of those branches exist for a given repository, the ``master`` branch is used.
-
-You can monitor builds in the `#dm-jenkins <https://lsstc.slack.com/messages/dm-jenkins>`_ Slack channel.
-**If your build failed,** click on the **Console** link in the Slack message to see a build log.
+Ensure that you **do not** skip the demo before submitting a pull request.
+Otherwise, your testing may be incomplete.
 
 .. _workflow-pr:
 

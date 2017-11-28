@@ -25,7 +25,7 @@ Management" and "Overlords." For third-party code, use the "DM Externals" and
 The new package must be added to the `etc/repos.yaml file in the lsst/repos
 repository`_ along with its corresponding GitHub URL. This file is governed by
 a "self-merge" policy: upon opening a pull request, it will be checked by the
-:ref:`build-ci-travis` system, and developers may merge without further review
+:doc:`Jenkins CI <jenkins>` system, and developers may merge without further review
 on success. Refer to :jira:`RFC-75` for background.
 
 The new package then needs to be added to the :file:`ups/*.table` file (and
