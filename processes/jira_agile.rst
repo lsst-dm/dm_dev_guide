@@ -55,10 +55,11 @@ We support and encourage the use of labels to group related tickets.
 Their use is not formally restricted or regulated.
 However, there are a few labels which are of general interest:
 
-========== ============================================================
-Label      Meaning
-========== ============================================================
-``dm-sst`` This work is of interest to the DM System Science Team.
-``dm-set`` This work is of interest to the DM Systems Engineering Team.
-``dmlt``   This work is of interest to the DM Leadership Team.
-========== ============================================================
+=================== =============================================================================
+Label               Meaning
+=================== =============================================================================
+``dm-sst``          This work is of interest to the DM System Science Team.
+``dm-set``          This work is of interest to the DM Systems Engineering Team.
+``dmlt``            This work is of interest to the DM Leadership Team.
+``gen3-middleware`` Work on the “generation 3” Butler and associated middleware (e.g. SuperTask).
+=================== =============================================================================
