@@ -127,6 +127,7 @@ Name             Description
 ``devtoolset-6`` Updated compiler toolchain providing GCC 6.3.1.
 ``devtoolset-7`` Updated compiler toolchain providing GCC 7.1.1.
 ``git19``        The `Git`_ version control system version 1.9.4.
+``rh-git29``     The `Git`_ version control system version 2.9.3.
 ================ ================================================
 
 To enable a particular Software Collection use the ``scl`` command. For example:
