@@ -153,7 +153,7 @@ If you are using `Bash`_ — the default shell on ``lsst-dev01`` — try placing
 .. code-block:: bash
 
    # User-specified space-delimited list of SCLs to enable.
-   desired_scls="git19 devtoolset-6"
+   desired_scls="rh-git29 devtoolset-6"
 
    # Only do anything if /usr/bin/scl is executable.
    if [ -x /usr/bin/scl ]; then
