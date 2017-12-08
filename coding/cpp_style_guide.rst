@@ -84,10 +84,29 @@ These tasks are made much simpler if the code is easily readable and well-docume
 
 .. _style-guide-cpp-2-2:
 
-2-2. We are writing C++11/14 with some restrictions.
-----------------------------------------------------
+2-2. We are writing C++14
+-------------------------
 
-The official policy on the use of C++11 features is at :ref:`Policy on use of C++11/14 language features <style-guide-cpp-cpp-11-14>`.
+The C++11 standard and the C++14 improvements to it bring a number of useful language features that make the resulting code more expressive, easier to read, and safer.
+
+We follow the official: International Standard ISO/IEC 14882:2014(E) – Programming Language C++, without any compiler specific extensions.
+
+.. note::
+
+    Our minimum required compiler versions are:
+
+        * GCC 6.3.1 (Linux)
+        * Clang 800.0.42.1 (macOS)
+
+    these both have complete support for C++14, but in case of compiler bugs the actually allowed set
+    of C++14 features is the intersection of those supported by our compilers and the standard.
+
+.. seealso::
+
+   - :ref:`pipelines:source-install-redhat-legacy` from the `LSST Science Pipelines <https://pipelines.lsst.io>`__ documentation.
+     But note that installation instructions for stack versions 14.0 and below refer to our older baseline compilers.
+     These are now superseded by the minimum required compiler versions listed above.
+   - :doc:`/services/lsst-dev` provides :ref:`instructions for using devtoolset-6 <lsst-dev-tools>` to obtain a more modern GCC on LSST cluster machines.
 
 .. _style-guide-cpp-2-3:
 
@@ -1744,7 +1763,7 @@ This type of implicit conversion can result in incorrect and unintentional side 
 5-27a.  Constructor calls SHOULD use C++98 syntax when possible.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-While C++11 introduces a new syntax for "uniform initialization" using braces, C++ objects in LSST code should be initialized using syntax that is valid in C++98 whenever possible, with brace initialization used only when necessary, such as when initializing aggregates or containers that take ``std::initializer_list`` arguments.
+While a new syntax for "uniform initialization" using braces was introduced with C++11, C++ objects in LSST code should be initialized using syntax that is valid in C++98 whenever possible, with brace initialization used only when necessary, such as when initializing aggregates or containers that take ``std::initializer_list`` arguments.
 
 In particular, default constructors should be called with no parentheses or braces. This avoids most occurrences of the `most-vexing parse problem <https://en.wikipedia.org/wiki/Most_vexing_parse>`_:
 
@@ -2625,23 +2644,6 @@ While it is not expected that we will bring the guts of all legacy code in line 
 
 .. [Google] Google C++ Style Guide, 2017. Available on-line at:
    https://google.github.io/styleguide/cppguide.html
-
-.. _style-guide-cpp-cpp-11-14:
-
-Appendix: Policy on using C++11/14 Features
-===========================================
-
-The C++11 standard and the C++14 improvements to it bring a number of useful language features that make the resulting code more expressive, easier to read, and safer.
-They are becoming well-implemented and widespread.
-C++11/14 features supported by the default compiler provided with the oldest operating system distribution commonly used to install the LSST Stack, currently gcc 4.8.3, may be used at will in ``.cc`` and ``.h`` files.
-
-.. seealso::
-
-   - :ref:`pipelines:source-install-redhat-legacy` from the `LSST Science Pipelines <https://pipelines.lsst.io>`__ documentation.
-   - :doc:`/services/lsst-dev` provides :ref:`instructions for using devtoolset-3 <lsst-dev-tools>` to obtain a more modern GCC on LSST cluster machines.
-   - C++11 compiler support matrix: http://wiki.apache.org/stdcxx/C++0xCompilerSupport.
-
-C++11 uniform initialization syntax should in general *not* be preferred over C++98 construction syntax; see rule :ref:`5-27a <style-guide-cpp-5-27a>`.
 
 .. _style-guide-cpp-using:
 

@@ -51,11 +51,11 @@ When connecting to Tiger, you should connect to the head node ``tiger-sumire.pri
 
 Tiger runs version 6.8 of `Springdale Linux <https://puias.math.ias.edu>`_ (a derivative of `RHEL <https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux>`_).
 As such, the default toolchain is too old to work with the LSST stack.
-You should therefore enable ``devtoolset-3`` before proceeding:
+You should therefore enable ``devtoolset-6`` before proceeding:
 
 .. prompt:: bash
 
-  scl enable devtoolset-3 bash
+  scl enable devtoolset-6 bash
 
 A regularly-updated LSST “shared stack” is available in :file:`/tigress/HSC/LSST/stack_tiger/` (note that the name of the cluster is embedded in the path).
 To get started, try:
@@ -74,8 +74,12 @@ Unlike Tiger, there is no head node reserved for HSC/LSST use.
 Connect to ``perseus.princeton.edu``, and be especially considerate of other users before starting long-running jobs on the head node.
 
 Tiger runs version 7.3 of `Springdale Linux <https://puias.math.ias.edu>`_ (a derivative of `RHEL <https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux>`_).
-This provides a default toolchain which is appropriate for working with the LSST stack.
-You should *not* enable ``devtoolset-3`` (or any other ``devtoolset``) when working with LSST code on this system.
+As such, the default toolchain is too old to work with the LSST stack.
+You should therefore enable ``devtoolset-6`` before proceeding:
+
+.. prompt:: bash
+
+  scl enable devtoolset-6 bash
 
 A regularly-updated LSST “shared stack” is available in :file:`/tigress/HSC/LSST/stack_perseus/` (note that the name of the cluster is embedded in the path).
 To get started, try:
