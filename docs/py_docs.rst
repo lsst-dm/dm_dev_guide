@@ -26,8 +26,8 @@ Treat the guidelines on this page as an extension of the :doc:`../coding/python_
 Basic Format of Docstrings
 ==========================
 
-Python docstrings are special strings that form the ``__doc__`` attributes attached to modules, classes, methods and functions.
-Docstrings are specified by :pep:`257`.
+Python docstrings form the ``__doc__`` attributes attached to modules, classes, methods and functions.
+See :pep:`257` for background.
 
 .. _py-docstring-triple-double-quotes:
 
@@ -36,7 +36,7 @@ Docstrings MUST be delimited by triple double quotes
 
 Docstrings **must** be delimited by triple double quotes: ``"""``.
 This allows docstrings to span multiple lines.
-You may use ``u"""`` for unicode but it is usually preferable to stick to ASCII.
+You may use ``u"""`` for unicode, but it's usually preferable to stick to ASCII.
 
 For consistency, *do not* use triple single quotes: ``'''``.
 
@@ -71,7 +71,7 @@ An example of a multi-paragraph docstring:
    Returns
    -------
    sum : `float`
-      Sum of `values`.
+      Sum of ``values``.
    """
 
 .. _py-docstring-blank-lines:
@@ -79,7 +79,7 @@ An example of a multi-paragraph docstring:
 Docstrings of methods and functions SHOULD NOT be preceded or followed by a blank line
 --------------------------------------------------------------------------------------
 
-Inside a function or method, there should be no blank lines surrounding the docstring.
+Inside a function or method, there should be no blank lines surrounding the docstring:
 
 .. code-block:: py
 
@@ -94,7 +94,7 @@ Inside a function or method, there should be no blank lines surrounding the docs
        Returns
        -------
        sum : `float`
-          Sum of `values`.
+          Sum of ``values``.
        """
        pass
 
@@ -104,7 +104,7 @@ Docstrings of classes SHOULD be followed, but not preceded, by a blank line
 ---------------------------------------------------------------------------
 
 Like method and function docstrings, the docstring should immediately follow the class definition, without a blank space.
-However, there should be a **single blank line before following code** such as class variables or the ``__init__`` method.
+However, there should be a **single blank line before following code** such as class variables or the ``__init__`` method:
 
 .. code-block:: py
 
@@ -195,7 +195,7 @@ For example:
 Classes, Methods, and Functions
 -------------------------------
 
-Class/method/function docstrings must be placed directly below the declaration, and indented according to the code scope.
+Class, method, and function docstrings must be placed directly below the declaration, and indented according to the code scope:
 
 .. code-block:: python
 
@@ -223,7 +223,8 @@ Class/method/function docstrings must be placed directly below the declaration, 
        """
        pass
 
-Note that the class docstring takes the place of a docstring for the ``__init__`` method; ``__init__`` has no docstring.
+The class docstring takes the place of a docstring for the ``__init__`` method.
+``__init__`` methods don't have docstrings.
 
 .. _py-docstring-attributes:
 
@@ -374,8 +375,8 @@ Numpydoc Sections in Docstrings
 ===============================
 
 We organize Python docstrings into sections that appear in a common order.
-This format follows the `Numpydoc`_ format (used by NumPy, SciPy, and Astropy, among other scientific Python packages) rather than the format described in :pep:`287`.
-The sections and their relative order is:
+This format follows the `Numpydoc`_ standard (used by NumPy, SciPy, and Astropy, among other scientific Python packages) rather than the format described in :pep:`287`.
+These are the sections and their relative order:
 
 .. _Numpydoc: https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt
 
@@ -413,7 +414,13 @@ A one-line summary that does not use variable names or the function's name:
        """
        return a + b
 
-For functions and methods, the summary should be written in the imperative voice (i.e., as a command that the API consumer is giving).
+For functions and methods, write in the imperative voice.
+That is, the summary is treated a command that the API consumer can give.
+Some examples:
+
+- ``Get metadata for all tasks.``
+- ``Make a `lsst.pex.config.ConfigurableField` for this task.``
+- ``Create a `Measurement` instance from a parsed YAML or JSON document.``
 
 .. _py-docstring-deprecation:
 
@@ -424,7 +431,7 @@ A section (where applicable) to warn users that the object is deprecated.
 Section contents should include:
 
 1. In what stack version the object was deprecated, and when it will be removed.
-2. Reason for deprecation if this is useful information (e.g., object is superseded, duplicates functionality found elsewhere, etc.).
+2. Reason for deprecation if this is useful information (for example, the object is superseded, or duplicates functionality found elsewhere).
 3. New recommended way of obtaining the same functionality.
 
 This section should use the ``note`` Sphinx directive instead of an underlined section header.
@@ -729,6 +736,7 @@ Other Parameters
 
 'Other Parameters' is an optional section used to describe infrequently used parameters.
 It should only be used if a function has a large number of keyword parameters, to prevent cluttering the :ref:`Parameters <py-docstring-parameters>` section.
+In practice, this section is seldom used.
 
 .. _py-docstring-raises:
 
@@ -807,81 +815,54 @@ Notes
 -----
 
 *Notes* is an optional section that provides additional information about the code, possibly including a discussion of the algorithm.
-This section may include mathematical equations, written in `LaTeX <http://www.latex-project.org/>`_ format:
+Most reStructuredText formatting is allowed in the Notes section, including:
 
-.. code-block:: rst
+- :ref:`Lists <rst-lists>`
+- :ref:`Tables <rst-tables>`
+- :ref:`Images <rst-figures>`
+- :ref:`Inline and display math <rst-math>`
+- :ref:`Links <rst-linking>`
 
-  The FFT is a fast implementation of the discrete Fourier transform:
+When using images, remember that many developers and users will be reading the docstring in its raw source form.
+Images should add information, but the docstring should still be useful and complete without them.
 
-  .. math:: X(e^{j\omega } ) = x(n)e^{ - j\omega n}
-
-Longer equations can also be typeset underneath the math directive:
-
-.. code-block:: rst
-
-  The discrete-time Fourier time-convolution property states that
-
-  .. math::
-
-     x(n) * y(n) \Leftrightarrow X(e^{j\omega } )Y(e^{j\omega } )\\
-     another equation here
-
-Math can also be used inline:
-
-.. code-block:: rst
-
-   The value of :math:`\omega` is larger than 5.
-
-Variable names are displayed in typewriter font, obtained by using ``\mathtt{var}``:
-
-.. code-block:: rst
-
-   We square the input parameter `alpha` to obtain
-   :math:`\mathtt{alpha}^2`.
-
-See :ref:`rst-math` for more details on math typesetting in reStructuredText.
-
-Note that LaTeX is not particularly easy to read, so use equations sparingly.
-
-Images are allowed, but should not be central to the explanation; users viewing the docstring as text must be able to comprehend its meaning without resorting to an image viewer.
-These additional illustrations are included using:
-
-.. code-block:: rst
-
-   .. image:: filename
-
-where filename is a path relative to the reference guide source directory.
+See also :ref:`py-docstring-rst` for restrictions.
 
 .. _py-docstring-references:
 
 References
 ----------
 
-References cited in the :ref:`'Notes' <py-docstring-notes>` section may be listed here, e.g. if you cited the article below using the text ``[1]_``, include it as in the list as follows:
+References cited in the :ref:`'Notes' <py-docstring-notes>` section are listed here.
+For example, if you cited an article using the syntax ``[1]_``, include its reference as follows:
 
 .. code-block:: rst
 
+   References
+   ----------
    .. [1] O. McNoleg, "The integration of GIS, remote sensing,
       expert systems and adaptive co-kriging for environmental habitat
       modelling of the Highland Haggis using object-oriented, fuzzy-logic
       and neural-network techniques," Computers & Geosciences, vol. 22,
       pp. 585-588, 1996.
 
-Note that Web pages should be referenced with regular inline links.
+Web pages should be referenced with regular inline links.
 
 References are meant to augment the docstring, but should not be required to understand it.
 References are numbered, starting from one, in the order in which they are cited.
 
-We may support `bibtex-based references instead <https://github.com/mcmtroffaes/sphinxcontrib-bibtex>`__ instead of explicitly writing bibliographies in docstrings.
+.. note::
+
+   In the future we may support `bibtex-based references instead <https://github.com/mcmtroffaes/sphinxcontrib-bibtex>`__ instead of explicitly writing bibliographies in docstrings.
 
 .. _py-docstring-examples:
 
 Examples
 --------
 
-'Examples' is an optional section for examples, using the `doctest <http://docs.python.org/library/doctest.html>`_ format.
+'Examples' is an optional section for usage examples written in the `doctest <http://docs.python.org/library/doctest.html>`_ format.
 These examples do not replace unit tests, but *are* intended to be tested to ensure documentation and code are consistent.
-While optional, this section is very strongly encouraged.
+While optional, this section is useful for users and developers alike.
 
 When multiple examples are provided, they should be separated by blank lines.
 Comments explaining the examples should have blank lines both above and below them:
@@ -905,7 +886,10 @@ For tests with a result that is random or platform-dependent, mark the output as
 
 It is not necessary to use the doctest markup ``<BLANKLINE>`` to indicate empty lines in the output.
 
-.. The examples may assume that ``import numpy as np`` is executed before the example code.
+For more information on doctest, see:
+
+- `The official doctest documentation <http://docs.python.org/library/doctest.html>`__.
+- `doctest — Testing Through Documentation <https://pymotw.com/3/doctest/>`__ from Python Module of the Week.
 
 .. _py-docstring-module-structure:
 
