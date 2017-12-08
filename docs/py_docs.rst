@@ -311,17 +311,17 @@ For example:
        [...]
        """
 
-.. FIXME uncomment this when RFC-107 is decided
-..
-.. Docstring lines should be 75 characters long or less
-.. ----------------------------------------------------
-.. 
-.. .. TODO link to code style guide
-.. 
-.. Our Coding Style Guide allows for Python lines to be as long as 110 lines.
-.. However docstring lines *must be 75 characters or fewer* to facilitate reading in the terminal or Jupyter notebook contexts.\ [#length]_
-.. 
-.. .. [#length] '75' originates from the PEP8 length length recommendation of 79 characters, with the typical 4-space indentation level assumed.
+.. _py-docstring-length:
+
+Line Lengths
+------------
+
+Hard-wrap text in docstrings to match the :ref:`line length allowed by the coding standard <style-guide-py-line-length>`.
+
+.. note::
+
+   In the future we may require shorter line lengths specifically for docstrings.
+   See :jira:`RFC-107`.
 
 .. _py-docstring-sections:
 
