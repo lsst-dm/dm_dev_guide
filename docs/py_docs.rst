@@ -406,78 +406,170 @@ Parameters
 *For functions, methods and classes.*
 
 'Parameters' is a description of a function or method's arguments and their respective types.
+Arguments should be listed in the same order as they appear in the function or method signature.
+
+For example:
+
+.. code-block:: python
+
+   def calcDistance(x, y, x0=0., y0=0.):
+       """Calculate the distance between two points.
+
+       Parameters
+       ----------
+       x : `float`
+           X-axis coordinate.
+       y : `float`
+           Y-axis coordinate.
+       x0 : `float`, optional
+           X-axis coordinate for the second point (the origin, by default).
+       y0 : `float`, optional
+           Y-axis coordinate for the second point (the origin, by default).
+       
+       [...]
+       """
+
+Each parameter is declared with a line formatted as ``{name} : {type}`` that is justified to the docstring.
+A single space is required before and after the colon (``:``).
+The ``name`` corresponds to the variable name in the function or method's arguments.
+The ``type`` is described below (:ref:`py-docstring-parameter-types`).
+The description is indented by **four** spaces relative to the docstring and appears without a preceding blank line.
+
+Normally parameters are documented consecutively, without blank lines between (see the earlier example).
+However, if the descriptions of an individual parameter span multiple paragraphs, or include lists, then you must separate each parameter with a blank line.
+For example:
 
 .. code-block:: rst
 
    Parameters
    ----------
-   x : type
-       Description of parameter `x`.
+   output_path : `str`
+       Filepath where the plot will be saved.
 
-Notice that the description is **indented by four spaces** from the prior ``{name} : {type}`` line of each argument.
-If a description spans more than one line, the continuation lines must be indented to the same level.
+   plot_settings : `dict`, optional
+       Settings for the plot that may include these fields:
 
-Arguments should be listed in the same order as they appear in the function or method signature.
+       - ``'dpi'``: resolution of the plot in dots per inch (`int`).
+       - ``'rasterize'``: if `True`, then rasterize the plot. `False` by default.
 
 .. _py-docstring-parameter-types:
 
-Parameter Types
-^^^^^^^^^^^^^^^
+Describing Parameter Types
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Be as precise as possible when describing types for parameters.
+Be as precise as possible when describing parameter types.
 The type description is free-form text, making it possible to list several supported types or indicate nuances.
-Complex and lengthy descriptions can be moved to the *description* field.
+Complex and lengthy type descriptions can be partially moved to the parameter's *description* field.
+The following sections will help you deal with the different kinds of types commonly seen.
+
+Concrete types
+""""""""""""""
+
+Wrap concrete types in backticks (in docstrings, single backticks are equivalent to ``:py:obj:``) to make a link to either an internal API or an external API that is supported by `intersphinx <http://www.sphinx-doc.org/en/stable/ext/intersphinx.html>`_.
+This works for both built-in types and most importable objects:
 
 .. code-block:: rst
 
    Parameters
    ----------
    filename : `str`
-       Description of `filename`.
-   copy : `bool`
-       Description of `copy`.
-   dtype : data-type
-       Description of `dtype`.
-   iterable : iterable object
-       Description of `iterable`.
-   shape : `int` or `tuple` of int
-       Description of `shape`.
-   files : `list` of `str`
-       Description of `files`.
+       [...]
+   n : `int`
+       [...]
+   verbose : `bool`
+       [...]
+   items : `list` or `tuple`
+       [...]
+   magnitudes : `numpy.ndarray`
+       [...]
+   struct : `lsst.pipe.base.Struct`
+       [...]
 
-Note that concrete types are wrapped in backticks, which is the *default role* in reStructuredText.
-When possible, Sphinx will make a link to the API reference for that object using `intersphinx <http://www.sphinx-doc.org/en/stable/ext/intersphinx.html>`_.
-(In docstrings, ``:py:obj:`` is the :ref:`default role <rst-python-link>`.)
+In general, provide the full namespace to the object, such as ```lsst.pipe.base.Struct```.
+It may be possible to reference objects in the same namespace as the current module without any namespace prefix.
+Always check the compiled documentation site to ensure the link worked.
 
-For instances of classes, provide the full namespace to the class, such as ```lsst.afw.table.ExposureTable```.
+Choices
+"""""""
 
-When a parameter can only assume one of a fixed set of values, those values can be listed in braces:
+When a parameter can only assume one of a fixed set of values, those choices can be listed in braces:
 
 .. code-block:: rst
 
    order : {'C', 'F', 'A'}
-       Description of `order`.
+       [...]
+
+Sequence types
+""""""""""""""
+
+When a type is a sequence container (like a `list` or `tuple`), you can describe the type of the contents.
+For example:
+
+.. code-block:: rst
+
+   mags : `list` of `float`
+       Sequence of magnitudes.
+
+Dictionary types
+""""""""""""""""
+
+For dictionaries it is usually best to document the keys and their values in the parameter's description:
+
+.. code-block:: rst
+
+   settings : `dict`
+       Settings dictionary with fields:
+
+       - ``color``: Hex colour code (`str`).
+       - ``size``: Point area in pixels (`float`).
+
+Array types
+"""""""""""
+
+For Numpy arrays, try to include the dimensionality:
+
+.. code-block:: rst
+
+   coords : `numpy.ndarray`, (N, 2) 
+       [...]
+   flags : `numpy.ndarray`, (N,)
+       [...]
+   image : `numpy.ndarray`, (Ny, Nx)
+       [...]
+
+Choose conventional variables or labels to describe dimensions, like ``N`` for the number of sources or ``Nx, Ny`` for rectangular dimensions.
+
+Callable types
+""""""""""""""
+
+For callback functions, describe the type as ``callable``:
+
+.. code-block:: rst
+
+   likelihood : callable
+       Likelihood function that takes two positional arguments:
+
+       - ``x``: current parameter (`float`).
+       - ``extra_args``: additional arguments (`dict`).
 
 .. _py-docstring-optional:
 
 Optional Parameters
 ^^^^^^^^^^^^^^^^^^^
 
-For keyword arguments, add 'optional' to the type specification:
+For keyword arguments with useful defaults, add ``optional`` to the type specification:
 
 .. code-block:: rst
 
    x : `int`, optional
 
 Optional keyword parameters have default values, which are automatically documented as part of the function or method's signature.
-Default values can also be detailed in the description:
+You can also explain defaults in the description:
 
 .. code-block:: rst
 
-   Parameters
-   ----------
    x : `int`, optional
-       Description of parameter `x` (the default is -1, which implies summation
+       Description of parameter ``x`` (the default is -1, which implies summation
        over all axes).
 
 .. _py-docstring-shorthand:
