@@ -247,26 +247,69 @@ For example
 
    """A summary
 
-   A Headline
-   ----------
-   A paragraph
+   Notes
+   -----
+   The content of the notes section directly follows the header, with no blank line.
    """
 
 This :ref:`deviation from the normal style guide <rst-sectioning>` is in keeping with Python community idioms and to save vertical space in terminal help printouts.
 
 .. _py-docstring-section-levels:
 
-Top level headers are defined with '-'
---------------------------------------
+Sections are restricted to the Numpydoc section set
+---------------------------------------------------
 
-In docstrings, the top level header is marked up with a ``-``, the third level listed in our :ref:`ReStructuredText Style Guide <rst-sectioning>`.
-The header hierarchy is thus:
+Sections must be from the set of standard Numpydoc sections (see :ref:`py-docstring-sections`).
+You cannot introduce new section headers, or use the :ref:`full reStructuredText subsection hierarchy <rst-sectioning>`, since these subsections won't be parsed by the documentation toolchain.
 
-1. Sections ``-``,
-2. Subsections ``^``,
-3. Subsubsections ``"``.
+Always use the dash (``-``) to underline sections.
+For example:
 
-This deviation from our :ref:`reST Style Guide <rst-sectioning>` is in keeping with NumPy community idioms, and required by our Sphinx tooling.
+.. code-block:: python
+
+   def myFunction(a):
+       """Do something.
+
+       Parameters
+       ----------
+       [...]
+
+       Returns
+       -------
+       [...]
+
+       Notes
+       -----
+       [...]
+       """
+
+.. _py-docstring-subsections:
+
+Simulate subsections with bold text
+-----------------------------------
+
+Conventional reStructuredText subsections are not allowed in docstrings, given the :ref:`previous guideline <py-docstring-section-levels>`.
+However, you may structure long sections with bold text that simulates subsection headers.
+This technique is useful for the :ref:`Notes <py-docstring-notes>` and :ref:`Examples <py-docstring-examples>` Numpydoc sections.
+For example:
+
+.. code-block:: python
+
+   def myFunction(a):
+       """Do something.
+
+       [...]
+
+       Examples
+       --------
+       **Example 1**
+
+       [...]
+
+       **Example 2**
+
+       [...]
+       """
 
 .. FIXME uncomment this when RFC-107 is decided
 ..
