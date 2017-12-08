@@ -1,28 +1,25 @@
-#######################
-Documenting Python APIs
-#######################
-
-We document Python code in three ways:
-
-1. By writing *docstrings* for all public python objects (modules, classes, methods, functions and constants).
-   
-   These docstrings are exposed to users in a variety of contexts, from developers reading the code, to interactive Python users introspecting an object with ``help()``, Jupyter notebook users typing `object?`, and finally to readers of this user guide.
-
-   Docstrings are the public specification of our Python API.
-
-2. By commenting our code internally with hash marks (``#``).
-   
-   These comments are meant to be read only by developers reading and editing the source code.
-
-3. By allowing Python objects to be introspected interactively with the ``__str__`` and ``__repr__`` magic methods.
-
-This page focuses on public code documentation through docstrings, while the latter two are discussed in our :doc:`../coding/python_style_guide`.
-
-Treat the guidelines on this page as an extension of the :doc:`../coding/python_style_guide`.
-
 .. note::
    Changes to this document must be approved by the System Architect (`RFC-24 <https://jira.lsstcorp.org/browse/RFC-24>`_).
    To request changes to these standards, please file an :ref:`RFC <decision-making-rfc>`.
+
+#######################################
+Documenting Python APIs with Docstrings
+#######################################
+
+We use Python docstrings to create reference documentation for our Python APIs.
+Docstrings are read by developers, interactive Python users, and readers of our online documentation.
+This page describes how to write these docstrings in Numpydoc, DM's standard format:
+
+- :ref:`py-docstring-basics`.
+- :ref:`py-docstring-placement`.
+- :ref:`py-docstring-rst`.
+- :ref:`py-docstring-sections`.
+- :ref:`py-docstring-module-structure`.
+- :ref:`py-docstring-class-structure`.
+- :ref:`py-docstring-method-function-structure`.
+- :ref:`py-docstring-attribute-constants-structure`.
+
+Treat the guidelines on this page as an extension of the :doc:`../coding/python_style_guide`.
 
 .. _py-docstring-basics:
 
@@ -285,8 +282,8 @@ This deviation from our :ref:`reST Style Guide <rst-sectioning>` is in keeping w
 
 .. _py-docstring-sections:
 
-Common Structure of Docstrings
-==============================
+Numpydoc Sections in Docstrings
+===============================
 
 We organize Python docstrings into sections that appear in a common order.
 This format follows the `Numpydoc`_ format (used by NumPy, SciPy, and Astropy, among other scientific Python packages) rather than the format described in :pep:`287`.
