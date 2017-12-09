@@ -595,16 +595,59 @@ Returns
 
 If a sequence of values is returned, each value may be separately listed, in order:
 
-.. code-block:: rst
+.. code-block:: python
 
-   Returns
-   -------
-   x : `int`
-       Description of x.
-   y : `int`
-       Description of y.
+   def getCoord(self):
+       """Get the point's pixel coordinate.
 
-If a return type is `dict`, ensure that the key-value pairs are documented in the description.
+       Returns
+       -------
+       x : `int`
+           X-axis pixel coordinate.
+       y : `int`
+           Y-axis pixel coordinate.
+       """
+       return self._x, self._y
+
+If a return type is `dict`, ensure that the key-value pairs are documented in the description:
+
+.. code-block:: python
+
+   def getCoord(self):
+       """Get the point's pixel coordinate.
+
+       Returns
+       -------
+       pixelCoord : `dict`
+          Pixel coordinates with fields:
+
+          - ``x``: x-axis coordinate (`int`).
+          - ``y``: y-axis coordinate (`int`).
+        """
+        return {'x': self._x, 'y': self._y}
+
+Note that the names of the returned variables do not necessarily correspond to the names of variables.
+In the previous examples, the variables ``x``, ``y``, and ``pixelCoord`` never existed in the method scope.
+Simply choose a variable-like name that is clear.
+Order is important.
+
+If a returned variable is named in the method or function scope, you will usually want to use that name for clarity.
+For example:
+
+.. code-block:: python
+
+   def getDistance(self, x, y):
+       """Compute the distance of the point to an (x, y) coordinate.
+
+       [...]
+
+       Returns
+       -------
+       distance : `float`
+           Distance, in units of pixels.
+       """
+       distance = np.hypot(self._x - x, self._y - y)
+       return distance
 
 .. _py-docstring-yields:
 
@@ -614,6 +657,22 @@ Yields
 *For generators.*
 
 'Yields' is used identically to :ref:`'Returns' <py-docstring-yields>`, but for generators.
+For example:
+
+.. code-block:: python
+
+   def items(self):
+       """Iterate over items in the container.
+
+       Yields
+       ------
+       key : `str`
+           Item key.
+       value : obj
+           Item value.
+       """
+       for key, value in self._data.items():
+           yield key, value
 
 .. _py-docstring-other-parameters:
 
