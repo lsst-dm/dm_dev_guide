@@ -338,15 +338,13 @@ The sections and their relative order is:
 2. :ref:`Deprecation Warning <py-docstring-deprecation>` (if applicable)
 3. :ref:`Extended Summary <py-docstring-extended-summary>` (optional)
 4. :ref:`Parameters <py-docstring-parameters>` (if applicable; for classes, methods, and functions)
-5. :ref:`Methods <py-docstring-methods>` (if applicable; for classes)
-6. :ref:`Attributes <py-docstring-attributes>` (if applicable; for classes)
-7. :ref:`Returns <py-docstring-returns>` or :ref:`Yields <py-docstring-yields>` (if applicable; for functions, methods, and generators)
-8. :ref:`Other Parameters <py-docstring-other-parameters>` (if applicable; for classes, methods, and functions)
-9. :ref:`Raises <py-docstring-raises>` (if applicable)
-10. :ref:`See Also <py-docstring-see-also>` (optional)
-11. :ref:`Notes <py-docstring-notes>` (optional)
-12. :ref:`References <py-docstring-references>` (optional)
-13. :ref:`Examples <py-docstring-examples>` (optional)
+5. :ref:`Returns <py-docstring-returns>` or :ref:`Yields <py-docstring-yields>` (if applicable; for functions, methods, and generators)
+6. :ref:`Other Parameters <py-docstring-other-parameters>` (if applicable; for classes, methods, and functions)
+7. :ref:`Raises <py-docstring-raises>` (if applicable)
+8. :ref:`See Also <py-docstring-see-also>` (optional)
+9. :ref:`Notes <py-docstring-notes>` (optional)
+10. :ref:`References <py-docstring-references>` (optional)
+11. :ref:`Examples <py-docstring-examples>` (optional)
 
 For summaries of how these docstring sections are composed in specific contexts, see:
 
@@ -493,60 +491,6 @@ When two or more consecutive input parameters have exactly the same type, shape 
 
    x1, x2 : array-like
        Input arrays, description of `x1`, `x2`.
-
-.. _py-docstring-methods:
-
-Methods
--------
-
-*For classes.*
-
-If a class has a very large number of methods, which are hard to discover, an additional 'Methods' section *can* be provided to list them:
-
-.. code-block:: rst
-
-   Methods
-   -------
-   read(filename)
-      Read a table from a file
-   sort(column, order='ascending')
-      Sort by `column`
-
-Do not list private methods in the 'Methods' section.
-If it is necessary to explain a private method (use with care!), it can be mentioned in the :ref:`Extended Summary <py-docstring-extended-summary>` or :ref:`Notes <py-docstring-notes>` sections.
-
-Do not list ``self`` as the first parameter of a method.
-
-.. _py-docstring-attributes:
-
-Attributes
-----------
-
-*For classes.*
-
-An 'Attributes' section, located below the 'Parameters' section, may be used to describe class variables:
-
-.. code-block:: rst
-
-   Attributes
-   ----------
-   x : `float`
-       The X coordinate.
-   y : `float`
-       The Y coordinate.
-
-Attributes that are properties and have their :ref:`own docstrings <py-docstring-attribute-constants-structure>` can be simply listed by name:
-
-.. code-block:: rst
-
-   Attributes
-   ----------
-   real
-   imag
-   x : `float`
-       The X coordinate
-   y : `float`
-       The Y coordinate
 
 .. _py-docstring-returns:
 
@@ -784,17 +728,12 @@ Class docstrings contain the following sections:
 2. :ref:`Deprecation Warning <py-docstring-deprecation>` (if applicable)
 3. :ref:`Extended Summary <py-docstring-extended-summary>` (optional)
 4. :ref:`Parameters <py-docstring-parameters>` (if applicable)
-5. :ref:`Methods <py-docstring-methods>` (if applicable)
-6. :ref:`Attributes <py-docstring-attributes>` (if applicable)
-7. :ref:`Other Parameters <py-docstring-other-parameters>` (if applicable)
-8. :ref:`Raises <py-docstring-raises>` (if applicable)
-9. :ref:`See Also <py-docstring-see-also>` (optional)
-10. :ref:`Notes <py-docstring-notes>` (optional)
-11. :ref:`References <py-docstring-references>` (optional)
-12. :ref:`Examples <py-docstring-examples>` (optional)
-
-Note that the `Methods <py-docstring-methods>`_ section is only used if the method list is extremely long.
-In general, trust that the tables of contents in the user guide pages will provide useful summaries of a class's methods.
+5. :ref:`Other Parameters <py-docstring-other-parameters>` (if applicable)
+6. :ref:`Raises <py-docstring-raises>` (if applicable)
+7. :ref:`See Also <py-docstring-see-also>` (optional)
+8. :ref:`Notes <py-docstring-notes>` (optional)
+9. :ref:`References <py-docstring-references>` (optional)
+10. :ref:`Examples <py-docstring-examples>` (optional)
 
 .. code-block:: python
 
@@ -884,29 +823,6 @@ In the short summary, a description of the type should be included:
 
    NAME = 'LSST'
    """Name of the project (str)"""
-
-Note that class attributes can alternatively be documented in an :ref:`Attributes <py-docstring-attributes>` section of the class's docstring.
-This is particularly useful when the attribute is not set in the class scope, but rather in a method such as ``__init__``.
-
-.. code-block:: py
-
-   class Answer(object):
-       """Container for the answer.
-       
-       Attributes
-       ----------
-       answer : obj
-          The answer.
-       source
-       """
-
-       def __init__(self):
-           self.contents = 42
-
-       @property
-       def source(self):
-           """Purveyor of the answer."""
-           return 'Deep Thought'
 
 Acknowledgements
 ================
