@@ -947,20 +947,48 @@ Method and function docstrings contain the following sections:
 10. :ref:`References <py-docstring-references>` (optional)
 11. :ref:`Examples <py-docstring-examples>` (optional)
 
-A minimal example:
+Here's an example function:
 
 .. code-block:: python
 
-   def log(message, level):
-       """Submit a message to the log.
+   def check_unit(self, quantity):
+       """Check that a `~astropy.units.Quantity` has equivalent units to
+       this metric.
 
        Parameters
        ----------
-       message : `str`
-          Log message.
-       level : `str`
-          Priority level of the log message.
+       quantity : `astropy.units.Quantity`
+           Quantity to be tested.
+
+       Returns
+       -------
+       is_equivalent : `bool`
+           `True` if the units are equivalent, meaning that the quantity
+           can be presented in the units of this metric. `False` if not.
+
+       See also
+       --------
+       astropy.units.is_equivalent
+
+       Examples
+       --------
+       Check that a quantity in arcseconds is compatible with a metric defined in arcminutes:
+
+       >>> import astropy.units as u
+       >>> from lsst.verify import Metric
+       >>> metric = Metric('example.test', 'Example', u.arcminute)
+       >>> metric.check_units(1.*u.arcsecond)
+       True
+
+       But mags are not a compatible unit:
+
+       >>> metric.check_units(21.*u.mag)
+       False
        """
+       if not quantity.unit.is_equivalent(self.unit):
+           return False
+       else:
+           return True
 
 .. _py-docstring-attribute-constants-structure:
 
