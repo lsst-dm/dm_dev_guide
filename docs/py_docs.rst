@@ -346,6 +346,28 @@ Hard-wrap text in docstrings to match the :ref:`line length allowed by the codin
    In the future we may require shorter line lengths specifically for docstrings.
    See :jira:`RFC-107`.
 
+.. _py-docstring-parameter-markup:
+
+Marking Up Parameter Names
+--------------------------
+
+The default reStructuredText role in docstrings is ``:py:obj:``.
+Sphinx automatically generates links when the API names are marked up in single backticks.
+For example: ```str``` or ```lsst.pipe.base.Struct```.
+
+You cannot use this role to mark up parameters, however.
+Instead, use the code literal role (double backticks) to mark parameters and return variables in monospace type.
+For example, the description for ``format`` references the ``should_plot`` parameter:
+
+.. code-block:: rst
+
+   Parameters
+   ----------
+   should_plot : `bool`
+       Plot the fit if `True`.
+   plot_format : `str`, optional
+       Format of the plot when ``should_plot`` is `True`.
+
 .. _py-docstring-sections:
 
 Numpydoc Sections in Docstrings
