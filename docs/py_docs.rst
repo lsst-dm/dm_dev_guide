@@ -708,44 +708,32 @@ This section should be used judiciously---only for errors that are non-obvious o
 See Also
 --------
 
-'See Also' is an optional section used to refer to related code.
-This section can be very useful, but should be used judiciously.
-The goal is to direct users to other functions they may not be aware of, or have easy means of discovering (by looking at the module docstring, for example).
-Routines whose docstrings further explain parameters used by this function are good candidates.
+Use the 'See also' section to link to related APIs that the user may not be aware of, or may not easily discover from other parts of the docstring.
+Here are some good uses of the 'See also' section:
 
-As an example, for a function such as ``numpy.cos``, we would have
+- If a function wraps another function, you may want to reference the lower-level function.
+- If a function is typically used with another API, you can reference that API.
+- If there is a family of closely related APIs, you might link to others in the family so a user can compare and choose between them easily.
+
+As an example, for a function such as ``numpy.cos``, we would have:
 
 .. code-block:: rst
 
-   See Also
+   See also
    --------
-   `sin` : Compute an element-wise Sine function.
-   `tan` : Compute an element-wise Tangent function.
+   sin
+   tan
 
-When referring to functions in the same sub-module, no prefix is needed, and the tree is searched upwards for a match.
-
-Prefix objects from other sub-modules appropriately by their greatest common namespace.
-E.g., whilst documenting a ``lsst.afw.tables`` module, refer to a class in ``lsst.afw.detection`` by
-
-.. code-block:: rst
-
-   `afw.detection.Footprint` : Regular detection footprint.
-
-When referring to an entirely different module or package, use the full namespace.
+Numpydoc assumes that the contents of the 'See also' section are API names, so don't wrap each name with backticks, as we do when describing types in :ref:`Parameters <py-docstring-parameters>` and :ref:`Returns <py-docstring-returns>`).
+No namespace prefix is needed when referring to functions in the same module.
+Providing the full namespace is always safe, though, and provides clarity to fellow developers:
 
 .. code-block:: rst
 
-   `astropy.table.Tables` : Flexible table data structures
-
-Functions may be listed without descriptions; this is preferable if the functionality is clear from the function name:
-
-.. code-block:: rst
-
-   See Also
+   See also
    --------
-   `func_a` : Function a with its description.
-   `func_b`, `func_c`, `func_d`
-   `func_e`
+   numpy.sin
+   numpy.tan
    
 .. _py-docstring-notes:
 
