@@ -352,6 +352,7 @@ For summaries of how these docstring sections are composed in specific contexts,
 - :ref:`py-docstring-class-structure`
 - :ref:`py-docstring-method-function-structure`
 - :ref:`py-docstring-attribute-constants-structure`
+- :ref:`py-docstring-property-structure`
 
 .. _py-docstring-short-summary:
 
@@ -992,11 +993,12 @@ Here's an example function:
 
 .. _py-docstring-attribute-constants-structure:
 
-Documenting Constants, Class Properties, and Attributes
-=======================================================
+Documenting Constants and Class Attributes
+==========================================
 
-Constants in modules, and properties and attributes in classes are all similar in that their values are accessed with arguments.
-At minimum, constants/properties/attributes should have a summary line, but can also have a more complete structure with sections:
+Constants in modules and attributes in classes are all documented similarly.
+At a minimum, they should have a summary line that includes the type.
+They can also have a more complete structure with these sections:
 
 1. :ref:`Short Summary <py-docstring-short-summary>`
 2. :ref:`Deprecation Warning <py-docstring-deprecation>` (if applicable)
@@ -1005,12 +1007,99 @@ At minimum, constants/properties/attributes should have a summary line, but can 
 5. :ref:`References <py-docstring-references>` (optional)
 6. :ref:`Examples <py-docstring-examples>` (optional)
 
-In the short summary, a description of the type should be included:
+For example:
 
 .. code-block:: py
 
    NAME = 'LSST'
-   """Name of the project (str)"""
+   """Name of the project (`str`)."""
+
+Note:
+
+- The docstring appears directly below the constant or class attribute.
+- The type is included in parentheses at the end of the summary line.
+
+Multi-section docstrings keep the type information in the summary line.
+For example:
+
+.. code-block:: py
+
+   PA1_DESIGN = 5. * u.mmag
+   """PA1 design specification (`astropy.units.Quantity`).
+
+   Notes
+   -----
+   The PA1 metric [1]_ is defined so that the rms of the unresolved source
+   magnitude distribution around the mean value (repeatability) will not
+   exceed PA1 millimag (median distribution for a large number of sources).
+
+   References
+   ----------
+   .. [1] Z. Ivezic and the LSST Science Collaboration. 2011, LSST Science
+      Requirements Document, LPM-17, URL https://ls.st/LPM-17
+   """
+
+In many classes, public attributes are set in the ``__init__`` method.
+The best way to document these public attributes is by declaring the attribute at the class level and including a docstring with that declaration:
+
+.. code-block:: python
+
+   class Metric(object):
+       """Verification metric.
+
+       [...]
+       """
+
+       name = None
+       """Name of the metric (`str`)."""
+
+       unit = None
+       """Units of the metric (`astropy.units.Unit`)."""
+
+       def __init__(name, unit):
+           self.name = name
+           self.unit = unit
+
+Private attributes (prefixed by underscores: ``self._myAttribute``) do not need to be documented with docstrings.
+
+.. _py-docstring-property-structure:
+
+Documenting Class Properties
+============================
+
+Properties are documented like :ref:`class attributes <py-docstring-attribute-constants-structure>` rather than methods.
+After all, properties are designed to appear to the user like simple attributes.
+
+For example:
+
+.. code-block:: python
+
+   class Measurement(object):
+
+       # ...
+
+       @property
+       def quantity(self):
+           """The measurement quantity (`astropy.units.Quantity`).
+           """
+           # ...
+
+       @quantity.setter
+       def quantity(self, q):
+           # ...
+
+       @property
+       def unit(self):
+           """Units of the measurement (`astropy.units.Unit`, read-only).
+           """
+           # ...
+
+Note:
+
+- Do not use the :ref:`Returns section <py-docstring-returns>` in the property's docstring.
+  Instead, include type information in the summary, as is done for :ref:`class attributes <py-docstring-attribute-constants-structure>`.
+- Only document the property's "getter" method, not the "setter" (if present).
+- If a property does not have a "setter" method, include the words ``read-only`` after the type information.
 
 Acknowledgements
 ================
