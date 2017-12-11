@@ -225,6 +225,29 @@ Class/method/function docstrings must be placed directly below the declaration, 
 
 Note that the class docstring takes the place of a docstring for the ``__init__`` method; ``__init__`` has no docstring.
 
+.. _py-docstring-attributes:
+
+Module Constants and Class Attributes
+-------------------------------------
+
+Docstrings for module-level variables and class attributes appear directly below their first declaration.
+For example:
+
+.. code-block:: python
+
+   MAX_ITER = 10
+   """Maximum number of iterations (`int`).
+   """
+
+
+   class MyClass(object):
+       """[...]
+       """
+
+       x = None
+       """Description of x attribute.
+       """
+
 .. _py-docstring-rst:
 
 ReStructuredText in Docstrings
