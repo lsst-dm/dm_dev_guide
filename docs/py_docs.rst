@@ -865,7 +865,13 @@ Module docstrings contain the following sections:
 3. :ref:`Extended Summary <py-docstring-extended-summary>` (optional)
 4. :ref:`See Also <py-docstring-see-also>` (optional)
 
-.. TODO Provide an example
+.. note::
+
+   Module docstrings aren't featured heavily in the documentation we generate and publish with Sphinx.
+   Avoid putting important end-user documentation in module docstrings.
+   Instead, write introductory and overview documentation in the module's *user guide* (the :file:`doc/` directories of Stack packages).
+
+   Module docstrings can still be useful for developer-oriented notes, though.
 
 .. _py-docstring-class-structure:
 
