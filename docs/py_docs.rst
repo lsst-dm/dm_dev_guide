@@ -878,7 +878,7 @@ Module docstrings contain the following sections:
 Documenting Classes
 ===================
 
-Class docstrings are placed directly after the class definition, and serve to document both the class as a whole, *and* the arguments passed to the ``__init__`` constructor.
+Class docstrings are placed directly after the class definition, and serve to document both the class as a whole *and* the arguments passed to the ``__init__`` constructor.
 Class docstrings contain the following sections:
 
 1. :ref:`Short Summary <py-docstring-short-summary>`
@@ -892,31 +892,34 @@ Class docstrings contain the following sections:
 9. :ref:`References <py-docstring-references>` (optional)
 10. :ref:`Examples <py-docstring-examples>` (optional)
 
+Here's an example of a class:
+
 .. code-block:: python
 
    class SkyCoordinate(object):
-       """Coordinate on the sky as Right Ascension and Declination.
+       """Equatorial coordinate on the sky as Right Ascension and Declination.
 
        Parameters
        ----------
-       ra : float
+       ra : `float`
           Right ascension (degrees).
-       dec : float
+       dec : `float`
           Declination (degrees).
        frame : {'icrs', 'fk5'}, optional
           Coordinate frame.
 
        Raises
        ------
-       `ValueError` : Input angles are outside range.
+       ValueError
+           Raised when input angles are outside range.
        
        See also
        --------
-       `GalacticCoordinate`
+       lsst.example.GalacticCoordinate
 
        Examples
        --------
-       To define the coordinate of the M31 galaxy,
+       To define the coordinate of the M31 galaxy:
 
        >>> m31_coord = SkyCoordinate(10.683333333, 41.269166667)
        SkyCoordinate(10.683333333, 41.269166667, frame='icrs')
