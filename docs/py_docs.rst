@@ -407,7 +407,7 @@ Parameters
 *For functions, methods and classes.*
 
 'Parameters' is a description of a function or method's arguments and their respective types.
-Arguments should be listed in the same order as they appear in the function or method signature.
+Parameters should be listed in the same order as they appear in the function or method signature.
 
 For example:
 
@@ -692,16 +692,37 @@ Raises
 
 *For classes, methods and functions.*
 
-'Raises' is an optional section detailing which errors get raised and under what conditions:
+'Raises' is an optional section for describing the exceptions that can be raised.
+You usually cannot document all possible exceptions that might get raised by the entire call stack.
+Instead, focus on:
+
+- Exceptions that are commonly raised.
+- Exceptions that are unique (custom exceptions, in particular).
+- Exceptions that are important to using an API.
+
+The 'Raises' section looks like this:
 
 .. code-block:: rst
 
    Raises
    ------
-   `IOError`
-       If the file could not be read.
+   IOError
+       Raised if the input file cannot be read.
+   TypeError
+       Raised if parameter ``example`` is an invalid type.
 
-This section should be used judiciously---only for errors that are non-obvious or have a large chance of getting raised.
+Don't wrap each exception's name with backticks, as we do when describing types in :ref:`Parameters <py-docstring-parameters>` and :ref:`Returns <py-docstring-returns>`).
+No namespace prefix is needed when referring to exceptions in the same module as the API.
+Providing the full namespace is often a good idea, though.
+
+The description text is indented by four spaces from the docstring's left justification.
+Like the description fields for :ref:`Parameters <py-docstring-parameters>` and :ref:`Returns <py-docstring-returns>`, the description can consist of multiple paragraphs and lists.
+
+Stylistically, write the first sentence of each description in the form:
+
+.. code-block:: text
+
+   Raised if [insert circumstance].
 
 .. _py-docstring-see-also:
 
