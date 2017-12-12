@@ -10,7 +10,7 @@ For more information about the DM's Jenkins continuous integration service, see 
 Running a stack-os-matrix job
 =============================
 
-1. Open the `stack-os-matrix dashboard <stack-os-matrix>`_ in a browser directly or by clicking on the **stack-os-matrix** job from the main dashboard at https://ci.lsst.codes.
+1. Open the `stack-os-matrix dashboard`_ in a browser directly or by clicking on the **stack-os-matrix** job from the main dashboard at https://ci.lsst.codes.
 
 2. Click on the **Run** button near the top of the page.
 
@@ -37,7 +37,7 @@ Running a stack-os-matrix job
 Monitoring the run status
 =========================
 
-Your new job is added to the top of the table on the `stack-os-matrix dashboard <stack-os-matrix>`_.
+Your new job is added to the top of the table on the `stack-os-matrix dashboard`_.
 Click on the row to see a detail page for the run.
 
 The pipeline diagram at the top of the detail page shows the status of the build on each supported platform.
@@ -56,6 +56,7 @@ For more complex build and test failures, it may be most efficient to inspect th
 You can find these :file:`*.failed` files, along with build logs, under the **Artifacts** tab from the run detail pages.
 You can even download all the logs and :file:`*.failed` files for a build by scrolling to the bottom and clicking on the **Download All** button.
 
+.. _`stack-os-matrix dashboard`:
 .. _`stack-os-matrix`: https://ci.lsst.codes/blue/organizations/jenkins/stack-os-matrix/activity
 .. _`lsst_ci`: https://github.com/lsst/lsst_ci
 .. _`lsst_dm_stack_demo`: https://github.com/lsst/lsst_dm_stack_demo
