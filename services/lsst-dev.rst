@@ -127,6 +127,7 @@ Name             Description
 ``devtoolset-6`` Updated compiler toolchain providing GCC 6.3.1.
 ``devtoolset-7`` Updated compiler toolchain providing GCC 7.1.1.
 ``git19``        The `Git`_ version control system version 1.9.4.
+``rh-git29``     The `Git`_ version control system version 2.9.3.
 ================ ================================================
 
 To enable a particular Software Collection use the ``scl`` command. For example:
@@ -152,7 +153,7 @@ If you are using `Bash`_ — the default shell on ``lsst-dev01`` — try placing
 .. code-block:: bash
 
    # User-specified space-delimited list of SCLs to enable.
-   desired_scls="git19 devtoolset-6"
+   desired_scls="rh-git29 devtoolset-6"
 
    # Only do anything if /usr/bin/scl is executable.
    if [ -x /usr/bin/scl ]; then
