@@ -11,7 +11,6 @@ Docstrings are read by developers, interactive Python users, and readers of our 
 This page describes how to write these docstrings in Numpydoc, DM's standard format:
 
 - :ref:`py-docstring-basics`.
-- :ref:`py-docstring-placement`.
 - :ref:`py-docstring-rst`.
 - :ref:`py-docstring-sections`.
 - :ref:`py-docstring-module-structure`.
@@ -153,101 +152,6 @@ Not:
       Python iterable whose values are summed.
    """
        pass
-
-.. _py-docstring-placement:
-
-Docstring Placement
-===================
-
-.. _py-docstring-module-placement:
-
-Modules
--------
-
-Module-level docstrings must be placed as close to the top of the Python file as possible: *below* any ``#!/usr/bin/env python`` and license statements, but *above* imports.
-See also: :ref:`style-guide-py-file-order`.
-
-Module docstrings should not be indented.
-For example:
-
-.. code-block:: python
-   
-   #
-   # LSST Data Management System
-   # See COPYRIGHT file at the top of the source tree.
-   #
-   # [...]
-   #
-   # You should have received a copy of the LSST License Statement and
-   # the GNU General Public License along with this program. If not,
-   # see <http://www.lsstcorp.org/LegalNotices/>.
-   #
-   """Summary of MyModule.
-
-   Extended discussion of my module.
-   """
-
-   import lsst.afw.table as afw_table
-   # [...]
-
-.. _py-docstring-class-method-function-placement:
-
-Classes, Methods, and Functions
--------------------------------
-
-Class, method, and function docstrings must be placed directly below the declaration, and indented according to the code scope:
-
-.. code-block:: python
-
-   class MyClass(object):
-       """Summary of MyClass.
-
-       Additional discussion.
-       """
-
-       def __init__(self):
-           pass
-
-       def method(self):
-           """Summary of method.
-
-           Extended Discussion of my method.
-           """
-           pass
-
-
-   def my_function():
-       """Summary of my_function.
-
-       Extended discussion of my_function.
-       """
-       pass
-
-The class docstring takes the place of a docstring for the ``__init__`` method.
-``__init__`` methods don't have docstrings.
-
-.. _py-docstring-attributes:
-
-Module Constants and Class Attributes
--------------------------------------
-
-Docstrings for module-level variables and class attributes appear directly below their first declaration.
-For example:
-
-.. code-block:: python
-
-   MAX_ITER = 10
-   """Maximum number of iterations (`int`).
-   """
-
-
-   class MyClass(object):
-       """[...]
-       """
-
-       x = None
-       """Description of x attribute.
-       """
 
 .. _py-docstring-rst:
 
@@ -896,7 +800,9 @@ For more information on doctest, see:
 Documenting Modules
 ===================
 
-Module docstrings are placed *after* the boilerplate and before any imports or other code.
+Sections in Module Docstrings
+-----------------------------
+
 Module docstrings contain the following sections:
 
 1. :ref:`Short Summary <py-docstring-short-summary>`
@@ -912,12 +818,45 @@ Module docstrings contain the following sections:
 
    Module docstrings can still be useful for developer-oriented notes, though.
 
+Placement of Module Docstrings
+------------------------------
+
+Module-level docstrings must be placed as close to the top of the Python file as possible: *below* any ``#!/usr/bin/env python`` and license statements, but *above* imports.
+See also: :ref:`style-guide-py-file-order`.
+
+Module docstrings should not be indented.
+For example:
+
+.. code-block:: python
+   
+   #
+   # LSST Data Management System
+   # See COPYRIGHT file at the top of the source tree.
+   #
+   # [...]
+   #
+   # You should have received a copy of the LSST License Statement and
+   # the GNU General Public License along with this program. If not,
+   # see <http://www.lsstcorp.org/LegalNotices/>.
+   #
+   """Summary of MyModule.
+
+   Extended discussion of my module.
+   """
+
+   import lsst.afw.table as afw_table
+   # [...]
+
 .. _py-docstring-class-structure:
 
 Documenting Classes
 ===================
 
 Class docstrings are placed directly after the class definition, and serve to document both the class as a whole *and* the arguments passed to the ``__init__`` constructor.
+
+Sections in Class Docstrings
+----------------------------
+
 Class docstrings contain the following sections:
 
 1. :ref:`Short Summary <py-docstring-short-summary>`
@@ -930,6 +869,25 @@ Class docstrings contain the following sections:
 8. :ref:`Notes <py-docstring-notes>` (optional)
 9. :ref:`References <py-docstring-references>` (optional)
 10. :ref:`Examples <py-docstring-examples>` (optional)
+
+Placement of Class Docstrings
+-----------------------------
+
+Class docstrings must be placed directly below the declaration, and indented according to the code scope:
+
+.. code-block:: python
+
+   class MyClass(object):
+       """Summary of MyClass.
+
+       [...]
+       """
+
+       def __init__(self):
+           pass
+
+Examples of Class Docstrings
+----------------------------
 
 Here's an example of a class:
 
@@ -972,6 +930,9 @@ Here's an example of a class:
 Documenting Methods and Functions
 =================================
 
+Sections in Method and Function Docstring Sections
+--------------------------------------------------
+
 Method and function docstrings contain the following sections:
 
 1. :ref:`Short Summary <py-docstring-short-summary>`
@@ -985,6 +946,43 @@ Method and function docstrings contain the following sections:
 9. :ref:`Notes <py-docstring-notes>` (optional)
 10. :ref:`References <py-docstring-references>` (optional)
 11. :ref:`Examples <py-docstring-examples>` (optional)
+
+Placement of Module and Function Docstrings
+-------------------------------------------
+
+Class, method, and function docstrings must be placed directly below the declaration, and indented according to the code scope:
+
+.. code-block:: python
+
+   class MyClass(object):
+       """Summary of MyClass.
+
+       [...]
+       """
+
+       def __init__(self):
+           pass
+
+       def method(self):
+           """Summary of method.
+
+           Extended Discussion of my method.
+           """
+           pass
+
+
+   def my_function():
+       """Summary of my_function.
+
+       Extended discussion of my_function.
+       """
+       pass
+
+Again, the :ref:`class docstring <py-docstring-class-structure>` takes the place of a docstring for the ``__init__`` method.
+``__init__`` methods don't have docstrings.
+
+Examples of Method and Function Docstrings
+------------------------------------------
 
 Here's an example function:
 
@@ -1034,6 +1032,9 @@ Here's an example function:
 Documenting Constants and Class Attributes
 ==========================================
 
+Sections in Constant and Class Attribute Docstrings
+---------------------------------------------------
+
 Constants in modules and attributes in classes are all documented similarly.
 At a minimum, they should have a summary line that includes the type.
 They can also have a more complete structure with these sections:
@@ -1045,17 +1046,36 @@ They can also have a more complete structure with these sections:
 5. :ref:`References <py-docstring-references>` (optional)
 6. :ref:`Examples <py-docstring-examples>` (optional)
 
+Placement of Constant and Class Attribute Docstrings
+----------------------------------------------------
+
+Docstrings for module-level variables and class attributes appear directly below their first declaration.
 For example:
+
+.. code-block:: python
+
+   MAX_ITER = 10
+   """Maximum number of iterations (`int`).
+   """
+
+
+   class MyClass(object):
+       """[...]
+       """
+
+       x = None
+       """Description of x attribute.
+       """
+
+Examples of Constant and Class Attribute Docstrings
+---------------------------------------------------
+
+Include the attribute or constant's type in parentheses at the end of the summary line:
 
 .. code-block:: py
 
    NAME = 'LSST'
    """Name of the project (`str`)."""
-
-Note:
-
-- The docstring appears directly below the constant or class attribute.
-- The type is included in parentheses at the end of the summary line.
 
 Multi-section docstrings keep the type information in the summary line.
 For example:
