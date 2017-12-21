@@ -1,13 +1,13 @@
 ########################
-Using the lsst-db Server
+Using the lsst-dev-db Server
 ########################
 
-``lsst-db`` is the development MySQL database server run by NCSA for LSST DM development work.
-The cname ``lsst-db.ncsa.illinois.edu`` directs to ``lsst10.ncsa.illinois.edu``.
+``lsst-dev-db`` is the development MySQL database server run by NCSA for LSST DM development work.
+The CNAMEs ``lsst-db.ncsa.illinois.edu`` and ``lsst10.ncsa.illinois.edu`` direct to ``lsst-dev-db.ncsa.illinois.edu`` to support historical usage of those hostnames.
 
 To get an account, see the :doc:`Onboarding Checklist </getting-started/onboarding>`.
 
-This page is designed to assist developers in their work with ``lsst-db``:
+This page is designed to assist developers in their work with ``lsst-dev-db``:
 
 #. :ref:`lsst-db-password`
 #. :ref:`lsst-db-auth`
@@ -17,7 +17,7 @@ This page is designed to assist developers in their work with ``lsst-db``:
 Account Password
 ================
 
-The ``lsst-db`` server does NOT use your NCSA account.
+The ``lsst-dev-db`` server does NOT use your NCSA account.
 
 After you receive your initial temporary password, change it as soon as possible as follows.
 
@@ -31,7 +31,7 @@ Then, log into MySQL:
 
 .. code-block:: bash
 
-   mysql -h lsst-db.ncsa.illinois.edu -u<userName> -p
+   mysql -h lsst-dev-db.ncsa.illinois.edu -u<userName> -p
    Password: <type temporary mysql password>
 
 And then, set a new password:
@@ -49,7 +49,7 @@ Create a ``db-auth.py`` configuration file with your mysql host, user, password 
 
 .. code-block:: python
 
-   config.database.authInfo["auth1"].host = "lsst-db.ncsa.illinois.edu"
+   config.database.authInfo["auth1"].host = "lsst-dev-db.ncsa.illinois.edu"
    config.database.authInfo["auth1"].user = "<user>"
    config.database.authInfo["auth1"].password = "<password>"
    config.database.authInfo["auth1"].port = 3306
@@ -60,7 +60,7 @@ You will also need to create a ``db-auth.paf`` file, because the ``pex_persisten
 
    database: {
        authInfo: {
-          host: lsst-db.ncsa.illinois.edu
+          host: lsst-dev-db.ncsa.illinois.edu
           port: 3306
           user: <user>
           password: <password> 
