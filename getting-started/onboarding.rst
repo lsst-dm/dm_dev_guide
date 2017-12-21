@@ -37,7 +37,7 @@ NCSA resources
 You'll also need account(s) for the LSST infrastructures hosted at NCSA:
 
 - Development Servers (`lsst-dev </services/lsst-dev.html>`_)
-- MySQL Database (`lsst-db </services/lsst-db.html>`_)
+- MySQL Database (`lsst-dev-db </services/lsst-db.html>`_)
 - `Nebula OpenStack </services/nebula/index.html>`_
 
 If you are missing any of these accounts, you can request one by sending the following to ``lsst-account _at_ ncsa.illinois.edu``:
