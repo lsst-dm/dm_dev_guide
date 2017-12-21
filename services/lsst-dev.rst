@@ -293,3 +293,19 @@ You may leave that running, or put it in the background and later use:
 Then you can open windows on ``lsst-dev01`` (with ``DISPLAY=:10``) and they will appear on your machine.
 If you now kill the :command:`xpra attach` on your machine, you'll lose those windows.
 When you reattach, they'll reappear.
+
+.. note::
+
+   :command:`xpra` requires the use of Python 2.
+
+   If you are using a Python 3 LSST Stack, you'll encounter a error like the following:
+
+   .. code-block:: bash
+
+      [...]
+      File "/ssd/lsstsw/stack3_20171021/stack/miniconda3-4.3.21-10a4fa6/Linux64/pyyaml/3.11.lsst2/lib/python/yaml/__init__.py", line 284
+        class YAMLObject(metaclass=YAMLObjectMetaclass):
+                                  ^
+      SyntaxError: invalid syntax
+
+   The solution in this case is to start ``xpra`` in a separate shell where you haven't yet ``setup`` the Python 3 LSST Stack.
