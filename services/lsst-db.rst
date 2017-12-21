@@ -1,6 +1,6 @@
-########################
+############################
 Using the lsst-dev-db Server
-########################
+############################
 
 ``lsst-dev-db`` is the development MySQL database server run by NCSA for LSST DM development work.
 The CNAMEs ``lsst-db.ncsa.illinois.edu`` and ``lsst10.ncsa.illinois.edu`` direct to ``lsst-dev-db.ncsa.illinois.edu`` to support historical usage of those hostnames.
