@@ -57,12 +57,15 @@ You should therefore enable ``devtoolset-6`` before proceeding:
 
   scl enable devtoolset-6 bash
 
-A regularly-updated LSST “shared stack” is available in :file:`/tigress/HSC/LSST/stack_tiger/` (note that the name of the cluster is embedded in the path).
+For more information on devtoolset usage, refer to :ref:`the main developer guide <lsst-dev-tools>`.
+
+Regularly-updated LSST “shared stacks” are provided on Tiger.
+Separate stacks are available providing Python versions 2 and 3, in :file:`/tigress/HSC/LSST/stack2_tiger/` and :file:`/tigress/HSC/LSST/stack3_tiger/` respectively.
 To get started, try:
 
 .. prompt:: bash
 
-  . /tigress/HSC/LSST/stack_tiger/loadLSST.bash
+  . /tigress/HSC/LSST/stack3_tiger/loadLSST.bash
   setup lsst_apps
 
 Perseus
@@ -81,12 +84,15 @@ You should therefore enable ``devtoolset-6`` before proceeding:
 
   scl enable devtoolset-6 bash
 
-A regularly-updated LSST “shared stack” is available in :file:`/tigress/HSC/LSST/stack_perseus/` (note that the name of the cluster is embedded in the path).
+For more information on devtoolset usage, refer to :ref:`the main developer guide <lsst-dev-tools>`.
+
+Regularly-updated LSST “shared stacks” are provided on Perseus.
+Separate stacks are available providing Python versions 2 and 3, in :file:`/tigress/HSC/LSST/stack2_perseus/` and :file:`/tigress/HSC/LSST/stack3_perseus/` respectively.
 To get started, try:
 
 .. prompt:: bash
 
-  . /tigress/HSC/LSST/stack_perseus/loadLSST.bash
+  . /tigress/HSC/LSST/stack3_perseus/loadLSST.bash
   setup lsst_apps
 
 Storage
