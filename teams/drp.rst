@@ -59,12 +59,13 @@ You should therefore enable ``devtoolset-6`` before proceeding:
 
 For more information on devtoolset usage, refer to :ref:`the main developer guide <lsst-dev-tools>`.
 
-A regularly-updated LSST “shared stack” is available in :file:`/tigress/HSC/LSST/stack_tiger/` (note that the name of the cluster is embedded in the path).
+Regularly-updated LSST “shared stacks” are provided on Tiger.
+Separate stacks are available providing Python versions 2 and 3, in :file:`/tigress/HSC/LSST/stack2_tiger/` and :file:`/tigress/HSC/LSST/stack3_tiger/` respectively.
 To get started, try:
 
 .. prompt:: bash
 
-  . /tigress/HSC/LSST/stack_tiger/loadLSST.bash
+  . /tigress/HSC/LSST/stack3_tiger/loadLSST.bash
   setup lsst_apps
 
 Perseus
