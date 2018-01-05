@@ -55,7 +55,7 @@ You should therefore enable ``devtoolset-6`` before proceeding:
 
 .. prompt:: bash
 
-  scl enable devtoolset-6 bash
+  module load rh/devtoolset/6
 
 For more information on devtoolset usage, refer to :ref:`the main developer guide <lsst-dev-tools>`.
 
@@ -82,7 +82,7 @@ You should therefore enable ``devtoolset-6`` before proceeding:
 
 .. prompt:: bash
 
-  scl enable devtoolset-6 bash
+  module load rh/devtoolset/6
 
 For more information on devtoolset usage, refer to :ref:`the main developer guide <lsst-dev-tools>`.
 
