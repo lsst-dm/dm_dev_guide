@@ -793,10 +793,10 @@ Makes it clear what the unit should do and especially all the things it is not s
 
 .. _style-guide-cpp-3-32:
 
-3-32. Parameters in functions SHOULD be declared in order of output, input, default input.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+3-32. Parameters in functions SHOULD be ordered to maximize consistency among overloads.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Keeps inputs together.
+Arguments common to all overloads of a function should precede those that differ between overloads.
 
 .. _style-guide-cpp-3-33:
 
