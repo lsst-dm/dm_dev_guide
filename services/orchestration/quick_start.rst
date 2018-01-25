@@ -34,7 +34,9 @@ below the Orchestration topic for more details.
 
       If you don't already have a MySQL user account on the
       ``lsst10.ncsa.illinois.edu`` MySQL server, you'll need to request one by
-      sending the following to ``lsst-account@ncsa.illinois.edu``:
+      `filing a JIRA ticket <https://jira.lsstcorp.org/secure/CreateIssueDetails!init.jspa?pid=12200&issuetype=10902&priority=10000>`_ in the IT Helpdesk Support (IHS) project.
+
+ Include the following information::
 
       - Your name
       - Institution and LSST affiliation
