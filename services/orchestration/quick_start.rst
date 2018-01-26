@@ -36,7 +36,7 @@ below the Orchestration topic for more details.
       ``lsst10.ncsa.illinois.edu`` MySQL server, you'll need to request one by
       `filing a JIRA ticket <https://jira.lsstcorp.org/secure/CreateIssueDetails!init.jspa?pid=12200&issuetype=10902&priority=10000>`_ in the IT Helpdesk Support (IHS) project.
 
- Include the following information::
+      Include the following information::
 
       - Your name
       - Institution and LSST affiliation
