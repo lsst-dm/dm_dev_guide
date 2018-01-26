@@ -33,7 +33,7 @@ The ``Verification Cluster`` runs the Simple Linux Utility for Resource Manageme
 The legacy NFS /home directories are available on the front end ``lsst-dev01`` (serving as the current
 home directories), but are not mounted on the compute nodes of the ``Verification Cluster``. 
 
-Report system issues by `filing a JIRA ticket <https://jira.lsstcorp.org/secure/CreateIssueDetails!init.jspa?pid=12200&issuetype=10901&priority=10000>`_ in the IT Helpdesk Support (IHS) project.
+Report system issues by `filing a JIRA ticket <https://jira.lsstcorp.org/secure/CreateIssueDetails!init.jspa?pid=12200&issuetype=10901&priority=10000&customfield_12211=12223&components=14205>`_ in the IT Helpdesk Support (IHS) project.
 
 
 .. _verification-password:

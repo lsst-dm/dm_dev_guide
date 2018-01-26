@@ -26,7 +26,7 @@ Overview of Cluster Resources
 - `System announcements <https://confluence.lsstcorp.org/display/LDMDG/DM+System+Announcements>`_ of the status and planned down-time.
 - `Real-time system status <http://lsst-web.ncsa.illinois.edu/nagios>`_ (requires login).
 - Reference/test data from SDSS DR7 for Stripe82 is located at: :file:`/lsst7/stripe82/dr7/runs`.
-- To report system issues, `file a JIRA ticket <https://jira.lsstcorp.org/secure/CreateIssueDetails!init.jspa?pid=12200&issuetype=10901&priority=10000>`_ in the IT Helpdesk Support (IHS) project.
+- To report system issues, `file a JIRA ticket <https://jira.lsstcorp.org/secure/CreateIssueDetails!init.jspa?pid=12200&issuetype=10901&priority=10000&customfield_12211=12223&components=14213>`_ in the IT Helpdesk Support (IHS) project.
 
 .. _lsst-dev-password:
 
