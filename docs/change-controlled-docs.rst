@@ -309,7 +309,8 @@ Follow these steps to upload a draft or released document to DocuShare:
    The number ``<N>`` in the ``docushare-v<N>`` tag is the number that appears in the **Version** column of the document’s version page.
    You can get to a document’s version page using the ``*`` shortlink (for example `https://ls.st/LDM-151* <https://ls.st/LDM-151*>`__).
 
-   The version URL used in the body of the tag message is the URL that the version number links to on the document’s version page, which may easily be obtained in most browers with a ``Copy Link'' context-menu operation on the version number.
+   The version URL used in the body of the tag message is the URL that the version number links to on the document’s version page.
+   Get this URL by selecting the version number link and using your browser's **Copy Link** command.
 
 .. seealso::
 
