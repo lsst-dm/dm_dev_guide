@@ -183,9 +183,9 @@ Follow these steps to submit a document to the CCB and release a new baselined v
 
          v<major.minor>
 
-         https://docushare.lsst.org/docushare/dsweb/Get/Version-<...>
+         https://docushare.lsst.org/docushare/dsweb/Get/Version-<...>/<filename>
 
-      The URL should point to the DocuShare version (same as the DocuShare tag).
+      The URL should point to the DocuShare version (same as the DocuShare tag you created in step 5.2 above).
 
    4. Backport the amendment commits made on the release branch back to the ``master`` branch:
 
@@ -298,9 +298,9 @@ Follow these steps to upload a draft or released document to DocuShare:
 
       DocuShare v<N>
 
-      https://docushare.lsst.org/<version-URL>
+      https://docushare.lsst.org/docushare/dsweb/Get/Version-<...>/<filename>
 
-   The version URL in the commit message is the URL of that version in DocuShare (see note).
+   The version URL in the commit message is the full URL of that version in DocuShare (see note).
 
 .. _slack-dm-docushare: https://lsstc.slack.com/messages/C7LTT2RJ7/
 
@@ -309,7 +309,7 @@ Follow these steps to upload a draft or released document to DocuShare:
    The number ``<N>`` in the ``docushare-v<N>`` tag is the number that appears in the **Version** column of the document’s version page.
    You can get to a document’s version page using the ``*`` shortlink (for example `https://ls.st/LDM-151* <https://ls.st/LDM-151*>`__).
 
-   The version URL used in the body of the tag message is the URL that the version number links to on the document’s version page.
+   The version URL used in the body of the tag message is the URL that the version number links to on the document’s version page, which may easily be obtained in most browers with a ``Copy Link'' context-menu operation on the version number.
 
 .. seealso::
 
