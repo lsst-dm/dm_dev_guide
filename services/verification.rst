@@ -99,7 +99,7 @@ The ``Verification Cluster`` SLURM is configured with 2 queues (partitions):
    - normal: 45 nodes, no run time limit.  For runs after your code is debugged.
    - debug:  3 nodes, 30 min run time limit.  For short testing & debugging runs.
 
-The ``normal`` queue is the default, so any debug jobs will need to be told to run in the debug queue. This can be done by adding ``-p debug`` to your sbatch command line, or adding the following to your job's batch file:
+The ``normal`` queue is the default, so any debug jobs will need to be told to run in the debug queue. This can be done by adding ``-p debug`` to your sbatch command line, or adding the following to your job's batch file::
 
      #SBATCH -p debug
 
