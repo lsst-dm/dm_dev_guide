@@ -1809,6 +1809,53 @@ Braced initialization may also be used in any context where the C++98 initializa
 While all of the above examples show objects being initialized in regular code, the same guidelines apply to the initialization of data members in an initialization list (though the assignment-like syntax can not be used in that context).
 
 
+.. _style-guide-cpp-5-27b:
+
+5-27b. Classes SHOULD explicitly declare or delete compiler-generated members
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+All new C++ classes SHOULD explicitly default or delete all constructors and assignment operators that may be synthesized by the compiler.
+Similarly, destructors should be explicitly defined using the ``default`` keyword as well when no custom implementation is needed.
+In practice, that means all classes should explicitly define the following five members using either ``default``, ``delete``, or a custom implementation (shown here defaulted):
+
+.. code-block:: cpp
+
+    class Foo {
+    public:
+        ...
+        Foo(Foo const &) = default;
+        Foo(Foo &&) = default;
+        Foo & operator=(Foo const &) = default;
+        Foo & operator=(Foo &&) = default;
+        ~Foo() = default;
+        ...
+    };
+
+Note that when using ``default``, these can be declared in the header and defined in a source file:
+
+.. code-block:: cpp
+
+    // in .h
+    class Foo {
+    public:
+        ...
+        Foo(Foo const &);
+        ...
+    };
+
+    // in .cc:
+    Foo::Foo(Foo const &) = default;
+
+The latter is slightly more verbose, but it protects downstream code from sensitivity to changes in the implementation of these members.
+
+Defining these members forces us to consider their behavior and judge whether the default behavior is in fact desired when implementing a new class.
+It also makes compilation errors appear sooner (rather than delaying them until a synthesized member is first needed).
+
+When these members cannot be defaulted, a comment explaining why SHOULD accompany the implementation.
+Because Doxygen will automatically generate trivial documentation for any declaration, explicit trivial documentation of defaulted members (e.g. "Copy constructor") should be avoided.
+
+Extremely small classes (e.g. dumb structs) or private/anonymous classes used only by a small amount of code are expected to be the only exceptions to this rule.
+
 .. _style-guide-cpp-5-28:
 
 5-28. Destructors MUST NOT throw exceptions.
