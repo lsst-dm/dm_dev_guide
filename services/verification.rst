@@ -108,30 +108,24 @@ one can use the SLURM command  ``sinfo``::
 
      % sinfo 
      PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
-     debug*       up   infinite      6  fail* lsst-verify-worker[05,10,17,23,27,47]
-     debug*       up   infinite     42   idle lsst-verify-worker[01-04,06-09,11-16,18-22,24-26,28-46,48]
+     normal*      up   infinite     15  alloc lsst-verify-worker[02-16]
+     normal*      up   infinite     30   idle lsst-verify-worker[01,17-45]
+     debug        up      30:00      1 drain* lsst-verify-worker48
+     debug        up      30:00      2   idle lsst-verify-worker[46-47]
 
      % sinfo  -N -l --states="idle"
-     Thu Sep 15 08:28:52 2016
-     NODELIST              NODES PARTITION       STATE CPUS    S:C:T MEMORY TMP_DISK WEIGHT FEATURES REASON
-     lsst-verify-worker01      1    debug*        idle   48   48:1:1      1        0      1   (null) none
-     lsst-verify-worker02      1    debug*        idle   48   48:1:1      1        0      1   (null) none
-     lsst-verify-worker03      1    debug*        idle   48   48:1:1      1        0      1   (null) none
-     lsst-verify-worker04      1    debug*        idle   48   48:1:1      1        0      1   (null) none
-     lsst-verify-worker06      1    debug*        idle   48   48:1:1      1        0      1   (null) none
-     lsst-verify-worker07      1    debug*        idle   48   48:1:1      1        0      1   (null) none
-     lsst-verify-worker08      1    debug*        idle   48   48:1:1      1        0      1   (null) none
-     lsst-verify-worker09      1    debug*        idle   48   48:1:1      1        0      1   (null) none
-     lsst-verify-worker11      1    debug*        idle   48   48:1:1      1        0      1   (null) none
+     Wed Jan 31 10:53:52 2018
+     NODELIST              NODES PARTITION       STATE CPUS    S:C:T MEMORY TMP_DISK WEIGHT AVAIL_FE REASON
+     lsst-verify-worker01      1   normal*        idle   48   48:1:1      1        0      1   (null) none
+     lsst-verify-worker17      1   normal*        idle   48   48:1:1      1        0      1   (null) none
+     lsst-verify-worker18      1   normal*        idle   48   48:1:1      1        0      1   (null) none
+     lsst-verify-worker19      1   normal*        idle   48   48:1:1      1        0      1   (null) none
+     lsst-verify-worker20      1   normal*        idle   48   48:1:1      1        0      1   (null) none
      ... 
-     lsst-verify-worker40      1    debug*        idle   48   48:1:1      1        0      1   (null) none
-     lsst-verify-worker41      1    debug*        idle   48   48:1:1      1        0      1   (null) none
-     lsst-verify-worker42      1    debug*        idle   48   48:1:1      1        0      1   (null) none
-     lsst-verify-worker43      1    debug*        idle   48   48:1:1      1        0      1   (null) none
-     lsst-verify-worker44      1    debug*        idle   48   48:1:1      1        0      1   (null) none
-     lsst-verify-worker45      1    debug*        idle   48   48:1:1      1        0      1   (null) none
-     lsst-verify-worker46      1    debug*        idle   48   48:1:1      1        0      1   (null) none
-     lsst-verify-worker48      1    debug*        idle   48   48:1:1      1        0      1   (null) none
+     lsst-verify-worker44      1   normal*        idle   48   48:1:1      1        0      1   (null) none
+     lsst-verify-worker45      1   normal*        idle   48   48:1:1      1        0      1   (null) none
+     lsst-verify-worker46      1     debug        idle   48   48:1:1      1        0      1   (null) none
+     lsst-verify-worker47      1     debug        idle   48   48:1:1      1        0      1   (null) none
 
 
 In this view ``sinfo`` shows the nodes to reside within a single partition ``debug``, and the worker nodes show 48 possible hyperthreads on a node (in the future this may be reduced to reflect the actual 24 physical cores per node). At the time of this ``sinfo`` invocation there were 42 verification nodes available, shown by the "idle" state.  The SLURM configuration currently does not perform accounting, and places no quotas on users' total time usage. 
@@ -211,12 +205,12 @@ For a single node: ::
 
     % squeue
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-               108     debug     bash    daues  R       0:58      1 lsst-verify-worker01
+               108     debug     bash    daues  R       0:58      1 lsst-verify-worker46
     % hostname -f
     lsst-dev01.ncsa.illinois.edu
 
     % srun hostname -f
-    lsst-verify-worker01.ncsa.illinois.edu
+    lsst-verify-worker46.ncsa.illinois.edu
 
 One can observe that after the job resources have been granted, the user shell is still on 
 the login node ``lsst-dev01``. The command ``srun`` can be utilized to run commands on the job's allocated 
