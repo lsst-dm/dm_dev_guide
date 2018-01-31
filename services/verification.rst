@@ -94,6 +94,15 @@ For exhaustive documentation and specific use cases, we refer the user
 to such resources. On this page we display some simple examples for 
 getting started with submitting jobs to the ``Verification Cluster``. 
 
+The ``Verification Cluster`` SLURM is configured with 2 queues (partitions):
+
+   - normal: 45 nodes, no run time limit.  For runs after your code is debugged.
+   - debug:  3 nodes, 30 min run time limit.  For short testing & debugging runs.
+
+The ``normal`` queue is the default, so any debug jobs will need to be told to run in the debug queue. This can be done by adding ``-p debug`` to your sbatch command line, or adding the following to your job's batch file:
+
+     #SBATCH -p debug
+
 To examine the current state and availability of the nodes in the ``Verification Cluster``, 
 one can use the SLURM command  ``sinfo``::
 
