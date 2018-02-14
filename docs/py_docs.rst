@@ -1070,12 +1070,18 @@ For example:
 Examples of Constant and Class Attribute Docstrings
 ---------------------------------------------------
 
+Minimal constant or attribute example
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Include the attribute or constant's type in parentheses at the end of the summary line:
 
 .. code-block:: py
 
    NAME = 'LSST'
    """Name of the project (`str`)."""
+
+Multi-section docstrings
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Multi-section docstrings keep the type information in the summary line.
 For example:
@@ -1097,28 +1103,43 @@ For example:
       Requirements Document, LPM-17, URL https://ls.st/LPM-17
    """
 
+Attributes set in \_\_init\_\_ methods
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 In many classes, public attributes are set in the ``__init__`` method.
 The best way to document these public attributes is by declaring the attribute at the class level and including a docstring with that declaration:
 
 .. code-block:: python
+   :emphasize-lines: 12-18
 
    class Metric(object):
        """Verification metric.
 
-       [...]
+       Parameters
+       ----------
+       name : `str`
+           Name of the metric.
+       unit : `astropy.units.Unit`
+           Units of the metric.
        """
 
        name = None
-       """Name of the metric (`str`)."""
+       """Name of the metric (`str`).
+       """
 
        unit = None
-       """Units of the metric (`astropy.units.Unit`)."""
+       """Units of the metric (`astropy.units.Unit`).
+       """
 
-       def __init__(name, unit):
+       def __init__(self, name, unit):
            self.name = name
            self.unit = unit
 
-Private attributes (prefixed by underscores: ``self._myAttribute``) do not need to be documented with docstrings.
+Notice that the :ref:`parameters <py-docstring-parameters>` to the ``__init__`` method are documented separately from the class attributes (highlighted).
+
+.. note::
+
+   Private attributes (prefixed by underscores: ``self._myAttribute``) do not need to be documented with docstrings.
 
 .. _py-docstring-property-structure:
 
