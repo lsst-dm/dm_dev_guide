@@ -17,6 +17,7 @@ This page describes how to write these docstrings in Numpydoc, DM's standard for
 - :ref:`py-docstring-class-structure`.
 - :ref:`py-docstring-method-function-structure`.
 - :ref:`py-docstring-attribute-constants-structure`.
+- :ref:`py-docstring-property-structure`.
 
 Treat the guidelines on this page as an extension of the :doc:`../coding/python_style_guide`.
 
