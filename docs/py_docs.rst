@@ -383,8 +383,6 @@ For example:
            X-axis coordinate for the second point (the origin, by default).
        y0 : `float`, optional
            Y-axis coordinate for the second point (the origin, by default).
-
-       [...]
        """
 
 Each parameter is declared with a line formatted as ``{name} : {type}`` that is justified to the docstring.
@@ -774,10 +772,14 @@ Comments explaining the examples should have blank lines both above and below th
 
 .. code-block:: rst
 
+   Examples
+   --------
+   A simple example:
+
    >>> np.add(1, 2)
    3
 
-   Comment explaining the second example
+   Comment explaining the second example:
 
    >>> np.add([1, 2], [3, 4])
    array([4, 6])
@@ -785,6 +787,10 @@ Comments explaining the examples should have blank lines both above and below th
 For tests with a result that is random or platform-dependent, mark the output as such:
 
 .. code-block:: rst
+
+   Examples
+   --------
+   An example marked as creating a random result:
 
    >>> np.random.rand(2)
    array([ 0.35773152,  0.38568979])  #random
@@ -845,7 +851,7 @@ For example:
    Extended discussion of my module.
    """
 
-   import lsst.afw.table as afw_table
+   import lsst.afw.table as afwTable
    # [...]
 
 .. _py-docstring-class-structure:
@@ -881,16 +887,21 @@ Class docstrings must be placed directly below the declaration, and indented acc
    class MyClass(object):
        """Summary of MyClass.
 
-       [...]
+       Parameters
+       ----------
+       a : `str`
+          Documentation for the ``a`` parameter.
        """
 
-       def __init__(self):
+       def __init__(self, a):
            pass
+
+The ``__init__`` method never has a docstring since the class docstring documents the constructor.
 
 Examples of Class Docstrings
 ----------------------------
 
-Here's an example of a class:
+Here's an example of a more comprehensive class docstring with :ref:`Short Summary <py-docstring-short-summary>`, :ref:`Parameters <py-docstring-parameters>`, :ref:`Raises <py-docstring-raises>`, :ref:`See Also <py-docstring-see-also>`, and :ref:`Examples <py-docstring-examples>` sections:
 
 .. code-block:: python
 
@@ -958,16 +969,16 @@ Class, method, and function docstrings must be placed directly below the declara
    class MyClass(object):
        """Summary of MyClass.
 
-       [...]
+       Extended discussion of MyClass.
        """
 
        def __init__(self):
            pass
 
-       def method(self):
+       def myMethod(self):
            """Summary of method.
 
-           Extended Discussion of my method.
+           Extended Discussion of myMethod.
            """
            pass
 
@@ -1054,6 +1065,7 @@ Docstrings for module-level variables and class attributes appear directly below
 For example:
 
 .. code-block:: python
+   :emphasize-lines: 1-3,10-12
 
    MAX_ITER = 10
    """Maximum number of iterations (`int`).
@@ -1061,7 +1073,7 @@ For example:
 
 
    class MyClass(object):
-       """[...]
+       """Example class for documenting attributes.
        """
 
        x = None
@@ -1111,7 +1123,7 @@ In many classes, public attributes are set in the ``__init__`` method.
 The best way to document these public attributes is by declaring the attribute at the class level and including a docstring with that declaration:
 
 .. code-block:: python
-   :emphasize-lines: 12-18
+   :emphasize-lines: 14-20
 
    class Metric(object):
        """Verification metric.
@@ -1122,6 +1134,8 @@ The best way to document these public attributes is by declaring the attribute a
            Name of the metric.
        unit : `astropy.units.Unit`
            Units of the metric.
+       package : `str`, optional
+           Name of the package where this metric is defined.
        """
 
        name = None
@@ -1132,9 +1146,10 @@ The best way to document these public attributes is by declaring the attribute a
        """Units of the metric (`astropy.units.Unit`).
        """
 
-       def __init__(self, name, unit):
+       def __init__(self, name, unit, package=None):
            self.name = name
            self.unit = unit
+           self._package = package
 
 Notice that the :ref:`parameters <py-docstring-parameters>` to the ``__init__`` method are documented separately from the class attributes (highlighted).
 
@@ -1155,8 +1170,6 @@ For example:
 .. code-block:: python
 
    class Measurement(object):
-
-       # ...
 
        @property
        def quantity(self):
