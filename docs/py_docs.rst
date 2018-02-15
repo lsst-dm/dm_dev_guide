@@ -18,6 +18,7 @@ This page describes how to write these docstrings in Numpydoc, DM's standard for
 - :ref:`py-docstring-method-function-structure`.
 - :ref:`py-docstring-attribute-constants-structure`.
 - :ref:`py-docstring-property-structure`.
+- :ref:`py-docstring-example-module`.
 
 Treat the guidelines on this page as an extension of the :doc:`../coding/python_style_guide`.
 
@@ -1194,10 +1195,19 @@ Note:
 - Only document the property's "getter" method, not the "setter" (if present).
 - If a property does not have a "setter" method, include the words ``read-only`` after the type information.
 
+.. _py-docstring-example-module:
+
+Complete Example Module
+=======================
+
+.. literalinclude:: snippets/numpydocExample.py
+   :language: python
+
 Acknowledgements
 ================
 
 These docstring guidelines are derived/adapted from the `NumPy <https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt>`_ and `Astropy <http://docs.astropy.org/en/stable/_sources/development/docrules.txt>`_ documentation.
+The example module is adapted from the `Napoleon documentation <http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html#example-numpy>`_.
 
 NumPy is Copyright © 2005-2013, NumPy Developers.
 
