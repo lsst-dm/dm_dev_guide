@@ -49,7 +49,7 @@ From the root GitHub page of a Stack repository (e.g., https://github.com/lsst/a
 The **summary** should be a concise one-sentence description the repository.
 These summaries are critical for browsing repositories at https://github.com/lsst and for GitHub search.
 
-The **hompage** should be set to the package's user guide page in the deployed software documentation (point to the 'latest' branch of the documentation).
+The **homepage** should be set to the package's user guide page in the deployed software documentation (point to the 'latest' branch of the documentation).
 
 .. _pkg-doc-readme:
 
@@ -86,6 +86,60 @@ We suggest this template:
 
    See LICENSE and COPYRIGHT files.
 
+.. _pkg-doc-copyright:
+
+COPYRIGHT
+---------
+
+We assert copyright information in a centralized ``COPYRIGHT`` file, located in the repository's root rather than attempting to track copyright in each file separately within a package.
+Using a ``COPYRIGHT`` file allows us to maintain copyright information more effectively than in source code comments.
+(See `RFC-45 <https://jira.lsstcorp.org/browse/RFC-45>`_ for background on this policy).
+
+Some code written before construction officially started will have an LSST Corporation copyright and this should not be changed unless it has erroneously been used for code after construction began in August 2015.
+During LSST construction, copyright is asserted by your employer and not centrally by AURA.
+
+The ``COPYRIGHT`` file should include a line for each legal entity that contributed to the package.
+A common example may look like:
+
+.. code-block:: text
+
+   Copyright 2012-2015 LSST Corporation
+   Copyright 2015-2017 Association of Universities for Research in Astronomy
+
+Where the year range is changed as appropriate.
+If the code in a package has not been touched since 2015 and you are working on it in 2018, do not say "2012-2018" but instead use "2012-2015, 2018".
+You can determine this by looking at the repository change history.
+
+.. note::
+   Previously it was common to see AURA/LSST in the copyright assignment line.
+   This is not a legal entity and the fully-expanded name of AURA should be used.
+
+Use a line per institution even if the years are the same:
+E.g.:
+
+.. code-block:: text
+
+   Copyright 2012-2015 LSST Corporation
+   Copyright 2012-2015 University of Washington
+   Copyright 2015-2018 Association of Universities for Research in Astronomy
+
+These ``COPYRIGHT`` files should be updated during development and may be robotically refreshed.
+Automatically updating the files requires people committing to the repository use their :ref:`institutional email address <git-setup-institutional-email>`.
+
+The downside of using a single ``COPYRIGHT`` file is that moving a file between packages requires that both the source and destination ``COPYRIGHT`` files may need to be amended, since the copyright information is not included in the file being moved.
+
+Standard Institutional Copyrights
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The institutions contributing to the Data Management software use the following copyright statements:
+
+* Association of Universities for Research in Astronomy
+* University of Washington
+* The Trustees of Princeton University
+* The Board of Trustees of the Leland Stanford Junior University, through SLAC National Accelerator Laboratory
+* University of Illinois Champaign-Urbana
+* California Institute of Technology
+
 .. _pkg-doc-license:
 
 LICENSE
@@ -93,45 +147,40 @@ LICENSE
 
 A ``LICENSE`` file in the repository's root is the canonical description of LSST's code licensing.
 
-The canonical source of this file's content is https://www.lsstcorp.org/LegalNotices/LsstLicenseStatement.txt, though ensure that it is named ``LICENSE`` in the repository.
+We use the GPLv3 license and a copy of it can be obtained from https://www.gnu.org/licenses/gpl.txt.
 
-.. _pkg-doc-copyright:
+.. _pkg-doc-code-preamble:
 
-COPYRIGHT
----------
+CODE PREAMBLE
+-------------
 
-We assert copyright information in a centralized ``COPYRIGHT`` file, located in the repository's root.
-Using a ``COPYRIGHT`` file allows us to maintain copyright information more effectively than in source code comments.
-(See `RFC-45 <https://jira.lsstcorp.org/browse/RFC-45>`_ for background on this policy).
-
-Default Copyright
-^^^^^^^^^^^^^^^^^
-
-By default, the ``COPYRIGHT`` file should look like:
+Each source file needs to include a short license and copyright statement.
+This should normally be included in a comment block at the top of the file and should take the following form:
 
 .. code-block:: text
 
-   Copyright AURA/LSST (2012-2015)
+    This file is part of %package_name%.
 
-Where the year range is changed as appropriate.
+    Developed for the LSST Data Management System.
+    This product includes software developed by the LSST Project
+    (http://www.lsst.org).
+    See the COPYRIGHT file at the top-level directory of this distribution
+    for details of code ownership.
 
-Complex Copyright Assignments
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
 
-If multiple institutions contributed to the code over the same period, each institution can be listed. E.g.:
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
 
-.. code-block:: text
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-   Copyright University of Washington and AURA/LSST (2012-2015)
-
-If multiple institutions contributed to the code, but at different times, then each institution can be listed on a separate copyright line:
-
-.. code-block:: text
-
-   Copyright AURA/LSST (2012-2015)
-   Copyright University of Washington (2010-2014)
-
-As per `RFC-45 <https://jira.lsstcorp.org/browse/RFC-45>`_, these ``COPYRIGHT`` files will be robotically refreshed.
+where the package name is stated explicitly at the top.
 
 .. _pkg-doc-contributing:
 
