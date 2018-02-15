@@ -54,7 +54,7 @@ The `pytest`_ scheme for discovering tests inside Python modules is much more fl
 In particular, care must be taken not to have free functions that use a ``test`` prefix or non-\ :class:`~unittest.TestCase` test classes that are named with a ``Test`` prefix in the test files.
 
 .. note::
-  When :command:`pytest` is run by :command:`scons` full warnings are reported, including :py:class:`~exceptions.DeprecationWarning`.
+  When :command:`pytest` is run by :command:`scons` full warnings are reported, including :py:class:`DeprecationWarning`.
   Previously these warnings were hidden in the test output but now they are more obvious, allowing you to fix any problems early.
 
 The tests/SConscript file
