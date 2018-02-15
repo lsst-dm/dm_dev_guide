@@ -1812,7 +1812,7 @@ While all of the above examples show objects being initialized in regular code, 
 .. _style-guide-cpp-5-27b:
 
 5-27b. Classes SHOULD explicitly declare or delete compiler-generated members
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 All new C++ classes SHOULD explicitly default or delete all constructors and assignment operators that may be synthesized by the compiler.
 Similarly, destructors should be explicitly defined using the ``default`` keyword as well when no custom implementation is needed.
