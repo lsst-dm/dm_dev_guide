@@ -395,7 +395,7 @@ epub_exclude_files = ['search.html']
 # Intersphinx configuration.
 # http://www.sphinx-doc.org/en/stable/ext/intersphinx.html
 intersphinx_mapping = {
-    'python': ('https://docs.python.org/2.7', None),
+    'python': ('https://docs.python.org/3', None),
     'astropy': ('http://docs.astropy.org/en/stable/', None),
     'numpy': ('http://docs.scipy.org/doc/numpy/', None),
     'pytest': ('http://pytest.org/latest', None),
