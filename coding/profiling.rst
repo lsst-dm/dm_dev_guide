@@ -3,7 +3,7 @@ Profiling
 #########
 
 It is important to generate a profile of code performance to understand where to focus optimization efforts.
-The following tools have been used effectively with Python and C++ code. 
+The following tools have been used effectively with Python and C++ code.
 
 Python Profiling
 ================
@@ -14,7 +14,7 @@ Function-level profiling
 ------------------------
 
 Consider the code in :file:`mosaic.py`.
-To profile it: 
+To profile it:
 
 .. code-block:: bash
 
@@ -35,10 +35,10 @@ The results are:
 .. code-block:: bash
 
    n calls (6698794 primitive calls) in 36.536 seconds
-    
+
      Ordered by: cumulative time
      List reduced from 4671 to 30 due to restriction <30>
-    
+
      ncalls  tottime  percall  cumtime  percall filename:lineno(function)
           1    0.004    0.004   36.538   36.538 /home/price/hsc/meas_mosaic/bin/mosaic.py:3(<module>)
           1    0.000    0.000   34.707   34.707 /data1a/ana/products2.1/Linux64/pipe_base/HSC-2.4.1a_hsc/python/lsst/pipe/base/cmdLineTask.py:243(parseAndRun)
@@ -74,7 +74,7 @@ The results are:
 It is often most useful to look at the ``cumtime`` column, which is the time spent in that function and what it calls.
 The results here show that 10/36 = 28% is being spent in ``readFits``, but 26/36 = 72% is devoted to I/O (``readCatalog``).
 That might suggest that some Python code should get pushed down to C++.
-If you do: 
+If you do:
 
 .. code-block:: python
 
@@ -141,7 +141,7 @@ There is a fancy ``cgi-bin`` setup for browsing the profiles, but it requires se
 This may or may not be worth the trouble.
 
 Note that there is a `bug in igprof <https://github.com/igprof/igprof/issues/17>`_ (or its dependency, libunwind) that sometimes causes the process to hang.
-The recommended workaround is "to make sure you have a hot cache for your libraries (``cat *.so >/dev/null``)". 
+The recommended workaround is "to make sure you have a hot cache for your libraries (``cat *.so >/dev/null``)".
 A slightly more complete command is
 
 .. code-block:: bash

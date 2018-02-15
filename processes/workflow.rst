@@ -539,7 +539,7 @@ Authors should rebase (i.e., ``git rebase -i master``) their ticket branch to sq
 The end-goal is that a pull request, when merged, should have a coherent development story and look as if the code was written correctly the first time.
 
 There is *no need* to retain post-review commits in order to preserve code review discussions.
-So long as comments are made in the 'Conversation' and 'Files changed' tabs of the pull request GitHub will preserve that content.  
+So long as comments are made in the 'Conversation' and 'Files changed' tabs of the pull request GitHub will preserve that content.
 
 .. _git-commit-message-best-practices:
 
@@ -569,7 +569,7 @@ For example, it is useful to prefix the commit summary with the area of code bei
 Writing commit message body content
 -----------------------------------
 
-**The message body should be wrapped at 72 character line lengths**, and contain lists or paragraphs that explain the code changes. 
+**The message body should be wrapped at 72 character line lengths**, and contain lists or paragraphs that explain the code changes.
 The commit message body describes:
 
 - What the original issue was; the reader shouldn't have to look at JIRA to understand what prompted the code change.

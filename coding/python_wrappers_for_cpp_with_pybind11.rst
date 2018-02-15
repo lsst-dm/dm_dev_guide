@@ -30,27 +30,27 @@ Its header file looks like:
 
     #ifndef LSST_TMPL_EXAMPLEONE_H
     #define LSST_TMPL_EXAMPLEONE_H
-    
+
     #include <ostream>
     #include <string>
     #include <vector>
-    
+
     #include "ndarray.h"
-    
+
     namespace lsst {
     namespace tmpl {
-    
+
     class ExampleOne {
     public:
         enum State { RED = 0, ORANGE, GREEN };
-    
+
         static constexpr int someImportantConstant = 10;  ///< Important constant
-    
+
         /**
          * Default constructor: default construct an ExampleOne
          */
         explicit ExampleOne() : _state(RED), _value(someImportantConstant) {}
-    
+
         /**
          * Construct an ExampleOne from a filename and a state
          *
@@ -58,7 +58,7 @@ Its header file looks like:
          * @param[in] state  initial state (RED, ORANGE or GREEN, default RED).
          */
         explicit ExampleOne(std::string const& fileName, State state = RED);
-    
+
         /**
          * Copy constructor
          *
@@ -66,14 +66,14 @@ Its header file looks like:
          * @param[in] deep  make a deep copy
          */
         ExampleOne(ExampleOne const& other, bool deep = true);
-    
+
         /**
          * Get state
          *
          * @return current state (RED, ORANGE or GREEN, default RED).
          */
         State getState() const { return _state; }
-    
+
         /**
          * Set state
          *
@@ -81,7 +81,7 @@ Its header file looks like:
          * @param[in] state  initial state (RED, ORANGE or GREEN, default RED).
          */
         void setState(State state) { _state = state; }
-    
+
         /**
          * Compute something
          *
@@ -89,7 +89,7 @@ Its header file looks like:
          * @return a particular value
          */
         double computeSomething(int myParam) const;
-    
+
         /**
          * Compute something else
          *
@@ -98,7 +98,7 @@ Its header file looks like:
          * @return a particular value
          */
         double computeSomethingElse(int myFirstParam, double mySecondParam) const;
-    
+
         /**
          * Compute something else
          *
@@ -107,57 +107,57 @@ Its header file looks like:
          * @return a particular value
          */
         double computeSomethingElse(int myFirstParam, std::string anotherParam = "foo") const;
-    
+
         /**
          * Compute some vector
          *
          * @return a vector with results
          */
         std::vector<int> computeSomeVector() const;
-    
+
         /**
          * Do something with an input array
          *
          * @return some result
          */
         void doSomethingWithArray(ndarray::Array<int, 2, 2> const& arrayArgument);
-    
+
         /**
          * Initialize something with some value
          *
          * @param someValue some value to do something with
          */
         static void initializeSomething(std::string const& someValue);
-    
+
         bool operator==(ExampleOne const& other) { return _value == other._value; }
         bool operator!=(ExampleOne const& other) { return _value != other._value; }
-    
+
         ExampleOne& operator+=(ExampleOne const& other) {
             _value += other._value;
             return *this;
         }
-    
+
         friend std::ostream& operator<<(std::ostream&, ExampleOne const&);
-    
+
     private:
         State _state;  ///< Current state
         int _value;    ///< Some value
     };
-    
+
     ExampleOne operator+(ExampleOne lhs, ExampleOne const& rhs) {
         lhs += rhs;
         return lhs;
     }
-    
+
     std::ostream& operator<<(std::ostream& out, ExampleOne const& rhs) {
         out << "Example(" << rhs._value << ")";
         return out;
     }
-    
+
     }}  // namespace lsst::tmpl
-    
+
     #endif
-    
+
 .. _adding-dependencies:
 
 Adding dependencies
@@ -180,17 +180,17 @@ Following :ref:`our rules on file naming <style-guide-pybind11-module-naming>`, 
 .. code-block:: cpp
 
     #include "pybind11/pybind11.h"
-    
+
     #include "lsst/TMPL/ExampleOne.h"
-    
+
     namespace py = pybind11;
-    
+
     namespace lsst {
     namespace tmpl {
-    
+
     PYBIND11_PLUGIN(exampleOne) {
         py::module mod("exampleOne");
-    
+
         return mod.ptr();
 
     }}}  // lsst::tmpl
@@ -212,7 +212,7 @@ We wrap the class using the ``py::class_<T>`` template:
         py::module mod("exampleOne");
 
         py::class_<ExampleOne, std::shared_ptr<ExampleOne>> clsExampleOne(mod, "ExampleOne");
-    
+
         return mod.ptr();
     }
 
@@ -410,44 +410,44 @@ The end result of all the steps above looks like this:
 
     #include "pybind11/pybind11.h"
     #include "pybind11/stl.h"
-    
+
     #include "numpy/arrayobject.h"
     #include "numpy/arrayobject.h"
     #include "ndarray/pybind11.h"
-    
+
     #include "lsst/pex/exceptions/python/Exception.h"
-    
+
     #include "lsst/TMPL/ExampleOne.h"
-    
+
     namespace py = pybind11;
     using namespace pybind11::literals;
-    
+
     namespace lsst {
     namespace tmpl {
-    
+
     PYBIND11_PLUGIN(exampleOne) {
         py::module mod("exampleOne");
-    
+
         if (_import_array() < 0) {
                 PyErr_SetString(PyExc_ImportError, "numpy.core.multiarray failed to import");
                 return nullptr;
         };
-    
+
         pex::exceptions::python::declareException<ExampleError, pex::exceptions::RuntimeError>(
                 mod, "ExampleError", "RuntimeError");
-    
+
         py::class_<ExampleOne, std::shared_ptr<ExampleOne>> clsExampleOne(mod, "ExampleOne");
-    
+
         py::enum_<ExampleOne::State>(clsExampleOne, "State")
             .value("RED", ExampleOne::State::RED)
             .value("ORANGE", ExampleOne::State::ORANGE)
             .value("GREEN", ExampleOne::State::GREEN)
             .export_values();
-    
+
         clsExampleOne.def(py::init<>());
         clsExampleOne.def(py::init<std::string const&, ExampleOne::State>(), "fileName"_a, "state"_a=ExampleOne::State::RED);
         clsExampleOne.def(py::init<ExampleOne const&, bool>(), "other"_a, "deep"_a=true); // Copy constructor
-        
+
         clsExampleOne.def("getState", &ExampleOne::getState);
         clsExampleOne.def("setState", &ExampleOne::setState);
         clsExampleOne.def_property("state", &ExampleOne::getState, &ExampleOne::setState);
@@ -459,16 +459,16 @@ The end result of all the steps above looks like this:
         clsExampleOne.def("computeSomeVector", &ExampleOne::computeSomeVector);
         clsExampleOne.def("doSomethingWithArray", &ExampleOne::doSomethingWithArray);
         clsExampleOne.def_static("initializeSomething", &ExampleOne::initializeSomething);
-    
+
         clsExampleOne.def("__eq__", &ExampleOne::operator==, py::is_operator());
         clsExampleOne.def("__ne__", &ExampleOne::operator!=, py::is_operator());
         clsExampleOne.def("__iadd__", &ExampleOne::operator+=);
         clsExampleOne.def("__add__", [](ExampleOne const & self, ExampleOne const & other) { return self + other; }, py::is_operator());
-    
+
         return mod.ptr();
     }
 
-    }}  // lsst::tmpl 
+    }}  // lsst::tmpl
 
 Moving on
 ---------
@@ -483,31 +483,31 @@ We wrap the following two header files from the ``templates`` package, ``Example
 
     #ifndef LSST_TMPL_EXAMPLETWO_H
     #define LSST_TMPL_EXAMPLETWO_H
-    
+
     namespace lsst {
     namespace tmpl {
-    
+
     class ExampleBase {
     public:
         virtual int someMethod(int value) { return value + 1; }
-    
+
         virtual double someOtherMethod() = 0;
-    
+
         virtual ~ExampleBase() = default;
     };
-    
+
     class ExampleTwo : public ExampleBase {
     public:
         ExampleTwo() = default;
-    
+
         double someOtherMethod() override {
             return 4.0;
         }
     };
-    
+
     }
     }  // namespace lsst::tmpl
-    
+
     #endif
 
 and ``ExampleThree.h``:
@@ -516,27 +516,27 @@ and ``ExampleThree.h``:
 
     #ifndef LSST_TMPL_EXAMPLETHREE_H
     #define LSST_TMPL_EXAMPLETHREE_H
-    
+
     #include "lsst/TMPL/ExampleTwo.h"
-    
+
     namespace lsst {
     namespace tmpl {
-    
+
     template <typename T>
     class ExampleThree : public ExampleBase {
     public:
         ExampleThree(T value) : _value(value) { }
-    
+
         double someOtherMethod() override {
             return static_cast<double>(_value);
         }
     private:
         T _value;
     };
-    
+
     }
     }  // namespace lsst::tmpl
-    
+
     #endif
 
 Create wrapper files
@@ -547,21 +547,21 @@ Again following :ref:`our rules on file naming <style-guide-pybind11-module-nami
 .. code-block:: cpp
 
     #include "pybind11/pybind11.h"
-    
+
     #include "lsst/TMPL/ExampleTwo.h"
-    
+
     namespace py = pybind11;
     using namespace pybind11::literals;
-    
+
     namespace lsst {
     namespace tmpl {
-    
+
     PYBIND11_PLUGIN(exampleTwo) {
         py::module mod("exampleTwo");
-    
+
         return mod.ptr();
     }
-    
+
     }}  // lsst::tmpl
 
 And the same for ``exampleThree.cc``.
@@ -600,28 +600,28 @@ Following :ref:`this rule <style-guide-pybind11-declare-template-wrappers>` we d
 .. code-block:: cpp
 
     namespace {
-    
+
     template <typename T>
     static void declareExampleThree(py::module & mod, std::string const & suffix) {
         using Class = ExampleThree<T>;
         using PyClass = py::class_<Class, std::shared_ptr<Class>, ExampleBase>;
-    
+
         PyClass cls(mod, ("ExampleThree" + suffix).c_str());
-    
+
         cls.def(py::init<T>());
         cls.def("someOtherMethod", &Class::someOtherMethod);
     }
-    
+
     }
 
     PYBIND11_PLUGIN(exampleThree) {
         py::module::import("exampleTwo");  // See Cross module imports
 
         py::module mod("exampleThree");
-    
+
         declareExampleThree<int>(mod, "I");
         declareExampleThree<double>(mod, "D");
-    
+
         return mod.ptr();
     }
 
@@ -635,7 +635,7 @@ Following :ref:`this rule <style-guide-pybind11-declare-template-wrappers>` we d
       - ``I`` for ``int``,
       - ``L`` for ``long``,
       - ``F`` for ``float``,
-      - ``D`` for ``double`` and 
+      - ``D`` for ``double`` and
       - ``U`` for ``unsigned int``.
 
 Cross module imports
@@ -661,25 +661,25 @@ The end results for the C++ part of the wrappers (see next for the Python part) 
 .. code-block:: cpp
 
     #include "pybind11/pybind11.h"
-    
+
     #include "lsst/TMPL/ExampleTwo.h"
-    
+
     namespace py = pybind11;
     using namespace pybind11::literals;
-    
+
     namespace lsst {
     namespace tmpl {
-    
+
     PYBIND11_PLUGIN(exampleTwo) {
         py::module mod("exampleTwo");
-    
+
         py::class_<ExampleBase, std::shared_ptr<ExampleBase>> clsExampleBase(mod, "ExampleBase");
         clsExampleBase.def("someMethod", &ExampleBase::someMethod);
-    
+
         py::class_<ExampleTwo, std::shared_ptr<ExampleTwo>, ExampleBase> clsExampleTwo(mod, "ExampleTwo");
         clsExampleTwo.def(py::init<>());
         clsExampleTwo.def("someOtherMethod", &ExampleTwo::someOtherMethod);
-    
+
         return mod.ptr();
     }
 
@@ -690,37 +690,37 @@ and ``exampleThree.cc``:
 .. code-block:: cpp
 
     #include "pybind11/pybind11.h"
-    
+
     #include "lsst/TMPL/ExampleThree.h"
-    
+
     namespace py = pybind11;
     using namespace pybind11::literals;
-    
+
     namespace lsst {
     namespace tmpl {
     namespace {
-    
+
     template <typename T>
     static void declareExampleThree(py::module & mod, std::string const & suffix) {
         using Class = ExampleThree<T>;
         using PyClass = py::class_<Class, std::shared_ptr<Class>, ExampleBase>;
-    
+
         PyClass cls(mod, ("ExampleThree" + suffix).c_str());
-    
+
         cls.def(py::init<T>());
         cls.def("someOtherMethod", &Class::someOtherMethod);
     }
-    
+
     }
-    
+
     PYBIND11_PLUGIN(exampleThree) {
         py::module mod("exampleThree");
-    
+
         py::module::import("exampleTwo");
-    
+
         declareExampleThree<float>(mod, "F");
         declareExampleThree<double>(mod, "D");
-    
+
         return mod.ptr();
     }
 
@@ -746,14 +746,14 @@ We shall use the ``continueClass`` decorator to reopen the class and add a new m
 
     from __future__ import absolute_import
     from lsst.utils import continueClass
-    
+
     from .exampleTwo import ExampleTwo
-    
+
     __all__ = [] # import for side effects
 
     @continueClass
     class ExampleTwo:
-        
+
         def someExtraFunction(self, x):
             return x + self.someOtherMethod()
 
@@ -775,10 +775,10 @@ Create the appropriate ``__init__.py`` file, and put the following in
 
     from __future__ import absolute_import
     import numpy as np
-    
+
     from lsst.utils import TemplateMeta
     from .exampleThree import ExampleThreeF, ExampleThreeD
-    
+
     __all__ = [] # import for side effects
 
     class ExampleThree(metaclass=TemplateMeta):

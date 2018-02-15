@@ -42,9 +42,9 @@ You'll also need account(s) for the LSST infrastructures hosted at NCSA:
 
 If you are missing any of these accounts, you can request one by sending the following to ``lsst-account _at_ ncsa.illinois.edu``:
 
-- First and last name		
-- Email		
-- Sponsoring LSST manager		
+- First and last name
+- Email
+- Sponsoring LSST manager
 - LSST-DM subteam or project
 
 .. _getting-started-github:
@@ -55,7 +55,7 @@ GitHub and LSST organizations
 If you don't have one already, create an account on https://github.com.
 
 Next, ask your T/CAM to add you to the `lsst <https://github.com/lsst>`__ and `lsst-dm <https://github.com/lsst>`__ GitHub organizations, along with any relevant team organizations (send your GitHub username to your T/CAM).
-   
+
 .. seealso::
 
    - :doc:`/tools/git_setup` page for recommendations on setting up two-factor authentication and credential helpers for GitHub.
@@ -66,7 +66,7 @@ Community.lsst.org
 
 https://community.lsst.org is LSST's public-facing discussion and support forum.
 Browse the `forum-howto <https://community.lsst.org/tags/forum-howto>`_ tag to learn how to use the platform.
-   
+
 Create an account, and let your T/CAM know your username to get access to internal discussion categories.
 
 Slack

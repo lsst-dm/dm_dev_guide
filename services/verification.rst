@@ -31,7 +31,7 @@ The ``Verification Cluster`` runs the Simple Linux Utility for Resource Manageme
 ``lsst-dev01`` and the ``Verification Cluster`` utilize the General Parallel File System (GPFS) to provided shared-disk across all of the nodes.  The GPFS will have spaces for archived datasets and scratch space per user to support computation/analysis.
 
 The legacy NFS /home directories are available on the front end ``lsst-dev01`` (serving as the current
-home directories), but are not mounted on the compute nodes of the ``Verification Cluster``. 
+home directories), but are not mounted on the compute nodes of the ``Verification Cluster``.
 
 Report system issues by `filing a JIRA ticket <https://jira.lsstcorp.org/secure/CreateIssueDetails!init.jspa?pid=12200&issuetype=10901&priority=10000&customfield_12211=12223&components=14205>`_ in the IT Helpdesk Support (IHS) project.
 
@@ -53,18 +53,18 @@ GPFS Directory Spaces
 
 GPFS is available on the login node ``lsst-dev01`` and on all of the compute nodes of the ``Verification Cluster``. For convenience the bind mounts  :file:`/scratch`  , :file:`/project` , :file:`/datasets` ,  and :file:`/software`  have been created to provide views into corresponding spaces in GPFS.  Users will find directories
 
-:file:`/scratch/<username>` 
+:file:`/scratch/<username>`
 
 ready and available for use.  The per user :file:`/scratch` space is volatile with a 180 day purge policy
 and is not backed up.
 The :file:`/project` space is volatile, not backed up, and has no purge policy; cooperative self-management of this space for longer-lived but non-permanent files is expected.
 As examples, :file:`/project/<username>` directories could be created, or, for shared data, :file:`/project/<projectname>` directories might be appropriate.
 
-Project managed datasets will be stored within the :file:`/datasets` space.  The population of 
-:file:`/datasets` with reference data collections is still in the early stages; a first 
-example is the SDSS DR7 Stripe82 data, which can be found at 
+Project managed datasets will be stored within the :file:`/datasets` space.  The population of
+:file:`/datasets` with reference data collections is still in the early stages; a first
+example is the SDSS DR7 Stripe82 data, which can be found at
 
-:file:`/datasets/stripe82/dr7/runs` 
+:file:`/datasets/stripe82/dr7/runs`
 
 To add/change/delete datasets, see :doc:`Common Dataset Organization and Policy </services/datasets>`.
 
@@ -72,7 +72,7 @@ To add/change/delete datasets, see :doc:`Common Dataset Organization and Policy 
 
 Shared Software Stack in GPFS
 =============================
-A shared software stack on the GPFS file systems, suitable for computation on the 
+A shared software stack on the GPFS file systems, suitable for computation on the
 ``Verification Cluster``, has been provided and is maintained by Science Pipelines and
 is available under :file:`/software/lsstsw`.  This stack may be initialized via:  ::
 
@@ -87,12 +87,12 @@ SLURM Job Submission
 Documentation on using SLURM client commands and submitting jobs may be found
 at standard locations (e.g., a `quickstart guide <http://slurm.schedmd.com/quickstart.html>`_).
 In addition to the basic SLURM client commands, there are higher level tools
-that can serve to distribute jobs to a SLURM cluster, with one example being 
-the combination of `pipe_drivers <https://github.com/lsst/pipe_drivers>`_ and 
-`ctrl_pool   <https://github.com/lsst/ctrl_pool>`_ within LSST DM. 
-For exhaustive documentation and specific use cases, we refer the user 
-to such resources. On this page we display some simple examples for 
-getting started with submitting jobs to the ``Verification Cluster``. 
+that can serve to distribute jobs to a SLURM cluster, with one example being
+the combination of `pipe_drivers <https://github.com/lsst/pipe_drivers>`_ and
+`ctrl_pool   <https://github.com/lsst/ctrl_pool>`_ within LSST DM.
+For exhaustive documentation and specific use cases, we refer the user
+to such resources. On this page we display some simple examples for
+getting started with submitting jobs to the ``Verification Cluster``.
 
 The ``Verification Cluster`` SLURM is configured with 2 queues (partitions):
 
@@ -103,10 +103,10 @@ The ``normal`` queue is the default, so any ``debug`` jobs will need to be told 
 
      #SBATCH -p debug
 
-To examine the current state and availability of the nodes in the ``Verification Cluster``, 
+To examine the current state and availability of the nodes in the ``Verification Cluster``,
 one can use the SLURM command  ``sinfo``::
 
-     % sinfo 
+     % sinfo
      PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
      normal*      up   infinite     15  alloc lsst-verify-worker[02-16]
      normal*      up   infinite     30   idle lsst-verify-worker[01,17-45]
@@ -121,21 +121,21 @@ one can use the SLURM command  ``sinfo``::
      lsst-verify-worker18      1   normal*        idle   48   48:1:1      1        0      1   (null) none
      lsst-verify-worker19      1   normal*        idle   48   48:1:1      1        0      1   (null) none
      lsst-verify-worker20      1   normal*        idle   48   48:1:1      1        0      1   (null) none
-     ... 
+     ...
      lsst-verify-worker44      1   normal*        idle   48   48:1:1      1        0      1   (null) none
      lsst-verify-worker45      1   normal*        idle   48   48:1:1      1        0      1   (null) none
      lsst-verify-worker46      1     debug        idle   48   48:1:1      1        0      1   (null) none
      lsst-verify-worker47      1     debug        idle   48   48:1:1      1        0      1   (null) none
 
 
-In this view ``sinfo`` shows the nodes to reside within a single partition ``debug``, and the worker nodes show 48 possible hyperthreads on a node (in the future this may be reduced to reflect the actual 24 physical cores per node). At the time of this ``sinfo`` invocation there were 42 verification nodes available, shown by the "idle" state.  The SLURM configuration currently does not perform accounting, and places no quotas on users' total time usage. 
+In this view ``sinfo`` shows the nodes to reside within a single partition ``debug``, and the worker nodes show 48 possible hyperthreads on a node (in the future this may be reduced to reflect the actual 24 physical cores per node). At the time of this ``sinfo`` invocation there were 42 verification nodes available, shown by the "idle" state.  The SLURM configuration currently does not perform accounting, and places no quotas on users' total time usage.
 
 Simple SLURM jobs
 -----------------------------
 
-In submitting SLURM jobs to the ``Verification Cluster`` it is advisable to have the 
-software stack, data, and any utilities stored on the GPFS :file:`/scratch` , :file:`/datasets` , and/or :file:`/software` spaces so that all are reachable from ``lsst-dev01`` and each of the worker nodes.  Some simple SLURM job description files that make use of the ``srun`` command 
-are shown in this section. These are submitted to the queue from a standard login shell on the front end ``lsst-dev01`` using the SLURM client command ``sbatch``, and their status can be checked with the 
+In submitting SLURM jobs to the ``Verification Cluster`` it is advisable to have the
+software stack, data, and any utilities stored on the GPFS :file:`/scratch` , :file:`/datasets` , and/or :file:`/software` spaces so that all are reachable from ``lsst-dev01`` and each of the worker nodes.  Some simple SLURM job description files that make use of the ``srun`` command
+are shown in this section. These are submitted to the queue from a standard login shell on the front end ``lsst-dev01`` using the SLURM client command ``sbatch``, and their status can be checked with the
 command ``squeue`` :
 
 For a single task on a single node: ::
@@ -151,30 +151,30 @@ For a single task on a single node: ::
     srun sleep.sh
 
 
-    % cat sleep.sh 
-    #!/bin/bash 
+    % cat sleep.sh
+    #!/bin/bash
     hostname -f
     echo "Sleeping for 30 ... "
     sleep 30
 
 
-    Submit with : 
-    % sbatch test1.sl 
+    Submit with :
+    % sbatch test1.sl
 
-    Check status : 
+    Check status :
     % squeue
         JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
           109     debug     job1    daues  R       0:02      1 lsst-verify-worker11
 
 This example job was assigned jobid 109 by the SLURM scheduler, and consequently the standard output and error of the job were written to a default file :file:`slurm-109.out` in the current working directory. ::
 
-    % cat slurm-109.out 
+    % cat slurm-109.out
      lsst-verify-worker11.ncsa.illinois.edu
-     Sleeping for 30 ... 
+     Sleeping for 30 ...
 
 To distribute this script for execution to 6 nodes by 24 tasks per node (total 144 tasks), the form of the job description is:  ::
 
-    % cat test144.sl 
+    % cat test144.sl
     #!/bin/bash -l
     #SBATCH -p debug
     #SBATCH -N 6
@@ -185,11 +185,11 @@ To distribute this script for execution to 6 nodes by 24 tasks per node (total 1
     srun sleep.sh
 
 
-    Submit with : 
-    % sbatch test144.sl 
+    Submit with :
+    % sbatch test144.sl
 
-For these test submissions a user might submit from a working directory 
-in the :file:`/scratch/<username>`  space with the executable script :file:`sleep.sh` and the job description file located in the current working directory. 
+For these test submissions a user might submit from a working directory
+in the :file:`/scratch/<username>`  space with the executable script :file:`sleep.sh` and the job description file located in the current working directory.
 
 
 Interactive SLURM jobs
@@ -212,9 +212,9 @@ For a single node: ::
     % srun hostname -f
     lsst-verify-worker46.ncsa.illinois.edu
 
-One can observe that after the job resources have been granted, the user shell is still on 
-the login node ``lsst-dev01``. The command ``srun`` can be utilized to run commands on the job's allocated 
-compute nodes. Commands issued without ``srun``  will still be executed locally on ``lsst-dev01``. 
+One can observe that after the job resources have been granted, the user shell is still on
+the login node ``lsst-dev01``. The command ``srun`` can be utilized to run commands on the job's allocated
+compute nodes. Commands issued without ``srun``  will still be executed locally on ``lsst-dev01``.
 
 You can also use ``srun`` without first being allocated resources (via ``salloc``).
 For example, to immediately obtain a command-line prompt on a compute node: ::
@@ -226,9 +226,9 @@ SLURM Example Executing Tasks with Different Arguments
 ------------------------------------------------------
 
 In order to submit multiple tasks that each have distinct command line arguments (e.g., data ids),
-one can utilize the ``srun`` command with the ``--multi-prog`` option.   With this option, rather than 
-specifying a single script or binary for ``srun`` to execute, a filename is provided as the argument 
-of  the ``--multi-prog`` option. In this scenario an example job description file is:   :: 
+one can utilize the ``srun`` command with the ``--multi-prog`` option.   With this option, rather than
+specifying a single script or binary for ``srun`` to execute, a filename is provided as the argument
+of  the ``--multi-prog`` option. In this scenario an example job description file is:   ::
 
 
     % cat test1_24.sl
@@ -242,7 +242,7 @@ of  the ``--multi-prog`` option. In this scenario an example job description fil
 
     srun --output job%j-%2t.out --ntasks=24 --multi-prog cmds.24.conf
 
-This description specifies that 24 tasks will be executed on a single node, 
+This description specifies that 24 tasks will be executed on a single node,
 and the standard output/error from each of the tasks will be written to a unique filename with format specified by the argument to ``--output``. The 24 tasks to be executed are specified in the file
 :file:`cmds.24.conf`  provided as the argument to the  ``--multi-prog`` option. This
 commands file will have a format that maps SLURM process ids (SLURM_PROCID) to programs to execute
@@ -262,9 +262,9 @@ and their commands line arguments.  An example command file has the form : ::
 The wrapper script :file:`exec_sdss_i.sh` used in this example could serve to
 "set up the stack" and place the data ids on the command line of :file:`processCcd.py` : ::
 
-    % cat exec_sdss_i.sh 
+    % cat exec_sdss_i.sh
     #!/bin/bash
-    # Source an environment setup script that holds the resulting env vars from e.g., 
+    # Source an environment setup script that holds the resulting env vars from e.g.,
     #  . ${STACK_PATH}/loadLSST.bash
     #  setup lsst_distrib
     source /software/daues/envDir/env_lsststack.sh

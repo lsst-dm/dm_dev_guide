@@ -63,6 +63,6 @@ You will also need to create a ``db-auth.paf`` file, because the ``pex_persisten
           host: lsst-dev-db.ncsa.illinois.edu
           port: 3306
           user: <user>
-          password: <password> 
+          password: <password>
        }
    }

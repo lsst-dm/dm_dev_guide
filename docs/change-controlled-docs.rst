@@ -158,7 +158,7 @@ Follow these steps to submit a document to the CCB and release a new baselined v
 
       - Update `document's change record <https://lsst-texmf.lsst.io/lsstdoc.html#document-preamble>`_.
         The Project librarian or DM release manager, through the CCB, determines the document's semantic version.
-      
+
       In the second commit:
 
       - Remove the ``lsstdraft`` option from the document class.
@@ -202,7 +202,7 @@ Follow these steps to submit a document to the CCB and release a new baselined v
          .. code-block:: bash
 
             git cherry-pick <commit-sha>
-         
+
          **Do not** backport the commit that removed the ``lsstdraft`` option and set the ``\date``.
 
       3. Push the backport branch to GitHub for continuous integration validation, rebase, and merge to master.

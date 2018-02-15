@@ -5,7 +5,7 @@ Page Title
 ##########
 
 Titles have hash marks above and below.
- 
+
 By convention, titles and section headings are set off from surrounding text by
 a single blank line above and below. All levels of section headings may have
 named labels, which appear before the heading. We encourage you to add labels

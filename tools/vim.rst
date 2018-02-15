@@ -43,7 +43,7 @@ Explanation
 
 ``setlocal cino=:0,l1,g0,(0,u0,W2s``
    Set the C indent configuration.
-   
+
    - ``:0``: align case labels with the enclosing switch.
    - ``l1``: indent statements relative to the case label, not anything following.
    - ``g0``: align C++ scope (private/public) labels with the enclosing class.

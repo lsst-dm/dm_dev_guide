@@ -382,7 +382,7 @@ For example:
            X-axis coordinate for the second point (the origin, by default).
        y0 : `float`, optional
            Y-axis coordinate for the second point (the origin, by default).
-       
+
        [...]
        """
 
@@ -487,7 +487,7 @@ For Numpy arrays, try to include the dimensionality:
 
 .. code-block:: rst
 
-   coords : `numpy.ndarray`, (N, 2) 
+   coords : `numpy.ndarray`, (N, 2)
        [...]
    flags : `numpy.ndarray`, (N,)
        [...]
@@ -712,7 +712,7 @@ Providing the full namespace is always safe, though, and provides clarity to fel
    --------
    numpy.sin
    numpy.tan
-   
+
 .. _py-docstring-notes:
 
 Notes
@@ -828,7 +828,7 @@ Module docstrings should not be indented.
 For example:
 
 .. code-block:: python
-   
+
    #
    # LSST Data Management System
    # See COPYRIGHT file at the top of the source tree.
@@ -909,7 +909,7 @@ Here's an example of a class:
        ------
        ValueError
            Raised when input angles are outside range.
-       
+
        See also
        --------
        lsst.example.GalacticCoordinate

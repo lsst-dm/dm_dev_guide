@@ -4,9 +4,9 @@ Documenting JavaScript APIs with JSDoc
 
 
 
-.. _jsdoc-useful-tags: 
+.. _jsdoc-useful-tags:
 
-Frequently used tags 
+Frequently used tags
 ^^^^^^^^^^^^^^^^^^^^
 
 @desc <some description>
@@ -41,7 +41,7 @@ Frequently used tags
 
     .. code-block:: js
 
-       /** 
+       /**
 
        *@namespace firefly
 
@@ -137,7 +137,7 @@ Start from scratch:
 
 1. Add the dependent libraries to package.json
 
-    .. code-block:: text 
+    .. code-block:: text
 
        "eslint-plugin-jsx-a11y": "^0.6.2",
 
