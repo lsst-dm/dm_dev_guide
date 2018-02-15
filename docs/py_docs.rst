@@ -8,16 +8,36 @@ Documenting Python APIs with Docstrings
 
 We use Python docstrings to create reference documentation for our Python APIs.
 Docstrings are read by developers, interactive Python users, and readers of our online documentation.
-This page describes how to write these docstrings in Numpydoc, DM's standard format:
+This page describes how to write these docstrings in Numpydoc, DM's standard format.
+
+**Format reference:**
 
 - :ref:`py-docstring-basics`.
 - :ref:`py-docstring-rst`.
 - :ref:`py-docstring-sections`.
+
+  1. :ref:`Short Summary <py-docstring-short-summary>`
+  2. :ref:`Deprecation Warning <py-docstring-deprecation>`
+  3. :ref:`Extended Summary <py-docstring-extended-summary>`
+  4. :ref:`Parameters <py-docstring-parameters>`
+  5. :ref:`Returns <py-docstring-returns>` or :ref:`Yields <py-docstring-yields>`
+  6. :ref:`Other Parameters <py-docstring-other-parameters>`
+  7. :ref:`Raises <py-docstring-raises>`
+  8. :ref:`See Also <py-docstring-see-also>`
+  9. :ref:`Notes <py-docstring-notes>`
+  10. :ref:`References <py-docstring-references>`
+  11. :ref:`Examples <py-docstring-examples>`
+
+**How to format different APIs:**
+
 - :ref:`py-docstring-module-structure`.
 - :ref:`py-docstring-class-structure`.
 - :ref:`py-docstring-method-function-structure`.
 - :ref:`py-docstring-attribute-constants-structure`.
 - :ref:`py-docstring-property-structure`.
+
+**Learn by example:**
+
 - :ref:`py-docstring-example-module`.
 
 Treat the guidelines on this page as an extension of the :doc:`../coding/python_style_guide`.
