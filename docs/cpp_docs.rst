@@ -40,8 +40,8 @@ The beginning of both header and source code files should include
 
 2. A copyright and license block (note: **NOT** a Doxygen comment block) using :ref:`the standard text <pkg-doc-code-preamble>`.
 
-.. literalinclude:: snippets/license_preamble.txt
-   :language: text
+.. literalinclude:: snippets/license_preamble.cpp
+   :language: cpp
 
 .. _cpp-doxygen-basics:
 

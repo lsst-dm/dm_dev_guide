@@ -2,3 +2,5 @@ _build
 .DS_Store
 __pycache__
 .cache
+docs/snippets/license_preamble.py
+docs/snippets/license_preamble.cpp
