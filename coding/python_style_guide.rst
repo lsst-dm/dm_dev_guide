@@ -235,11 +235,8 @@ Each Python file MUST contain the standard license preamble
 A copyright and license block using :ref:`the standard text <pkg-doc-code-preamble>` MUST be included at the top of each file.
 This can be written as a Python comment.
 
-   .. code-block:: python
-
-      #
-      # <template text>
-      #
+.. literalinclude:: ../docs/snippets/license_preamble.txt
+   :language: text
 
 .. _style-guide-py-line-length:
 
