@@ -1216,10 +1216,6 @@ The best way to document these public attributes is by declaring the attribute a
 
 Notice that the :ref:`parameters <py-docstring-parameters>` to the ``__init__`` method are documented separately from the class attributes (highlighted).
 
-.. note::
-
-   Private attributes (prefixed by underscores: ``self._myAttribute``) do not need to be documented with docstrings.
-
 .. _py-docstring-property-structure:
 
 Documenting Class Properties
