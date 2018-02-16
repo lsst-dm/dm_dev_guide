@@ -35,10 +35,10 @@ To connect to the IN2P3 storage, set the following in :file:`~/.irodsEnv`:
 
 .. code-block:: text
 
-   irodsHost 'ccirods.in2p3.fr' 
-   irodsPort 5579 
-   irodsUserName 'lsstread' 
-   irodsHome '/lsst-fr/data' 
+   irodsHost 'ccirods.in2p3.fr'
+   irodsPort 5579
+   irodsUserName 'lsstread'
+   irodsHome '/lsst-fr/data'
    irodsZone 'lsst-fr'
 
 .. _ncsa-bulk-bbcp:

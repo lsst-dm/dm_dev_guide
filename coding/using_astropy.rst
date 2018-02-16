@@ -27,7 +27,6 @@ The following packages can be used internally in packages if they do not leak in
 * :mod:`astropy.constants`
 * :mod:`astropy.cosmology`
 * :mod:`astropy.visualization`
-* :mod:`astropy.vo`
 
 The interaction of Astropy with LSST C++ classes providing related functionality should be carefully monitored.
 If the code is already using ``afw`` it is strongly preferred that ``afw`` equivalents be used until such time as specific ``afw`` interfaces are deprecated.

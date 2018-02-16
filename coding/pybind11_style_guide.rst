@@ -339,17 +339,17 @@ For example:
 .. code-block:: cpp
 
     namespace sphgeom {
-     
+
     namespace {
-     
+
     ...  // declare functions...
-     
+
     }  // <anonymous>
-     
+
     PYBIND11_PLUGIN(...
        ...
     }
-     
+
     }  // sphgeom
     }  // lsst
 
@@ -367,9 +367,9 @@ For example:
     namespace lsst {
     namespace sphgeom {
     namespace python {
-     
+
     ...  // declare functions...
-     
+
     }  // python
     }  // sphgeom
     }  // lsst

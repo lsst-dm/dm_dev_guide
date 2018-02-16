@@ -35,7 +35,7 @@ CARMA, Geosoft, ALMA and Google retain their respective copyrights where appropr
 ===============
 
 This document lists C++ coding recommendations common in the C++ development community.
-The recommendations are based on established standards collected from a number of sources, individual experience, local requirements/needs, as well as suggestions given in [McConnell2004]_, [Henricson1992]_, [Henricson1992]_, [Hoff2008]_ and [Google]_. 
+The recommendations are based on established standards collected from a number of sources, individual experience, local requirements/needs, as well as suggestions given in [McConnell2004]_, [Henricson1992]_, [Henricson1992]_, [Hoff2008]_ and [Google]_.
 
 While a given development environment (IDE) can improve the readability of code by access visibility, color coding, automatic formatting and so on, the programmer should never rely on such features.
 Source code should always be considered larger than the IDE it is developed within and should be written in a way that maximizes its readability independent of any IDE.
@@ -180,7 +180,7 @@ Obscure abbreviations should be avoided: clarity is probably more important than
 The Database Schema document should be reviewed for existing appropriate names
 
 - Check the authoritative DB Column names for the current Project in order to select consistent names between persisted C++ variables and their corresponding DB Columns.
-  
+
 .. FIXME
 
    Refer to Section 3.3 Names Exposed to Database. (Note: Sect. 3.3 does not appear to exist!)
@@ -193,7 +193,7 @@ The Database Schema document should be reviewed for existing appropriate names
 .. code-block:: cpp
 
    class Line, SavingsAccount;
-   
+
    struct {
        float bar;
        int yoMama;
@@ -266,7 +266,7 @@ Do not put a space between the function name and the opening parenthesis when de
    private:
        void const _getPrivate() {}  // OK
    };
-   
+
    void getName() { ... }            // OK
    void computeTotalWidth() { ... }  // OK
 
@@ -346,7 +346,7 @@ Three options are available for using a namespace when defining symbols
 3. Put the definitions into a namespace block
 
    .. code-block:: cpp
-   
+
       namespace lsst {
       namespace foo {
       namespace bar {
@@ -448,7 +448,7 @@ It seems, though, that this practice now is gaining acceptance and that it is be
    void setTopic(Topic *topic)      // NOT: void setTopic (Topic *value)
                                     // NOT: void setTopic (Topic *aTopic)
                                     // NOT: void setTopic (Topic *x)
-    
+
    void connect(Database *database) // NOT: void connect (Database *db)
                                     // NOT: void connect (Database *oracleDB)
 
@@ -759,7 +759,7 @@ Where possible, put enums in appropriate classes, in which case the ``GRADE_*`` 
 
    class Grade {
        enum { HIGH, MIDDLE, LOW };
-   
+
        Grade() {}
        ...
    };
@@ -824,7 +824,7 @@ The cases that we have identified, and their appropriate suffixes, are:
    float yAstrom;
    float yAstromSigma;
    float xyAstromCov;
- 
+
 The postfix ``Err`` can easily be misinterpreted as error flags.
 Use the full ``Sigma`` since ``Sig`` can easily be misinterpreted as ``Signal``.
 
@@ -985,21 +985,21 @@ If an in-line function has a body of more than 5 lines, it should be placed outs
 
    #ifndef LSST_FOO_H
    #define LSST_FOO_H
-   
+
    class Foo {
    public:
        Foo();
        virtual ~Foo() {}
        int getValue() const { return _value; }
        inline int getAnotherValue() const;
-   
+
    private:
        int _value;
        int _anotherValue;
    };
-   
+
    int Foo::getAnotherValue() const { return _anotherValue; }
-   
+
    #endif  // LSST_FOO_H
 
 Empty constructor:
@@ -1097,10 +1097,10 @@ Place C includes first if any, then C++. Try to minimize dependencies and includ
 
    #include <fstream>
    #include <iomanip>
-    
+
    #include "ui/MainWindow.h"
    #include "ui/PropertiesDialog.h"
-    
+
    #include <Xm/ToggleB.h>
    #include <Xm/Xm.h>
 
@@ -1136,7 +1136,7 @@ Example ``using`` declaration:
 
    using lsst::canbus::CanIo
 
-Example using directive:     
+Example using directive:
 
 .. code-block:: cpp
 
@@ -1213,11 +1213,11 @@ Member declarations should be done with data members first, then member function
    public:
        int anInt;
        int doSomething();
-   
+
    protected:
        float aFloat;
        float doSomethingElse();
-   
+
    private:
        char _aChar;
        char doSomethingPrivately();
@@ -1298,7 +1298,7 @@ See also :ref:`Rule 5-13 <style-guide-cpp-5-13>`.
    // OK:
    float a, b, c;
    a = b = c = 8675.309;
-    
+
    // NOT OK:
    std::string a;
    int b;
@@ -1399,12 +1399,12 @@ The latter is regarded as such a common practice in C/C++ however that it can be
 
    // NO
    if (value == 1.0)    // Subject to roundoff error
-    
+
    // PREFERRED
    if (fabs(value - 1.0) < std::numeric_limits<float>::epsilon()) {
        ...
    }
-    
+
    // OK in specific situations
    if (b == 0.0 && sigma2 == 0.0) {
        _sigma2 = 1.0;    //avoid 0/0 at center of PSF
@@ -1446,7 +1446,7 @@ It is permissible to advance more than one variable in the loop control part of 
    for (iter ptr = vec.begin(), end = vec.end();  ptr != end; ++ptr, ++x) {
        sum += x*(*ptr);
    }
-    
+
    // NO:
    int sum = 0;
    for (int i = 0; i < 100; i++) {
@@ -1474,7 +1474,7 @@ Increase maintainability and readability. Make it crystal clear what controls th
    while (!isDone) {
        doSomething();
    }
-    
+
    // NO: Don't separate loop variable initialization from use
    bool isDone = false;
    [....lots of code here...]
@@ -1511,11 +1511,11 @@ Reducing the number of constructs used enhance readability.
    while (true) {
        doSomething();
    }
- 
+
    for (;;) { // NO!
        doSomething();
    }
- 
+
    while (1) { // NO!
        doSomething();
    }
@@ -1536,8 +1536,8 @@ The form ``for (;;)`` is not as apparent that this actually is an infinite loop.
 .. code-block:: cpp
 
    if ((elementNo < 0) || (elementNo > maxElement)||
-    
-    
+
+
        elementNo == lastElement) {
        ...
    }
@@ -1584,7 +1584,7 @@ This is important for both the readability and performance.
    if (isDone) {
      doCleanup();
    }
-    
+
    // Also OK:
    if (isDone) doCleanup();
 
@@ -1601,7 +1601,7 @@ This is useful when using a symbolic debugger: when written on a single line, it
    if ((fileHandle = open(fileName, "w"))) {
        ...
    }
-    
+
    // YES:
    fileHandle = open(fileName, "w");
    if (fileHandle) {
@@ -1627,7 +1627,7 @@ This is especially true for programmers new to C/C++.
    int getValue() {
        ...
    }
-    
+
    // NO:
    getvalue() {
    }
@@ -1645,7 +1645,7 @@ A programmer must never rely on this feature, since this might be confusing for 
    void MyDerivedClass::foo(double /* scalefactor */) {
            // OK
    };
-   
+
    void MyDerivedClass::foo(double) {
            // OK
    };
@@ -1708,7 +1708,7 @@ For example:
    class Telescope {
        Antenna& getAntenna(unsigned int i);
    };
-   
+
    const Telescope tel = obs.getTelescope();
    Antenna const& ant = tel.getAntenna(1);  // ERROR!
 
@@ -1729,20 +1729,20 @@ A default constructor must be provided. Avoid implicit copy constructors.
    class Year {
    private:
        int y;
-   
+
    public:
        explicit Year(int i) : y(i) {}
    };
-   
+
    Year y1 = 1947;        // illegal
    Year y2 = Year(1947);  // OK
    Year y3(1947);         // Better
-   
+
    // Example of unintended result and no error reported
    class String {
        int size;
        char *p;
-   
+
    public:
        String(int sz);  // constructor and implicit conversions
    };
@@ -1812,7 +1812,7 @@ While all of the above examples show objects being initialized in regular code, 
 .. _style-guide-cpp-5-27b:
 
 5-27b. Classes SHOULD explicitly declare or delete compiler-generated members
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 All new C++ classes SHOULD explicitly default or delete all constructors and assignment operators that may be synthesized by the compiler.
 Similarly, destructors should be explicitly defined using the ``default`` keyword as well when no custom implementation is needed.
@@ -1884,13 +1884,13 @@ In the example below, without a virtual destructor, the proper destructor will n
        Base() {}
        ~Base() {}  // Should be:   virtual ~Base() { }
    };
-   
+
    class Derived : public Base {
    public:
        Derived() {}
        ~Derived() {}
    };
-   
+
    void main() {
        Base *b = new Derived();
        delete b;  // Will not call Derived::~Derived() unless 'virtual ~Base()' was defined !
@@ -1918,7 +1918,7 @@ A different approach is to introduce a method from which the constant can be acc
 
    double total = 0.0;   // NOT: double total = 0;
    double speed = 3.0e8; // NOT: double speed = 3e8;
-    
+
    double a;
    double b;
    ...
@@ -1983,8 +1983,8 @@ The ramifications of declaring exceptions are spelled out in Stroustrup (3rd ed.
 
 A few rules of thumb:
 
-- A function declaration without a "throw" can throw any exception 
-- A declaration containing a "throw" can only throw the listed exceptions. 
+- A function declaration without a "throw" can throw any exception
+- A declaration containing a "throw" can only throw the listed exceptions.
 - Any exception not matching one of the declared exceptions (or a subclass of it) will be automatically rerouted to ``std::unexpected()``.
   The default implementation of this function is to call ``std::terminate()`` (which calls ``std::abort()``).
 - ``Throw()`` may be used to indicate that no exceptions are expected to be thrown.
@@ -2015,7 +2015,7 @@ This Rule will reduce unnecessary compiler warnings.
 
    // Preferred
    int const A_POWER_OF_TWO = 16;
-    
+
    // NO
    #define A_POWER_OF_TWO 16
 
@@ -2076,7 +2076,7 @@ It is strongly recommended to use a definition or abbreviated namespace name, as
 
    # Specify namespace explicitly in the definition
    lsst::foo::bar::myFunction(...) {...};
- 
+
    # Use an abbreviation for the namespace
    namespace fooBar lsst::foo::bar;
    fooBar::myFunction(...) {...};
@@ -2093,7 +2093,7 @@ See :ref:`Rule 3-6 <style-guide-cpp-3-6>` for an almost equivalent Rule.
 Sometimes implementation-specific details need to be globally visible (i.e. can't be in the private part of a class, or be declared static or in an anon namespace in a single file).
 For example, the fits i/o code in ``lsst::afw::image`` uses ``boost::gil`` internals but needs to be in a header file included by both :file:`Image.cc` and :file:`Mask.cc`; there are also Image traits classes.
 In keeping with the boost convention, such global information should be consigned to a ``*::`` detail namespace (in this case, ``lsst::afw::image::detail``).
-We should, of course, strive to minimize the amount of such information. 
+We should, of course, strive to minimize the amount of such information.
 
 5-44. The ``override`` specifier SHOULD be used whenever the intention is to override a function from a base class
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2110,11 +2110,11 @@ Because ``override`` already implies ``virtual``, virtual should not be included
    public:
        virtual void foo();
    };
-   
+
    class Derived : public Base {
    public:
        void foo() override;
-   
+
        void bar();
    };
 
@@ -2214,10 +2214,10 @@ Example 2 adds an additional line without significant increase in readability.
    class SomeClass : public BaseClass1, public BaseClass2, private BaseClass3 {
    public:
        SomeClass() {}
-   
+
    protected:
        ...
-   
+
    private:
        ...
    };
@@ -2303,13 +2303,13 @@ Documentation for function arguments may be placed after the arguments, as shown
    if (condition) {
        ...
    }
-    
+
    if (condition) {
        ...
    } else {
        ...
    }
-    
+
    if (condition) {
        ...
    } else if (condition) {
@@ -2318,7 +2318,7 @@ Documentation for function arguments may be placed after the arguments, as shown
        ...
    }
 
-This is equivalent to the Sun recommendation. 
+This is equivalent to the Sun recommendation.
 
 .. _style-guide-cpp-6-8:
 
@@ -2393,15 +2393,15 @@ This follows from the general block rule above.
       case ABC:
           statements;
       // Fallthrough
-  
+
       case DEF:
           statements;
           break;
-  
+
       case XYZ:
           statements;
           break;
-  
+
       default:
           statements;
           break;
@@ -2441,9 +2441,9 @@ If the ``catch`` clause is not going to re-throw the exception, a comment indica
 .. code-block:: cpp
 
    if (condition) statement;
-    
+
    while (condition) statement;
- 
+
    for (initialization; condition; update) statement;
 
 It is a common recommendation (Sun Java recommendation included) that brackets should always be used in all these cases.
@@ -2472,7 +2472,7 @@ This is general practice.
 
   a = b(nSigmaToGrow * sigma + 0.5);    // YES
   a = b((nSigmaToGrow * sigma) + 0.5);  // NO
- 
+
 .. _style-guide-cpp-whitespace:
 
 6.2. White Space
@@ -2599,7 +2599,7 @@ This:
     * point it at the moon, after checking
     * to see if the moon is blue.
     */
-   
+
    Antenna& ant = getAntenna("bima.ant1");
    bool moonIsBlue = (Planet.MOON.getColor() == "blue");
    if (ant.isPointedAt(Planet.SUN) && moonIsBlue) {
@@ -2634,7 +2634,7 @@ Commenting in the second way makes code difficult to read and difficult to modif
        // Do something
        something();
    }
-   
+
    // NOT:
    while (true) {
    // Do something now

@@ -8,29 +8,29 @@ This page will help you configure Emacs to be consistent with LSST's coding stan
   The config repo mentioned in this section does not exist.
 
   .. _emacs-cpp-mode:
-  
+
   C++
   ===
-  
+
   There is an Emacs mode to help you write code that conforms to the DM coding style..
   At present, it only knows about C++.
-  Fetch it from the repository: 
-  
+  Fetch it from the repository:
+
   .. code-block:: bash
-  
+
      git clone git://git.lsstcorp.org/LSST/DMS/devenv/build.git
-  
+
   Look for :file:`editors/lsst.el`.
-  There are also some handy functions defined in :file:`editors/lsst-utils.el` as well; activate them in your :file:`~/.emacs` resource file: 
-  
+  There are also some handy functions defined in :file:`editors/lsst-utils.el` as well; activate them in your :file:`~/.emacs` resource file:
+
   .. code-bock:: text
-  
+
      (load "lsst")
      (load "lsst-utils")
      (let ( (lsst t) (width 110) )
        (if lsst
            (lsst-c++-default))
-      
+
        (if (and lsst window-system)
            (progn
              (set-default 'fill-column width)
@@ -41,7 +41,7 @@ This page will help you configure Emacs to be consistent with LSST's coding stan
                           (set-frame-width frame (1+ ,width))))
              ))
        )
-      
+
      (add-hook 'lsst-c++-mode-hook
                '(lambda ()
                   (define-key c-mode-base-map "\e\C-a" 'c-beginning-of-defun)
@@ -57,7 +57,7 @@ Python
 ======
 
 The standard python-mode works well, but here are some potentially useful customizations for your :file:`~/.emacs`.
-Some are also useful in other languages, and so are implemented globally. 
+Some are also useful in other languages, and so are implemented globally.
 
 .. _emacs-python-whitespace:
 
@@ -77,7 +77,7 @@ It's handy to be able to see annoying whitespace (TABs and trailing whitespace):
 
    ;; Highlight trailing whitespace
    (setq-default show-trailing-whitespace t)
-    
+
    ;; Show tabs in Python; adapted from http://www.emacswiki.org/emacs/ShowWhiteSpace
    (defface nasty-tab-face
      '((t (:background "red"))) "Used for tabs.")
@@ -85,14 +85,14 @@ It's handy to be able to see annoying whitespace (TABs and trailing whitespace):
      '(("\t" . 'nasty-tab-face)))
    (add-hook 'python-mode-hook
              (lambda () (font-lock-add-keywords nil nasty-tab-keywords)))
-    
+
    (custom-set-faces
     ;; Your init file should contain only one instance of custom-set-faces.
     ;; If there is more than one, they won't work right.
     '(trailing-whitespace ((t (:background "misty rose"))))
    )
 
-If there are :file:`TABs` in your file, you can get rid of them with this function: 
+If there are :file:`TABs` in your file, you can get rid of them with this function:
 
 .. code-block:: text
 
@@ -113,7 +113,7 @@ Python debugger: pdb
 --------------------
 
 It's common to want to insert a :command:`pdb` trigger in the code (i.e., you get a :command:`pdb` prompt when the code hits the trigger).
-The following snippet allows you to do this with the function key (:kbd:`F8`): 
+The following snippet allows you to do this with the function key (:kbd:`F8`):
 
 .. code-block:: text
 
@@ -138,7 +138,7 @@ Pyflakes
 --------
 
 `pyflakes <https://github.com/pyflakes/pyflakes/>`_ validates python files, allowing you to find problems before you run your script in earnest.
-Having installed pyflakes (:command:`pip install pyflakes`), add the following to your :file:`~/.emacs` resource file so you can run pyflakes on the current buffer (by hitting :kbd:`F5`). 
+Having installed pyflakes (:command:`pip install pyflakes`), add the following to your :file:`~/.emacs` resource file so you can run pyflakes on the current buffer (by hitting :kbd:`F5`).
 
 .. code-block:: text
 
@@ -162,7 +162,7 @@ Having installed pyflakes (:command:`pip install pyflakes`), add the following t
          )
        )
      )
-    
+
    (define-minor-mode pyflakes-mode
        "Toggle pyflakes mode.
        With no argument, this command toggles the mode.
@@ -192,7 +192,7 @@ Installing it is a bit more complicated than usual:
 2. In :command:`emacs`, do
 
    .. code-block:: text
-      
+
       M-x package-refresh-contents <RET>
       M-x package-install <RET>
       jedi <RET>
@@ -212,7 +212,7 @@ Then activate and configure it in your :file:`~/.emacs`:
    (add-hook 'python-mode-hook 'auto-complete-mode)
    (setq ac-auto-show-menu nil);3.0)
    (define-key ac-mode-map (kbd "<C-tab>") 'auto-complete)
-    
+
    ;; Jedi: https://github.com/tkf/emacs-jedi for python auto-completion
    (setq jedi:setup-keys t)
    (add-hook 'python-mode-hook 'jedi:setup)
@@ -221,7 +221,7 @@ Then activate and configure it in your :file:`~/.emacs`:
    ;(setq jedi:key-goto-definition (kbd "C-.")); Keybind for command jedi:goto-definition (C-.)
    ;(setq jedi:goto-definition-pop-marker (kbd "C-,")) ; Goto the last point where goto-definition was called. (C-,
    (setq jedi:key-show-doc (kbd "C-/")) ; Keybind for command jedi:show-doc (C-C d)
-   ;(setq jedi:key-related-names (kbd "C-c r")); Keybind for command helm-jedi-related-names or anything-jedi-related-names (C-c r) 
+   ;(setq jedi:key-related-names (kbd "C-c r")); Keybind for command helm-jedi-related-names or anything-jedi-related-names (C-c r)
 
 Besides the auto-completion feature, this provides four potentially useful commands:
 
@@ -234,7 +234,7 @@ Besides the auto-completion feature, this provides four potentially useful comma
 :kbd:`C-/`
    Show documentation for the symbol under the cursor.
 
-See the `Jedi docs <http://tkf.github.io/emacs-jedi/#jedi:tooltip-method>`_ and `auto-complete docs <https://github.com/auto-complete/auto-complete/blob/master/doc/manual.md>`_ for further configuration options, and be prepared to spend some time tweaking it. 
+See the `Jedi docs <http://tkf.github.io/emacs-jedi/#jedi:tooltip-method>`_ and `auto-complete docs <https://github.com/auto-complete/auto-complete/blob/master/doc/manual.md>`_ for further configuration options, and be prepared to spend some time tweaking it.
 
 .. _emacs-general:
 
@@ -289,7 +289,7 @@ Package
 
 Emacs has a module library called `ELPA <http://tromey.com/elpa/>`_ (similar to PyPI for python and CPAN for perl; there are actually several different module libraries that share a common interface).
 The package installer is distributed with Emacs 24, but if you have an earlier version, you'll need to `install it yourself <http://tromey.com/elpa/install.html>`_.
-Then set it up and configure it: 
+Then set it up and configure it:
 
 .. code-block:: text
 
@@ -305,7 +305,7 @@ Then set it up and configure it:
 Paren matching
 --------------
 
-While there are modules (e.g., `autopair <https://github.com/capitaomorte/autopair>`_) that will automatically insert a matching close paren when you type an open paren (or quotes) you might prefer to type it yourself, and just be informed where the matching one is (so you can be sure you're closing the correct one). 
+While there are modules (e.g., `autopair <https://github.com/capitaomorte/autopair>`_) that will automatically insert a matching close paren when you type an open paren (or quotes) you might prefer to type it yourself, and just be informed where the matching one is (so you can be sure you're closing the correct one).
 
 .. code-block:: text
 

@@ -43,7 +43,7 @@ Inline math
 .. note::
 
    Inline styles can't be nested
-   
+
    For example, you *can't* write ``*see :ref:`this page <label>`*``.
 
    Inline markup also needs to be surrounded by white space, though trailing punctuation is fine.
@@ -128,7 +128,7 @@ Enumerated lists can be written similarly:
 
    1. First thing
    2. Second thing
-   
+
    or automatically enumerated,
 
    #. First thing
@@ -618,7 +618,7 @@ To omit the first two lines from a file:
       :language: py
       :lines: 2-
 
-Sophisticated inclusion patterns can be achieved by listing multiple spans, such as ``:lines: 3-10,20-``, which shows the first ten lines and all lines after the 20\ :sup:`th`\ . 
+Sophisticated inclusion patterns can be achieved by listing multiple spans, such as ``:lines: 3-10,20-``, which shows the first ten lines and all lines after the 20\ :sup:`th`\ .
 
 When including code example snippets from other files, it may be useful to remove indentation.
 Use the ``dedent`` field for that.

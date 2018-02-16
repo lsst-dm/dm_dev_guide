@@ -60,7 +60,7 @@ A technote citation, pointing to a Zenodo-backed DOI:
 .. code-block:: text
 
    @techreport{slater_2016_192828,
-     title        = {{False Positive Rates in the LSST Image 
+     title        = {{False Positive Rates in the LSST Image
                       Differencing Pipeline}},
      author       = {{Slater}, Colin and
                      {Jurić}, Mario and

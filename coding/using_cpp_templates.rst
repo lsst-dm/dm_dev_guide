@@ -77,7 +77,7 @@ These code examples didn't use either ``extern template`` or ``-no-implicit-temp
 The former, ``extern template`` is not (yet) in the C++ standard (but see C++ proposal N1987), while the latter is a :command:`g++` command line flag.
 What would we gain by using them?
 
-The example C++ in the previous section didn't give the compiler a choice; even if it wanted to instantiate ``Foo<int>`` in  :ref:`main.cc <cpp_template_example_main>` it simply didn't know enough. 
+The example C++ in the previous section didn't give the compiler a choice; even if it wanted to instantiate ``Foo<int>`` in  :ref:`main.cc <cpp_template_example_main>` it simply didn't know enough.
 However, if we'd included the full template implementation in :ref:`Foo.h <cpp_template_example_foo_h>`, matters would have been different; exactly what happens isn't specified by the C++ standard as you cannot tell what the compiler decided, but many compilers (including :command:`g++`) generate a definition of the class and its members in each object file, and then use the linker to remove duplicates.
 
 It is this behavior that is modified by ``extern template`` and ``-no-implicit-templates``; they instruct the compiler not to instantiate ``Foo<int>`` even if it could.
@@ -122,7 +122,7 @@ We're not using ``export``, but the compiler doesn't know that when it compiles 
 
    // user1.c:
    #include "out.h"
-   // use out() 
+   // use out()
 
 .. _cpp_template_example:
 

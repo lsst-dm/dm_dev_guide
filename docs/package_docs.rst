@@ -121,7 +121,7 @@ Complex Copyright Assignments
 If multiple institutions contributed to the code over the same period, each institution can be listed. E.g.:
 
 .. code-block:: text
-   
+
    Copyright University of Washington and AURA/LSST (2012-2015)
 
 If multiple institutions contributed to the code, but at different times, then each institution can be listed on a separate copyright line:
@@ -178,7 +178,7 @@ Whenever a GitHub Issue or Pull Request is made, GitHub will display a link to t
    ==================================
 
    All interaction within the LSST DM team, and between the community and
-   DM are goverened by the `LSST DM Team Culture and Conduct Standards`_. 
+   DM are goverened by the `LSST DM Team Culture and Conduct Standards`_.
 
    .. _LSST DM Team Culture and Conduct Standards: https://confluence.lsstcorp.org/display/LDMDG/Team+Culture+and+Conduct+Standards
 
@@ -272,9 +272,9 @@ To implement this pattern, every package's ``index.rst`` should follow this basi
    C++ Reference
    =============
 
-   API reference for C++ developers 
+   API reference for C++ developers
 
-We recommend that the entirety of a package's documentation be contained in a single ``index.rst`` file.   
+We recommend that the entirety of a package's documentation be contained in a single ``index.rst`` file.
 This minimal pagination makes it easier for readers for use their browser's search to find specific phrases.
 
 In the following sections we expand on key concepts in writing a package's user guide.
@@ -386,13 +386,13 @@ The *Python Reference* is generated automatically from the :doc:`Python docstrin
 The 'C++ Reference' Section
 ---------------------------
 
-The *C++ Reference* is generated automatically from the :doc:`doxygen-formatted C++ code comments <cpp_docs>`.  
+The *C++ Reference* is generated automatically from the :doc:`doxygen-formatted C++ code comments <cpp_docs>`.
 
 .. todo:: Explain how to setup the documentation directives
 
 .. _pkg-doc-acknowledgements:
 
 Acknowledgements
-================ 
+================
 
 We credit the `Astropy project <http://docs.astropy.org/en/stable/>`_ for developing the *Introduction - Getting Started - Using - API Reference* pattern for package documentation.

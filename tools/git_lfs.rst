@@ -85,7 +85,7 @@ Trying cloning a small data repository to test your configuration:
    **Configuration for Git LFS v1.2 and earlier***
 
    The legacy Git LFS client (versions *earlier* than 1.3) has two configuration differences compared to the modern configuration described above.
-   
+
    First, add these lines into your :file:`~/.gitconfig` file:
 
    .. literalinclude:: snippets/git_lfs_gitconfig_legacy.txt
@@ -95,7 +95,7 @@ Trying cloning a small data repository to test your configuration:
 
    .. literalinclude:: snippets/git_lfs_git-credentials_legacy.txt
       :language: text
-   
+
 .. _git-lfs-auth:
 
 Authenticating for push access
@@ -213,7 +213,7 @@ Add and commit the :file:`.lfsconfig` and :file:`.gitattributes` files to your r
 You can then push the repo up to github with
 
 .. code-block:: bash
-   
+
    git remote add origin <remote repository URL>
    git push origin master
 

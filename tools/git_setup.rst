@@ -99,7 +99,7 @@ A credential helper is especially important for working with our :doc:`Git LFS-b
 
 .. code-block:: bash
 
-   git config --global credential.helper osxkeychain  
+   git config --global credential.helper osxkeychain
 
 **Linux users** can use a credential *cache* to temporarily keep credentials in memory.
 To have your credentials cached for 1 hour (3600 seconds):
