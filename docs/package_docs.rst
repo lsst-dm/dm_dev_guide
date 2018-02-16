@@ -63,7 +63,7 @@ At the same time, READMEs aren't a primary source of Stack documentation.
 Thus we recommend you use your README to describe the purpose of the repository in slightly more detail than the GitHub summary line, and to point developers to the Stack documentation.
 At your discretion, READMEs can also be used for developer-centric notices that you feel shouldn't be included in the main documentation.
 
-To be consistent with the rest of the Stack's documentation, READMEs should be in reStructuredText format and named ``README.rst`` in the root of your repository.
+To be consistent with the rest of the Stack's documentation, READMEs should be in reStructuredText format and named :file:`README.rst` in the root of your repository.
 
 We suggest this template:
 
@@ -145,7 +145,7 @@ The institutions contributing to the Data Management software use the following 
 LICENSE
 -------
 
-A ``LICENSE`` file in the repository's root is the canonical description of LSST's code licensing.
+A :file:`LICENSE` file in the repository's root is the canonical description of LSST's code licensing.
 
 We use the GPLv3 license and a copy of it can be obtained from https://www.gnu.org/licenses/gpl.txt.
 
@@ -160,7 +160,7 @@ This should normally be included in a comment block at the top of the file and s
 .. literalinclude:: snippets/license_preamble.txt
    :language: text
 
-where the package name is stated explicitly at the top.
+where the package name is stated explicitly at the top to attach it to a particular :file:`COPYRIGHT` file.
 
 .. _pkg-doc-contributing:
 
@@ -168,7 +168,7 @@ CONTRIBUTING.rst
 ----------------
 
 `GitHub popularized the use of CONTRIBUTING files to help open source developers stay on the same page <https://github.com/blog/1184-contributing-guidelines>`_.
-Whenever a GitHub Issue or Pull Request is made, GitHub will display a link to the `CONTRIBUTING.rst` file.
+Whenever a GitHub Issue or Pull Request is made, GitHub will display a link to the :file:`CONTRIBUTING.rst` file.
 
 .. code-block:: rst
 
@@ -211,7 +211,7 @@ Whenever a GitHub Issue or Pull Request is made, GitHub will display a link to t
 
    .. _LSST DM Team Culture and Conduct Standards: https://confluence.lsstcorp.org/display/LDMDG/Team+Culture+and+Conduct+Standards
 
-.. note:: Some of the documentation URLs listed in this ``CONTRIBUTING.rst`` guide don't exist yet.
+.. note:: Some of the documentation URLs listed in this :file:`CONTRIBUTING.rst` guide don't exist yet.
 
 .. _pkg-doc-user-guide:
 
@@ -220,7 +220,7 @@ The Package's User Guide in docs/
 
 The heart of a Stack package's documentation are files in the ``docs/`` directory [#]_.
 This content is ingested by Sphinx, our documentation build tool, to publish user guides for each package.
-In the following section we describe how to write the main documentation file, ``docs/index.rst``.
+In the following section we describe how to write the main documentation file, :file:`docs/index.rst`.
 
 ..
    For complex packages, documentation can be split across many files in the docs/ directory.
@@ -245,7 +245,7 @@ For every package's user guide, we strongly recommend using the following sectio
 6. "Python Reference"
 7. "C++ Reference"
 
-To implement this pattern, every package's ``index.rst`` should follow this basic template:
+To implement this pattern, every package's :file:`index.rst` should follow this basic template:
 
 .. code-block:: rst
 
@@ -303,7 +303,7 @@ To implement this pattern, every package's ``index.rst`` should follow this basi
 
    API reference for C++ developers
 
-We recommend that the entirety of a package's documentation be contained in a single ``index.rst`` file.
+We recommend that the entirety of a package's documentation be contained in a single :file:`index.rst` file.
 This minimal pagination makes it easier for readers for use their browser's search to find specific phrases.
 
 In the following sections we expand on key concepts in writing a package's user guide.
