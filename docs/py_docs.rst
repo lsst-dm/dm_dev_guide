@@ -570,6 +570,9 @@ Returns
 
 'Returns' is an explanation of the returned values and their types, in the same format as :ref:`'Parameters' <py-docstring-parameters>`.
 
+Basic example
+^^^^^^^^^^^^^
+
 If a sequence of values is returned, each value may be separately listed, in order:
 
 .. code-block:: python
@@ -585,6 +588,9 @@ If a sequence of values is returned, each value may be separately listed, in ord
            Y-axis pixel coordinate.
        """
        return self._x, self._y
+
+Dictionary return types
+^^^^^^^^^^^^^^^^^^^^^^^
 
 If a return type is `dict`, ensure that the key-value pairs are documented in the description:
 
@@ -602,6 +608,30 @@ If a return type is `dict`, ensure that the key-value pairs are documented in th
           - ``y``: y-axis coordinate (`int`).
         """
         return {'x': self._x, 'y': self._y}
+
+
+Struct return types
+^^^^^^^^^^^^^^^^^^^
+
+``lsst.pipe.base.Struct``\ s, returned by Tasks for example, are documented the same way as dictionaries:
+
+.. code-block:: python
+
+   def getCoord(self):
+       """Get the point's pixel coordinate.
+
+       Returns
+       -------
+       result : `lsst.pipe.base.Struct`
+          Result struct with components:
+
+          - ``x``: x-axis coordinate (`int`).
+          - ``y``: y-axis coordinate (`int`).
+        """
+        return lsst.pipe.base.Struct(x=self._x, y=self._y)
+
+Naming return variables
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Note that the names of the returned variables do not necessarily correspond to the names of variables.
 In the previous examples, the variables ``x``, ``y``, and ``pixelCoord`` never existed in the method scope.
