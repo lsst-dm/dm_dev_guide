@@ -91,14 +91,12 @@ We suggest this template:
 COPYRIGHT
 ---------
 
-We assert copyright information in a centralized ``COPYRIGHT`` file, located in the repository's root rather than attempting to track copyright in each file separately within a package.
-Using a ``COPYRIGHT`` file allows us to maintain copyright information more effectively than in source code comments.
-(See `RFC-45 <https://jira.lsstcorp.org/browse/RFC-45>`_ for background on this policy).
+We assert copyright information in a centralized :file:`COPYRIGHT` file, located in the repository's root, instead of in individual source files.
+Using a :file:`COPYRIGHT` file allows us to maintain copyright information more effectively than in source code comments.
+(See :jira:`RFC-45` and `this article from the Software Freedom Law Center <https://softwarefreedom.org/resources/2012/ManagingCopyrightInformation.html>`_ for background on this policy).
 
-Some code written before construction officially started will have an LSST Corporation copyright and this should not be changed unless it has erroneously been used for code after construction began in August 2015.
 During LSST construction, copyright is asserted by your employer and not centrally by AURA.
-
-The ``COPYRIGHT`` file should include a line for each legal entity that contributed to the package.
+The :file:`COPYRIGHT` file should include a line for each legal entity that contributed to the package.
 A common example may look like:
 
 .. code-block:: text
@@ -123,10 +121,13 @@ E.g.:
    Copyright 2012-2015 University of Washington
    Copyright 2015-2018 Association of Universities for Research in Astronomy
 
-These ``COPYRIGHT`` files should be updated during development and may be robotically refreshed.
+These :file:`COPYRIGHT` files should be updated during development and may be robotically refreshed.
 Automatically updating the files requires people committing to the repository use their :ref:`institutional email address <git-setup-institutional-email>`.
 
-The downside of using a single ``COPYRIGHT`` file is that moving a file between packages requires that both the source and destination ``COPYRIGHT`` files may need to be amended, since the copyright information is not included in the file being moved.
+If you move source files between packages, remember to audit the :file:`COPYRIGHT` file and move copyright assignments between packages as necessary.
+
+.. note::
+  Some code written before construction officially started will have an LSST Corporation copyright and this should not be changed unless it has erroneously been used for code after construction began in August 2015.
 
 Standard Institutional Copyrights
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -139,6 +140,9 @@ The institutions contributing to the Data Management software use the following 
 * The Board of Trustees of the Leland Stanford Junior University, through SLAC National Accelerator Laboratory
 * University of Illinois Champaign-Urbana
 * California Institute of Technology
+
+Contributions from institutions or individuals outside of DM are accepted and the relevant copyright statement should be included in the file if appropriate.
+We do not require copyright assignment to AURA on external code contributions, but be aware that small patches are not generally sufficient to require assertion of copyright by the contributor.
 
 .. _pkg-doc-license:
 
