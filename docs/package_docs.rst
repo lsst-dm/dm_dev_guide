@@ -49,7 +49,7 @@ From the root GitHub page of a Stack repository (e.g., https://github.com/lsst/a
 The **summary** should be a concise one-sentence description the repository.
 These summaries are critical for browsing repositories at https://github.com/lsst and for GitHub search.
 
-The **hompage** should be set to the package's user guide page in the deployed software documentation (point to the 'latest' branch of the documentation).
+The **homepage** should be set to the package's user guide page in the deployed software documentation (point to the 'latest' branch of the documentation).
 
 .. _pkg-doc-readme:
 
@@ -63,7 +63,7 @@ At the same time, READMEs aren't a primary source of Stack documentation.
 Thus we recommend you use your README to describe the purpose of the repository in slightly more detail than the GitHub summary line, and to point developers to the Stack documentation.
 At your discretion, READMEs can also be used for developer-centric notices that you feel shouldn't be included in the main documentation.
 
-To be consistent with the rest of the Stack's documentation, READMEs should be in reStructuredText format and named ``README.rst`` in the root of your repository.
+To be consistent with the rest of the Stack's documentation, READMEs should be in reStructuredText format and named :file:`README.rst` in the root of your repository.
 
 We suggest this template:
 
@@ -86,52 +86,85 @@ We suggest this template:
 
    See LICENSE and COPYRIGHT files.
 
-.. _pkg-doc-license:
-
-LICENSE
--------
-
-A ``LICENSE`` file in the repository's root is the canonical description of LSST's code licensing.
-
-The canonical source of this file's content is https://www.lsstcorp.org/LegalNotices/LsstLicenseStatement.txt, though ensure that it is named ``LICENSE`` in the repository.
-
 .. _pkg-doc-copyright:
 
 COPYRIGHT
 ---------
 
-We assert copyright information in a centralized ``COPYRIGHT`` file, located in the repository's root.
-Using a ``COPYRIGHT`` file allows us to maintain copyright information more effectively than in source code comments.
-(See `RFC-45 <https://jira.lsstcorp.org/browse/RFC-45>`_ for background on this policy).
+We assert copyright information in a centralized :file:`COPYRIGHT` file, located in the repository's root, instead of in individual source files.
+Using a :file:`COPYRIGHT` file allows us to maintain copyright information more effectively than in source code comments.
+(See :jira:`RFC-45` and `this article from the Software Freedom Law Center <https://softwarefreedom.org/resources/2012/ManagingCopyrightInformation.html>`_ for background on this policy).
 
-Default Copyright
-^^^^^^^^^^^^^^^^^
-
-By default, the ``COPYRIGHT`` file should look like:
+During LSST construction, copyright is asserted by your employer and not centrally by AURA.
+The :file:`COPYRIGHT` file should include a line for each legal entity that contributed to the package.
+A common example may look like:
 
 .. code-block:: text
 
-   Copyright AURA/LSST (2012-2015)
+   Copyright 2012-2015 LSST Corporation
+   Copyright 2015-2017 Association of Universities for Research in Astronomy
 
 Where the year range is changed as appropriate.
+If the code in a package has not been touched since 2015 and you are working on it in 2018, do not say "2012-2018" but instead use "2012-2015, 2018".
+You can determine this by looking at the repository change history.
 
-Complex Copyright Assignments
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. note::
+   Previously it was common to see AURA/LSST in the copyright assignment line.
+   This is not a legal entity and the fully-expanded name of AURA should be used.
 
-If multiple institutions contributed to the code over the same period, each institution can be listed. E.g.:
-
-.. code-block:: text
-
-   Copyright University of Washington and AURA/LSST (2012-2015)
-
-If multiple institutions contributed to the code, but at different times, then each institution can be listed on a separate copyright line:
+Use a line per institution even if the years are the same:
+E.g.:
 
 .. code-block:: text
 
-   Copyright AURA/LSST (2012-2015)
-   Copyright University of Washington (2010-2014)
+   Copyright 2012-2015 LSST Corporation
+   Copyright 2012-2015 University of Washington
+   Copyright 2015-2018 Association of Universities for Research in Astronomy
 
-As per `RFC-45 <https://jira.lsstcorp.org/browse/RFC-45>`_, these ``COPYRIGHT`` files will be robotically refreshed.
+These :file:`COPYRIGHT` files should be updated during development and may be robotically refreshed.
+Automatically updating the files requires people committing to the repository use their :ref:`institutional email address <git-setup-institutional-email>`.
+
+If you move source files between packages, remember to audit the :file:`COPYRIGHT` file and move copyright assignments between packages as necessary.
+
+.. note::
+  Some code written before construction officially started will have an LSST Corporation copyright and this should not be changed unless it has erroneously been used for code after construction began in August 2015.
+
+Standard Institutional Copyrights
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The institutions contributing to the Data Management software use the following copyright statements:
+
+* Association of Universities for Research in Astronomy
+* University of Washington
+* The Trustees of Princeton University
+* The Board of Trustees of the Leland Stanford Junior University, through SLAC National Accelerator Laboratory
+* University of Illinois Champaign-Urbana
+* California Institute of Technology
+
+Contributions from institutions or individuals outside of DM are accepted and the relevant copyright statement should be included in the file if appropriate.
+We do not require copyright assignment to AURA on external code contributions, but be aware that small patches are not generally sufficient to require assertion of copyright by the contributor.
+
+.. _pkg-doc-license:
+
+LICENSE
+-------
+
+A :file:`LICENSE` file in the repository's root is the canonical description of LSST's code licensing.
+
+We use the GPLv3 license and a copy of it can be obtained from https://www.gnu.org/licenses/gpl.txt.
+
+.. _pkg-doc-code-preamble:
+
+CODE PREAMBLE
+-------------
+
+Each source file needs to include a short license and copyright statement.
+This should normally be included in a comment block at the top of the file and should take the following form:
+
+.. literalinclude:: snippets/license_preamble.txt
+   :language: text
+
+where the package name is stated explicitly at the top to attach it to a particular :file:`COPYRIGHT` file.
 
 .. _pkg-doc-contributing:
 
@@ -139,7 +172,7 @@ CONTRIBUTING.rst
 ----------------
 
 `GitHub popularized the use of CONTRIBUTING files to help open source developers stay on the same page <https://github.com/blog/1184-contributing-guidelines>`_.
-Whenever a GitHub Issue or Pull Request is made, GitHub will display a link to the `CONTRIBUTING.rst` file.
+Whenever a GitHub Issue or Pull Request is made, GitHub will display a link to the :file:`CONTRIBUTING.rst` file.
 
 .. code-block:: rst
 
@@ -182,7 +215,7 @@ Whenever a GitHub Issue or Pull Request is made, GitHub will display a link to t
 
    .. _LSST DM Team Culture and Conduct Standards: https://confluence.lsstcorp.org/display/LDMDG/Team+Culture+and+Conduct+Standards
 
-.. note:: Some of the documentation URLs listed in this ``CONTRIBUTING.rst`` guide don't exist yet.
+.. note:: Some of the documentation URLs listed in this :file:`CONTRIBUTING.rst` guide don't exist yet.
 
 .. _pkg-doc-user-guide:
 
@@ -191,7 +224,7 @@ The Package's User Guide in docs/
 
 The heart of a Stack package's documentation are files in the ``docs/`` directory [#]_.
 This content is ingested by Sphinx, our documentation build tool, to publish user guides for each package.
-In the following section we describe how to write the main documentation file, ``docs/index.rst``.
+In the following section we describe how to write the main documentation file, :file:`docs/index.rst`.
 
 ..
    For complex packages, documentation can be split across many files in the docs/ directory.
@@ -216,7 +249,7 @@ For every package's user guide, we strongly recommend using the following sectio
 6. "Python Reference"
 7. "C++ Reference"
 
-To implement this pattern, every package's ``index.rst`` should follow this basic template:
+To implement this pattern, every package's :file:`index.rst` should follow this basic template:
 
 .. code-block:: rst
 
@@ -274,7 +307,7 @@ To implement this pattern, every package's ``index.rst`` should follow this basi
 
    API reference for C++ developers
 
-We recommend that the entirety of a package's documentation be contained in a single ``index.rst`` file.
+We recommend that the entirety of a package's documentation be contained in a single :file:`index.rst` file.
 This minimal pagination makes it easier for readers for use their browser's search to find specific phrases.
 
 In the following sections we expand on key concepts in writing a package's user guide.

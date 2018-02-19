@@ -227,6 +227,17 @@ Style changes must be encapsulated in a distinct commit (see :ref:`git-commit-or
 
    :doc:`../docs/py_docs` provides guidelines for the :ref:`layout of docstrings <py-docstring-basics>`.
 
+.. _style-guide-license:
+
+Each Python file MUST contain the standard license preamble
+-----------------------------------------------------------
+
+A copyright and license block using :ref:`the standard text <pkg-doc-code-preamble>` MUST be included at the top of each file.
+This can be written as a Python comment.
+
+.. literalinclude:: ../docs/snippets/license_preamble.py
+   :language: python
+
 .. _style-guide-py-line-length:
 
 Line Length MUST be less than or equal to 110 columns
