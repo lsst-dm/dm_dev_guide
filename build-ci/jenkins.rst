@@ -100,6 +100,7 @@ Getting Job status in Slack
 ===========================
 
 When jobs start and end (either as a success or failure), Jenkins posts a message to the `#dm-jenkins`_ channel in the LSSTC Slack team.
+Jenkins also mentions developers in specific notification channels, see :ref:`jenkins-slack-notifications`.
 
 .. _jenkins-jobs:
 
@@ -140,6 +141,41 @@ qserv/qserv\_distrib
 `qserv/qserv_distrib`_ is automatically run nightly to test the ``master`` branches of all packages in the ``qserv_distrib`` stack.
 This job runs from a clean slate to discover issues that might be hidden by the caching behavior of the stack-os-matrix job.
 
+.. _jenkins-slack-notifications:
+
+Slack job notifications
+=======================
+
+You can get Slack notifications when a Jenkins job starts and stops.
+
+Configuring Slack to be "@"-mentioned
+-------------------------------------
+
+We recommend that you add your GitHub username to your Slack profile.
+This allows the Jenkins bot to send you an "@"-mention specifically for the Jenkins jobs that you trigger.
+The bot will also invite you to the notification channel if necessary.
+
+To do this, follow :doc:`../communications/slack-github-username`.
+
+Jenkins notification channels
+-----------------------------
+
+Each Jenkins job has its own notification channel.
+Each channel name starts with a ``#dmj-`` prefix.
+Due to length constrains, these channels have abbreviated names based on the Jenkins job.
+
+To find the channel corresponding to a job, `search the channel listing`_ for ``#dmj-`` channels.
+The full name of the Jenkins job is included in the channel's description.
+
+Controlling notifications from Jenkins channels
+-----------------------------------------------
+
+Jenkins notification Slack channels can be noisy.
+Typically you'll want to notice activity for only the jobs that you trigger.
+
+The best way to do this is to `mute the channel`_.
+The channel will still be highlighted when your jobs run because you will be ``@``-mentioned.
+
 More resources
 ==============
 
@@ -158,3 +194,5 @@ More resources
 .. _`Jenkins dashboard documentation`: https://jenkins.io/doc/book/blueocean/dashboard/
 .. _`lsst-sqre/jenkins-dm-jobs`: https://github.com/lsst-sqre/jenkins-dm-jobs
 .. _`#dm-jenkins`: https://lsstc.slack.com/messages/C2NCSTY3A
+.. _`search the channel listing`: https://get.slack.help/hc/en-us/articles/205239967-Browse-and-join-channels
+.. _`mute the channel`: https://get.slack.help/hc/en-us/articles/204411433-Mute-a-channel
