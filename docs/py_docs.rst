@@ -8,15 +8,37 @@ Documenting Python APIs with Docstrings
 
 We use Python docstrings to create reference documentation for our Python APIs.
 Docstrings are read by developers, interactive Python users, and readers of our online documentation.
-This page describes how to write these docstrings in Numpydoc, DM's standard format:
+This page describes how to write these docstrings in Numpydoc, DM's standard format.
+
+**Format reference:**
 
 - :ref:`py-docstring-basics`.
 - :ref:`py-docstring-rst`.
 - :ref:`py-docstring-sections`.
+
+  1. :ref:`Short Summary <py-docstring-short-summary>`
+  2. :ref:`Deprecation Warning <py-docstring-deprecation>`
+  3. :ref:`Extended Summary <py-docstring-extended-summary>`
+  4. :ref:`Parameters <py-docstring-parameters>`
+  5. :ref:`Returns <py-docstring-returns>` or :ref:`Yields <py-docstring-yields>`
+  6. :ref:`Other Parameters <py-docstring-other-parameters>`
+  7. :ref:`Raises <py-docstring-raises>`
+  8. :ref:`See Also <py-docstring-see-also>`
+  9. :ref:`Notes <py-docstring-notes>`
+  10. :ref:`References <py-docstring-references>`
+  11. :ref:`Examples <py-docstring-examples>`
+
+**How to format different APIs:**
+
 - :ref:`py-docstring-module-structure`.
 - :ref:`py-docstring-class-structure`.
 - :ref:`py-docstring-method-function-structure`.
 - :ref:`py-docstring-attribute-constants-structure`.
+- :ref:`py-docstring-property-structure`.
+
+**Learn by example:**
+
+- :ref:`py-docstring-example-module`.
 
 Treat the guidelines on this page as an extension of the :doc:`../coding/python_style_guide`.
 
@@ -382,8 +404,6 @@ For example:
            X-axis coordinate for the second point (the origin, by default).
        y0 : `float`, optional
            Y-axis coordinate for the second point (the origin, by default).
-
-       [...]
        """
 
 Each parameter is declared with a line formatted as ``{name} : {type}`` that is justified to the docstring.
@@ -550,6 +570,9 @@ Returns
 
 'Returns' is an explanation of the returned values and their types, in the same format as :ref:`'Parameters' <py-docstring-parameters>`.
 
+Basic example
+^^^^^^^^^^^^^
+
 If a sequence of values is returned, each value may be separately listed, in order:
 
 .. code-block:: python
@@ -565,6 +588,9 @@ If a sequence of values is returned, each value may be separately listed, in ord
            Y-axis pixel coordinate.
        """
        return self._x, self._y
+
+Dictionary return types
+^^^^^^^^^^^^^^^^^^^^^^^
 
 If a return type is `dict`, ensure that the key-value pairs are documented in the description:
 
@@ -582,6 +608,30 @@ If a return type is `dict`, ensure that the key-value pairs are documented in th
           - ``y``: y-axis coordinate (`int`).
         """
         return {'x': self._x, 'y': self._y}
+
+
+Struct return types
+^^^^^^^^^^^^^^^^^^^
+
+``lsst.pipe.base.Struct``\ s, returned by Tasks for example, are documented the same way as dictionaries:
+
+.. code-block:: python
+
+   def getCoord(self):
+       """Get the point's pixel coordinate.
+
+       Returns
+       -------
+       result : `lsst.pipe.base.Struct`
+          Result struct with components:
+
+          - ``x``: x-axis coordinate (`int`).
+          - ``y``: y-axis coordinate (`int`).
+        """
+        return lsst.pipe.base.Struct(x=self._x, y=self._y)
+
+Naming return variables
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Note that the names of the returned variables do not necessarily correspond to the names of variables.
 In the previous examples, the variables ``x``, ``y``, and ``pixelCoord`` never existed in the method scope.
@@ -773,10 +823,14 @@ Comments explaining the examples should have blank lines both above and below th
 
 .. code-block:: rst
 
+   Examples
+   --------
+   A simple example:
+
    >>> np.add(1, 2)
    3
 
-   Comment explaining the second example
+   Comment explaining the second example:
 
    >>> np.add([1, 2], [3, 4])
    array([4, 6])
@@ -784,6 +838,10 @@ Comments explaining the examples should have blank lines both above and below th
 For tests with a result that is random or platform-dependent, mark the output as such:
 
 .. code-block:: rst
+
+   Examples
+   --------
+   An example marked as creating a random result:
 
    >>> np.random.rand(2)
    array([ 0.35773152,  0.38568979])  #random
@@ -830,21 +888,33 @@ For example:
 .. code-block:: python
 
    #
-   # LSST Data Management System
-   # See COPYRIGHT file at the top of the source tree.
+   # This file is part of dm_dev_guide.
    #
-   # [...]
+   # Developed for the LSST Data Management System.
+   # This product includes software developed by the LSST Project
+   # (http://www.lsst.org).
+   # See the COPYRIGHT file at the top-level directory of this distribution
+   # for details of code ownership.
    #
-   # You should have received a copy of the LSST License Statement and
-   # the GNU General Public License along with this program. If not,
-   # see <http://www.lsstcorp.org/LegalNotices/>.
+   # This program is free software: you can redistribute it and/or modify
+   # it under the terms of the GNU General Public License as published by
+   # the Free Software Foundation, either version 3 of the License, or
+   # (at your option) any later version.
+   #
+   # This program is distributed in the hope that it will be useful,
+   # but WITHOUT ANY WARRANTY; without even the implied warranty of
+   # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   # GNU General Public License for more details.
+   #
+   # You should have received a copy of the GNU General Public License
+   # along with this program.  If not, see <http://www.gnu.org/licenses/>.
    #
    """Summary of MyModule.
 
    Extended discussion of my module.
    """
 
-   import lsst.afw.table as afw_table
+   import lsst.afw.table as afwTable
    # [...]
 
 .. _py-docstring-class-structure:
@@ -880,16 +950,21 @@ Class docstrings must be placed directly below the declaration, and indented acc
    class MyClass(object):
        """Summary of MyClass.
 
-       [...]
+       Parameters
+       ----------
+       a : `str`
+          Documentation for the ``a`` parameter.
        """
 
-       def __init__(self):
+       def __init__(self, a):
            pass
+
+The ``__init__`` method never has a docstring since the class docstring documents the constructor.
 
 Examples of Class Docstrings
 ----------------------------
 
-Here's an example of a class:
+Here's an example of a more comprehensive class docstring with :ref:`Short Summary <py-docstring-short-summary>`, :ref:`Parameters <py-docstring-parameters>`, :ref:`Raises <py-docstring-raises>`, :ref:`See Also <py-docstring-see-also>`, and :ref:`Examples <py-docstring-examples>` sections:
 
 .. code-block:: python
 
@@ -957,16 +1032,16 @@ Class, method, and function docstrings must be placed directly below the declara
    class MyClass(object):
        """Summary of MyClass.
 
-       [...]
+       Extended discussion of MyClass.
        """
 
        def __init__(self):
            pass
 
-       def method(self):
+       def myMethod(self):
            """Summary of method.
 
-           Extended Discussion of my method.
+           Extended Discussion of myMethod.
            """
            pass
 
@@ -1053,6 +1128,7 @@ Docstrings for module-level variables and class attributes appear directly below
 For example:
 
 .. code-block:: python
+   :emphasize-lines: 1-3,10-12
 
    MAX_ITER = 10
    """Maximum number of iterations (`int`).
@@ -1060,7 +1136,7 @@ For example:
 
 
    class MyClass(object):
-       """[...]
+       """Example class for documenting attributes.
        """
 
        x = None
@@ -1070,12 +1146,18 @@ For example:
 Examples of Constant and Class Attribute Docstrings
 ---------------------------------------------------
 
+Minimal constant or attribute example
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Include the attribute or constant's type in parentheses at the end of the summary line:
 
 .. code-block:: py
 
    NAME = 'LSST'
    """Name of the project (`str`)."""
+
+Multi-section docstrings
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Multi-section docstrings keep the type information in the summary line.
 For example:
@@ -1097,28 +1179,42 @@ For example:
       Requirements Document, LPM-17, URL https://ls.st/LPM-17
    """
 
+Attributes set in \_\_init\_\_ methods
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 In many classes, public attributes are set in the ``__init__`` method.
 The best way to document these public attributes is by declaring the attribute at the class level and including a docstring with that declaration:
 
 .. code-block:: python
+   :emphasize-lines: 14-20
 
    class Metric(object):
        """Verification metric.
 
-       [...]
+       Parameters
+       ----------
+       name : `str`
+           Name of the metric.
+       unit : `astropy.units.Unit`
+           Units of the metric.
+       package : `str`, optional
+           Name of the package where this metric is defined.
        """
 
        name = None
-       """Name of the metric (`str`)."""
+       """Name of the metric (`str`).
+       """
 
        unit = None
-       """Units of the metric (`astropy.units.Unit`)."""
+       """Units of the metric (`astropy.units.Unit`).
+       """
 
-       def __init__(name, unit):
+       def __init__(self, name, unit, package=None):
            self.name = name
            self.unit = unit
+           self._package = package
 
-Private attributes (prefixed by underscores: ``self._myAttribute``) do not need to be documented with docstrings.
+Notice that the :ref:`parameters <py-docstring-parameters>` to the ``__init__`` method are documented separately from the class attributes (highlighted).
 
 .. _py-docstring-property-structure:
 
@@ -1133,8 +1229,6 @@ For example:
 .. code-block:: python
 
    class Measurement(object):
-
-       # ...
 
        @property
        def quantity(self):
@@ -1159,10 +1253,19 @@ Note:
 - Only document the property's "getter" method, not the "setter" (if present).
 - If a property does not have a "setter" method, include the words ``read-only`` after the type information.
 
+.. _py-docstring-example-module:
+
+Complete Example Module
+=======================
+
+.. literalinclude:: snippets/numpydocExample.py
+   :language: python
+
 Acknowledgements
 ================
 
 These docstring guidelines are derived/adapted from the `NumPy <https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt>`_ and `Astropy <http://docs.astropy.org/en/stable/_sources/development/docrules.txt>`_ documentation.
+The example module is adapted from the `Napoleon documentation <http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html#example-numpy>`_.
 
 NumPy is Copyright © 2005-2013, NumPy Developers.
 
