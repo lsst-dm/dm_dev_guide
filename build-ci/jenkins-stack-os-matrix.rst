@@ -47,6 +47,12 @@ The progress for each build step is listed on the run detail page.
 The most important build step is ``./buildbot-scripts/jenkins_wrapper.sh`` where the lsstsw rebuild is run.
 Click on that step to see build and test progress for each package.
 
+Getting stack-os-matrix notifications in Slack
+==============================================
+
+Jenkins sends status notifications to the `#dmj-stack-os-matrix`_ channel on Slack when your job starts and finishes.
+See :ref:`jenkins-slack-notifications` for more information.
+
 Viewing build and test results
 ==============================
 
@@ -60,3 +66,4 @@ You can even download all the logs and :file:`*.failed` files for a build by scr
 .. _`stack-os-matrix`: https://ci.lsst.codes/blue/organizations/jenkins/stack-os-matrix/activity
 .. _`lsst_ci`: https://github.com/lsst/lsst_ci
 .. _`lsst_dm_stack_demo`: https://github.com/lsst/lsst_dm_stack_demo
+.. _`#dmj-stack-os-matrix`: https://lsstc.slack.com/messages/C9A31S9MG

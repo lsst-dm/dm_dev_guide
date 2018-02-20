@@ -81,6 +81,7 @@ The `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ w
    :caption: Developer Tools
    :name: part-tools
 
+   communications/slack-github-username.rst
    tools/git_setup.rst
    tools/git_lfs.rst
    tools/jira_tips.rst
