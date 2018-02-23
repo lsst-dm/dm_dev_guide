@@ -232,14 +232,7 @@ Add a shared stack to your environment and set up the latest build of the LSST a
 
 Although the latest weeklies of LSST software are regularly installed into the shared stacks, the rest of their contents is held fixed (to avoid API or ABI incompatibilities with old stack builds).
 We therefore periodically retire old stacks and replace them with new ones.
-The following unmaintained shared stacks are available for archival purposes:
-
-===================================== ============== ============================================================
-Path                                  Toolchain      Description
-===================================== ============== ============================================================
-:file:`/ssd/lsstsw/stack_20170409`    System default The default local stack until 2017-10-29, based on Python 2.
-:file:`/ssd/lsstsw/stack3_2017-09-11` System default A prototype Python 3-based stack from September 2017.
-===================================== ============== ============================================================
+There are currently no retired stacks available.
 
 Administrators may wish to note that the shared stack is automatically updated using the script :file:`~lsstsw/shared-stack/shared_stack.py`, which is executed nightly by Cron.
 
