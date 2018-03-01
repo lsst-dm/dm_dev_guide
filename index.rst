@@ -15,19 +15,42 @@ This Guide will help you in contributing to the DM development effort.
 DM Developers can make this guide better by contributing to the https://github.com/lsst-dm/dm_dev_guide repo.
 The `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ will get you started.
 
+.. TEAM SECTION ==============================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
+
 .. toctree::
    :maxdepth: 1
-   :caption: Getting Started
-   :name: part-getting-started
+   :caption: Team
+   :hidden:
 
-   getting-started/onboarding.rst
+   team/onboarding.rst
+   team/code-of-conduct.rst
+   team/drp.rst
+
+.. Table of contents published on the homepage.
+.. Mirror changes here to team/index.rst (temporary workflow)
+
+.. _part-team:
+
+Team
+====
+
+Basic information about the LSST Data Management Subsystem and teams.
+Learn about the Data Management Subsystem in :ldm:`294`.
+
+- :doc:`team/onboarding`
+- :doc:`team/code-of-conduct`
+
+Team-specific pages:
+
+- :doc:`team/drp`
 
 .. toctree::
    :maxdepth: 1
    :caption: Processes
    :name: part-processes
 
-   processes/code_of_conduct.rst
    processes/workflow.rst
    processes/decision_process.rst
    processes/transferring_code.rst
@@ -116,10 +139,3 @@ The `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ w
    services/ncsa_bulk_transfer.rst
    services/nebula/index.rst
    services/orchestration/index.rst
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Team Specific Information
-   :name: part-teams
-
-   teams/drp.rst

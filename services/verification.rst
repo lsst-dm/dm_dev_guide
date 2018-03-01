@@ -4,7 +4,7 @@ Using the Verification Cluster
 
 The ``Verification Cluster`` is a cluster of servers run by NCSA for LSST DM development work.
 
-To get an account, see the :doc:`Onboarding Checklist </getting-started/onboarding>`.
+To get an account, see the :doc:`Onboarding Checklist </team/onboarding>`.
 
 This page is designed help you get started on the ``Verification Cluster``:
 

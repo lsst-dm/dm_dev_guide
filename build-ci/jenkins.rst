@@ -11,7 +11,7 @@ Logging in
 
 Log into Jenkins by visiting https://ci.lsst.codes and authenticate with your GitHub credentials.
 Any member of the `lsst`_, `lsst-dm`_, or `lsst-sqre`_ GitHub organizations is authorized to use https://ci.lsst.codes.
-See the :doc:`../getting-started/onboarding` for more information.
+See the :doc:`/team/onboarding` for more information.
 
 Using the Jenkins dashboard
 ===========================
