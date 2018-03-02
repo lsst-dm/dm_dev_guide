@@ -9,7 +9,7 @@ Getting Approval
 ================
 
 Creating a new third-party package that will be a dependency of the LSST code
-typically requires an :ref:`RFC <decision-making-rfc>`.  If the code is to be
+typically requires an :doc:`RFC </communications/rfc>`.  If the code is to be
 distributed via :command:`eups`, as this page describes, the license for the
 third-party code should be verified and cited in the text of that RFC.  The
 license must be compatible with the license under which we distribute our code,
@@ -268,8 +268,8 @@ To update the version of your external package after a new upstream release,
 start with a copy of the LSST stack (`installed using the lsstsw tool`_).
 Then:
 
-- Create a ticket for the package update (and/or an :ref:`RFC
-  <decision-making-rfc>`, if it may cause more trouble), and note the ticket
+- Create a ticket for the package update (and/or an :doc:`RFC
+  </communications/rfc>`, if it may cause more trouble), and note the ticket
   number ``NNNN``.
 
 - :command:`cd build/yourPackage`

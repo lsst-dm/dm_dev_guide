@@ -104,7 +104,7 @@ The meeting convener will pass around a Hangouts room URL to attendees.
 Mailing lists
 =============
 
-We don't use mailing lists for conversations, but they're still used for notifications about :ref:`RFCs <decision-making-rfc>` and conversations happening on https://community.lsst.org.
+We don't use mailing lists for conversations, but they're still used for notifications about :doc:`RFCs </communications/rfc>` and conversations happening on https://community.lsst.org.
 You should be subscribed to these lists as soon as you get an :ref:`LSST acccount <getting-started-lsst-account>`:
 
 - `dm-devel <https://lists.lsst.org/mailman/listinfo/dm-devel>`_

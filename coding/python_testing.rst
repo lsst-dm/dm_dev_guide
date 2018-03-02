@@ -5,7 +5,7 @@ Python Unit Testing
 .. note::
 
    Changes to this document must be approved by the System Architect (`RFC-24 <https://jira.lsstcorp.org/browse/RFC-24>`_).
-   To request changes to these policies, please file an :ref:`RFC <decision-making-rfc>`.
+   To request changes to these policies, please file an :doc:`RFC </communications/rfc>`.
 
 This page provides technical guidance to developers writing unit tests for DM's Python code base.
 See :doc:`unit_test_policy` for an overview of LSST Stack testing.

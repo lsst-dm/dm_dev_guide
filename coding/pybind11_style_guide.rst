@@ -5,7 +5,7 @@ DM Pybind11 Style Guide
 This is the DM Pybind11 Coding Standard.
 
 Changes to this document must be approved by the System Architect (`RFC-24 <https://jira.lsstcorp.org/browse/RFC-24>`_).
-To request changes to these standards, please file an :ref:`RFC <decision-making-rfc>`.
+To request changes to these standards, please file an :doc:`RFC </communications/rfc>`.
 
 .. contents::
     :depth: 4

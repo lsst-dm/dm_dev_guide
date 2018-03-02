@@ -48,13 +48,37 @@ Team-specific pages:
 
 - :doc:`team/drp`
 
+.. COMMUNICATIONS SECTION ====================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Communications
+   :hidden:
+
+   communications/rfc.rst
+   communications/rfd.rst
+
+.. Table of contents published on the homepage.
+.. Mirror changes here to team/index.rst (temporary workflow)
+
+.. _part-communications:
+
+Communications
+==============
+
+How to use DM's communication channels.
+
+- :doc:`communications/rfc`
+- :doc:`communications/rfd`
+
 .. toctree::
    :maxdepth: 1
    :caption: Processes
    :name: part-processes
 
    processes/workflow.rst
-   processes/decision_process.rst
    processes/transferring_code.rst
    processes/project_planning.rst
    processes/jira_agile.rst

@@ -21,7 +21,7 @@ Treat the guidelines on this page as an extension of the :doc:`../coding/cpp_sty
 .. note::
 
    Changes to this document must be approved by the System Architect (`RFC-24 <https://jira.lsstcorp.org/browse/RFC-24>`_).
-   To request changes to these standards, please file an :ref:`RFC <decision-making-rfc>`.
+   To request changes to these standards, please file an :doc:`RFC </communications/rfc>`.
 
 **This guide will evolve as a mechanism to document C++ APIs wrapped in Python is developed.**
 

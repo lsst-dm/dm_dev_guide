@@ -15,7 +15,7 @@ Some of the possible applications for technotes are:
 
 - Report the results of a project, such as a data processing or software development experiment.
 - Announce a new technology, serving as a high-level overview complementing user documentation.
-- Propose an architecture, possibly becoming the subject of a :ref:`request for comment (RFC) <decision-making-rfc>`.
+- Propose an architecture, possibly becoming the subject of a :doc:`request for comment (RFC) </communications/rfd>`.
 
 For further background, see `SQR-000: The LSST DM Technical Note Publishing Platform <SQR-000>`_.
 

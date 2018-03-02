@@ -5,7 +5,7 @@ Using C++ Templates
 .. note::
 
    Changes to this document must be approved by the System Architect (`RFC-24 <https://jira.lsstcorp.org/browse/RFC-24>`_).
-   To request changes to these policies, please file an :ref:`RFC <decision-making-rfc>`.
+   To request changes to these policies, please file an :doc:`RFC </communications/rfc>`.
 
 .. _cpp_template_intro:
 

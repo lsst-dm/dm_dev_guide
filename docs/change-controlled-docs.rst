@@ -1,6 +1,6 @@
 .. note::
 
-   To request changes to these standards, file an :ref:`RFC <decision-making-rfc>`.
+   To request changes to these standards, file an :doc:`RFC </communications/rfc>`.
 
 .. _writing-ccd:
 
@@ -9,7 +9,7 @@ Writing change-controlled documentation
 #######################################
 
 Change-controlled documents require approval from a Change Control Board (CCB) before they can be released.
-Data Management documents must be approved by the DM CCB using the :ref:`RFC <decision-making-rfc>` process (see `LDM-294`_).
+Data Management documents must be approved by the DM CCB using the :doc:`RFC </communications/rfc>` process (see `LDM-294`_).
 Project-level documents must be approved by the `Project CCB`_.
 Overall, the project-wide change control process is described in `LPM-19`_ and the process for managing documents is described in `LPM-51`_.
 
@@ -100,7 +100,7 @@ Follow these steps to submit a document to the CCB and release a new baselined v
    The procedure depends on the CCB:
 
    - For project documents, create an `LCR <https://project.lsst.org/groups/ccb/>`_ with a pointer to the new document version in DocuShare.
-   - For DM documents, create an :ref:`RFC <decision-making-rfc-creating>` with a pointer to the new document in DocuShare.
+   - For DM documents, create an :doc:`RFC </communications/rfc>` with a pointer to the new document in DocuShare.
      Set the JIRA state to "flagged" to notify the DM CCB.
 
 3. Create a release branch based off the same commit as the DocuShare tag:

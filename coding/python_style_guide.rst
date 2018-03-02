@@ -8,7 +8,7 @@ The :doc:`intro` provides the overarching Coding Standards policy applicable to 
 .. note::
 
    Changes to this document must be approved by the System Architect (`RFC-24 <https://jira.lsstcorp.org/browse/RFC-24>`_).
-   To request changes to these standards, please file an :ref:`RFC <decision-making-rfc>`.
+   To request changes to these standards, please file an :doc:`RFC </communications/rfc>`.
 
 .. contents::
    :depth: 4
@@ -45,7 +45,7 @@ This user community is currently transitioning from Python 2.7 to Python 3.x, an
 In particular, the Science Pipelines code (commonly referred to as ``lsst_distrib``) must support 2.7 and 3.x.
 
 Standalone applications, code providing services, and internal programs and modules (such as Qserv, SQuaSH and ``dax``) do not have to support Python 2.
-If code is currently supporting both 2.7 and 3.x, dropping support for Python 2.7 requires an :ref:`RFC <decision-making-rfc>`.
+If code is currently supporting both 2.7 and 3.x, dropping support for Python 2.7 requires an :doc:`RFC </communications/rfc>`.
 New code that has never supported Python 2.7 and which will not be externally usable library code or a dependency of a package that supports 2.7 does not require an RFC to request that 2.7 is not supported.
 
 .. _style-guide-py-pep8-baseline:
