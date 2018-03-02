@@ -59,6 +59,8 @@ Team-specific pages:
 
    communications/rfc.rst
    communications/rfd.rst
+   communications/wiki.rst
+   communications/presenting-at-conferences.rst
 
 .. Table of contents published on the homepage.
 .. Mirror changes here to team/index.rst (temporary workflow)
@@ -72,6 +74,8 @@ How to use DM's communication channels.
 
 - :doc:`communications/rfc`
 - :doc:`communications/rfd`
+- :doc:`communications/wiki`
+- :doc:`communications/presenting-at-conferences`
 
 .. toctree::
    :maxdepth: 1
@@ -82,8 +86,6 @@ How to use DM's communication channels.
    processes/transferring_code.rst
    processes/project_planning.rst
    processes/jira_agile.rst
-   processes/wiki.rst
-   processes/presenting-at-conferences.rst
    processes/publication-policy.rst
 
 .. seealso::
