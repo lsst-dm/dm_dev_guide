@@ -79,6 +79,33 @@ How to use DM's communication channels.
 - :doc:`communications/wiki`
 - :doc:`communications/presenting-at-conferences`
 
+.. PROJECT DOCS SECTION ======================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Project docs
+   :hidden:
+
+   project-docs/change-controlled-docs.rst
+   project-docs/publication-policy.rst
+   project-docs/technotes.rst
+
+.. _part-project-docs:
+
+Project documentation
+=====================
+
+Controlled documentation and publications.
+
+- :doc:`project-docs/change-controlled-docs`
+- :doc:`project-docs/publication-policy`
+
+Technical notes.
+
+- :doc:`project-docs/technotes`
+
 .. toctree::
    :maxdepth: 1
    :caption: Processes
@@ -88,7 +115,6 @@ How to use DM's communication channels.
    processes/transferring_code.rst
    processes/project_planning.rst
    processes/jira_agile.rst
-   processes/publication-policy.rst
 
 .. seealso::
 
@@ -121,8 +147,6 @@ How to use DM's communication channels.
    :caption: Writing Docs
    :name: part-docs
 
-   docs/change-controlled-docs.rst   
-   docs/technotes.rst
    docs/rst_styleguide.rst
    docs/package_docs.rst
    docs/py_docs.rst

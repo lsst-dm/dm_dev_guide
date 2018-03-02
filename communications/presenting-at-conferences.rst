@@ -7,7 +7,7 @@ This is our playbook for going to Project and public meetings, and presenting on
 .. seealso::
 
    Conference proceedings papers are coordinated by the LSST Project Publication Board.
-   See :doc:`publication-policy` for more information.
+   See :doc:`/project-docs/publication-policy` for more information.
 
 .. _presenting-confluence-meeting-page:
 
@@ -102,7 +102,7 @@ Submit proceedings papers (required)
 ====================================
 
 If you are writing a proceedings paper in conjunction with your presentation, you'll need to submit it to the LSST Publication Board before submitting it to the publisher.
-See :doc:`publication-policy` for details.
+See :doc:`/project-docs/publication-policy` for details.
 
 After Publication Board approval, proceedings papers should be submitted to https://arXiv.org if the agreement with the publisher allows.
 *We don't use Zenodo for proceedings.*
