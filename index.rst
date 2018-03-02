@@ -57,6 +57,7 @@ Team-specific pages:
    :caption: Communications
    :hidden:
 
+   communications/slack-github-username.rst
    communications/rfc.rst
    communications/rfd.rst
    communications/wiki.rst
@@ -72,6 +73,7 @@ Communications
 
 How to use DM's communication channels.
 
+- :doc:`communications/slack-github-username`
 - :doc:`communications/rfc`
 - :doc:`communications/rfd`
 - :doc:`communications/wiki`
@@ -132,7 +134,6 @@ How to use DM's communication channels.
    :caption: Developer Tools
    :name: part-tools
 
-   communications/slack-github-username.rst
    tools/git_setup.rst
    tools/git_lfs.rst
    tools/jira_tips.rst
