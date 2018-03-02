@@ -210,7 +210,7 @@ Alternatively, a single file can be specified in place of ``.``.
 
 :command:`autopep8`\ ʼs changes must always be validated before committing.
 
-Style changes must be encapsulated in a distinct commit (see :ref:`git-commit-organization-logical-units` in :doc:`../processes/workflow`).
+Style changes must be encapsulated in a distinct commit (see :ref:`git-commit-organization-logical-units`).
 
 .. note::
 

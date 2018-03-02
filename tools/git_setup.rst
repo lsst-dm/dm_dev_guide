@@ -4,12 +4,12 @@ Git Configuration Standards & Recommentations
 
 This page collects advice for configuring Git for DM development.
 
-Some of these configurations are mentioned in the :doc:`DM Development Workflow <../processes/workflow>`.
+Some of these configurations are mentioned in the :doc:`/work/flow`.
 Such configurations are labeled on as page as **required** (as opposed to recommended practices).
 
 *See also*:
 
-- :doc:`/processes/workflow` for guidance on how we use Git, including:
+- :doc:`/work/flow` for guidance on how we use Git, including:
 
   - :ref:`Git branch naming <git-branching>`,
   - :ref:`Git branch merging <workflow-code-review-merge>`,

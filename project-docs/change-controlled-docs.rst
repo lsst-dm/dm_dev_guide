@@ -74,7 +74,7 @@ This guideline is especially important for Word documents that do not benefit fr
 Drafting workflow
 =================
 
-Write change-controlled documents using :doc:`DM's standard workflow <../processes/workflow>`.
+Write change-controlled documents using :doc:`DM's standard workflow </work/flow>`.
 That is:
 
 1. Create a ticket branch from ``master``.

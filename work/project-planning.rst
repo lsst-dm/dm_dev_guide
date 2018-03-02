@@ -53,7 +53,7 @@ during Construction, the following process has been used.
    steps of 2 - 20 days effort. This plan is known as a Release Plan. This
    process is done via the Agile Process, including backlog and sprint meetings,
    interactive communications, and design reviews. This process is accomplished
-   in :doc:`JIRA Agile <jira_agile>`, outside the PMCS. Then plan is incorporated
+   in :doc:`JIRA Agile <jira-agile>`, outside the PMCS. Then plan is incorporated
    into the PMCS. Once work starts on the release, this level of plan is tracked
    on a weekly basis, and the status is rolled up to the PMCS (see DM Reporting
    Process below).
@@ -86,7 +86,7 @@ Management Control System)`. Each activity in the plan includes the name of
 the activity, expected start and end dates, and assignees (with primary/lead
 person listed first).
 
-The LSST Project provides :doc:`JIRA Agile <jira_agile>`, a web-based tool for
+The LSST Project provides :doc:`JIRA Agile <jira-agile>`, a web-based tool for
 Agile development. JIRA Agile is used as a means to capture the Epics and
 stories that are imported into PMCS in the Release Planning process described
 above. As the team performs Agile sprints, stories are marked as Done when

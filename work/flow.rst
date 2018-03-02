@@ -20,7 +20,7 @@ Other related pages:
 
 - :doc:`/tools/git_setup`.
 - :doc:`/tools/git_lfs`.
-- :doc:`/tools/jira_tips`.
+- :doc:`jira-tips`.
 
 .. _git-setup:
 
@@ -47,7 +47,7 @@ Your Technical/Control Account Manager (T/CAM) is the best resource for help wit
 T/CAMs can consult `DMTN-020 <https://dmtn-020.lsst.io/>`_.
 This section provides a high-level orientation for everyday DM development work.
 
-*See also:* :doc:`/tools/jira_tips`.
+*See also:* :doc:`jira-tips`.
 
 .. _workflow-jira-concepts:
 
@@ -109,7 +109,7 @@ At a minimum, you should specify:
 Project
    For normal work, this should be set to **Data Management**.
    It may occasionally be appropriate to use another project; for example,
-   when requesting work from another LSST subsystem or when filing an :doc:`RFC <decision_process>`.
+   when requesting work from another LSST subsystem or when filing an :doc:`RFC </communications/rfc>`.
 Issue Type
    If the work is associated with an epic, the issue type is a 'Story.'
    For emergent work, 'Bug' or 'Improvement' can be used (see above for semantics).

@@ -7,7 +7,7 @@ This page mentions a few ways to improve your workflow, though the `JIRA User Gu
 
 LSST's JIRA is available at https://jira.lsstcorp.org.
 
-*See also:* :ref:`workflow-jira` in the :doc:`/processes/workflow`.
+*See also:* :ref:`workflow-jira` in the :doc:`flow`.
 
 .. _jira-create-filters:
 
