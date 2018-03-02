@@ -106,15 +106,38 @@ Technical notes.
 
 - :doc:`project-docs/technotes`
 
+.. WORK MANAGEMENT SECTION ===================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Work
+   :hidden:
+
+   work/flow.rst
+   work/project-planning.rst
+   work/jira-agile.rst
+   work/jira-tips.rst
+
+.. _part-work:
+
+Work management
+===============
+
+How DM coordinates work and gets things done.
+
+- :doc:`work/flow`
+- :doc:`work/project-planning`
+- :doc:`work/jira-agile`
+- :doc:`work/jira-tips`
+
 .. toctree::
    :maxdepth: 1
    :caption: Processes
    :name: part-processes
 
-   processes/workflow.rst
    processes/transferring_code.rst
-   processes/project_planning.rst
-   processes/jira_agile.rst
 
 .. seealso::
 
@@ -160,7 +183,6 @@ Technical notes.
 
    tools/git_setup.rst
    tools/git_lfs.rst
-   tools/jira_tips.rst
    tools/clang_format.rst
    tools/sublime.rst
    tools/emacs.rst
