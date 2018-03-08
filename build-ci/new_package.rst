@@ -32,6 +32,44 @@ The new package then needs to be added to the :file:`ups/*.table` file (and
 possibly the :file:`ups/*.cfg` file) of one or more other packages in the
 stack where it is used.
 
+.. _github-repository-configuration:
+
+Configuring GitHub Repositories
+===============================
+
+All LSST DM repositories on GitHub must be configured to protect the ``master`` branch and to ensure that the merge button for pull requests can not be pushed without the branch being up to date with ``master``.
+There are a number of settings required to ensure this and they are described below with URLs referring to the ``afw`` package.
+Replace ``afw`` with the relevant package name to get to the correct page on GitHub.
+
+1. On the main settings page for the repository, https://github.com/lsst/afw/settings, disable squash and rebase merging:
+
+.. image:: /_static/build-ci/github_merge_button_settings.png
+
+2. Configure ``master`` branch to enable protections.
+For ``afw`` this is located at https://github.com/lsst/afw/settings/branches/master and can also be found from the "Branches" sidebar item on the settings screen.
+Select the "Protect this branch" option and this will make available additional checks.
+You should also enable status checks and require that branches be up to date before merging.
+With this enabled people will be able to use the GitHub merge button on Pull Requests and know that the :ref:`standard process <workflow-code-review-merge>` is being adhered to.
+
+.. image:: /_static/build-ci/github_branch_protection.png
+
+In the image above no automated status checks are being performed.
+Whilst not required, we recommend that some basic checks are enabled on repositories using Travis.
+This will not replace normal testing with :doc:`Jenkins job <../build-ci/jenkins-stack-os-matrix>` but for packages that have been updated to :ref:`use flake8 <testing-flake8>` it is useful to add a simple Travis script like the following:
+
+.. literalinclude:: snippets/flake8-travis.yml
+  :language: yaml
+
+For packages containing C++ that have been tidied up using ``clang`` tools, you may consider adding a Travis check that runs the tidy tool and does a ``diff`` with the repository.
+
+Once the Travis script has been written, Travis can be enabled on the "Integrations & services" settings screen, https://github.com/lsst/afw/settings/installations, and Travis can then be added to the branch protection settings.
+Your branch protections screen should then look something like this:
+
+.. image:: /_static/build-ci/github_branch_protection_travis.png
+
+.. note::
+  It takes a few minutes from enabling Travis to GitHub making the Travis option available on the branch protection screen.
+
 .. _lfs-repos:
 
 Handling Git LFS-backed repos
