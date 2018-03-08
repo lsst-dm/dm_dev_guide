@@ -143,6 +143,8 @@ Expected failures can be used to write test code that triggers a reported bug be
 One of the primary advantages of using a modern test runner such as `pytest`_ is that it is very easy to generate machine-readable pass/fail/skip/xfail statistics to see how the system is evolving over time, and it is also easy to enable code coverage.
 Jenkins now provides test result information.
 
+.. _testing-flake8:
+
 Enabling additional Pytest options: flake8
 ==========================================
 
