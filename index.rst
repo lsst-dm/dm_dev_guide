@@ -132,6 +132,39 @@ How DM coordinates work and gets things done.
 - :doc:`work/jira-agile`
 - :doc:`work/jira-tips`
 
+.. -------------------
+
+.. _part-guides:
+
+Development guides
+==================
+
+.. PYTHON SECTION ============================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Python
+   :hidden:
+
+   python/style
+   python/testing
+   python/numpydoc
+   python/astropy
+
+.. _part-python:
+
+Python
+------
+
+- :doc:`python/style`
+- :doc:`python/testing`
+- :doc:`python/numpydoc`
+- :doc:`python/astropy`
+
+.. -------------------
+
 .. toctree::
    :maxdepth: 1
    :caption: Processes
@@ -149,15 +182,12 @@ How DM coordinates work and gets things done.
    :name: part-coding
 
    coding/intro.rst
-   coding/python_style_guide.rst
    coding/cpp_style_guide.rst
    coding/pybind11_style_guide.rst
    coding/using_cpp_templates.rst
    coding/using_boost.rst
-   coding/using_astropy.rst
    coding/using_eigen.rst
    coding/unit_test_policy.rst
-   coding/python_testing.rst
    coding/unit_test_private_functions.rst
    coding/unit_test_coverage.rst
    coding/profiling.rst
@@ -172,7 +202,6 @@ How DM coordinates work and gets things done.
 
    docs/rst_styleguide.rst
    docs/package_docs.rst
-   docs/py_docs.rst
    docs/cpp_docs.rst
    docs/jsdoc.rst
 
