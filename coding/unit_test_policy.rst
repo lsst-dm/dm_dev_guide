@@ -92,7 +92,7 @@ C++: boost.test
 
 Python: unittest
     LSST DM developers should use the Python :mod:`unittest` framework.
-    Details on particular conventions to use for LSST DM code are :doc:`described later <python_testing>`.
+    Details on particular conventions to use for LSST DM code are :doc:`described later </python/testing>`.
 
 .. _single-header variant: http://www.boost.org/doc/libs/1_60_0/libs/test/doc/html/boost_test/usage_variants.html#boost_test.usage_variants.single_header
 .. _shared-library variant: http://www.boost.org/doc/libs/1_60_0/libs/test/doc/html/boost_test/usage_variants.html#boost_test.usage_variants.shared_lib

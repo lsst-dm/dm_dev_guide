@@ -40,7 +40,7 @@ This page describes how to write these docstrings in Numpydoc, DM's standard for
 
 - :ref:`py-docstring-example-module`.
 
-Treat the guidelines on this page as an extension of the :doc:`../coding/python_style_guide`.
+Treat the guidelines on this page as an extension of the :doc:`style`.
 
 .. _py-docstring-basics:
 
@@ -182,7 +182,7 @@ ReStructuredText in Docstrings
 
 We use reStructuredText to mark up and give semantic meaning to text in docstrings.
 ReStructuredText is lightweight enough to read in raw form, such as command line terminal printouts, but is also parsed and rendered with our Sphinx-based documentation build system.
-All of the style guidance for using reStructuredText from our :doc:`rst_styleguide` applies in docstrings with a few exceptions defined here.
+All of the style guidance for using reStructuredText from our :doc:`/docs/rst_styleguide` applies in docstrings with a few exceptions defined here.
 
 .. _py-docstring-nospace-headers:
 
@@ -1258,7 +1258,7 @@ Note:
 Complete Example Module
 =======================
 
-.. literalinclude:: snippets/numpydocExample.py
+.. literalinclude:: examples/numpydocExample.py
    :language: python
 
 Acknowledgements

@@ -56,7 +56,7 @@ New code that has never supported Python 2.7 and which will not be externally us
 Data Management's Python Coding Style is based on the `PEP 8 Style Guide for Python Code <https://www.python.org/dev/peps/pep-0008/>`_ with modifications specified in this document.
 
 :pep:`8` is used throughout the Python community and should feel familiar to Python developers.
-DM's deviations from :pep:`8` are primarily motivated by consistency with the :doc:`cpp_style_guide`.
+DM's deviations from :pep:`8` are primarily motivated by consistency with the :doc:`/coding/cpp_style_guide`.
 Additional guidelines are included in this document to address specific requirements of the Data Management System.
 
 .. _style-guide-py-ignored-errors:
@@ -225,7 +225,7 @@ Style changes must be encapsulated in a distinct commit (see :ref:`git-commit-or
 
 .. seealso::
 
-   :doc:`../docs/py_docs` provides guidelines for the :ref:`layout of docstrings <py-docstring-basics>`.
+   :doc:`numpydoc` provides guidelines for the :ref:`layout of docstrings <py-docstring-basics>`.
 
 .. _style-guide-license:
 
@@ -235,7 +235,7 @@ Each Python file MUST contain the standard license preamble
 A copyright and license block using :ref:`the standard text <pkg-doc-code-preamble>` MUST be included at the top of each file.
 This can be written as a Python comment.
 
-.. literalinclude:: ../docs/snippets/license_preamble.py
+.. literalinclude:: /docs/snippets/license_preamble.py
    :language: python
 
 .. _style-guide-py-line-length:
@@ -244,7 +244,7 @@ Line Length MUST be less than or equal to 110 columns
 -----------------------------------------------------
 
 Limit all lines to a maximum of 110 characters.
-This conforms to the :doc:`cpp_style_guide` (see :ref:`4-6 <style-guide-cpp-4-6>`).
+This conforms to the :doc:`/coding/cpp_style_guide` (see :ref:`4-6 <style-guide-cpp-4-6>`).
 
 This differs from the `PEP 8 recommendation of 79 characters <https://www.python.org/dev/peps/pep-0008/#maximum-line-length>`_.
 
@@ -469,12 +469,12 @@ If the commented code itself is the problem, this rule ensures the issue will be
 =====================================
 
 Use **Numpydoc** to format the content of all docstrings.
-The page :doc:`../docs/py_docs` authoritatively describes this format.
+The page :doc:`numpydoc` authoritatively describes this format.
 Its guidelines should be treated as an extension of this Python Style Guide.
 
 .. seealso::
 
-   The :doc:`../docs/rst_styleguide`---and the :ref:`rst-formatting-guidelines` section in particular---provide guidelines on reStructuredText in general.
+   The :doc:`/docs/rst_styleguide`---and the :ref:`rst-formatting-guidelines` section in particular---provide guidelines on reStructuredText in general.
 
 .. _style-guide-py-docstring-public-api:
 
@@ -482,7 +482,7 @@ Docstrings SHOULD be written for all public modules, functions, classes, and met
 ------------------------------------------------------------------------------------
 
 Write docstrings for all public modules, functions, classes, and methods.
-See :doc:`../docs/py_docs`.
+See :doc:`numpydoc`.
 
 Docstrings are not necessary for non-public methods, but you should have a comment that describes what the method does.
 This comment should appear after the ``def`` line.

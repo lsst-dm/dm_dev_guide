@@ -137,7 +137,7 @@ The built-in python syntax highlighting works well, but here are some potentiall
 SublimeLinter-flake8
 --------------------
 
-LSST :ref:`uses flake8 <style-guide-py-flake8>` to check that our python code conforms to our :doc:`/coding/python_style_guide`.
+LSST :ref:`uses flake8 <style-guide-py-flake8>` to check that our python code conforms to our :doc:`/python/style`.
 You can get SublimeText to check your python code inline and mark lines that do not follow our style with the `SublimeLinter <http://www.sublimelinter.com/en/latest/>`_ package.
 Install ``SublimeLinter`` and ``SublimeLinter-flake8`` via Package Control.
 Use the following configuration to conform to LSST's python style, to mark failing lines, and to provide a summary of failures on save that will let you go directly to those lines.

@@ -48,4 +48,4 @@ Nam tincidunt congue enim, ut porta lorem lacinia consectetur.
 
 Sections in Python docstrings are a special case. We do not put a blank space
 between a headline and object lists below, and we do not add explicit section
-labels. See the :doc:`docstring style guide <py_docs>` for more information.
+labels. See the :doc:`docstring style guide <../python/numpydoc>` for more information.

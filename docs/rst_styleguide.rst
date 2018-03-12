@@ -7,7 +7,7 @@ The :ref:`last section documents our formatting conventions <rst-formatting-guid
 
 For more general guides to writing reStructuredText, see Sphinx's `reStructuredText Primer <http://sphinx-doc.org/rest.html#explicit-markup>`_ and the `docutils Quick reStructuredText guide <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`_.
 
-See the pages on :doc:`writing documentation for packages <package_docs>` and :doc:`Python docstrings <py_docs>` for specific reST usage in those contexts.
+See the pages on :doc:`writing documentation for packages <package_docs>` and :doc:`Python docstrings <../python/numpydoc>` for specific reST usage in those contexts.
 
 .. _rst-intro-sample:
 

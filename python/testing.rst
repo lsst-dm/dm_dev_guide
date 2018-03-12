@@ -8,7 +8,7 @@ Python Unit Testing
    To request changes to these policies, please file an :doc:`RFC </communications/rfc>`.
 
 This page provides technical guidance to developers writing unit tests for DM's Python code base.
-See :doc:`unit_test_policy` for an overview of LSST Stack testing.
+See :doc:`/coding/unit_test_policy` for an overview of LSST Stack testing.
 LSST tests should be written using the :mod:`unittest` framework, with default test discovery, and should support being run using the `pytest`_ test runner as well as from the command line.
 If you want to jump straight to a full example of the standard LSST Python testing boilerplate without reading the background, read the :ref:`section on memory testing <py-test-mem>` later in this document.
 
@@ -22,7 +22,7 @@ This document will not attempt to explain full details of how to use :mod:`unitt
 
 A simple :mod:`unittest` example is shown below:
 
-.. literalinclude:: unit_test_snippets/test_basic_example.py
+.. literalinclude:: examples/test_basic_example.py
    :linenos:
    :language: python
 
@@ -199,21 +199,21 @@ This does not work in a `pytest`_ environment.
 
 Consider the following test code:
 
-.. literalinclude:: unit_test_snippets/test_baseclass.py
+.. literalinclude:: examples/test_baseclass.py
    :language: python
 
 which inherits from the helper class and :class:`unittest.TestCase` and runs a single test without attempting to run any tests in ``BaseClass``.
 
-.. code-block:: shell
+.. code-block:: text
 
-   $ pytest -v coding/unit_test_snippets/test_baseclass.py
+   $ pytest -v python/examples/test_baseclass.py
    ======================================= test session starts ========================================
    platform darwin -- Python 3.4.3, pytest-3.2.1, py-1.4.30, pluggy-0.3.1 -- /usr/local/bin/python3.4
-   cachedir: coding/unit_test_snippets/.cache
-   rootdir: coding/unit_test_snippets, inifile:
+   cachedir: python/examples/.cache
+   rootdir: python/examples, inifile:
    collected 1 items
 
-   coding/unit_test_snippets/test_baseclass.py::ThisIsTest1::testParam PASSED
+   python/examples/test_baseclass.py::ThisIsTest1::testParam PASSED
 
    ===================================== 1 passed in 0.02 seconds =====================================
 
@@ -268,7 +268,7 @@ In order for the test running environment to be aware of these tests, a Python t
 If none of the tests require special arguments and all the files with the executable bit set are to be run, this can be achieved by copying the file :file:`$UTILS_DIR/tests/test_executables.py` to the relevant :file:`tests` directory.
 The file is reproduced here:
 
-.. literalinclude:: unit_test_snippets/test_executables.py
+.. literalinclude:: examples/test_executables.py
    :linenos:
    :language: python
    :emphasize-lines: 8-9
@@ -307,7 +307,7 @@ Memory and file descriptor leak testing
 This example shows the basic structure of an LSST Python unit test module,
 including :lclass:`~lsst.utils.tests.MemoryTestCase` (the highlighted lines indicate the memory testing modifications):
 
-.. literalinclude:: unit_test_snippets/test_runner_example.py
+.. literalinclude:: examples/test_runner_example.py
    :linenos:
    :language: python
    :emphasize-lines: 12, 17, 21
@@ -321,7 +321,7 @@ which ends up running the single specified test plus the two running as part of 
    ============================= test session starts ==============================
    platform darwin -- Python 2.7.11, pytest-3.2.1, py-1.4.31, pluggy-0.3.1 -- ~/lsstsw/miniconda/bin/python
    cachedir: .cache
-   rootdir: .../coding/unit_test_snippets, inifile:
+   rootdir: .../python/examples, inifile:
    collected 3 items
 
    test_runner_example.py::DemoTestCase::testDemo PASSED
