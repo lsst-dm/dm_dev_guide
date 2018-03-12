@@ -139,6 +139,36 @@ How DM coordinates work and gets things done.
 Development guides
 ==================
 
+.. C++ SECTION ===============================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: C++
+   :hidden:
+
+   cpp/style
+   cpp/api-docs
+   cpp/clang-format
+   cpp/testing-private-functions
+   cpp/templates
+   cpp/boost
+   cpp/eigen
+
+.. _part-cpp:
+
+C++
+---
+
+- :doc:`cpp/style`
+- :doc:`cpp/api-docs`
+- :doc:`cpp/clang-format`
+- :doc:`cpp/testing-private-functions`
+- :doc:`cpp/templates`
+- :doc:`cpp/boost`
+- :doc:`cpp/eigen`
+
 .. PYTHON SECTION ============================================================
 
 .. Hidden toctree to manage the sidebar navigation. Match the contents list below.
@@ -182,13 +212,8 @@ Python
    :name: part-coding
 
    coding/intro.rst
-   coding/cpp_style_guide.rst
    coding/pybind11_style_guide.rst
-   coding/using_cpp_templates.rst
-   coding/using_boost.rst
-   coding/using_eigen.rst
    coding/unit_test_policy.rst
-   coding/unit_test_private_functions.rst
    coding/unit_test_coverage.rst
    coding/profiling.rst
    coding/logging.rst
@@ -202,7 +227,6 @@ Python
 
    docs/rst_styleguide.rst
    docs/package_docs.rst
-   docs/cpp_docs.rst
    docs/jsdoc.rst
 
 .. toctree::
@@ -212,7 +236,6 @@ Python
 
    tools/git_setup.rst
    tools/git_lfs.rst
-   tools/clang_format.rst
    tools/sublime.rst
    tools/emacs.rst
    tools/vim.rst
