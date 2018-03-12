@@ -56,7 +56,7 @@ New code that has never supported Python 2.7 and which will not be externally us
 Data Management's Python Coding Style is based on the `PEP 8 Style Guide for Python Code <https://www.python.org/dev/peps/pep-0008/>`_ with modifications specified in this document.
 
 :pep:`8` is used throughout the Python community and should feel familiar to Python developers.
-DM's deviations from :pep:`8` are primarily motivated by consistency with the :doc:`/coding/cpp_style_guide`.
+DM's deviations from :pep:`8` are primarily motivated by consistency with the :doc:`/cpp/style`.
 Additional guidelines are included in this document to address specific requirements of the Data Management System.
 
 .. _style-guide-py-ignored-errors:
@@ -244,7 +244,7 @@ Line Length MUST be less than or equal to 110 columns
 -----------------------------------------------------
 
 Limit all lines to a maximum of 110 characters.
-This conforms to the :doc:`/coding/cpp_style_guide` (see :ref:`4-6 <style-guide-cpp-4-6>`).
+This conforms to the :doc:`/cpp/style` (see :ref:`4-6 <style-guide-cpp-4-6>`).
 
 This differs from the `PEP 8 recommendation of 79 characters <https://www.python.org/dev/peps/pep-0008/#maximum-line-length>`_.
 

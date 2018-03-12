@@ -14,9 +14,9 @@ We document C++ code in two ways:
 
    These comments are meant to be read only by developers reading and editing the source code.
 
-This page focuses on public code documentation using Doxygen, while internal comments are discussed in our :doc:`../coding/cpp_style_guide`.
+This page focuses on public code documentation using Doxygen, while internal comments are discussed in our :doc:`style`.
 
-Treat the guidelines on this page as an extension of the :doc:`../coding/cpp_style_guide`.
+Treat the guidelines on this page as an extension of the :doc:`style`.
 
 .. note::
 
@@ -40,7 +40,7 @@ The beginning of both header and source code files should include
 
 2. A copyright and license block (note: **NOT** a Doxygen comment block) using :ref:`the standard text <pkg-doc-code-preamble>`.
 
-.. literalinclude:: snippets/license_preamble.cpp
+.. literalinclude:: /docs/snippets/license_preamble.cpp
    :language: cpp
 
 .. _cpp-doxygen-basics:

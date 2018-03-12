@@ -34,7 +34,7 @@ A complete example is here, and consists of three source files (:ref:`Foo.h <cpp
 
 :ref:`foo.h <cpp_template_example_foo_h>` looks something like this:
 
-.. literalinclude:: using_cpp_templates_snippets/Foo.h
+.. literalinclude:: examples/templates/Foo.h
    :language: cpp
    :lines: 6-17
 
@@ -44,19 +44,19 @@ You'll notice that the class is defined, but none of its members are.
 
 In :ref:`main.cc <cpp_template_example_main>`,
 
-.. literalinclude:: using_cpp_templates_snippets/main.cc
+.. literalinclude:: examples/templates/main.cc
    :language: cpp
 
 ``Foo``, without any knowledge of its implementation.
 This is a *good thing*; but how was it achieved? Look at :ref:`Foo.cc <cpp_template_example_foo_cpp>`:
 
-.. literalinclude:: using_cpp_templates_snippets/Foo.cc
+.. literalinclude:: examples/templates/Foo.cc
    :language: cpp
    :lines: 4-12,14,16-18,24
 
 Here are the missing method definitions, along with the lines
 
-.. literalinclude:: using_cpp_templates_snippets/Foo.cc
+.. literalinclude:: examples/templates/Foo.cc
    :language: cpp
    :lines: 28-29
 
@@ -134,7 +134,7 @@ Template usage example
 Sconstruct
 ----------
 
-.. literalinclude:: using_cpp_templates_snippets/Sconstruct
+.. literalinclude:: examples/templates/Sconstruct
    :language: python
 
 .. _cpp_template_example_foo_h:
@@ -142,7 +142,7 @@ Sconstruct
 Foo.h
 -----
 
-.. literalinclude:: using_cpp_templates_snippets/Foo.h
+.. literalinclude:: examples/templates/Foo.h
    :language: cpp
 
 .. _cpp_template_example_foo_cpp:
@@ -150,7 +150,7 @@ Foo.h
 Foo.cc
 ------
 
-.. literalinclude:: using_cpp_templates_snippets/Foo.cc
+.. literalinclude:: examples/templates/Foo.cc
    :language: cpp
 
 .. _cpp_template_example_main:
@@ -158,5 +158,5 @@ Foo.cc
 main.cc
 -------
 
-.. literalinclude:: using_cpp_templates_snippets/main.cc
+.. literalinclude:: examples/templates/main.cc
    :language: cpp

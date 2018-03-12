@@ -2567,7 +2567,7 @@ This is a common practice in the C++ community, until the proposed ``level1::lev
 6.3. Comments
 -------------
 
-:doc:`../docs/cpp_docs` Documentation Standards contains most of the rules about comments.
+:doc:`api-docs` Documentation Standards contains most of the rules about comments.
 A few detailed rules are listed here.
 
 .. _style-guide-cpp-6-22:

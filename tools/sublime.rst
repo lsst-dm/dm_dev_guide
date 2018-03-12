@@ -98,7 +98,7 @@ Some packages (installable via Package Control) that may help your development i
 C++
 ===
 
-The  :ref:`clang-format <using_clang_format>` plugin can help you automatically keep your C++ in line with the :doc:`/coding/cpp_style_guide`.
+The  :ref:`clang-format <using_clang_format>` plugin can help you automatically keep your C++ in line with the :doc:`/cpp/style`.
 Once you have clang-format configured on your system, install the Sublime package with the Package Manager: `Clang Format <https://packagecontrol.io/packages/Clang%20Format>`_.
 
 There are two required settings to make Clang Format find the binary and configuration file: ``"binary"`` and ``"style": "File"``.

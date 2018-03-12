@@ -88,7 +88,7 @@ C++: boost.test
     LSST DM developers should use the `shared-library variant`_ of the `Boost Unit
     Test Framework`_. When unit testing C++ private functions using the Boost
     util test macros, refer to the standard methods described in :doc:`private
-    function testing <unit_test_private_functions>`.
+    function testing </cpp/testing-private-functions>`.
 
 Python: unittest
     LSST DM developers should use the Python :mod:`unittest` framework.
