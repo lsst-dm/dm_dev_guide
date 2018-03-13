@@ -193,6 +193,26 @@ Python
 - :doc:`python/numpydoc`
 - :doc:`python/astropy`
 
+.. PYBIND11 SECTION ==========================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Pybind11
+   :hidden:
+
+   pybind11/style
+   pybind11/how-to
+
+.. _part-pybind11:
+
+Pybind11
+--------
+
+- :doc:`pybind11/style`
+- :doc:`pybind11/how-to`
+
 .. -------------------
 
 .. toctree::
@@ -212,13 +232,11 @@ Python
    :name: part-coding
 
    coding/intro.rst
-   coding/pybind11_style_guide.rst
    coding/unit_test_policy.rst
    coding/unit_test_coverage.rst
    coding/profiling.rst
    coding/logging.rst
    coding/debug.rst
-   coding/python_wrappers_for_cpp_with_pybind11.rst
 
 .. toctree::
    :maxdepth: 1
