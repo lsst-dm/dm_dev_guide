@@ -3,7 +3,7 @@ Python wrappers for C++ with pybind11
 #####################################
 
 We use the `pybind11 <https://github.com/pybind/pybind11>`_ library to generate Python wrappers for our C++ code.
-These wrappers are subject to the rules laid out in the :doc:`pybind11_style_guide`.
+These wrappers are subject to the rules laid out in the :doc:`style`.
 
 What follows is a basic step-by-step guide to writing pybind11 wrappers.
 
