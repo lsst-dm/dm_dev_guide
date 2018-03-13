@@ -213,6 +213,24 @@ Pybind11
 - :doc:`pybind11/style`
 - :doc:`pybind11/how-to`
 
+.. JAVASCRIPT SECTION ========================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: JavaScript
+   :hidden:
+
+   javascript/jsdoc
+
+.. _part-javascript:
+
+JavaScript
+----------
+
+- :doc:`javascript/jsdoc`
+
 .. -------------------
 
 .. toctree::
@@ -245,7 +263,6 @@ Pybind11
 
    docs/rst_styleguide.rst
    docs/package_docs.rst
-   docs/jsdoc.rst
 
 .. toctree::
    :maxdepth: 1
