@@ -474,7 +474,7 @@ Its guidelines should be treated as an extension of this Python Style Guide.
 
 .. seealso::
 
-   The :doc:`/docs/rst_styleguide`---and the :ref:`rst-formatting-guidelines` section in particular---provide guidelines on reStructuredText in general.
+   The :doc:`/restructuredtext/style`---and the :ref:`rst-formatting-guidelines` section in particular---provide guidelines on reStructuredText in general.
 
 .. _style-guide-py-docstring-public-api:
 

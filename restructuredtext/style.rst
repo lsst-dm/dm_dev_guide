@@ -7,20 +7,20 @@ The :ref:`last section documents our formatting conventions <rst-formatting-guid
 
 For more general guides to writing reStructuredText, see Sphinx's `reStructuredText Primer <http://sphinx-doc.org/rest.html#explicit-markup>`_ and the `docutils Quick reStructuredText guide <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`_.
 
-See the pages on :doc:`writing documentation for packages <package_docs>` and :doc:`Python docstrings <../python/numpydoc>` for specific reST usage in those contexts.
+See the pages on :doc:`writing documentation for packages </docs/package_docs>` and :doc:`Python docstrings </python/numpydoc>` for specific reST usage in those contexts.
 
 .. _rst-intro-sample:
 
 Sample
 ======
 
-.. literalinclude:: rst_sample.rst
+.. literalinclude:: rst-sample.rst
    :language: rst
    :lines: 2-
 
 .. lines field above omits :orphan: field from sample display
 
-:doc:`See this sample rendered <rst_sample>`.
+:doc:`See this sample rendered <rst-sample>`.
 
 .. _rst-inline-styles:
 
@@ -150,13 +150,13 @@ Definition lists
 Definition lists are terms with an indented content section.
 For example:
 
-.. literalinclude:: snippets/def_list.rst
+.. literalinclude:: examples/def-list.rst
    :language: rst
    :lines: 3-
 
 produces
 
-.. include:: snippets/def_list.rst
+.. include:: examples/def-list.rst
    :start-line: 2
 
 Definition lists are not limited to dictionary-like usage; they can be employed whenever a series of terms with associated micro content is needed.
@@ -168,13 +168,13 @@ Sections
 
 We create section hierarchies as follows:
 
-.. literalinclude:: rst_section_sample.rst
+.. literalinclude:: section-sample.rst
    :language: rst
    :lines: 2-
 
 .. lines field above omits :orphan: field from sample display
 
-:doc:`See this sample rendered <rst_section_sample>`.
+:doc:`See this sample rendered <section-sample>`.
 
 This specific sequence of section markup styles is not mandated by the reST specification, but we encourage you to use it for consistency across all DM reST documents.
 
@@ -369,13 +369,13 @@ For example:
 
 .. _`'simple' rest tables`: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#simple-tables
 
-.. literalinclude:: snippets/basic_table.rst
+.. literalinclude:: examples/basic-table.rst
    :language: rst
    :lines: 3-
 
 produces:
 
-.. include:: snippets/basic_table.rst
+.. include:: examples/basic-table.rst
    :start-line: 5
 
 Note how cells can be joined by omitting the dividing line.
@@ -384,24 +384,24 @@ Text in the header is set in bold.
 
 You can write tables with multiple header rows, including spans across header cells:
 
-.. literalinclude:: snippets/multi_header_table.rst
+.. literalinclude:: examples/multi-header-table.rst
    :language: rst
    :lines: 3-
 
 produces:
 
-.. include:: snippets/multi_header_table.rst
+.. include:: examples/multi-header-table.rst
    :start-line: 5
 
 In the simplest cases, tables are not required to have headers, or even be inside a ``table`` directive.
 
-.. literalinclude:: snippets/noheader_table.rst
+.. literalinclude:: examples/noheader-table.rst
    :language: rst
    :lines: 3-
 
 produces:
 
-.. include:: snippets/noheader_table.rst
+.. include:: examples/noheader-table.rst
    :start-line: 2
 
 Be sure to leave a blank line before and after the ``table`` directive.
@@ -417,11 +417,11 @@ Plain images
 Plain images can be included with the ``image`` directive.
 For example:
 
-.. literalinclude:: snippets/image.rst
+.. literalinclude:: examples/image.rst
    :language: rst
    :lines: 3-
 
-.. include:: snippets/image.rst
+.. include:: examples/image.rst
    :start-line: 2
 
 This example shows how an image can by hyperlinked to any URL with the ``target`` field.
@@ -439,11 +439,11 @@ Figure directive
 Figures include both an image and a caption.
 For example:
 
-.. literalinclude:: snippets/figure.rst
+.. literalinclude:: examples/figure.rst
    :language: rst
    :lines: 3-
 
-.. include:: snippets/figure.rst
+.. include:: examples/figure.rst
    :start-line: 2
 
 Note that the ``:name:`` field takes the place of a separate :ref:`label <rst-internal-links>` for hyperlinking.
@@ -490,13 +490,13 @@ Block math
 To display math as a block element, use the ``math`` directive (be sure to leave a blank line before and after the ``math`` directive).
 For example:
 
-.. literalinclude:: snippets/math.rst
+.. literalinclude:: examples/math.rst
    :language: rst
    :lines: 3-
 
 renders as
 
-.. include:: snippets/math.rst
+.. include:: examples/math.rst
    :start-line: 2
 
 .. _rst-math-block-refs:
@@ -517,13 +517,13 @@ Multiple equations can appear in the same ``math`` directive.
 Simply include a blank line between each equation (and don't include an equation as a argument of the ``math`` directive itself).
 For example:
 
-.. literalinclude:: snippets/math-multi.rst
+.. literalinclude:: examples/math-multi.rst
    :language: rst
    :lines: 3-
 
 renders as
 
-.. include:: snippets/math-multi.rst
+.. include:: examples/math-multi.rst
    :start-line: 2
 
 .. _rst-math-block-align:
@@ -535,13 +535,13 @@ Often when there are multiple statements in a ``math`` directive it's desirable 
 In AMSMath-LaTeX this would be achieved with the ``align`` environment.
 In reStructuredText we can accomplish the same in a ``math`` directive:
 
-.. literalinclude:: snippets/math-align.rst
+.. literalinclude:: examples/math-align.rst
    :language: rst
    :lines: 3-
 
 renders as
 
-.. include:: snippets/math-align.rst
+.. include:: examples/math-align.rst
    :start-line: 2
 
 Notice how the alignment point is marked with an ``&`` and ``\\`` is appended to each math statement *except for the last.*
@@ -573,13 +573,13 @@ where
 
 For example:
 
-.. literalinclude:: snippets/py_codeblock_example.rst
+.. literalinclude:: examples/py-codeblock.rst
    :language: rst
    :lines: 3-
 
 produces
 
-.. include:: snippets/py_codeblock_example.rst
+.. include:: examples/py-codeblock.rst
    :start-line: 2
 
 Be sure to leave a blank line before and after the ``code-block`` directive.

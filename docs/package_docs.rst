@@ -10,7 +10,7 @@ Documenting Stack Packages
 The LSST Stack is an aggregation of packages contained in individual git repositories (see `github.com/lsst <https://github.com/lsst>`_).
 This page explains how to organize and write package documentation that can be integrated into software documentation, such as the `LSST Science Pipelines <http://pipelines.lsst.io>`_ docs.
 In separate pages we cover writing :doc:`docstrings for Python </python/numpydoc>` and :doc:`C++ </cpp/api-docs>`, respectively.
-We use reStructuredText to markup our documentation; see our :doc:`reStructuredText Style Guide <rst_styleguide>` for more information on this markup language.
+We use reStructuredText to markup our documentation; see our :doc:`reStructuredText Style Guide </restructuredtext/style>` for more information on this markup language.
 
 .. _pkg-doc-pkg-layout:
 
