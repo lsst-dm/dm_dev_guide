@@ -231,6 +231,24 @@ JavaScript
 
 - :doc:`javascript/jsdoc`
 
+.. RESTRUCTUREDTEXT SECTION ==================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: ReStructuredText
+   :hidden:
+
+   restructuredtext/style
+
+.. _part-rst:
+
+ReStructuredText
+----------------
+
+- :doc:`restructuredtext/style`
+
 .. -------------------
 
 .. toctree::
@@ -261,7 +279,6 @@ JavaScript
    :caption: Writing Docs
    :name: part-docs
 
-   docs/rst_styleguide.rst
    docs/package_docs.rst
 
 .. toctree::
