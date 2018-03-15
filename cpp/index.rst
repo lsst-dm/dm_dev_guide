@@ -11,3 +11,4 @@ C++ guides
 - :doc:`templates`
 - :doc:`boost`
 - :doc:`eigen`
+- :doc:`profiling`

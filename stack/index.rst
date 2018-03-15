@@ -10,6 +10,7 @@ DM Stack guides
 - :doc:`logging`
 - :doc:`debug`
 - :doc:`jenkins-stack-os-matrix`
+- :doc:`unit-test-coverage`
 - :doc:`lsstsw`
 - :doc:`eups-tutorial`
 - :doc:`adding-a-new-package`

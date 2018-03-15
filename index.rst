@@ -139,6 +139,26 @@ How DM coordinates work and gets things done.
 Development guides
 ==================
 
+.. DEVELOPMENT OVERVIEW SECTION ==============================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Code Style Guides
+   :hidden:
+
+   coding/intro.rst
+   coding/unit-test-policy.rst
+
+.. _part-dev-guides-overview:
+
+Overview of Code Style Guides & Policies
+----------------------------------------
+
+- :doc:`coding/intro`
+- :doc:`coding/unit-test-policy`
+
 .. C++ SECTION ===============================================================
 
 .. Hidden toctree to manage the sidebar navigation. Match the contents list below.
@@ -155,6 +175,7 @@ Development guides
    cpp/templates
    cpp/boost
    cpp/eigen
+   cpp/profiling
 
 .. _part-cpp:
 
@@ -168,6 +189,7 @@ C++
 - :doc:`cpp/templates`
 - :doc:`cpp/boost`
 - :doc:`cpp/eigen`
+- :doc:`cpp/profiling`
 
 .. PYTHON SECTION ============================================================
 
@@ -182,6 +204,7 @@ C++
    python/testing
    python/numpydoc
    python/astropy
+   python/profiling
 
 .. _part-python:
 
@@ -192,6 +215,7 @@ Python
 - :doc:`python/testing`
 - :doc:`python/numpydoc`
 - :doc:`python/astropy`
+- :doc:`python/profiling`
 
 .. PYBIND11 SECTION ==========================================================
 
@@ -264,6 +288,7 @@ ReStructuredText
    stack/logging
    stack/debug
    stack/jenkins-stack-os-matrix
+   stack/unit-test-coverage.rst
    stack/lsstsw
    stack/eups-tutorial
    stack/adding-a-new-package
@@ -281,6 +306,7 @@ DM Stack
 - :doc:`stack/logging`
 - :doc:`stack/debug`
 - :doc:`stack/jenkins-stack-os-matrix`
+- :doc:`stack/unit-test-coverage`
 - :doc:`stack/lsstsw`
 - :doc:`stack/eups-tutorial`
 - :doc:`stack/adding-a-new-package`
@@ -332,16 +358,6 @@ Crowd-sourced recommendations for configuring editors for LSST development (list
 - :doc:`editors/vim`
 
 .. -------------------
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Coding Guides
-   :name: part-coding
-
-   coding/intro.rst
-   coding/unit-test-policy.rst
-   coding/unit_test_coverage.rst
-   coding/profiling.rst
 
 .. toctree::
    :maxdepth: 1

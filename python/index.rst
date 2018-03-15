@@ -8,3 +8,4 @@ Python guides
 - :doc:`testing`
 - :doc:`numpydoc`
 - :doc:`astropy`
+- :doc:`profiling`
