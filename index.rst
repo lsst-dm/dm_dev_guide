@@ -287,6 +287,26 @@ DM Stack
 - :doc:`stack/packaging-third-party-eups-dependencies`
 - :doc:`stack/renaming-a-package`
 
+.. GIT SECTION ===============================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Git
+   :hidden:
+
+   git/setup
+   git/git-lfs
+
+.. _part-git:
+
+Git
+---
+
+- :doc:`git/setup`
+- :doc:`git/git-lfs`
+
 .. -------------------
 
 .. toctree::
@@ -304,8 +324,6 @@ DM Stack
    :caption: Developer Tools
    :name: part-tools
 
-   tools/git_setup.rst
-   tools/git_lfs.rst
    tools/sublime.rst
    tools/emacs.rst
    tools/vim.rst
