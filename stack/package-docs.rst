@@ -161,7 +161,7 @@ CODE PREAMBLE
 Each source file needs to include a short license and copyright statement.
 This should normally be included in a comment block at the top of the file and should take the following form:
 
-.. literalinclude:: snippets/license_preamble.txt
+.. literalinclude:: examples/license_preamble.txt
    :language: text
 
 where the package name is stated explicitly at the top to attach it to a particular :file:`COPYRIGHT` file.

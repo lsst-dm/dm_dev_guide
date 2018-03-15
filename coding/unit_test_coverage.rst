@@ -6,7 +6,7 @@ Verifying Test Quality
 ======================
 
 The purpose of coverage analysis is to verify the thoroughness of a test suite.
-For example, :doc:`unit tests <unit_test_policy>` are used to validate the
+For example, :doc:`unit tests </coding/unit-test-policy>` are used to validate the
 implementation of detailed design objects through comprehensive testing.
 Coverage analysis checks that the testing is, indeed, comprehensive by
 executing instrumented unit tests which records the complete execution path

@@ -118,7 +118,7 @@ Standard procedures that require an RFC
 
 Some procedures **always require** an RFC, including:
 
-- :doc:`/build-ci/third_party`.
+- :doc:`/stack/packaging-third-party-eups-dependencies`.
 - :ref:`Releasing a change-controlled document <ccd-release>`.
 
 .. _rfc-discussion:

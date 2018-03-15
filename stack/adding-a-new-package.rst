@@ -15,7 +15,7 @@ creation.
 
 After approval, code written internally by Data Management should be packaged
 following the template in the `lsst/templates`_ repository. DM packaging of
-third party code should proceed as described in :doc:`third_party`.
+third party code should proceed as described in :doc:`packaging-third-party-eups-dependencies`.
 
 New packages must be added to the `LSST organization on GitHub`_ and access
 must be granted to appropriate teams. For DM-written code, these include "Data
@@ -25,7 +25,7 @@ Management" and "Overlords." For third-party code, use the "DM Externals" and
 The new package must be added to the `etc/repos.yaml file in the lsst/repos
 repository`_ along with its corresponding GitHub URL. This file is governed by
 a "self-merge" policy: upon opening a pull request, it will be checked by the
-:doc:`Jenkins CI <jenkins>` system, and developers may merge without further review
+:doc:`Jenkins CI </build-ci/jenkins>` system, and developers may merge without further review
 on success. Refer to :jira:`RFC-75` for background.
 
 The new package then needs to be added to the :file:`ups/*.table` file (and
@@ -55,9 +55,9 @@ With this enabled people will be able to use the GitHub merge button on Pull Req
 
 In the image above no automated status checks are being performed.
 Whilst not required, we recommend that some basic checks are enabled on repositories using Travis.
-This will not replace normal testing with :doc:`Jenkins job <../build-ci/jenkins-stack-os-matrix>` but for packages that have been updated to :ref:`use flake8 <testing-flake8>` it is useful to add a simple Travis script like the following:
+This will not replace normal testing with :doc:`Jenkins job <jenkins-stack-os-matrix>` but for packages that have been updated to :ref:`use flake8 <testing-flake8>` it is useful to add a simple Travis script like the following:
 
-.. literalinclude:: snippets/flake8-travis.yml
+.. literalinclude:: examples/flake8-travis.yml
   :language: yaml
 
 For packages containing C++ that have been tidied up using ``clang`` tools, you may consider adding a Travis check that runs the tidy tool and does a ``diff`` with the repository.

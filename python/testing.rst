@@ -8,7 +8,7 @@ Python Unit Testing
    To request changes to these policies, please file an :doc:`RFC </communications/rfc>`.
 
 This page provides technical guidance to developers writing unit tests for DM's Python code base.
-See :doc:`/coding/unit_test_policy` for an overview of LSST Stack testing.
+See :doc:`/coding/unit-test-policy` for an overview of LSST Stack testing.
 LSST tests should be written using the :mod:`unittest` framework, with default test discovery, and should support being run using the `pytest`_ test runner as well as from the command line.
 If you want to jump straight to a full example of the standard LSST Python testing boilerplate without reading the background, read the :ref:`section on memory testing <py-test-mem>` later in this document.
 

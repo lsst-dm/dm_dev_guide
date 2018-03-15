@@ -228,7 +228,7 @@ type, and the build will fail.
 
 To account for this, it is necessary to explicitly flag this as a TaP package.
 There are two mechanisms for this, depending of the `version of EUPS`_ being
-used. At time of writing, LSST's :doc:`Jenkins <jenkins>` use a version of
+used. At time of writing, LSST's :doc:`Jenkins </build-ci/jenkins>` use a version of
 EUPS which only supports the now-deprecated mechanism. Therefore, in the
 interests of future proofing, both:
 

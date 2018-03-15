@@ -325,7 +325,7 @@ the stack, including tags and versions::
    […]
 
 Be aware that there are generally many packages and many, many tags,
-corresponding to different :doc:`CI <jenkins>` runs, official releases,
+corresponding to different :doc:`CI </build-ci/jenkins>` runs, official releases,
 and so on.
 
 Setting up the ``lsst_apps`` product will, by default, give us the ``current``

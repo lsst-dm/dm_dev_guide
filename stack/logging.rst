@@ -156,7 +156,7 @@ and in Python:
 Notice that all loggers in the hierarchy under a given component at a given trace level can be enabled easily using, e.g., ``TRACE2.lsst.meas.algorithms.starSelector``.
 Besides, a utility function :lfunc:`lsst.log.utils.traceSetAt()` is provided to adjust logging level of a group of loggers so to display messages with trace number <= NUMBER. This is demostrated in the following example:
 
-.. literalinclude:: logging_snippets/tracing.py
+.. literalinclude:: examples/tracing.py
    :language: python
 
 The example can be run if :lmod:`lsst.log` is setup:

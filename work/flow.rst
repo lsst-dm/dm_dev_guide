@@ -318,10 +318,10 @@ A common pattern is:
 Testing with Jenkins
 --------------------
 
-Start a :doc:`stack-os-matrix Jenkins job <../build-ci/jenkins-stack-os-matrix>` to run the Stack's tests with your ticket branch work.
+Start a :doc:`stack-os-matrix Jenkins job </stack/jenkins-stack-os-matrix>` to run the Stack's tests with your ticket branch work.
 
-To learn more about DM's Jenkins continuous integration service, see :doc:`../build-ci/jenkins`.
-Then follow the steps listed in :doc:`../build-ci/jenkins-stack-os-matrix` to run the tests.
+To learn more about DM's Jenkins continuous integration service, see :doc:`/build-ci/jenkins`.
+Then follow the steps listed in :doc:`/stack/jenkins-stack-os-matrix` to run the tests.
 
 Ensure that you **do not** skip the demo before submitting a pull request.
 Otherwise, your testing may be incomplete.

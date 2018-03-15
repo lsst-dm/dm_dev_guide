@@ -5,7 +5,7 @@ Testing the LSST DM Stack with the Jenkins stack-os-matrix Job
 `stack-os-matrix`_ is the continuous integration (CI) job that DM developers must run to ensure tests pass before merging changes to any LSST EUPS Stack package.
 This page explains how to run the `stack-os-matrix`_ job and find build and test logs.
 
-For more information about the DM's Jenkins continuous integration service, see :doc:`jenkins`.
+For more information about the DM's Jenkins continuous integration service, see :doc:`/build-ci/jenkins`.
 
 Running a stack-os-matrix job
 =============================

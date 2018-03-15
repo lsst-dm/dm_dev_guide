@@ -32,7 +32,7 @@ Boilerplate for Header (.h) and Source (.cc) Files
 
 The beginning of both header and source code files should include
 
-1. A formating hint for Emacs
+1. A formatting hint for Emacs
 
    .. code-block:: cpp
 
@@ -40,7 +40,7 @@ The beginning of both header and source code files should include
 
 2. A copyright and license block (note: **NOT** a Doxygen comment block) using :ref:`the standard text <pkg-doc-code-preamble>`.
 
-.. literalinclude:: /docs/snippets/license_preamble.cpp
+.. literalinclude:: /stack/examples/license_preamble.cpp
    :language: cpp
 
 .. _cpp-doxygen-basics:
