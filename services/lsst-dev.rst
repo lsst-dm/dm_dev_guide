@@ -249,7 +249,7 @@ After you have initialized a shared stack, you can enable Git LFS using EUPS:
 
    setup git_lfs
 
-The first time you use Git LFS you'll need to configure it by following these steps from DM's :doc:`Git LFS guide <../tools/git_lfs>`:
+The first time you use Git LFS you'll need to configure it by following these steps from DM's :doc:`Git LFS guide </git/git-lfs>`:
 
 1. :ref:`git-lfs-basic-config`
 2. :ref:`git-lfs-config`

@@ -16,7 +16,7 @@ Such configurations are labeled on as page as **required** (as opposed to recomm
   - :ref:`Git commit organization best practices <git-commit-organization-best-practices>`, and
   - :ref:`Commit message best practices <git-commit-message-best-practices>`.
 
-- :doc:`/tools/git_lfs`
+- :doc:`git-lfs`
 
 .. _git-learning-resources:
 
@@ -93,7 +93,7 @@ Set up a Git credential helper
 ==============================
 
 Rather than entering your GitHub username and password (or 2FA access token) every time you push, you can set up a Git credential helper to manage this for you.
-A credential helper is especially important for working with our :doc:`Git LFS-backed repositories </tools/git_lfs>`.
+A credential helper is especially important for working with our :doc:`Git LFS-backed repositories <git-lfs>`.
 
 **Mac users** can use the secure OS X keychain:
 

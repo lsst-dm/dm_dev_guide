@@ -64,12 +64,12 @@ If you are running an older client, version 1.2 or earlier, follow the note at t
 
 First, add these lines into your :file:`~/.gitconfig` file:
 
-.. literalinclude:: snippets/git_lfs_gitconfig.txt
+.. literalinclude:: samples/git_lfs_gitconfig.txt
    :language: text
 
 Then add these lines into your :file:`~/.git-credentials` files (create one, if necessary):
 
-.. literalinclude:: snippets/git_lfs_git-credentials.txt
+.. literalinclude:: samples/git_lfs_git-credentials.txt
    :language: text
 
 Trying cloning a small data repository to test your configuration:
@@ -88,12 +88,12 @@ Trying cloning a small data repository to test your configuration:
 
    First, add these lines into your :file:`~/.gitconfig` file:
 
-   .. literalinclude:: snippets/git_lfs_gitconfig_legacy.txt
+   .. literalinclude:: samples/git_lfs_gitconfig_legacy.txt
       :language: text
 
    Then add these lines into your :file:`~/.git-credentials` file (create one, if necessary):
 
-   .. literalinclude:: snippets/git_lfs_git-credentials_legacy.txt
+   .. literalinclude:: samples/git_lfs_git-credentials_legacy.txt
       :language: text
 
 .. _git-lfs-auth:

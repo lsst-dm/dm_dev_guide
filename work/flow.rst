@@ -18,8 +18,8 @@ In appendices, we suggest some *best practices* for maximizing the usefulness of
 
 Other related pages:
 
-- :doc:`/tools/git_setup`.
-- :doc:`/tools/git_lfs`.
+- :doc:`/git/setup`.
+- :doc:`/git/git-lfs`.
 - :doc:`jira-tips`.
 
 .. _git-setup:
@@ -35,7 +35,7 @@ Follow these steps to configure your Git environment for DM work:
 2. :ref:`Set Git and GitHub to use your institution-hosted email address <git-setup-institutional-email>`.
 3. :ref:`Set Git to use 'plain' pushes <git-setup-plain-pushes>`.
 
-*See also:* :doc:`/tools/git_setup`.
+*See also:* :doc:`/git/setup`.
 
 .. _workflow-jira:
 

@@ -75,7 +75,7 @@ Your branch protections screen should then look something like this:
 Handling Git LFS-backed repos
 =============================
 
-New :doc:`Git LFS-backed </tools/git_lfs>` repos (or existing repos
+New :doc:`Git LFS-backed </git/git-lfs>` repos (or existing repos
 being converted to LFS) require additional configuration.
 
 - The `repos.yaml`_ entry must declare that the repository is LFS backed:

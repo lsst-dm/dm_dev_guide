@@ -58,8 +58,8 @@ Next, ask your T/CAM to add you to the `lsst <https://github.com/lsst>`__ and `l
 
 .. seealso::
 
-   - :doc:`/tools/git_setup` page for recommendations on setting up two-factor authentication and credential helpers for GitHub.
-   - :doc:`/tools/git_lfs` page for configuring Git LFS for DM.
+   - :doc:`/git/setup` page for recommendations on setting up two-factor authentication and credential helpers for GitHub.
+   - :doc:`/git/git-lfs` page for configuring Git LFS for DM.
 
 Community.lsst.org
 ==================
