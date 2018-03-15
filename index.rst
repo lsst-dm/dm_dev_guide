@@ -249,18 +249,45 @@ ReStructuredText
 
 - :doc:`restructuredtext/style`
 
-.. -------------------
+.. STACK SECTION =============================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Processes
-   :name: part-processes
+   :caption: DM Stack
+   :hidden:
 
-   processes/transferring_code.rst
+   stack/platforms
+   stack/package-docs
+   stack/transferring-code
+   stack/logging
+   stack/debug
+   stack/jenkins-stack-os-matrix
+   stack/lsstsw
+   stack/eups-tutorial
+   stack/adding-a-new-package
+   stack/packaging-third-party-eups-dependencies
+   stack/renaming-a-package
 
-.. seealso::
+.. _part-dm-stack:
 
-   `DMTN-027: Renaming an LSST git Repository <https://dmtn-027.lsst.io>`_.
+DM Stack
+--------
+
+- :doc:`stack/platforms`
+- :doc:`stack/package-docs`
+- :doc:`stack/transferring-code`
+- :doc:`stack/logging`
+- :doc:`stack/debug`
+- :doc:`stack/jenkins-stack-os-matrix`
+- :doc:`stack/lsstsw`
+- :doc:`stack/eups-tutorial`
+- :doc:`stack/adding-a-new-package`
+- :doc:`stack/packaging-third-party-eups-dependencies`
+- :doc:`stack/renaming-a-package`
+
+.. -------------------
 
 .. toctree::
    :maxdepth: 1
@@ -268,18 +295,9 @@ ReStructuredText
    :name: part-coding
 
    coding/intro.rst
-   coding/unit_test_policy.rst
+   coding/unit-test-policy.rst
    coding/unit_test_coverage.rst
    coding/profiling.rst
-   coding/logging.rst
-   coding/debug.rst
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Writing Docs
-   :name: part-docs
-
-   docs/package_docs.rst
 
 .. toctree::
    :maxdepth: 1
@@ -297,13 +315,7 @@ ReStructuredText
    :caption: Build, Test, Release
    :name: part-build-ci
 
-   build-ci/platforms.rst
-   build-ci/eups_tutorial.rst
    build-ci/jenkins.rst
-   build-ci/jenkins-stack-os-matrix.rst
-   build-ci/lsstsw.rst
-   build-ci/new_package.rst
-   build-ci/third_party.rst
 
 .. toctree::
    :maxdepth: 1

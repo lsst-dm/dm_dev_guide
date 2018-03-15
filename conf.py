@@ -459,7 +459,7 @@ def write_if_different(filename, content):
             print(line, file=fd)
 
 
-preamble_root = "docs/snippets/license_preamble"
+preamble_root = "stack/examples/license_preamble"
 files = {ext: "{}.{}".format(preamble_root, ext) for ext in ("txt", "py", "cpp")}
 try:
     preamble = read_file_contents(files["txt"])
