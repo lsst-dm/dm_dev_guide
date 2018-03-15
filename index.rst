@@ -307,6 +307,30 @@ Git
 - :doc:`git/setup`
 - :doc:`git/git-lfs`
 
+.. EDITORS SECTION ===========================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Editors
+   :hidden:
+
+   editors/emacs
+   editors/sublime
+   editors/vim
+
+.. _part-editors:
+
+Editors
+-------
+
+Crowd-sourced recommendations for configuring editors for LSST development (listed alphabetically)
+
+- :doc:`editors/emacs`
+- :doc:`editors/sublime`
+- :doc:`editors/vim`
+
 .. -------------------
 
 .. toctree::
@@ -318,15 +342,6 @@ Git
    coding/unit-test-policy.rst
    coding/unit_test_coverage.rst
    coding/profiling.rst
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Developer Tools
-   :name: part-tools
-
-   tools/sublime.rst
-   tools/emacs.rst
-   tools/vim.rst
 
 .. toctree::
    :maxdepth: 1
