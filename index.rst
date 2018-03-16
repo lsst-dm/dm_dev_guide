@@ -357,25 +357,53 @@ Crowd-sourced recommendations for configuring editors for LSST development (list
 - :doc:`editors/sublime`
 - :doc:`editors/vim`
 
-.. -------------------
+.. _part-services:
+
+Service guides
+==============
+
+.. JENKINS SECTION ===========================================================
 
 .. toctree::
    :maxdepth: 1
-   :caption: Build, Test, Release
-   :name: part-build-ci
+   :caption: Jenkins
+   :hidden:
 
-   build-ci/jenkins.rst
+   jenkins/getting-started
+
+.. _part-jenkins:
+
+Jenkins CI
+----------
+
+- :doc:`jenkins/getting-started`
+
+.. NCSA/LDF SERVICES SECTION =================================================
 
 .. toctree::
    :maxdepth: 1
-   :caption: Developer Services
-   :name: part-services
+   :caption: LDF Services
+   :hidden:
 
-   services/lsst-dev.rst
-   services/lsst-db.rst
-   services/verification.rst
-   services/datasets.rst
-   services/data_protection.rst
-   services/ncsa_bulk_transfer.rst
-   services/nebula/index.rst
-   services/orchestration/index.rst
+   services/lsst-dev
+   services/lsst-db
+   services/verification
+   services/datasets
+   services/data_protection
+   services/ncsa_bulk_transfer
+   services/nebula/index
+   services/orchestration/index
+
+.. _part-ldf:
+
+LSST Data Facility services
+---------------------------
+
+- :doc:`services/lsst-dev`
+- :doc:`services/lsst-db`
+- :doc:`services/verification`
+- :doc:`services/datasets`
+- :doc:`services/data_protection`
+- :doc:`services/ncsa_bulk_transfer`
+- :doc:`services/nebula/index`
+- :doc:`services/orchestration/index`
