@@ -17,10 +17,10 @@ The `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ w
 
 .. toctree::
    :maxdepth: 1
-   :caption: Getting Started
+   :caption: Team
    :name: part-getting-started
 
-   getting-started/onboarding.rst
+   team/onboarding.rst
 
 .. toctree::
    :maxdepth: 1
