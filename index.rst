@@ -2,18 +2,15 @@
 LSST DM Developer Guide
 #######################
 
-`LSST Data Management (DM) <http://dm.lsst.org>`_ is building the software that will enable scientific discovery with the Large Synoptic Survey Telescope (`LSST <http://www.lsst.org>`_).
-LSST will collect over 50 PB of raw data, resulting in over 30 trillion observations of 40 billion astronomical sources.
+This is an internal guide for `LSST DM <https://www.lsst.org/about/dm>`_ staff.
+It's also openly available so that others can understand how we're building the LSST's data management subsystem.
 
-All LSST DM code is open source and available on `GitHub <https://github.com/lsst>`_.
-Our `LSST Science Pipelines <https://github.com/lsst>`_ will implement the core image processing and data analysis algorithms needed to process optical survey imaging data at low latency and unprecedented scale and accuracy.
-`Qserv <http://slac.stanford.edu/exp/lsst/qserv/>`_ is a distributed, shared-nothing SQL database query system to efficiently store, query, and analyze catalogs running into trillions of rows and petabytes of data the LSST will generate.
-`Firefly <https://github.com/lsst/firefly>`_, and other tools, will enable astronomers to query, download, visualize, and analyze LSST data.
+This guide includes a mix of normative requirements and helpful, descriptive, pages.
+When it's particularly important that you closely follow a standard, we include an annotation box at the top of the page.
 
-This Guide will help you in contributing to the DM development effort.
-
-DM Developers can make this guide better by contributing to the https://github.com/lsst-dm/dm_dev_guide repo.
-The `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ will get you started.
+Any member of DM can contribute to this guide.
+It's published from the https://github.com/lsst-dm/dm_dev_guide GitHub repo.
+Check out the `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ to get started.
 
 .. TEAM SECTION ==============================================================
 
