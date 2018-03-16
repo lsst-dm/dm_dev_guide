@@ -3,7 +3,7 @@ DM Python Style Guide
 #####################
 
 This is the version 6.0 of the DM Python Coding Standard.
-The :doc:`intro` provides the overarching Coding Standards policy applicable to all DM code.
+The :doc:`/coding/intro` provides the overarching Coding Standards policy applicable to all DM code.
 
 .. note::
 

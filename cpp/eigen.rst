@@ -12,7 +12,7 @@ Using Eigen
 
 The `Eigen`_ C++ template library for linear algebra is distributed with the LSST software stack.
 
-It is permitted to use any of the standard modules included with Eigen in LSST code without restrictions beyond the :ref:`usual coding guidelines <part-coding>`.
+It is permitted to use any of the standard modules included with Eigen in LSST code without restrictions beyond the :ref:`usual coding guidelines <part-guides>`.
 
 Eigen also includes some **unsupported** modules which are located in the ``include/unsupported`` directory. For details, refer to the `relevant Eigen documentation`_.
 

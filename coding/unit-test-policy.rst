@@ -128,4 +128,4 @@ instrumented code which records the complete execution path through the code
 and then calculating metrics indicative of the coverage achieved during
 execution.
 
-See :doc:`unit_test_coverage` for more information.
+See :doc:`/stack/unit-test-coverage` for more information.
