@@ -290,14 +290,14 @@ ReStructuredText
    :hidden:
 
    stack/platforms
-   stack/package-docs
    stack/transferring-code
+   stack/package-docs
    stack/logging
    stack/debug
    stack/jenkins-stack-os-matrix
    stack/unit-test-coverage.rst
-   stack/lsstsw
    stack/eups-tutorial
+   stack/lsstsw
    stack/adding-a-new-package
    stack/packaging-third-party-eups-dependencies
    stack/renaming-a-package
@@ -307,15 +307,26 @@ ReStructuredText
 DM Stack
 --------
 
+General policies and procedures.
+
 - :doc:`stack/platforms`
-- :doc:`stack/package-docs`
 - :doc:`stack/transferring-code`
+
+Development.
+
+- :doc:`stack/package-docs`
 - :doc:`stack/logging`
 - :doc:`stack/debug`
+
+Testing.
+
 - :doc:`stack/jenkins-stack-os-matrix`
 - :doc:`stack/unit-test-coverage`
-- :doc:`stack/lsstsw`
+
+Packaging.
+
 - :doc:`stack/eups-tutorial`
+- :doc:`stack/lsstsw`
 - :doc:`stack/adding-a-new-package`
 - :doc:`stack/packaging-third-party-eups-dependencies`
 - :doc:`stack/renaming-a-package`
