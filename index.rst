@@ -21,6 +21,7 @@ The `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ w
    :name: part-getting-started
 
    getting-started/onboarding.rst
+   getting-started/resources.rst
 
 .. toctree::
    :maxdepth: 1
