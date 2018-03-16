@@ -102,6 +102,7 @@ The `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ w
    build-ci/lsstsw.rst
    build-ci/new_package.rst
    build-ci/third_party.rst
+   build-ci/github_protect_travis_flake8.rst
 
 .. toctree::
    :maxdepth: 1
