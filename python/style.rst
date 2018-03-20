@@ -619,21 +619,23 @@ Within a module, follow the order:
 
 .. _style-guide-py-super:
 
-``super`` SHOULD NOT be used unless the author really understands the implications (e.g. in a well-understood multiple inheritance hierarchy).
-----------------------------------------------------------------------------------------------------------------------------------------------
+``super`` MAY be used with care to call inherited methods.
+----------------------------------------------------------
 
-Python provides :py:func:`super` so that each parent class' method is only called once.
+Python provides :py:func:`super()` so that each base class’s method is only called once.
+Using :py:func:`super()` ensures a consistent Method Resolution Order, and prevents inherited methods from being called multiple times.
+In Python 3, :py:func:`super()` does not require naming the class that it is part of, making its use simpler and removing a maintenance issue.
 
-To use :py:func:`super`, all parent classes in the chain (also called the Method Resolution Order) need to use :py:func:`super` otherwise the chain gets interrupted.
-Other subtleties have been noted in `an article by James Knight <https://fuhm.net/super-harmful/>`__:
+The trickiest issue with the use of :py:func:`super()` is that, in the presence of multiple inheritance, there is no way for a class to know for certain which inherited method will be called.
+In particular, this means that the calling signature (arguments) for all versions of a method must be compatible.
+As a result, there are a few argument-related caveats about the use of :py:func:`super()` in multiple inheritance hierarchies:
 
-- Never call :py:func:`super` with anything but the exact arguments you received, unless you really know what you're doing.
-- When you use it on methods whose acceptable arguments can be altered on a subclass via addition of more optional arguments, always accept ``*args, **kw``, and call :py:func:`super` like ``super(MyClass, self).currentmethod(alltheargsideclared, *args, **kwargs)``.
-  If you don't do this, forbid addition of optional arguments in subclasses.
-- Never use positional arguments in ``__init__`` or ``__new__``.
-  Always use keyword args, and always call them as keywords, and always pass all keywords on to :py:func:`super`.
+* Only pass :py:func:`super()` the exact arguments you received.
+* When you use it on methods whose acceptable arguments can be altered on a subclass via addition of more optional arguments, always accept ``*args``, ``**kwargs``, and call :py:func:`super()` like ``super().currentmethod(alltheargsideclared, *args, **kwargs)``. If you don’t do this, forbid addition of optional arguments in subclasses.
+* Never use positional arguments in ``__init__`` or ``__new__``.  Always use keyword args in the declarations, always call them using keywords, and always pass all keywords on, e.g. ``super().__init__(**kwargs)``.
 
-For guidance on successfully using :py:func:`super`, see Raymond Hettinger's article `Super Considered Super! <https://rhettinger.wordpress.com/2011/05/26/super-considered-super/>`__
+To use :py:func:`super()` with multiple inheritance, all base classes in Python's Method Resolution Order need to use :py:func:`super()`; otherwise the calling chain gets interrupted.
+If your class may be used in multiple inheritance, ensure that all relevant classes use :py:func:`super()` including documenting requirements for subclasses.
 
 .. _style-guide-py-comparisons:
 
