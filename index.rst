@@ -380,6 +380,22 @@ Crowd-sourced recommendations for configuring editors for LSST development (list
 Service guides
 ==============
 
+.. OVERVIEW SECTION ==========================================================
+
+.. toctree::
+   :maxdepth: 1
+   :caption: IT Overview
+   :hidden:
+
+   it/itsc
+
+.. _part-it:
+
+IT overview
+-----------
+
+- :doc:`it/itsc`
+
 .. JENKINS SECTION ===========================================================
 
 .. toctree::
