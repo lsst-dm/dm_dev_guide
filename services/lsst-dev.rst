@@ -5,7 +5,7 @@ Using the lsst-dev Server
 ``lsst-dev`` is the development server/cluster of servers run by NCSA for LSST DM development work.
 The cname ``lsst-dev.ncsa.illinois.edu`` directs to ``lsst-dev01.ncsa.illinois.edu`` and this system serves as the primary development server for the team.
 
-To get an account, see the :doc:`Onboarding Checklist </getting-started/onboarding>`.
+To get an account, see the :doc:`Onboarding Checklist </team/onboarding>`.
 
 This page is designed to assist developers in their work on ``lsst-dev01``:
 
@@ -249,7 +249,7 @@ After you have initialized a shared stack, you can enable Git LFS using EUPS:
 
    setup git_lfs
 
-The first time you use Git LFS you'll need to configure it by following these steps from DM's :doc:`Git LFS guide <../tools/git_lfs>`:
+The first time you use Git LFS you'll need to configure it by following these steps from DM's :doc:`Git LFS guide </git/git-lfs>`:
 
 1. :ref:`git-lfs-basic-config`
 2. :ref:`git-lfs-config`

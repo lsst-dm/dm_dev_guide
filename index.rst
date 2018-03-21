@@ -2,124 +2,426 @@
 LSST DM Developer Guide
 #######################
 
-`LSST Data Management (DM) <http://dm.lsst.org>`_ is building the software that will enable scientific discovery with the Large Synoptic Survey Telescope (`LSST <http://www.lsst.org>`_).
-LSST will collect over 50 PB of raw data, resulting in over 30 trillion observations of 40 billion astronomical sources.
+This is an internal guide for `LSST DM <https://www.lsst.org/about/dm>`_ staff.
+It's also openly available so that others can understand how we're building the LSST's data management subsystem.
 
-All LSST DM code is open source and available on `GitHub <https://github.com/lsst>`_.
-Our `LSST Science Pipelines <https://github.com/lsst>`_ will implement the core image processing and data analysis algorithms needed to process optical survey imaging data at low latency and unprecedented scale and accuracy.
-`Qserv <http://slac.stanford.edu/exp/lsst/qserv/>`_ is a distributed, shared-nothing SQL database query system to efficiently store, query, and analyze catalogs running into trillions of rows and petabytes of data the LSST will generate.
-`Firefly <https://github.com/lsst/firefly>`_, and other tools, will enable astronomers to query, download, visualize, and analyze LSST data.
+This guide includes a mix of normative requirements and helpful, descriptive, pages.
+When it's particularly important that you closely follow a standard, we include an annotation box at the top of the page.
 
-This Guide will help you in contributing to the DM development effort.
+Any member of DM can contribute to this guide.
+It's published from the https://github.com/lsst-dm/dm_dev_guide GitHub repo.
+Check out the `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ to get started.
 
-DM Developers can make this guide better by contributing to the https://github.com/lsst-dm/dm_dev_guide repo.
-The `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ will get you started.
+****
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Getting Started
-   :name: part-getting-started
+**Jump to:** :ref:`Team <part-team>` · :ref:`Communications <part-communications>` · :ref:`Project documentation <part-project-docs>` · :ref:`Work management <part-work>`
 
-   getting-started/onboarding.rst
+**Development guides:** :ref:`Overview <part-guides>` · :ref:`C++ <part-cpp>` · :ref:`Python <part-python>` · :ref:`Pybind11 <part-pybind11>` · :ref:`JavaScript <part-javascript>` · :ref:`ReStructuredText <part-rst>` · :ref:`DM Stack <part-dm-stack>` · :ref:`Git <part-git>` · :ref:`Editors <part-editors>`
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Processes
-   :name: part-processes
+**Services:** :ref:`Overview <part-services>` · :ref:`Jenkins <part-jenkins>` · :ref:`LSST Data Facility <part-ldf>`
 
-   processes/code_of_conduct.rst
-   processes/workflow.rst
-   processes/decision_process.rst
-   processes/transferring_code.rst
-   processes/project_planning.rst
-   processes/jira_agile.rst
-   processes/wiki.rst
-   processes/presenting-at-conferences.rst
-   processes/publication-policy.rst
+****
 
-.. seealso::
+.. TEAM SECTION ==============================================================
 
-   `DMTN-027: Renaming an LSST git Repository <https://dmtn-027.lsst.io>`_.
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Coding Guides
-   :name: part-coding
+   :caption: Team
+   :hidden:
 
-   coding/intro.rst
-   coding/python_style_guide.rst
-   coding/cpp_style_guide.rst
-   coding/pybind11_style_guide.rst
-   coding/using_cpp_templates.rst
-   coding/using_boost.rst
-   coding/using_astropy.rst
-   coding/using_eigen.rst
-   coding/unit_test_policy.rst
-   coding/python_testing.rst
-   coding/unit_test_private_functions.rst
-   coding/unit_test_coverage.rst
-   coding/profiling.rst
-   coding/logging.rst
-   coding/debug.rst
-   coding/python_wrappers_for_cpp_with_pybind11.rst
+   team/onboarding
+   team/code-of-conduct
+   team/empowerment
+   team/drp
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Writing Docs
-   :name: part-docs
+.. Table of contents published on the homepage.
+.. Mirror changes here to team/index.rst (temporary workflow)
 
-   docs/change-controlled-docs.rst   
-   docs/technotes.rst
-   docs/rst_styleguide.rst
-   docs/package_docs.rst
-   docs/py_docs.rst
-   docs/cpp_docs.rst
-   docs/jsdoc.rst
+.. _part-team:
+
+Team
+====
+
+Basic information about the LSST Data Management Subsystem and our culture.
+Learn more about the Data Management Subsystem in :ldm:`294`.
+
+- :doc:`team/onboarding`
+- :doc:`team/code-of-conduct`
+- :doc:`team/empowerment`
+
+Team-specific pages:
+
+- :doc:`team/drp`
+
+.. COMMUNICATIONS SECTION ====================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Developer Tools
-   :name: part-tools
+   :caption: Communications
+   :hidden:
 
    communications/slack-github-username.rst
-   tools/git_setup.rst
-   tools/git_lfs.rst
-   tools/jira_tips.rst
-   tools/clang_format.rst
-   tools/sublime.rst
-   tools/emacs.rst
-   tools/vim.rst
+   communications/rfc.rst
+   communications/rfd.rst
+   communications/wiki.rst
+   communications/presenting-at-conferences.rst
+
+.. Table of contents published on the homepage.
+.. Mirror changes here to team/index.rst (temporary workflow)
+
+.. _part-communications:
+
+Communications
+==============
+
+How to use DM's communication channels.
+
+- :doc:`communications/slack-github-username`
+- :doc:`communications/rfc`
+- :doc:`communications/rfd`
+- :doc:`communications/wiki`
+- :doc:`communications/presenting-at-conferences`
+
+.. PROJECT DOCS SECTION ======================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Build, Test, Release
-   :name: part-build-ci
+   :caption: Project docs
+   :hidden:
 
-   build-ci/platforms.rst
-   build-ci/eups_tutorial.rst
-   build-ci/jenkins.rst
-   build-ci/jenkins-stack-os-matrix.rst
-   build-ci/lsstsw.rst
-   build-ci/new_package.rst
-   build-ci/third_party.rst
+   project-docs/change-controlled-docs.rst
+   project-docs/publication-policy.rst
+   project-docs/technotes.rst
+
+.. _part-project-docs:
+
+Project documentation
+=====================
+
+Controlled documentation and publications.
+
+- :doc:`project-docs/change-controlled-docs`
+- :doc:`project-docs/publication-policy`
+
+Technical notes.
+
+- :doc:`project-docs/technotes`
+
+.. WORK MANAGEMENT SECTION ===================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Developer Services
-   :name: part-services
+   :caption: Work
+   :hidden:
 
-   services/lsst-dev.rst
-   services/lsst-db.rst
-   services/verification.rst
-   services/datasets.rst
-   services/data_protection.rst
-   services/ncsa_bulk_transfer.rst
-   services/nebula/index.rst
-   services/orchestration/index.rst
+   work/flow.rst
+   work/project-planning.rst
+   work/jira-agile.rst
+   work/jira-tips.rst
+
+.. _part-work:
+
+Work management
+===============
+
+How DM coordinates work and gets things done.
+
+- :doc:`work/flow`
+- :doc:`work/project-planning`
+- :doc:`work/jira-agile`
+- :doc:`work/jira-tips`
+
+.. -------------------
+
+.. _part-guides:
+
+Development guides
+==================
+
+.. DEVELOPMENT OVERVIEW SECTION ==============================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Team Specific Information
-   :name: part-teams
+   :caption: Code Style Guides
+   :hidden:
 
-   teams/drp.rst
+   coding/intro.rst
+   coding/unit-test-policy.rst
+
+.. _part-dev-guides-overview:
+
+Overview of Code Style Guides & Policies
+----------------------------------------
+
+- :doc:`coding/intro`
+- :doc:`coding/unit-test-policy`
+
+.. C++ SECTION ===============================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: C++
+   :hidden:
+
+   cpp/style
+   cpp/api-docs
+   cpp/clang-format
+   cpp/testing-private-functions
+   cpp/templates
+   cpp/boost
+   cpp/eigen
+   cpp/profiling
+
+.. _part-cpp:
+
+C++
+---
+
+- :doc:`cpp/style`
+- :doc:`cpp/api-docs`
+- :doc:`cpp/clang-format`
+- :doc:`cpp/testing-private-functions`
+- :doc:`cpp/templates`
+- :doc:`cpp/boost`
+- :doc:`cpp/eigen`
+- :doc:`cpp/profiling`
+
+.. PYTHON SECTION ============================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Python
+   :hidden:
+
+   python/style
+   python/testing
+   python/numpydoc
+   python/astropy
+   python/profiling
+
+.. _part-python:
+
+Python
+------
+
+- :doc:`python/style`
+- :doc:`python/testing`
+- :doc:`python/numpydoc`
+- :doc:`python/astropy`
+- :doc:`python/profiling`
+
+.. PYBIND11 SECTION ==========================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Pybind11
+   :hidden:
+
+   pybind11/style
+   pybind11/how-to
+
+.. _part-pybind11:
+
+Pybind11
+--------
+
+- :doc:`pybind11/style`
+- :doc:`pybind11/how-to`
+
+.. JAVASCRIPT SECTION ========================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: JavaScript
+   :hidden:
+
+   javascript/jsdoc
+
+.. _part-javascript:
+
+JavaScript
+----------
+
+- :doc:`javascript/jsdoc`
+
+.. RESTRUCTUREDTEXT SECTION ==================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: ReStructuredText
+   :hidden:
+
+   restructuredtext/style
+
+.. _part-rst:
+
+ReStructuredText
+----------------
+
+- :doc:`restructuredtext/style`
+
+.. STACK SECTION =============================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: DM Stack
+   :hidden:
+
+   stack/platforms
+   stack/transferring-code
+   stack/package-docs
+   stack/logging
+   stack/debug
+   stack/jenkins-stack-os-matrix
+   stack/unit-test-coverage.rst
+   stack/eups-tutorial
+   stack/lsstsw
+   stack/adding-a-new-package
+   stack/packaging-third-party-eups-dependencies
+   stack/renaming-a-package
+
+.. _part-dm-stack:
+
+DM Stack
+--------
+
+General policies and procedures.
+
+- :doc:`stack/platforms`
+- :doc:`stack/transferring-code`
+
+Development.
+
+- :doc:`stack/package-docs`
+- :doc:`stack/logging`
+- :doc:`stack/debug`
+
+Testing.
+
+- :doc:`stack/jenkins-stack-os-matrix`
+- :doc:`stack/unit-test-coverage`
+
+Packaging.
+
+- :doc:`stack/eups-tutorial`
+- :doc:`stack/lsstsw`
+- :doc:`stack/adding-a-new-package`
+- :doc:`stack/packaging-third-party-eups-dependencies`
+- :doc:`stack/renaming-a-package`
+
+.. GIT SECTION ===============================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Git
+   :hidden:
+
+   git/setup
+   git/git-lfs
+
+.. _part-git:
+
+Git
+---
+
+- :doc:`git/setup`
+- :doc:`git/git-lfs`
+
+.. EDITORS SECTION ===========================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Editors
+   :hidden:
+
+   editors/emacs
+   editors/sublime
+   editors/vim
+
+.. _part-editors:
+
+Editors
+-------
+
+Crowd-sourced recommendations for configuring editors for LSST development (listed alphabetically)
+
+- :doc:`editors/emacs`
+- :doc:`editors/sublime`
+- :doc:`editors/vim`
+
+.. _part-services:
+
+Service guides
+==============
+
+.. JENKINS SECTION ===========================================================
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Jenkins
+   :hidden:
+
+   jenkins/getting-started
+
+.. _part-jenkins:
+
+Jenkins CI
+----------
+
+- :doc:`jenkins/getting-started`
+
+.. NCSA/LDF SERVICES SECTION =================================================
+
+.. toctree::
+   :maxdepth: 1
+   :caption: LDF Services
+   :hidden:
+
+   services/lsst-dev
+   services/lsst-db
+   services/verification
+   services/datasets
+   services/data_protection
+   services/ncsa_bulk_transfer
+   services/nebula/index
+   services/orchestration/index
+
+.. _part-ldf:
+
+LSST Data Facility services
+---------------------------
+
+- :doc:`services/lsst-dev`
+- :doc:`services/lsst-db`
+- :doc:`services/verification`
+- :doc:`services/datasets`
+- :doc:`services/data_protection`
+- :doc:`services/ncsa_bulk_transfer`
+- :doc:`services/nebula/index`
+- :doc:`services/orchestration/index`
