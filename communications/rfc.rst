@@ -118,6 +118,7 @@ Standard procedures that require an RFC
 
 Some procedures **always require** an RFC, including:
 
+- :doc:`/stack/adding-a-new-package`.
 - :doc:`/stack/packaging-third-party-eups-dependencies`.
 - :ref:`Releasing a change-controlled document <ccd-release>`.
 
