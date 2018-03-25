@@ -330,21 +330,11 @@ Ndarray
 ^^^^^^^
 
 The function ``ExampleOne::doSomethingWithArray`` takes an ``ndarray::Array`` argument.
-To enable automatic conversion to and from ``numpy.ndarray`` in Python add the following includes (right below the pybind11 ones):
+To enable automatic conversion to and from ``numpy.ndarray`` in Python add the following include (right below the pybind11 ones):
 
 .. code-block:: cpp
 
-    #include "numpy/arrayobject.h"
     #include "ndarray/pybind11.h"
-
-We also need to make sure the ``numpy`` module is imported by adding:
-
-.. code-block:: cpp
-
-    if (_import_array() < 0) {
-            PyErr_SetString(PyExc_ImportError, "numpy.core.multiarray failed to import");
-            return nullptr;
-    };
 
 Then the function can be wrapped as normal:
 
@@ -352,9 +342,13 @@ Then the function can be wrapped as normal:
 
     clsExampleOne.def("doSomethingWithArray", &ExampleOne::doSomethingWithArray);
 
-.. warning::
+The ndarray library also includes similarly automatic conversions for Eigen objects, which should be used instead of the optional Eigen converters packaged with Pybind11 itself.
+Using both sets of converters in the same project is a violation of C++'s "One Definition Rule", a serious problem, and because a significant amount of LSST code already uses the ndarray converters, new code must as well.
 
-    Forgetting to add ``_import_array`` is one of the most common causes of pybind11 segfaults.
+.. note::
+
+    Previous versions of the ndarray library also required ``numpy/arrayobject.h`` to be included, as well as a call to ``_import_array()`` in the module initialization function.
+    As of ndarray 1.4.0, these steps are no longer necessary, but they will not yield incorrect behavior or errors (though they will generate warnings and slightly bloated code).
 
 Static member functions
 ^^^^^^^^^^^^^^^^^^^^^^^
