@@ -38,23 +38,16 @@ That will get you up to speed with the LSST Project; the rest of this page is sp
 
 .. _getting-started-ncsa:
 
-NCSA resources
-==============
+Data Facility resources
+=======================
 
-You'll also need account for the LSST infrastructure hosted at NCSA, including:
+You'll also need an account for the LSST Data Facility services, hosted at NCSA, which include:
 
 - Development Servers (`lsst-dev </services/lsst-dev.html>`_)
 - MySQL Database (`lsst-dev-db </services/lsst-db.html>`_)
 - `Nebula OpenStack </services/nebula/index.html>`_
 
-These accounts should be automatically issued along with your LSST account.
-However, if you find you don't have access, you can request it by sending the following to ``lsst-account _at_ ncsa.illinois.edu``:
-
-- First and last name
-- Email
-- Sponsoring LSST manager
-- Team within DM (one of DM Science, Architecture, Alert Production, Data Release Production, SUIT, Data Access and Database, Data Factility, Long Haul Networks, SQuaRE)
-
+This account will be automatically issued along with your LSST account.
 
 .. _getting-started-github:
 
@@ -167,6 +160,14 @@ Here's what T/CAMs need to do to get their new hire started:
    - `LSSTDM <https://community.lsst.org/groups/LSSTDM>`__.
 
 #. Give the hire's email address to a Slack administrator: `@brianv0 <https://lsstc.slack.com/team/brianv0>`__, `@jonathansick <https://lsstc.slack.com/team/jonathansick>`__, `@frossie <https://lsstc.slack.com/team/frossie>`__, and `@plutchak <https://lsstc.slack.com/team/plutchak>`__ can make Slack accounts.
+
+Your new hire should automatically be issued a Data Facility (NCSA) account along with their LSST account.
+However, if for some reason this doesn't happen, send the following information to ``lsst-account _at_ ncsa.illinois.edu`` (and CC ``lsst-sysadmins _at_ lsst.org``):
+
+- First and last name of new hire
+- Email
+- Sponsoring LSST manager (ie, your name)
+- Team within DM (one of DM Science, Architecture, Alert Production, Data Release Production, SUIT, Data Access and Database, Data Factility, Long Haul Networks, SQuaRE)
 
 .. _onboarding-admin-checklist:
 
