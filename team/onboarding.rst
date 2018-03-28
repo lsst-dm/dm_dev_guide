@@ -118,7 +118,9 @@ You should be subscribed to these lists as soon as you get an :ref:`LSST acccoun
 Calendars
 =========
 
-LSST has `Project <https://project.lsst.org/node/1>`_ and `DM-specific calendars <https://project.lsst.org/content/dm-team-calendar>`_ that you can view on the Project website or add to your own Google calendar.
+Important DM meetings are listed on `this Google Calendar <https://calendar.google.com/calendar/embed?src=pft8isslcqcll4jao0rqdmphvg%40group.calendar.google.com&ctz=America/Phoenix>`_, to which you may wish to subscribe.
+
+The LSST Project has collated `a list of other calendars <https://project.lsst.org/node/1>`_ which may be of relevance to your work.
 
 Checklist for hires
 ===================
