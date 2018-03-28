@@ -641,7 +641,10 @@ For example:
 Using :py:func:`super()` ensures a consistent Method Resolution Order, and prevents inherited methods from being called multiple times.
 In Python 3, :py:func:`super()` does not require naming the class that it is part of, making its use simpler and removing a maintenance issue; Python 2 needs ``from builtins import super`` to achieve the same behavior.
 
-In the presence of multiple inheritance (two or more parents, e.g. ``class C(A, B)``), the trickiest issue with the use of :py:func:`super()` is that there is no way for a class to know for certain which overridden method will be called in what order.
+super() and Multiple Inheritance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In the presence of multiple inheritance (two or more parents, e.g. ``class C(A, B)``), the trickiest issue with the use of :py:func:`super()` is that the class author generally doesn't know a priori which overridden method will be called in what order.
 In particular, this means that the calling signature (arguments) for all versions of a method must be compatible.
 As a result, there are a few argument-related caveats about the use of :py:func:`super()` in multiple inheritance hierarchies:
 
@@ -651,6 +654,7 @@ As a result, there are a few argument-related caveats about the use of :py:func:
 
 To use :py:func:`super()` with multiple inheritance, all base classes in Python's Method Resolution Order need to use :py:func:`super()`; otherwise the calling chain gets interrupted.
 If your class may be used in multiple inheritance, ensure that all relevant classes use :py:func:`super()` including documenting requirements for subclasses.
+
 For more details, see the :py:func:`super() documentation <super()>`, the `astropy coding guide <http://docs.astropy.org/en/stable/development/codeguide.html#super-vs-direct-calling>`__, and `this article from Raymond Hettinger <https://rhettinger.wordpress.com/2011/05/26/super-considered-super/>`__.
 
 .. _style-guide-py-comparisons:
