@@ -28,6 +28,9 @@ This gives you access to:
 - The Confluence wiki: https://confluence.lsstcorp.org
 - The DocuShare document archive: https://docushare.lsst.org
 
+  - The IT Team have some `further information about Docushare <https://confluence.lsstcorp.org/display/IT/Docushare>`_.
+    Note in particular the comments on licensing.
+
 You can always update your LSST password at https://lsstsspc.lsst.org/lsstsspc.
 
 Finally, read over the LSST Project's `New Employee Onboarding <https://project.lsst.org/onboarding>`_ page.
