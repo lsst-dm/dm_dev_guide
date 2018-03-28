@@ -24,7 +24,7 @@ This gives you access to:
   - AURA employees will be able to access the AURA e-mail system at https://mail.lsst.org/owa
   - For non-AURA employees, this will forward to your institutional address (as registered with the `Contacts Database <https://project.lsst.org/LSSTContacts/MemberListPage1.php>`_)
 
-- The JIRA project management tool: http://jira.lsstcorp.org/
+- The Jira project management tool: http://jira.lsstcorp.org/
 - The Confluence wiki: https://confluence.lsstcorp.org
 - The DocuShare document archive: https://docushare.lsst.org
 
@@ -138,6 +138,9 @@ In summary, here are the things you can do to get started:
 Checklist for T/CAMs
 ====================
 
+Onboarding
+----------
+
 Here's what T/CAMs need to do to get their new hire started:
 
 #. Fill out the `Project onboarding form <https://project.lsst.org/onboarding/form>`__.
@@ -145,9 +148,9 @@ Here's what T/CAMs need to do to get their new hire started:
    - There's no need to upload a photo to DocuShare, see the next step instead.
    - Under "User should belong to which Mailing Lists," add ``dm-devel`` and ``dm-announce``. IT automatically adds DM hires to ``dm-staff``.
 
-#. Add the new hire to the DM Team Google spreadsheet with time allocation information.
-
 #. Ask your new hire for a profile photo and add it to https://confluence.lsstcorp.org/display/DM/The+Team.
+
+#. Add the new hire to the DM Team Google spreadsheet with time allocation information.
 
 #. Add the hire as a member of the 'Data Management' team in each these GitHub organizations:
 
@@ -168,6 +171,27 @@ However, if for some reason this doesn't happen, send the following information 
 - Email
 - Sponsoring LSST manager (ie, your name)
 - Team within DM (one of DM Science, Architecture, Alert Production, Data Release Production, SUIT, Data Access and Database, Data Factility, Long Haul Networks, SQuaRE)
+
+Departing
+---------
+
+When a member of your staff leaves the project, they can end up in one of two
+states:
+
+Offboarded
+
+   An offboarded member of staff loses access to all LSST services.
+   They retain builder status if they have accrued enough time with the project.
+   To transition a member of staff to this status, fill out the `offboarding form <https://project.lsst.org/onboarding/offboarding_form>`_ and ensure they are set to 0% contribution in the `team spreadsheet <https://docs.google.com/spreadsheets/d/1f_dijhaSBjOvNyGPlPgIFWjjZpo_jwii_a0j7imq2CM/edit>`_.
+
+Friendly
+
+   “Friendly” individuals are no longer on the LSST payroll, but continue to collaborate with the project.
+   As such, they retain access to services such as Jira, Confluence, etc.
+   However, they will be removed from the ``dm-staff`` mailing list.
+   Do *not* fill out an offboarding form for friendlies.
+   Instead, simply set their contribution to 0% in the `spreadsheet <https://docs.google.com/spreadsheets/d/1f_dijhaSBjOvNyGPlPgIFWjjZpo_jwii_a0j7imq2CM/edit>`_ and send an e-mail to the DM Admin to let her know.
+   Refer to `Document-27073 <http://ls.st/Document-27073>`_ for more information on friendly status.
 
 .. _onboarding-admin-checklist:
 
