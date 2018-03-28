@@ -1,5 +1,5 @@
 #############################################
-Git Configuration Standards & Recommentations
+Git Configuration Standards & Recommendations
 #############################################
 
 This page collects advice for configuring Git for DM development.
