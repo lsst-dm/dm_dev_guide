@@ -1,6 +1,6 @@
-##############################
-Developer Onboarding Checklist
-##############################
+####################
+Onboarding Checklist
+####################
 
 *Welcome to Data Management*.
 This page gives you an overview of the accounts you'll have as a member of DM.
