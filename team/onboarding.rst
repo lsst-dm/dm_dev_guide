@@ -15,7 +15,7 @@ This page gives you an overview of the accounts you'll have as a member of DM.
 LSST account
 ============
 
-Your manager will request an LSST single sign-on account for you.
+Your manager — or T/CAM, in LSST jargon — will request a single sign-on account for you.
 This gives you access to:
 
 - The internal project website, including travel requests: http://project.lsst.org
@@ -26,7 +26,7 @@ This gives you access to:
 
 - The JIRA project management tool: http://jira.lsstcorp.org/
 - The Confluence wiki: https://confluence.lsstcorp.org
-- The DocuShare document archive: http://docushare.lsstcorp.org
+- The DocuShare document archive: https://docushare.lsst.org
 
 You can always update your LSST password at https://lsstsspc.lsst.org/lsstsspc.
 
@@ -38,18 +38,20 @@ That will get you up to speed with the LSST Project; the rest of this page is sp
 NCSA resources
 ==============
 
-You'll also need account(s) for the LSST infrastructures hosted at NCSA:
+You'll also need account for the LSST infrastructure hosted at NCSA, including:
 
 - Development Servers (`lsst-dev </services/lsst-dev.html>`_)
 - MySQL Database (`lsst-dev-db </services/lsst-db.html>`_)
 - `Nebula OpenStack </services/nebula/index.html>`_
 
-If you are missing any of these accounts, you can request one by sending the following to ``lsst-account _at_ ncsa.illinois.edu``:
+These accounts should be automatically issued along with your LSST account.
+However, if you find you don't have access, you can request it by sending the following to ``lsst-account _at_ ncsa.illinois.edu``:
 
 - First and last name
 - Email
 - Sponsoring LSST manager
-- LSST-DM subteam or project
+- Team within DM (one of DM Science, Architecture, Alert Production, Data Release Production, SUIT, Data Access and Database, Data Factility, Long Haul Networks, SQuaRE)
+
 
 .. _getting-started-github:
 
