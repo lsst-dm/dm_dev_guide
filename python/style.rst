@@ -619,21 +619,43 @@ Within a module, follow the order:
 
 .. _style-guide-py-super:
 
-``super`` SHOULD NOT be used unless the author really understands the implications (e.g. in a well-understood multiple inheritance hierarchy).
-----------------------------------------------------------------------------------------------------------------------------------------------
+``super`` MAY be used to call parent class methods
+--------------------------------------------------
 
-Python provides :py:func:`super` so that each parent class' method is only called once.
+If you are overriding a method from a parent class, use :py:func:`super()` to call the parent class's method.
+For example:
 
-To use :py:func:`super`, all parent classes in the chain (also called the Method Resolution Order) need to use :py:func:`super` otherwise the chain gets interrupted.
-Other subtleties have been noted in `an article by James Knight <https://fuhm.net/super-harmful/>`__:
+.. code-block:: py
 
-- Never call :py:func:`super` with anything but the exact arguments you received, unless you really know what you're doing.
-- When you use it on methods whose acceptable arguments can be altered on a subclass via addition of more optional arguments, always accept ``*args, **kw``, and call :py:func:`super` like ``super(MyClass, self).currentmethod(alltheargsideclared, *args, **kwargs)``.
-  If you don't do this, forbid addition of optional arguments in subclasses.
-- Never use positional arguments in ``__init__`` or ``__new__``.
-  Always use keyword args, and always call them as keywords, and always pass all keywords on to :py:func:`super`.
+    class B(object):
+        def method(self, arg):
+            self.foo = arg
 
-For guidance on successfully using :py:func:`super`, see Raymond Hettinger's article `Super Considered Super! <https://rhettinger.wordpress.com/2011/05/26/super-considered-super/>`__
+    class C(B):
+        def method(self, arg):
+            super().method(arg)
+            do_something()
+
+    C().method(arg)
+
+Using :py:func:`super()` ensures a consistent Method Resolution Order, and prevents inherited methods from being called multiple times.
+In Python 3, :py:func:`super()` does not require naming the class that it is part of, making its use simpler and removing a maintenance issue; Python 2 needs ``from builtins import super`` to achieve the same behavior.
+
+super() and Multiple Inheritance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In the presence of multiple inheritance (two or more parents, e.g. ``class C(A, B)``), the trickiest issue with the use of :py:func:`super()` is that the class author generally doesn't know a priori which overridden method will be called in what order.
+In particular, this means that the calling signature (arguments) for all versions of a method must be compatible.
+As a result, there are a few argument-related caveats about the use of :py:func:`super()` in multiple inheritance hierarchies:
+
+* Only pass :py:func:`super()` the exact arguments you received.
+* When you use it on methods whose acceptable arguments can be altered on a subclass via addition of more optional arguments, always accept ``*args``, ``**kwargs``, and call :py:func:`super()` like ``super().currentmethod(arg1, arg2, ..., *args, **kwargs)``. If you don’t do this, document that addition of optional arguments in subclasses is forbidden.
+* Do not use positional arguments in ``__init__`` or ``__new__``.  Instead, use keyword args in the declarations, always call them using keywords, and always pass all keywords on, e.g. ``super().__init__(**kwargs)``.
+
+To use :py:func:`super()` with multiple inheritance, all base classes in Python's Method Resolution Order need to use :py:func:`super()`; otherwise the calling chain gets interrupted.
+If your class may be used in multiple inheritance, ensure that all relevant classes use :py:func:`super()` including documenting requirements for subclasses.
+
+For more details, see the :py:func:`super() documentation <super()>`, the `astropy coding guide <http://docs.astropy.org/en/stable/development/codeguide.html#super-vs-direct-calling>`__, and `this article from Raymond Hettinger <https://rhettinger.wordpress.com/2011/05/26/super-considered-super/>`__.
 
 .. _style-guide-py-comparisons:
 
