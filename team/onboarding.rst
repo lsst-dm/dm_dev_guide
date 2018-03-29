@@ -1,6 +1,6 @@
-##############################
-Developer Onboarding Checklist
-##############################
+####################
+Onboarding Checklist
+####################
 
 *Welcome to Data Management*.
 This page gives you an overview of the accounts you'll have as a member of DM.
@@ -15,14 +15,21 @@ This page gives you an overview of the accounts you'll have as a member of DM.
 LSST account
 ============
 
-Your manager will request an LSST single sign-on account for you.
+Your manager — or T/CAM, in LSST jargon — will request a single sign-on account for you.
 This gives you access to:
 
 - The internal project website, including travel requests: http://project.lsst.org
-- Email (for AURA employees): https://mail.lsst.org/owa
-- The JIRA project management app: http://jira.lsstcorp.org/
+- An e-mail address of the form ``username@lsst.org``:
+
+  - AURA employees will be able to access the AURA e-mail system at https://mail.lsst.org/owa
+  - For non-AURA employees, this will forward to your institutional address (as registered with the `Contacts Database <https://project.lsst.org/LSSTContacts/MemberListPage1.php>`_)
+
+- The Jira project management tool: http://jira.lsstcorp.org/
 - The Confluence wiki: https://confluence.lsstcorp.org
-- The DocuShare document archive: http://docushare.lsstcorp.org
+- The DocuShare document archive: https://docushare.lsst.org
+
+  - The IT Team have some `further information about Docushare <https://confluence.lsstcorp.org/display/IT/Docushare>`_.
+    Note in particular the comments on licensing.
 
 You can always update your LSST password at https://lsstsspc.lsst.org/lsstsspc.
 
@@ -31,21 +38,16 @@ That will get you up to speed with the LSST Project; the rest of this page is sp
 
 .. _getting-started-ncsa:
 
-NCSA resources
-==============
+Data Facility resources
+=======================
 
-You'll also need account(s) for the LSST infrastructures hosted at NCSA:
+You'll also need an account for the LSST Data Facility services, hosted at NCSA, which include:
 
 - Development Servers (`lsst-dev </services/lsst-dev.html>`_)
 - MySQL Database (`lsst-dev-db </services/lsst-db.html>`_)
 - `Nebula OpenStack </services/nebula/index.html>`_
 
-If you are missing any of these accounts, you can request one by sending the following to ``lsst-account _at_ ncsa.illinois.edu``:
-
-- First and last name
-- Email
-- Sponsoring LSST manager
-- LSST-DM subteam or project
+This account will be automatically issued along with your LSST account.
 
 .. _getting-started-github:
 
@@ -114,7 +116,9 @@ You should be subscribed to these lists as soon as you get an :ref:`LSST acccoun
 Calendars
 =========
 
-LSST has `Project <https://project.lsst.org/node/1>`_ and `DM-specific calendars <https://project.lsst.org/content/dm-team-calendar>`_ that you can view on the Project website or add to your own Google calendar.
+Important DM meetings are listed on `this Google Calendar <https://calendar.google.com/calendar/embed?src=pft8isslcqcll4jao0rqdmphvg%40group.calendar.google.com&ctz=America/Phoenix>`_, to which you may wish to subscribe.
+
+The LSST Project has collated `a list of other calendars <https://project.lsst.org/node/1>`_ which may be of relevance to your work.
 
 Checklist for hires
 ===================
@@ -134,6 +138,9 @@ In summary, here are the things you can do to get started:
 Checklist for T/CAMs
 ====================
 
+Onboarding
+----------
+
 Here's what T/CAMs need to do to get their new hire started:
 
 #. Fill out the `Project onboarding form <https://project.lsst.org/onboarding/form>`__.
@@ -141,9 +148,9 @@ Here's what T/CAMs need to do to get their new hire started:
    - There's no need to upload a photo to DocuShare, see the next step instead.
    - Under "User should belong to which Mailing Lists," add ``dm-devel`` and ``dm-announce``. IT automatically adds DM hires to ``dm-staff``.
 
-#. Add the new hire to the DM Team Google spreadsheet with time allocation information.
-
 #. Ask your new hire for a profile photo and add it to https://confluence.lsstcorp.org/display/DM/The+Team.
+
+#. Add the new hire to the DM Team Google spreadsheet with time allocation information.
 
 #. Add the hire as a member of the 'Data Management' team in each these GitHub organizations:
 
@@ -156,6 +163,35 @@ Here's what T/CAMs need to do to get their new hire started:
    - `LSSTDM <https://community.lsst.org/groups/LSSTDM>`__.
 
 #. Give the hire's email address to a Slack administrator: `@brianv0 <https://lsstc.slack.com/team/brianv0>`__, `@jonathansick <https://lsstc.slack.com/team/jonathansick>`__, `@frossie <https://lsstc.slack.com/team/frossie>`__, and `@plutchak <https://lsstc.slack.com/team/plutchak>`__ can make Slack accounts.
+
+Your new hire should automatically be issued a Data Facility (NCSA) account along with their LSST account.
+However, if for some reason this doesn't happen, send the following information to ``lsst-account _at_ ncsa.illinois.edu`` (and CC ``lsst-sysadmins _at_ lsst.org``):
+
+- First and last name of new hire
+- Email
+- Sponsoring LSST manager (ie, your name)
+- Team within DM (one of DM Science, Architecture, Alert Production, Data Release Production, SUIT, Data Access and Database, Data Factility, Long Haul Networks, SQuaRE)
+
+Departing
+---------
+
+When a member of your staff leaves the project, they can end up in one of two
+states:
+
+Offboarded
+
+   An offboarded member of staff loses access to all LSST services.
+   They retain builder status if they have accrued enough time with the project.
+   To transition a member of staff to this status, fill out the `offboarding form <https://project.lsst.org/onboarding/offboarding_form>`_ and ensure they are set to 0% contribution in the `team spreadsheet <https://docs.google.com/spreadsheets/d/1f_dijhaSBjOvNyGPlPgIFWjjZpo_jwii_a0j7imq2CM/edit>`_.
+
+Friendly
+
+   “Friendly” individuals are no longer on the LSST payroll, but continue to collaborate with the project.
+   As such, they retain access to services such as Jira, Confluence, etc.
+   However, they will be removed from the ``dm-staff`` mailing list.
+   Do *not* fill out an offboarding form for friendlies.
+   Instead, simply set their contribution to 0% in the `spreadsheet <https://docs.google.com/spreadsheets/d/1f_dijhaSBjOvNyGPlPgIFWjjZpo_jwii_a0j7imq2CM/edit>`_ and send an e-mail to the DM Admin to let her know.
+   Refer to `Document-27073 <http://ls.st/Document-27073>`_ for more information on friendly status.
 
 .. _onboarding-admin-checklist:
 
@@ -170,6 +206,6 @@ Here's what the awesome DM admin does:
 
 #. Notify the LSST Digest editor and travel administrator.
 
-#. Provide Google calendar access to DM Meetings and DM Travel/Vacation for T/CAMs and DMLT members.
+#. Provide Google calendar access to DM Meetings and DM Travel/Vacation (for DMLT members only).
 
 For details on LSST IT's account onboarding procedures, see `Account Management in the IT Support Confluence <https://confluence.lsstcorp.org/display/IT/Account+Management>`_.

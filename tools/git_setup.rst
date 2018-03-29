@@ -1,7 +1,7 @@
 :orphan:
 
 #############################################
-Git Configuration Standards & Recommentations
+Git Configuration Standards & Recommendations
 #############################################
 
 This page moved: :doc:`/git/setup`.
