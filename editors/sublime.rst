@@ -165,7 +165,7 @@ Note that there are SublimeLinter plugins for other languages (e.g. Restructured
                     "builtins": "",
                     "excludes": [],
                     "executable": "",
-                    "ignore": "E133,E226,E228,N802,N803,N806,W391",
+                    "ignore": "E133,E226,E228,N802,N803,N806",
                     "jobs": "1",
                     "max-complexity": -1,
                     "max-line-length": 110,
@@ -219,7 +219,7 @@ Use these settings to match LSST's python style when auto formatting:
         "list-fixes": true,
         // do not fix these errors / warnings (e.g. [ "E501" , "E4" , "W"])
         // LSST style;
-        "ignore": ["E133", "E226", "E228", "N802", "N803", "N806", "W391"],
+        "ignore": ["E133", "E226", "E228", "N802", "N803", "N806"],
         // Maximum line length
         "max-line-length": 110
     }
