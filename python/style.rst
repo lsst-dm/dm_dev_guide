@@ -79,10 +79,6 @@ E228
    Missing whitespace around bitwise or shift operator.
    See :ref:`style-guide-py-operator-whitespace`.
 
-E251
-   Unexpected spaces around keyword / parameter equals.
-   See :ref:`style-guide-py-multiline-assignment-whitespace`.
-
 Maximum line length
    See :ref:`style-guide-py-line-length`.
 
@@ -158,7 +154,7 @@ This configuration, included in a :file:`setup.cfg` file at the root of code rep
 
    [flake8]
    max-line-length = 110
-   ignore = E133, E226, E228, N802, N803
+   ignore = E133, E226, E228, N802, N803, N806
    exclude =
      bin,
      doc,
@@ -202,7 +198,7 @@ Many :pep:`8` issues in existing code can be fixed with `autopep8`_ version 1.2 
 .. code-block:: bash
 
    autopep8 . --in-place --recursive \
-       --ignore E133,E226,E228,E251,N802,N803 --max-line-length 110
+       --ignore E133,E226,E228,N802,N803,N806 --max-line-length 110
 
 The ``.`` specifies the current directory.
 Together with ``--recursive``, the full tree of Python files will be processed by :command:`autopep8`.
@@ -376,42 +372,6 @@ For example:
 
 This deviates from PEP 8, which `allows whitespace around these arithmetic operators if they appear alone <https://www.python.org/dev/peps/pep-0008/#other-recommendations>`__.
 Error codes: E226 and E228.
-
-.. _style-guide-py-multiline-assignment-whitespace:
-
-Keyword assignment operators SHOULD be surrounded by a space when statements appear on multiple lines
------------------------------------------------------------------------------------------------------
-
-However, if keyword assignments occur on a single line there should be no additional spaces.
-
-Thus this:
-
-.. code-block:: py
-
-   # whitespace around multi-line assignment
-   funcA(
-       karg1 = value1,
-       karg2 = value2,
-       karg3 = value3,
-   )
-
-   # no whitespace around single-line assigment
-   funcB(x, y, z, karg1=value1, karg2=value2, karg3=value3)
-
-Not this:
-
-.. code-block:: py
-
-   funcA(
-       karg1=value1,
-       karg2=value2,
-       karg3=value3,
-   )
-
-   aFunction(x, y, z, karg1 = value1, karg2 = value2, karg3 = value3)
-
-`Opposes PEP 8 <https://www.python.org/dev/peps/pep-0008/#other-recommendations>`__.
-Error code: E251.
 
 .. _style-guide-py-comments:
 
