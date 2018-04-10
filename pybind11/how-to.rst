@@ -16,14 +16,14 @@ For far more detailed information please see the `pybind11 documentation <http:/
 Wrapping step-by-step
 =====================
 
-To illustrate how wrapping is done we will recreate the example wrappers from the `stack package template example`_.
+To illustrate how wrapping is done we will recreate the example wrappers from the `pybind11_example`_ repository.
 
 .. _wrapping-simple-class:
 
 Wrapping a simple class
 -----------------------
 
-We start by wrapping the basic ``ExampleOne`` class from the `stack package template example`_.
+We start by wrapping the basic `ExampleOne class in pybind11_example`_.
 Its header file looks like:
 
 .. code-block:: cpp
@@ -783,4 +783,5 @@ Create the appropriate ``__init__.py`` file, and put the following in
     ExampleThree.alias("F", ExampleThreeF)
     ExampleThree.alias("D", ExampleThreeD)
 
-.. _stack package template example: https://github.com/lsst/templates/tree/master/project_templates/stack_package/example
+.. _pybind11_example: https://github.com/lsst-dm/pybind11_example
+.. _`ExampleOne class in pybind11_example`: https://github.com/lsst-dm/pybind11_example/blob/master/src/ExampleOne.cc
