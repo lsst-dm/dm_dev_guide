@@ -6,3 +6,7 @@ matrix:
       install:
       - pip install flake8
       script: flake8
+branches:
+  only:
+  - master
+  - /^\d+\.\d+(\.\d+)?$/
