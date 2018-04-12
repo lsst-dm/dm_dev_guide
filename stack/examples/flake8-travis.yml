@@ -10,3 +10,5 @@ branches:
   only:
   - master
   - /^\d+\.\d+(\.\d+)?$/
+notifications:
+  email: false
