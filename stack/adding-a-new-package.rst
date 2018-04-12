@@ -60,6 +60,16 @@ This will not replace normal testing with :doc:`Jenkins job <jenkins-stack-os-ma
 .. literalinclude:: examples/flake8-travis.yml
   :language: yaml
 
+Similarly, for repositories that contain shell scripts, such as an `eupspkg.cfg.sh` file, Travis may be used to enable shell syntax checking with the :ref:`shellcheck` utility.
+
+.. literalinclude:: examples/shellcheck-travis.yml
+  :language: yaml
+
+Travis allows multiple ``build`` configurations to execute concurrently.  This is an example of using both `flake8` and `shellcheck`:
+
+.. literalinclude:: examples/flake8-shellcheck-travis.yml
+  :language: yaml
+
 For packages containing C++ that have been tidied up using ``clang`` tools, you may consider adding a Travis check that runs the tidy tool and does a ``diff`` with the repository.
 
 Once the Travis script has been written, Travis can be enabled on the "Integrations & services" settings screen, https://github.com/lsst/afw/settings/installations, and Travis can then be added to the branch protection settings.
@@ -109,3 +119,4 @@ being converted to LFS) require additional configuration.
 .. _etc/repos.yaml file in the lsst/repos repository: https://github.com/lsst/repos/blob/master/etc/repos.yaml
 .. _repos.yaml: https://github.com/lsst/repos/blob/master/etc/repos.yaml
 .. _manifest.remap:  https://github.com/lsst/lsstsw/blob/master/etc/manifest.remap
+.. _`shellcheck`: https://github.com/koalaman/shellcheck
