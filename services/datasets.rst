@@ -98,14 +98,16 @@ Responsibilities on ingest or maintenance
 - Ticket creator is responsible for butler-ization of dataset (or delegation of responsibility).
 - Responsibility for maintaining usable datasets is a DM-wide effort.
 
-Regardless of the reason for the RFC (implementation or maintenance), as part of implementing the RFC, any relevant information from the RFC should be transfered to a human readable file located in the root level of the dataset called ``README.txt``. There is no limit to how much information can be put in ``README.txt``, however at the minimum, it should contain:
+Regardless of the reason for the RFC (implementation or maintenance), as part of implementing the RFC, any relevant information from the RFC should be transferred to a ``README.txt`` file at the root level of the dataset. There is no limit to how much information can be put in ``README.txt``, however at the minimum, it should contain:
 
 - A description of the instrument and observatory that produced the data
-- The percieved purpose of the dataset
+- The intended purpose of the dataset
 - At least a high level summary of the selection criteria for the dataset
 - The primary point of contact for questions about the dataset. Name is sufficient, but email would be appreciated.
 - If preprocessed, a description of the preprocessed data products available
 - If a subset is preprocessed, a description of how the subset was created (and why)
+
+For butler repository datasets, the root level is the directory just above the butler repository: e.g. ``/datasets/hsc/README.txt``. For reference catalogs, there should be one ``README.txt`` for all reference catalogs of a particular type: e.g. ``/datasets/refcats/htm/README.txt``. Each reference catalog should have an entry in that file with the above information.
 
 
 .. _CaveatForPrivate:
