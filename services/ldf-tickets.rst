@@ -2,8 +2,6 @@
 Creating LDF Jira Tickets 
 #########################
 
-My content goes here.  
-
 
 This page describes the procedures for reporting problems with the LSST Data Facility (LDF).  
 
