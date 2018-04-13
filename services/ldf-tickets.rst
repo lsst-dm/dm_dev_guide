@@ -8,7 +8,7 @@ My content goes here.
 This page describes the procedures for reporting problems with the LSST Data Facility (LDF).  
 
 1. :ref:`Creating a Jira ticket <jira-create>`.
-2. :ref:`Checking status <jira-status>`.
+2. :ref:`Checking ticket status <jira-status>`.
 3. :ref:`The workflow of a ticket <jira-workflow>`.
 
 
@@ -24,8 +24,8 @@ To get an account, see the :doc:`Onboarding Checklist </team/onboarding>`.
 
 
 
-Creating a ticket
------------------
+Creating a Jira Ticket
+----------------------
 
 You can create a ticket from the `JIRA web app <https://jira.lsstcorp.org>`_ toolbar using the **Create** button.
 For more general information, you can consult `Atlassian's docs for JIRA <https://confluence.atlassian.com/jirasoftwarecloud/jira-software-documentation-764477791.html>`_ and `JIRA Agile <https://confluence.atlassian.com/agile067>`_.
@@ -54,17 +54,22 @@ Responsible Organization
 
 .. _jira-status:
 
-Ticket status
--------------
+Checking Ticket Status
+----------------------
+
 Checking on the status of a ticket is at:  `JIRA web app <https://jira.lsstcorp.org>`_  You can search for your ticket number or many other search type criteria.   
 
-Tickets are watched by many admins and the product owner at NCSA.  After a ticket is created,  if a serious icident is ongoing the  `status page <https://confluence.lsstcorp.org/display/DM/LSST+Service+Status+page>`_ can be checked for known incidents, and a quick note into the dm-infrastucture slack channel can also get information desimanated about a problem you are having.   Currently all resources at NCSA are considered development and fixed with a "best effort" type of work.   NCSA currently works on a 8*5 (CST) schedule for non-critical tickets.   A critical issue will be worked on throughout a 7*24 schedule  to get resolution.   
+Tickets are watched by many admins, the service manager and the product owner at NCSA.  After a ticket is created,  if a serious incident is ongoing the  `status page <https://confluence.lsstcorp.org/display/DM/LSST+Service+Status+page>`_ can be checked for known incidents, and a quick note into the dm-infrastucture slack channel can also get information  about a problem you are having.   
 
-Once a ticket is being actively worked on an admin will upgrade the ticket's status to **In Progress.**
+Currently all resources at NCSA are considered development and fixed with a "best effort" type of work.   NCSA currently works on a 8*5 (CST) schedule for non-critical tickets.   A critical issue will be worked on throughout a 7*24 schedule to resolution.   
+
 
 .. _jira-workflow:
-Tickets are created with a status of **Todo.** 
+
+The Workflow of a ticket
+----------------------------------
+Tickets are created with a status of **todo.** 
 Tickets that are beig worked on have a status of **in progress**.  
-All communication about this task/incident/requrest will be kept on comments with this ticket.  The Jira system will send email to the watchers and creator of the ticket with each entry in the comment fields.   Please keep all the reporting and exchange of information regarding this ticket through this jira interface.   That will keep all the information in one place.     
-The admin once they finish with a ticket will mark the ticket **awaiting signoff**.    This is when the ticket owner (you) would go out and verify that the request/task/incident is truely resolved.    The owner would then use the **workflow** pull down menu to set the ticket to being **done**.   This ensures that the originator checks to make sure that the ticket has been resolved for sure before the ticket is put into the **done** status.   
+All communication about this task/incident/request will be kept on comments with this ticket.  The Jira system will send email to the watchers and creator of the ticket with each entry in the comment field.   Please keep all the reporting and exchange of information regarding this ticket through this jira interface.   That will keep all the information in one place.     
+The admin once they finish with a ticket will mark the ticket **awaiting signoff**.    This is when the ticket owner (you) would go out and verify that the request/task/incident is truely resolved.    The owner would then use the **workflow** pull down menu to set the ticket to being **done**.   This ensures that the originator checks to make sure that the ticket has been resolved to their satisfaction before the ticket is put into a **done** status.   
 
