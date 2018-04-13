@@ -4,8 +4,6 @@ LDF Resources
 
 These are the resources in a list form that are currently (4/12/2018) available to lsst developers.  
 
-1. :ref:`machines <machines>`
-2. :ref:`filesystems <filesystems>`
 
 1. :ref:`Machines on the floor <machines>`.
 2. :ref:`Storage filesystems <filesystems>`.
