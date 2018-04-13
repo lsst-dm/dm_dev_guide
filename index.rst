@@ -442,3 +442,4 @@ LSST Data Facility services
 - :doc:`services/nebula/index`
 - :doc:`services/orchestration/index`
 - :doc:`services/ldf-tickets`
+- :doc:`services/ldf-resources`
