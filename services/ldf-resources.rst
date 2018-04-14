@@ -1,5 +1,5 @@
 ###########################
-LDF Resources 
+Overall Resources 
 ###########################
 
 These are the resources in a list form that are currently (4/12/2018) available to lsst developers.  
