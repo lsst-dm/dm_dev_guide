@@ -4,6 +4,8 @@ Storage Resources
 
 There are a few other documents that might have the info you are looking for.  
 
+
+
 - 1.  Look to the - :doc:`data_protection` policy page what the retention policy is, what are immutable files, what is to be placed in each file system area.  
 - 2.  Look to the - :doc:`ldf-resources` LDF resources pages for explaination of each of the file systems, and the type of data and where it's to be located and the policies of each of the file systems.   
 
@@ -32,13 +34,13 @@ Filesystems - in GPFS (4.9PB of storage)
     [jdoe@golubh4 ~]$ quota
     Directories quota usage for user jdoe:
 
-    - -------------------------------------------------------------------------------------
-    - |      Fileset       |  Used   |  Soft   |  Hard   |   Used   |   Soft   |   Hard   |
-    - |                    |  Block  |  Quota  |  Limit  |   File   |   Quota  |   Limit  |
-     --------------------------------------------------------------------------------------
-    - | home               | 501.1M  | 2G      | 4G      | 14       | 0        | 0        |
-    - | cse-shared         | 0       | 1.465T  | 1.953T  | 1        | 0        | 0        |
-    - -------------------------------------------------------------------------------------
+   -------------------------------------------------------------------------------------
+    |      Fileset       |  Used   |  Soft   |  Hard   |   Used   |   Soft   |   Hard   |
+    |                    |  Block  |  Quota  |  Limit  |   File   |   Quota  |   Limit  |
+   --------------------------------------------------------------------------------------
+    | home               | 501.1M  | 2G      | 4G      | 14       | 0        | 0        |
+    | cse-shared         | 0       | 1.465T  | 1.953T  | 1        | 0        | 0        |
+   -------------------------------------------------------------------------------------
 
 Home directories are backed up using snapshots and a separate DR process .
 
