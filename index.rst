@@ -443,3 +443,5 @@ LSST Data Facility services
 - :doc:`services/orchestration/index`
 - :doc:`services/ldf-tickets`
 - :doc:`services/ldf-resources`
+- :doc:`services/storage`
+
