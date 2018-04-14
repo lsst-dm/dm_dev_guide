@@ -1,5 +1,5 @@
 ###################
-LDF Storage Resources 
+Storage Resources 
 ################### 
 
 There are a few other documents that might have the info you are looking for.  
