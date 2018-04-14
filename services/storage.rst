@@ -40,7 +40,7 @@ Filesystems - in GPFS (4.9PB of storage)
     - | cse-shared         | 0       | 1.465T  | 1.953T  | 1        | 0        | 0        |
     - -------------------------------------------------------------------------------------
 
-Home directories are backed up using snapshots and a separate DR process.
+Home directories are backed up using snapshots and a separate DR process .
 
 Possible help for space utiziation:  Data Compression
 To reduce space usage in your home directory, an option for files that are not in active use is to compress them. The gzip utility can be used for file compression and decompression. Another alternative is bzip2, which usually yields a better compression ratio than gzip but takes longer to complete. Additionally, files that are typically used together can first be combined into a single file and then compressed using the tar utility.
