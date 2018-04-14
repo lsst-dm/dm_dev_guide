@@ -32,13 +32,13 @@ Filesystems - in GPFS (4.9PB of storage)
     [jdoe@golubh4 ~]$ quota
     Directories quota usage for user jdoe:
 
-    -------------------------------------------------------------------------------------
-    |      Fileset       |  Used   |  Soft   |  Hard   |   Used   |   Soft   |   Hard   |
-    |                    |  Block  |  Quota  |  Limit  |   File   |   Quota  |   Limit  |
-    -------------------------------------------------------------------------------------
-    | home               | 501.1M  | 2G      | 4G      | 14       | 0        | 0        |
-    | cse-shared         | 0       | 1.465T  | 1.953T  | 1        | 0        | 0        |
-    -------------------------------------------------------------------------------------
+    - -------------------------------------------------------------------------------------
+    - |      Fileset       |  Used   |  Soft   |  Hard   |   Used   |   Soft   |   Hard   |
+    - |                    |  Block  |  Quota  |  Limit  |   File   |   Quota  |   Limit  |
+     --------------------------------------------------------------------------------------
+    - | home               | 501.1M  | 2G      | 4G      | 14       | 0        | 0        |
+    - | cse-shared         | 0       | 1.465T  | 1.953T  | 1        | 0        | 0        |
+    - -------------------------------------------------------------------------------------
 
 Home directories are backed up using snapshots and a separate DR process.
 
