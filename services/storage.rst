@@ -3,7 +3,7 @@
 ################### 
 
 There are a few other documents that might have the info you are looking for.   
-1.  Look to the - :doc:`services/data-protection` 
+1.  Look to the - :doc:`data-protection` 
 policy page what the retention policy is, what are immutable files, what is to be placed in each file system area.  
 2.  Look to the - :doc:`ldf-resources` LDF resources pages for explaination of each of the file systems, and the type of data and where it's to be located and the policies of each of the file systems.   
 
