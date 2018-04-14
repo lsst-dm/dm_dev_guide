@@ -14,3 +14,4 @@ LSST Data Facility services
 - :doc:`ncsa_bulk_transfer`
 - :doc:`nebula/index`
 - :doc:`orchestration/index`
+- :doc:`storage`
