@@ -1,13 +1,12 @@
 ###################
-#  LDF Storage Resources 
+LDF Storage Resources 
 ################### 
 
 There are a few other documents that might have the info you are looking for.   
-1.  Look to the - :doc:`data-protection` 
-policy page what the retention policy is, what are immutable files, what is to be placed in each file system area.  
-2.  Look to the - :doc:`ldf-resources` LDF resources pages for explaination of each of the file systems, and the type of data and where it's to be located and the policies of each of the file systems.   
+- 1.  Look to the - :doc:`data-protection` policy page what the retention policy is, what are immutable files, what is to be placed in each file system area.  
+- 2.  Look to the - :doc:`ldf-resources` LDF resources pages for explaination of each of the file systems, and the type of data and where it's to be located and the policies of each of the file systems.   
 
-This document covers the file systems, and then quotas for currently only the /home file system that is in place.  
+- This document covers the file systems, and then quotas for currently only the /home file system that is in place.  
 
 Filesystems - in GPFS (4.9PB of storage) 
 ========================================
@@ -21,13 +20,13 @@ Filesystems - in GPFS (4.9PB of storage)
 
 
 
-Quotas 
-======
-Your home directory is the default directory you are placed in when you log on. You should use this space for storing files you want to keep long term such as source code, scripts, etc. Every user has a 1TB home directory quota (total space) and 1 million INODE quota (total number of files).
+- Quotas 
+- ======
+- Your home directory is the default directory you are placed in when you log on. You should use this space for storing files you want to keep long term such as source code, scripts, etc. Every user has a 1TB home directory quota (total space) and 1 million INODE quota (total number of files).
 
-On **TIME**, quotas were enforced. The soft limit is 1TB and the hard limit is 1.2 TB. The INODE soft quota is 1 million files and the hard limit is 1.2 million files.   If the amount of data in your home directory is over the soft limit  but under the hard limit, there is a grace period of 7 days to get under the soft limit. When the grace period expires, you will not be able to write new files or update any current files until you reduce the amount of data to below the soft limit.
+- On **TIME**, quotas were enforced. The soft limit is 1TB and the hard limit is 1.2 TB. The INODE soft quota is 1 million files and the hard limit is 1.2 million files.   If the amount of data in your home directory is over the soft limit  but under the hard limit, there is a grace period of 7 days to get under the soft limit. When the grace period expires, you will not be able to write new files or update any current files until you reduce the amount of data to below the soft limit.
 
-The command to see your disk usage and limits is quota. Example:
+- The command to see your disk usage and limits is quota. Example:
 
     [jdoe@golubh4 ~]$ quota
     Directories quota usage for user jdoe:
