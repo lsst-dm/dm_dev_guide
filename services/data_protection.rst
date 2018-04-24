@@ -67,8 +67,9 @@ Protection Capabilities
     of 30 days. Data set versions are captured at a maximum of one per day.
     
     Those wanting to use this self-serve data retrieval service can go to:
-    ``home/.snapshots/home_YYYYMMDD_000N/<username>/``
-    to browse snapshots of their home area on date YYYYMMDD.
+    ``/home/.snapshots/home_YYYYMMDD_0001/<username>/``
+    to browse snapshots of their home area on date YYYYMMDD.  These snapshots are
+    available for the filesystems listed below (and possibly others). 
 
 Disaster Recovery:
     Data locations supporting this tier of protection provide disjoint-technology protection
