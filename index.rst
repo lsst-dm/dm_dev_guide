@@ -427,6 +427,9 @@ Jenkins CI
    services/ncsa_bulk_transfer
    services/nebula/index
    services/orchestration/index
+   services/ldf-tickets
+   services/ldf-resources
+   services/storage
 
 .. _part-ldf:
 
@@ -444,4 +447,3 @@ LSST Data Facility services
 - :doc:`services/ldf-tickets`
 - :doc:`services/ldf-resources`
 - :doc:`services/storage`
-
