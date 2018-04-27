@@ -419,19 +419,26 @@ Use of pybind11 features
 
 .. _style-guide-pybind11-overload-disambiguation:
 
-C style function pointer casts SHALL be used to disambiguate overloads
+overload_cast SHALL be used to disambiguate overloads
 ----------------------------------------------------------------------
 
 Example:
 
 .. code-block:: cpp
 
-    mod.def("test", (void (*)(int)) test);
-    mod.def("test", (void (*)(double)) test);
+    // overloaded function
+    mod.def("test", py::overload_cast<int>(test));
+    mod.def("test", py::overload_cast<double>(test));
 
-.. note::
-    This rule will be changed to prefer ``py::overload_cast``
-    instead as soon as C++14 support is available.
+    // overloaded class member function
+    cls.def("computeSomething",
+            py::overload_cast<int, double>(&MyClass::computeSomething, py::const_),
+            "firstParam"_a, "anotherParam"_a);
+    cls.def("computeSomething",
+            py::overload_cast<int, std::string>(&MyClass::computeSomething, py::const_),
+            "firstParam"_a, "anotherParam"_a="foo");
+
+Note that ``py::const_`` is necessary for a const member function.
 
 .. _style-guide-pybind11-holder-type:
 
