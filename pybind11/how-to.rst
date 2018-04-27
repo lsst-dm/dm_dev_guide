@@ -299,21 +299,18 @@ Wrapping a member function is easy:
     clsExampleOne.def("computeSomething", &ExampleOne::computeSomething);
 
 However, when the function is overloaded we need to disambiguate the overloads.
-Following the rule on :ref:`overload disambiguation <style-guide-pybind11-overload-disambiguation>` we use C-style casts for this:
+Following the rule on :ref:`overload disambiguation <style-guide-pybind11-overload-disambiguation>` we use ``overload_cast`` for for this:
 
 .. code-block:: cpp
 
     clsExampleOne.def("computeSomethingElse",
-                      (double (ExampleOne::*)(int, double) const) & ExampleOne::computeSomethingElse,
+                      py::overload_cast<int, double>(&ExampleOne::computeSomethingElse, py::const_),
                       "myFirstParam"_a, "mySecondParam"_a);
     clsExampleOne.def("computeSomethingElse",
-                      (double (ExampleOne::*)(int, std::string) const) &ExampleOne::computeSomethingElse,
+                      py::overload_cast<int, std::string>(&ExampleOne::computeSomethingElse, py::const_),
                       "myFirstParam"_a, "anotherParam"_a="foo");
 
-.. note::
-
-    In the spirit of ``py::init<T...>``, there is also ``py::overload_cast<T...>``.
-    This would be **really nice** to use, but we can't because it requires C++14.
+Note that ``py::const_`` is necessary for a const member function.
 
 STL containers
 ^^^^^^^^^^^^^^
