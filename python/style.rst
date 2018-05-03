@@ -538,15 +538,15 @@ Standard code order SHOULD be followed
 
 Within a module, follow the order:
 
-1. Shebang line, ``#! /usr/bin/env python`` (only for executable scripts)
-2. Module-level comments (such as the `license statement <https://github.com/lsst/templates/tree/master/file_templates/stack_license_py>`__)
-3. Module-level docstring
-4. ``__all__ = [...]`` statement, if present
-5. Imports
-6. Private module variables (names start with underscore)
-7. Private module functions and classes (names start with underscore)
-8. Public module variables
-9. Public functions and classes
+#. Shebang line, ``#! /usr/bin/env python`` (only for executable scripts)
+#. Module-level comments (such as the `license statement <https://github.com/lsst/templates/tree/master/file_templates/stack_license_py>`__)
+#. Module-level docstring
+#. ``__all__ = [...]`` statement, if present
+#. Imports
+#. Private module variables (names start with underscore)
+#. Private module functions and classes (names start with underscore)
+#. Public module variables
+#. Public functions and classes
 
 .. _style-guide-py-classes:
 
