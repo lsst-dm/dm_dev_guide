@@ -902,3 +902,4 @@ If a module-specific exception is not used, then the appropriate standard Python
 
 When writing an ``except`` clause, the exception type caught SHOULD be, in order of preference, a module-specific exception (either Python or C++), a standard Python exception, or a generic ``pex_exceptions`` exception for which there is no corresponding Python exception.
 In particular, most generic ``pex_exceptions`` exceptions should be caught as their standard Python counterparts.
+For example, catch ``lsst.pex.exceptions.OverflowError`` as the Python ``OverflowError``, but catch ``lsst.pex.exceptions.LengthError`` as such.
