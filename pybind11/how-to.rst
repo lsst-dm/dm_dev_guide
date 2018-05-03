@@ -725,8 +725,6 @@ Following our :ref:`structure and naming convention <style-guide-pybind11-subpac
 
 .. code-block:: python
 
-    from __future__ import absolute_import
-
     from .exampleTwo import *
     from .exampleTwoContinued import *
 
@@ -735,7 +733,6 @@ We shall use the ``continueClass`` decorator to reopen the class and add a new m
 
 .. code-block:: python
 
-    from __future__ import absolute_import
     from lsst.utils import continueClass
 
     from .exampleTwo import ExampleTwo
@@ -764,7 +761,6 @@ Create the appropriate ``__init__.py`` file, and put the following in
 
 .. code-block:: python
 
-    from __future__ import absolute_import
     import numpy as np
 
     from lsst.utils import TemplateMeta
