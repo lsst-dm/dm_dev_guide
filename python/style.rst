@@ -24,29 +24,8 @@ All DM Python code MUST work with Python 3
 ------------------------------------------
 
 All the Python code written by LSST Data Management must be runnable using Python 3.
-Python 2 will cease to be supported before LSST is operational (:pep:`373`).
+Python 2 is not supported.
 The current baseline version is Python 3.6.
-
-.. _style-guide-py-version-py3-usage:
-
-Python 3 MUST be used for all integration testing and services
---------------------------------------------------------------
-
-From 2018 January 1 the baselined version of Python 3 must be used for all services, integration tests, end-to-end processing tests, and data challenges.
-Python 2 shall only be used when validating compatibility of code described in the next section.
-
-.. _style-guide-py-version-external-users:
-
-DM Python library code with an external user base MUST support Python 2.7 and 3.x
----------------------------------------------------------------------------------
-
-During construction we are expecting external users to be experimenting with some of the DM code and LSST DM library code is being used in their applications.
-This user community is currently transitioning from Python 2.7 to Python 3.x, and we should ensure that code works on both Python versions until our dependencies drop support for Python 2.7.
-In particular, the Science Pipelines code (commonly referred to as ``lsst_distrib``) must support 2.7 and 3.x.
-
-Standalone applications, code providing services, and internal programs and modules (such as Qserv, SQuaSH and ``dax``) do not have to support Python 2.
-If code is currently supporting both 2.7 and 3.x, dropping support for Python 2.7 requires an :doc:`RFC </communications/rfc>`.
-New code that has never supported Python 2.7 and which will not be externally usable library code or a dependency of a package that supports 2.7 does not require an RFC to request that 2.7 is not supported.
 
 .. _style-guide-py-pep8-baseline:
 
