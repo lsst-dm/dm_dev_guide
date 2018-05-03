@@ -562,13 +562,12 @@ Within a module, follow the order:
 1. Shebang line, ``#! /usr/bin/env python`` (only for executable scripts)
 2. Module-level comments (such as the `license statement <https://github.com/lsst/templates/tree/master/file_templates/stack_license_py>`__)
 3. Module-level docstring
-4. ``from __future__ import absolute_import, division, print_function``
-5. ``__all__ = [...]`` statement, if present
-6. Imports (except ``from __future__ import...``)
-7. Private module variables (names start with underscore)
-8. Private module functions and classes (names start with underscore)
-9. Public module variables
-10. Public functions and classes
+4. ``__all__ = [...]`` statement, if present
+5. Imports
+6. Private module variables (names start with underscore)
+7. Private module functions and classes (names start with underscore)
+8. Public module variables
+9. Public functions and classes
 
 .. _style-guide-py-classes:
 
@@ -677,45 +676,8 @@ Writing Python with accepted patterns makes your code easier for others to under
 
 `Fluent Python <http://shop.oreilly.com/product/0636920032519.do>`_ by Luciano Ramalho is an excellent guide to writing idiomatic Python.
 
-Idiomatic Python also reduces technical debt, particularly by easing the migration from Python 2.7 to Python 3.
-Codes should be written in a way that helps the futurize_ code converter produce more efficient code.
+Idiomatic Python also reduces technical debt.
 For more information see the online book `Supporting Python 3 <http://python3porting.com/toc.html>`_ by Lennart Regebro.
-
-.. _futurize: http://python-future.org/futurize.html
-
-Supporting Python 2.7 and 3.x simultaneously
----------------------------------------------
-
-The ``future`` package MUST be used to provide compatibility functionality with Python 2.7
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-We use the `future <http://python-future.org/>`_ package to provide a means for writing code using Python 3 idioms that will also work on Python 2.7.
-Details on the process for migrating a 2.7 codebase to support both versions can be found in `SQR-014 <https://sqr-014.lsst.io>`_.
-
-.. _style-guide-py-future-absolute-import:
-.. _style-guide-py-future-division:
-.. _style-guide-py-print:
-
-``__future__`` MUST be used to import Python 3 behavior in all files where the related functionality is used
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Code that is to be used on Python 2.7 and 3.x should import ``division``, ``print_function`` and ``absolute_import`` from the :mod:`__future__` package where appropriate.
-This means ``/`` is floating-point division and ``//`` is truncated integer division, regardless of the type of numbers being divided and matches the Python 3 behavior.
-
-In addition, import local modules using relative imports (e.g. ``from . import foo`` or ``from .foo import bar``).
-This results in clearer code and avoids shadowing global modules with local modules.
-
-The :py:func:`print()` function is required in Python 3.
-In general, DM code should use logging instead of ``print`` functions.
-
-
-.. _style-guide-py-future-itervalues:
-
-``itervalues()`` and ``iteritems()`` CANNOT be used
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Python 3 does not support the ``iter`` variants.
-For more information on how to handle this efficiently in Python 2 see http://python-future.org/compatible_idioms.html#iterating-through-dict-keys-values-items.
 
 .. _style-guide-py-pitfalls-mutables:
 
