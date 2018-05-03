@@ -577,7 +577,7 @@ For example:
     C().method(arg)
 
 Using :py:func:`super()` ensures a consistent Method Resolution Order, and prevents inherited methods from being called multiple times.
-In Python 3, :py:func:`super()` does not require naming the class that it is part of, making its use simpler and removing a maintenance issue; Python 2 needs ``from builtins import super`` to achieve the same behavior.
+In Python 3, :py:func:`super()` does not require naming the class that it is part of, making its use simpler and removing a maintenance issue.
 
 super() and Multiple Inheritance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
