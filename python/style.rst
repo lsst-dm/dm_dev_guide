@@ -888,3 +888,18 @@ Some examples:
 Note that C++ getters that return STL container types cannot have properties in Python unless the usual pybind11 conversion (which typically yields ``list``, ``dict``, or ``set`` objects) is augmented with a conversion to an immutable type (such as ``tuple`` or ``frozenset``), because these conversions otherwise always yield mutable objects that do not modify the parent.
 
 The existing getters and setters MUST NOT be removed when defining a property.
+
+.. _style-guide-py-exceptions:
+
+Python exceptions SHOULD be raised and checked in Python code
+-------------------------------------------------------------
+
+When raising an exception in Python code, consideration should be given to `defining a module-specific exception`_ for increased precision.
+Such an exception SHOULD inherit from an appropriate standard Python exception, unless it also needs to be thrown from C++ code, in which case it MUST be defined using the LSST-specific ``pex_exceptions`` library.
+If a module-specific exception is not used, then the appropriate standard Python exception SHOULD be raised.
+
+.. _defining a module-specific exception: https://docs.python.org/3/tutorial/errors.html#user-defined-exceptions
+
+When writing an ``except`` clause, the exception type caught SHOULD be, in order of preference, a module-specific exception (either Python or C++), a standard Python exception, or a generic ``pex_exceptions`` exception for which there is no corresponding Python exception.
+In particular, most generic ``pex_exceptions`` exceptions should be caught as their standard Python counterparts.
+For example, catch ``lsst.pex.exceptions.OverflowError`` as the Python ``OverflowError``, but catch ``lsst.pex.exceptions.LengthError`` as such.
