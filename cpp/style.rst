@@ -2449,6 +2449,7 @@ If the ``catch`` clause is not going to re-throw the exception, a comment indica
 It is a common recommendation (Sun Java recommendation included) that brackets should always be used in all these cases.
 Brackets are in general a language construct that groups several statements and thus by definition superfluous on a single statement.
 However, the use of brackets in the above cases would make it trivial to add statements without error.
+If brackets are used, the standard multi-line forms from the sections above should be followed.
 
 .. _style-guide-cpp-6-15:
 
