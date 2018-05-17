@@ -430,6 +430,7 @@ Jenkins CI
    services/ldf-tickets
    services/ldf-resources
    services/storage
+   services/monitoring_applications
 
 .. _part-ldf:
 
