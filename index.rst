@@ -447,3 +447,4 @@ LSST Data Facility services
 - :doc:`services/ldf-tickets`
 - :doc:`services/ldf-resources`
 - :doc:`services/storage`
+- :doc:`services/monitoring_applications`
