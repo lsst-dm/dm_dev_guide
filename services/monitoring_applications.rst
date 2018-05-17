@@ -44,9 +44,11 @@ If an integration is not provided there is documentation on writing a `custom in
 .. _Prometheus: https://prometheus.io/docs/instrumenting/exporters/
 .. _custom integration: https://prometheus.io/docs/instrumenting/writing_exporters/
 
-.. _example01
 Example: Telegraf Output Configuration
 ======================================
+
+.. code-block: none
+   :name: example01
 
 [[outputs.influxdb]]
   database = "$database_name"
