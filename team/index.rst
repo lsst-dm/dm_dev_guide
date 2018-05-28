@@ -13,4 +13,5 @@ Learn about the Data Management Subsystem in :ldm:`294`.
 
 Team-specific pages:
 
+- :doc:`ap`
 - :doc:`drp`
