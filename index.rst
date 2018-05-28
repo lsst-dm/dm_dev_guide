@@ -35,6 +35,7 @@ Check out the `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/READM
    team/code-of-conduct
    team/empowerment
    team/drp
+   team/ap
 
 .. Table of contents published on the homepage.
 .. Mirror changes here to team/index.rst (temporary workflow)
@@ -54,6 +55,7 @@ Learn more about the Data Management Subsystem in :ldm:`294`.
 Team-specific pages:
 
 - :doc:`team/drp`
+- :doc:`team/ap`
 
 .. COMMUNICATIONS SECTION ====================================================
 
