@@ -503,6 +503,19 @@ When tempted to use ``l``, use ``L`` instead.
 
   This matches the `PEP 8 standard <https://www.python.org/dev/peps/pep-0008/#names-to-avoid>`_ but is repeated here for emphasis.
 
+.. _style-guide-py-naming-metaclasses:
+
+Always use ``cls`` for the first argument to metaclass instance methods
+-----------------------------------------------------------------------
+
+For regular classes ``self`` is used, but for class methods and hence also for metaclass instance
+methods, ``cls`` should be used instead.
+
+.. note::
+
+    This is consistent with the naming conventions in PEP 8 as indicated explicitly
+    by `upstream <https://mail.python.org/pipermail/python-dev/2018-January/151986.html>`_.
+
 .. _style-guide-py-files:
 
 7. Source Files & Modules
