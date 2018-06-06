@@ -131,7 +131,7 @@ For example, adding the follwing to :file:`~/.ssh/config` will automatically rou
 
   Host tiger
       Hostname tiger3.princeton.edu
-      ProxyCommand ssh hammer5.astro.princeton.edu nc %h %p
+      ProxyCommand ssh coma.astro.princeton.edu -W %h:%p
 
 See also the `Peyton Hall tips on using SSH <http://www.astro.princeton.edu/docs/SSH>`_.
 
