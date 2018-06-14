@@ -220,6 +220,12 @@ We wrap the class using the ``py::class_<T>`` template:
 
     As in the example, classes should almost always have a :ref:`shared_ptr holder type <style-guide-pybind11-holder-type>`.
 
+.. note::
+
+    It is far more common to name the pybind11 class ``cls`` and wrap one class per module or per function within a module.
+    However, the examples in this document are quite distributed, so to make them easier to follow we use ``clsExampleOne``.
+    See also :ref:`class prefix <style-guide-pybind11-class-prefix>`.
+
 Wrapping enums
 ^^^^^^^^^^^^^^
 
@@ -460,6 +466,39 @@ The end result of all the steps above looks like this:
     }
 
     }}  // lsst::tmpl
+
+Building the wrapper
+--------------------
+
+The next step is to tell SCons to build your wrapper.
+Edit ``python/.../SConscript`` to look like this:
+
+.. code-block:: python
+
+    # -*- python -*-
+    from lsst.sconsUtils import scripts
+    scripts.BasicSConscript.pybind11(
+        [
+            'exampleOne',
+            # ... list additional pybind11 wrappers, if any
+        ],
+        addUnderscore=False,
+    )
+
+``addUnderscore`` is historical baggage; eventually we plan to make ``False`` the default.
+
+Importing the wrapper
+---------------------
+
+The Python name for your wrapper module is `exampleOne`.
+If the wrapped classes can be returned by a function or unpickled then it is crucial that your module is imported when the package is imported.
+If the symbols are part of the public API then this is typically done by adding the following to your package's main ``__init__.py`` file:
+
+.. code-block:: python
+
+    from exampleOne import *
+
+If you don't want your wrapper's symbols in your package's top-level namespace then you can use ``from . import exampleOne``.
 
 Moving on
 ---------
