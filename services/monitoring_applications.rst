@@ -14,6 +14,7 @@ A draft of acceptable methods is outlined below.
 
 Method 1: Direct Injection to InfluxDB Endpoint
 ===============================================
+
 Streaming metrics straight into an InfluxDB database is an efficient way
 to inject data into the LDF monitoring framework.
 The `documentation for writing data into InfluxDB`_ is well define and very conventional.
@@ -26,6 +27,7 @@ relevant dashboards for those services.
 
 Method 2: Telegraf
 ==================
+
 Certain applications have built in support via the `Telegraf agent`_ which
 make deploying monitoring of a service fairly straight forward.
 One will have to include the telegraf package in the container image with
@@ -35,6 +37,7 @@ a proper output section format. See the :ref:`example <example01>` below.
 
 Method 3: Prometheus Endpoint 
 =============================
+
 Another option though sometimes less preferred due to a bit high memory
 footprint is to configure a Prometheus endpoint for the application that
 can be scraped by the LDF monitoring system.
@@ -47,10 +50,10 @@ If an integration is not provided there is documentation on writing a `custom in
 Example: Telegraf Output Configuration
 ======================================
 
-.. code-block: none
+.. code-block:: text
    :name: example01
 
-[[outputs.influxdb]]
-  database = "$database_name"
-  urls = ["https://$influxhostname:8086"]
+   [[outputs.influxdb]]
+     database = "$database_name"
+     urls = ["https://$influxhostname:8086"]
 
