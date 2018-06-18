@@ -402,8 +402,8 @@ epub_exclude_files = ['search.html']
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3', None),
     'astropy': ('http://docs.astropy.org/en/stable/', None),
-    'numpy': ('http://docs.scipy.org/doc/numpy/', None),
-    'pytest': ('http://pytest.org/latest', None),
+    'numpy': ('https://docs.scipy.org/doc/numpy/', None),
+    'pytest': ('https://pytest.org/latest', None),
     'pipelines': ('https://pipelines.lsst.io', None)
 }
 
