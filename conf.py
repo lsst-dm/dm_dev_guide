@@ -403,7 +403,7 @@ intersphinx_mapping = {
     'python': ('https://docs.python.org/3', None),
     'astropy': ('http://docs.astropy.org/en/stable/', None),
     'numpy': ('https://docs.scipy.org/doc/numpy/', None),
-    'pytest': ('https://pytest.org/latest', None),
+    'pytest': ('https://docs.pytest.org/en/latest/', None),
     'pipelines': ('https://pipelines.lsst.io', None)
 }
 
