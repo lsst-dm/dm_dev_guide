@@ -16,7 +16,7 @@ Check out the `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/READM
 
 **Jump to:** :ref:`Team <part-team>` · :ref:`Communications <part-communications>` · :ref:`Project documentation <part-project-docs>` · :ref:`Work management <part-work>`
 
-**Development guides:** :ref:`Overview <part-guides>` · :ref:`C++ <part-cpp>` · :ref:`Python <part-python>` · :ref:`Pybind11 <part-pybind11>` · :ref:`JavaScript <part-javascript>` · :ref:`ReStructuredText <part-rst>` · :ref:`DM Stack <part-dm-stack>` · :ref:`Git <part-git>` · :ref:`Editors <part-editors>`
+**Development guides:** :ref:`Overview <part-guides>` · :ref:`C++ <part-cpp>` · :ref:`Python <part-python>` · :ref:`Pybind11 <part-pybind11>` · :ref:`JavaScript <part-javascript>` · :ref:`ReStructuredText <part-rst>` · :ref:`DM Stack <part-dm-stack>` · :ref:`Git <part-git>` · :ref:`Editors <part-editors>` · :ref:`Legal <part-legal>`
 
 **Services:** :ref:`Overview <part-services>` · :ref:`Jenkins <part-jenkins>` · :ref:`LSST Data Facility <part-ldf>`
 
@@ -374,6 +374,24 @@ Crowd-sourced recommendations for configuring editors for LSST development (list
 - :doc:`editors/emacs`
 - :doc:`editors/sublime`
 - :doc:`editors/vim`
+
+.. LEGAL SECTION ============================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Legal
+   :hidden:
+
+   legal/licensing-overview
+
+.. _part-legal:
+
+Legal
+-----
+
+- :doc:`legal/licensing-overview`
 
 .. _part-services:
 
