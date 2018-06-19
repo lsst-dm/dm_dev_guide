@@ -207,11 +207,13 @@ Style changes must be encapsulated in a distinct commit (see :ref:`git-commit-or
 Each Python file MUST contain the standard license preamble
 -----------------------------------------------------------
 
-A copyright and license block using :ref:`the standard text <pkg-doc-code-preamble>` MUST be included at the top of each file.
+A copyright and license block using `the standard text <https://github.com/lsst/templates/tree/master/file_templates/stack_license_preamble_py>`_ MUST be included at the top of each file.
 This can be written as a Python comment.
 
-.. literalinclude:: /stack/examples/license_preamble.py
-   :language: python
+.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/master/file_templates/stack_license_preamble_py/template.py.jinja
+   :language: jinja
+
+Replace ``{{ cookiecutter.package_name }}`` with the package's name.
 
 .. _style-guide-py-line-length:
 
