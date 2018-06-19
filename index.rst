@@ -385,6 +385,7 @@ Crowd-sourced recommendations for configuring editors for LSST development (list
    :hidden:
 
    legal/licensing-overview
+   legal/copyright-overview
 
 .. _part-legal:
 
@@ -392,6 +393,7 @@ Legal
 -----
 
 - :doc:`legal/licensing-overview`
+- :doc:`legal/copyright-overview`
 
 .. _part-services:
 
