@@ -70,9 +70,11 @@ On GitHub
 ---------
 
 Likewise, in your `GitHub account email settings <https://github.com/settings/emails>`_, add your institution-hosted email.
-We recommend that you set this institutional email as your **Primary GitHub** email address.
 
+We recommend that you set this institutional email as your **Primary GitHub** email address.
 This step ensures that Git commits you make `directly on GitHub.com <https://help.github.com/articles/github-flow-in-the-browser/>`_ (such as quick documentation fixes) and merges made via the 'big green button' have proper authorship metadata.
+Alternatively, remember to choose your institution email from the email address drop-down menu before committing.
+See the GitHub help page `Editing files in your repository <https://help.github.com/articles/editing-files-in-your-repository/>`__ for details.
 
 .. _git-setup-plain-pushes:
 
