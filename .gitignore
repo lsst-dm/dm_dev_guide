@@ -2,5 +2,3 @@ _build
 .DS_Store
 __pycache__
 .cache
-stack/examples/license_preamble.py
-stack/examples/license_preamble.cpp
