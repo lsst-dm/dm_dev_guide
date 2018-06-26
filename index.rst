@@ -331,6 +331,8 @@ Documentation.
     - :doc:`stack/package-homepage-topic-type`
     - :doc:`stack/module-homepage-topic-type`
     - :doc:`stack/task-topic-type`
+    - :doc:`stack/generic-guide-topic-type`
+
 Testing.
 
 - :doc:`stack/jenkins-stack-os-matrix`
