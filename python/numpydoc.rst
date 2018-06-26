@@ -345,7 +345,7 @@ That is, the summary is treated a command that the API consumer can give.
 Some examples:
 
 - ``Get metadata for all tasks.``
-- ``Make a `lsst.pex.config.ConfigurableField` for this task.``
+- ``Make an `lsst.pex.config.ConfigurableField` for this task.``
 - ``Create a `Measurement` instance from a parsed YAML or JSON document.``
 
 .. _py-docstring-deprecation:
