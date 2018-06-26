@@ -6,8 +6,8 @@ This page describes how copyrights are assigned and managed for LSST DM source c
 
 .. _copyright-updating:
 
-Continuosly update copyrights during development
-================================================
+Continuously update copyrights during development
+=================================================
 
 All DM developers should participate in keeping copyright statements up to date as you work on the DM codebase.
 There is no automated process for updating copyright statements at the moment.
@@ -65,7 +65,7 @@ Prior to the start of LSST construction (before August 2015) all copyright was g
 Formatting copyright statements
 ===============================
 
-Copyrights statements have the following format:
+Copyright statements have the following format:
 
 .. code-block:: jinja
 
