@@ -9,6 +9,7 @@ DM Stack guides
 - :doc:`transferring-code`
 - :doc:`logging`
 - :doc:`debug`
+- :doc:`layout-of-doc-directory`
 - :doc:`jenkins-stack-os-matrix`
 - :doc:`unit-test-coverage`
 - :doc:`lsstsw`
