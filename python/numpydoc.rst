@@ -331,7 +331,7 @@ For summaries of how these docstring sections are composed in specific contexts,
 Short Summary
 -------------
 
-A one-line summary that does not use variable names or the function's name:
+A one-sentence summary that does not use variable names or the function's name:
 
 .. code-block:: python
 
