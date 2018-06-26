@@ -328,6 +328,7 @@ Documentation.
   - :doc:`stack/layout-of-doc-directory`
   - :doc:`stack/package-documentation-topic-types`:
 
+    - :doc:`stack/package-homepage-topic-type`
     - :doc:`stack/module-homepage-topic-type`
 Testing.
 
