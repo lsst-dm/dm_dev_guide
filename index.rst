@@ -295,6 +295,7 @@ ReStructuredText
    stack/logging
    stack/debug
    stack/layout-of-doc-directory
+   stack/package-documentation-topic-types
    stack/jenkins-stack-os-matrix
    stack/unit-test-coverage.rst
    stack/eups-tutorial
@@ -325,6 +326,7 @@ Documentation.
 - Documentation in packages:
 
   - :doc:`stack/layout-of-doc-directory`
+  - :doc:`stack/package-documentation-topic-types`:
 
 Testing.
 
