@@ -225,6 +225,15 @@ This conforms to the :doc:`/cpp/style` (see :ref:`4-6 <style-guide-cpp-4-6>`).
 
 This differs from the `PEP 8 recommendation of 79 characters <https://www.python.org/dev/peps/pep-0008/#maximum-line-length>`_.
 
+.. _style-guide-py-docstring-line-length:
+
+Docstring and comment line length MUST be less than or equal to 79 columns
+--------------------------------------------------------------------------
+
+Limit all docstring and comment lines to a maximum of 79 characters.
+
+This differs from the `PEP 8 recommendation of 72 characters <https://www.python.org/dev/peps/pep-0008/#maximum-line-length>`_ and the `numpydoc recommendation of 75 characters <https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard>`_ but is a compromise between these and the code line length limit.
+
 .. _style-guide-py-implied-continuation:
 
 Python's implied continuation inside parens, brackets and braces SHOULD be used for wrapped lines
