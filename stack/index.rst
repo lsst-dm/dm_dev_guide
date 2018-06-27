@@ -12,6 +12,7 @@ DM Stack guides
 - :doc:`layout-of-doc-directory`
 - :doc:`add-a-package-to-pipelines-lsst-io`
 - :doc:`building-single-package-docs`
+- :doc:`building-pipelines-lsst-io-locally`
 - :doc:`jenkins-stack-os-matrix`
 - :doc:`unit-test-coverage`
 - :doc:`lsstsw`
