@@ -299,6 +299,7 @@ ReStructuredText
    stack/add-a-package-to-pipelines-lsst-io
    stack/building-single-package-docs
    stack/building-pipelines-lsst-io-locally
+   stack/building-pipelines-lsst-io-with-documenteer-job
    stack/jenkins-stack-os-matrix
    stack/unit-test-coverage.rst
    stack/eups-tutorial
@@ -344,6 +345,7 @@ Documentation.
 
   - :doc:`stack/building-single-package-docs`
   - :doc:`stack/building-pipelines-lsst-io-locally`
+  - :doc:`stack/building-pipelines-lsst-io-with-documenteer-job`
 
 Testing.
 

@@ -13,6 +13,7 @@ DM Stack guides
 - :doc:`add-a-package-to-pipelines-lsst-io`
 - :doc:`building-single-package-docs`
 - :doc:`building-pipelines-lsst-io-locally`
+- :doc:`building-pipelines-lsst-io-with-documenteer-job`
 - :doc:`jenkins-stack-os-matrix`
 - :doc:`unit-test-coverage`
 - :doc:`lsstsw`
