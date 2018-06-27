@@ -297,6 +297,7 @@ ReStructuredText
    stack/layout-of-doc-directory
    stack/package-documentation-topic-types
    stack/add-a-package-to-pipelines-lsst-io
+   stack/building-single-package-docs
    stack/jenkins-stack-os-matrix
    stack/unit-test-coverage.rst
    stack/eups-tutorial
@@ -337,6 +338,10 @@ Documentation.
 - Documentation in the main repository:
 
   - :doc:`stack/add-a-package-to-pipelines-lsst-io`
+
+- Building docs:
+
+  - :doc:`stack/building-single-package-docs`
 
 Testing.
 
