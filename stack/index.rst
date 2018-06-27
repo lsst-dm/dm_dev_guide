@@ -10,6 +10,7 @@ DM Stack guides
 - :doc:`logging`
 - :doc:`debug`
 - :doc:`layout-of-doc-directory`
+- :doc:`add-a-package-to-pipelines-lsst-io`
 - :doc:`jenkins-stack-os-matrix`
 - :doc:`unit-test-coverage`
 - :doc:`lsstsw`
