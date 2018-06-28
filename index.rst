@@ -294,6 +294,7 @@ ReStructuredText
    stack/package-docs
    stack/logging
    stack/debug
+   stack/documentation-system-overview
    stack/layout-of-doc-directory
    stack/package-documentation-topic-types
    stack/add-a-package-to-pipelines-lsst-io
@@ -327,6 +328,7 @@ Development.
 
 Documentation.
 
+- :doc:`stack/documentation-system-overview`
 - Documentation in packages:
 
   - :doc:`stack/layout-of-doc-directory`
