@@ -266,12 +266,7 @@ For example:
 Line Lengths
 ------------
 
-Hard-wrap text in docstrings to match the :ref:`line length allowed by the coding standard <style-guide-py-line-length>`.
-
-.. note::
-
-   In the future we may require shorter line lengths specifically for docstrings.
-   See :jira:`RFC-107`.
+Hard-wrap text in docstrings to match the :ref:`docstring line length allowed by the coding standard <style-guide-py-docstring-line-length>`.
 
 .. _py-docstring-parameter-markup:
 
