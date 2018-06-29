@@ -5,7 +5,6 @@ DM Stack guides
 ###############
 
 - :doc:`platforms`
-- :doc:`package-docs`
 - :doc:`transferring-code`
 - :doc:`logging`
 - :doc:`debug`

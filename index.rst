@@ -291,7 +291,6 @@ ReStructuredText
 
    stack/platforms
    stack/transferring-code
-   stack/package-docs
    stack/logging
    stack/debug
    stack/documentation-system-overview
@@ -322,7 +321,6 @@ General policies and procedures.
 
 Development.
 
-- :doc:`stack/package-docs`
 - :doc:`stack/logging`
 - :doc:`stack/debug`
 
