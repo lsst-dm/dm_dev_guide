@@ -232,7 +232,7 @@ Docstring and comment line length MUST be less than or equal to 79 columns
 
 Limit all docstring and comment lines to a maximum of 79 characters.
 
-This differs from the `PEP 8 recommendation of 72 characters <https://www.python.org/dev/peps/pep-0008/#maximum-line-length>`_ and the `numpydoc recommendation of 75 characters <https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard>`_ but is a compromise between these and the code line length limit.
+This differs from the `PEP 8 recommendation of 72 characters <https://www.python.org/dev/peps/pep-0008/#maximum-line-length>`_ and the `numpydoc recommendation of 75 characters <https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard>`_ but maintains readability and compatibility with default terminal widths while providing the maximum space.
 
 .. _style-guide-py-implied-continuation:
 
