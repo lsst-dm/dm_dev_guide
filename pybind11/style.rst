@@ -201,9 +201,12 @@ If a wrapper only contains one module instance the name of the object shall be `
 Class object names MUST be "cls" or camel case prefixed with "cls"
 ------------------------------------------------------------------
 
-If a wrapper only contains one class the name of the object shall be
+If a wrapper only wraps one class the name of the pybind11 class object shall be
 ``cls``. Otherwise it shall be camel case prefixed with ``cls`` as in
 ``clsExample``.
+
+When a wrapper wraps multiple classes it is recommended you define a separate function to wrap each class.
+Each wrapper function takes the module as an argument and uses ``cls`` as the variable name for the pybind11 class object.
 
 When using a ``cls`` prefix, it is **strongly** encouraged to use the
 full class name for the remainder.

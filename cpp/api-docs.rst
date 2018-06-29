@@ -489,7 +489,7 @@ List each class, function, method, or link using a ``@see`` tag:
     */
    vector<double> cos(vector<double> const & angles);
 
-Prefix objects from other namespaces appropriately by their greatest common namespace. For example, while documenting a ``lsst::afw::tables`` module, refer to a class in ``lsst::afw::detection`` by ``afw::detection::Footprint``. When referring to an entirely different module or package, use the full namespace.
+Prefix objects from other namespaces appropriately by their greatest common namespace. For example, while documenting an ``lsst::afw::tables`` module, refer to a class in ``lsst::afw::detection`` by ``afw::detection::Footprint``. When referring to an entirely different module or package, use the full namespace.
 Do not use namespace abbreviations, as Doxygen has trouble resolving them.
 
 For internal consistency, always use ``@see`` and not the synonymous ``@sa``.
