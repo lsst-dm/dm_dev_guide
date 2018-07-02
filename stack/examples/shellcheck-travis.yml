@@ -1,0 +1,19 @@
+sudo: false
+language: python
+matrix:
+  include:
+    - env: TEST=shellcheck
+      services:
+        - docker
+      script: |
+        set -e
+        shopt -s globstar nullglob
+        CHECK=( **/*.sh )
+        [[ ${#CHECK[@]} -eq 0 ]] && exit
+        docker run -v $(pwd):$(pwd) -w $(pwd) \
+          koalaman/shellcheck-alpine:v0.4.6 -x "${CHECK[@]}"
+branches:
+  only:
+  - master
+notifications:
+  email: false
