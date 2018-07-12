@@ -43,7 +43,7 @@ Account Password
 
 You can log into LSST development servers at NCSA such as ``lsst-dev01`` with your NCSA account and password. You can reset your NCSA password at the following URL:
 
-   - https://identity.ncsa.illinois.edu/reset
+   - https://identity.lsst.org/reset
 
 
 .. _verification-gpfs:
