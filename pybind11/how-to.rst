@@ -345,8 +345,11 @@ Then the function can be wrapped as normal:
 
     clsExampleOne.def("doSomethingWithArray", &ExampleOne::doSomethingWithArray);
 
-The ndarray library also includes similarly automatic conversions for Eigen objects, which should be used instead of the optional Eigen converters packaged with Pybind11 itself.
-Using both sets of converters in the same project is a violation of C++'s "One Definition Rule", a serious problem, and because a significant amount of LSST code already uses the ndarray converters, new code must as well.
+.. note::
+
+    If your wrapper needs to convert Eigen objects then include ``pybind11/eigen.h``.
+    Previous versions of the ndarray library included automatic conversion for Eigen objects,
+    but that code has been removed and we now rely on pybind11's standard support for Eigen.
 
 .. note::
 
