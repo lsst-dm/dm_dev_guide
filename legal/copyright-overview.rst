@@ -33,7 +33,7 @@ Use these legal names when assigning copyright for work you contribute on behalf
 - University of Washington
 - The Trustees of Princeton University
 - The Board of Trustees of the Leland Stanford Junior University, through SLAC National Accelerator Laboratory
-- University of Illinois Champaign-Urbana
+- University of Illinois Board of Trustees
 - California Institute of Technology
 
 .. _copyright-external:
