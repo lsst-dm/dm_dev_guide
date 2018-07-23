@@ -188,18 +188,12 @@ Following :ref:`our rules on file naming <style-guide-pybind11-module-naming>`, 
     namespace lsst {
     namespace tmpl {
 
-    PYBIND11_PLUGIN(exampleOne) {
-        py::module mod("exampleOne");
-
-        return mod.ptr();
-
+    PYBIND11_MODULE(exampleOne, mod) {
     }}}  // lsst::tmpl
 
 .. warning::
 
-    The name used for the ``PYBIND11_PLUGIN(...)`` macro must match both the
-    name used for ``mod(...)`` and the name of the file, otherwise an
-    ``ImportError`` will be raised.
+    The name used for the ``PYBIND11_MODULE(..., mod)`` macro must match the name of the file, otherwise an ``ImportError`` will be raised.
 
 Wrapping the class
 ^^^^^^^^^^^^^^^^^^
@@ -208,12 +202,8 @@ We wrap the class using the ``py::class_<T>`` template:
 
 .. code-block:: cpp
 
-    PYBIND11_PLUGIN(exampleOne) {
-        py::module mod("exampleOne");
-
+    PYBIND11_MODULE(exampleOne, mod) {
         py::class_<ExampleOne, std::shared_ptr<ExampleOne>> clsExampleOne(mod, "ExampleOne");
-
-        return mod.ptr();
     }
 
 .. note::
@@ -425,9 +415,7 @@ The end result of all the steps above looks like this:
     namespace lsst {
     namespace tmpl {
 
-    PYBIND11_PLUGIN(exampleOne) {
-        py::module mod("exampleOne");
-
+    PYBIND11_MODULE(exampleOne, mod) {
         if (_import_array() < 0) {
                 PyErr_SetString(PyExc_ImportError, "numpy.core.multiarray failed to import");
                 return nullptr;
@@ -464,8 +452,6 @@ The end result of all the steps above looks like this:
         clsExampleOne.def("__ne__", &ExampleOne::operator!=, py::is_operator());
         clsExampleOne.def("__iadd__", &ExampleOne::operator+=);
         clsExampleOne.def("__add__", [](ExampleOne const & self, ExampleOne const & other) { return self + other; }, py::is_operator());
-
-        return mod.ptr();
     }
 
     }}  // lsst::tmpl
@@ -589,10 +575,7 @@ Again following :ref:`our rules on file naming <style-guide-pybind11-module-nami
     namespace lsst {
     namespace tmpl {
 
-    PYBIND11_PLUGIN(exampleTwo) {
-        py::module mod("exampleTwo");
-
-        return mod.ptr();
+    PYBIND11_MODULE(exampleTwo, mod) {
     }
 
     }}  // lsst::tmpl
@@ -647,15 +630,11 @@ Following :ref:`this rule <style-guide-pybind11-declare-template-wrappers>` we d
 
     }
 
-    PYBIND11_PLUGIN(exampleThree) {
+    PYBIND11_MODULE(exampleThree, mod) {
         py::module::import("exampleTwo");  // See Cross module imports
-
-        py::module mod("exampleThree");
 
         declareExampleThree<int>(mod, "I");
         declareExampleThree<double>(mod, "D");
-
-        return mod.ptr();
     }
 
 .. note::
@@ -703,17 +682,13 @@ The end results for the C++ part of the wrappers (see next for the Python part) 
     namespace lsst {
     namespace tmpl {
 
-    PYBIND11_PLUGIN(exampleTwo) {
-        py::module mod("exampleTwo");
-
+    PYBIND11_MODULE(exampleTwo, mod) {
         py::class_<ExampleBase, std::shared_ptr<ExampleBase>> clsExampleBase(mod, "ExampleBase");
         clsExampleBase.def("someMethod", &ExampleBase::someMethod);
 
         py::class_<ExampleTwo, std::shared_ptr<ExampleTwo>, ExampleBase> clsExampleTwo(mod, "ExampleTwo");
         clsExampleTwo.def(py::init<>());
         clsExampleTwo.def("someOtherMethod", &ExampleTwo::someOtherMethod);
-
-        return mod.ptr();
     }
 
     }}  // lsst::tmpl
@@ -746,15 +721,11 @@ and ``exampleThree.cc``:
 
     }
 
-    PYBIND11_PLUGIN(exampleThree) {
-        py::module mod("exampleThree");
-
+    PYBIND11_MODULE(exampleThree, mod) {
         py::module::import("exampleTwo");
 
         declareExampleThree<float>(mod, "F");
         declareExampleThree<double>(mod, "D");
-
-        return mod.ptr();
     }
 
     }}  // lsst::tmpl
