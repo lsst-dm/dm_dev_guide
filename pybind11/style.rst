@@ -117,9 +117,8 @@ This can be done with the ``pybind11::module::import()`` function.  Note that it
 
 .. code-block:: cpp
 
-    PYBIND11_PLUGIN(spherePoint) {
+    PYBIND11_MODULE(spherePoint, mod) {
         py::module::import("lsst.afw.geom.angle");
-        py::module mod("spherePoint");
         ...
     }
 
@@ -294,7 +293,7 @@ a declare function:
 
     ...
 
-    PYBIND11_PLUGIN(_Example) {
+    PYBIND11_MODULE(_Example, mod) {
         declareExample<float>(mod, "F");
         declareExample<int>(mod, "I");
         ...
@@ -349,7 +348,7 @@ For example:
 
     }  // <anonymous>
 
-    PYBIND11_PLUGIN(...
+    PYBIND11_MODULE(...
        ...
     }
 
@@ -394,7 +393,7 @@ When no template deduction is needed, a type alias is usually preferable:
         ...
     }
 
-    PYBIND11_PLUGIN(_Thing) {
+    PYBIND11_MODULE(_Thing, mod) {
         PyThing cls(...);
         declareThingMethods(cls);
     }
@@ -409,7 +408,7 @@ the template parameters for ``py::class_`` itself:
         ...
     }
 
-    PYBIND11_PLUGIN(_Thing) {
+    PYBIND11_MODULE(_Thing, mod) {
         py::class_<Thing> cls(...);
         declareCommon(cls);
     }
