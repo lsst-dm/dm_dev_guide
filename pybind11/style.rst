@@ -340,6 +340,7 @@ For example:
 
 .. code-block:: cpp
 
+    namespace lsst {
     namespace sphgeom {
 
     namespace {
