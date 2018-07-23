@@ -347,14 +347,14 @@ For example:
 
     ...  // declare functions...
 
-    }  // <anonymous>
+    }  // namespace
 
     PYBIND11_MODULE(...
        ...
     }
 
-    }  // sphgeom
-    }  // lsst
+    }  // namespace sphgeom
+    }  // namespace lsst
 
 Using anonymous namespaces ensures symbols that need not be public aren't, avoiding name clashes, reducing the size of libraries, and improving link times.
 
@@ -373,9 +373,9 @@ For example:
 
     ...  // declare functions...
 
-    }  // python
-    }  // sphgeom
-    }  // lsst
+    }  // namespace python
+    }  // namespace sphgeom
+    }  // namespace lsst
 
 .. _style-guide-pybind11-class-object-dupplication:
 
