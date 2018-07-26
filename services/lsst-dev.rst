@@ -23,7 +23,7 @@ Overview of Cluster Resources
 =============================
 
 - List of `available development servers <https://confluence.lsstcorp.org/display/LDMDG/DM+Development+Servers>`_ and their intended use.
-- `System announcements <https://confluence.lsstcorp.org/display/LDMDG/DM+System+Announcements>`_ of the status and planned down-time.
+- `Service status <https://confluence.lsstcorp.org/display/DM/LSST+Service+Status+page>`_ including announcements of upcoming planned down-time.
 - `Real-time system status <http://lsst-web.ncsa.illinois.edu/nagios>`_ (requires login).
 - Reference/test data from SDSS DR7 for Stripe82 is located at: :file:`/datasets/sdss/preprocessed/dr7`.
 - There are several other datasets available in :file:`/datasets`.  See READMEs in each dataset.
