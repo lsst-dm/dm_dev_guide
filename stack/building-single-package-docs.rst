@@ -144,13 +144,9 @@ Further reading
    - :doc:`building-pipelines-lsst-io-locally`
    - :doc:`building-pipelines-lsst-io-with-documenteer-job`
 
-.. todo::
-
-   FIXME update links after ``tickets/DM-14852`` is done.
-
-.. _`Documenteer`: https://documenteer.lsst.io/v/DM-14852/
+.. _`Documenteer`: https://documenteer.lsst.io
 .. _`Documenteer’s documentation for more information about the package-docs command`:
-.. _`Documentation for the package-docs command in Documenteer`: https://documenteer.lsst.io/v/DM-14852/pipelines/package-docs-cli.html
+.. _`Documentation for the package-docs command in Documenteer`: https://documenteer.lsst.io/pipelines/package-docs-cli.html
 .. _`pipelines.lsst.io`: https://pipelines.lsst.io
 .. _`pipelines_lsst_io`: https://github.com/lsst/pipelines_lsst_io
 .. _`pipe_base`: https://github.com/lsst/pipe_base

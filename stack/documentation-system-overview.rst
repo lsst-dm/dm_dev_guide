@@ -91,7 +91,7 @@ See that technote to understand the design decisions behind the Stack documentat
 .. _`pipe_base`: https://github.com/lsst/pipe_base
 .. _`pipe_supertask`: https://github.com/lsst/pipe_supertask
 .. _`pex_config`: https://github.com/lsst/pex_config
-.. _`Documenteer`: https://documenteer.lsst.io/v/DM-14852/
+.. _`Documenteer`: https://documenteer.lsst.io
 .. _`sqre/infrastructure/documenteer`: https://ci.lsst.codes/blue/organizations/jenkins/sqre%2Finfrastructure%2Fdocumenteer/activity
 .. _`SQR-006`: https://sqr-006.lsst.io
 .. _`DMTN-030`:
