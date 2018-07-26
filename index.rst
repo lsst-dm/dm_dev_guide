@@ -291,9 +291,15 @@ ReStructuredText
 
    stack/platforms
    stack/transferring-code
-   stack/package-docs
    stack/logging
    stack/debug
+   stack/documentation-system-overview
+   stack/layout-of-doc-directory
+   stack/package-documentation-topic-types
+   stack/add-a-package-to-pipelines-lsst-io
+   stack/building-single-package-docs
+   stack/building-pipelines-lsst-io-locally
+   stack/building-pipelines-lsst-io-with-documenteer-job
    stack/jenkins-stack-os-matrix
    stack/unit-test-coverage.rst
    stack/eups-tutorial
@@ -315,9 +321,31 @@ General policies and procedures.
 
 Development.
 
-- :doc:`stack/package-docs`
 - :doc:`stack/logging`
 - :doc:`stack/debug`
+
+Documentation.
+
+- :doc:`stack/documentation-system-overview`
+- Documentation in packages:
+
+  - :doc:`stack/layout-of-doc-directory`
+  - :doc:`stack/package-documentation-topic-types`:
+
+    - :doc:`stack/package-homepage-topic-type`
+    - :doc:`stack/module-homepage-topic-type`
+    - :doc:`stack/task-topic-type`
+    - :doc:`stack/generic-guide-topic-type`
+
+- Documentation in the main repository:
+
+  - :doc:`stack/add-a-package-to-pipelines-lsst-io`
+
+- Building docs:
+
+  - :doc:`stack/building-single-package-docs`
+  - :doc:`stack/building-pipelines-lsst-io-locally`
+  - :doc:`stack/building-pipelines-lsst-io-with-documenteer-job`
 
 Testing.
 

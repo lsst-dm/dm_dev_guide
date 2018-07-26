@@ -404,5 +404,6 @@ intersphinx_mapping = {
     'astropy': ('http://docs.astropy.org/en/stable/', None),
     'numpy': ('https://docs.scipy.org/doc/numpy/', None),
     'pytest': ('https://docs.pytest.org/en/latest/', None),
-    'pipelines': ('https://pipelines.lsst.io', None)
+    'pipelines': ('https://pipelines.lsst.io', None),
+    'documenteer': ('https://documenteer.lsst.io/', None)
 }

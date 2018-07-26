@@ -2,6 +2,8 @@
    Changes to this document must be approved by the System Architect (`RFC-24 <https://jira.lsstcorp.org/browse/RFC-24>`_).
    To request changes to these standards, please file an :doc:`RFC </communications/rfc>`.
 
+.. _numpydoc-format:
+
 #######################################
 Documenting Python APIs with Docstrings
 #######################################

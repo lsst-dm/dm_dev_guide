@@ -4,4 +4,4 @@
 Documenting Stack Packages
 ##########################
 
-This page moved: :doc:`/stack/package-docs`.
+This page moved: :ref:`part-dm-stack`.
