@@ -181,9 +181,9 @@ Further reading
    - :doc:`building-single-package-docs`
    - Building pipelines.lsst.io with Jenkins CI
 
-.. _`Documenteer`: https://documenteer.lsst.io/v/DM-14852/
+.. _`Documenteer`: https://documenteer.lsst.io
 .. _`Documentation for the stack-docs command in Documenteer`:
-.. _`stack-docs command-line app`: https://documenteer.lsst.io/v/DM-14852/pipelines/stack-docs-cli.html
+.. _`stack-docs command-line app`: https://documenteer.lsst.io/pipelines/stack-docs-cli.html
 .. _`sqre/infrastructure/documenteer`: https://ci.lsst.codes/blue/organizations/jenkins/sqre%2Finfrastructure%2Fdocumenteer/activity
 .. _`pipelines.lsst.io`: https://pipelines.lsst.io
 .. _`pipelines_lsst_io`: https://github.com/lsst/pipelines_lsst_io
