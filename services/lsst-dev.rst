@@ -24,7 +24,7 @@ Overview of Cluster Resources
 
 - List of `available development servers <https://confluence.lsstcorp.org/display/LDMDG/DM+Development+Servers>`_ and their intended use.
 - `Service status <https://confluence.lsstcorp.org/display/DM/LSST+Service+Status+page>`_ including announcements of upcoming planned down-time.
-- `Real-time system status <http://lsst-web.ncsa.illinois.edu/nagios>`_ (requires login).
+- `Real-time system status <https://monitor-ncsa.lsst.org/>`_ (requires login).
 - Reference/test data from SDSS DR7 for Stripe82 is located at: :file:`/datasets/sdss/preprocessed/dr7`.
 - There are several other datasets available in :file:`/datasets`.  See READMEs in each dataset.
 - To report system issues, `file a JIRA ticket <https://jira.lsstcorp.org/secure/CreateIssueDetails!init.jspa?pid=12200&issuetype=10901&priority=10000&customfield_12211=12223&components=14213>`_ in the IT Helpdesk Support (IHS) project.
