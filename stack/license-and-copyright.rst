@@ -31,6 +31,7 @@ See :ref:`copyright-file` for information on how to format the :file:`COPYRIGHT`
 
 All DM developers are expected to participate in maintaining the :file:`COPYRIGHT` file on behalf of your institution.
 Include additions to :file:`COPYRIGHT` files as part of your regular pull requests.
+:download:`/legal/copyright.py` is a script that may help maintain :file:`COPYRIGHT` files.
 
 .. _stack-package-preambles:
 

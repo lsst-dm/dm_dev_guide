@@ -33,7 +33,7 @@ Use these legal names when assigning copyright for work you contribute on behalf
 - University of Washington
 - The Trustees of Princeton University
 - The Board of Trustees of the Leland Stanford Junior University, through SLAC National Accelerator Laboratory
-- University of Illinois Champaign-Urbana
+- University of Illinois Board of Trustees
 - California Institute of Technology
 
 .. _copyright-external:
@@ -163,6 +163,7 @@ Using a :file:`COPYRIGHT` file allows us to maintain copyright information more 
    See `this article from the Software Freedom Law Center <https://softwarefreedom.org/resources/2012/ManagingCopyrightInformation.html>`_ for background on this policy, which was proposed in :jira:`RFC-45`.
 
 :file:`COPYRIGHT` files are designed to be robotically refreshed, though this automation does not currently exist.
+In the meantime, :download:`copyright.py` is a script that may help maintain :file:`COPYRIGHT` files.
 Automatically updating the files requires people committing to the repository to use their :ref:`institutional email address <git-setup-institutional-email>`.
 
 Related pages
