@@ -483,7 +483,7 @@ We **always use non-fast forward merges** so that the merge point is marked in G
 We discourage you from using this button since there isn't a convenient way of knowing that the merged development history graph will be linear from GitHub's interface.
 Rebasing the ticket branch against ``master`` and doing the non-fast forward merging on the command line is the safest workflow.
 
-The ticket branch **should not** be deleted from the GitHub remote.
+The ticket branch may be deleted from the GitHub remote if its name is in the merge commit comment (which it is by default).
 
 .. _workflow-fixing-breakage-master:
 
