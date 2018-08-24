@@ -48,23 +48,19 @@ Both of these have access to regularly-updated installations of the LSST “stac
 Be aware, however, that you must use a version of the stack corresponding to
 the operating system installed on the system you are using:
 
-- The newer Tiger systems (accessed through the head note ``tiger2-sumire``) and Perseus should use :file:`/tigress/HSC/LSST/stack_perseus`;
-- The older Tiger system (``tiger-sumire``) should use :file:`/tigress/HSC/LSST/stack_tiger`.
-
-.. note::
-
-   It is confusing that ``tiger2-sumire`` uses ``stack_perseus``.
-   This will be resolved when the shared stacks are next refreshed.
+- The newer Tiger system (accessed through the head node ``tiger2-sumire``) should use :file:`/tigress/HSC/LSST/stack_tiger2`;
+- The older Tiger system (accessed through the head node ``tiger-sumire``) should use :file:`/tigress/HSC/LSST/stack_tiger`, *but note that this stack is no longer being updated as of 2018-08-24*;
+- Perseus should use :file:`/tigress/HSC/LSST/stack_perseus`.
 
 To initialize the stack in your ``bash`` shell, run:
 
 .. prompt:: bash
 
   module load rh/devtoolset/6
-  . /tigress/HSC/LSST/stack_tiger/loadLSST.bash  # Or stack_perseus, as appropriate.
+  . /tigress/HSC/LSST/stack_tiger2/loadLSST.bash  # Or stack_perseus, as appropriate.
   setup lsst_apps
 
-.. _Tiger: http://www.princeton.edu/researchcomputing/computational-hardware/tiger/
+.. _Tiger: http://www.princeton.edu/researchcomputing/computational-hardware/tiger
 .. _Perseus: http://www.princeton.edu/researchcomputing/computational-hardware/perseus
 
 Storage
