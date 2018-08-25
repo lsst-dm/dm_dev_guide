@@ -48,8 +48,7 @@ Both of these have access to regularly-updated installations of the LSST “stac
 Be aware, however, that you must use a version of the stack corresponding to
 the operating system installed on the system you are using:
 
-- The newer Tiger system (accessed through the head node ``tiger2-sumire``) should use :file:`/tigress/HSC/LSST/stack_tiger2`;
-- The older Tiger system (accessed through the head node ``tiger-sumire``) should use :file:`/tigress/HSC/LSST/stack_tiger`, *but note that this stack is no longer being updated as of 2018-08-24*;
+- The Tiger system (accessed through the head node ``tiger2-sumire``) should use :file:`/tigress/HSC/LSST/stack_tiger2`;
 - Perseus should use :file:`/tigress/HSC/LSST/stack_perseus`.
 
 To initialize the stack in your ``bash`` shell, run:
