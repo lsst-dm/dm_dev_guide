@@ -28,21 +28,21 @@ Teams
 The JIRA “team” field is used to define financial and managerial responsibility for getting the work done.
 We recognise the following teams:
 
-================================== ===================
+================================== ==============================
 Team Name                          Responsible Manager
-================================== ===================
+================================== ==============================
 System Management                  Wil O'Mullane
-DM Science                         Mario Juric
+DM Science                         Leanne Guy
 Architecture                       K-T Lim
 Alert Production                   John Swinbank
-Data Release Production            John Swinbank
+Data Release Production            Yusra AlSayyad & John Swinbank
 Science User Interface             Xiuqin Wu
 Data Access and Database           Fritz Mueller
 Data Facility                      Margaret Gelman
 International Comms and Base Site  Jeff Kantor
 SQuaRE                             Frossie Economou
 External                           None (see below)
-================================== ===================
+================================== ==============================
 
 The “External” team is used to label work done by individuals who are not funded by LSST.
 
