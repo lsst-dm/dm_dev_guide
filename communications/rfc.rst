@@ -153,7 +153,7 @@ When this state has been reached, the Assignee is responsible for ensuring that 
 
 The requestor must be especially careful about not making irreversible changes in the “lazy consensus” time period unless they are absolutely certain there’s a general agreement on the stated course of action.
 If something is broken, the requestor must be be ready to fix it.
-It is critical to apply sound reasoning and good judgment about what may be acceptable and what might be not. 
+It is critical to apply sound reasoning and good judgment about what may be acceptable and what might be not.
 Mistakes will happen; accept that occasionally there will be a requirement to revert an action for which it was thought agreement existed.
 
 .. _rfc-exceptions:
@@ -166,7 +166,8 @@ Note that major changes to budget or scope will almost certainly affect one or m
 In this case only, the DM Change Control Board (DMCCB) may empanel an ad hoc committee including the lead author of the document and other relevant experts.
 This committee or the CCB itself must explicitly approve the change.
 
-Change-controlled documents with other handles, such as LSE- or LPM-, including inter-subsystem interfaces, have project-wide change control processes. Please consult the DM PM, SA, or IS for more information.
+Change-controlled documents with other handles, such as LSE- or LPM-, including inter-subsystem interfaces, have project-wide change control processes.
+Please consult the DM PM, SA, or IS for more information.
 At least one member of the DM CCB will read each RFC to determine if it might affect a change-controlled document.
 
 If the DM team can’t converge on a resolution to an RFC that has no serious objections but the requestor still feel that something must be done, the request will be escalated.
