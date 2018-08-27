@@ -89,9 +89,9 @@ Escalating an RFC
 -----------------
 
 If the discussion is not converging, but you still feel that a decision must be taken, you (or the DMCCB) may escalate the RFC to be considered by the DM Change Control Board (DMCCB).
-Click the **Escalate RFC** button on the RFC's JIRA issue page to do this.
+Click the **Escalate RFC** button on the RFC's JIRA issue page to do this; the RFC will be marked as **Flagged**.
 
-Some types of RFCs are immediately escalated as a matter of routine, see :ref:`rfc-exceptions`.
+Some types of RFCs are immediately flagged as a matter of routine: see :ref:`rfc-exceptions` for details.
 
 .. _rfc-withdrawing:
 
@@ -172,6 +172,8 @@ At least one member of the DM CCB will read each RFC to determine if it might af
 
 If the DM team can’t converge on a resolution to an RFC that has no serious objections but the requestor still feel that something must be done, the request will be escalated.
 In most non-trivial cases, they will, with the advice of the SA, empanel a group of experts to which they will delegate the right to make the decision, by voting if need be.
+
+In all of these cases, the RFC is marked as **Flagged** to indicate that it is being considered by the DMCCB.
 
 .. _rfc-formalities:
 
