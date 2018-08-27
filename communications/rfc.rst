@@ -88,7 +88,7 @@ Next, see :ref:`rfc-implementing`.
 Escalating an RFC
 -----------------
 
-If the discussion is not converging, but you still feel that a decision must be taken, you (or the DMCCB) may escalate the RFC to be considered by the DM Configuration Control Board (DMCCB).
+If the discussion is not converging, but you still feel that a decision must be taken, you (or the DMCCB) may escalate the RFC to be considered by the DM Change Control Board (DMCCB).
 Click the **Escalate RFC** button on the RFC's JIRA issue page to do this.
 
 Some types of RFCs are immediately escalated as a matter of routine, see :ref:`rfc-exceptions`.
@@ -98,7 +98,7 @@ Some types of RFCs are immediately escalated as a matter of routine, see :ref:`r
 Withdrawing an RFC
 ------------------
 
-If the RFC *cannot* be adopted (by consensus, decision of the DM Configuration Control Board, or decision of the Assignee), then you can withdraw the RFC.
+If the RFC *cannot* be adopted (by consensus, decision of the DM Change Control Board, or decision of the Assignee), then you can withdraw the RFC.
 Click the **Withdraw** button on the RFC's JIRA issue page to do this.
 
 .. _rfc-implementing:
@@ -163,7 +163,7 @@ Exceptions and appeals
 
 Some proposed resolutions may require changes to one or more of the baselined, change-controlled documents describing the Data Management system (those in DocuShare with an LDM- handle or marked as change-controlled in Confluence). 
 Note that major changes to budget or scope will almost certainly affect one or more LDM- documents.
-In this case only, the DM Configuration Control Board (DMCCB) may empanel an ad hoc committee including the lead author of the document and other relevant experts.
+In this case only, the DM Change Control Board (DMCCB) may empanel an ad hoc committee including the lead author of the document and other relevant experts.
 This committee or the CCB itself must explicitly approve the change.
 
 Change-controlled documents with other handles, such as LSE- or LPM-, including inter-subsystem interfaces, have project-wide change control processes. Please consult the DM PM, SA, or IS for more information.
