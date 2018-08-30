@@ -39,9 +39,9 @@ Immutability/Sharing
 --------------------
 
 NCSA is working on a simple procedure for making the data both shared and safe.
-The process is TBD (reiterating on the design to emphasize simplicity).
-Essentially, it consists of applying default DAC permission sets and GPFS immutability.
-Until the self-service commands are available, it is sufficient to ask Greg Daues to lock down or unlock a repo.
+The process to **Lock** or **Unlock** a set of data is to open a JIRA ticket (https://jira.lsstcorp.org) 
+under the "IT Helpdesk Support" project.
+
 Illustration:
 
 Steps to add to datasets
