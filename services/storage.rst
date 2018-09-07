@@ -26,7 +26,7 @@ Quotas
 
 Your home directory is the default directory you are placed in when you log on. You should use this space for storing files you want to keep long term such as source code, scripts, etc. Every user has a 1TB home directory quota (total space) and 1 million INODE quota (total number of files).
 
-On **TIME**, quotas were enforced. The soft limit is 1TB and the hard limit is 1.2 TB. The INODE soft quota is 1 million files and the hard limit is 1.2 million files.   If the amount of data in your home directory is over the soft limit  but under the hard limit, there is a grace period of 7 days to get under the soft limit. When the grace period expires, you will not be able to write new files or update any current files until you reduce the amount of data to below the soft limit.
+On 6/17/2018, quotas were enforced. The soft limit is 1TB and the hard limit is 1.2 TB. The INODE soft quota is 1 million files and the hard limit is 1.2 million files.   If the amount of data in your home directory is over the soft limit  but under the hard limit, there is a grace period of 7 days to get under the soft limit. When the grace period expires, you will not be able to write new files or update any current files until you reduce the amount of data to below the soft limit.
 
 The command to see your disk usage and limits is quota. Example:
 
@@ -38,12 +38,12 @@ The command to see your disk usage and limits is quota. Example:
     |                    |  Block  |  Quota  |  Limit  |   File   |   Quota  |   Limit  |
    --------------------------------------------------------------------------------------
     | home               | 501.1M  | 2G      | 4G      | 14       | 0        | 0        |
-    | cse-shared         | 0       | 1.465T  | 1.953T  | 1        | 0        | 0        |
+    | stuff              | 0       | 1.465T  | 1.953T  | 1        | 0        | 0        |
    -------------------------------------------------------------------------------------
 
-Home directories are backed up using snapshots and a separate DR process .
+Home directories are backed up using snapshots and a separate DR process.
 
-**HELP** for space utiziation:  Data Compression
+For space utiziation:  Data Compression
 To reduce space usage in your home directory, an option for files that are not in active use is to compress them. The gzip utility can be used for file compression and decompression. Another alternative is bzip2, which usually yields a better compression ratio than gzip but takes longer to complete. Additionally, files that are typically used together can first be combined into a single file and then compressed using the tar utility.
 
 Examples:
