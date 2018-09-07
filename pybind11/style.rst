@@ -117,9 +117,8 @@ This can be done with the ``pybind11::module::import()`` function.  Note that it
 
 .. code-block:: cpp
 
-    PYBIND11_PLUGIN(spherePoint) {
+    PYBIND11_MODULE(spherePoint, mod) {
         py::module::import("lsst.afw.geom.angle");
-        py::module mod("spherePoint");
         ...
     }
 
@@ -201,9 +200,12 @@ If a wrapper only contains one module instance the name of the object shall be `
 Class object names MUST be "cls" or camel case prefixed with "cls"
 ------------------------------------------------------------------
 
-If a wrapper only contains one class the name of the object shall be
+If a wrapper only wraps one class the name of the pybind11 class object shall be
 ``cls``. Otherwise it shall be camel case prefixed with ``cls`` as in
 ``clsExample``.
+
+When a wrapper wraps multiple classes it is recommended you define a separate function to wrap each class.
+Each wrapper function takes the module as an argument and uses ``cls`` as the variable name for the pybind11 class object.
 
 When using a ``cls`` prefix, it is **strongly** encouraged to use the
 full class name for the remainder.
@@ -291,7 +293,7 @@ a declare function:
 
     ...
 
-    PYBIND11_PLUGIN(_Example) {
+    PYBIND11_MODULE(_Example, mod) {
         declareExample<float>(mod, "F");
         declareExample<int>(mod, "I");
         ...
@@ -338,20 +340,21 @@ For example:
 
 .. code-block:: cpp
 
+    namespace lsst {
     namespace sphgeom {
 
     namespace {
 
     ...  // declare functions...
 
-    }  // <anonymous>
+    }  // namespace
 
-    PYBIND11_PLUGIN(...
+    PYBIND11_MODULE(...
        ...
     }
 
-    }  // sphgeom
-    }  // lsst
+    }  // namespace sphgeom
+    }  // namespace lsst
 
 Using anonymous namespaces ensures symbols that need not be public aren't, avoiding name clashes, reducing the size of libraries, and improving link times.
 
@@ -370,9 +373,9 @@ For example:
 
     ...  // declare functions...
 
-    }  // python
-    }  // sphgeom
-    }  // lsst
+    }  // namespace python
+    }  // namespace sphgeom
+    }  // namespace lsst
 
 .. _style-guide-pybind11-class-object-dupplication:
 
@@ -391,7 +394,7 @@ When no template deduction is needed, a type alias is usually preferable:
         ...
     }
 
-    PYBIND11_PLUGIN(_Thing) {
+    PYBIND11_MODULE(_Thing, mod) {
         PyThing cls(...);
         declareThingMethods(cls);
     }
@@ -406,7 +409,7 @@ the template parameters for ``py::class_`` itself:
         ...
     }
 
-    PYBIND11_PLUGIN(_Thing) {
+    PYBIND11_MODULE(_Thing, mod) {
         py::class_<Thing> cls(...);
         declareCommon(cls);
     }
@@ -419,19 +422,26 @@ Use of pybind11 features
 
 .. _style-guide-pybind11-overload-disambiguation:
 
-C style function pointer casts SHALL be used to disambiguate overloads
+overload_cast SHALL be used to disambiguate overloads
 ----------------------------------------------------------------------
 
 Example:
 
 .. code-block:: cpp
 
-    mod.def("test", (void (*)(int)) test);
-    mod.def("test", (void (*)(double)) test);
+    // overloaded function
+    mod.def("test", py::overload_cast<int>(test));
+    mod.def("test", py::overload_cast<double>(test));
 
-.. note::
-    This rule will be changed to prefer ``py::overload_cast``
-    instead as soon as C++14 support is available.
+    // overloaded class member function
+    cls.def("computeSomething",
+            py::overload_cast<int, double>(&MyClass::computeSomething, py::const_),
+            "firstParam"_a, "anotherParam"_a);
+    cls.def("computeSomething",
+            py::overload_cast<int, std::string>(&MyClass::computeSomething, py::const_),
+            "firstParam"_a, "anotherParam"_a="foo");
+
+Note that ``py::const_`` is necessary for a const member function.
 
 .. _style-guide-pybind11-holder-type:
 

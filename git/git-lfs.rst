@@ -28,7 +28,10 @@ Download and install the :command:`git-lfs` client by visiting the `Git LFS <htt
 Many package managers, like Homebrew_ on the Mac, also provide :command:`git-lfs` (``brew install git-lfs`` for example).
 
 We recommend using the latest Git LFS client.
-The *minimum* usable client version for LSST is git-lfs v1.1.0.
+The *minimum* usable client version for LSST is :command:`git-lfs` is 2.3.4.
+
+.. Generally our stated Git LFS version requirements should track what's used in CI:
+.. https://github.com/lsst/lsstsw/blob/master/bin/deploy
 
 Git LFS requires Git version 1.8.2 or later to be installed.
 

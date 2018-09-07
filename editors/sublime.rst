@@ -29,7 +29,7 @@ The ``"rulers"`` setting doesn't affect actual indentation, but provides guides 
         [
             "*.a",
             "*.class",
-            "*.db"
+            "*.db",
             "*.dll",
             "*.dylib",
             "*.exe",

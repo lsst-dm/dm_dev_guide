@@ -43,7 +43,7 @@ Account Password
 
 You can log into LSST development servers at NCSA such as ``lsst-dev01`` with your NCSA account and password. You can reset your NCSA password at the following URL:
 
-   - https://identity.ncsa.illinois.edu/reset
+   - https://identity.lsst.org/reset
 
 
 .. _verification-gpfs:
@@ -138,7 +138,9 @@ software stack, data, and any utilities stored on the GPFS :file:`/scratch` , :f
 are shown in this section. These are submitted to the queue from a standard login shell on the front end ``lsst-dev01`` using the SLURM client command ``sbatch``, and their status can be checked with the
 command ``squeue`` :
 
-For a single task on a single node: ::
+For a single task on a single node:
+
+.. code-block:: text
 
     % cat test1.sl
     #!/bin/bash -l
@@ -172,7 +174,9 @@ This example job was assigned jobid 109 by the SLURM scheduler, and consequently
      lsst-verify-worker11.ncsa.illinois.edu
      Sleeping for 30 ...
 
-To distribute this script for execution to 6 nodes by 24 tasks per node (total 144 tasks), the form of the job description is:  ::
+To distribute this script for execution to 6 nodes by 24 tasks per node (total 144 tasks), the form of the job description is:
+
+.. code-block:: text
 
     % cat test144.sl
     #!/bin/bash -l
@@ -228,8 +232,9 @@ SLURM Example Executing Tasks with Different Arguments
 In order to submit multiple tasks that each have distinct command line arguments (e.g., data ids),
 one can utilize the ``srun`` command with the ``--multi-prog`` option.   With this option, rather than
 specifying a single script or binary for ``srun`` to execute, a filename is provided as the argument
-of  the ``--multi-prog`` option. In this scenario an example job description file is:   ::
+of  the ``--multi-prog`` option. In this scenario an example job description file is:
 
+.. code-block:: text
 
     % cat test1_24.sl
     #!/bin/bash -l

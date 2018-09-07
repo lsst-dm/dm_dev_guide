@@ -88,17 +88,17 @@ Next, see :ref:`rfc-implementing`.
 Escalating an RFC
 -----------------
 
-If the discussion is not converging, but you still feel that a decision must be taken, you (or the DMCCB) may escalate the RFC to be considered by the DM Configuration Control Board (DMCCB).
-Click the **Escalate RFC** button on the RFC's JIRA issue page to do this.
+If the discussion is not converging, but you still feel that a decision must be taken, you (or the DMCCB) may escalate the RFC to be considered by the DM Change Control Board (DMCCB).
+Click the **Escalate RFC** button on the RFC's JIRA issue page to do this; the RFC will be marked as **Flagged**.
 
-Some types of RFCs are immediately escalated as a matter of routine, see :ref:`rfc-exceptions`.
+Some types of RFCs are immediately flagged as a matter of routine: see :ref:`rfc-exceptions` for details.
 
 .. _rfc-withdrawing:
 
 Withdrawing an RFC
 ------------------
 
-If the RFC *cannot* be adopted (by consensus, decision of the DM Configuration Control Board, or decision of the Assignee), then you can withdraw the RFC.
+If the RFC *cannot* be adopted (by consensus, decision of the DM Change Control Board, or decision of the Assignee), then you can withdraw the RFC.
 Click the **Withdraw** button on the RFC's JIRA issue page to do this.
 
 .. _rfc-implementing:
@@ -153,7 +153,7 @@ When this state has been reached, the Assignee is responsible for ensuring that 
 
 The requestor must be especially careful about not making irreversible changes in the “lazy consensus” time period unless they are absolutely certain there’s a general agreement on the stated course of action.
 If something is broken, the requestor must be be ready to fix it.
-It is critical to apply sound reasoning and good judgment about what may be acceptable and what might be not. 
+It is critical to apply sound reasoning and good judgment about what may be acceptable and what might be not.
 Mistakes will happen; accept that occasionally there will be a requirement to revert an action for which it was thought agreement existed.
 
 .. _rfc-exceptions:
@@ -163,14 +163,17 @@ Exceptions and appeals
 
 Some proposed resolutions may require changes to one or more of the baselined, change-controlled documents describing the Data Management system (those in DocuShare with an LDM- handle or marked as change-controlled in Confluence). 
 Note that major changes to budget or scope will almost certainly affect one or more LDM- documents.
-In this case only, the DM Configuration Control Board (DMCCB) may empanel an ad hoc committee including the lead author of the document and other relevant experts.
+In this case only, the DM Change Control Board (DMCCB) may empanel an ad hoc committee including the lead author of the document and other relevant experts.
 This committee or the CCB itself must explicitly approve the change.
 
-Change-controlled documents with other handles, such as LSE- or LPM-, including inter-subsystem interfaces, have project-wide change control processes. Please consult the DM PM, SA, or IS for more information.
+Change-controlled documents with other handles, such as LSE- or LPM-, including inter-subsystem interfaces, have project-wide change control processes.
+Please consult the DM PM, SA, or IS for more information.
 At least one member of the DM CCB will read each RFC to determine if it might affect a change-controlled document.
 
 If the DM team can’t converge on a resolution to an RFC that has no serious objections but the requestor still feel that something must be done, the request will be escalated.
 In most non-trivial cases, they will, with the advice of the SA, empanel a group of experts to which they will delegate the right to make the decision, by voting if need be.
+
+In all of these cases, the RFC is marked as **Flagged** to indicate that it is being considered by the DMCCB.
 
 .. _rfc-formalities:
 

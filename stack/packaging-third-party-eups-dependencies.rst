@@ -361,3 +361,10 @@ special permissions): see the :doc:`documentation on using this machine
       eups distrib install -t yourTag packageName
 
 .. _installed using the lsstsw tool: http://pipelines.lsst.io/en/latest/development/lsstsw_tutorial.html
+
+Announcing the Package
+======================
+
+Any new packages, major version upgrades, or other breaking changes to third-party package versions should be announced in the DM Notifications category of community.lsst.org.
+
+For upgrades to third-party packages with headers we build against, this should include a note that source packages should be cleaned and recompiled  after the upgrade, because SCons/sconsUtils will not automatically detect changes in third-party headers.

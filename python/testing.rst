@@ -319,7 +319,7 @@ which ends up running the single specified test plus the two running as part of 
 
    $ pytest -v test_runner_example.py
    ============================= test session starts ==============================
-   platform darwin -- Python 2.7.11, pytest-3.2.1, py-1.4.31, pluggy-0.3.1 -- ~/lsstsw/miniconda/bin/python
+   platform darwin -- Python 3.6.2, pytest-3.2.1, py-1.4.31, pluggy-0.3.1 -- ~/lsstsw/miniconda/bin/python
    cachedir: .cache
    rootdir: .../python/examples, inifile:
    collected 3 items

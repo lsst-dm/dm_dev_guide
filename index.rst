@@ -16,7 +16,7 @@ Check out the `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/READM
 
 **Jump to:** :ref:`Team <part-team>` · :ref:`Communications <part-communications>` · :ref:`Project documentation <part-project-docs>` · :ref:`Work management <part-work>`
 
-**Development guides:** :ref:`Overview <part-guides>` · :ref:`C++ <part-cpp>` · :ref:`Python <part-python>` · :ref:`Pybind11 <part-pybind11>` · :ref:`JavaScript <part-javascript>` · :ref:`ReStructuredText <part-rst>` · :ref:`DM Stack <part-dm-stack>` · :ref:`Git <part-git>` · :ref:`Editors <part-editors>`
+**Development guides:** :ref:`Overview <part-guides>` · :ref:`C++ <part-cpp>` · :ref:`Python <part-python>` · :ref:`Pybind11 <part-pybind11>` · :ref:`JavaScript <part-javascript>` · :ref:`ReStructuredText <part-rst>` · :ref:`DM Stack <part-dm-stack>` · :ref:`Git <part-git>` · :ref:`Editors <part-editors>` · :ref:`Legal <part-legal>`
 
 **Services:** :ref:`Overview <part-services>` · :ref:`Jenkins <part-jenkins>` · :ref:`LSST Data Facility <part-ldf>`
 
@@ -291,14 +291,21 @@ ReStructuredText
 
    stack/platforms
    stack/transferring-code
-   stack/package-docs
    stack/logging
    stack/debug
+   stack/documentation-system-overview
+   stack/layout-of-doc-directory
+   stack/package-documentation-topic-types
+   stack/add-a-package-to-pipelines-lsst-io
+   stack/building-single-package-docs
+   stack/building-pipelines-lsst-io-locally
+   stack/building-pipelines-lsst-io-with-documenteer-job
    stack/jenkins-stack-os-matrix
    stack/unit-test-coverage.rst
    stack/eups-tutorial
    stack/lsstsw
    stack/adding-a-new-package
+   stack/license-and-copyright
    stack/packaging-third-party-eups-dependencies
    stack/renaming-a-package
 
@@ -314,9 +321,31 @@ General policies and procedures.
 
 Development.
 
-- :doc:`stack/package-docs`
 - :doc:`stack/logging`
 - :doc:`stack/debug`
+
+Documentation.
+
+- :doc:`stack/documentation-system-overview`
+- Documentation in packages:
+
+  - :doc:`stack/layout-of-doc-directory`
+  - :doc:`stack/package-documentation-topic-types`:
+
+    - :doc:`stack/package-homepage-topic-type`
+    - :doc:`stack/module-homepage-topic-type`
+    - :doc:`stack/task-topic-type`
+    - :doc:`stack/generic-guide-topic-type`
+
+- Documentation in the main repository:
+
+  - :doc:`stack/add-a-package-to-pipelines-lsst-io`
+
+- Building docs:
+
+  - :doc:`stack/building-single-package-docs`
+  - :doc:`stack/building-pipelines-lsst-io-locally`
+  - :doc:`stack/building-pipelines-lsst-io-with-documenteer-job`
 
 Testing.
 
@@ -328,6 +357,7 @@ Packaging.
 - :doc:`stack/eups-tutorial`
 - :doc:`stack/lsstsw`
 - :doc:`stack/adding-a-new-package`
+- :doc:`stack/license-and-copyright`
 - :doc:`stack/packaging-third-party-eups-dependencies`
 - :doc:`stack/renaming-a-package`
 
@@ -374,6 +404,26 @@ Crowd-sourced recommendations for configuring editors for LSST development (list
 - :doc:`editors/emacs`
 - :doc:`editors/sublime`
 - :doc:`editors/vim`
+
+.. LEGAL SECTION ============================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Legal
+   :hidden:
+
+   legal/licensing-overview
+   legal/copyright-overview
+
+.. _part-legal:
+
+Legal
+-----
+
+- :doc:`legal/licensing-overview`
+- :doc:`legal/copyright-overview`
 
 .. _part-services:
 
@@ -427,6 +477,10 @@ Jenkins CI
    services/ncsa_bulk_transfer
    services/nebula/index
    services/orchestration/index
+   services/ldf-tickets
+   services/ldf-resources
+   services/storage
+   services/monitoring_applications
 
 .. _part-ldf:
 
@@ -444,4 +498,4 @@ LSST Data Facility services
 - :doc:`services/ldf-tickets`
 - :doc:`services/ldf-resources`
 - :doc:`services/storage`
-
+- :doc:`services/monitoring_applications`

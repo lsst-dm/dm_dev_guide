@@ -47,13 +47,34 @@ You can do this from the command line:
    git config --global user.name "Your Name"
    git config --global user.email "your_email@institution.edu"
 
+You might not want to use your institution's email when you contribute to non-LSST projects.
+Since Git 2.13, you can set `directory-based conditional configurations <https://blog.github.com/2017-05-10-git-2-13-has-been-released/#conditional-configuration>`__.
+For example, if you always work on LSST projects from your :file:`~/lsst/` directory, you can add this to the bottom of your :file:`~/.gitconfig` file:
+
+.. code-block:: ini
+
+   [includeIf "gitdir:~/lsst/"]
+   path = .gitconfig-lsst
+
+Then in a :file:`~/.gitconfig-lsst` file, set your LSST-specific configurations:
+
+.. code-block:: ini
+
+   [user]
+   name = Your Name
+   email = your_email@institution.edu
+
+Whenever you work on a repository inside :file:`~/lsst/`, the configurations in :file:`~/.gitconfig-lsst` are applied, and possibly override previous configurations from the :file:`~/.gitconfig` file.
+
 On GitHub
 ---------
 
 Likewise, in your `GitHub account email settings <https://github.com/settings/emails>`_, add your institution-hosted email.
-We recommend that you set this institutional email as your **Primary GitHub** email address.
 
+We recommend that you set this institutional email as your **Primary GitHub** email address.
 This step ensures that Git commits you make `directly on GitHub.com <https://help.github.com/articles/github-flow-in-the-browser/>`_ (such as quick documentation fixes) and merges made via the 'big green button' have proper authorship metadata.
+Alternatively, remember to choose your institution email from the email address drop-down menu before committing.
+See the GitHub help page `Editing files in your repository <https://help.github.com/articles/editing-files-in-your-repository/>`__ for details.
 
 .. _git-setup-plain-pushes:
 

@@ -38,10 +38,12 @@ The beginning of both header and source code files should include
 
       // -*- lsst-c++ -*-
 
-2. A copyright and license block (note: **NOT** a Doxygen comment block) using :ref:`the standard text <pkg-doc-code-preamble>`.
+2. A copyright and license block (note: **NOT** a Doxygen comment block) using `the standard text <https://github.com/lsst/templates/tree/master/file_templates/stack_license_preamble_cpp>`_.
 
-.. literalinclude:: /stack/examples/license_preamble.cpp
-   :language: cpp
+   .. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/master/file_templates/stack_license_preamble_cpp/template.cc.jinja
+      :language: jinja
+
+   Replace ``{{ cookiecutter.package_name }}`` with the package's name.
 
 .. _cpp-doxygen-basics:
 
@@ -487,7 +489,7 @@ List each class, function, method, or link using a ``@see`` tag:
     */
    vector<double> cos(vector<double> const & angles);
 
-Prefix objects from other namespaces appropriately by their greatest common namespace. For example, while documenting a ``lsst::afw::tables`` module, refer to a class in ``lsst::afw::detection`` by ``afw::detection::Footprint``. When referring to an entirely different module or package, use the full namespace.
+Prefix objects from other namespaces appropriately by their greatest common namespace. For example, while documenting an ``lsst::afw::tables`` module, refer to a class in ``lsst::afw::detection`` by ``afw::detection::Footprint``. When referring to an entirely different module or package, use the full namespace.
 Do not use namespace abbreviations, as Doxygen has trouble resolving them.
 
 For internal consistency, always use ``@see`` and not the synonymous ``@sa``.

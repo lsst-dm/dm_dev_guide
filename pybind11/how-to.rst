@@ -188,18 +188,12 @@ Following :ref:`our rules on file naming <style-guide-pybind11-module-naming>`, 
     namespace lsst {
     namespace tmpl {
 
-    PYBIND11_PLUGIN(exampleOne) {
-        py::module mod("exampleOne");
-
-        return mod.ptr();
-
+    PYBIND11_MODULE(exampleOne, mod) {
     }}}  // lsst::tmpl
 
 .. warning::
 
-    The name used for the ``PYBIND11_PLUGIN(...)`` macro must match both the
-    name used for ``mod(...)`` and the name of the file, otherwise an
-    ``ImportError`` will be raised.
+    The name used for the ``PYBIND11_MODULE(..., mod)`` macro must match the name of the file, otherwise an ``ImportError`` will be raised.
 
 Wrapping the class
 ^^^^^^^^^^^^^^^^^^
@@ -208,17 +202,19 @@ We wrap the class using the ``py::class_<T>`` template:
 
 .. code-block:: cpp
 
-    PYBIND11_PLUGIN(exampleOne) {
-        py::module mod("exampleOne");
-
+    PYBIND11_MODULE(exampleOne, mod) {
         py::class_<ExampleOne, std::shared_ptr<ExampleOne>> clsExampleOne(mod, "ExampleOne");
-
-        return mod.ptr();
     }
 
 .. note::
 
     As in the example, classes should almost always have a :ref:`shared_ptr holder type <style-guide-pybind11-holder-type>`.
+
+.. note::
+
+    It is far more common to name the pybind11 class ``cls`` and wrap one class per module or per function within a module.
+    However, the examples in this document are quite distributed, so to make them easier to follow we use ``clsExampleOne``.
+    See also :ref:`class prefix <style-guide-pybind11-class-prefix>`.
 
 Wrapping enums
 ^^^^^^^^^^^^^^
@@ -299,21 +295,18 @@ Wrapping a member function is easy:
     clsExampleOne.def("computeSomething", &ExampleOne::computeSomething);
 
 However, when the function is overloaded we need to disambiguate the overloads.
-Following the rule on :ref:`overload disambiguation <style-guide-pybind11-overload-disambiguation>` we use C-style casts for this:
+Following the rule on :ref:`overload disambiguation <style-guide-pybind11-overload-disambiguation>` we use ``overload_cast`` for for this:
 
 .. code-block:: cpp
 
     clsExampleOne.def("computeSomethingElse",
-                      (double (ExampleOne::*)(int, double) const) & ExampleOne::computeSomethingElse,
+                      py::overload_cast<int, double>(&ExampleOne::computeSomethingElse, py::const_),
                       "myFirstParam"_a, "mySecondParam"_a);
     clsExampleOne.def("computeSomethingElse",
-                      (double (ExampleOne::*)(int, std::string) const) &ExampleOne::computeSomethingElse,
+                      py::overload_cast<int, std::string>(&ExampleOne::computeSomethingElse, py::const_),
                       "myFirstParam"_a, "anotherParam"_a="foo");
 
-.. note::
-
-    In the spirit of ``py::init<T...>``, there is also ``py::overload_cast<T...>``.
-    This would be **really nice** to use, but we can't because it requires C++14.
+Note that ``py::const_`` is necessary for a const member function.
 
 STL containers
 ^^^^^^^^^^^^^^
@@ -342,8 +335,11 @@ Then the function can be wrapped as normal:
 
     clsExampleOne.def("doSomethingWithArray", &ExampleOne::doSomethingWithArray);
 
-The ndarray library also includes similarly automatic conversions for Eigen objects, which should be used instead of the optional Eigen converters packaged with Pybind11 itself.
-Using both sets of converters in the same project is a violation of C++'s "One Definition Rule", a serious problem, and because a significant amount of LSST code already uses the ndarray converters, new code must as well.
+.. note::
+
+    If your wrapper needs to convert Eigen objects then include ``pybind11/eigen.h``.
+    Previous versions of the ndarray library included automatic conversion for Eigen objects,
+    but that code has been removed and we now rely on pybind11's standard support for Eigen.
 
 .. note::
 
@@ -419,9 +415,7 @@ The end result of all the steps above looks like this:
     namespace lsst {
     namespace tmpl {
 
-    PYBIND11_PLUGIN(exampleOne) {
-        py::module mod("exampleOne");
-
+    PYBIND11_MODULE(exampleOne, mod) {
         if (_import_array() < 0) {
                 PyErr_SetString(PyExc_ImportError, "numpy.core.multiarray failed to import");
                 return nullptr;
@@ -458,11 +452,42 @@ The end result of all the steps above looks like this:
         clsExampleOne.def("__ne__", &ExampleOne::operator!=, py::is_operator());
         clsExampleOne.def("__iadd__", &ExampleOne::operator+=);
         clsExampleOne.def("__add__", [](ExampleOne const & self, ExampleOne const & other) { return self + other; }, py::is_operator());
-
-        return mod.ptr();
     }
 
     }}  // lsst::tmpl
+
+Building the wrapper
+--------------------
+
+The next step is to tell SCons to build your wrapper.
+Edit ``python/.../SConscript`` to look like this:
+
+.. code-block:: python
+
+    # -*- python -*-
+    from lsst.sconsUtils import scripts
+    scripts.BasicSConscript.pybind11(
+        [
+            'exampleOne',
+            # ... list additional pybind11 wrappers, if any
+        ],
+        addUnderscore=False,
+    )
+
+``addUnderscore`` is historical baggage; eventually we plan to make ``False`` the default.
+
+Importing the wrapper
+---------------------
+
+The Python name for your wrapper module is `exampleOne`.
+If the wrapped classes can be returned by a function or unpickled then it is crucial that your module is imported when the package is imported.
+If the symbols are part of the public API then this is typically done by adding the following to your package's main ``__init__.py`` file:
+
+.. code-block:: python
+
+    from exampleOne import *
+
+If you don't want your wrapper's symbols in your package's top-level namespace then you can use ``from . import exampleOne``.
 
 Moving on
 ---------
@@ -550,10 +575,7 @@ Again following :ref:`our rules on file naming <style-guide-pybind11-module-nami
     namespace lsst {
     namespace tmpl {
 
-    PYBIND11_PLUGIN(exampleTwo) {
-        py::module mod("exampleTwo");
-
-        return mod.ptr();
+    PYBIND11_MODULE(exampleTwo, mod) {
     }
 
     }}  // lsst::tmpl
@@ -608,15 +630,11 @@ Following :ref:`this rule <style-guide-pybind11-declare-template-wrappers>` we d
 
     }
 
-    PYBIND11_PLUGIN(exampleThree) {
+    PYBIND11_MODULE(exampleThree, mod) {
         py::module::import("exampleTwo");  // See Cross module imports
-
-        py::module mod("exampleThree");
 
         declareExampleThree<int>(mod, "I");
         declareExampleThree<double>(mod, "D");
-
-        return mod.ptr();
     }
 
 .. note::
@@ -664,17 +682,13 @@ The end results for the C++ part of the wrappers (see next for the Python part) 
     namespace lsst {
     namespace tmpl {
 
-    PYBIND11_PLUGIN(exampleTwo) {
-        py::module mod("exampleTwo");
-
+    PYBIND11_MODULE(exampleTwo, mod) {
         py::class_<ExampleBase, std::shared_ptr<ExampleBase>> clsExampleBase(mod, "ExampleBase");
         clsExampleBase.def("someMethod", &ExampleBase::someMethod);
 
         py::class_<ExampleTwo, std::shared_ptr<ExampleTwo>, ExampleBase> clsExampleTwo(mod, "ExampleTwo");
         clsExampleTwo.def(py::init<>());
         clsExampleTwo.def("someOtherMethod", &ExampleTwo::someOtherMethod);
-
-        return mod.ptr();
     }
 
     }}  // lsst::tmpl
@@ -707,15 +721,11 @@ and ``exampleThree.cc``:
 
     }
 
-    PYBIND11_PLUGIN(exampleThree) {
-        py::module mod("exampleThree");
-
+    PYBIND11_MODULE(exampleThree, mod) {
         py::module::import("exampleTwo");
 
         declareExampleThree<float>(mod, "F");
         declareExampleThree<double>(mod, "D");
-
-        return mod.ptr();
     }
 
     }}  // lsst::tmpl
@@ -728,8 +738,6 @@ Following our :ref:`structure and naming convention <style-guide-pybind11-subpac
 
 .. code-block:: python
 
-    from __future__ import absolute_import
-
     from .exampleTwo import *
     from .exampleTwoContinued import *
 
@@ -738,7 +746,6 @@ We shall use the ``continueClass`` decorator to reopen the class and add a new m
 
 .. code-block:: python
 
-    from __future__ import absolute_import
     from lsst.utils import continueClass
 
     from .exampleTwo import ExampleTwo
@@ -767,7 +774,6 @@ Create the appropriate ``__init__.py`` file, and put the following in
 
 .. code-block:: python
 
-    from __future__ import absolute_import
     import numpy as np
 
     from lsst.utils import TemplateMeta

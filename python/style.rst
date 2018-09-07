@@ -24,29 +24,8 @@ All DM Python code MUST work with Python 3
 ------------------------------------------
 
 All the Python code written by LSST Data Management must be runnable using Python 3.
-Python 2 will cease to be supported before LSST is operational (:pep:`373`).
+There is no requirement to support Python 2.
 The current baseline version is Python 3.6.
-
-.. _style-guide-py-version-py3-usage:
-
-Python 3 MUST be used for all integration testing and services
---------------------------------------------------------------
-
-From 2018 January 1 the baselined version of Python 3 must be used for all services, integration tests, end-to-end processing tests, and data challenges.
-Python 2 shall only be used when validating compatibility of code described in the next section.
-
-.. _style-guide-py-version-external-users:
-
-DM Python library code with an external user base MUST support Python 2.7 and 3.x
----------------------------------------------------------------------------------
-
-During construction we are expecting external users to be experimenting with some of the DM code and LSST DM library code is being used in their applications.
-This user community is currently transitioning from Python 2.7 to Python 3.x, and we should ensure that code works on both Python versions until our dependencies drop support for Python 2.7.
-In particular, the Science Pipelines code (commonly referred to as ``lsst_distrib``) must support 2.7 and 3.x.
-
-Standalone applications, code providing services, and internal programs and modules (such as Qserv, SQuaSH and ``dax``) do not have to support Python 2.
-If code is currently supporting both 2.7 and 3.x, dropping support for Python 2.7 requires an :doc:`RFC </communications/rfc>`.
-New code that has never supported Python 2.7 and which will not be externally usable library code or a dependency of a package that supports 2.7 does not require an RFC to request that 2.7 is not supported.
 
 .. _style-guide-py-pep8-baseline:
 
@@ -228,11 +207,13 @@ Style changes must be encapsulated in a distinct commit (see :ref:`git-commit-or
 Each Python file MUST contain the standard license preamble
 -----------------------------------------------------------
 
-A copyright and license block using :ref:`the standard text <pkg-doc-code-preamble>` MUST be included at the top of each file.
+A copyright and license block using `the standard text <https://github.com/lsst/templates/tree/master/file_templates/stack_license_preamble_py>`_ MUST be included at the top of each file.
 This can be written as a Python comment.
 
-.. literalinclude:: /stack/examples/license_preamble.py
-   :language: python
+.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/master/file_templates/stack_license_preamble_py/template.py.jinja
+   :language: jinja
+
+Replace ``{{ cookiecutter.package_name }}`` with the package's name.
 
 .. _style-guide-py-line-length:
 
@@ -243,6 +224,15 @@ Limit all lines to a maximum of 110 characters.
 This conforms to the :doc:`/cpp/style` (see :ref:`4-6 <style-guide-cpp-4-6>`).
 
 This differs from the `PEP 8 recommendation of 79 characters <https://www.python.org/dev/peps/pep-0008/#maximum-line-length>`_.
+
+.. _style-guide-py-docstring-line-length:
+
+Docstring and comment line length MUST be less than or equal to 79 columns
+--------------------------------------------------------------------------
+
+Limit all docstring and comment lines to a maximum of 79 characters.
+
+This differs from the `PEP 8 recommendation of 72 characters <https://www.python.org/dev/peps/pep-0008/#maximum-line-length>`_ and the `numpydoc recommendation of 75 characters <https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard>`_ but maintains readability and compatibility with default terminal widths while providing the maximum space.
 
 .. _style-guide-py-implied-continuation:
 
@@ -524,6 +514,19 @@ When tempted to use ``l``, use ``L`` instead.
 
   This matches the `PEP 8 standard <https://www.python.org/dev/peps/pep-0008/#names-to-avoid>`_ but is repeated here for emphasis.
 
+.. _style-guide-py-naming-metaclasses:
+
+Always use ``cls`` for the first argument to metaclass instance methods
+-----------------------------------------------------------------------
+
+For regular classes ``self`` is used, but for class methods and hence also for metaclass instance
+methods, ``cls`` should be used instead.
+
+.. note::
+
+    This is consistent with the naming conventions in PEP 8 as indicated explicitly
+    by `upstream <https://mail.python.org/pipermail/python-dev/2018-January/151986.html>`_.
+
 .. _style-guide-py-files:
 
 7. Source Files & Modules
@@ -559,16 +562,15 @@ Standard code order SHOULD be followed
 
 Within a module, follow the order:
 
-1. Shebang line, ``#! /usr/bin/env python`` (only for executable scripts)
-2. Module-level comments (such as the `license statement <https://github.com/lsst/templates/tree/master/file_templates/stack_license_py>`__)
-3. Module-level docstring
-4. ``from __future__ import absolute_import, division, print_function``
-5. ``__all__ = [...]`` statement, if present
-6. Imports (except ``from __future__ import...``)
-7. Private module variables (names start with underscore)
-8. Private module functions and classes (names start with underscore)
-9. Public module variables
-10. Public functions and classes
+#. Shebang line, ``#! /usr/bin/env python`` (only for executable scripts)
+#. Module-level comments (such as the `license statement <https://github.com/lsst/templates/tree/master/file_templates/stack_license_py>`__)
+#. Module-level docstring
+#. ``__all__ = [...]`` statement, if present
+#. Imports
+#. Private module variables (names start with underscore)
+#. Private module functions and classes (names start with underscore)
+#. Public module variables
+#. Public functions and classes
 
 .. _style-guide-py-classes:
 
@@ -599,7 +601,7 @@ For example:
     C().method(arg)
 
 Using :py:func:`super()` ensures a consistent Method Resolution Order, and prevents inherited methods from being called multiple times.
-In Python 3, :py:func:`super()` does not require naming the class that it is part of, making its use simpler and removing a maintenance issue; Python 2 needs ``from builtins import super`` to achieve the same behavior.
+In Python 3, :py:func:`super()` does not require naming the class that it is part of, making its use simpler and removing a maintenance issue.
 
 super() and Multiple Inheritance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -677,45 +679,8 @@ Writing Python with accepted patterns makes your code easier for others to under
 
 `Fluent Python <http://shop.oreilly.com/product/0636920032519.do>`_ by Luciano Ramalho is an excellent guide to writing idiomatic Python.
 
-Idiomatic Python also reduces technical debt, particularly by easing the migration from Python 2.7 to Python 3.
-Codes should be written in a way that helps the futurize_ code converter produce more efficient code.
+Idiomatic Python also reduces technical debt.
 For more information see the online book `Supporting Python 3 <http://python3porting.com/toc.html>`_ by Lennart Regebro.
-
-.. _futurize: http://python-future.org/futurize.html
-
-Supporting Python 2.7 and 3.x simultaneously
----------------------------------------------
-
-The ``future`` package MUST be used to provide compatibility functionality with Python 2.7
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-We use the `future <http://python-future.org/>`_ package to provide a means for writing code using Python 3 idioms that will also work on Python 2.7.
-Details on the process for migrating a 2.7 codebase to support both versions can be found in `SQR-014 <https://sqr-014.lsst.io>`_.
-
-.. _style-guide-py-future-absolute-import:
-.. _style-guide-py-future-division:
-.. _style-guide-py-print:
-
-``__future__`` MUST be used to import Python 3 behavior in all files where the related functionality is used
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Code that is to be used on Python 2.7 and 3.x should import ``division``, ``print_function`` and ``absolute_import`` from the :mod:`__future__` package where appropriate.
-This means ``/`` is floating-point division and ``//`` is truncated integer division, regardless of the type of numbers being divided and matches the Python 3 behavior.
-
-In addition, import local modules using relative imports (e.g. ``from . import foo`` or ``from .foo import bar``).
-This results in clearer code and avoids shadowing global modules with local modules.
-
-The :py:func:`print()` function is required in Python 3.
-In general, DM code should use logging instead of ``print`` functions.
-
-
-.. _style-guide-py-future-itervalues:
-
-``itervalues()`` and ``iteritems()`` CANNOT be used
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Python 3 does not support the ``iter`` variants.
-For more information on how to handle this efficiently in Python 2 see http://python-future.org/compatible_idioms.html#iterating-through-dict-keys-values-items.
 
 .. _style-guide-py-pitfalls-mutables:
 
@@ -888,3 +853,18 @@ Some examples:
 Note that C++ getters that return STL container types cannot have properties in Python unless the usual pybind11 conversion (which typically yields ``list``, ``dict``, or ``set`` objects) is augmented with a conversion to an immutable type (such as ``tuple`` or ``frozenset``), because these conversions otherwise always yield mutable objects that do not modify the parent.
 
 The existing getters and setters MUST NOT be removed when defining a property.
+
+.. _style-guide-py-exceptions:
+
+Python exceptions SHOULD be raised and checked in Python code
+-------------------------------------------------------------
+
+When raising an exception in Python code, consideration should be given to `defining a module-specific exception`_ for increased precision.
+Such an exception SHOULD inherit from an appropriate standard Python exception, unless it also needs to be thrown from C++ code, in which case it MUST be defined using the LSST-specific ``pex_exceptions`` library.
+If a module-specific exception is not used, then the appropriate standard Python exception SHOULD be raised.
+
+.. _defining a module-specific exception: https://docs.python.org/3/tutorial/errors.html#user-defined-exceptions
+
+When writing an ``except`` clause, the exception type caught SHOULD be, in order of preference, a module-specific exception (either Python or C++), a standard Python exception, or a generic ``pex_exceptions`` exception for which there is no corresponding Python exception.
+In particular, most generic ``pex_exceptions`` exceptions should be caught as their standard Python counterparts.
+For example, catch ``lsst.pex.exceptions.OverflowError`` as the Python ``OverflowError``, but catch ``lsst.pex.exceptions.LengthError`` as such.

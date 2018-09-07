@@ -5,10 +5,16 @@ DM Stack guides
 ###############
 
 - :doc:`platforms`
-- :doc:`package-docs`
 - :doc:`transferring-code`
 - :doc:`logging`
 - :doc:`debug`
+- :doc:`documentation-system-overview`
+- :doc:`layout-of-doc-directory`
+- :doc:`package-documentation-topic-types`
+- :doc:`add-a-package-to-pipelines-lsst-io`
+- :doc:`building-single-package-docs`
+- :doc:`building-pipelines-lsst-io-locally`
+- :doc:`building-pipelines-lsst-io-with-documenteer-job`
 - :doc:`jenkins-stack-os-matrix`
 - :doc:`unit-test-coverage`
 - :doc:`lsstsw`

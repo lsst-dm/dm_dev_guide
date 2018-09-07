@@ -103,7 +103,7 @@ We follow the official: International Standard ISO/IEC 14882:2014(E) – Program
 
 .. seealso::
 
-   - :ref:`pipelines:source-install-redhat-legacy` from the `LSST Science Pipelines <https://pipelines.lsst.io>`__ documentation.
+   - :ref:`pipelines:source-install-redhat-prereqs` from the `LSST Science Pipelines <https://pipelines.lsst.io>`__ documentation.
      But note that installation instructions for stack versions 14.0 and below refer to our older baseline compilers.
      These are now superseded by the minimum required compiler versions listed above.
    - :doc:`/services/lsst-dev` provides :ref:`instructions for using devtoolset-6 <lsst-dev-tools>` to obtain a more modern GCC on LSST cluster machines.
@@ -807,26 +807,27 @@ Arguments common to all overloads of a function should precede those that differ
 
 .. _style-guide-cpp-3-34:
 
-3-34. Uncertainty values associated with a variable SHOULD be suffixed by one of ``Var``, ``Cov``, ``Sigma``.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+3-34. Uncertainty values associated with a variable SHOULD be suffixed by one of ``Err`` or ``Cov``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-There is no universal suffix for uncertainties; i.e. no ``Err`` suffix will be used.
-The cases that we have identified, and their appropriate suffixes, are:
-
-- Standard deviation: ``Sigma`` (not ``Rms``, as ``rms`` doesn't imply that the mean's subtracted)
-- Covariance: ``Cov``
-- Variance: ``Var``
+Following the DPDD, we use ``Err`` (not ``Sigma``) to specify error quantities, as a standard deviation.
+``Sigma`` should be used to specify the inherent width of a distribution or function.
 
 .. code-block:: cpp
 
-   float xAstrom;          // x position computed by a centroiding algorithm
-   float xAstromSigma;     // Uncertainty of xAstrom
-   float yAstrom;
-   float yAstromSigma;
-   float xyAstromCov;
+    // for single measurements
+    float xCentroid;        // x position computed by a centroiding algorithm
+    float xCentroidErr;     // Uncertainty of xCentroid
+    float yCentroid;
+    float yCentroidErr;
+    float xyCentroidCov;    // Covariance of x/y centroid
 
-The postfix ``Err`` can easily be misinterpreted as error flags.
-Use the full ``Sigma`` since ``Sig`` can easily be misinterpreted as ``Signal``.
+    // for distributions
+    float fpFluxMean;       // Weighted mean of forced-photometry flux (fpFlux)
+    float fpFluxMeanErr;    // Uncertainty (standard deviation) of fpFluxMean.
+    float fpFluxSigma;      // Standard deviation of the distribution of fpFlux.
+
+For distribution widths, use the full ``Sigma`` since ``Sig`` can easily be misinterpreted as ``Signal``.
 
 .. _style-guide-cpp-3-35:
 
@@ -2449,6 +2450,7 @@ If the ``catch`` clause is not going to re-throw the exception, a comment indica
 It is a common recommendation (Sun Java recommendation included) that brackets should always be used in all these cases.
 Brackets are in general a language construct that groups several statements and thus by definition superfluous on a single statement.
 However, the use of brackets in the above cases would make it trivial to add statements without error.
+If brackets are used, the standard multi-line forms from the sections above should be followed.
 
 .. _style-guide-cpp-6-15:
 

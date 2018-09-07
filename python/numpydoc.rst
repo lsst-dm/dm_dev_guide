@@ -2,6 +2,8 @@
    Changes to this document must be approved by the System Architect (`RFC-24 <https://jira.lsstcorp.org/browse/RFC-24>`_).
    To request changes to these standards, please file an :doc:`RFC </communications/rfc>`.
 
+.. _numpydoc-format:
+
 #######################################
 Documenting Python APIs with Docstrings
 #######################################
@@ -266,12 +268,7 @@ For example:
 Line Lengths
 ------------
 
-Hard-wrap text in docstrings to match the :ref:`line length allowed by the coding standard <style-guide-py-line-length>`.
-
-.. note::
-
-   In the future we may require shorter line lengths specifically for docstrings.
-   See :jira:`RFC-107`.
+Hard-wrap text in docstrings to match the :ref:`docstring line length allowed by the coding standard <style-guide-py-docstring-line-length>`.
 
 .. _py-docstring-parameter-markup:
 
@@ -331,7 +328,7 @@ For summaries of how these docstring sections are composed in specific contexts,
 Short Summary
 -------------
 
-A one-line summary that does not use variable names or the function's name:
+A one-sentence summary that does not use variable names or the function's name:
 
 .. code-block:: python
 
@@ -345,7 +342,7 @@ That is, the summary is treated a command that the API consumer can give.
 Some examples:
 
 - ``Get metadata for all tasks.``
-- ``Make a `lsst.pex.config.ConfigurableField` for this task.``
+- ``Make an `lsst.pex.config.ConfigurableField` for this task.``
 - ``Create a `Measurement` instance from a parsed YAML or JSON document.``
 
 .. _py-docstring-deprecation:

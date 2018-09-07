@@ -30,8 +30,8 @@ Label                Meaning
 Princeton HPC Systems
 =====================
 
-In addition to the regular LSST-provided compute systems (:doc:`lsst-dev </services/lsst-dev>`, the :doc:`Verification Cluster </services/verification>`, etc), DRP team members have access to two clusters hosted by the `Research Computing Group <http://www.princeton.edu/researchcomputing/index.xml>`_ in Princeton.
-Please refer to the Research Computing Group's pages for general information on getting started, usage policies, FAQs, etc, and be aware that you must comply with all their rules when using these systems
+In addition to the regular LSST-provided compute systems (:doc:`lsst-dev </services/lsst-dev>`, the :doc:`Verification Cluster </services/verification>`, etc), DRP team members have access to two clusters hosted by the `Research Computing Group <https://researchcomputing.princeton.edu>`_ in Princeton.
+Please refer to the Research Computing Group's pages for information on getting started, how to connect with SSH, usage policies, FAQs, etc, and be aware that you *must* comply with all their rules when using these systems
 
 Obtaining Accounts
 ------------------
@@ -43,57 +43,24 @@ When your account has been created, you should check that you are a member of th
 Available Systems
 -----------------
 
-Tiger
-^^^^^
+Typically, LSST (and HSC) data processing is carried out using either the `Tiger`_ or `Perseus`_ clusters.
+Both of these have access to regularly-updated installations of the LSST “stack” through the shared :file:`/tigress` filesystem.
+Be aware, however, that you must use a version of the stack corresponding to
+the operating system installed on the system you are using:
 
-`Tiger <http://www.princeton.edu/researchcomputing/computational-hardware/tiger/>`_ is a Dell/SGI cluster, providing around 10,000 CPU cores, with at least 4 GB of RAM per core, spread over 644 compute nodes.
-When connecting to Tiger, you should connect to the head node ``tiger-sumire.princeton.edu`` (also known as ``tiger3.princeton.edu``) which has been reserved for HSC/LSST use.
+- The Tiger system (accessed through the head node ``tiger2-sumire``) should use :file:`/tigress/HSC/LSST/stack_tiger2`;
+- Perseus should use :file:`/tigress/HSC/LSST/stack_perseus`.
 
-Tiger runs version 6.8 of `Springdale Linux <https://puias.math.ias.edu>`_ (a derivative of `RHEL <https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux>`_).
-As such, the default toolchain is too old to work with the LSST stack.
-You should therefore enable ``devtoolset-6`` before proceeding:
-
-.. prompt:: bash
-
-  module load rh/devtoolset/6
-
-For more information on devtoolset usage, refer to :ref:`the main developer guide <lsst-dev-tools>`.
-
-Regularly-updated LSST “shared stacks” are provided on Tiger.
-Separate stacks are available providing Python versions 2 and 3, in :file:`/tigress/HSC/LSST/stack2_tiger/` and :file:`/tigress/HSC/LSST/stack3_tiger/` respectively.
-To get started, try:
-
-.. prompt:: bash
-
-  . /tigress/HSC/LSST/stack3_tiger/loadLSST.bash
-  setup lsst_apps
-
-Perseus
-^^^^^^^
-
-`Perseus <http://www.princeton.edu/researchcomputing/computational-hardware/perseus/>`_ is a Dell Beowulf cluster, providing 8,960 CPU cores, with 4.5 GB of RAM per core, spread over 320 compute nodes.
-It provides broadly equivalent capabilities to Tiger, but is often less heavily loaded.
-Unlike Tiger, there is no head node reserved for HSC/LSST use.
-Connect to ``perseus.princeton.edu``, and be especially considerate of other users before starting long-running jobs on the head node.
-
-Tiger runs version 7.3 of `Springdale Linux <https://puias.math.ias.edu>`_ (a derivative of `RHEL <https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux>`_).
-As such, the default toolchain is too old to work with the LSST stack.
-You should therefore enable ``devtoolset-6`` before proceeding:
+To initialize the stack in your ``bash`` shell, run:
 
 .. prompt:: bash
 
   module load rh/devtoolset/6
-
-For more information on devtoolset usage, refer to :ref:`the main developer guide <lsst-dev-tools>`.
-
-Regularly-updated LSST “shared stacks” are provided on Perseus.
-Separate stacks are available providing Python versions 2 and 3, in :file:`/tigress/HSC/LSST/stack2_perseus/` and :file:`/tigress/HSC/LSST/stack3_perseus/` respectively.
-To get started, try:
-
-.. prompt:: bash
-
-  . /tigress/HSC/LSST/stack3_perseus/loadLSST.bash
+  . /tigress/HSC/LSST/stack_tiger2/loadLSST.bash  # Or stack_perseus, as appropriate.
   setup lsst_apps
+
+.. _Tiger: http://www.princeton.edu/researchcomputing/computational-hardware/tiger
+.. _Perseus: http://www.princeton.edu/researchcomputing/computational-hardware/perseus
 
 Storage
 -------
@@ -131,7 +98,7 @@ For example, adding the follwing to :file:`~/.ssh/config` will automatically rou
 
   Host tiger
       Hostname tiger3.princeton.edu
-      ProxyCommand ssh hammer5.astro.princeton.edu nc %h %p
+      ProxyCommand ssh coma.astro.princeton.edu -W %h:%p
 
 See also the `Peyton Hall tips on using SSH <http://www.astro.princeton.edu/docs/SSH>`_.
 
