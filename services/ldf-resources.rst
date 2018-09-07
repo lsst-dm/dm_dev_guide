@@ -19,7 +19,7 @@ Machines:  (includes VM and Baremetal)
 - VM server machines - running IBM's Vsphere software.   (@ NCSA 3003, NCSA NPCF, and Chile Base) 
    - virtual machines for numberous development environments 
    - databackbone test beds, container type test beds, demo type machines, monitoring machines 
-- lsst-demo - VM for demos
+- lsst-demo - VM for demos and docker image needs 
 - ATS gateway - VM
 - lsstdb - mysql infrastucture machine for db support 
 - DAQ - camera simulator systems 
