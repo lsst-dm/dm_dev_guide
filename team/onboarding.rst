@@ -193,6 +193,8 @@ Friendly
    Instead, simply set their contribution to 0% in the `spreadsheet <https://docs.google.com/spreadsheets/d/1f_dijhaSBjOvNyGPlPgIFWjjZpo_jwii_a0j7imq2CM/edit>`_ and send an e-mail to the DM Admin to let her know.
    Refer to `Document-27073 <http://ls.st/Document-27073>`_ for more information on friendly status.
 
+In addition, the LSST Communications Team request that you notify the `dm-staff <https://lists.lsst.org/mailman/listinfo/dm-staff>`_ mailing list of any departures from your team following the template in `Document-26947 <http://ls.st/Document-26947>`_.
+
 .. _onboarding-admin-checklist:
 
 Checklist for the DM Admin
