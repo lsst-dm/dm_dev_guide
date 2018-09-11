@@ -56,37 +56,27 @@ Create a reStructuredText technote
 ==================================
 
 ReStructuredText-formatted technotes are built with Sphinx_ into websites.
-Create a reStructuredText-formatted technote by messaging the SQuaRE Bot on Slack:
 
-.. code-block:: text
+1. Follow the instructions at `lsst-technote-bootstrap <https://github.com/lsst-sqre/lsst-technote-bootstrap#running-this-cookiecutter-for-development>`__ to manually create a technote repository.
 
-   @sqrbot project create technote series={{<series>}} title={{<title>}} description={{<description>}}
+2. Create a GitHub repository in the appropriate organization with the technote's handle as the name.
+   The organizations are:
 
-Set the ``<title>``, ``<description>`` and ``<series>`` fields (see below) for your technote, but keep the ``{{`` and ``}}`` delimiters.
+   `lsst-dm <https://github.com/lsst-dm>`__
+      DMTN series.
+
+   `lsst-sqre <https://github.com/lsst-sqre>`__
+      SQR series.
+
+   `lsst-sims <https://github.com/lsst-sims>`__
+      SMTN series.
+
+3. Message the `#dm-docs <https://lsstc.slack.com/archives/dm-docs>`__ Slack channel so that the Travis integration for your technote can be activated.
 
 .. note::
 
-   In a Direct Message channel with SQuaRE Bot, don't include the ``@sqrbot`` prefix.
-
-The fields are:
-
-series
-   Values can be ``dmtn``, ``sqr`` or ``smtn``.
-   Use ``test`` for testing.
-
-title
-   Title of the technote.
-   The title doesn't include the handle (DMTN, SQR, or SMTN).
-   You can update the title later by modifying the :ref:`metadata file <technote-rst-metadata>`.
-
-description
-   Short abstract for the technote.
-   The description is used both as an abstract in the technote itself and in the technote's README.
-   You can update description later by editing the technote and the :ref:`metadata file <technote-rst-metadata>`.
-
-SQuaRE Bot prepares technotes in the background after you make your request.
-Go to the GitHub organization for your :ref:`document series <technote-series>` to find your new technote repository.
-Reach out on the `#dm-docs <slack-dm-docs>`_ Slack channel for help.
+   Previously you could use a Slack command, ``@sqrbot project create``, to create a reStructuredText technote.
+   Due to reliability issues with that service, we recommend that you use this manual process for now.
 
 .. _Sphinx: http://www.sphinx-doc.org/en/stable/
 .. _stack-dm-docs: https://lsstc.slack.com/messages/C2B6DQBAL/
