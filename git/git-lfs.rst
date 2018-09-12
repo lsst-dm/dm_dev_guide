@@ -79,7 +79,7 @@ Trying cloning a small data repository to test your configuration:
 
 .. code-block:: bash
 
-   git clone https://github.com/lsst/testdata_decam
+   git clone https://github.com/lsst/testdata_subaru
 
 *That's it.*
 
