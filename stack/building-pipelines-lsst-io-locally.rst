@@ -34,17 +34,6 @@ Clone the repository:
 
    git clone https://github.com/lsst/pipelines_lsst_io
 
-.. important::
-
-   During this initial phase, ``tickets/DM-11216`` is the integration branch for multi-package builds of `pipelines_lsst_io`_.
-   For now you need to check out that branch:
-
-   .. code-block:: bash
-
-      cd pipelines_lsst_io
-      git checkout tickets/DM-11216
-      cd ..
-
 Then set up the `pipelines_lsst_io`_ package with EUPS:
 
 .. code:: bash
