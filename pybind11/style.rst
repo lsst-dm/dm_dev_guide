@@ -58,33 +58,41 @@ Modules and source files
 
 .. _style-guide-pybind11-module-naming:
 
-Wrappers for a C++ header file SHOULD go in a Python module with a lowercased version of the header file name
--------------------------------------------------------------------------------------------------------------
+C++ wrapper code for a package SHOULD go in a module and source file named by adding an underscore prefix to the package name
+-----------------------------------------------------------------------------------------------------------------------------
 
-For example, C++ code from ``LinearTransform.h`` would be wrapped in a module named ``linearTransform``.  If the wrappers are defined purely in C++, the source code would go in ``linearTransform.cc`` (see :ref:`the following rule <style-guide-pybind11-subpackage>` for the case where both C++ and Python code are present).
+For example, the Python wrapper module for ``lsst.geom`` should be ``_geom``, defined (at least in part) in a source file `_geom.cc`.
 
-By wrapping different headers into separate modules (to be combined in ``__init__``) we make builds more parallelize able, make it easier to avoid circular dependencies, and make partial rebuilds faster.
+.. _style-guide-pybind11-cxx-source:
 
-If a group of headers together provide functionality that cannot be used independently, they may be wrapped into a single module.  The headers wrapped by such a module must be prominently listed in a comment near the top of the source file.
+Wrappers for a C++ header file SHOULD go in a source file with the same name as the header and a leading underscore
+-------------------------------------------------------------------------------------------------------------------
 
-.. _style-guide-pybind11-subpackage:
+For example, C++ code wrapping ``LinearTransform.h`` should be in a source file ``_LinearTransform.cc``.
 
-Wrappers that contain both C++ and Python code MUST define a subpackage
------------------------------------------------------------------------
+If a group of headers together provide functionality that cannot be used independently, they may be wrapped into a single module.
+The headers wrapped by such a module must be prominently listed in a comment near the top of the source file.
 
-When the wrappers for a header (or group of closely-related headers) require both C++ and Python, both files MUST be moved to a new Python subpackage, with an ``__init__.py`` file that lifts all public symbols from both modules to package scope.  The Python module need not export symbols also provided by the C++ module (frequently, it will simply modify them, by e.g. adding methods to classes using the ``lsst.utils.continueClass`` decorator).  The C++ module name should still be the lowercased header file name, and the Python module name MUST be this with a "Continued" suffix.
+Very small packages MAY put all wrapper code in the ``_<package>.cc`` file instead of using multiple source files.
+
+.. _style-guide-pybind11-python-source:
+
+Additional pure-Python wrappers for a header SHOULD go in a module with the same name as the header and a leading underscore
+----------------------------------------------------------------------------------------------------------------------------
 
 For example, for header file ``LinearTransform.``, we would have::
 
-    linearTransform/linearTransform.cc:
+    _LinearTransform.cc:
         <C++ wrappers>
 
-    linearTransform/linearTransformContinued.py:
+    _LinearTransform.py:
         <Python extensions to the wrappers>
 
-    linearTransform/__init__.py:
-        from .linearTransform import *
-        from .linearTransformContinued import *
+    _geom.cc:
+        <C++ module definition, calls into _LinearTransform.cc>
+
+    __init__.py:
+        <package definition, imports _geom.cc and _LinearTransform.py>
 
 .. _style-guide-pybind11-cpp-vs-python:
 
@@ -106,26 +114,6 @@ Pybind11 headers should precede all other headers in the include ordering
 
 ``pybind11.h`` includes ``Python.h`` and `must hence be included before all other headers <https://docs.python.org/3/c-api/intro.html#include-files>`_.
 To keep a reasonable grouping, all other pybind11 headers should be included in this same include block.
-
-.. _style-guide-pybind11-import:
-
-C++ wrapper modules SHOULD import the wrapper modules corresponding to the headers they include
------------------------------------------------------------------------------------------------
-
-This can be done with the ``pybind11::module::import()`` function.  Note that it requires absolute module names, and doesn't add any symbols to the compiled module (which is exactly what we want).  For example, within the ``lsst.afw.geom.spherePoint`` module, which depends on the wrappers for ``Angle``, we'd do:
-
-.. code-block:: cpp
-
-    PYBIND11_MODULE(spherePoint, mod) {
-        py::module::import("lsst.afw.geom.angle");
-        ...
-    }
-
-When importing wrappers that are defined by a subpackage, the subpackage (not just the C++ wrapper module) should be imported.  This insulates each module from changes in how its dependencies are wrapped.
-
-Some elements of pybind11 wrappers will fail (at runtime) if the wrappers that contain related types (e.g. base classes and those used as function arguments or return values) have not yet been imported.  Our convention that :ref:`wrapper modules mirror headers <style-guide-pybind11-module-naming>` means the appropriate modules to import can generally be guessed from the list of headers included by the header the wrappers correspond to.
-
-It may be impossible to import modules for some types used in a wrapper due to circular dependencies - such relationships are common in C++ (where they are typically handled with forward declarations), but circular relationships between Python modules are not allowed.  In these cases we should attempt to ensure both modules are imported together in a parent package level.
 
 .. _style-guide-pybind11-cross-module-code-location:
 
@@ -267,6 +255,17 @@ This is especially again common in :ref:`declare functions <style-guide-pybind11
 Organization
 ============
 
+.. _style-guide-pybind11-wrap-split-modules:
+
+Wrappers for a header SHALL be implemented in functions prefixed with "wrap"
+----------------------------------------------------------------------------
+
+Wrappers for ``LinearTransform`` (declared in ``LinearTransform.h``, with wrappers in ``_LinearTransform.cc``) shall go in a function called ``wrapLinearTransform``.
+
+Whenever possible, this function should take a single ``lsst::utils::python::WrapperCollection &`` argument, return void, and be called only within the ``PYBIND11_MODULE`` block for the package.
+
+When multiple headers are wrapped in a single source file, that source file must define a single "wrap" function with a name related to that of the source file.
+
 .. _style-guide-pybind11-declare-template-wrappers:
 
 Wrappers for templates SHALL be declared in functions prefixed with "declare"
@@ -289,9 +288,9 @@ The wrapper for the templated type ``Example<T>`` shall be added by a declare fu
 
     ...
 
-    PYBIND11_MODULE(_Example, mod) {
-        declareExample<float>(mod, "F");
-        declareExample<int>(mod, "I");
+    void wrapExample(utils::python::WrapperCollection & wrappers) {
+        declareExample<float>(wrappers, "F");
+        declareExample<int>(wrappers, "I");
         ...
     }
 
@@ -326,33 +325,6 @@ For example:
 
         declareCommon<Bar>(cls);
     }
-
-.. _style-guide-pybind11-wrapper-code-source-file-namespace:
-
-Wrapper code in source files MUST be placed in a nested anonymous namespace
----------------------------------------------------------------------------
-
-For example:
-
-.. code-block:: cpp
-
-    namespace lsst {
-    namespace sphgeom {
-
-    namespace {
-
-    ...  // declare functions...
-
-    }  // namespace
-
-    PYBIND11_MODULE(...
-       ...
-    }
-
-    }  // namespace sphgeom
-    }  // namespace lsst
-
-Using anonymous namespaces ensures symbols that need not be public aren't, avoiding name clashes, reducing the size of libraries, and improving link times.
 
 .. _style-guide-pybind11-common-code-namespace:
 
@@ -464,7 +436,7 @@ Keyword arguments MAY be provided for non-overloaded functions with two or fewer
 Literals MUST be used for all named arguments
 ----------------------------------------------
 
-The `_a` argument literal, from `pybind11::literals` MUST be used for all named arguments (e.g. ``mod.def("f", f, "arg1"_a, "arg2"_a);``).
+The `_a` argument literal from `pybind11::literals` MUST be used for all named arguments (e.g. ``mod.def("f", f, "arg1"_a, "arg2"_a);``).
 The ``py::arg()`` construct SHALL NOT be used.
 
 .. _style-guide-pybind11-enum-scoping:
