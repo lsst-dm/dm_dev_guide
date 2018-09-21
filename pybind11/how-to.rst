@@ -761,16 +761,13 @@ We shall use the ``continueClass`` decorator to reopen the class and add a new m
 Grouping templated types with an ABC
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Using the ``TemplateMeta`` metaclass from ``lsst.utils`` we can group
-templated types together with a single abstract base class.
+Using the ``TemplateMeta`` metaclass from ``lsst.utils`` we can group templated types together with a single abstract base class.
 
 This gives users a familiar interface to work with templated types.
-It allows them to do ``isinstance(my_object, ExampleThree)`` and
-create an ``ExampleThreeF`` type using ``ExampleThree(dtype=np.float32)``.
+It allows them to do ``isinstance(my_object, ExampleThree)`` and create an ``ExampleThreeF`` type using ``ExampleThree(dtype=np.float32)``.
 
 As with ``ExampleTwo``, first move the module into its own subpackage.
-Create the appropriate ``__init__.py`` file, and put the following in
-``exampleThree/exampleThreeContinued.py``:
+Create the appropriate ``__init__.py`` file, and put the following in ``exampleThree/exampleThreeContinued.py``:
 
 .. code-block:: python
 

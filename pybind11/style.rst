@@ -35,8 +35,7 @@ General
 All rules from the DM C++ style guide SHALL also apply to pybind11 wrappers
 ---------------------------------------------------------------------------
 
-Fundamentally pybind11 wrappers are just C++. Therefore the rules from the DM C++ Style Guide also apply,
-unless they are in direct conflict with one of the other rules in this guide.
+Fundamentally pybind11 wrappers are just C++. Therefore the rules from the DM C++ Style Guide also apply, unless they are in direct conflict with one of the other rules in this guide.
 
 .. _style-guide-pybind11-py-rules:
 
@@ -192,23 +191,21 @@ This alias MUST NOT be defined at namespace scope in header files (see :ref:`C++
 Module object names MUST be "mod" or camel case prefixed with "mod"
 -------------------------------------------------------------------
 
-If a wrapper only contains one module instance the name of the object shall be ``mod``.  Otherwise (e.g. if another module is imported into a local variable) it shall be camel case prefixed with ``mod`` as in
-``modExample``.
+If a wrapper only contains one module instance the name of the object shall be ``mod``.
+Otherwise (e.g. if another module is imported into a local variable) it shall be camel case prefixed with ``mod`` as in ``modExample``.
 
 .. _style-guide-pybind11-class-prefix:
 
 Class object names MUST be "cls" or camel case prefixed with "cls"
 ------------------------------------------------------------------
 
-If a wrapper only wraps one class the name of the pybind11 class object shall be
-``cls``. Otherwise it shall be camel case prefixed with ``cls`` as in
-``clsExample``.
+If a wrapper only wraps one class the name of the pybind11 class object shall be ``cls``.
+Otherwise it shall be camel case prefixed with ``cls`` as in ``clsExample``.
 
 When a wrapper wraps multiple classes it is recommended you define a separate function to wrap each class.
 Each wrapper function takes the module as an argument and uses ``cls`` as the variable name for the pybind11 class object.
 
-When using a ``cls`` prefix, it is **strongly** encouraged to use the
-full class name for the remainder.
+When using a ``cls`` prefix, it is **strongly** encouraged to use the full class name for the remainder.
 However you MAY also use an abbreviated name.
 
 .. _style-guide-pybind11-method-chaining:
@@ -275,8 +272,7 @@ Organization
 Wrappers for templates SHALL be declared in functions prefixed with "declare"
 -----------------------------------------------------------------------------
 
-The wrapper for the templated type ``Example<T>`` shall be added by
-a declare function:
+The wrapper for the templated type ``Example<T>`` shall be added by a declare function:
 
 .. code-block:: cpp
 
@@ -299,8 +295,8 @@ a declare function:
         ...
     }
 
-The return type may be non-void in case more functionality needs to be
-added later. The suffix argument may be omitted when not needed (e.g. when adding function overloads).
+The return type may be non-void in case more functionality needs to be added later.
+The suffix argument may be omitted when not needed (e.g. when adding function overloads).
 
 .. _style-guide-pybind11-declare-usage:
 
@@ -382,7 +378,8 @@ For example:
 ``py::class_`` instantiations MUST be declared only once
 --------------------------------------------------------
 
-Because ``py::class_`` objects take many template arguments (which may change), an instantiation for a C++ type must be declared in exactly one place.  If this type must appear in places other than the declaration of ``py::class_`` instance, such as a ``declare`` function, a type alias or template type deduction should be used to avoid repeating the full ``py::class_`` type.
+Because ``py::class_`` objects take many template arguments (which may change), an instantiation for a C++ type must be declared in exactly one place.
+If this type must appear in places other than the declaration of ``py::class_`` instance, such as a ``declare`` function, a type alias or template type deduction should be used to avoid repeating the full ``py::class_`` type.
 
 When no template deduction is needed, a type alias is usually preferable:
 
@@ -399,8 +396,7 @@ When no template deduction is needed, a type alias is usually preferable:
         declareThingMethods(cls);
     }
 
-If template deduction is used, it should be used on the full type, not
-the template parameters for ``py::class_`` itself:
+If template deduction is used, it should be used on the full type, not the template parameters for ``py::class_`` itself:
 
 .. code-block:: cpp
 
@@ -414,8 +410,7 @@ the template parameters for ``py::class_`` itself:
         declareCommon(cls);
     }
 
-There should be no need to provide the template parameters explicitly when calling ``declareCommon`` here; they are inferred from
-the type passed to it.
+There should be no need to provide the template parameters explicitly when calling ``declareCommon`` here; they are inferred from the type passed to it.
 
 Use of pybind11 features
 ========================
@@ -448,7 +443,8 @@ Note that ``py::const_`` is necessary for a const member function.
 The shared_ptr holder type SHOULD be used for all non-trivial classes
 ---------------------------------------------------------------------
 
-By not specifying a holder type explicitly it becomes ``unique_ptr``, but it is hard to anticipate when wrapping a class whether any downstream code will later use it with ``shared_ptr``.  Moreover, C++ functions taking ``unique_ptr`` arguments can never be wrapped intuitively in Python (because Python has no output arguments or ownership transfer), so we do not need to worry about wrapped instances held by ``shared_ptr`` that must be converted to ``unique_ptr`` for a function call.
+By not specifying a holder type explicitly it becomes ``unique_ptr``, but it is hard to anticipate when wrapping a class whether any downstream code will later use it with ``shared_ptr``.
+Moreover, C++ functions taking ``unique_ptr`` arguments can never be wrapped intuitively in Python (because Python has no output arguments or ownership transfer), so we do not need to worry about wrapped instances held by ``shared_ptr`` that must be converted to ``unique_ptr`` for a function call.
 
 The only classes that should be wrapped with ``unique_ptr`` are non polymorphic classes that are always passed by value or reference in C++ and are small enough that ``shared_ptr`` represents a significant overhead.
 
@@ -468,8 +464,7 @@ Keyword arguments MAY be provided for non-overloaded functions with two or fewer
 Literals MUST be used for all named arguments
 ----------------------------------------------
 
-The `_a` argument literal, from `pybind11::literals` MUST be used
-for all named arguments (e.g. ``mod.def("f", f, "arg1"_a, "arg2"_a);``).
+The `_a` argument literal, from `pybind11::literals` MUST be used for all named arguments (e.g. ``mod.def("f", f, "arg1"_a, "arg2"_a);``).
 The ``py::arg()`` construct SHALL NOT be used.
 
 .. _style-guide-pybind11-enum-scoping:
@@ -501,7 +496,8 @@ These enums should be wrapped as simple integer class attributes rather than pyb
     cls.attr("NAME1") = py::cast(int(Class::NAME1));
     cls.attr("NAME2") = py::cast(int(Class::NAME2));
 
-This avoids a need for casts in Python code to deal with the fact that pybind11 enumerations are not implicitly convertible to ``int`` (unlike C++).  Anonymous enums or enums with explicit values that are usable in bitwise operations should almost always be wrapped as integer attributes.
+This avoids a need for casts in Python code to deal with the fact that pybind11 enumerations are not implicitly convertible to ``int`` (unlike C++).
+Anonymous enums or enums with explicit values that are usable in bitwise operations should almost always be wrapped as integer attributes.
 
 All other enums (those that are not used as a collection of integer constants) SHOULD be wrapped with ``py::enum_``.
 
@@ -517,17 +513,16 @@ If enums exposed to Python have a natural ordering, and hence can be expected to
 Derived-class overrides of virtual methods MUST be wrapped OR noted with a comment
 ----------------------------------------------------------------------------------
 
-Because C++ polymorphism ensures the right C++ implementation is always called, only the base class version of a virtual method strictly needs to be wrapped to get the right behavior.  And in some cases not wrapping a derived-class override can represent a significant reduction in code duplication.  But within a pybind11 file it is hard to identify which methods are virtual, and the absence of a method in wrappers is potentially confusing unless a comment indicates that the method is not wrapped because it is an override.
+Because C++ polymorphism ensures the right C++ implementation is always called, only the base class version of a virtual method strictly needs to be wrapped to get the right behavior.
+And in some cases not wrapping a derived-class override can represent a significant reduction in code duplication.
+But within a pybind11 file it is hard to identify which methods are virtual, and the absence of a method in wrappers is potentially confusing unless a comment indicates that the method is not wrapped because it is an override.
 
 .. _style-guide-pybind11-stl-containers:
 
 Default automatic conversions SHALL be used for all STL containers
 ------------------------------------------------------------------
 
-The pybind11 header ``pybind11/stl.h`` provides automatic conversion
-support (to standard Python ``list``, ``set``, ``tuple`` and ``dict`` types)
-for most STL containers (i.e. ``std::vector``, ``std::set``, ``std::unordered_set``,
-``std::pair``, ``std::tuple``, ``std::list``, ``std::map`` and ``std::unordered_map``).
+The pybind11 header ``pybind11/stl.h`` provides automatic conversion support (to standard Python ``list``, ``set``, ``tuple`` and ``dict`` types) for most STL containers (i.e. ``std::vector``, ``std::set``, ``std::unordered_set``, ``std::pair``, ``std::tuple``, ``std::list``, ``std::map`` and ``std::unordered_map``).
 These conversions shall always be used instead of manual wrapping.
 
 Manual wrapping of a standard library type is not a local operation: defining such a wrapper can break code in other modules that use the same type but expect it to be returned to Python as a native Python container.
@@ -537,15 +532,15 @@ Manual wrapping of a standard library type is not a local operation: defining su
 Where copying of STL containers is undesirable an ndarray type SHOULD be used instead
 -------------------------------------------------------------------------------------
 
-The ``ndarray`` C++ types can share storage with NumPy arrays.  This may sometimes require changes to the C++ API.
+The ``ndarray`` C++ types can share storage with NumPy arrays.
+This may sometimes require changes to the C++ API.
 
 .. _style-guide-pybind11-operator:
 
 Default operator support SHALL NOT be used
 ------------------------------------------
 
-Support from the ``pybind11/operators.h`` header cannot be applied consistently and
-SHALL NOT be used.
+Support from the ``pybind11/operators.h`` header cannot be applied consistently and SHALL NOT be used.
 
 Instead all operators are to be wrapped either directly as any other function:
 
@@ -585,8 +580,7 @@ When a C++ method returns a non-const reference or (smart) pointer to a data mem
 
 When a C++ method returns a const reference or (smart) pointer to a data member (not a new object), and provides no non-const way to access that data member, that method SHALL be wrapped with the ``py::return_value_policy::automatic`` call policy (the default, so no need to specify), to prevent accidental modification of the internal data member (which is a much more serious offence in C++ than Python).
 
-In rare cases, ``py::return_value_policy::reference_internal`` may be used if the expense of copying the object is large
-and the likelihood of accidental modification is low.
+In rare cases, ``py::return_value_policy::reference_internal`` may be used if the expense of copying the object is large and the likelihood of accidental modification is low.
 
 .. _style-guide-pybind11-properties:
 
@@ -602,7 +596,8 @@ All rules from the Python style guide regarding properties SHALL also apply to C
 Module docstrings SHOULD be empty
 ---------------------------------
 
-Wrapper module docstrings are not visible by users (since all classes are lifted into the package namespace by ``__init__.py``), and hence do not need to follow the usual requirements for module-level docstrings.  Empty docstrings are preferable to trivial strings that just duplicate information implicit in the naming conventions (e.g. "The 'thing' module provides wrappers for thing.h").
+Wrapper module docstrings are not visible by users (since all classes are lifted into the package namespace by ``__init__.py``), and hence do not need to follow the usual requirements for module-level docstrings.
+Empty docstrings are preferable to trivial strings that just duplicate information implicit in the naming conventions (e.g. "The 'thing' module provides wrappers for thing.h").
 
 .. _style-guide-pybind11-str:
 
