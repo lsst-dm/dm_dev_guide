@@ -626,6 +626,6 @@ For small objects, producing a string that can be passed to ``eval`` to reproduc
 .. code-block:: cpp
 
     clsPoint2D.def("__str__", [](Point2D const& self) {
-        return py::str("lsst.afw.geom.Point2D(%d, %d)").format(self.getX(), self.getY());
+        return py::str("lsst.geom.Point2D({}, {})").format(self.getX(), self.getY());
     });
 
