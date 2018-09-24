@@ -1,2 +1,2 @@
 sphinx_rtd_theme==0.2.0
-documenteer==0.3.0a4
+documenteer==0.3.0
