@@ -579,8 +579,8 @@ If the symbols are part of the public API then this is typically done by adding 
     One or more ``__init__.py`` files with imports like this *must* be used to make sure all wrapped types are actually available from the package used to construct the ``WrapperCollection``.
 
 
-Moving on
----------
+Advanced Wrappers
+=================
 
 In this section we are going to look at some more advanced wrapping.
 In particular inheritance and templates
@@ -644,8 +644,8 @@ and ``ExampleThree.h``:
 
     #endif
 
-Create wrapper files
-^^^^^^^^^^^^^^^^^^^^
+More wrapper files
+------------------
 
 Because code in different headers should usually be wrapped in different source files, we'll create two new skeletons for ``ExampleTwo.h`` and ``ExampleThree.h``:
 
@@ -721,7 +721,7 @@ Our main source file should then be updated to declare and call all of the ``wra
     If any of this looks unfamiliar please see :ref:`"Wrapping a simple class" <wrapping-simple-class>` first.
 
 Inheritance
-^^^^^^^^^^^
+-----------
 
 ``ExampleTwo.h`` defines two classes (``ExampleBase`` and ``ExampleTwo``) which we wrap as follows:
 
@@ -751,7 +751,7 @@ There are two subtleties:
 * ``ExampleBase`` is abstract and therefore in pybind11 cannot have a constructor (even if it is present in C++).
 
 Templates
-^^^^^^^^^
+---------
 
 Now we move on to ``ExampleThree``.
 This is a class template.
@@ -800,7 +800,7 @@ Following :ref:`this rule <style-guide-pybind11-declare-template-wrappers>` we d
 .. _pybind11-cross-module-dependencies:
 
 Cross-module dependencies
-^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------
 
 All of the dependencies in the example classes we've defined here are within the same compiled module, and hence we've been able to rely on ``WrapperCollection`` and its callback system to ensure the wrappers are defined in an order that works.
 The only exception is inheritance: ``ExampleTwo`` and ``ExampleThree`` both inherit from ``ExampleBase``, and that means it's critical that the ``wrapType`` call (or more precisely, the ``py::class_`` instantiation) for ``ExampleBase`` appear before that of either of its derived classes.
@@ -920,8 +920,11 @@ While the higher-level ``lsst/foo/__init__.py`` stays simple:
     from . import bar  # optional; imports the package if it's always wanted
 
 
-Adding pure Python members
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Pure-Python Customization
+=========================
+
+Adding new members
+------------------
 
 Sometimes it is necessary to add pure Python members to a wrapped C++ class.
 Following our :ref:`structure and naming convention <style-guide-pybind11-subpackage>` for this, we'll add a new pure-Python ``_ExampleTwo.py`` module.
@@ -957,7 +960,7 @@ Both the combined `_tmpl` module and any pure-Python customizations should be li
     Python's built-in ``super()`` function doesn't work properly in a ``continueClass`` block.
 
 Grouping templated types with an ABC
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------
 
 Using the ``TemplateMeta`` metaclass from ``lsst.utils`` we can group templated types together with a single abstract base class.
 
