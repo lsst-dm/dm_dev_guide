@@ -815,6 +815,109 @@ Using ``WrapperCollection`` solves that problem within a single module (in which
 It also does its best to work around circular dependencies between different modules, but this relies on the details of how Python handles circular imports, making it very hard to guarantee correct behavior in all cases.
 Circular dependencies between modules should be avoided whenever possible.
 
+
+Wrapping Submodules with their Parent Module
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If the desired namespace for some symbols involves a subpackage nested below the level at which the ``WrapperCollection`` was defined, it's usually best to just define an entirely independent module for that subpackage.
+
+It's also possible to create a submodule within the same compiled module, however, and this can be necessary when the classes in the subpackage have circular dependencies with those in the main package or other subpackages.
+
+.. note::
+
+    Compiled submodules are complex and make the organization of a package's code difficult to understand.
+    Completely independent regular submodules should be used unless compiled submodules are necessary to deal with circular dependencies.
+
+The module names and file/directory structure can be quite confusing in this case, so we'll look at a very concrete example.
+Let's imagine we have a package ``lsst.foo``, with a normal package-level
+module ``_foo``.
+That implies we have the following files:
+::
+    lsst/
+        foo/
+            __init__.py
+            _foo.cc
+            SConscript
+
+In order to add a submodule ``bar`` that wraps content from ``BarStuff.h``, we'll add a subpackage directory and ``__init__.py`` for it, and put a new source file in the subpackage directory, so the full structure now looks like this:
+::
+    lsst/
+        foo/
+            __init__.py
+            _foo.cc
+            SConscript
+            bar/
+                __init__.py
+                _BarStuff.cc
+
+Note that we've named the new file after the header it wraps, because it's going to be compiled into the ``_foo`` module.
+In fact, it won't matter at all to the compiler where we put the source file; we've put it in the subpackage to signal to humans that that's where its symbols will land.
+
+We will have to tell SCons about that extra file:
+
+.. code-block:: py
+
+    # SConscript
+    from lsst.sconsUtils import scripts
+    scripts.BasicSConscript.python(extra=["bar/_BarStuff.cc"])
+
+The new ``_BarStuff.cc`` looks just like it would if ``bar`` was an independent module; it defines a regular ``wrap`` function:
+
+.. code-block:: cpp
+
+    namespace lsst { namespace foo { namespace bar {
+
+    void wrapBarStuff(WrapperCollection & wrappers) {
+        // ...
+    }
+
+    }}} // namespace lsst::foo::bar
+
+When invoking that in ``_foo.cc``, however, we create a submodule ``WrapperCollection`` and pass that in:
+
+.. code-block:: cpp
+
+    namespace lsst { namespace foo {
+
+    namespace bar {
+
+    void wrapBarStuff(WrapperCollection & wrappers);
+
+    } // namespace bar
+
+    PYBIND11_MODULE(_foo, mod) {
+        WrapperCollection wrappers(mod, "lsst.foo");
+        { // extra scope just keeps variables very local
+            auto barWrappers = wrappers.makeSubmodule("bar");
+            bar::wrapBarStuff(barWrappers);
+            wrappers.collectSubmodule(std::move(barWrappers));
+        }
+        wrappers.finish();
+    }
+
+    }} // namespace lsst::foo
+
+Note that we need to use ``std::move`` to indicate that we're consuming ``barWrappers`` and are promising not to do anything else with it.
+
+This submodule ``WrapperCollection`` doesn't actually put symbols in ``lsst.foo._foo.bar``, however.
+If it did, the ``from ._foo import *`` line would create an ``lsst.foo.bar`` submodule that would clash with the existing directory/subpackage one.
+
+Instead, ``makeSubmodule`` creates a ``lsst.foo._foo._bar`` submodule, while setting the ``__module__`` of its contents to ``lsst.foo.bar``.
+That makes the ``lsst/foo/bar/__init__.py`` a bit tricky:
+
+.. code-block:: py
+
+    from .._foo._bar import *
+
+While the higher-level ``lsst/foo/__init__.py`` stays simple:
+
+.. code-block:: py
+
+    from ._foo import *  # lifts _bar, too, but we don't care
+
+    from . import bar  # optional; imports the package if it's always wanted
+
+
 Adding pure Python members
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
