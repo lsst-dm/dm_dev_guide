@@ -790,10 +790,12 @@ Following :ref:`this rule <style-guide-pybind11-declare-template-wrappers>` we d
       Commonly used suffixes are:
 
       - ``I`` for ``int``,
-      - ``L`` for ``long``,
+      - ``L`` for ``uint64_t``,
       - ``F`` for ``float``,
       - ``D`` for ``double`` and
-      - ``U`` for ``unsigned int``.
+      - ``U`` for ``uint16_t``.
+
+    (For historical reasons we have a mix of both traditional integer types and defined-size integer types.)
 
 .. _pybind11-cross-module-dependencies:
 
