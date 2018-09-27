@@ -189,18 +189,15 @@ If you are using `Bash`_ — the default shell on ``lsst-dev01`` — try placing
 Load the LSST Environment
 =========================
 
-We provide ready-to-use “shared” versions of the LSST software stack to enable developers to get up and running quickly with no installation step.
-Each shared stack includes a fully fledged Miniconda-based Python environment, a selection of additional development tools, and a selection of builds of the lsst_distrib meta-package.
-The currently maintained stacks are regularly updated to include the latest weekly release, which is tagged as ``current``.
+We provide a ready-to-use “shared” version of the LSST software stack to enable developers to get up and running quickly with no installation step.
+The shared stack includes a fully-fledged Miniconda-based Python environment, a selection of additional development tools, and a selection of builds of the lsst_distrib meta-package.
+The currently stack is regularly updated to include the latest weekly release, which is tagged as ``current``.
 
 The following stacks are currently maintained:
 
 ======================================== ============== ================ =======================================================================================================================================================================================================================
 Path                                     Python Version Toolchain        Description
 ======================================== ============== ================ =======================================================================================================================================================================================================================
-:file:`/ssd/lsstsw/stack2_20171021`      2              ``devtoolset-6`` Located on local, SSD based storage attached to the `lsst-dev01` system: it will support fast interactive use on that machine, but is not accessible across the network.
-:file:`/ssd/lsstsw/stack3_20171021`      3              ``devtoolset-6`` Located on local, SSD based storage attached to the `lsst-dev01` system: it will support fast interactive use on that machine, but is not accessible across the network.
-:file:`/software/lsstsw/stack2_20171022` 2              ``devtoolset-6`` Located on GPFS-based network storage; as such, it is cross-mounted across a variety of LSST systems at NCSA including those configured as part of the `HTCondor pool`_ and :doc:`Verification Cluster <verification>`.
 :file:`/software/lsstsw/stack3_20171023` 3              ``devtoolset-6`` Located on GPFS-based network storage; as such, it is cross-mounted across a variety of LSST systems at NCSA including those configured as part of the `HTCondor pool`_ and :doc:`Verification Cluster <verification>`.
 ======================================== ============== ================ =======================================================================================================================================================================================================================
 
@@ -213,19 +210,14 @@ In addition, the following symbolic links point to particular versions of the st
 =============================== =====================================================================================================
 Path                            Description
 =============================== =====================================================================================================
-:file:`/ssd/lsstsw/stack`       The latest version of the stack on local storage using our standard Python version (currently 3).
-:file:`/ssd/lsstsw/stack2`      The latest version of the stack on local storage and based on Python 2.
-:file:`/ssd/lsstsw/stack3`      The latest version of the stack on local storage and based on Python 3.
 :file:`/software/lsstsw/stack`  The latest version of the stack on networked storage using our standard Python version (currently 3).
-:file:`/software/lsstsw/stack2` The latest version of the stack on networked storage and based on Python 2.
-:file:`/software/lsstsw/stack3` The latest version of the stack on networked storage and based on Python 3.
 =============================== =====================================================================================================
 
 Add a shared stack to your environment and set up the latest build of the LSST applications by running, for example:
 
 .. prompt:: bash
 
-  source /ssd/lsstsw/stack/loadLSST.bash
+  source /software/lsstsw/stack/loadLSST.bash
   setup lsst_apps
 
 (substitute :file:`loadLSST.csh`, :file:`loadLSST.ksh` or :file:`loadLSST.zsh`, depending on your preferred shell).
