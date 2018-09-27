@@ -1053,6 +1053,13 @@ Class, method, and function docstrings must be placed directly below the declara
 Again, the :ref:`class docstring <py-docstring-class-structure>` takes the place of a docstring for the ``__init__`` method.
 ``__init__`` methods don't have docstrings.
 
+Dunder Methods
+--------------
+
+Special "dunder" methods on classes only need to have docstrings if they are doing anything non-standard.
+For example, if a ``__getslice__`` method cannot take negative indices, that should be noted.
+But if ``__ge__`` returns true if ``self`` is greater than or equal to the argument, that need not be documented.
+
 Examples of Method and Function Docstrings
 ------------------------------------------
 

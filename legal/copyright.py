@@ -171,7 +171,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         git_cmd += sys.argv[1:]
 
-    log = subprocess.check_output(git_cmd)
+    log = subprocess.check_output(git_cmd, universal_newlines=True)
 
     # Read in the full hashes of any commits deemed not copyrightable.
     insignificant_list = []

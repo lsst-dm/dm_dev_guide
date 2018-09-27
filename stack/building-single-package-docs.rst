@@ -44,12 +44,8 @@ In a base working directory — not inside a repository directory — create the
    python -m venv --system-site-packages --without-pip pyvenv
    source pyvenv/bin/activate
    curl https://bootstrap.pypa.io/get-pip.py | python
-   curl -O https://raw.githubusercontent.com/lsst/pipelines_lsst_io/tickets/DM-11216/requirements.txt
+   curl -O https://raw.githubusercontent.com/lsst/pipelines_lsst_io/master/requirements.txt
    pyvenv/bin/pip install -r requirements.txt
-
-.. todo::
-
-   FIXME update branch after ``tickets/DM-11216`` is done.
 
 .. note::
 
