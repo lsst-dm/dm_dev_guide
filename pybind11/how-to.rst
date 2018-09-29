@@ -404,11 +404,11 @@ Module-Level Declaration
 
 Module-level free functions and variables can be declared inside a ``wrapType`` callback, and you should do so when they're closely related to the class it defines.
 
-In other cases, you can add a callback not associated with any class by calling the ``wrapFunctions`` method instead:
+In other cases, you can add a callback not associated with any class by calling the ``wrap`` method instead:
 
 .. code-block:: cpp
 
-    wrappers.wrapFunctions(
+    wrappers.wrap(
         [](auto & mod) {
             // any number of module-level wrappers go here
         }
