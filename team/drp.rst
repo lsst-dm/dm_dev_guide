@@ -5,7 +5,7 @@ Data Release Production
 Travel Calendar
 ===============
 
-We use Google Calendar to keep track of group travel.
+The DRP team uses Google Calendar to keep track of group travel.
 Please ask Jim, Robert or John for access.
 Use it to share details of any substantial travel plans: vacations, conferences, etc.
 It is not expected that you record the minutiae of everyday life: please don't bother telling us about your trip to the dentist, DMV, etc!
