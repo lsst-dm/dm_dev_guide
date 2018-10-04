@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 #
-# This file is part of ...
+# This file is part of dm_dev_guide
 #
 # Developed for the LSST Data Management System.
 # This product includes software developed by the LSST Project
@@ -44,16 +44,18 @@ INSTITUTIONS = {
                 "jmatt@jmatt.org", "athornton@gmail.com"],
         "California Institute of Technology":
             ["caltech.edu"],
+        "CNRS/IN2P3":
+            ["in2p3.fr"],
         "The Board of Trustees of the Leland Stanford Junior "
             "University, through SLAC National Accelerator Laboratory":
             ["slac.stanford.edu", "vaikunth@tamu.edu",
                 "jgates@slac.standford.edu", # !!!
-                "fabrice.jammes@in2p3.fr",
-                "fabrice.jammes@clermont.in2p3.fr",
                 "aaoualid@gmail.com", "abh@stanford.edu", "astro@mandeep.org"],
         "The Regents of the University of California":
             ["ucdavis.edu",
+                "pgee2000@gmail.com",
                 "pgee@physics.ucdavis.com", # !!!
+                "pgee2000.gmail.com", # !!!
                 "pgee@pgeepc2.gateway.2wire.net"],
         "The Trustees of Princeton University":
             ["princeton.edu", "rearmstr@gmail.com",
@@ -62,7 +64,8 @@ INSTITUTIONS = {
         "The University of Tokyo":
             ["steven.bickerton@gmail.com"],
         "University of Illinois Board of Trustees":
-            ["illinois.edu", "daues@users.noreply.github.com"],
+            ["illinois.edu", "daues@users.noreply.github.com",
+                "aloftus@gmail.com"],
         "University of Washington":
             ["uw.edu", "washington.edu", "ctslater@umich.edu",
                 "ianssullivan@gmail.com", "scott.f.daniel@gmail.com",
@@ -88,6 +91,7 @@ def find_institution(email, year, month):
     construction in 2014-08.
 
     John Swinbank moved from Princeton to UW at the end of 2017-09.
+    Fabrice Jammes from IN2P3 works under contract to SLAC.
 
     Parameters
     ----------
@@ -110,6 +114,9 @@ def find_institution(email, year, month):
         if year < 2017 or (year == 2017 and month < 10):
             return "The Trustees of Princeton University"
         return "University of Washington"
+    if email.startswith("fabrice.jammes"):
+        return ("The Board of Trustees of the Leland Stanford Junior "
+                "University, through SLAC National Accelerator Laboratory")
     for institution in INSTITUTIONS:
         for domain in INSTITUTIONS[institution]:
             if email.endswith(domain):
