@@ -89,7 +89,7 @@ The ``package`` field must match the package’s EUPS name, which also correspon
 
 This is an example :file:`manifest.yaml` for the `example_dataonly`_ package:
 
-.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/tickets/DM-15024/project_templates/stack_package/example_dataonly/doc/manifest.yaml
+.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/master/project_templates/stack_package/example_dataonly/doc/manifest.yaml
    :language: yaml
 
 .. FIXME update after DM-15024 is closed.

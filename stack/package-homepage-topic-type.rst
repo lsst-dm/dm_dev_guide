@@ -69,14 +69,6 @@ The `template <package-homepage-template>` seeds this section with links to the 
 
 If there is documentation describing how to develop (contribute) to the package, as opposed to using the package, you should link to those topics with a `toctree`_ in this section.
 
-.. _package-homepage-project-modules:
-
-Modules section
-===============
-
-The Modules section is designed to provide links to the module homepages for each module provided by the package.
-See the :ref:`starter template’s example <package-homepage-template>` for how this section is presented.
-
 .. _package-homepage-project-using:
 
 Using <package> section
