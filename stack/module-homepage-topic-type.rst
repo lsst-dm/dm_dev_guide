@@ -199,6 +199,7 @@ The module homepage topic type will continue to evolve. These are the near-term 
 -  C++ API reference section
 -  Task reference section
 -  Clearer organization of the “Using <module>” section.
+-  EUPS dependencies: an automatically-generated list of both direct and implicit EUPS package dependencies.
 
 .. _pipelines.lsst.io: https://pipelines.lsst.io
 .. _stack_package: https://github.com/lsst/templates/tree/master/project_templates/stack_package

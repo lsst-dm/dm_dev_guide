@@ -90,16 +90,15 @@ For example, given a package named ``example`` with files :file:`doc/example/top
 
 Each of these other reStructuredText files should follow the :doc:`Generic guide topic type <generic-guide-topic-type>`.
 
-.. _package-homepage-project-future:
+.. _package-homepage-contributing:
 
-Future components
-=================
+Contributing section
+====================
 
-The package homepage topic type will continue to evolve. These are some possible additions:
+This section puts the package in context as an open source development project.
+The `template <package-homepage-template>` seeds this section with links to the GitHub repository for the package and a ticket search with the package's corresponding Jira component (if the package does not have a Jira component, request one in `#dm-square`_).
 
--  EUPS dependencies: an automatically-generated list of both direct and implicit EUPS package dependencies.
-
--  Development guides: a section linking to topics specifically about how to contribute to this package.
+If there is documentation describing how to develop (contribute) to the package, as opposed to using the package, you should link to those topics with a `toctree`_ in this section.
 
 .. _stack_package: https://github.com/lsst/templates/tree/master/project_templates/stack_package
 .. _toctree: http://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-toctree
