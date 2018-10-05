@@ -12,7 +12,7 @@ The purpose of the package homepage is to provide summary information about a pa
 Starter template
 ================
 
-The `stack_package`_ project template includes the `Jinja-formatted template for the module homepage <https://raw.githubusercontent.com/lsst/templates/master/project_templates/stack_package/%7B%7Bcookiecutter.package_name%7D%7D/doc/%7B%7Bcookiecutter.package_name%7D%7D/index.rst>`_.
+The `stack_package`_ project template includes the `Jinja-formatted template for the package homepage <https://raw.githubusercontent.com/lsst/templates/master/project_templates/stack_package/%7B%7Bcookiecutter.package_name%7D%7D/doc/%7B%7Bcookiecutter.package_name%7D%7D/index.rst>`_.
 
 For an example package named ``example``, the rendered template looks like this:
 
@@ -48,7 +48,7 @@ The cross-reference target above the title must be name of the package followed 
 Context paragraph
 =================
 
-Directly after the title, include one or two paragraphs that describe what the module is for.
+Directly after the title, include one or two paragraphs that describe what the package is for.
 The purpose of this content is not to describe the package in detail, or how to use it, but instead to quickly orient a reader.
 
 You can also mention related packages:
@@ -99,7 +99,7 @@ The package homepage topic type will continue to evolve. These are some possible
 
 -  EUPS dependencies: an automatically-generated list of both direct and implicit EUPS package dependencies.
 
--  Development guides: a section linking to topics specifically about how to develop this package.
+-  Development guides: a section linking to topics specifically about how to contribute to this package.
 
 .. _stack_package: https://github.com/lsst/templates/tree/master/project_templates/stack_package
 .. _toctree: http://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-toctree
