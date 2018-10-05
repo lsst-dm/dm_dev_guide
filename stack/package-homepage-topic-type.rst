@@ -59,16 +59,6 @@ You can also mention related packages:
 
 If a package provides datasets (such as a test data repository), you can summarize what these datasets are for, and what APIs use those datasets.
 
-.. _package-homepage-contributing:
-
-Contributing section
-====================
-
-This section puts the package in context as an open source development project.
-The `template <package-homepage-template>` seeds this section with links to the GitHub repository for the package and a ticket search with the package's corresponding Jira component (if the package does not have a Jira component, request one in `#dm-square`_).
-
-If there is documentation describing how to develop (contribute) to the package, as opposed to using the package, you should link to those topics with a `toctree`_ in this section.
-
 .. _package-homepage-project-using:
 
 Using <package> section
