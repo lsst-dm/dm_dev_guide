@@ -2,12 +2,15 @@
 Using the lsst-dev Server
 #########################
 
-``lsst-dev`` is the development server/cluster of servers run by NCSA for LSST DM development work.
-The cname ``lsst-dev.ncsa.illinois.edu`` directs to ``lsst-dev01.ncsa.illinois.edu`` and this system serves as the primary development server for the team.
+``lsst-dev`` is the development cluster of servers run by NCSA for LSST DM development work.
+The cname ``lsst-dev.ncsa.illinois.edu`` directs to ``lsst-dev01.ncsa.illinois.edu`` and this system serves as the primary development server for the team. There are currently 3 identical development servers to choose from:
+   - lsst-dev01.ncsa.illinois.edu
+   - lsst-dev02.ncsa.illinois.edu
+   - lsst-dev03.ncsa.illinois.edu
 
 To get an account, see the :doc:`Onboarding Checklist </team/onboarding>`.
 
-This page is designed to assist developers in their work on ``lsst-dev01``:
+This page is designed to assist developers in their work on the ``lsst-dev`` servers:
 
 #. :ref:`lsst-dev-overview`
 #. :ref:`lsst-dev-password`
@@ -115,7 +118,7 @@ For more information on using SSH public/private keys:
 Select Appropriate Developer Tools
 ==================================
 
-The ``lsst-dev01`` system is configured with the latest CentOS 7.x as its operating system.
+The ``lsst-dev`` systems are configured with the latest CentOS 7.x as its operating system.
 This release of CentOS provides an old set of development tools, centered around version 4.8.5 of the `GNU Compiler Collection`_ (GCC).
 Updated toolchains are made available through the “Software Collection” system.
 The following Software Collections are currently available:
@@ -149,7 +152,7 @@ To enable a particular Software Collection use the ``scl`` command. For example:
 
 You may wish to automatically enable a particular software collection every time you log in to ``lsst-dev01`` and other LSST systems.
 Take care if you do this: it's easy to accidentally to either start recursively spawning shells and run out of resources or lock yourself out of machines which don't have the particular collection you're interested in installed.
-If you are using `Bash`_ — the default shell on ``lsst-dev01`` — try placing the following at the end of :file:`~/.bash_profile` and customising the list of ``desired_scls``.
+If you are using `Bash`_ — the default shell on ``lsst-dev`` servers — try placing the following at the end of :file:`~/.bash_profile` and customising the list of ``desired_scls``.
 
 .. code-block:: bash
 
