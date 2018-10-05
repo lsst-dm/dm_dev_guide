@@ -12,7 +12,7 @@ The purpose of the package homepage is to provide summary information about a pa
 Starter template
 ================
 
-The `stack_package`_ project template includes the `Jinja-formatted template for the module homepage <https://raw.githubusercontent.com/lsst/templates/master/project_templates/stack_package/%7B%7Bcookiecutter.package_name%7D%7D/doc/%7B%7Bcookiecutter.package_name%7D%7D/index.rst>`_.
+The `stack_package`_ project template includes the `Jinja-formatted template for the package homepage <https://raw.githubusercontent.com/lsst/templates/master/project_templates/stack_package/%7B%7Bcookiecutter.package_name%7D%7D/doc/%7B%7Bcookiecutter.package_name%7D%7D/index.rst>`_.
 
 For an example package named ``example``, the rendered template looks like this:
 
@@ -48,7 +48,7 @@ The cross-reference target above the title must be name of the package followed 
 Context paragraph
 =================
 
-Directly after the title, include one or two paragraphs that describe what the module is for.
+Directly after the title, include one or two paragraphs that describe what the package is for.
 The purpose of this content is not to describe the package in detail, or how to use it, but instead to quickly orient a reader.
 
 You can also mention related packages:
@@ -58,24 +58,6 @@ You can also mention related packages:
    Definitions of metrics and their specifications are provided separately in the :doc:`/packages/verify_metrics/index` package.
 
 If a package provides datasets (such as a test data repository), you can summarize what these datasets are for, and what APIs use those datasets.
-
-.. _package-homepage-contributing:
-
-Contributing section
-====================
-
-This section puts the package in context as an open source development project.
-The `template <package-homepage-template>` seeds this section with links to the GitHub repository for the package and a ticket search with the package's corresponding Jira component (if the package does not have a Jira component, request one in `#dm-square`_).
-
-If there is documentation describing how to develop (contribute) to the package, as opposed to using the package, you should link to those topics with a `toctree`_ in this section.
-
-.. _package-homepage-project-modules:
-
-Modules section
-===============
-
-The Modules section is designed to provide links to the module homepages for each module provided by the package.
-See the :ref:`starter template’s example <package-homepage-template>` for how this section is presented.
 
 .. _package-homepage-project-using:
 
@@ -98,16 +80,15 @@ For example, given a package named ``example`` with files :file:`doc/example/top
 
 Each of these other reStructuredText files should follow the :doc:`Generic guide topic type <generic-guide-topic-type>`.
 
-.. _package-homepage-project-future:
+.. _package-homepage-contributing:
 
-Future components
-=================
+Contributing section
+====================
 
-The package homepage topic type will continue to evolve. These are some possible additions:
+This section puts the package in context as an open source development project.
+The `template <package-homepage-template>` seeds this section with links to the GitHub repository for the package and a ticket search with the package's corresponding Jira component (if the package does not have a Jira component, request one in `#dm-square`_).
 
--  EUPS dependencies: an automatically-generated list of both direct and implicit EUPS package dependencies.
-
--  Development guides: a section linking to topics specifically about how to develop this package.
+If there is documentation describing how to develop (contribute) to the package, as opposed to using the package, you should link to those topics with a `toctree`_ in this section.
 
 .. _stack_package: https://github.com/lsst/templates/tree/master/project_templates/stack_package
 .. _toctree: http://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-toctree
