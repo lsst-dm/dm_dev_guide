@@ -206,7 +206,7 @@ It also makes wrapped classes appear as if they were defined directly in the hig
 
 Modules should have exactly one source file with a ``PYBIND11_MODULE`` block, and usually that block should delegate the real work to functions defined in other source files (generally one for each C++ header to be wrapped).
 
-. note::
+.. note::
 
     An older version of this tutorial advocated compiling each source file as a separate module, which makes it impossible to correctly handle circular dependencies, and generally leads to larger-than-necessary binary module sizes.
 
@@ -784,7 +784,7 @@ Following :ref:`this rule <style-guide-pybind11-declare-template-wrappers>` we d
 
 .. note::
 
-    * We follow :ref:`this rule <style-guide-pybind11-wrapper-code-source-file-namespace>` and stick the declare function in an annonymous namespace;
+    * We follow :ref:`this rule <style-guide-pybind11-common-code-namespace>` and stick the declare function in an annonymous namespace;
     * We use the alias rules for :ref:`types <style-guide-pybind11-class-alias>` and :ref:`pybind11 class objects <style-guide-pybind11-class-object-alias>` to minimize typing;
     * A ``suffix`` is appended to the name of the class in Python.
       Commonly used suffixes are:
@@ -833,16 +833,16 @@ It's also possible to create a submodule within the same compiled module, howeve
 The module names and file/directory structure can be quite confusing in this case, so we'll look at a very concrete example.
 Let's imagine we have a package ``lsst.foo``, with a normal package-level
 module ``_foo``.
-That implies we have the following files:
-::
+That implies we have the following files::
+
     lsst/
         foo/
             __init__.py
             _foo.cc
             SConscript
 
-In order to add a submodule ``bar`` that wraps content from ``BarStuff.h``, we'll add a subpackage directory and ``__init__.py`` for it, and put a new source file in the subpackage directory, so the full structure now looks like this:
-::
+In order to add a submodule ``bar`` that wraps content from ``BarStuff.h``, we'll add a subpackage directory and ``__init__.py`` for it, and put a new source file in the subpackage directory, so the full structure now looks like this::
+
     lsst/
         foo/
             __init__.py
@@ -927,7 +927,7 @@ Adding new members
 ------------------
 
 Sometimes it is necessary to add pure Python members to a wrapped C++ class.
-Following our :ref:`structure and naming convention <style-guide-pybind11-subpackage>` for this, we'll add a new pure-Python ``_ExampleTwo.py`` module.
+Following our :ref:`structure and naming convention <style-guide-pybind11-module-naming>` for this, we'll add a new pure-Python ``_ExampleTwo.py`` module.
 Note that this name doesn't conflict with ``_ExampleTwo.cc``, because that's never compiled into a standalone Python module.
 
 We'll use the ``continueClass`` decorator to reopen the class and add a new method:
