@@ -197,13 +197,15 @@ We provide a ready-to-use “shared” version of the LSST software stack to ena
 The shared stack includes a fully-fledged Miniconda-based Python environment, a selection of additional development tools, and a selection of builds of the lsst_distrib meta-package.
 The currently stack is regularly updated to include the latest weekly release, which is tagged as ``current``.
 
-The following stacks are currently maintained:
+The following stacks are currently being updated:
 
-======================================== ============== ================ =======================================================================================================================================================================================================================
-Path                                     Python Version Toolchain        Description
-======================================== ============== ================ =======================================================================================================================================================================================================================
-:file:`/software/lsstsw/stack3_20171023` 3              ``devtoolset-6`` Located on GPFS-based network storage; as such, it is cross-mounted across a variety of LSST systems at NCSA including those configured as part of the `HTCondor pool`_ and :doc:`Verification Cluster <verification>`.
-======================================== ============== ================ =======================================================================================================================================================================================================================
+======================================= ============== ================ =======================================================================================================================================================================================================================
+Path                                    Python Version Toolchain        Description
+======================================= ============== ================ =======================================================================================================================================================================================================================
+:file:`/software/lsstsw/stack_20181012` 3              ``devtoolset-6`` Located on GPFS-based network storage; as such, it is cross-mounted across a variety of LSST systems at NCSA including those configured as part of the `HTCondor pool`_ and :doc:`Verification Cluster <verification>`.
+======================================= ============== ================ =======================================================================================================================================================================================================================
+
+In addition, although :file:`/software/lsstsw/stack3_20171023` is no longer being updated, it remains available, and provides a selection of builds dating between October 2017 and October 2018.
 
 .. note::
 
