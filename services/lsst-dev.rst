@@ -205,8 +205,6 @@ Path                                    Python Version Toolchain        Descript
 :file:`/software/lsstsw/stack_20181012` 3              ``devtoolset-6`` Located on GPFS-based network storage; as such, it is cross-mounted across a variety of LSST systems at NCSA including those configured as part of the `HTCondor pool`_ and :doc:`Verification Cluster <verification>`.
 ======================================= ============== ================ =======================================================================================================================================================================================================================
 
-In addition, although :file:`/software/lsstsw/stack3_20171023` is no longer being updated, it remains available, and provides a selection of builds dating between October 2017 and October 2018.
-
 .. note::
 
    When using a shared stack, you *must* use the corresponding developer toolchain. See above for details on how to :ref:`lsst-dev-tools`.
@@ -230,7 +228,13 @@ Add a shared stack to your environment and set up the latest build of the LSST a
 
 Although the latest weeklies of LSST software are regularly installed into the shared stacks, the rest of their contents is held fixed (to avoid API or ABI incompatibilities with old stack builds).
 We therefore periodically retire old stacks and replace them with new ones.
-There are currently no retired stacks available.
+The following retired stacks are currently available:
+
+======================================= ============== ================ ===============================================================================================
+Path                                    Python Version Toolchain        Description
+======================================= ============== ================ ===============================================================================================
+:file:`/software/lsstsw/stack_20171023` 3              ``devtoolset-6`` Provides a selection of weekly and release builds dating between October 2017 and October 2018.
+======================================= ============== ================ ===============================================================================================
 
 Administrators may wish to note that the shared stack is automatically updated using the script :file:`~lsstsw/shared-stack/shared_stack.py`, which is executed nightly by Cron.
 
