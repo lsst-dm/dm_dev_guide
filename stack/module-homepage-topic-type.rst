@@ -109,6 +109,19 @@ The template seeds this section with links to the GitHub repository for the modu
 
 If there is documentation describing how to develop (contribute) to the module, as opposed to using the APIs, you should link to those topics with a `toctree`_ in this section.
 
+.. _module-homepage-task-reference:
+
+Task reference section
+======================
+
+This section lists any tasks, command-line tasks, and standalone configuration classes that are provided by the module.
+See the :doc:`task-topic-type` and :doc:`config-topic-type` pages for descriptions of how to document tasks and standalone configuration classes.
+
+Since the content for this section is automatically generated through Sphinx extensions, refer to the :ref:`template and example <module-homepage-template>` for the boilerplate needed to implement this section.
+
+If a module does not provide command-line tasks, regular tasks, or standalone config classes, omit the corresponding subsections from the "Task reference" section.
+If a module does not provide any of these topic types, omit the "Task reference" section entirely.
+
 .. _module-homepage-python-reference:
 
 Python API reference
@@ -197,7 +210,6 @@ Future components
 The module homepage topic type will continue to evolve. These are the near-term development themes:
 
 -  C++ API reference section
--  Task reference section
 -  Clearer organization of the “Using <module>” section.
 -  EUPS dependencies: an automatically-generated list of both direct and implicit EUPS package dependencies.
 
