@@ -145,6 +145,16 @@ For example:
 .. code-block:: rst
 
    .. automodapi:: lsst.example
+      :no-main-docstr:
+      :no-inheritance-diagram:
+
+.. note::
+
+   We use ``no-main-docstr`` option because the module's docstring isn't the primary way we document the module (that's the purpose of the module homepage).
+   Thus using ``no-main-docstr`` eliminates this clutter.
+
+   The ``no-inheritance-diagram`` option disables a class inheritance from being shown for the module.
+   If the inheritance diagram is useful, this option can be omitted.
 
 .. _module-homepage-many-modules:
 
@@ -158,8 +168,12 @@ For this case, you can add an automodapi_ directive for each module that a user 
 .. code-block:: rst
 
    .. automodapi:: lsst.example.moduleA
+      :no-main-docstr:
+      :no-inheritance-diagram:
 
    .. automodapi:: lsst.example.moduleB
+      :no-main-docstr:
+      :no-inheritance-diagram:
 
 .. _module-homepage-all:
 
@@ -188,6 +202,8 @@ Use the ``skip`` option to remove one or more specific APIs:
 .. code-block:: rst
 
    .. automodapi:: lsst.example
+      :no-main-docstr:
+      :no-inheritance-diagram:
       :skip: ClassA, ClassB, functionC
 
 Alternatively, you can allow only one or more certain APIs with the ``allowed-package-names`` option:
@@ -195,6 +211,8 @@ Alternatively, you can allow only one or more certain APIs with the ``allowed-pa
 .. code-block:: rst
 
    .. automodapi:: lsst.example
+      :no-main-docstr:
+      :no-inheritance-diagram:
       :allowed-package-names: ClassA, ClassB
 
 .. tip::
