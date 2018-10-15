@@ -17,6 +17,7 @@ These are the available topic types for package documentation:
    package-homepage-topic-type
    module-homepage-topic-type
    task-topic-type
+   config-topic-type
    generic-guide-topic-type
 
 Additional topic types are being developed.
