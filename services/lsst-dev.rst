@@ -226,6 +226,15 @@ Add a shared stack to your environment and set up the latest build of the LSST a
 
 (substitute :file:`loadLSST.csh`, :file:`loadLSST.ksh` or :file:`loadLSST.zsh`, depending on your preferred shell).
 
+.. tip::
+
+   Initializing the stack will prepend the string ``(lsst-scipipe)`` to your prompt.
+   If you wish, you can disable this by running
+
+   .. prompt:: bash
+
+      conda config --set changeps1 false
+
 Although the latest weeklies of LSST software are regularly installed into the shared stacks, the rest of their contents is held fixed (to avoid API or ABI incompatibilities with old stack builds).
 We therefore periodically retire old stacks and replace them with new ones.
 The following retired stacks are currently available:
