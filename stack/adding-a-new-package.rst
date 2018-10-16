@@ -24,9 +24,9 @@ Management" and "Overlords." For third-party code, use the "DM Externals" and
 
 The new package must be added to the `etc/repos.yaml file in the lsst/repos
 repository`_ along with its corresponding GitHub URL. This file is governed by
-a "self-merge" policy: upon opening a pull request, it will be checked by the
-:doc:`stack-os-matrix Jenkins job </stack/jenkins-stack-os-matrix>`, and developers may merge without further review
-on success. Refer to :jira:`RFC-75` for background.
+a "self-merge" policy: upon opening a pull request, it will be checked by
+Travis CI, and developers may merge without further review on success. Refer
+to :jira:`RFC-75` for background.
 
 The new package then needs to be added to the :file:`ups/*.table` file (and
 possibly the :file:`ups/*.cfg` file) of one or more other packages in the
