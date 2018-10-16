@@ -144,6 +144,8 @@ or automatically enumerated,
 #. First thing
 #. Second thing
 
+.. _rst-dl:
+
 Definition lists
 ----------------
 

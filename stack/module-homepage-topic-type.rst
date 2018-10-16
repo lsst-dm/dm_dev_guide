@@ -109,6 +109,19 @@ The template seeds this section with links to the GitHub repository for the modu
 
 If there is documentation describing how to develop (contribute) to the module, as opposed to using the APIs, you should link to those topics with a `toctree`_ in this section.
 
+.. _module-homepage-task-reference:
+
+Task reference section
+======================
+
+This section lists any tasks, command-line tasks, and standalone configuration classes that are provided by the module.
+See the :doc:`task-topic-type` and :doc:`config-topic-type` pages for descriptions of how to document tasks and standalone configuration classes.
+
+Since the content for this section is automatically generated through Sphinx extensions, refer to the :ref:`template and example <module-homepage-template>` for the boilerplate needed to implement this section.
+
+If a module does not provide command-line tasks, regular tasks, or standalone config classes, omit the corresponding subsections from the "Task reference" section.
+If a module does not provide any of these topic types, omit the "Task reference" section entirely.
+
 .. _module-homepage-python-reference:
 
 Python API reference
@@ -132,6 +145,16 @@ For example:
 .. code-block:: rst
 
    .. automodapi:: lsst.example
+      :no-main-docstr:
+      :no-inheritance-diagram:
+
+.. note::
+
+   We use ``no-main-docstr`` option because the module's docstring isn't the primary way we document the module (that's the purpose of the module homepage).
+   Thus using ``no-main-docstr`` eliminates this clutter.
+
+   The ``no-inheritance-diagram`` option disables a class inheritance from being shown for the module.
+   If the inheritance diagram is useful, this option can be omitted.
 
 .. _module-homepage-many-modules:
 
@@ -145,8 +168,12 @@ For this case, you can add an automodapi_ directive for each module that a user 
 .. code-block:: rst
 
    .. automodapi:: lsst.example.moduleA
+      :no-main-docstr:
+      :no-inheritance-diagram:
 
    .. automodapi:: lsst.example.moduleB
+      :no-main-docstr:
+      :no-inheritance-diagram:
 
 .. _module-homepage-all:
 
@@ -175,6 +202,8 @@ Use the ``skip`` option to remove one or more specific APIs:
 .. code-block:: rst
 
    .. automodapi:: lsst.example
+      :no-main-docstr:
+      :no-inheritance-diagram:
       :skip: ClassA, ClassB, functionC
 
 Alternatively, you can allow only one or more certain APIs with the ``allowed-package-names`` option:
@@ -182,6 +211,8 @@ Alternatively, you can allow only one or more certain APIs with the ``allowed-pa
 .. code-block:: rst
 
    .. automodapi:: lsst.example
+      :no-main-docstr:
+      :no-inheritance-diagram:
       :allowed-package-names: ClassA, ClassB
 
 .. tip::
@@ -197,7 +228,6 @@ Future components
 The module homepage topic type will continue to evolve. These are the near-term development themes:
 
 -  C++ API reference section
--  Task reference section
 -  Clearer organization of the “Using <module>” section.
 -  EUPS dependencies: an automatically-generated list of both direct and implicit EUPS package dependencies.
 
