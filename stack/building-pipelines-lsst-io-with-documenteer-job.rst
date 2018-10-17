@@ -1,10 +1,10 @@
 .. _jenkins-pipelines-lsst-io-build:
 
-#########################################################################
-Building pipelines.lsst.io with Jenkins (sqre/infrastructure/documenteer)
-#########################################################################
+################################################################
+Building pipelines.lsst.io with Jenkins (sqre/infra/documenteer)
+################################################################
 
-The `sqre/infrastructure/documenteer`_ Jenkins CI job enables you to create a new build of `pipelines.lsst.io`_.
+The `sqre/infra/documenteer`_ Jenkins CI job enables you to create a new build of `pipelines.lsst.io`_.
 Since `pipelines.lsst.io`_ is published through LSST the Docs, builds for development branches appear as new editions from the `pipelines.lsst.io/v <https://pipelines.lsst.io/v>`__ version dashboard.
 
 .. important::
@@ -23,7 +23,7 @@ Since `pipelines.lsst.io`_ is published through LSST the Docs, builds for develo
 Running the documenteer Jenkins CI job
 ======================================
 
-Go to the `sqre/infrastructure/documenteer`_ job’s page, then click the **Run** button.
+Go to the `sqre/infra/documenteer`_ job’s page, then click the **Run** button.
 
 The following sections describe how to set each form field.
 
@@ -94,4 +94,4 @@ Once the job successfully finishes, open `pipelines.lsst.io/v`_ and find the cor
 .. _`pipelines.lsst.io`: https://pipelines.lsst.io
 .. _`pipelines.lsst.io/v`: https://pipelines.lsst.io/v
 .. _`pipelines_lsst_io`: https://github.com/lsst/pipelines_lsst_io
-.. _`sqre/infrastructure/documenteer`: https://ci.lsst.codes/blue/organizations/jenkins/sqre%2Finfrastructure%2Fdocumenteer/activity
+.. _`sqre/infra/documenteer`: https://ci.lsst.codes/blue/organizations/jenkins/sqre%2Finfra%2Fdocumenteer/activity
