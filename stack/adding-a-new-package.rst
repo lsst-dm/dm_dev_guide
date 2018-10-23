@@ -19,8 +19,9 @@ third party code should proceed as described in :doc:`packaging-third-party-eups
 
 New packages must be added to the `LSST organization on GitHub`_ and access
 must be granted to appropriate teams. For DM-written code, these include "Data
-Management" and "Overlords." For third-party code, use the "DM Externals" and
-"Overlords" (but *not* "Data Management") teams.
+Management" and "Overlords." 
+In case of science pipelines software, we may need to include third-party code, 
+in this case use the "DM Externals" and "Overlords" (but *not* "Data Management") teams.
 
 The new package must be added to the `etc/repos.yaml file in the lsst/repos
 repository`_ along with its corresponding GitHub URL. This file is governed by
