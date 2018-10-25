@@ -61,6 +61,14 @@ E228
 Maximum line length
    See :ref:`style-guide-py-line-length`.
 
+The style checker in ``pycodestyle`` also provides warnings that can be used to request a specific style that is ambiguous in :pep:`8`.
+These codes should be ignored to choose the LSST preferred style:
+
+W504
+   Line break after binary operator.
+   Disabling this enables W503 that checks that line breaks do not occur before binary operators.
+   See :ref:`style-guide-py-implied-continuation` for examples.
+
 Additionally, packages listed in :ref:`style-guide-py-sci-pi-naming` should disable the following rules:
 
 N802
@@ -133,7 +141,7 @@ This configuration, included in a :file:`setup.cfg` file at the root of code rep
 
    [flake8]
    max-line-length = 110
-   ignore = E133, E226, E228, N802, N803, N806
+   ignore = E133, E226, E228, N802, N803, N806, W504
    exclude =
      bin,
      doc,
@@ -177,7 +185,7 @@ Many :pep:`8` issues in existing code can be fixed with `autopep8`_ version 1.2 
 .. code-block:: bash
 
    autopep8 . --in-place --recursive \
-       --ignore E133,E226,E228,N802,N803,N806 --max-line-length 110
+       --ignore E133,E226,E228,N802,N803,N806,W504 --max-line-length 110
 
 The ``.`` specifies the current directory.
 Together with ``--recursive``, the full tree of Python files will be processed by :command:`autopep8`.
