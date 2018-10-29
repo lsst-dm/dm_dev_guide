@@ -67,7 +67,7 @@ These codes should be ignored to choose the LSST preferred style:
 W504
    Line break after binary operator.
    Disabling this enables W503 that checks that line breaks do not occur before binary operators.
-   See :ref:`style-guide-py-implied-continuation` for examples.
+   See :ref:`style-guide-py-binary-operator-line-break`.
 
 Additionally, packages listed in :ref:`style-guide-py-sci-pi-naming` should disable the following rules:
 
@@ -370,6 +370,16 @@ For example:
 
 This deviates from PEP 8, which `allows whitespace around these arithmetic operators if they appear alone <https://www.python.org/dev/peps/pep-0008/#other-recommendations>`__.
 Error codes: E226 and E228.
+
+.. _style-guide-py-binary-operator-line-break:
+
+Wrap lines after binary operators
+---------------------------------
+
+`PEP 8 does not prescribe <https://www.python.org/dev/peps/pep-0008/#should-a-line-break-before-or-after-a-binary-operator>`_ whether lines should be broken before or after binary operators.
+For consistency with our :ref:`C++ code <style-guide-cpp-4-8>`, we choose after.
+
+This requires that W504 be disabled in pycodestyle.
 
 .. _style-guide-py-comments:
 
