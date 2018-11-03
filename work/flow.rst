@@ -79,16 +79,15 @@ Tickets
 All development work is done on these three types of **JIRA issues** that are generically referred to as **tickets**:
 
 Story
-   Stories are issues associated with an epic.
-   That is, stories are for work that accomplish your main goals for a cycle.
+   Stories are for work that accomplish your main goals for a cycle.
+   Stories are part of regular epics, planned at the start of each cycle.
 Bug
-   A bug is an emergent (not planned with an epic) ticket that fixes a fault in the software that exists on ``master``.
-   Bug tickets are not associated with an epic.
+   A ticket of type bug describes “emergent” work: it was not planned at the start of a development cycle, but rather is a response to an unexpected problem report.
+   Bugs are associated with special epics designated for addressing emergent work.
 Improvement
    An improvement is essentially a feature request.
-   Like a *bug*, an improvement is emergent.
+   Like a *bug*, an improvement is emergent, and hence belongs in a special epic.
    Unlike a bug, an improvement adds new functionality.
-   Improvements differ from stories in that they have no epic link.
 
 Issue semantics were discussed in `RFC-43 <https://jira.lsstcorp.org/browse/RFC-43>`_.
 
