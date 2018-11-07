@@ -139,90 +139,40 @@ SublimeLinter-flake8
 
 LSST :ref:`uses flake8 <style-guide-py-flake8>` to check that our python code conforms to our :doc:`/python/style`.
 You can get SublimeText to check your python code inline and mark lines that do not follow our style with the `SublimeLinter <http://www.sublimelinter.com/en/latest/>`_ package.
-Install ``SublimeLinter`` and ``SublimeLinter-flake8`` via Package Control.
+Install ``SublimeLinter`` and ``SublimeLinter-flake8`` via Package Control (note: packages that are already installed won't show up in Package Control's "Install Package" list).
 Use the following configuration to conform to LSST's python style, to mark failing lines, and to provide a summary of failures on save that will let you go directly to those lines.
 
-
-You may have to `configure your PATH <http://www.sublimelinter.com/en/latest/usage.html#how-linter-executables-are-located>`_ to allow SublimeText to find the ``flake8`` executable.
-
-
-Note that there are SublimeLinter plugins for other languages (e.g. RestructuredText, yaml, javascript) as well.
-
-.. code-block:: json
-
-    {
-        "user": {
-            "debug": false,
-            "delay": 0.25,
-            "error_color": "D02000",
-            "gutter_theme": "Packages/SublimeLinter/gutter-themes/Default/Default.gutter-theme",
-            "gutter_theme_excludes": [],
-            "lint_mode": "background",
-            "linters": {
-                "flake8": {
-                    "@disable": false,
-                    "args": [],
-                    "builtins": "",
-                    "excludes": [],
-                    "executable": "",
-                    "ignore": "E133,E226,E228,N802,N803,N806",
-                    "jobs": "1",
-                    "max-complexity": -1,
-                    "max-line-length": 110,
-                    "select": "",
-                    "show-code": false
-                },
-            },
-            "mark_style": "outline",
-            "no_column_highlights_line": false,
-            "passive_warnings": false,
-            "paths": {
-                "linux": [],
-                "osx": [],
-                "windows": []
-            },
-            "python_paths": {
-                "linux": [],
-                "osx": [
-                    ""
-                ],
-                "windows": []
-            },
-            "rc_search_limit": 3,
-            "shell_timeout": 10,
-            "show_errors_on_save": true,
-            "show_marks_in_minimap": true,
-            "syntax_map": {
-                "html (django)": "html",
-                "html (rails)": "html",
-                "html 5": "html",
-                "php": "html",
-                "python django": "python"
-            },
-            "tooltip_fontsize": "1rem",
-            "tooltip_theme": "Packages/SublimeLinter/tooltip-themes/Default/Default.tooltip-theme",
-            "tooltip_theme_excludes": [],
-            "tooltips": false,
-            "warning_color": "DDB700",
-            "wrap_find": true
-        }
-    }
-
-
-``Python PEP8 Autoformat`` lets one bulk reformat a number of python files to match a style.
-Use these settings to match LSST's python style when auto formatting:
+Install ``flake8`` in the python that you will use for lsst development (typically your copy LSST-installed miniconda).
+Set the ``executable`` parameter of ``SublimeLinter-flake8`` to the path to that ``flake8``.
+Here is an example configuration for ``SublimeLinter`` and ``flake8``:
 
 .. code-block:: text
 
+    // SublimeLinter Settings - User
     {
-        // list codes for fixes; used by --ignore and --select
-        "list-fixes": true,
-        // do not fix these errors / warnings (e.g. [ "E501" , "E4" , "W"])
-        // LSST style;
-        "ignore": ["E133", "E226", "E228", "N802", "N803", "N806"],
-        // Maximum line length
-        "max-line-length": 110
+        "linters": {
+            "flake8": {
+                "executable": "<your_miniconda_root_here>/miniconda/envs/lsst-scipipe/bin/flake8",
+                "args": [
+                    // from https://developer.lsst.io/python/testing.html#enabling-additional-pytest-options-flake8
+                    "--max-line-length", "110",
+                    "--ignore", "E133,E226,E228,N802,N803,N806",
+                ],
+            },
+        },
+        "show_panel_on_save": "view"
     }
+
+Alternately, instead of configuring line length and the ignore list in SublimeText, you can configure it globally by creating a ``~/.config/flake8`` file:
+
+.. code-block:: text
+
+    [flake8]
+    # from https://developer.lsst.io/python/testing.html#enabling-additional-pytest-options-flake8
+    ignore = E133, E226, E228, N802, N803, N806
+    max-line-length = 110
+
+Note that there are SublimeLinter plugins for other languages (e.g. RestructuredText, yaml, javascript) as well.
 
 .. _sublime-python-whitespace:
 
