@@ -163,6 +163,15 @@ Here is an example configuration for ``SublimeLinter`` and ``flake8``:
         "show_panel_on_save": "view"
     }
 
+Alternately, instead of configuring line length and the ignore list in SublimeText, you can configure it globally by creating a ``~/.config/flake8`` file:
+
+.. code-block:: text
+
+    [flake8]
+    # from https://developer.lsst.io/python/testing.html#enabling-additional-pytest-options-flake8
+    ignore = E133, E226, E228, N802, N803, N806
+    max-line-length = 110
+
 Note that there are SublimeLinter plugins for other languages (e.g. RestructuredText, yaml, javascript) as well.
 
 .. _sublime-python-whitespace:
