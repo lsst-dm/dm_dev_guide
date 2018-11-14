@@ -56,7 +56,7 @@ Its config topic page is located in the ``pipe_tasks`` package directory like th
 Preamble
 ========
 
-The :rst:dir:`lsst-config-topic` directive at the top of the page declares that the page is a canonical reference for the specified task class.
+The :rst:dir:`lsst-config-topic` directive at the top of the page declares that the page is a canonical reference for the specified config class.
 For example:
 
 .. code-block:: text
