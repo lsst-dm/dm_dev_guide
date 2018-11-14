@@ -200,9 +200,9 @@ An example of an output dataset description:
    ``calexp``
        The calibrated exposure.
        Persisted by the :lsst-config-field:`~lsst.pipe.tasks.processCcd.ProcessCcdConfig.calibrate` subtask.
-   
+
        The default subtask (:lsst-task:`~lsst.pipe.tasks.calibrate.CalibrateTask`) adds the following metadata:
-   
+
        ``MAGZERO_RMS``
            The RMS (standard deviation) of ``MAGZERO``, measured by the :lsst-config-field:`~lsst.pipe.tasks.calibrate.CalibrateTask.photoCal` subtask.
        ``MAGZERO_NOBJ``: ``Number of stars used to estimate ``MAGZERO``.
