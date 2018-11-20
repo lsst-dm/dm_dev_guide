@@ -545,6 +545,28 @@ methods, ``cls`` should be used instead.
     This is consistent with the naming conventions in PEP 8 as indicated explicitly
     by `upstream <https://mail.python.org/pipermail/python-dev/2018-January/151986.html>`_.
 
+.. _style-guide-py-naming-import:
+
+Import statements SHOULD follow a standard pattern
+--------------------------------------------------
+
+You may choose either to write module import statments so that they import the fully-qualified module name:
+
+.. code-block:: py
+
+   import lsst.foo.bar
+
+or you may use ``as`` to assign a short name to the module:
+
+.. code-block:: py
+
+   import lsst.foo.bar as fooBar
+
+Short names are typically formmed by dropping ``lsst.`` and combining the rest of the name using camel-case.
+They should be consistent between Python and C++ (see :ref:`C++ Style Guide rule 5-42 <style-guide-cpp-5-4>`).
+
+When working with an established part of the codebase — editing an existing file, or working within an existing package — the import style should be consistent with the existing code.
+
 .. _style-guide-py-files:
 
 7. Source Files & Modules
