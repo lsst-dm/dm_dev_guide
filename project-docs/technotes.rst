@@ -109,7 +109,6 @@ First, add or uncomment the ``bibliography`` directive at the bottom of your tec
 .. code-block:: rst
 
    .. bibliography:: local.bib lsstbib/books.bib lsstbib/lsst.bib lsstbib/lsst-dm.bib lsstbib/refs.bib lsstbib/refs_ads.bib
-      :encoding: latex+latin
       :style: lsst_aa
 
 .. note::
