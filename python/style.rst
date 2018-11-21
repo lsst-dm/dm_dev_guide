@@ -550,7 +550,7 @@ methods, ``cls`` should be used instead.
 Import statements SHOULD follow a standard pattern
 --------------------------------------------------
 
-You may choose either to write module import statments so that they import the fully-qualified module name:
+You may choose either to write module import statements so that they import the fully-qualified module name:
 
 .. code-block:: py
 
@@ -562,8 +562,8 @@ or you may use ``as`` to assign a short name to the module:
 
    import lsst.foo.bar as fooBar
 
-Short names are typically formmed by dropping ``lsst.`` and combining the rest of the name using camel-case.
-They should be consistent between Python and C++ (see :ref:`C++ Style Guide rule 5-42 <style-guide-cpp-5-4>`).
+Short names are typically formed by dropping ``lsst.`` and combining the rest of the name using camel-case.
+They should be consistent between Python and C++ (see :ref:`C++ Style Guide rule 5-42 <style-guide-cpp-5-42>`).
 
 When working with an established part of the codebase — editing an existing file, or working within an existing package — the import style should be consistent with the existing code.
 
