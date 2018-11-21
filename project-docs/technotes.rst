@@ -50,45 +50,51 @@ Technote series
   SMTN technotes are hosted in the https://github.com/lsst-sims organization.
   `Find SMTN technotes <https://github.com/search?o=desc&q=org%3Alsst-sims+smtn-&s=updated&type=Repositories>`_.
 
-.. _technote-create-rst:
+.. _technote-create:
 
-Create a reStructuredText technote
-==================================
+Create a technote
+=================
 
-ReStructuredText-formatted technotes are built with Sphinx_ into websites.
+Follow these steps to create a new technote:
 
-1. Follow the instructions at `lsst-technote-bootstrap <https://github.com/lsst-sqre/lsst-technote-bootstrap#running-this-cookiecutter-for-development>`__ to manually create a technote repository.
+1. Identify the next-available technote handle in the series you are creating a technote for.
+   You can do this by searching the series's GitHub organization.
 
-2. Create a GitHub repository in the appropriate organization with the technote's handle as the name.
-   The organizations are:
+   For example, to identify the next-available DMTN repository, search the `lsst-dm <https://github.com/lsst-dm>`__ organization:
 
-   `lsst-dm <https://github.com/lsst-dm>`__
-      DMTN series.
+   https://github.com/search?o=desc&q=org%3Alsst-dm+dmtn-&s=updated&type=Repositories
 
-   `lsst-sqre <https://github.com/lsst-sqre>`__
-      SQR series.
+   For discussion, the highest-numbered repository in the search result might be ``https://github.com/lsst-dm/dmtn-100``.
+   Try to go to the *next* repository, ``https://github.com/lsst-dm/dmtn-101``:
 
-   `lsst-sims <https://github.com/lsst-sims>`__
-      SMTN series.
+   - If the page is a 404 (Not Found), that URL corresponds to the next-available repository.
 
-3. Message the `#dm-docs <https://lsstc.slack.com/archives/dm-docs>`__ Slack channel so that the Travis integration for your technote can be activated.
+   - If the page exists, keep incrementing the serial number in the URL until you find a page that is unavailable (try visiting ``https://github.com/lsst-dm/dmtn-102``, ``https://github.com/lsst-dm/dmtn-103``, and so on).
 
-.. note::
+2. `Create a GitHub repository <https://help.github.com/articles/creating-a-new-repository/>`_ in the GitHub organization corresponding to the handle you identified in the previous step.
 
-   Previously you could use a Slack command, ``@sqrbot project create``, to create a reStructuredText technote.
-   Due to reliability issues with that service, we recommend that you use this manual process for now.
+3. On your local computer, create an empty Git repository:
 
-.. _Sphinx: http://www.sphinx-doc.org/en/stable/
-.. _stack-dm-docs: https://lsstc.slack.com/messages/C2B6DQBAL/
+   .. code-block:: bash
 
-.. _technote-create-latex:
+      mkdir <technote handle>
+      cd <technote handle>
+      git init .
 
-Create a LaTeX technote
-=======================
+4. Seed the local Git repository with a template.
+   Which template you use depends on the technote's format:
 
-Technotes can be written as LaTeX documents that are published to the web as PDFs inside landing pages.
+   - If you are creating a reStructuredText-based technote that is built with Sphinx into HTML, follow the instructions in `lsst-technote-bootstrap <https://github.com/lsst-sqre/lsst-technote-bootstrap#running-this-cookiecutter-for-development>`__.
 
-Follow the `lsst-texmf documentation <https://lsst-texmf.lsst.io/templates/document.html>`_ to create a new LaTeX-formatted technote.
+   - If you are creating a LaTeX-formatted technote that is built into a PDF, follow the `lsst-texmf documentation <https://lsst-texmf.lsst.io/templates/document.html>`_
+
+   Be sure to commit and push the new technote to GitHub.
+   GitHub provides instructions on how to push to GitHub when you create a new GitHub repository.
+
+4. Message the `#dm-docs <https://lsstc.slack.com/archives/dm-docs>`__ Slack channel so that the Travis integration for your technote can be activated.
+
+   Don't wait to configure your document's deployment.
+   By configuring your technote's deployment early on, it's easier for collaborators to view your content.
 
 .. _technote-rst-bib:
 
