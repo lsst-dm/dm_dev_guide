@@ -126,6 +126,11 @@ Pipeline tasks (subclasses of :lclass:`lsst.pipe.base.Task` or :lclass:`lsst.pip
    self.log.warn("Failed to make a psfCandidate from star %d: %s", star.getId(), err)
 
 When running command line tasks, the ``--loglevel`` command line argument can be used to set the threshold for specific components.
+For example, to make the ``calibrate`` stage of ``processCcd`` less verbose:
+
+.. code-block:: text
+
+    processCcd.py [input/output/id] --loglevel processCcd.calibrate=WARN
 
 Fine-level Verbosity in Tracing
 ===============================
