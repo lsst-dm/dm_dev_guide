@@ -67,7 +67,7 @@ For consistency, *do not* use triple single quotes: ``'''``.
 Docstrings SHOULD begin with ``"""`` and terminate with ``"""`` on its own line
 -------------------------------------------------------------------------------
 
-The docstring's summary sentence occurs on the same line as the opening ``"""``.
+The docstring's :ref:`summary sentence <py-docstring-short-summary>` occurs on the same line as the opening ``"""``.
 
 The terminating ``"""`` should be on its own line, even for 'one-line' docstrings (this is a minor departure from :pep:`257`).
 For example, a one-line docstring:
@@ -131,12 +131,12 @@ However, there should be a **single blank line before following code** such as c
 .. code-block:: py
 
    class Point(object):
-       """Point in a 2D cartesian space.
+       """A point in a 2D cartesian space.
 
        Parameters
        ----------
        x, y : `float`
-          Coordinate of the point.
+          The point's coordinate.
        """
 
        def __init__(x, y):
@@ -196,7 +196,7 @@ For example
 
 .. code-block:: python
 
-   """A summary
+   """A summary sentence.
 
    Notes
    -----
@@ -329,19 +329,125 @@ Short summary
 A one-sentence summary that does not use variable names or the function's name:
 
 .. code-block:: python
+   :emphasize-lines: 2
 
    def add(a, b):
        """Sum two numbers.
+
+       Parameters
+       ----------
+       a, b : `float`
+           The numbers to add together.
+
+       Returns
+       -------
+       sum : `float`
+           The sum of ``a`` and ``b``.
        """
        return a + b
 
+The summary sentence can wrap across multiple lines (see also :ref:`py-docstring-length`):
+
+.. code-block:: python
+   :emphasize-lines: 2-3
+
+   def sumif(sequence, conditional)
+       """Sum the numbers in a sequence as long as they pass a
+       user-provided conditional callback function.
+
+       Parameters
+       ----------
+       sequence : sequence of `float`
+           A sequence (`list`, for example) of numbers.
+       conditional : callable
+           A callback function that takes a single number as an
+           argument. The ``conditional`` function returns `True`
+           if the number passes the conditional, and `False`
+           otherwise.
+
+       Returns
+       -------
+       sum : `float`
+           The sum of numbers that meet the conditional.
+       """
+       total = 0
+       for n in sequence:
+           if conditional(n):
+               total += n
+        return total
+
+Do not write multiple sentences in the *Short summary*, however.
+If additional content is needed to clarify the *Short summary,* consider adding an :ref:`Extended summary <py-docstring-extended-summary>` section.
+
+Writing summaries for functions and methods
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 For functions and methods, write in the imperative voice.
-That is, the summary is treated a command that the API consumer can give.
+That is, the summary is treated as a command that the API consumer can give.
+
 Some examples:
 
-- ``Get metadata for all tasks.``
-- ``Make an `lsst.pex.config.ConfigurableField` for this task.``
-- ``Create a `Measurement` instance from a parsed YAML or JSON document.``
+- .. code-block:: python
+     :emphasize-lines: 2
+
+     def getMetadata(self):
+         """Get metadata for all tasks.
+
+         Returns
+         -------
+         metadata : `lsst.pipe.base.Struct`
+             The metadata.
+         """
+
+- .. code-block:: python
+     :emphasize-lines: 2
+
+     def makeRegistry(doc, configBaseType=Config):
+         """Create a `Registry`.
+
+         Parameters
+         ----------
+         doc : `str`
+             Docstring for the created `Registry` (this is set as the ``__doc__``
+             attribute of the `Registry` instance.
+         configBaseType : `lsst.pex.config.Config`-type
+             Base type of config classes in the `Registry`
+             (`lsst.pex.config.Registry.configBaseType`).
+
+         Returns
+         -------
+         registry : `Registry`
+             Registry with ``__doc__`` and `~Registry.configBaseType` attributes
+             set.
+         """
+
+Writing summaries for classes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+State what the class *is* through its summary sentence.
+
+Examples:
+
+- .. code-block:: python
+     :emphasize-lines: 2-4
+
+     class Job:
+         """A container for measurements, blobs, and metadata associated
+         with a pipeline run.
+         """
+
+- .. code-block:: python
+     :emphasize-lines: 2-4
+
+     class Field:
+         """A field in a `~lsst.pex.config.Config` class that supports `int`,
+         `float`, `complex`, `bool`, and `str` data types.
+         """
+
+Additional tips:
+
+- Don't repeat the class name in the summary sentence.
+- Don't write "This class..."
 
 .. _py-docstring-extended-summary:
 
