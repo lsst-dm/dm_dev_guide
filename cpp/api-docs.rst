@@ -195,54 +195,16 @@ For functions and methods, the summary should be written in the imperative voice
 Extended Summary
 ----------------
 
-A few sentences giving an extended description.
-This section should be used to clarify *functionality*, not to discuss implementation detail or background theory, which should rather be explored in the :ref:`cpp-doxygen-notes` section below.
-You may refer to the parameters and the function name, but parameter descriptions still belong in the :ref:`cpp-doxygen-parameters` section unless they are very lengthy.
+The extended summary is an optional sentence or short paragraph that clarifies and supports the :ref:`summary sentence <cpp-doxygen-short-summary>`.
+Taken together with the summary sentence, the summary content in general exists to help users quickly understand the role and scope of the API.
 
-This section may include mathematical equations to describe the behavior of a class or method, but be sure to put math that pertains only to the implementation in the :ref:`cpp-doxygen-notes` section rather than the extended description.
-Equations may be written in `LaTeX <http://www.latex-project.org/>`_ format:
+Leave detailed discussions of the API's features, usage patterns, background theory, and implementation details to the :ref:`Notes <cpp-doxygen-notes>` and :ref:`Examples <cpp-doxygen-examples>` sections.
+The :ref:`Parameters <cpp-doxygen-parameters>` and :ref:`Returns <cpp-doxygen-returns>` sections are ideal places to discuss in detail individual parameters and returned values, respectively.
 
-.. code-block:: cpp
-
-   /**
-    * The FFT is a fast implementation of the discrete Fourier transform:
-    * @f[ X(e^{j\omega } ) = x(n)e^{ - j\omega n} @f]
-    */
-
-LaTeX environments can also be used:
-
-.. code-block:: cpp
-
-   /**
-    * The discrete-time Fourier time-convolution property states that
-    * @f{eqnarray*}
-    * x(n) * y(n) \Leftrightarrow X(e^{j\omega } )Y(e^{j\omega } )\\
-    * another equation here
-    * @f}
-    */
-
-Math can also be used inline:
-
-.. code-block:: cpp
-
-   /**
-    * Fit a model of the form @f$y = a x + b@f$ to the data.
-    */
-
-Note that LaTeX is not particularly easy to read, so use equations judiciously. In particular, do not use inline LaTeX just to add Greek or other special symbols; prefer `HTML character entities <http://www.doxygen.org/manual/htmlcmds.html>`_ or Unicode instead.
-
-Doxygen recovers poorly from typos in formulas; you may need to manually delete ``docs/html/formula.repository`` if it contains a bad formula.
-
-Images are allowed, but should not be central to the explanation; users viewing the documentation as text must be able to comprehend its meaning without resorting to an image viewer.
-These additional illustrations are included using:
-
-.. code-block:: cpp
-
-   /**
-    * @image html filename ["caption"]
-    */
-
-where ``filename`` is a path relative to the project root directory.
+This section's brevity is critical.
+The extended summary is proximate to the summary sentence so that the two pieces of content support each other.
+However, the extended summary also separates the API signature from the :ref:`Parameters <cpp-doxygen-parameters>` section, which users expect to see close together.
+As a general guideline, the extended summary should be three sentences or fewer.
 
 .. _cpp-doxygen-tparameters:
 
@@ -327,7 +289,7 @@ When two or more consecutive parameters have *exactly* the same description, the
 
 .. note::
 
-   Doxygen will not properly parse parameter descriptions that have multiple paragraphs. If your function's input requires a lengthy explanation, put the explanation in the :ref:`cpp-doxygen-extended-summary` and refer to it from the parameter descriptions.
+   Doxygen will not properly parse parameter descriptions that have multiple paragraphs. If your function's input requires a lengthy explanation, put the explanation in the :ref:`cpp-doxygen-notes` and refer to it from the parameter descriptions.
 
 .. _cpp-doxygen-parameters-inline:
 
@@ -484,9 +446,72 @@ For internal consistency, always use ``@see`` and not the synonymous ``@sa``.
 Notes
 -----
 
-*Notes* is an optional section that provides additional information about the code, possibly including a discussion of the algorithm or known limitations of the code. The notes must be prefixed by a ``@note`` or ``@warning`` command. Equations or images may be used as described in :ref:`cpp-doxygen-extended-summary`.
+*Notes* is an optional section that provides additional conceptual information about the API.
 
+The notes must be prefixed by a ``@note`` or ``@warning`` command.
 For internal consistency, always use ``@note`` and not the synonymous ``@remark`` or ``@remarks``.
+
+Some things to include in a *Notes* section:
+
+- Discussions of features, going beyond the level of the :ref:`summary sentence <py-docstring-short-summary>` and :ref:`extended summary <py-docstring-extended-summary>`.
+- Usage patterns, like how code is expected to use this API, or how this API is intended to be used in relation to other APIs.
+- Background theory. For example, if the API implements an algorithm, you can fully document the algorithm here.
+- Implementation details and limitations, if those details affect the user's experience.
+  Purely internal details should be written as regular code comments.
+
+Specific how-tos, tutorials, and examples go in the :ref:`Examples section <py-docstring-examples>` instead of *Notes*.
+The *Notes* section is dedicated to conceptual documentation.
+
+The :ref:`cpp-doxygen-parameters` and :ref:`cpp-doxygen-returns` sections are the best places to describe specific input and output variables.
+The *Notes* section can still reference these variables by name (see :ref:`py-docstring-parameter-markup`), and discuss how they work at a big-picture level.
+Since the content in the :ref:`cpp-doxygen-parameters` needs to be brief, you can write additional content as part of the *Notes* section.
+
+This section may include mathematical equations to document the algorithm implemented by the function or class.
+Equations may be written in `LaTeX <http://www.latex-project.org/>`_ format:
+
+.. code-block:: cpp
+
+   /**
+    * The FFT is a fast implementation of the discrete Fourier transform:
+    * @f[ X(e^{j\omega } ) = x(n)e^{ - j\omega n} @f]
+    */
+
+LaTeX environments can also be used:
+
+.. code-block:: cpp
+
+   /**
+    * The discrete-time Fourier time-convolution property states that
+    * @f{eqnarray*}
+    * x(n) * y(n) \Leftrightarrow X(e^{j\omega } )Y(e^{j\omega } )\\
+    * another equation here
+    * @f}
+    */
+
+Math can also be used inline:
+
+.. code-block:: cpp
+
+   /**
+    * Fit a model of the form @f$y = a x + b@f$ to the data.
+    */
+
+Note that LaTeX is not particularly easy to read, so use equations judiciously. In particular, do not use inline LaTeX just to add Greek or other special symbols; prefer `HTML character entities <http://www.doxygen.org/manual/htmlcmds.html>`_ or Unicode instead.
+
+Doxygen recovers poorly from typos in formulas; you may need to manually delete ``docs/html/formula.repository`` if it contains a bad formula.
+
+Images are allowed, but should not be central to the explanation; users viewing the documentation as text must be able to comprehend its meaning without resorting to an image viewer.
+These additional illustrations are included using the ``@image`` command:
+
+.. code-block:: cpp
+
+   /**
+    * @image html filename ["caption"]
+    */
+
+``filename`` is a path relative to the project root directory.
+
+Equations or images may be used as described in :ref:`cpp-doxygen-extended-summary`.
 
 .. _cpp-doxygen-references:
 
