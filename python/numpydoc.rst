@@ -5,7 +5,7 @@
 .. _numpydoc-format:
 
 #######################################
-Documenting Python APIs with Docstrings
+Documenting Python APIs with docstrings
 #######################################
 
 We use Python docstrings to create reference documentation for our Python APIs.
@@ -18,13 +18,13 @@ This page describes how to write these docstrings in Numpydoc, DM's standard for
 - :ref:`py-docstring-rst`.
 - :ref:`py-docstring-sections`.
 
-  1. :ref:`Short Summary <py-docstring-short-summary>`
-  2. :ref:`Extended Summary <py-docstring-extended-summary>`
+  1. :ref:`Short summary <py-docstring-short-summary>`
+  2. :ref:`Extended summary <py-docstring-extended-summary>`
   3. :ref:`Parameters <py-docstring-parameters>`
   4. :ref:`Returns <py-docstring-returns>` or :ref:`Yields <py-docstring-yields>`
-  5. :ref:`Other Parameters <py-docstring-other-parameters>`
+  5. :ref:`Other parameters <py-docstring-other-parameters>`
   6. :ref:`Raises <py-docstring-raises>`
-  7. :ref:`See Also <py-docstring-see-also>`
+  7. :ref:`See also <py-docstring-see-also>`
   8. :ref:`Notes <py-docstring-notes>`
   9. :ref:`References <py-docstring-references>`
   10. :ref:`Examples <py-docstring-examples>`
@@ -45,7 +45,7 @@ Treat the guidelines on this page as an extension of the :doc:`style`.
 
 .. _py-docstring-basics:
 
-Basic Format of Docstrings
+Basic format of docstrings
 ==========================
 
 Python docstrings form the ``__doc__`` attributes attached to modules, classes, methods and functions.
@@ -65,7 +65,7 @@ For consistency, *do not* use triple single quotes: ``'''``.
 .. _py-docstring-form:
 
 Docstrings SHOULD begin with ``"""`` and terminate with ``"""`` on its own line
-----------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 The docstring's summary sentence occurs on the same line as the opening ``"""``.
 
@@ -178,7 +178,7 @@ Not:
 
 .. _py-docstring-rst:
 
-ReStructuredText in Docstrings
+ReStructuredText in docstrings
 ==============================
 
 We use reStructuredText to mark up and give semantic meaning to text in docstrings.
@@ -264,14 +264,14 @@ For example:
 
 .. _py-docstring-length:
 
-Line Lengths
+Line lengths
 ------------
 
 Hard-wrap text in docstrings to match the :ref:`docstring line length allowed by the coding standard <style-guide-py-docstring-line-length>`.
 
 .. _py-docstring-parameter-markup:
 
-Marking Up Parameter Names
+Marking up parameter names
 --------------------------
 
 The default reStructuredText role in docstrings is ``:py:obj:``.
@@ -293,7 +293,7 @@ For example, the description for ``format`` references the ``should_plot`` param
 
 .. _py-docstring-sections:
 
-Numpydoc Sections in Docstrings
+Numpydoc sections in docstrings
 ===============================
 
 We organize Python docstrings into sections that appear in a common order.
@@ -302,13 +302,13 @@ These are the sections and their relative order:
 
 .. _Numpydoc: https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt
 
-1. :ref:`Short Summary <py-docstring-short-summary>`
-2. :ref:`Extended Summary <py-docstring-extended-summary>` (optional)
+1. :ref:`Short summary <py-docstring-short-summary>`
+2. :ref:`Extended summary <py-docstring-extended-summary>` (optional)
 3. :ref:`Parameters <py-docstring-parameters>` (if applicable; for classes, methods, and functions)
 4. :ref:`Returns <py-docstring-returns>` or :ref:`Yields <py-docstring-yields>` (if applicable; for functions, methods, and generators)
-5. :ref:`Other Parameters <py-docstring-other-parameters>` (if applicable; for classes, methods, and functions)
+5. :ref:`Other parameters <py-docstring-other-parameters>` (if applicable; for classes, methods, and functions)
 6. :ref:`Raises <py-docstring-raises>` (if applicable)
-7. :ref:`See Also <py-docstring-see-also>` (optional)
+7. :ref:`See also <py-docstring-see-also>` (optional)
 8. :ref:`Notes <py-docstring-notes>` (optional)
 9. :ref:`References <py-docstring-references>` (optional)
 10. :ref:`Examples <py-docstring-examples>` (optional)
@@ -323,7 +323,7 @@ For summaries of how these docstring sections are composed in specific contexts,
 
 .. _py-docstring-short-summary:
 
-Short Summary
+Short summary
 -------------
 
 A one-sentence summary that does not use variable names or the function's name:
@@ -345,7 +345,7 @@ Some examples:
 
 .. _py-docstring-extended-summary:
 
-Extended Summary
+Extended summary
 ----------------
 
 A few sentences giving an extended description.
@@ -406,7 +406,7 @@ For example:
 
 .. _py-docstring-parameter-types:
 
-Describing Parameter Types
+Describing parameter types
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Be as precise as possible when describing parameter types.
@@ -506,7 +506,7 @@ For callback functions, describe the type as ``callable``:
 
 .. _py-docstring-optional:
 
-Optional Parameters
+Optional parameters
 ^^^^^^^^^^^^^^^^^^^
 
 For keyword arguments with useful defaults, add ``optional`` to the type specification:
@@ -658,7 +658,7 @@ For example:
 
 .. _py-docstring-other-parameters:
 
-Other Parameters
+Other parameters
 ----------------
 
 *For classes, methods and functions.*
@@ -708,7 +708,7 @@ Stylistically, write the first sentence of each description in the form:
 
 .. _py-docstring-see-also:
 
-See Also
+See also
 --------
 
 Use the 'See also' section to link to related APIs that the user may not be aware of, or may not easily discover from other parts of the docstring.
@@ -830,17 +830,17 @@ For more information on doctest, see:
 
 .. _py-docstring-module-structure:
 
-Documenting Modules
+Documenting modules
 ===================
 
-Sections in Module Docstrings
+Sections in module docstrings
 -----------------------------
 
 Module docstrings contain the following sections:
 
-1. :ref:`Short Summary <py-docstring-short-summary>`
-2. :ref:`Extended Summary <py-docstring-extended-summary>` (optional)
-3. :ref:`See Also <py-docstring-see-also>` (optional)
+1. :ref:`Short summary <py-docstring-short-summary>`
+2. :ref:`Extended summary <py-docstring-extended-summary>` (optional)
+3. :ref:`See also <py-docstring-see-also>` (optional)
 
 .. note::
 
@@ -850,7 +850,7 @@ Module docstrings contain the following sections:
 
    Module docstrings can still be useful for developer-oriented notes, though.
 
-Placement of Module Docstrings
+Placement of module docstrings
 ------------------------------
 
 Module-level docstrings must be placed as close to the top of the Python file as possible: *below* any ``#!/usr/bin/env python`` and license statements, but *above* imports.
@@ -893,27 +893,27 @@ For example:
 
 .. _py-docstring-class-structure:
 
-Documenting Classes
+Documenting classes
 ===================
 
 Class docstrings are placed directly after the class definition, and serve to document both the class as a whole *and* the arguments passed to the ``__init__`` constructor.
 
-Sections in Class Docstrings
+Sections in class docstrings
 ----------------------------
 
 Class docstrings contain the following sections:
 
-1. :ref:`Short Summary <py-docstring-short-summary>`
-2. :ref:`Extended Summary <py-docstring-extended-summary>` (optional)
+1. :ref:`Short summary <py-docstring-short-summary>`
+2. :ref:`Extended summary <py-docstring-extended-summary>` (optional)
 3. :ref:`Parameters <py-docstring-parameters>` (if applicable)
-4. :ref:`Other Parameters <py-docstring-other-parameters>` (if applicable)
+4. :ref:`Other parameters <py-docstring-other-parameters>` (if applicable)
 5. :ref:`Raises <py-docstring-raises>` (if applicable)
-6. :ref:`See Also <py-docstring-see-also>` (optional)
+6. :ref:`See also <py-docstring-see-also>` (optional)
 7. :ref:`Notes <py-docstring-notes>` (optional)
 8. :ref:`References <py-docstring-references>` (optional)
 9. :ref:`Examples <py-docstring-examples>` (optional)
 
-Placement of Class Docstrings
+Placement of class docstrings
 -----------------------------
 
 Class docstrings must be placed directly below the declaration, and indented according to the code scope:
@@ -934,7 +934,7 @@ Class docstrings must be placed directly below the declaration, and indented acc
 
 The ``__init__`` method never has a docstring since the class docstring documents the constructor.
 
-Examples of Class Docstrings
+Examples of class docstrings
 ----------------------------
 
 Here's an example of a more comprehensive class docstring with :ref:`Short Summary <py-docstring-short-summary>`, :ref:`Parameters <py-docstring-parameters>`, :ref:`Raises <py-docstring-raises>`, :ref:`See Also <py-docstring-see-also>`, and :ref:`Examples <py-docstring-examples>` sections:
@@ -975,26 +975,26 @@ Here's an example of a more comprehensive class docstring with :ref:`Short Summa
 
 .. _py-docstring-method-function-structure:
 
-Documenting Methods and Functions
+Documenting methods and functions
 =================================
 
-Sections in Method and Function Docstring Sections
+Sections in method and function docstring sections
 --------------------------------------------------
 
 Method and function docstrings contain the following sections:
 
-1. :ref:`Short Summary <py-docstring-short-summary>`
-2. :ref:`Extended Summary <py-docstring-extended-summary>` (optional)
+1. :ref:`Short summary <py-docstring-short-summary>`
+2. :ref:`Extended summary <py-docstring-extended-summary>` (optional)
 3. :ref:`Parameters <py-docstring-parameters>` (if applicable)
 4. :ref:`Returns <py-docstring-returns>` or :ref:`Yields <py-docstring-yields>` (if applicable)
-5. :ref:`Other Parameters <py-docstring-other-parameters>` (if applicable)
+5. :ref:`Other parameters <py-docstring-other-parameters>` (if applicable)
 6. :ref:`Raises <py-docstring-raises>` (if applicable)
-7. :ref:`See Also <py-docstring-see-also>` (optional)
+7. :ref:`See also <py-docstring-see-also>` (optional)
 8. :ref:`Notes <py-docstring-notes>` (optional)
 9. :ref:`References <py-docstring-references>` (optional)
 10. :ref:`Examples <py-docstring-examples>` (optional)
 
-Placement of Module and Function Docstrings
+Placement of module and function docstrings
 -------------------------------------------
 
 Class, method, and function docstrings must be placed directly below the declaration, and indented according to the code scope:
@@ -1028,14 +1028,14 @@ Class, method, and function docstrings must be placed directly below the declara
 Again, the :ref:`class docstring <py-docstring-class-structure>` takes the place of a docstring for the ``__init__`` method.
 ``__init__`` methods don't have docstrings.
 
-Dunder Methods
+Dunder methods
 --------------
 
 Special "dunder" methods on classes only need to have docstrings if they are doing anything non-standard.
 For example, if a ``__getslice__`` method cannot take negative indices, that should be noted.
 But if ``__ge__`` returns true if ``self`` is greater than or equal to the argument, that need not be documented.
 
-Examples of Method and Function Docstrings
+Examples of method and function docstrings
 ------------------------------------------
 
 Here's an example function:
@@ -1083,10 +1083,10 @@ Here's an example function:
 
 .. _py-docstring-attribute-constants-structure:
 
-Documenting Constants and Class Attributes
+Documenting constants and class attributes
 ==========================================
 
-Sections in Constant and Class Attribute Docstrings
+Sections in constant and class attribute docstrings
 ---------------------------------------------------
 
 Constants in modules and attributes in classes are all documented similarly.
@@ -1099,7 +1099,7 @@ They can also have a more complete structure with these sections:
 4. :ref:`References <py-docstring-references>` (optional)
 5. :ref:`Examples <py-docstring-examples>` (optional)
 
-Placement of Constant and Class Attribute Docstrings
+Placement of constant and class attribute docstrings
 ----------------------------------------------------
 
 Docstrings for module-level variables and class attributes appear directly below their first declaration.
@@ -1121,7 +1121,7 @@ For example:
        """Description of x attribute.
        """
 
-Examples of Constant and Class Attribute Docstrings
+Examples of constant and class attribute docstrings
 ---------------------------------------------------
 
 Minimal constant or attribute example
@@ -1196,7 +1196,7 @@ Notice that the :ref:`parameters <py-docstring-parameters>` to the ``__init__`` 
 
 .. _py-docstring-property-structure:
 
-Documenting Class Properties
+Documenting class properties
 ============================
 
 Properties are documented like :ref:`class attributes <py-docstring-attribute-constants-structure>` rather than methods.
@@ -1233,7 +1233,7 @@ Note:
 
 .. _py-docstring-example-module:
 
-Complete Example Module
+Complete example module
 =======================
 
 .. literalinclude:: examples/numpydocExample.py
