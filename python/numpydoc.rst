@@ -454,9 +454,16 @@ Additional tips:
 Extended summary
 ----------------
 
-A few sentences giving an extended description.
-This section should be used to clarify *functionality*, not to discuss implementation detail or background theory, which should rather be explored in the :ref:`'Notes' <py-docstring-notes>` section below.
-You may refer to the parameters and the function name, but parameter descriptions still belong in the :ref:`'Parameters' <py-docstring-parameters>` section.
+The extended summary is an optional sentence or short paragraph that clarifies and supports the :ref:`summary sentence <py-docstring-short-summary>`.
+Taken together with the summary sentence, the summary content in general exists to help users quickly understand the role and scope of the API.
+
+Leave detailed discussions of the API's features, usage patterns, background theory, and implementation details to the :ref:`Notes <py-docstring-notes>` and :ref:`Examples <py-docstring-examples>` sections.
+The :ref:`Parameters <py-docstring-parameters>` and :ref:`Returns <py-docstring-returns>` sections are ideal places to discuss in detail individual parameters and returned values, respectively.
+
+This section's brevity is critical.
+The extended summary is proximate to the summary sentence so that the two pieces of content support each other.
+However, the extended summary also separates the API signature from the :ref:`Parameters <py-docstring-parameters>` section, which users expect to see close together.
+As a general guideline, the extended summary should be three sentences or fewer.
 
 .. _py-docstring-parameters:
 
@@ -849,8 +856,22 @@ Providing the full namespace is always safe, though, and provides clarity to fel
 Notes
 -----
 
-*Notes* is an optional section that provides additional information about the code, possibly including a discussion of the algorithm.
-Most reStructuredText formatting is allowed in the Notes section, including:
+*Notes* is an optional section that provides additional conceptual information about the API.
+Some things to include in a *Notes* section:
+
+- Discussions of features, going beyond the level of the :ref:`summary sentence <py-docstring-short-summary>` and :ref:`extended summary <py-docstring-extended-summary>`.
+- Usage patterns, like how code is expected to use this API, or how this API is intended to be used in relation to other APIs.
+- Background theory. For example, if the API implements an algorithm, you can fully document the algorithm here.
+- Implementation details and limitations, if those details affect the user's experience.
+  Purely internal details should be written as regular code comments.
+
+Specific how-tos, tutorials, and examples go in the :ref:`Examples section <py-docstring-examples>` instead of *Notes*.
+The *Notes* section is dedicated to conceptual documentation.
+
+The :ref:`Parameters <py-docstring-parameters>`, :ref:`Returns <py-docstring-returns>` and :ref:`Yields <py-docstring-yields>` sections are the best places to describe specific input and output variables in detail.
+The *Notes* section can still reference these variables by name (see :ref:`py-docstring-parameter-markup`), and discuss how they work at a big-picture level.
+
+Most reStructuredText formatting is allowed in the *Notes* section, including:
 
 - :ref:`Lists <rst-lists>`
 - :ref:`Tables <rst-tables>`
