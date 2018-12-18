@@ -525,7 +525,17 @@ Describing parameter types
 Be as precise as possible when describing parameter types.
 The type description is free-form text, making it possible to list several supported types or indicate nuances.
 Complex and lengthy type descriptions can be partially moved to the parameter's *description* field.
-The following sections will help you deal with the different kinds of types commonly seen.
+The following sections will help you deal with the different kinds of types commonly seen:
+
+- :ref:`py-docstring-parameter-types-concrete`
+- :ref:`py-docstring-parameter-types-choices`
+- :ref:`py-docstring-parameter-types-sequences`
+- :ref:`py-docstring-parameter-types-dict`
+- :ref:`py-docstring-parameter-types-struct`
+- :ref:`py-docstring-parameter-types-array`
+- :ref:`py-docstring-parameter-types-callable`
+
+.. _py-docstring-parameter-types-concrete:
 
 Concrete types
 """"""""""""""
@@ -554,6 +564,8 @@ In general, provide the full namespace to the object, such as ```lsst.pipe.base.
 It may be possible to reference objects in the same namespace as the current module without any namespace prefix.
 Always check the compiled documentation site to ensure the link worked.
 
+.. _py-docstring-parameter-types-choices:
+
 Choices
 """""""
 
@@ -563,6 +575,8 @@ When a parameter can only assume one of a fixed set of values, those choices can
 
    order : {'C', 'F', 'A'}
        [...]
+
+.. _py-docstring-parameter-types-sequences:
 
 Sequence types
 """"""""""""""
@@ -574,6 +588,8 @@ For example:
 
    mags : `list` of `float`
        Sequence of magnitudes.
+
+.. _py-docstring-parameter-types-dict:
 
 Dictionary types
 """"""""""""""""
@@ -618,6 +634,8 @@ If the keys are well-known, document each key-value pair using a `definition lis
 
 Notice how the keys are shown by enclosing the quoted strings in double backticks to clarify that the keys are `str` types.
 
+.. _py-docstring-parameter-types-struct:
+
 Struct types
 """"""""""""
 
@@ -644,6 +662,8 @@ Describe each attribute of a ``Struct`` parameter as a :ref:`definition list <rs
           Morbi vehicula facilisis diam ac volutpat. Proin suscipit mi ac ullamcorper
           vulputate. Nullam aliquet iaculis aliquam.
 
+.. _py-docstring-parameter-types-array:
+
 Array types
 """""""""""
 
@@ -659,6 +679,8 @@ For Numpy arrays, try to include the dimensionality:
        [...]
 
 Choose conventional variables or labels to describe dimensions, like ``N`` for the number of sources or ``Nx, Ny`` for rectangular dimensions.
+
+.. _py-docstring-parameter-types-callable:
 
 Callable types
 """"""""""""""
