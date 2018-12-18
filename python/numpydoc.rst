@@ -493,33 +493,29 @@ For example:
        y : `float`
            Y-axis coordinate.
        x0 : `float`, optional
-           X-axis coordinate for the second point (the origin, by default).
+           X-axis coordinate for the second point (the origin,
+           by default).
+
+           Descriptions can have multiple paragraphs, and lists:
+
+           - First list item.
+           - Second list item.
        y0 : `float`, optional
-           Y-axis coordinate for the second point (the origin, by default).
+           Y-axis coordinate for the second point (the origin,
+           by default).
        """
 
-Each parameter is declared with a line formatted as ``{name} : {type}`` that is justified to the docstring.
-A single space is required before and after the colon (``:``).
-The ``name`` corresponds to the variable name in the function or method's arguments.
-The ``type`` is described below (:ref:`py-docstring-parameter-types`).
-The description is indented by **four** spaces relative to the docstring and appears without a preceding blank line.
+Formatting tips:
 
-Normally parameters are documented consecutively, without blank lines between (see the earlier example).
-However, if the descriptions of an individual parameter span multiple paragraphs, or include lists, then you must separate each parameter with a blank line.
-For example:
-
-.. code-block:: rst
-
-   Parameters
-   ----------
-   output_path : `str`
-       Filepath where the plot will be saved.
-
-   plot_settings : `dict`, optional
-       Settings for the plot that may include these fields:
-
-       - ``'dpi'``: resolution of the plot in dots per inch (`int`).
-       - ``'rasterize'``: if `True`, then rasterize the plot. `False` by default.
+- Each parameter is declared with a line formatted as ``{name} : {type}`` that is justified to the docstring.
+- A single space is required before and after the colon (``:``).
+- The ``name`` corresponds to the variable name in the function or method's arguments.
+- The ``type`` is discussed in :ref:`py-docstring-parameter-types`).
+- The description is indented by **four** spaces relative to the docstring and appears without a preceding blank line.
+  Descriptions can have multiple lines, and even multiple paragraphs, lists, and definition lists.
+  Ensure that all of the content in a description is aligned with respect to the **first line** of the description content.
+  See the ``x0`` parameter in the example, above.
+- Normally parameters are documented consecutively, without blank lines between.
 
 .. _py-docstring-parameter-types:
 
