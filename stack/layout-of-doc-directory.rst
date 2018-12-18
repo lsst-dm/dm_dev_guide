@@ -92,8 +92,6 @@ This is an example :file:`manifest.yaml` for the `example_dataonly`_ package:
 .. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/master/project_templates/stack_package/example_dataonly/doc/manifest.yaml
    :language: yaml
 
-.. FIXME update after DM-15024 is closed.
-
 .. _docdir-conf:
 
 The doc/conf.py file
@@ -170,14 +168,17 @@ See the :doc:`module-homepage-topic-type` for details on the :file:`index.rst` f
 Package documentation directory
 ===============================
 
-The package documentation directory provides a place to document the EUPS package itself.
+This directory is only present for packages that **do not** have :ref:`module documentation directories <docdir-module-doc-directories>`.
+In such cases, the package documentation directory provides a place to document the EUPS package itself.
 The :file:`index.rst` file in this directory (see :doc:`package-homepage-topic-type`) provides links to the package’s GitHub repo and Jira component, for example.
 
 The package documentation directory is a subdirectory of :file:`doc/` that is named after the EUPS package itself.
-For the package called ``example``, this directory is :file:`doc/example`.
+For the package called ``example_dataonly``, this directory is :file:`doc/example_dataonly`.
 This directory corresponds to the :ref:`package field <docdir-manifest-yaml-package>` in the :ref:`doc/manifest.yaml file <docdir-manifest-yaml>`.
 
-This directory is only present for packages that do not have :ref:`module documentation directories <docdir-module-doc-directories>`.
+For a full example, see the `example_dataonly`_ example of the stack\_package template.
+
+**Remember, most packages will not have a package documentation directory.**
 
 .. _docdir-static-directory:
 
@@ -208,4 +209,4 @@ For example:
 .. _`stack_package template`: https://github.com/lsst/templates/tree/master/project_templates/stack_package
 .. _`pipelines_lsst_io`: https://github.com/lsst/pipelines_lsst_io
 .. _`example`: https://github.com/lsst/templates/tree/master/project_templates/stack_package/example
-.. _`example_dataonly`: https://github.com/lsst/templates/tree/tickets/DM-15024/project_templates/stack_package/example_dataonly
+.. _`example_dataonly`: https://github.com/lsst/templates/tree/master/project_templates/stack_package/example_dataonly

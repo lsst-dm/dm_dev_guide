@@ -7,6 +7,9 @@ Package homepage topic type
 The package homepage is the :file:`index.rst` file located at the root of each :ref:`package documentation directory <docdir-package-doc-directory>`.
 The purpose of the package homepage is to provide summary information about a package and a table of contents for additional topics in the package documentation directory.
 
+The package homepage topic type is only used in packages that have a :ref:`package documentation directory <docdir-package-doc-directory>`.
+Specifically, if a package provides a Python module, it won't have a package documentation directory, and thus won't have this file.
+
 .. _package-homepage-template:
 
 Starter template
@@ -14,7 +17,7 @@ Starter template
 
 The `stack_package`_ project template includes the `Jinja-formatted template for the package homepage <https://raw.githubusercontent.com/lsst/templates/master/project_templates/stack_package/%7B%7Bcookiecutter.package_name%7D%7D/doc/%7B%7Bcookiecutter.package_name%7D%7D/index.rst>`_.
 
-For an example package named ``example``, the rendered template looks like this:
+For an example package named ``example_dataonly``, the rendered template looks like this:
 
 .. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/master/project_templates/stack_package/example_dataonly/doc/example_dataonly/index.rst
    :language: rst
