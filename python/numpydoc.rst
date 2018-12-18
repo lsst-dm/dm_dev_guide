@@ -582,15 +582,71 @@ For example:
 Dictionary types
 """"""""""""""""
 
-For dictionaries it is usually best to document the keys and their values in the parameter's description:
+For dictionaries, it is usually best to document the keys and their values in the parameter's description.
+Simply set the type to `dict`.
+
+If the key are generated dynamically, describe the general types and contents of the keys and values in the descriptive text:
+
+.. code-block:: rst
+
+   measurements : `dict`
+       Measurements of metrics. The keys are names of metrics (`str`), and
+       values are `astropy.quantity.Quantity` instances, which combine
+       both value and unit information.
+
+If the keys are well-known, document each key-value pair using a `definition list <rst-dl>`:
 
 .. code-block:: rst
 
    settings : `dict`
-       Settings dictionary with fields:
+       Settings dictionary with keys:
 
-       - ``color``: Hex colour code (`str`).
-       - ``size``: Point area in pixels (`float`).
+       ``"color"``
+           Hex colour code (`str`).
+       ``"size"``
+           Point area in pixels (`float`).
+       ``"complicatedKey"``
+           A key with a complicated description. Like any definition list item,
+           the content can be wrapped. You can include lists inside the item as well:
+
+           - The first item of the list. Lorem ipsum dolor sit amet, consectetur
+             adipiscing elit.
+             
+             Proin nulla magna, egestas quis nisi id, dictum mollis diam. Duis lorem
+             eros, tempor egestas ligula eget, dapibus posuere justo.
+
+           - The second item of the list.
+
+           You can also include multiple paragraphs in a key's description. Ensure that
+           all content is aligned with the opening content line.
+
+Notice how the keys are shown by enclosing the quoted strings in double backticks to clarify that the keys are `str` types.
+
+Struct types
+""""""""""""
+
+``lsst.pipe.base.Struct`` parameters are documented similarly to dictionaries with known keys.
+Describe each attribute of a ``Struct`` parameter as a :ref:`definition list <rst-dl>` item:
+
+.. code-block:: rst
+
+   coord : `lsst.pipe.base.Struct`
+      Coordinate as a struct with attributes:
+
+      ``x``
+          x-axis coordinate (`int`).
+      ``y``
+          y-axis coordinate (`int`).
+      ``z``
+          z-axis coordinate (`int`). Nam ut ligula tristique, consequat risus vel,
+          sodales tellus. Sed sit amet vehicula felis, placerat pharetra nunc:
+          
+          - Morbi commodo euismod faucibus.
+          - Fusce quis tortor et ex tincidunt dapibus quis ac lorem. Morbi quis
+            tellus suscipit quam elementum euismod.
+          
+          Morbi vehicula facilisis diam ac volutpat. Proin suscipit mi ac ullamcorper
+          vulputate. Nullam aliquet iaculis aliquam.
 
 Array types
 """""""""""
@@ -661,6 +717,7 @@ Returns
 *For functions and methods*.
 
 'Returns' is an explanation of the returned values and their types, in the same format as :ref:`'Parameters' <py-docstring-parameters>`.
+See the :ref:`Parameters secton <py-docstring-parameters>` and :ref:`py-docstring-parameter-types` for guidelines on how to describe specific types of yielded values.
 
 Basic example
 ^^^^^^^^^^^^^
@@ -680,47 +737,6 @@ If a sequence of values is returned, each value may be separately listed, in ord
            Y-axis pixel coordinate.
        """
        return self._x, self._y
-
-Dictionary return types
-^^^^^^^^^^^^^^^^^^^^^^^
-
-If a return type is `dict`, ensure that the key-value pairs are documented in the description:
-
-.. code-block:: python
-
-   def getCoord(self):
-       """Get the point's pixel coordinate.
-
-       Returns
-       -------
-       pixelCoord : `dict`
-          Pixel coordinates with fields:
-
-          - ``x``: x-axis coordinate (`int`).
-          - ``y``: y-axis coordinate (`int`).
-        """
-        return {'x': self._x, 'y': self._y}
-
-
-Struct return types
-^^^^^^^^^^^^^^^^^^^
-
-``lsst.pipe.base.Struct``\ s, returned by Tasks for example, are documented the same way as dictionaries:
-
-.. code-block:: python
-
-   def getCoord(self):
-       """Get the point's pixel coordinate.
-
-       Returns
-       -------
-       result : `lsst.pipe.base.Struct`
-          Result struct with components:
-
-          - ``x``: x-axis coordinate (`int`).
-          - ``y``: y-axis coordinate (`int`).
-        """
-        return lsst.pipe.base.Struct(x=self._x, y=self._y)
 
 Naming return variables
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -756,6 +772,10 @@ Yields
 *For generators.*
 
 'Yields' is used identically to :ref:`'Returns' <py-docstring-yields>`, but for generators.
+See the :ref:`Parameters secton <py-docstring-parameters>` and :ref:`py-docstring-parameter-types` for guidelines on how to describe specific types of yielded values.
+
+Describe the yielded values as singular items yielded from each step, rather than as a sequence of items yielded from all iteration steps.
+
 For example:
 
 .. code-block:: python
@@ -766,9 +786,9 @@ For example:
        Yields
        ------
        key : `str`
-           Item key.
+           An item's key.
        value : obj
-           Item value.
+           An item's value.
        """
        for key, value in self._data.items():
            yield key, value
