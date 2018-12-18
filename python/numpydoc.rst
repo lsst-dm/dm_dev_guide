@@ -481,7 +481,7 @@ For example:
 
 .. code-block:: python
 
-   def calcDistance(x, y, x0=0., y0=0.):
+   def calcDistance(x, y, x0=0., y0=0., **kwargs):
        """Calculate the distance between two points.
 
        Parameters
@@ -501,6 +501,9 @@ For example:
        y0 : `float`, optional
            Y-axis coordinate for the second point (the origin,
            by default).
+       **kwargs
+           Additional keyword arguments passed to
+           `calcExternalApi`.
        """
 
 Formatting tips:
@@ -712,6 +715,44 @@ You can also explain defaults in the description:
    x : `int`, optional
        Description of parameter ``x`` (the default is -1, which implies summation
        over all axes).
+
+.. _py-docstring-args-kwargs:
+
+Additional positional and keyword arguments
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Functions and methods can take additional positional (``*args``) and keyword arguments (``*kwargs``):
+
+.. code-block:: python
+
+   def demoFunction(namedArg, *args, flag=False, **kwargs):
+       """Demonstrate documentation for additional keyword and
+       positional arguments.
+
+       Parameters
+       ----------
+       namedArg : `str`
+           A named argument that is documented like always.
+       *args : `str`
+           Additional names.
+
+           Notice how the type is singular since the user is expected to pass individual
+           `str` arguments, even though the function itself sees ``args`` as an iterable
+           of `str` objects).
+       flag : `bool`
+           A regular keyword argument.
+       **kwargs
+           Additional keyword arguments passed to `otherApi`.
+
+           Usually kwargs are used to pass parameters to other functions and
+           methods. If that is the case, be sure to mention (and link) the
+           API or APIs that receive the keyword arguments.
+
+           If kwargs are being used to generate a `dict`, use the description to
+           document the use of the keys and the types of the values.
+       """
+
+Order ``*args`` and ``**kwargs`` as they appear in the signature.
 
 .. _py-docstring-shorthand:
 
