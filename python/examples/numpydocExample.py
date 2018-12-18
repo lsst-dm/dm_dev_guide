@@ -58,7 +58,7 @@ paragraph. For a complete list of sections permitted in constant docstrings see
 """
 
 
-def moduleLevelFunction(param1, param2=None, *args, **kwargs):
+def moduleLevelFunction(param1, *args, param2=None, **kwargs):
     """Test that two parameters are not equal.
 
     This is an example of a function docstring. Function parameters are
@@ -72,19 +72,22 @@ def moduleLevelFunction(param1, param2=None, *args, **kwargs):
         This marks ``int`` as an API object so that Sphinx will attempt to
         link to its reference documentation. You can do this for custom types
         as well. You'll see an example in the `Returns`_ documentation.
+    *args
+        Additional positional arguments. If the type is known, it can be
+        included like usual. Leave out the type if it is not known.
     param2 : `str`, optional
         Optional arguments (those with defaults) always include the word
         ``optional`` after the type info. See the `Parameters`_ section
         documentation for details.
-    *args
-        Variable length argument list.
     **kwargs
         Arbitrary keyword arguments. If you do accept ``**kwargs``, make sure
         you link to documentation that describes what keywords are accepted,
-        or list the keyword arguments here:
+        or list the keyword arguments as a definition list:
 
-        - ``key1``: description (`int`).
-        - ``key2``: description (`str`).
+        ``key1``:
+            Description of ``key1`` (`int`).
+        ``key2``
+            Description of ``key2`` (`str`).
 
     Returns
     -------
