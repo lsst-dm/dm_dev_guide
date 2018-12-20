@@ -26,7 +26,7 @@ Teams
 =====
 
 The JIRA “team” field is used to define financial and managerial responsibility for getting the work done.
-We recognise the following teams:
+We recognize the following teams:
 
 ================================== ==============================
 Team Name                          Responsible Manager
@@ -41,6 +41,7 @@ Data Access and Database           Fritz Mueller
 Data Facility                      Margaret Gelman
 International Comms and Base Site  Jeff Kantor
 SQuaRE                             Frossie Economou
+Telescope and Site                 Andy Clements
 External                           None (see below)
 ================================== ==============================
 
