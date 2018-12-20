@@ -34,32 +34,22 @@ Install Documenteer, the documentation tooling
 
 Documenteer_ provides tooling to build `pipelines.lsst.io`_.
 Since it’s a `PyPI-distributed Python package <https://pypi.org/project/documenteer/>`__, you need to install it separately from the EUPS Stack.
-The best way to do this is in a Python virtual environment that’s layered on top of the EUPS Stack’s :file:`site-packages`.
-This way it’s easy to delete Documenteer and its dependencies without affecting the Python packages that come with the EUPS Stack.
-
-In a base working directory — not inside a repository directory — create the virtual environment and :command:`pip`-install Documenteer through the :file:`requirements.txt` file for `pipelines_lsst_io`_:
+In a base working directory — not inside a repository directory — get the :file:`requirements.txt` file for `pipelines_lsst_io`_ and install it:
 
 .. code-block:: bash
 
-   python -m venv --system-site-packages --without-pip pyvenv
-   source pyvenv/bin/activate
-   curl https://bootstrap.pypa.io/get-pip.py | python
    curl -O https://raw.githubusercontent.com/lsst/pipelines_lsst_io/master/requirements.txt
-   pyvenv/bin/pip install -r requirements.txt
+   pip install -r requirements.txt
+
+Do this *after* setting up the EUPS Stack with a command like :command:`setup lsst_distrib`.
+
+.. note::
+
+   On a shared resource, like :doc:`lsst-dev </services/lsst-dev>`, you will need to use a ``--user`` flag with :command:`pip install`.
 
 .. note::
 
    By using the :file:`requirements.txt` file in the `pipelines_lsst_io`_ repository, you can ensure you’re using the same version of Documenteer_ and its dependencies as in the CI builds of `pipelines.lsst.io`_.
-
-.. tip::
-
-   When you open a new terminal session, you can reactivate the Python virtual environment in the :file:`pyvenv` directory by running:
-
-   .. code-block:: bash
-
-      source pyvenv/bin/activate
-
-   Do this *after* setting up the EUPS Stack.
 
 .. _build-package-docs-setup-package:
 
@@ -111,25 +101,6 @@ You can delete this built documentation by running:
 .. code-block:: bash
 
    package-docs clean
-
-.. _build-package-docs-cleanup:
-
-Deactivating the virtual environment and cleaning up Documenteer
-================================================================
-
-When you’re done, you can always deactivate the :file:`pyvenv` virtual environment and even delete it.
-
-To deactivate the virtual environment, run:
-
-.. code-block:: bash
-
-   deactivate
-
-To fully delete the :file:`pyvenv` virtual environment, delete it:
-
-.. code-block:: bash
-
-   rm -r pyvenv
 
 Further reading
 ===============
