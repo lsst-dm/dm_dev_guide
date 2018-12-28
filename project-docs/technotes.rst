@@ -91,7 +91,7 @@ Follow these steps to create a new technote:
    Be sure to commit and push the new technote to GitHub.
    GitHub provides instructions on how to push to GitHub when you create a new GitHub repository.
 
-4. Message the `#dm-docs <https://lsstc.slack.com/archives/dm-docs>`__ Slack channel so that the Travis integration for your technote can be activated.
+5. Message the `#dm-docs <https://lsstc.slack.com/archives/dm-docs>`__ Slack channel so that the Travis integration for your technote can be activated.
 
    Don't wait to configure your document's deployment.
    By configuring your technote's deployment early on, it's easier for collaborators to view your content.
