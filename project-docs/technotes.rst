@@ -17,7 +17,7 @@ Some of the possible applications for technotes are:
 - Announce a new technology, serving as a high-level overview complementing user documentation.
 - Propose an architecture, possibly becoming the subject of a :doc:`request for comment (RFC) </communications/rfd>`.
 
-For further background, see `SQR-000: The LSST DM Technical Note Publishing Platform <SQR-000>`_.
+For further background, see `SQR-000: The LSST DM Technical Note Publishing Platform`_.
 
 Technotes are not always the right platform for your information.
 Consider these alternatives:
@@ -28,7 +28,7 @@ Consider these alternatives:
   Descriptions of how to use software, services, or data should be written as user documentation.
   Technotes complement user documentation by being point-in-time discussions of software, like a technical blog post.
 
-.. _SQR-000: https://sqr-000.lsst.io
+.. _`SQR-000: The LSST DM Technical Note Publishing Platform`: https://sqr-000.lsst.io
 
 .. _technote-series:
 
