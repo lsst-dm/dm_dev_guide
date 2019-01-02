@@ -90,7 +90,7 @@ We next *declare* the product to EUPS, causing it to read the table file and
 record information about the product in its database. The general form of the
 declaration command is::
 
-   % eups declare [PRODUCT_NAME} [VERSION] -r [PATH]
+   % eups declare [PRODUCT_NAME] [VERSION] -r [PATH]
 
 In this case we execute::
 
@@ -136,7 +136,7 @@ number in the source. We then declare it to EUPS as before::
    a                     v1                 current
    a                     v2
 
-Note that EUPS is now tracking two versions of ``a``. ``v`` is marked as
+Note that EUPS is now tracking two versions of ``a``. ``v1`` is marked as
 ``current``: this indicates the version we get if we :command:`setup a`
 without further qualification::
 
@@ -336,7 +336,7 @@ version, and pull in all the products upon which it depends::
    Setting up: |meas_deblender                 Flavor: DarwinX86  Version: 11.0+3
    […]
 
-It's equally possibly to request other versions or tags of ``lsst_apps`` when
+It's equally possible to request other versions or tags of ``lsst_apps`` when
 required, and to apply tags like ``current`` or the ``user:`` tag to versions
 of particular interest for convenient access.
 
