@@ -162,7 +162,6 @@ The sections and their relative order are:
 
 For summaries of how these sections are composed in specific contexts, see:
 
-- :ref:`cpp-doxygen-package-definition`
 - :ref:`cpp-doxygen-class-structure`
 - :ref:`cpp-doxygen-enum-structure`
 - :ref:`cpp-doxygen-method-function-structure`
@@ -540,38 +539,8 @@ Examples should use Markdown formatting for code blocks (i.e., indented by four 
 Documenting/Defining Packages
 =============================
 
-Each LSST package corresponds to a group in Doxygen.
-We declare this package in the root header file for a package, usually named ``package.h``.
-
-In this header file, below the boilerplate but above any ``#include`` statements or other code, provide a Doxygen comment block that declares the package with the fields:
-
-1. ``@defgroup`` followed by machine-readable and human-readable names for the package
-2. :ref:`cpp-doxygen-short-summary` (must be prefixed by ``@brief`` because the summary is not the first line.)
-3. :ref:`cpp-doxygen-deprecation` (if applicable)
-4. :ref:`cpp-doxygen-extended-summary` (recommended)
-5. :ref:`cpp-doxygen-see-also` (optional)
-
-For example:
-
-.. code-block:: cpp
-
-   /**
-    * @defgroup afw LSST Framework
-    *
-    * @brief LSST data management: astronomical framework, including images and tables
-    */
-
-Header files that belong to the package should have a Doxygen comment like
-
-.. code-block:: cpp
-
-   /**
-    * @addtogroup group
-    *
-    * @{
-    */
-
-before any documented code, and a Doxygen comment with a ``@}`` after any documented code. Everything between the ``@{`` and the ``@}`` will be listed on the module page.
+LSST packages are no longer documented using Doxygen.
+Instead, they should be documented using the Sphinx :ref:`module-homepage`.
 
 .. _cpp-doxygen-class-structure:
 
