@@ -45,6 +45,12 @@ The beginning of both header and source code files should include
 
    Replace ``{{ cookiecutter.package_name }}`` with the package's name.
 
+Some older code contains file-level Doxygen blocks (i.e., comments with a ``@file`` command).
+Such blocks should not be used in new code, as they rarely provide useful information about API elements defined by the file, and do not integrate well with `pipelines.lsst.io`_.
+Ordinary C++ comments may still be used to document files for developers reading the source code.
+
+.. _`pipelines.lsst.io`: https://pipelines.lsst.io
+
 .. _cpp-doxygen-basics:
 
 Basic Format of Documentation Blocks
