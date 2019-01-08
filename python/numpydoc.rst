@@ -799,15 +799,44 @@ Naming return variables
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Note that the names of the returned variables do not necessarily correspond to the names of variables.
-In the previous examples, the variables ``x``, ``y``, and ``pixelCoord`` never existed in the method scope.
 Simply choose a variable-like name that is clear.
-Order is important.
 
-If a returned variable is named in the method or function scope, you will usually want to use that name for clarity.
-For example:
+Rename attributes or private names:
 
 .. code-block:: python
-   :emphasize-lines: 6-9
+   :emphasize-lines: 6-7,9
+
+   def getDistance(self):
+       """Get the distance.
+
+       Returns
+       -------
+       x : `float`
+           Distance, in units of pixels.
+       """
+       return self._x
+
+Name variables that don't have a name within the function scope:
+
+.. code-block:: python
+   :emphasize-lines: 8-9,10
+
+   def getDistance(self, x, y):
+       """Compute the distance of the point to an (x, y) coordinate.
+
+       [...]
+
+       Returns
+       -------
+       distance : `float`
+           Distance, in units of pixels.
+       """
+       return np.hypot(self._x - x, self._y - y)
+
+If the variable has a name in the scope that is useful, feel free to use that:
+
+.. code-block:: python
+   :emphasize-lines: 8-9,11
 
    def getDistance(self, x, y):
        """Compute the distance of the point to an (x, y) coordinate.
@@ -827,7 +856,7 @@ For example:
    The original `Numpydoc Style Guide`_ suggests a short-hand syntax that avoids naming a returned value:
 
    .. code-block:: python
-      :emphasize-lines: 6-9
+      :emphasize-lines: 8-9,11
 
       def getDistance(self, x, y):
           """Compute the distance of the point to an (x, y) coordinate.
@@ -839,8 +868,7 @@ For example:
           `float`
               Distance, in units of pixels.
           """
-          distance = np.hypot(self._x - x, self._y - y)
-          return distance
+          return np.hypot(self._x - x, self._y - y)
 
    **Don't use this syntax because it does not render properly.**
 
