@@ -359,7 +359,7 @@ The summary sentence can wrap across multiple lines (see also :ref:`py-docstring
 
        Parameters
        ----------
-       sequence : sequence of `float`
+       sequence : `list` [`float`]
            A sequence (`list`, for example) of numbers.
        conditional : callable
            A callback function that takes a single number as an
@@ -582,32 +582,76 @@ When a parameter can only assume one of a fixed set of values, those choices can
 Sequence types
 """"""""""""""
 
-When a type is a sequence container (like a `list` or `tuple`), you can describe the type of the contents.
+When a type is a sequence container (like a `list` or `tuple`), you can describe the type of the contents using a :pep:`484`-like syntax.
 For example:
 
 .. code-block:: rst
 
-   mags : `list` of `float`
-       Sequence of magnitudes.
+   mags : `list` [`float`]
+       A sequence of magnitudes.
+
+The type inside the brackets is the type of each item.
+
+.. warning::
+
+   Ensure that you place a space between the container type and the bracket that wraps the item type.
+   Don't do:
+
+   .. code-block:: rst
+
+      `list`[`float`]
+
+   Instead, do:
+
+   .. code-block:: rst
+
+      `list` [`float`]
+
+   Leaving out the space results in a parsing error.
+
+If the type of the sequence's items isn't known, leave out the item typing and explain with the description:
+
+.. code-block:: rst
+
+   items : `list`
+       A sequence of items, which can be any type.
 
 .. _py-docstring-parameter-types-dict:
 
 Dictionary types
 """"""""""""""""
 
-For dictionaries, it is usually best to document the keys and their values in the parameter's description.
-Simply set the type to `dict`.
-
-If the key are generated dynamically, describe the general types and contents of the keys and values in the descriptive text:
+If the types of the keys and values are well-known, document the type of a `dict` parameter using a :pep:`484`-like syntax:
 
 .. code-block:: rst
 
-   measurements : `dict`
-       Measurements of metrics. The keys are names of metrics (`str`), and
-       values are `astropy.quantity.Quantity` instances, which combine
+   measurements : `dict` [`str`, `astropy.quantity.Quantity`]
+       The keys are names of metrics and values are measurements
+       as `astropy.quantity.Quantity` instances, which combine
        both value and unit information.
 
-If the keys are well-known, document each key-value pair using a `definition list <rst-dl>`:
+Use the description to explain what the keys and values, since that information often isn't completely obvious from types alone.
+
+.. warning::
+
+   Ensure that you place a space between the container type and the bracket that wraps the key and value type.
+   Don't do:
+
+   .. code-block:: rst
+
+      `dict`[`str`, `str`]
+
+   Instead, do:
+
+   .. code-block:: rst
+
+      `dict` [`str`, `str`]
+
+   Leaving out the space results in a parsing error.
+
+If the types of keys and values are completely unknown, simply describe the type as ```dict``` and explain in the description.
+
+If the keys are well-known, document the keys using a pattern similar to :ref:`py-docstring-parameter-types-struct`, by documenting each key-value pair using a :ref:`definition list <rst-dl>`:
 
 .. code-block:: rst
 
