@@ -1014,6 +1014,8 @@ Most reStructuredText formatting is allowed in the *Notes* section, including:
 When using images, remember that many developers and users will be reading the docstring in its raw source form.
 Images should add information, but the docstring should still be useful and complete without them.
 
+Subsections **are not** allowed in a Notes section (or any other section).
+You can :ref:`simulate subsections with bold text <py-docstring-subsections>`.
 See also :ref:`py-docstring-rst` for restrictions.
 
 .. _py-docstring-references:
@@ -1086,6 +1088,10 @@ For more information on doctest, see:
 
 - `The official doctest documentation <http://docs.python.org/library/doctest.html>`__.
 - `doctest — Testing Through Documentation <https://pymotw.com/3/doctest/>`__ from Python Module of the Week.
+
+Subsections **are not** allowed in an Examples section (or any other section).
+You can :ref:`simulate subsections with bold text <py-docstring-subsections>`.
+See also :ref:`py-docstring-rst` for restrictions.
 
 .. _py-docstring-module-structure:
 
