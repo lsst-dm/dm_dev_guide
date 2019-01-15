@@ -217,7 +217,7 @@ Alternatively, you can allow only one or more certain APIs with the ``allowed-pa
 
 .. tip::
 
-   Remember to “clean” the documentation build when changing what docstrings are included using the :ref:`stack-docs clean <local-pipelines-lsst-io-build-clean>` or :ref:`package-docs clean <build-package-docs-cleanup>` commands.
+   Remember to “clean” the documentation build when changing what docstrings are included using the :ref:`stack-docs clean <local-pipelines-lsst-io-build-clean>` or :ref:`package-docs clean <build-package-docs-install-delete-build>` commands.
    Otherwise, the cached documentation stub page will remain in the build.
 
 .. _module-homepage-future-components:

@@ -42,7 +42,7 @@ Then set up the `pipelines_lsst_io`_ package with EUPS:
 
 .. warning::
 
-   If you’ve already set up packages, you might need to unset-up them before setting up ``pipelines_lsst_io``.
+   If you’ve already have packages set up with the :command:`setup` command, you might need to un-setup them with the :command:`unsetup` command before running ``setup -r pipelines_lsst_io``.
 
    `pipelines_lsst_io`_ acts as a top-level EUPS package, and its table file defines what packages are included in the `pipelines.lsst.io`_ documentation site.
 
@@ -52,43 +52,29 @@ Install Documenteer, the documentation tooling
 ==============================================
 
 Documenteer_ provides tooling to build `pipelines.lsst.io`_.
-Since it’s a `PyPI-distributed Python package <https://pypi.org/project/documenteer/>`__, you need to install it separately from the EUPS Stack.
-The best way to do this is in a Python virtual environment that’s layered on top of the EUPS Stack’s ``site-packages``.
-This way it’s easy to delete Documenteer_ and its dependencies without affecting the Python packages that come with the EUPS Stack.
-
-In the base working directory (that also contains the :file:`pipelines_lsst_io` clone), create the virtual environment and :command:`pip`-install Documenteer_ through the :file:`requirements.txt` file for `pipelines_lsst_io`_:
+Since it’s a `PyPI-distributed Python package <https://pypi.org/project/documenteer/>`__, you need to install it separately from the EUPS Stack:
 
 .. code-block:: bash
 
-   python -m venv --system-site-packages --without-pip pyvenv
-   source pyvenv/bin/activate
-   curl https://bootstrap.pypa.io/get-pip.py | python
-   pyvenv/bin/pip install -r pipelines_lsst_io/requirements.txt
+   cd pipelines_lsst_io
+   pip install -r requirements.txt
+
+Do this *after* :ref:`running the setup command <local-pipelines-lsst-io-build-clone>`.
+
+.. note::
+
+   On a shared resource, you will need to use a ``--user`` flag with :command:`pip install`.
 
 .. note::
 
    By using the :file:`requirements.txt` file in the `pipelines_lsst_io`_ repository, you can ensure you’re using the same version of Documenteer_ and its dependencies as in the CI builds of `pipelines.lsst.io`_.
-
-.. tip:: When you open a new terminal session, you can reactivate the Python virtual environment in the :file:`pyvenv` directory by running:
-
-   .. code-block:: bash
-
-      source pyvenv/bin/activate
-
-Do this *after* setting up the EUPS Stack.
 
 .. _local-pipelines-lsst-io-build-build:
 
 Building the pipelines\_lsst\_io site
 =====================================
 
-Move into the :file:`pipelines_lsst_io` directory:
-
-.. code-block:: bash
-
-   cd pipelines_lsst_io
-
-Then use the `stack-docs command-line app`_ from Documenteer_ to build the documentation:
+From the :file:`pipelines_lsst_io` directory, use the `stack-docs command-line app`_ from Documenteer_ to build the documentation:
 
 .. code-block:: bash
 
@@ -141,25 +127,6 @@ Then clean and build the `pipelines_lsst_io`_ documentation:
 
    stack-docs -d ../pipelines_lsst_io clean
    stack-docs -d ../pipelines_lsst_io build
-
-.. _local-pipelines-lsst-io-build-package-deactivate:
-
-Deactivating the virtual environment and cleaning up Documenteer
-================================================================
-
-When you’re done, you can always deactivate the :file:`pyvenv` virtual environment and even delete it.
-
-To deactivate the virtual environment, run:
-
-.. code-block:: bash
-
-   deactivate
-
-To fully delete the :file:`pyvenv` virtual environment, change to the directory containing :file:`pyvenv` and delete it:
-
-.. code-block:: bash
-
-   rm -r pyvenv
 
 Further reading
 ===============
