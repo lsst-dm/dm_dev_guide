@@ -69,6 +69,7 @@ Team-specific pages:
    communications/rfd.rst
    communications/wiki.rst
    communications/presenting-at-conferences.rst
+   communications/calendars.rst
 
 .. Table of contents published on the homepage.
 .. Mirror changes here to team/index.rst (temporary workflow)
@@ -85,6 +86,7 @@ How to use DM's communication channels.
 - :doc:`communications/rfd`
 - :doc:`communications/wiki`
 - :doc:`communications/presenting-at-conferences`
+- :doc:`communications/calendars`
 
 .. PROJECT DOCS SECTION ======================================================
 

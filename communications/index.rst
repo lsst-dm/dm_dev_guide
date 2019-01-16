@@ -11,3 +11,4 @@ How to use DM's communication channels.
 - :doc:`rfd`
 - :doc:`wiki`
 - :doc:`presenting-at-conferences`
+- :doc:`calendars`
