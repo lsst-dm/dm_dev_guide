@@ -44,6 +44,7 @@ Document formats
 ================
 
 Change controlled documents can be written as Word documents or as LaTeX projects in GitHub repositories.
+Requirements documents are special and are generated from MagicDraw.
 
 LaTeX is the preferred format for DM documents.
 Reasons to create a Word document instead are:
@@ -68,6 +69,26 @@ Where the release procedure calls for a DocuShare upload, provide **both** the r
 
 `LPM-51`_ recommends that draft documents always be uploaded to DocuShare at least every three months if there are draft changes.
 This guideline is especially important for Word documents that do not benefit from GitHub's collaborative features.
+
+Requirements documents
+----------------------
+
+Requirements are added to the PSE or DM models in MagicDraw.
+DM Systems Engineering is responsible for doing this.
+New requirements should be submitted to DM SE using a spreadsheet with these columns: ID, title, specification, discussion, priority.
+
+When editing or adding requirements, the following checklist may be of assistance:
+
+1. Check that the requirement ID doesn't conflict with other branches (especially if auto-generated)
+2. Prefix package and requirement titles with a number to control ordering where needed
+3. Prefer non-HTML text fields if no formatting is required
+4. Specification goes in main text, no bold "Specification:" lead-in
+5. Discussion goes in documentation text, no bold "Discussion:" lead-in
+6. Check that numeric values are in parameters and properly linked
+7. Check that priority is set (mandatory for LSE-61)
+8. Check that flowdown from higher-level requirements (e.g. LSE-30) is present where appropriate
+9. Inform (Project or DM) SE to add verification elements
+
 
 .. _ccd-drafting:
 
