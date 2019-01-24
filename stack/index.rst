@@ -6,6 +6,7 @@ DM Stack guides
 
 - :doc:`platforms`
 - :doc:`transferring-code`
+- :doc:`deprecating-interfaces`
 - :doc:`logging`
 - :doc:`debug`
 - :doc:`documentation-system-overview`
