@@ -19,16 +19,15 @@ This page describes how to write these docstrings in Numpydoc, DM's standard for
 - :ref:`py-docstring-sections`.
 
   1. :ref:`Short Summary <py-docstring-short-summary>`
-  2. :ref:`Deprecation Warning <py-docstring-deprecation>`
-  3. :ref:`Extended Summary <py-docstring-extended-summary>`
-  4. :ref:`Parameters <py-docstring-parameters>`
-  5. :ref:`Returns <py-docstring-returns>` or :ref:`Yields <py-docstring-yields>`
-  6. :ref:`Other Parameters <py-docstring-other-parameters>`
-  7. :ref:`Raises <py-docstring-raises>`
-  8. :ref:`See Also <py-docstring-see-also>`
-  9. :ref:`Notes <py-docstring-notes>`
-  10. :ref:`References <py-docstring-references>`
-  11. :ref:`Examples <py-docstring-examples>`
+  2. :ref:`Extended Summary <py-docstring-extended-summary>`
+  3. :ref:`Parameters <py-docstring-parameters>`
+  4. :ref:`Returns <py-docstring-returns>` or :ref:`Yields <py-docstring-yields>`
+  5. :ref:`Other Parameters <py-docstring-other-parameters>`
+  6. :ref:`Raises <py-docstring-raises>`
+  7. :ref:`See Also <py-docstring-see-also>`
+  8. :ref:`Notes <py-docstring-notes>`
+  9. :ref:`References <py-docstring-references>`
+  10. :ref:`Examples <py-docstring-examples>`
 
 **How to format different APIs:**
 
@@ -304,16 +303,15 @@ These are the sections and their relative order:
 .. _Numpydoc: https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt
 
 1. :ref:`Short Summary <py-docstring-short-summary>`
-2. :ref:`Deprecation Warning <py-docstring-deprecation>` (if applicable)
-3. :ref:`Extended Summary <py-docstring-extended-summary>` (optional)
-4. :ref:`Parameters <py-docstring-parameters>` (if applicable; for classes, methods, and functions)
-5. :ref:`Returns <py-docstring-returns>` or :ref:`Yields <py-docstring-yields>` (if applicable; for functions, methods, and generators)
-6. :ref:`Other Parameters <py-docstring-other-parameters>` (if applicable; for classes, methods, and functions)
-7. :ref:`Raises <py-docstring-raises>` (if applicable)
-8. :ref:`See Also <py-docstring-see-also>` (optional)
-9. :ref:`Notes <py-docstring-notes>` (optional)
-10. :ref:`References <py-docstring-references>` (optional)
-11. :ref:`Examples <py-docstring-examples>` (optional)
+2. :ref:`Extended Summary <py-docstring-extended-summary>` (optional)
+3. :ref:`Parameters <py-docstring-parameters>` (if applicable; for classes, methods, and functions)
+4. :ref:`Returns <py-docstring-returns>` or :ref:`Yields <py-docstring-yields>` (if applicable; for functions, methods, and generators)
+5. :ref:`Other Parameters <py-docstring-other-parameters>` (if applicable; for classes, methods, and functions)
+6. :ref:`Raises <py-docstring-raises>` (if applicable)
+7. :ref:`See Also <py-docstring-see-also>` (optional)
+8. :ref:`Notes <py-docstring-notes>` (optional)
+9. :ref:`References <py-docstring-references>` (optional)
+10. :ref:`Examples <py-docstring-examples>` (optional)
 
 For summaries of how these docstring sections are composed in specific contexts, see:
 
@@ -344,26 +342,6 @@ Some examples:
 - ``Get metadata for all tasks.``
 - ``Make an `lsst.pex.config.ConfigurableField` for this task.``
 - ``Create a `Measurement` instance from a parsed YAML or JSON document.``
-
-.. _py-docstring-deprecation:
-
-Deprecation Warning
--------------------
-
-A section (where applicable) to warn users that the object is deprecated.
-Section contents should include:
-
-1. In what stack version the object was deprecated, and when it will be removed.
-2. Reason for deprecation if this is useful information (for example, the object is superseded, or duplicates functionality found elsewhere).
-3. New recommended way of obtaining the same functionality.
-
-This section should use the ``note`` Sphinx directive instead of an underlined section header.
-
-.. code-block:: rst
-
-   .. note:: Deprecated in 11_0
-             `ndobj_old` will be removed in 12_0, it is replaced by
-             `ndobj_new` because the latter works also with array subclasses.
 
 .. _py-docstring-extended-summary:
 
@@ -861,9 +839,8 @@ Sections in Module Docstrings
 Module docstrings contain the following sections:
 
 1. :ref:`Short Summary <py-docstring-short-summary>`
-2. :ref:`Deprecation Warning <py-docstring-deprecation>` (if applicable)
-3. :ref:`Extended Summary <py-docstring-extended-summary>` (optional)
-4. :ref:`See Also <py-docstring-see-also>` (optional)
+2. :ref:`Extended Summary <py-docstring-extended-summary>` (optional)
+3. :ref:`See Also <py-docstring-see-also>` (optional)
 
 .. note::
 
@@ -927,15 +904,14 @@ Sections in Class Docstrings
 Class docstrings contain the following sections:
 
 1. :ref:`Short Summary <py-docstring-short-summary>`
-2. :ref:`Deprecation Warning <py-docstring-deprecation>` (if applicable)
-3. :ref:`Extended Summary <py-docstring-extended-summary>` (optional)
-4. :ref:`Parameters <py-docstring-parameters>` (if applicable)
-5. :ref:`Other Parameters <py-docstring-other-parameters>` (if applicable)
-6. :ref:`Raises <py-docstring-raises>` (if applicable)
-7. :ref:`See Also <py-docstring-see-also>` (optional)
-8. :ref:`Notes <py-docstring-notes>` (optional)
-9. :ref:`References <py-docstring-references>` (optional)
-10. :ref:`Examples <py-docstring-examples>` (optional)
+2. :ref:`Extended Summary <py-docstring-extended-summary>` (optional)
+3. :ref:`Parameters <py-docstring-parameters>` (if applicable)
+4. :ref:`Other Parameters <py-docstring-other-parameters>` (if applicable)
+5. :ref:`Raises <py-docstring-raises>` (if applicable)
+6. :ref:`See Also <py-docstring-see-also>` (optional)
+7. :ref:`Notes <py-docstring-notes>` (optional)
+8. :ref:`References <py-docstring-references>` (optional)
+9. :ref:`Examples <py-docstring-examples>` (optional)
 
 Placement of Class Docstrings
 -----------------------------
@@ -1008,16 +984,15 @@ Sections in Method and Function Docstring Sections
 Method and function docstrings contain the following sections:
 
 1. :ref:`Short Summary <py-docstring-short-summary>`
-2. :ref:`Deprecation Warning <py-docstring-deprecation>` (if applicable)
-3. :ref:`Extended Summary <py-docstring-extended-summary>` (optional)
-4. :ref:`Parameters <py-docstring-parameters>` (if applicable)
-5. :ref:`Returns <py-docstring-returns>` or :ref:`Yields <py-docstring-yields>` (if applicable)
-6. :ref:`Other Parameters <py-docstring-other-parameters>` (if applicable)
-7. :ref:`Raises <py-docstring-raises>` (if applicable)
-8. :ref:`See Also <py-docstring-see-also>` (optional)
-9. :ref:`Notes <py-docstring-notes>` (optional)
-10. :ref:`References <py-docstring-references>` (optional)
-11. :ref:`Examples <py-docstring-examples>` (optional)
+2. :ref:`Extended Summary <py-docstring-extended-summary>` (optional)
+3. :ref:`Parameters <py-docstring-parameters>` (if applicable)
+4. :ref:`Returns <py-docstring-returns>` or :ref:`Yields <py-docstring-yields>` (if applicable)
+5. :ref:`Other Parameters <py-docstring-other-parameters>` (if applicable)
+6. :ref:`Raises <py-docstring-raises>` (if applicable)
+7. :ref:`See Also <py-docstring-see-also>` (optional)
+8. :ref:`Notes <py-docstring-notes>` (optional)
+9. :ref:`References <py-docstring-references>` (optional)
+10. :ref:`Examples <py-docstring-examples>` (optional)
 
 Placement of Module and Function Docstrings
 -------------------------------------------
@@ -1119,11 +1094,10 @@ At a minimum, they should have a summary line that includes the type.
 They can also have a more complete structure with these sections:
 
 1. :ref:`Short Summary <py-docstring-short-summary>`
-2. :ref:`Deprecation Warning <py-docstring-deprecation>` (if applicable)
-3. :ref:`Extended Summary <py-docstring-extended-summary>` (optional)
-4. :ref:`Notes <py-docstring-notes>` (optional)
-5. :ref:`References <py-docstring-references>` (optional)
-6. :ref:`Examples <py-docstring-examples>` (optional)
+2. :ref:`Extended Summary <py-docstring-extended-summary>` (optional)
+3. :ref:`Notes <py-docstring-notes>` (optional)
+4. :ref:`References <py-docstring-references>` (optional)
+5. :ref:`Examples <py-docstring-examples>` (optional)
 
 Placement of Constant and Class Attribute Docstrings
 ----------------------------------------------------
