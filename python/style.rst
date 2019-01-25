@@ -866,6 +866,12 @@ or, using ``lsstDebug``, which can be controlled as part of a command line task:
         if lsstDebug.Info(__name__).debug_plots:
             plot_thing()
 
+.. _style-guide-py-deprecation:
+
+The ``deprecated`` decorator SHOULD be used to deprecate code
+-------------------------------------------------------------
+
+For more on deprecating code, see :doc:`/stack/deprecating-interfaces`.
 
 .. _style-guide-py-properties:
 
