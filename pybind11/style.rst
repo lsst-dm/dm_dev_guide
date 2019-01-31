@@ -53,6 +53,13 @@ Two rules in the Python coding guide (inherited from PEP8) are particularly rele
 
  - ``__all__`` should be defined by any module whose symbols will be thusly lifted.
 
+.. _style-guide-pybind11-deprecation:
+
+Deprecated wrapped functions SHOULD be re-wrapped using the ``deprecated`` decorator
+------------------------------------------------------------------------------------
+
+For more on deprecating code, see :doc:`/stack/deprecating-interfaces`.
+
 Modules and source files
 ========================
 

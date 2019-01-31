@@ -293,6 +293,7 @@ ReStructuredText
 
    stack/platforms
    stack/transferring-code
+   stack/deprecating-interfaces
    stack/logging
    stack/debug
    stack/documentation-system-overview
@@ -320,6 +321,7 @@ General policies and procedures.
 
 - :doc:`stack/platforms`
 - :doc:`stack/transferring-code`
+- :doc:`stack/deprecating-interfaces`
 
 Development.
 

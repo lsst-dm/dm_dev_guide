@@ -152,19 +152,18 @@ We organize Doxygen comment blocks into sections that appear in a common order. 
 The sections and their relative order are:
 
 1. :ref:`cpp-doxygen-short-summary`
-2. :ref:`cpp-doxygen-deprecation` (if applicable)
-3. :ref:`cpp-doxygen-extended-summary` (recommended)
-4. :ref:`cpp-doxygen-tparameters` (if applicable; for classes, methods, and functions)
-5. :ref:`cpp-doxygen-parameters` (if applicable; for methods and functions)
-6. :ref:`cpp-doxygen-returns` (if applicable; for methods and functions)
-7. :ref:`cpp-doxygen-throws` (if applicable; for methods and functions)
-8. :ref:`cpp-doxygen-exceptsafe` (optional; for methods and functions)
-9. :ref:`cpp-doxygen-related` (if applicable; for functions)
-10. :ref:`cpp-doxygen-initializer` (optional; for constants)
-11. :ref:`cpp-doxygen-see-also` (optional)
-12. :ref:`cpp-doxygen-notes` (optional)
-13. :ref:`cpp-doxygen-references` (optional)
-14. :ref:`cpp-doxygen-examples` (optional)
+2. :ref:`cpp-doxygen-extended-summary` (recommended)
+3. :ref:`cpp-doxygen-tparameters` (if applicable; for classes, methods, and functions)
+4. :ref:`cpp-doxygen-parameters` (if applicable; for methods and functions)
+5. :ref:`cpp-doxygen-returns` (if applicable; for methods and functions)
+6. :ref:`cpp-doxygen-throws` (if applicable; for methods and functions)
+7. :ref:`cpp-doxygen-exceptsafe` (optional; for methods and functions)
+8. :ref:`cpp-doxygen-related` (if applicable; for functions)
+9. :ref:`cpp-doxygen-initializer` (optional; for constants)
+10. :ref:`cpp-doxygen-see-also` (optional)
+11. :ref:`cpp-doxygen-notes` (optional)
+12. :ref:`cpp-doxygen-references` (optional)
+13. :ref:`cpp-doxygen-examples` (optional)
 
 For summaries of how these sections are composed in specific contexts, see:
 
@@ -190,25 +189,6 @@ By default, brief summaries will end at a period followed by whitespace, or at a
 Brief summaries should be short enough to fit on one line. If you must have a summary that extends over multiple lines, you must prefix the summary by ``@brief``, which will cause the summary to end at the next blank line rather than the next line break.
 
 For functions and methods, the summary should be written in the imperative voice (i.e., as a command that the API consumer is giving). Getters and other methods that are more naturally described as values rather than actions may ignore this rule.
-
-.. _cpp-doxygen-deprecation:
-
-Deprecation Warning
--------------------
-
-A ``@deprecated`` tag (where applicable) to warn users that the component is deprecated. The text that follows the tag should include:
-
-1. In what stack version the object was deprecated, and when it will be removed.
-2. Reason for deprecation if this is useful information (object is superseded, duplicates functionality found elsewhere, etc.).
-3. New recommended way of obtaining the same functionality.
-
-.. code-block:: cpp
-
-   /**
-    * @deprecated Deprecated in 11_0. `ndobj_old` will be removed in 12_0; it
-    *     is replaced by `ndobj_new` because the latter works also with array
-    *     subclasses.
-    */
 
 .. _cpp-doxygen-extended-summary:
 
@@ -556,13 +536,12 @@ Documenting Classes and Type Aliases
 Class documentation blocks are placed immediately before the class declaration, and serve to document the class as a whole rather than individual methods.
 
 1. :ref:`cpp-doxygen-short-summary`
-2. :ref:`cpp-doxygen-deprecation` (if applicable)
-3. :ref:`cpp-doxygen-extended-summary` (recommended)
-4. :ref:`cpp-doxygen-tparameters` (if applicable)
-5. :ref:`cpp-doxygen-see-also` (optional)
-6. :ref:`cpp-doxygen-notes` (optional)
-7. :ref:`cpp-doxygen-references` (optional)
-8. :ref:`cpp-doxygen-examples` (optional)
+2. :ref:`cpp-doxygen-extended-summary` (recommended)
+3. :ref:`cpp-doxygen-tparameters` (if applicable)
+4. :ref:`cpp-doxygen-see-also` (optional)
+5. :ref:`cpp-doxygen-notes` (optional)
+6. :ref:`cpp-doxygen-references` (optional)
+7. :ref:`cpp-doxygen-examples` (optional)
 
 For example:
 
@@ -594,11 +573,10 @@ Documenting Enumerated Types
 An enumerated type is a type, and should be documented similarly to a class:
 
 1. :ref:`cpp-doxygen-short-summary`
-2. :ref:`cpp-doxygen-deprecation` (if applicable)
-3. :ref:`cpp-doxygen-extended-summary` (recommended)
-4. :ref:`cpp-doxygen-see-also` (optional)
-5. :ref:`cpp-doxygen-notes` (optional)
-6. :ref:`cpp-doxygen-references` (optional)
+2. :ref:`cpp-doxygen-extended-summary` (recommended)
+3. :ref:`cpp-doxygen-see-also` (optional)
+4. :ref:`cpp-doxygen-notes` (optional)
+5. :ref:`cpp-doxygen-references` (optional)
 
 In addition, each value of the type should be documented. A short description is almost always sufficient.
 
@@ -653,18 +631,17 @@ All public or protected methods and all functions must be preceded by a document
 Method or function documentation blocks contain the following sections:
 
 1. :ref:`cpp-doxygen-short-summary`
-2. :ref:`cpp-doxygen-deprecation` (if applicable)
-3. :ref:`cpp-doxygen-extended-summary` (recommended)
-4. :ref:`cpp-doxygen-tparameters` (if applicable)
-5. :ref:`cpp-doxygen-parameters` (if applicable)
-6. :ref:`cpp-doxygen-returns` (if applicable)
-7. :ref:`cpp-doxygen-throws` (if applicable)
-8. :ref:`cpp-doxygen-exceptsafe` (optional)
-9. :ref:`cpp-doxygen-related` (if applicable; for functions only)
-10. :ref:`cpp-doxygen-see-also` (optional)
-11. :ref:`cpp-doxygen-notes` (optional)
-12. :ref:`cpp-doxygen-references` (optional)
-13. :ref:`cpp-doxygen-examples` (optional)
+2. :ref:`cpp-doxygen-extended-summary` (recommended)
+3. :ref:`cpp-doxygen-tparameters` (if applicable)
+4. :ref:`cpp-doxygen-parameters` (if applicable)
+5. :ref:`cpp-doxygen-returns` (if applicable)
+6. :ref:`cpp-doxygen-throws` (if applicable)
+7. :ref:`cpp-doxygen-exceptsafe` (optional)
+8. :ref:`cpp-doxygen-related` (if applicable; for functions only)
+9. :ref:`cpp-doxygen-see-also` (optional)
+10. :ref:`cpp-doxygen-notes` (optional)
+11. :ref:`cpp-doxygen-references` (optional)
+12. :ref:`cpp-doxygen-examples` (optional)
 
 An example:
 
@@ -726,12 +703,11 @@ All non-private constants, variables, or data members must be preceded by a docu
 At minimum, constants/variables/data members should have a summary line, but can also have a more complete structure:
 
 1. :ref:`cpp-doxygen-short-summary`
-2. :ref:`cpp-doxygen-deprecation` (if applicable)
-3. :ref:`cpp-doxygen-extended-summary` (optional)
-4. :ref:`cpp-doxygen-initializer` (optional; for constants only)
-5. :ref:`cpp-doxygen-notes` (optional)
-6. :ref:`cpp-doxygen-references` (optional)
-7. :ref:`cpp-doxygen-examples` (optional)
+2. :ref:`cpp-doxygen-extended-summary` (optional)
+3. :ref:`cpp-doxygen-initializer` (optional; for constants only)
+4. :ref:`cpp-doxygen-notes` (optional)
+5. :ref:`cpp-doxygen-references` (optional)
+6. :ref:`cpp-doxygen-examples` (optional)
 
 For example:
 

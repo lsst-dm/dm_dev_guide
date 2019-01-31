@@ -2037,6 +2037,13 @@ Specifically for debug print statements, use the ``lsst::pex::log::Trace`` class
        [...statements...]
    #endif
 
+.. _style-guide-cpp-5-38b:
+
+5-38b. The C++14 ``[[deprecated("reason")]]`` attribute SHOULD be used to deprecate code.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For more on deprecating code, see :doc:`/stack/deprecating-interfaces`.
+
 .. _style-guide-cpp-5-39:
 
 5-39. ``std::String`` class SHOULD be used rather than ``char *``
