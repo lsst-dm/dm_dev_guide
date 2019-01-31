@@ -7,7 +7,7 @@ Deprecation Procedure
 
 Deprecations are changes to interfaces.
 (If they were limited to implementation alone, they wouldn't require deprecation, as no one would notice when the change was made.)
-As a result they often require or result from RFCs.
+As a result they often require or result from :ref:`RFCs </communications/rfc>`.
 But our usual policy applies; if no one would object, a deprecation can be made without an RFC.
 
 Release notes
@@ -32,7 +32,7 @@ Triggering such a warning does not cause a test failure.
 Python Deprecation
 ==================
 
-If you need to deprecate a class or function, import the `deprecated` package::
+If you need to deprecate a class or function, import the :py:func:`~deprecated.sphinx.deprecated` decorator::
 
    from deprecated.sphinx import deprecated
 
@@ -43,12 +43,12 @@ For each class or function to be deprecated, decorate it as follows::
 The reason string should include the replacement API when available or explain why there is no replacement.
 The reason string will be automatically added to the docstring for the class or function; there is no need to change that.
 You do not need to specify the optional version argument to the decorator since deprecation decorators are typically not added in advance of when the deprecation actually begins.
-Since our end users tend to be developers or at least may call APIs directly from notebooks, we will treat our APIs as end-user features and use `category=FutureWarning` instead of the default `DeprecationWarning`, which is primarily for Python developers. Do not use `PendingDeprecationWarning`.
+Since our end users tend to be developers or at least may call APIs directly from notebooks, we will treat our APIs as end-user features and use ``category=FutureWarning`` instead of the default :py:class:`DeprecationWarning`, which is primarily for Python developers. Do not use :py:class:`PendingDeprecationWarning`.
 
 pybind11 Deprecation
 ====================
 
-A deprecated pybind11-wrapped function must be rewrapped in pure Python by manually using the `deprecated` decorator::
+A deprecated pybind11-wrapped function must be rewrapped in pure Python by manually using the :py:func:`~deprecated.sphinx.deprecated` decorator::
 
    function = deprecated(reason="why", category=FutureWarning)(function)
  
