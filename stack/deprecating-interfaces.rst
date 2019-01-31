@@ -7,7 +7,7 @@ Deprecation Procedure
 
 Deprecations are changes to interfaces.
 (If they were limited to implementation alone, they wouldn't require deprecation, as no one would notice when the change was made.)
-As a result they often require or result from :ref:`RFCs </communications/rfc>`.
+As a result they often require or result from :doc:`RFCs </communications/rfc>`.
 But our usual policy applies; if no one would object, a deprecation can be made without an RFC.
 
 Release notes
@@ -19,9 +19,13 @@ It may be desirable to repeat that description in succeeding release notes until
 Code removal
 ------------
 
+When an interface is deprecated, a ticket should be filed to remove the corresponding deprecated code, usually assigned to the team of the deprecating developer.
 Removal of the deprecated code occurs, at the earliest, immediately after the next major release following the release with the first deprecation release note; at the latest, immediately before the major release following.
 In other words, if deprecation is first noted in release 17.2.3, the code cannot be removed until after 18.0 is released and must be removed before 19.0 is released.
+So the code removal ticket should block the following major release (19.0 in this example).
 In general, no deprecation should be removed before two calendar months have elapsed.
+Scheduling of the code removal should be handled like :doc:`any other backlog story </work/project-planning>`, although with a clear deadline (and a clear "do not merge before" point, unlike most stories).
+In particular, the removal could be assigned to a different developer than the one doing the original deprecation, as negotiated by the relevant T/CAM.
 
 Continuous integration tests
 ----------------------------
