@@ -137,7 +137,7 @@ Flake8 command line invocation
 
 .. code-block:: bash
 
-   flake8 --ignore=E133,E226,E228 --max-line-length=110 .
+   flake8 --ignore=E133,E226,E228 --max-line-length=110 --max-doc-length=79 .
 
 This command lints all Python files in the current directory.
 Alternatively, individual files can be specified in place of ``.``.
@@ -157,6 +157,7 @@ This configuration, included in a :file:`setup.cfg` file at the root of code rep
 
    [flake8]
    max-line-length = 110
+   max-doc-length = 79
    ignore = E133, E226, E228, N802, N803, N806, N812, N813, N815, N816, W504
    exclude =
      bin,
