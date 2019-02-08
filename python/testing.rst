@@ -157,7 +157,7 @@ To enable automatic :command:`flake8` testing as part of the normal test executi
 
    [tool:pytest]
    addopts = --flake8
-   flake8-ignore = E133 E226 E228 N802 N803 N806
+   flake8-ignore = E133 E226 E228 N802 N803 N806 N812 N813 N815 N816 W504
 
 The ``addopts`` parameter adds additional command-line options to the :command:`pytest` command when it is run either from the command-line or from :command:`scons`.
 A wrinkle with the configuration of the ``pytest-flake8`` plugin is that it inherits the ``max-line-length`` and ``exclude`` settings from the ``[flake8]`` section of :file:`setup.cfg` but you are required to explicitly list the codes to ignore when running within `pytest`_ by using the ``flake8-ignore`` parameter.
@@ -169,12 +169,12 @@ For example, at the time of writing this is an extract from the :file:`setup.cfg
 
   [flake8]
   max-line-length = 110
-  ignore = E133, E226, E228, N802, N803, N806
+  ignore = E133, E226, E228, N802, N803, N806, N812, N813, N815, N816, W504
   exclude = __init__.py, tests/testLib.py
 
   [tool:pytest]
   addopts = --flake8
-  flake8-ignore = E133 E226 E228 N802 N803 N806
+  flake8-ignore = E133 E226 E228 N802 N803 N806 N812 N813 N815 N816 W504
       # This will go away for newer flake8 versions
       forcedPhotCoadd.py W503
       # These will not be needed when we use numpydoc

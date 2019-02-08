@@ -83,6 +83,22 @@ N806
    Variable in function should be lowercase.
    See :ref:`style-guide-py-sci-pi-naming`.
 
+N812
+   Lowercase imported as non lowercase.
+   See :ref:`style-guide-py-sci-pi-naming`.
+
+N813
+   Camelcase imported as lowercase.
+   See :ref:`style-guide-py-sci-pi-naming`.
+
+N815
+   MixedCase variable in class scope.
+   See :ref:`style-guide-py-sci-pi-naming`.
+
+N816
+   MixedCase variable in global scope.
+   See :ref:`style-guide-py-sci-pi-naming`.
+
 .. _pycodestyle error: http://pep8.readthedocs.io/en/latest/intro.html#error-codes
 
 .. _style-guide-py-flake8:
@@ -127,7 +143,7 @@ This command lints all Python files in the current directory.
 Alternatively, individual files can be specified in place of ``.``.
 
 The ignored error codes are :ref:`explained above <style-guide-py-ignored-errors>`.
-N802, N803, and N806 can be added to this list for some packages.
+N802, N803, N806, N812, N813, N815, and N816 can be added to this list for some packages.
 
 .. _style-guide-py-flake8-config:
 
@@ -141,7 +157,7 @@ This configuration, included in a :file:`setup.cfg` file at the root of code rep
 
    [flake8]
    max-line-length = 110
-   ignore = E133, E226, E228, N802, N803, N806, W504
+   ignore = E133, E226, E228, N802, N803, N806, N812, N813, N815, N816, W504
    exclude =
      bin,
      doc,
