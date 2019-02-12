@@ -112,7 +112,7 @@ The separate `pep8-naming`_ plugin validates names according to the DM Python St
 
 .. note::
 
-   Flake8 only validates code against PEP 8 specifications.
+   Flake8 validates code against PEP 8 specifications and also allows some configuration for line lengths and cases where PEP8 allows some ambiguity but where we require consistency.
    This style guide includes additional guidelines that *are not* automatically linted.
 
 .. _flake8: https://flake8.readthedocs.io
@@ -137,7 +137,7 @@ Flake8 command line invocation
 
 .. code-block:: bash
 
-   flake8 --ignore=E133,E226,E228 --max-line-length=110 .
+   flake8 --ignore=E133,E226,E228 --max-line-length=110 --max-doc-length=79 .
 
 This command lints all Python files in the current directory.
 Alternatively, individual files can be specified in place of ``.``.
@@ -157,6 +157,7 @@ This configuration, included in a :file:`setup.cfg` file at the root of code rep
 
    [flake8]
    max-line-length = 110
+   max-doc-length = 79
    ignore = E133, E226, E228, N802, N803, N806, N812, N813, N815, N816, W504
    exclude =
      bin,
