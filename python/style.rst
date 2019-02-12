@@ -112,7 +112,7 @@ The separate `pep8-naming`_ plugin validates names according to the DM Python St
 
 .. note::
 
-   Flake8 only validates code against PEP 8 specifications.
+   Flake8 validates code against PEP 8 specifications and also allows some configuration for line lengths and cases where PEP8 allows some ambiguity but where we require consistency.
    This style guide includes additional guidelines that *are not* automatically linted.
 
 .. _flake8: https://flake8.readthedocs.io
