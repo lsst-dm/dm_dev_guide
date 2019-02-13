@@ -48,6 +48,18 @@ The reason string should include the replacement API when available or explain w
 The reason string will be automatically added to the docstring for the class or function; there is no need to change that.
 You do not need to specify the optional version argument to the decorator since deprecation decorators are typically not added in advance of when the deprecation actually begins.
 Since our end users tend to be developers or at least may call APIs directly from notebooks, we will treat our APIs as end-user features and use ``category=FutureWarning`` instead of the default :py:class:`DeprecationWarning`, which is primarily for Python developers. Do not use :py:class:`PendingDeprecationWarning`.
+Class and static methods should be wrapped in the order given here::
+
+    class Foo:
+        @classmethod
+        @deprecated(reason="why", category=FutureWarning)
+        def cm(cls, x):
+            pass
+        
+        @staticmethod
+        @deprecated(reason="why", category=FutureWarning)
+        def sm(x):
+            pass
 
 pybind11 Deprecation
 ====================
@@ -58,6 +70,10 @@ A deprecated pybind11-wrapped function must be rewrapped in pure Python by manua
  
 If only one overload of a set is being deprecated, state that in the reason string.
 Over-warning is considered better than under-warning in this case.
+
+For wrapped class methods, it is necessary to use more complicated syntax::
+
+    Class.function = classmethod(deprecated(reason="why", category=FutureWarning)(Class.function.__func__))
 
 C++ Deprecation
 ===============
