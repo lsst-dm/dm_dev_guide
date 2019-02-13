@@ -44,10 +44,6 @@ For each class or function to be deprecated, decorate it as follows::
 
    @deprecated(reason="why", category=FutureWarning)
 
-The reason string should include the replacement API when available or explain why there is no replacement.
-The reason string will be automatically added to the docstring for the class or function; there is no need to change that.
-You do not need to specify the optional version argument to the decorator since deprecation decorators are typically not added in advance of when the deprecation actually begins.
-Since our end users tend to be developers or at least may call APIs directly from notebooks, we will treat our APIs as end-user features and use ``category=FutureWarning`` instead of the default :py:class:`DeprecationWarning`, which is primarily for Python developers. Do not use :py:class:`PendingDeprecationWarning`.
 Class and static methods should be decorated in the order given here::
 
     class Foo:
@@ -55,11 +51,16 @@ Class and static methods should be decorated in the order given here::
         @deprecated(reason="why", category=FutureWarning)
         def cm(cls, x):
             pass
-        
+
         @staticmethod
         @deprecated(reason="why", category=FutureWarning)
         def sm(x):
             pass
+
+The reason string should include the replacement API when available or explain why there is no replacement.
+The reason string will be automatically added to the docstring for the class or function; there is no need to change that.
+You do not need to specify the optional version argument to the decorator since deprecation decorators are typically not added in advance of when the deprecation actually begins.
+Since our end users tend to be developers or at least may call APIs directly from notebooks, we will treat our APIs as end-user features and use ``category=FutureWarning`` instead of the default :py:class:`DeprecationWarning`, which is primarily for Python developers. Do not use :py:class:`PendingDeprecationWarning`.
 
 pybind11 Deprecation
 ====================
