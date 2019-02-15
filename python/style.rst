@@ -250,6 +250,10 @@ This conforms to the :doc:`/cpp/style` (see :ref:`4-6 <style-guide-cpp-4-6>`).
 
 This differs from the `PEP 8 recommendation of 79 characters <https://www.python.org/dev/peps/pep-0008/#maximum-line-length>`_.
 
+Note that indentation spaces are counted in this line length.
+This allows editors to be set with fixed line limits.
+If you find that indentation spaces are consuming a significant fraction of your code line, consider refactoring the code.
+
 .. _style-guide-py-docstring-line-length:
 
 Docstring and comment line length MUST be less than or equal to 79 columns
@@ -258,6 +262,8 @@ Docstring and comment line length MUST be less than or equal to 79 columns
 Limit all docstring and comment lines to a maximum of 79 characters.
 
 This differs from the `PEP 8 recommendation of 72 characters <https://www.python.org/dev/peps/pep-0008/#maximum-line-length>`_ and the `numpydoc recommendation of 75 characters <https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard>`_ but maintains readability and compatibility with default terminal widths while providing the maximum space.
+
+As for code lines, indentation spaces are counted in this line length to allow editors to be set with fixed line limits.
 
 .. _style-guide-py-implied-continuation:
 
