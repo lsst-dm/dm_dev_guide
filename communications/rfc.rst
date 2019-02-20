@@ -179,9 +179,12 @@ In all of these cases, the RFC is marked as **Flagged** to indicate that it is b
 
 As a result of the discussion on a **Flagged** RFC, the DMCCB may decide to approve it and move forward with the proposal.
 In this case, the RFC status is set to **Board Recommended**.
-Once one or more triggering issues have been opened on the RFC, the assignee has to change the status to **Adopted**.
+The assignee can then attach the triggering issues and adopt the RFC following the standard process.
 
-All RFCs on DM controlled documents will set to **Adopted** directly by the DMCCB, since they do not require implementation issues.
+If the DMCCB does not approve the RFC, its status will be set to **Withdrawn**.
+If the DMCCB declines to consider the RFC, the DMCCB will change the status back to **Proposed**.
+
+All RFCs on DM controlled documents will be set directly to **Adopted** by the DMCCB, since they do not require implementation issues.
 
 .. _rfc-formalities:
 
