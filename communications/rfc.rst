@@ -177,6 +177,12 @@ If an RFC includes API changes, including deprecations, or updates to a data mod
 
 In all of these cases, the RFC is marked as **Flagged** to indicate that it is being considered by the DMCCB.
 
+As a result of the discussion on a **Flagged** RFC, the DMCCB may decide to approve it and move forward with the proposal.
+In this case, the RFC status is set to **Board Recommended**.
+Once one or more triggering issues have been opened on the RFC, the assignee has to change the status to **Adopted**.
+
+All RFCs on DM controlled documents will set to **Adopted** directly by the DMCCB, since they do not require implementation issues.
+
 .. _rfc-formalities:
 
 Formalities
