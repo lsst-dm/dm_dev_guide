@@ -61,6 +61,22 @@ Label               Meaning
 =================== =============================================================================
 ``dm-sst``          This work is of interest to the DM System Science Team.
 ``dm-set``          This work is of interest to the DM Systems Engineering Team.
-``dmlt``            This work is of interest to the DM Leadership Team.
+``DMLT``            This work is of interest to the DM Leadership Team.
 ``gen3-middleware`` Work on the “generation 3” Butler and associated middleware (e.g. SuperTask).
 =================== =============================================================================
+
+In addition, please label any tickets describing work performed on documents with an assigned document handle with that handle (``DMTN-123``, ``LDM-456``, ``LSE-789``, etc).
+
+.. _jira-components:
+
+Components
+==========
+
+You can assign one or more components to tickets to describe which part or parts of the system they affect.
+Components are selected from a pre-defined list; only JIRA administrators have the ability to add new components.
+The following guidelines may be helpful when choosing components:
+
+- If the ticket involves working in one or more software repositories, add the corresponding components (for example, ``afw``, ``daf_butler``, ``ap_association``).
+  If no component exists for the repository you are working in, ask your T/CAM for help.
+- If the ticket involves work on a document, choose a component that best describes the type of the document you are working on (for example, ``Design Documents``, ``Review Documents``, ``Requirements Documents``).
+  Even if the document is hosted in a Git repository, don't add that repository as a component; use a label :ref:`label <jira-labels>` instead.

@@ -126,7 +126,7 @@ While, in general, it's helpful to provide as much information as you can, don't
 
 Components
    You should choose from the pre-populated list of components to specify what part of the DM system the ticket relates to.
-   If in doubt, ask your T/CAM.
+   More guidance on :ref:`choosing appropriate components <jira-components>` is available, but, if in doubt, ask your T/CAM.
 Assignee
    Typically you will assign yourself (or your T/CAM will assign you) to a ticket.
    You can also assign tickets to others.
