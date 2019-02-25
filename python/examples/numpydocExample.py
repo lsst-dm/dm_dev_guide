@@ -280,7 +280,9 @@ class ExampleClass(object):
         return True
 
     def __special__(self):
-        """Documentation for a special method.
+        """Do something special.
+
+        Documentation for a special method.
 
         Notes
         -----
@@ -295,7 +297,9 @@ class ExampleClass(object):
         pass
 
     def _private(self):
-        """By default private members are not included in the HTML docs either.
+        """Do something internally.
+
+        By default private members are not included in the HTML docs either.
 
         Notes
         -----
