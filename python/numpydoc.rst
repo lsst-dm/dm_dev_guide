@@ -328,7 +328,7 @@ For summaries of how these docstring sections are composed in specific contexts,
 Short summary
 -------------
 
-A one-sentence summary that does not use variable names or the function's name:
+All docstrings begin with a one-sentence summary:
 
 .. code-block:: python
    :emphasize-lines: 2
@@ -380,6 +380,18 @@ The summary sentence can wrap across multiple lines (see also :ref:`py-docstring
 
 Do not write multiple sentences in the *Short summary*, however.
 If additional content is needed to clarify the *Short summary,* consider adding an :ref:`Extended summary <py-docstring-extended-summary>` section.
+
+
+On API and parameter names in summary sentences
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Do not repeat the name of the class, method, function, or attribute in the summary sentence.
+This information is already clear from the context.
+
+As well, it's best to not repeat the names of parameters in the summary sentence.
+The summary sentence is often seen in API listings where individual parameters may be truncated from the displayed API signature.
+Write the summary in plain English and in a way that is as self-contained as practical (aside from the implicit context of the API name and the name of the parent class).
+If the English word is the same as the parameter name then it's fine to use that word in the summary sentence; don't display the word as a code literal, though.
 
 Writing summaries for functions and methods
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
