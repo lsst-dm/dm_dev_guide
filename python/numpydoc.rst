@@ -10,7 +10,11 @@ Documenting Python APIs with docstrings
 
 We use Python docstrings to create reference documentation for our Python APIs.
 Docstrings are read by developers, interactive Python users, and readers of our online documentation.
-This page describes how to write these docstrings in Numpydoc, DM's standard format.
+This page describes how to write these docstrings for LSST DM.
+
+Although this style guide grew out of Numpydoc_, and DM docstrings are parsed as Numpydoc, this style guide has small tweaks and clarifications compared to the original Numpydoc_ standard.
+Always refer to this guide, rather than others, to learn how to write DM docstrings.
+If you have any questions, ask in `#dm-docs <https://lsstc.slack.com/archives/dm-docs>`_ on Slack.
 
 **Format reference:**
 
@@ -297,7 +301,7 @@ Numpydoc sections in docstrings
 ===============================
 
 We organize Python docstrings into sections that appear in a common order.
-This format follows the `Numpydoc`_ standard (used by NumPy, SciPy, and Astropy, among other scientific Python packages) rather than the format described in :pep:`287`.
+This format is based on the original Numpydoc_ standard (used by NumPy, SciPy, and Astropy, among other scientific Python packages), though this style guide includes several DM-specific clarifications.
 These are the sections and their relative order:
 
 .. _Numpydoc: https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt
