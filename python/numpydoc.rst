@@ -12,7 +12,7 @@ We use Python docstrings to create reference documentation for our Python APIs.
 Docstrings are read by developers, interactive Python users, and readers of our online documentation.
 This page describes how to write these docstrings for LSST DM.
 
-Although this style guide grew out of Numpydoc_, and DM docstrings are parsed as Numpydoc, this style guide has small tweaks and clarifications compared to the original Numpydoc_ standard.
+Although this style guide grew out of the `Numpydoc Style Guide`_, and DM docstrings are parsed by Numpydoc_, this style guide has small tweaks and clarifications compared to the original `Numpydoc Style Guide`_.
 Always refer to this guide, rather than others, to learn how to write DM docstrings.
 If you have any questions, ask in `#dm-docs <https://lsstc.slack.com/archives/dm-docs>`_ on Slack.
 
@@ -301,10 +301,8 @@ Numpydoc sections in docstrings
 ===============================
 
 We organize Python docstrings into sections that appear in a common order.
-This format is based on the original Numpydoc_ standard (used by NumPy, SciPy, and Astropy, among other scientific Python packages), though this style guide includes several DM-specific clarifications.
+This format is based on the original `Numpydoc Style Guide`_ (used by NumPy, SciPy, and Astropy, among other scientific Python packages), though this style guide includes several DM-specific clarifications.
 These are the sections and their relative order:
-
-.. _Numpydoc: https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard
 
 1. :ref:`Short summary <py-docstring-short-summary>`
 2. :ref:`Extended summary <py-docstring-extended-summary>` (optional)
@@ -768,6 +766,7 @@ If a returned variable is named in the method or function scope, you will usuall
 For example:
 
 .. code-block:: python
+   :emphasize-lines: 6-9
 
    def getDistance(self, x, y):
        """Compute the distance of the point to an (x, y) coordinate.
@@ -781,6 +780,28 @@ For example:
        """
        distance = np.hypot(self._x - x, self._y - y)
        return distance
+
+.. warning::
+
+   The original `Numpydoc Style Guide`_ suggests a short-hand syntax that avoids naming a returned value:
+
+   .. code-block:: python
+      :emphasize-lines: 6-9
+
+      def getDistance(self, x, y):
+          """Compute the distance of the point to an (x, y) coordinate.
+
+          [...]
+
+          Returns
+          -------
+          `float`
+              Distance, in units of pixels.
+          """
+          distance = np.hypot(self._x - x, self._y - y)
+          return distance
+
+   **Don't use this syntax because it does not render properly.**
 
 .. _py-docstring-yields:
 
@@ -1411,9 +1432,12 @@ Complete example module
 Acknowledgements
 ================
 
-These docstring guidelines are derived/adapted from the `NumPy <https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard>`_ and `Astropy <http://docs.astropy.org/en/stable/_sources/development/docrules.txt>`_ documentation.
+These docstring guidelines are derived/adapted from the `Numpydoc`_ and `Astropy <http://docs.astropy.org/en/stable/_sources/development/docrules.txt>`_ documentation.
 The example module is adapted from the `Napoleon documentation <http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html#example-numpy>`_.
 
-NumPy is Copyright © 2005-2013, NumPy Developers.
+Numpy is Copyright © 2005-2013, Numpy Developers.
 
 Astropy is Copyright © 2011-2015, Astropy Developers.
+
+.. _Numpydoc: https://numpydoc.readthedocs.io/en/latest/
+.. _Numpydoc Style Guide: https://numpydoc.readthedocs.io/en/latest/format.html
