@@ -23,24 +23,23 @@
 """Example Python module with Numpydoc-formatted docstrings.
 
 This module demonstrates documentation written according to LSST DM's
-guidelines for `Documenting Python APIs with Docstrings`_. Docstrings have
-well-specified sections. This paragraph is considered an `Extended
-Summary`_. Permitted sections are listed in `Numpydoc Sections in Docstrings`_.
-You can't add arbitrary sections since they won't be parsed.
+guidelines for `Documenting Python APIs with Docstrings`_.
 
 Notes
 -----
+Docstrings have well-specified sections. This is the Notes section. Permitted
+sections are listed in `Numpydoc Sections in Docstrings`_. You can't add
+arbitrary sections since they won't be parsed.
+
 Usually we don't write extensive module docstrings. Focus the module docstring
 on information that a Stack developer needs to know when working inside that
 module. Module *users* typically won't see module docstrings (instead they will
 read module documentation topics written in the package's ``doc/`` directory).
 
 .. _`Documenting Python APIs with Docstrings`:
-   https://developer.lsst.io/docs/py_docs.html
-.. _`Extended Summary`:
-   https://developer.lsst.io/docs/py_docs.html#py-docstring-extended-summary
+   https://developer.lsst.io/python/numpydoc.html
 .. _`Numpydoc Sections in Docstrings`:
-   https://developer.lsst.io/docs/py_docs.html#py-docstring-sections
+   https://developer.lsst.io/python/numpydoc.html#py-docstring-sections
 """
 
 __all__ = ('MODULE_LEVEL_VARIABLE', 'moduleLevelFunction', 'exampleGenerator',
@@ -64,8 +63,7 @@ def moduleLevelFunction(param1, param2=None, *args, **kwargs):
 
     This is an example of a function docstring. Function parameters are
     documented in the ``Parameters`` section. See *Notes* for the format
-    specification. See `Documenting Methods and Functions`_ for more
-    information about function docstrings.
+    specification.
 
     Parameters
     ----------
@@ -117,6 +115,13 @@ def moduleLevelFunction(param1, param2=None, *args, **kwargs):
 
     Notes
     -----
+    The Notes section is where you can write about the usage patterns and
+    background for the API. The bulk of the conceptual documentation goes
+    here, instead of it the extended summary. Save example code for the
+    "Examples" section.
+
+    **More about the Parameters section**
+
     If ``*args`` or ``**kwargs`` are accepted, they should be listed as
     ``*args`` and ``**kwargs``.
 
@@ -144,16 +149,14 @@ def moduleLevelFunction(param1, param2=None, *args, **kwargs):
 
     See the `Examples`_ section reference for details.
 
-    .. _`Documenting Methods and Functions`:
-       py-docstring-method-function-structure
     .. _`Parameters`:
-       https://developer.lsst.io/docs/py_docs.html#py-docstring-parameters
+       https://developer.lsst.io/python/numpydoc.html#py-docstring-parameters
     .. _`Returns`:
-       https://developer.lsst.io/docs/py_docs.html#py-docstring-returns
+       https://developer.lsst.io/python/numpydoc.html#py-docstring-returns
     .. _`Raises`:
-       https://developer.lsst.io/docs/py_docs.html#py-docstring-raises
+       https://developer.lsst.io/python/numpydoc.html#py-docstring-raises
     .. _`Examples`:
-       https://developer.lsst.io/docs/py_docs.html#py-docstring-examples
+       https://developer.lsst.io/python/numpydoc.html#py-docstring-examples
     """
     if param1 == param2:
         raise ValueError('param1 may not be equal to param2')
@@ -192,7 +195,8 @@ def exampleGenerator(n):
 
 
 class ExampleClass(object):
-    """Example class.
+    """An example class for demonstrating docstrings for classes, methods, and
+    attributes in the Numpydoc format.
 
     Parameters
     ----------
@@ -250,10 +254,6 @@ class ExampleClass(object):
     def exampleMethod(self, param1, param2):
         """Test that a situation is true.
 
-        Class methods are similar to regular functions. Always use the
-        imperative mood when writing the one-sentence summary of a method or
-        function.
-
         Parameters
         ----------
         param1 : obj
@@ -268,20 +268,26 @@ class ExampleClass(object):
 
         Notes
         -----
+        Class methods are similar to regular functions. Always use the
+        imperative mood when writing the one-sentence summary of a method or
+        function.
+
         Do not include the ``self`` parameter in the ``Parameters`` section.
         """
         return True
 
     def __special__(self):
-        """At the moment, special members with docstrings are not published in
-        the HTML documentation.
-
-        You must still document special members.
+        """Documentation for a special method.
 
         Notes
         -----
         Special members are any methods or attributes that start with and end
         with a double underscore.
+
+        At the moment, special members with docstrings are not published in
+        the HTML documentation.
+
+        You can still write docstrings for them, though.
         """
         pass
 
@@ -301,9 +307,7 @@ class ExampleClass(object):
 
 
 class ExampleError(Exception):
-    """Example exception.
-
-    Exceptions are documented in the same manner as other classes.
+    """An example exception.
 
     Parameters
     ----------
@@ -314,6 +318,8 @@ class ExampleError(Exception):
 
     Notes
     -----
+    Exceptions are documented in the same manner as other classes.
+
     Do not include the ``self`` parameter in the ``Parameters`` section.
     """
 
