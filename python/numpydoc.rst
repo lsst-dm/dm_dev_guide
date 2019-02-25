@@ -304,7 +304,7 @@ We organize Python docstrings into sections that appear in a common order.
 This format is based on the original Numpydoc_ standard (used by NumPy, SciPy, and Astropy, among other scientific Python packages), though this style guide includes several DM-specific clarifications.
 These are the sections and their relative order:
 
-.. _Numpydoc: https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt
+.. _Numpydoc: https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard
 
 1. :ref:`Short summary <py-docstring-short-summary>`
 2. :ref:`Extended summary <py-docstring-extended-summary>` (optional)
@@ -1373,7 +1373,7 @@ Complete example module
 Acknowledgements
 ================
 
-These docstring guidelines are derived/adapted from the `NumPy <https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt>`_ and `Astropy <http://docs.astropy.org/en/stable/_sources/development/docrules.txt>`_ documentation.
+These docstring guidelines are derived/adapted from the `NumPy <https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard>`_ and `Astropy <http://docs.astropy.org/en/stable/_sources/development/docrules.txt>`_ documentation.
 The example module is adapted from the `Napoleon documentation <http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html#example-numpy>`_.
 
 NumPy is Copyright © 2005-2013, NumPy Developers.
