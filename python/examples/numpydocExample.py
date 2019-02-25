@@ -120,7 +120,7 @@ def moduleLevelFunction(param1, *args, param2=None, **kwargs):
     -----
     The Notes section is where you can write about the usage patterns and
     background for the API. The bulk of the conceptual documentation goes
-    here, instead of it the extended summary. Save example code for the
+    here, instead of in the extended summary. Save example code for the
     "Examples" section.
 
     **More about the Parameters section**
