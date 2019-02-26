@@ -12,7 +12,7 @@ We use Python docstrings to create reference documentation for our Python APIs.
 Docstrings are read by developers, interactive Python users, and readers of our online documentation.
 This page describes how to write these docstrings for LSST DM.
 
-Although this style guide grew out of Numpydoc_, and DM docstrings are parsed as Numpydoc, this style guide has small tweaks and clarifications compared to the original Numpydoc_ standard.
+Although this style guide grew out of the `Numpydoc Style Guide`_, and DM docstrings are parsed by Numpydoc_, this style guide has small tweaks and clarifications compared to the original `Numpydoc Style Guide`_.
 Always refer to this guide, rather than others, to learn how to write DM docstrings.
 If you have any questions, ask in `#dm-docs <https://lsstc.slack.com/archives/dm-docs>`_ on Slack.
 
@@ -301,10 +301,8 @@ Numpydoc sections in docstrings
 ===============================
 
 We organize Python docstrings into sections that appear in a common order.
-This format is based on the original Numpydoc_ standard (used by NumPy, SciPy, and Astropy, among other scientific Python packages), though this style guide includes several DM-specific clarifications.
+This format is based on the original `Numpydoc Style Guide`_ (used by NumPy, SciPy, and Astropy, among other scientific Python packages), though this style guide includes several DM-specific clarifications.
 These are the sections and their relative order:
-
-.. _Numpydoc: https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard
 
 1. :ref:`Short summary <py-docstring-short-summary>`
 2. :ref:`Extended summary <py-docstring-extended-summary>` (optional)
@@ -330,7 +328,7 @@ For summaries of how these docstring sections are composed in specific contexts,
 Short summary
 -------------
 
-A one-sentence summary that does not use variable names or the function's name:
+All docstrings begin with a one-sentence summary:
 
 .. code-block:: python
    :emphasize-lines: 2
@@ -361,7 +359,7 @@ The summary sentence can wrap across multiple lines (see also :ref:`py-docstring
 
        Parameters
        ----------
-       sequence : sequence of `float`
+       sequence : `list` [`float`]
            A sequence (`list`, for example) of numbers.
        conditional : callable
            A callback function that takes a single number as an
@@ -382,6 +380,18 @@ The summary sentence can wrap across multiple lines (see also :ref:`py-docstring
 
 Do not write multiple sentences in the *Short summary*, however.
 If additional content is needed to clarify the *Short summary,* consider adding an :ref:`Extended summary <py-docstring-extended-summary>` section.
+
+
+On API and parameter names in summary sentences
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Do not repeat the name of the class, method, function, or attribute in the summary sentence.
+This information is already clear from the context.
+
+As well, it's best to not repeat the names of parameters in the summary sentence.
+The summary sentence is often seen in API listings where individual parameters may be truncated from the displayed API signature.
+Write the summary in plain English and in a way that is as self-contained as practical (aside from the implicit context of the API name and the name of the parent class).
+If the English word is the same as the parameter name then it's fine to use that word in the summary sentence; don't display the word as a code literal, though.
 
 Writing summaries for functions and methods
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -483,7 +493,7 @@ For example:
 
 .. code-block:: python
 
-   def calcDistance(x, y, x0=0., y0=0.):
+   def calcDistance(x, y, x0=0., y0=0., **kwargs):
        """Calculate the distance between two points.
 
        Parameters
@@ -493,33 +503,32 @@ For example:
        y : `float`
            Y-axis coordinate.
        x0 : `float`, optional
-           X-axis coordinate for the second point (the origin, by default).
+           X-axis coordinate for the second point (the origin,
+           by default).
+
+           Descriptions can have multiple paragraphs, and lists:
+
+           - First list item.
+           - Second list item.
        y0 : `float`, optional
-           Y-axis coordinate for the second point (the origin, by default).
+           Y-axis coordinate for the second point (the origin,
+           by default).
+       **kwargs
+           Additional keyword arguments passed to
+           `calcExternalApi`.
        """
 
-Each parameter is declared with a line formatted as ``{name} : {type}`` that is justified to the docstring.
-A single space is required before and after the colon (``:``).
-The ``name`` corresponds to the variable name in the function or method's arguments.
-The ``type`` is described below (:ref:`py-docstring-parameter-types`).
-The description is indented by **four** spaces relative to the docstring and appears without a preceding blank line.
+Formatting tips:
 
-Normally parameters are documented consecutively, without blank lines between (see the earlier example).
-However, if the descriptions of an individual parameter span multiple paragraphs, or include lists, then you must separate each parameter with a blank line.
-For example:
-
-.. code-block:: rst
-
-   Parameters
-   ----------
-   output_path : `str`
-       Filepath where the plot will be saved.
-
-   plot_settings : `dict`, optional
-       Settings for the plot that may include these fields:
-
-       - ``'dpi'``: resolution of the plot in dots per inch (`int`).
-       - ``'rasterize'``: if `True`, then rasterize the plot. `False` by default.
+- Each parameter is declared with a line formatted as ``{name} : {type}`` that is justified to the docstring.
+- A single space is required before and after the colon (``:``).
+- The ``name`` corresponds to the variable name in the function or method's arguments.
+- The ``type`` is discussed in :ref:`py-docstring-parameter-types`).
+- The description is indented by **four** spaces relative to the docstring and appears without a preceding blank line.
+  Descriptions can have multiple lines, and even multiple paragraphs, lists, and definition lists.
+  Ensure that all of the content in a description is aligned with respect to the **first line** of the description content.
+  See the ``x0`` parameter in the example, above.
+- Normally parameters are documented consecutively, without blank lines between.
 
 .. _py-docstring-parameter-types:
 
@@ -529,7 +538,17 @@ Describing parameter types
 Be as precise as possible when describing parameter types.
 The type description is free-form text, making it possible to list several supported types or indicate nuances.
 Complex and lengthy type descriptions can be partially moved to the parameter's *description* field.
-The following sections will help you deal with the different kinds of types commonly seen.
+The following sections will help you deal with the different kinds of types commonly seen:
+
+- :ref:`py-docstring-parameter-types-concrete`
+- :ref:`py-docstring-parameter-types-choices`
+- :ref:`py-docstring-parameter-types-sequences`
+- :ref:`py-docstring-parameter-types-dict`
+- :ref:`py-docstring-parameter-types-struct`
+- :ref:`py-docstring-parameter-types-array`
+- :ref:`py-docstring-parameter-types-callable`
+
+.. _py-docstring-parameter-types-concrete:
 
 Concrete types
 """"""""""""""
@@ -558,6 +577,8 @@ In general, provide the full namespace to the object, such as ```lsst.pipe.base.
 It may be possible to reference objects in the same namespace as the current module without any namespace prefix.
 Always check the compiled documentation site to ensure the link worked.
 
+.. _py-docstring-parameter-types-choices:
+
 Choices
 """""""
 
@@ -568,29 +589,137 @@ When a parameter can only assume one of a fixed set of values, those choices can
    order : {'C', 'F', 'A'}
        [...]
 
+.. _py-docstring-parameter-types-sequences:
+
 Sequence types
 """"""""""""""
 
-When a type is a sequence container (like a `list` or `tuple`), you can describe the type of the contents.
+When a type is a sequence container (like a `list` or `tuple`), you can describe the type of the contents using a :pep:`484`-like syntax.
 For example:
 
 .. code-block:: rst
 
-   mags : `list` of `float`
-       Sequence of magnitudes.
+   mags : `list` [`float`]
+       A sequence of magnitudes.
+
+The type inside the brackets is the type of each item.
+
+.. warning::
+
+   Ensure that you place a space between the container type and the bracket that wraps the item type.
+   Don't do:
+
+   .. code-block:: rst
+
+      `list`[`float`]
+
+   Instead, do:
+
+   .. code-block:: rst
+
+      `list` [`float`]
+
+   Leaving out the space results in a parsing error.
+
+If the type of the sequence's items isn't known, leave out the item typing and explain with the description:
+
+.. code-block:: rst
+
+   items : `list`
+       A sequence of items, which can be any type.
+
+.. _py-docstring-parameter-types-dict:
 
 Dictionary types
 """"""""""""""""
 
-For dictionaries it is usually best to document the keys and their values in the parameter's description:
+If the types of the keys and values are well-known, document the type of a `dict` parameter using a :pep:`484`-like syntax:
+
+.. code-block:: rst
+
+   measurements : `dict` [`str`, `astropy.quantity.Quantity`]
+       The keys are names of metrics and values are measurements
+       as `astropy.quantity.Quantity` instances, which combine
+       both value and unit information.
+
+Use the description to explain what the keys and values, since that information often isn't completely obvious from types alone.
+
+.. warning::
+
+   Ensure that you place a space between the container type and the bracket that wraps the key and value type.
+   Don't do:
+
+   .. code-block:: rst
+
+      `dict`[`str`, `str`]
+
+   Instead, do:
+
+   .. code-block:: rst
+
+      `dict` [`str`, `str`]
+
+   Leaving out the space results in a parsing error.
+
+If the types of keys and values are completely unknown, simply describe the type as ```dict``` and explain in the description.
+
+If the keys are well-known, document the keys using a pattern similar to :ref:`py-docstring-parameter-types-struct`, by documenting each key-value pair using a :ref:`definition list <rst-dl>`:
 
 .. code-block:: rst
 
    settings : `dict`
-       Settings dictionary with fields:
+       Settings dictionary with keys:
 
-       - ``color``: Hex colour code (`str`).
-       - ``size``: Point area in pixels (`float`).
+       ``"color"``
+           Hex colour code (`str`).
+       ``"size"``
+           Point area in pixels (`float`).
+       ``"complicatedKey"``
+           A key with a complicated description. Like any definition list item,
+           the content can be wrapped. You can include lists inside the item as well:
+
+           - The first item of the list. Lorem ipsum dolor sit amet, consectetur
+             adipiscing elit.
+             
+             Proin nulla magna, egestas quis nisi id, dictum mollis diam. Duis lorem
+             eros, tempor egestas ligula eget, dapibus posuere justo.
+
+           - The second item of the list.
+
+           You can also include multiple paragraphs in a key's description. Ensure that
+           all content is aligned with the opening content line.
+
+Notice how the keys are shown by enclosing the quoted strings in double backticks to clarify that the keys are `str` types.
+
+.. _py-docstring-parameter-types-struct:
+
+Struct types
+""""""""""""
+
+``lsst.pipe.base.Struct`` parameters are documented similarly to dictionaries with known keys.
+Describe each attribute of a ``Struct`` parameter as a :ref:`definition list <rst-dl>` item:
+
+.. code-block:: rst
+
+   coord : `lsst.pipe.base.Struct`
+      Coordinate as a struct with attributes:
+
+      ``x``
+          x-axis coordinate (`int`).
+      ``y``
+          y-axis coordinate (`int`).
+      ``z``
+          z-axis coordinate (`int`). Nam ut ligula tristique, consequat risus vel,
+          sodales tellus. Sed sit amet vehicula felis, placerat pharetra nunc:
+          
+          - Morbi commodo euismod faucibus.
+          - Fusce quis tortor et ex tincidunt dapibus quis ac lorem. Morbi quis
+            tellus suscipit quam elementum euismod.
+          
+          Morbi vehicula facilisis diam ac volutpat. Proin suscipit mi ac ullamcorper
+          vulputate. Nullam aliquet iaculis aliquam.
+
+.. _py-docstring-parameter-types-array:
 
 Array types
 """""""""""
@@ -607,6 +736,8 @@ For Numpy arrays, try to include the dimensionality:
        [...]
 
 Choose conventional variables or labels to describe dimensions, like ``N`` for the number of sources or ``Nx, Ny`` for rectangular dimensions.
+
+.. _py-docstring-parameter-types-callable:
 
 Callable types
 """"""""""""""
@@ -641,6 +772,44 @@ You can also explain defaults in the description:
        Description of parameter ``x`` (the default is -1, which implies summation
        over all axes).
 
+.. _py-docstring-args-kwargs:
+
+Additional positional and keyword arguments
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Functions and methods can take additional positional (``*args``) and keyword arguments (``*kwargs``):
+
+.. code-block:: python
+
+   def demoFunction(namedArg, *args, flag=False, **kwargs):
+       """Demonstrate documentation for additional keyword and
+       positional arguments.
+
+       Parameters
+       ----------
+       namedArg : `str`
+           A named argument that is documented like always.
+       *args : `str`
+           Additional names.
+
+           Notice how the type is singular since the user is expected to pass individual
+           `str` arguments, even though the function itself sees ``args`` as an iterable
+           of `str` objects).
+       flag : `bool`
+           A regular keyword argument.
+       **kwargs
+           Additional keyword arguments passed to `otherApi`.
+
+           Usually kwargs are used to pass parameters to other functions and
+           methods. If that is the case, be sure to mention (and link) the
+           API or APIs that receive the keyword arguments.
+
+           If kwargs are being used to generate a `dict`, use the description to
+           document the use of the keys and the types of the values.
+       """
+
+Order ``*args`` and ``**kwargs`` as they appear in the signature.
+
 .. _py-docstring-shorthand:
 
 Shorthand
@@ -661,6 +830,7 @@ Returns
 *For functions and methods*.
 
 'Returns' is an explanation of the returned values and their types, in the same format as :ref:`'Parameters' <py-docstring-parameters>`.
+See the :ref:`Parameters secton <py-docstring-parameters>` and :ref:`py-docstring-parameter-types` for guidelines on how to describe specific types of yielded values.
 
 Basic example
 ^^^^^^^^^^^^^
@@ -681,59 +851,48 @@ If a sequence of values is returned, each value may be separately listed, in ord
        """
        return self._x, self._y
 
-Dictionary return types
-^^^^^^^^^^^^^^^^^^^^^^^
-
-If a return type is `dict`, ensure that the key-value pairs are documented in the description:
-
-.. code-block:: python
-
-   def getCoord(self):
-       """Get the point's pixel coordinate.
-
-       Returns
-       -------
-       pixelCoord : `dict`
-          Pixel coordinates with fields:
-
-          - ``x``: x-axis coordinate (`int`).
-          - ``y``: y-axis coordinate (`int`).
-        """
-        return {'x': self._x, 'y': self._y}
-
-
-Struct return types
-^^^^^^^^^^^^^^^^^^^
-
-``lsst.pipe.base.Struct``\ s, returned by Tasks for example, are documented the same way as dictionaries:
-
-.. code-block:: python
-
-   def getCoord(self):
-       """Get the point's pixel coordinate.
-
-       Returns
-       -------
-       result : `lsst.pipe.base.Struct`
-          Result struct with components:
-
-          - ``x``: x-axis coordinate (`int`).
-          - ``y``: y-axis coordinate (`int`).
-        """
-        return lsst.pipe.base.Struct(x=self._x, y=self._y)
-
 Naming return variables
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Note that the names of the returned variables do not necessarily correspond to the names of variables.
-In the previous examples, the variables ``x``, ``y``, and ``pixelCoord`` never existed in the method scope.
 Simply choose a variable-like name that is clear.
-Order is important.
 
-If a returned variable is named in the method or function scope, you will usually want to use that name for clarity.
-For example:
+Rename attributes or private names:
 
 .. code-block:: python
+   :emphasize-lines: 6-7,9
+
+   def getDistance(self):
+       """Get the distance.
+
+       Returns
+       -------
+       x : `float`
+           Distance, in units of pixels.
+       """
+       return self._x
+
+Name variables that don't have a name within the function scope:
+
+.. code-block:: python
+   :emphasize-lines: 8-9,10
+
+   def getDistance(self, x, y):
+       """Compute the distance of the point to an (x, y) coordinate.
+
+       [...]
+
+       Returns
+       -------
+       distance : `float`
+           Distance, in units of pixels.
+       """
+       return np.hypot(self._x - x, self._y - y)
+
+If the variable has a name in the scope that is useful, feel free to use that:
+
+.. code-block:: python
+   :emphasize-lines: 8-9,11
 
    def getDistance(self, x, y):
        """Compute the distance of the point to an (x, y) coordinate.
@@ -748,6 +907,27 @@ For example:
        distance = np.hypot(self._x - x, self._y - y)
        return distance
 
+.. warning::
+
+   The original `Numpydoc Style Guide`_ suggests a short-hand syntax that avoids naming a returned value:
+
+   .. code-block:: python
+      :emphasize-lines: 8-9,11
+
+      def getDistance(self, x, y):
+          """Compute the distance of the point to an (x, y) coordinate.
+
+          [...]
+
+          Returns
+          -------
+          `float`
+              Distance, in units of pixels.
+          """
+          return np.hypot(self._x - x, self._y - y)
+
+   **Don't use this syntax because it does not render properly.**
+
 .. _py-docstring-yields:
 
 Yields
@@ -756,6 +936,10 @@ Yields
 *For generators.*
 
 'Yields' is used identically to :ref:`'Returns' <py-docstring-yields>`, but for generators.
+See the :ref:`Parameters secton <py-docstring-parameters>` and :ref:`py-docstring-parameter-types` for guidelines on how to describe specific types of yielded values.
+
+Describe the yielded values as singular items yielded from each step, rather than as a sequence of items yielded from all iteration steps.
+
 For example:
 
 .. code-block:: python
@@ -766,9 +950,9 @@ For example:
        Yields
        ------
        key : `str`
-           Item key.
+           An item's key.
        value : obj
-           Item value.
+           An item's value.
        """
        for key, value in self._data.items():
            yield key, value
@@ -886,6 +1070,8 @@ Most reStructuredText formatting is allowed in the *Notes* section, including:
 When using images, remember that many developers and users will be reading the docstring in its raw source form.
 Images should add information, but the docstring should still be useful and complete without them.
 
+Subsections **are not** allowed in a Notes section (or any other section).
+You can :ref:`simulate subsections with bold text <py-docstring-subsections>`.
 See also :ref:`py-docstring-rst` for restrictions.
 
 .. _py-docstring-references:
@@ -958,6 +1144,10 @@ For more information on doctest, see:
 
 - `The official doctest documentation <http://docs.python.org/library/doctest.html>`__.
 - `doctest — Testing Through Documentation <https://pymotw.com/3/doctest/>`__ from Python Module of the Week.
+
+Subsections **are not** allowed in an Examples section (or any other section).
+You can :ref:`simulate subsections with bold text <py-docstring-subsections>`.
+See also :ref:`py-docstring-rst` for restrictions.
 
 .. _py-docstring-module-structure:
 
@@ -1373,9 +1563,12 @@ Complete example module
 Acknowledgements
 ================
 
-These docstring guidelines are derived/adapted from the `NumPy <https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard>`_ and `Astropy <http://docs.astropy.org/en/stable/_sources/development/docrules.txt>`_ documentation.
+These docstring guidelines are derived/adapted from the `Numpydoc`_ and `Astropy <http://docs.astropy.org/en/stable/_sources/development/docrules.txt>`_ documentation.
 The example module is adapted from the `Napoleon documentation <http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html#example-numpy>`_.
 
-NumPy is Copyright © 2005-2013, NumPy Developers.
+Numpy is Copyright © 2005-2013, Numpy Developers.
 
 Astropy is Copyright © 2011-2015, Astropy Developers.
+
+.. _Numpydoc: https://numpydoc.readthedocs.io/en/latest/
+.. _Numpydoc Style Guide: https://numpydoc.readthedocs.io/en/latest/format.html
