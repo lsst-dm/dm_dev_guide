@@ -6,6 +6,11 @@ User documentation style guide
 
 This style guide will help you write technical end-user documentation content for LSST Data Management.
 
+.. toctree::
+   :hidden:
+
+   lsst-specific-content-style-guide
+
 .. _user-doc-style-guide-list:
 
 The style guides
@@ -13,8 +18,8 @@ The style guides
 
 Our core style is described by the `Google Developer Style Guide`_, plus a list of customizations.
 
--  View the `Google Developer Style Guide`_.
--  View the LSST style customizations.
+- View the `Google Developer Style Guide`_.
+- View the :doc:`LSST style customizations </user-docs/lsst-specific-content-style-guide>`.
 
 If the Google Developer Style Guide doesn’t address your situation, you can fall back to these resources:
 

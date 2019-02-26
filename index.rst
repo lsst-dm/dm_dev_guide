@@ -447,6 +447,7 @@ User documentation style
 ------------------------
 
 - :doc:`user-docs/index`
+- :doc:`user-docs/lsst-specific-content-style-guide`
 
 .. _part-services:
 
