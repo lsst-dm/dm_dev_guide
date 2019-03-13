@@ -232,6 +232,7 @@ In some circumstances, a ``release`` integration branch may be used by the relea
 Development is not done directly on the ``master`` branch, but instead on *ticket branches*.
 
 Documentation edits and additions are the only scenarios where working directly on ``master`` and by-passing the code review process is permitted.
+When the ``master`` branch is protected from direct pushes, as in most of our code packages, `user branches <git-branch-user>`_ may be used for documentation edits.
 In most cases, documentation writing benefits from peer editing (code review) and *can* be done on a ticket branch.
 
 The Git history of ``master`` **must never be re-written** with force pushes.
@@ -255,6 +256,7 @@ Before offering unsolicited code review on your colleagues' user branches, remem
 Developers can feel free to rebase and force push work to their personal user branches.
 
 A user branch *cannot* be merged into master; it must be converted into a *ticket branch* first.
+The only exception is for documentation edits and additions.
 
 .. _git-branch-ticket:
 
