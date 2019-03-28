@@ -16,7 +16,7 @@ Platforms
 We have a baseline platform which is what we are using for integration testing and deployments.
 For each product, we also have a number of other platforms which are regularly tested by our continuous integration system to enhance portability.
 
-The baseline system is currently CentOS 7 on Intel x86_64 with gcc 6.3.1 from devtoolset-6 and Python 3.6.
+The baseline system is currently CentOS 7 on Intel x86_64 with gcc 6.3.1 from devtoolset-6 and Python 3.7.
 
 .. note ::
     We aim to stay current with CentOS 7 minor releases, updating within 6 months of their release.
