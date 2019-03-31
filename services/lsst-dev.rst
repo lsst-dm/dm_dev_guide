@@ -198,15 +198,18 @@ Load the LSST Environment
 
 We provide a ready-to-use “shared” version of the LSST software stack to enable developers to get up and running quickly with no installation step.
 The shared stack includes a fully-fledged Miniconda-based Python environment, a selection of additional development tools, and a selection of builds of the lsst_distrib meta-package.
+It is located on GPFS-based network storage; as such, it is cross-mounted across a variety of LSST systems at the Data Facility including those configured as part of the `HTCondor pool`_ and :doc:`Verification Cluster <verification>`.
 The currently stack is regularly updated to include the latest weekly release, which is tagged as ``current``.
 
 The following stacks are currently being updated:
 
-======================================= ============== ================ =======================================================================================================================================================================================================================
-Path                                    Python Version Toolchain        Description
-======================================= ============== ================ =======================================================================================================================================================================================================================
-:file:`/software/lsstsw/stack_20181012` 3              ``devtoolset-6`` Located on GPFS-based network storage; as such, it is cross-mounted across a variety of LSST systems at NCSA including those configured as part of the `HTCondor pool`_ and :doc:`Verification Cluster <verification>`.
-======================================= ============== ================ =======================================================================================================================================================================================================================
+======================================= ================ =============================================================================================
+Path                                    Toolchain        Description
+======================================= ================ =============================================================================================
+:file:`/software/lsstsw/stack_20190330` ``devtoolset-6`` Provides weekly ``w_2019_12`` and later. Based on the post-:jira:`RFC-584` Conda environment.
+======================================= ================ =============================================================================================
+
+The following stacks are not currently being updated, but remain available.
 
 .. note::
 
@@ -214,11 +217,11 @@ Path                                    Python Version Toolchain        Descript
 
 In addition, the following symbolic links point to particular versions of the stack:
 
-=============================== =====================================================================================================
+=============================== ================================
 Path                            Description
-=============================== =====================================================================================================
-:file:`/software/lsstsw/stack`  The latest version of the stack on networked storage using our standard Python version (currently 3).
-=============================== =====================================================================================================
+=============================== ================================
+:file:`/software/lsstsw/stack`  The latest version of the stack.
+=============================== ================================
 
 Add a shared stack to your environment and set up the latest build of the LSST applications by running, for example:
 
@@ -242,11 +245,12 @@ Although the latest weeklies of LSST software are regularly installed into the s
 We therefore periodically retire old stacks and replace them with new ones.
 The following retired stacks are currently available:
 
-======================================= ============== ================ ===============================================================================================
-Path                                    Python Version Toolchain        Description
-======================================= ============== ================ ===============================================================================================
-:file:`/software/lsstsw/stack_20171023` 3              ``devtoolset-6`` Provides a selection of weekly and release builds dating between October 2017 and October 2018.
-======================================= ============== ================ ===============================================================================================
+======================================= ================ ==========================================================================================================================================================================================================================
+Path                                    Toolchain        Description
+======================================= ================ ==========================================================================================================================================================================================================================
+:file:`/software/lsstsw/stack_20171023` ``devtoolset-6`` Provides a selection of weekly and release builds dating between October 2017 and October 2018.
+:file:`/software/lsstsw/stack_20181012` ``devtoolset-6`` Provides weeklies ``w_2018_41`` through ``w_2019_12``; release candidates ``v17_0_rc1``, ``v17_0_rc2``, and ``v17_0_1_rc1``; and releases ``v_17_0`` and ``v_17_0_1``. Based on the pre-:jira:`RFC-584` Conda environment.
+======================================= ================ ==========================================================================================================================================================================================================================
 
 Administrators may wish to note that the shared stack is automatically updated using the script :file:`~lsstsw/shared-stack/shared_stack.py`, which is executed nightly by Cron.
 
