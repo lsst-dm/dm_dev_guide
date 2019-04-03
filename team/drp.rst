@@ -59,6 +59,12 @@ To initialize the stack in your ``bash`` shell, run:
   . /tigress/HSC/LSST/stack_tiger2/loadLSST.bash  # Or stack_perseus, as appropriate.
   setup lsst_apps
 
+.. note::
+
+   The current default shared stack, described above, provides access to LSST weeklies ``w_2019_12`` and later, build using the post-:jira:`RFC-584` Conda environment.
+   The alternative environment at :file:`/tigress/HSC/LSST/stack_tiger2-sumire.princeton.edu_20181028` provides access to weeklies ``w_2018_42`` through ``w_2019_12``.
+   This environment may be used on either Perseus or Tiger, but be aware that it is no longer being updated.
+
 .. _Tiger: http://www.princeton.edu/researchcomputing/computational-hardware/tiger
 .. _Perseus: http://www.princeton.edu/researchcomputing/computational-hardware/perseus
 
