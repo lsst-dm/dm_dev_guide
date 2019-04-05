@@ -18,6 +18,7 @@ This page is designed to assist developers in their work on the ``lsst-dev`` ser
 #. :ref:`lsst-dev-ssh-keys`
 #. :ref:`lsst-dev-tools`
 #. :ref:`lsst-dev-loadlsst`
+#. :ref:`lsst-dev-testdata`
 #. :ref:`lsst-dev-gitlfs`
 #. :ref:`lsst-dev-xpra`
 
@@ -269,22 +270,22 @@ Test data location is: ``/project/shared/data/test_data``
 
 Included test data repositories are::
 
-testdata_jointcal
-testdata_cfht
-testdata_subaru
-testdata_decam
-ap_verify_testdata
-ap_pipe_testdata
-ci_hsc
-afwdata
+  testdata_jointcal
+  testdata_cfht
+  testdata_subaru
+  testdata_decam
+  ap_verify_testdata
+  ap_pipe_testdata
+  ci_hsc
+  afwdata
 
 Validation data location is: ``/project/shared/data/validation_data``
 
 Included validation data repositories are::
 
-validation_data_hsc
-validation_data_decam
-validation_data_cfht
+  validation_data_hsc
+  validation_data_decam
+  validation_data_cfht
 
 These are maintained by the ``lsstsw`` user (this is the same user that curates the shared stack on the ``lsst-dev`` system).
 Please get in contact with a user with access to that account in case of problems.
