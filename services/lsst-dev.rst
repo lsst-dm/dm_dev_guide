@@ -257,7 +257,7 @@ Administrators may wish to note that the shared stack is automatically updated u
 
 .. _HTCondor pool: https://confluence.lsstcorp.org/display/DM/Orchestration
 
-.. _lsst-dev-testdata
+.. _lsst-dev-testdata:
 
 Validation/Test Data Sets
 =========================
