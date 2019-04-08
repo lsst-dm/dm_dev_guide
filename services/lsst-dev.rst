@@ -18,6 +18,7 @@ This page is designed to assist developers in their work on the ``lsst-dev`` ser
 #. :ref:`lsst-dev-ssh-keys`
 #. :ref:`lsst-dev-tools`
 #. :ref:`lsst-dev-loadlsst`
+#. :ref:`lsst-dev-testdata`
 #. :ref:`lsst-dev-gitlfs`
 #. :ref:`lsst-dev-xpra`
 
@@ -255,6 +256,42 @@ Path                                    Toolchain        Description
 Administrators may wish to note that the shared stack is automatically updated using the script :file:`~lsstsw/shared-stack/shared_stack.py`, which is executed nightly by Cron.
 
 .. _HTCondor pool: https://confluence.lsstcorp.org/display/DM/Orchestration
+
+.. _lsst-dev-testdata:
+
+Validation/Test Data Sets
+=========================
+
+There are two ``cron`` jobs that will update a set of validation data repositories and test data repositories.
+These updates will trigger overnight on the ``lsst-dev`` system.
+In most cases, this will be a fairly straightforward ``git pull``, but if corruption is detected, the repository will be cloned afresh.
+The verification data are currently being used primarily by ``validate_drp`` to measure various metrics on the reduced data.
+The test data serve a variety of purposes, but generally are included via a ``setupOptional`` in a package table file.
+
+Test data location is: ``/project/shared/data/test_data``
+
+Included test data repositories are::
+
+  testdata_jointcal
+  testdata_cfht
+  testdata_subaru
+  testdata_decam
+  testdata_lsst
+  ap_verify_testdata
+  ap_pipe_testdata
+  ci_hsc
+  afwdata
+
+Validation data location is: ``/project/shared/data/validation_data``
+
+Included validation data repositories are::
+
+  validation_data_hsc
+  validation_data_decam
+  validation_data_cfht
+
+These are maintained by the ``lsstsw`` user (this is the same user that curates the shared stack on the ``lsst-dev`` system).
+Please ask in the ``#dm-infrastructure`` Slack channel in case of problems.
 
 .. _lsst-dev-gitlfs:
 
