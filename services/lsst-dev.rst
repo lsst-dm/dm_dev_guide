@@ -262,9 +262,11 @@ Administrators may wish to note that the shared stack is automatically updated u
 Validation/Test Data Sets
 =========================
 
-As of early April 2019, there are two ``cron`` jobs that will update a set of validation data repositories and test data repositories.
-These updates will trigger in the 02:00 hour local at the LDF.
-In most cases, this will be a fairly straight forward ``git pull``, but if corruption is detected, the repository will be cloned afresh.
+There are two ``cron`` jobs that will update a set of validation data repositories and test data repositories.
+These updates will trigger overnight on the ``lsst-dev`` system.
+In most cases, this will be a fairly straightforward ``git pull``, but if corruption is detected, the repository will be cloned afresh.
+The verification data are currently being used primarily by ``validate_drp`` to measure various metrics on the reduced data.
+The test data serve a variety of purposes, but generally are included via a ``setupOptional`` in a package table file.
 
 Test data location is: ``/project/shared/data/test_data``
 
@@ -274,6 +276,7 @@ Included test data repositories are::
   testdata_cfht
   testdata_subaru
   testdata_decam
+  testdata_lsst
   ap_verify_testdata
   ap_pipe_testdata
   ci_hsc
@@ -288,7 +291,7 @@ Included validation data repositories are::
   validation_data_cfht
 
 These are maintained by the ``lsstsw`` user (this is the same user that curates the shared stack on the ``lsst-dev`` system).
-Please get in contact with a user with access to that account in case of problems.
+Please ask in the ``#dm-infrastructure`` Slack channel in case of problems.
 
 .. _lsst-dev-gitlfs:
 
