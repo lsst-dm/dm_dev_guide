@@ -20,9 +20,9 @@ Links
 =====
 
 - `Publication Board homepage <https://project.lsst.org/documents/publication-board>`__.
-- `LPM-162: LSST Project Publication Policy <https://www.lsstcorp.org/docushare/dsweb/Get/LPM-162/>`__.
+- `LPM-162: LSST Project Publication Policy <https://ls.st/lpm-162>`__.
 - `Publication Board JIRA Project (PUB) <https://jira.lsstcorp.org/browse/PUB>`__.
-- `Document-13016: Project Publications Style Manual <https://docushare.lsstcorp.org/docushare/dsweb/Get/Document-13016/LSSTStyleManual.pdf>`__.
+- `Document-13016: Project Publications Style Manual <https://ls.st/Document-13016>`__.
 - `lsst-pst/LSSTreferences <https://github.com/lsst-pst/LSSTreferences>`__ GitHub project with citations for key LSST papers.
 
 Citing DM Technical Notes and Design Documents
