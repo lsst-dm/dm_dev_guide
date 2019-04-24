@@ -40,6 +40,21 @@ Technote series
   DMTN technotes are hosted in the https://github.com/lsst-dm organization.
   `Find DMTN technotes <https://github.com/search?o=desc&q=org%3Alsst-dm+dmtn-&s=updated&type=Repositories>`_.
 
+- **LSST Operations Technical Notes (OPSTN).**
+  This series if for technotes by LSST Operations.
+  OPSTN technotes are hosted in the https://github.com/lsst-ops organization.
+  `Find OPSTN technotes <https://github.com/search?o=desc&q=org%3Alsst-ops+opstn-&s=updated&type=Repositories>`_.
+
+- **Project Science Team Technical Notes (PSTN).**
+  This series is for technotes by the LSST PST.
+  PSTN technotes are hosted in the https://github.com/lsst-pst organization.
+  `Find PSTN technotes <https://github.com/search?o=desc&q=org%3Alsst-pst+pstn-&s=updated&type=Repositories>`_.
+
+- **Systems Integration, Test and Commissioning Technical Notes (SITCOMTN).**
+  This series is for technotes by the System Integration, Test and Commissioning Team.
+  SITCOMTN technotes are hosted in the https://github.com/lsst-sitcom organization.
+  `Find SITCOMTN technotes <https://github.com/search?o=desc&q=org%3Alsst-sitcom+sitcomtn-&s=updated&type=Repositories>`_.
+
 - **SQuaRE Technical Notes (SQR).**
   This series is for technotes about SQuaRE products and services.
   SQR technotes are hosted in the https://github.com/lsst-sqre organization.
