@@ -103,7 +103,7 @@ Follow these steps to create a new technote:
    - If you are creating a LaTeX-formatted technote that is built into a PDF, follow the `lsst-texmf documentation <https://lsst-texmf.lsst.io/templates/document.html>`_
 
    Be sure to commit and push the new technote to GitHub.
-   GitHub provides instructions on how to push to GitHub when you create a new GitHub repository.
+   When you create a new repository on GitHub, the repository's initial GitHub homepage provides instructions on how to push to GitHub.
 
 4. Message the `#dm-docs <https://lsstc.slack.com/archives/dm-docs>`__ Slack channel so that the Travis integration for your technote can be activated.
 
