@@ -40,6 +40,21 @@ Technote series
   DMTN technotes are hosted in the https://github.com/lsst-dm organization.
   `Find DMTN technotes <https://github.com/search?o=desc&q=org%3Alsst-dm+dmtn-&s=updated&type=Repositories>`_.
 
+- **LSST Operations Technical Notes (OPSTN).**
+  This series if for technotes by LSST Operations.
+  OPSTN technotes are hosted in the https://github.com/lsst-ops organization.
+  `Find OPSTN technotes <https://github.com/search?o=desc&q=org%3Alsst-ops+opstn-&s=updated&type=Repositories>`_.
+
+- **Project Science Team Technical Notes (PSTN).**
+  This series is for technotes by the LSST PST.
+  PSTN technotes are hosted in the https://github.com/lsst-pst organization.
+  `Find PSTN technotes <https://github.com/search?o=desc&q=org%3Alsst-pst+pstn-&s=updated&type=Repositories>`_.
+
+- **Systems Integration, Test and Commissioning Technical Notes (SITCOMTN).**
+  This series is for technotes by the System Integration, Test and Commissioning Team.
+  SITCOMTN technotes are hosted in the https://github.com/lsst-sitcom organization.
+  `Find SITCOMTN technotes <https://github.com/search?o=desc&q=org%3Alsst-sitcom+sitcomtn-&s=updated&type=Repositories>`_.
+
 - **SQuaRE Technical Notes (SQR).**
   This series is for technotes about SQuaRE products and services.
   SQR technotes are hosted in the https://github.com/lsst-sqre organization.
@@ -72,26 +87,25 @@ Follow these steps to create a new technote:
    - If the page exists, keep incrementing the serial number in the URL until you find a page that is unavailable (try visiting ``https://github.com/lsst-dm/dmtn-102``, ``https://github.com/lsst-dm/dmtn-103``, and so on).
 
 2. `Create a GitHub repository <https://help.github.com/articles/creating-a-new-repository/>`_ in the GitHub organization corresponding to the handle you identified in the previous step.
+   Leave the repo empty — don't seed it with a ``.gitignore`` or ``README``.
 
-3. On your local computer, create an empty Git repository:
-
-   .. code-block:: bash
-
-      mkdir <technote handle>
-      cd <technote handle>
-      git init .
-
-4. Seed the local Git repository with a template.
+3. Create a Git repository from a template.
    Which template you use depends on the technote's format:
 
-   - If you are creating a reStructuredText-based technote that is built with Sphinx into HTML, follow the instructions in `lsst-technote-bootstrap <https://github.com/lsst-sqre/lsst-technote-bootstrap#running-this-cookiecutter-for-development>`__.
+   - If you are creating a reStructuredText-based technote that is built with Sphinx into HTML, run the following commands in a shell:
+
+     .. code-block:: sh
+
+        git clone https://github.com/lsst/templates
+        pip install -r templates/requirements.txt
+        templatekit make technote_rst
 
    - If you are creating a LaTeX-formatted technote that is built into a PDF, follow the `lsst-texmf documentation <https://lsst-texmf.lsst.io/templates/document.html>`_
 
    Be sure to commit and push the new technote to GitHub.
-   GitHub provides instructions on how to push to GitHub when you create a new GitHub repository.
+   When you create a new repository on GitHub, the repository's initial GitHub homepage provides instructions on how to push to GitHub.
 
-5. Message the `#dm-docs <https://lsstc.slack.com/archives/dm-docs>`__ Slack channel so that the Travis integration for your technote can be activated.
+4. Message the `#dm-docs <https://lsstc.slack.com/archives/dm-docs>`__ Slack channel so that the Travis integration for your technote can be activated.
 
    Don't wait to configure your document's deployment.
    By configuring your technote's deployment early on, it's easier for collaborators to view your content.
