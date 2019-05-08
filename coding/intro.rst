@@ -41,7 +41,7 @@ PROHIBITED
    The opposite of REQUIRED.
 
 MUST and SHALL
-   mean that there may exist valid reasons in particular circumstances to ignore a particular Rule, but the full implications must be understood and carefully weighed before choosing a different course.
+   There may exist valid reasons in particular circumstances to ignore a particular Rule, but the full implications must be understood and carefully weighed before choosing a different course.
    The developer needs to petition the DM `Software Architect`_ to acquire explicit approval to contravene the Rule.
 
 MUST NOT and SHALL NOT
