@@ -407,5 +407,6 @@ intersphinx_mapping = {
     'pipelines': ('https://pipelines.lsst.io', None),
     'documenteer': ('https://documenteer.lsst.io/', None),
     'sphinx': ('http://www.sphinx-doc.org/en/master/', None),
-    'deprecated': ('https://deprecated.readthedocs.io/en/latest/', None)
+    'deprecated': ('https://deprecated.readthedocs.io/en/latest/', None),
+    'lsst': ('https://pipelines.lsst.io/v/weekly/', None)
 }

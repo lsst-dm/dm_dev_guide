@@ -65,16 +65,14 @@ Since our end users tend to be developers or at least may call APIs directly fro
 pybind11 Deprecation
 ====================
 
-A deprecated pybind11-wrapped function must be rewrapped in pure Python by manually using the :py:func:`~deprecated.sphinx.deprecated` decorator::
+A deprecated pybind11-wrapped function must be rewrapped in pure Python using the :py:func:`lsst.utils.deprecate_pybind11` function, which defaults to ``category=FutureWarning``::
 
-   function = deprecated(reason="why", category=FutureWarning)(function)
+   from lsst.utils.deprecated import deprecate_pybind11
+   ExposureF.getCalib = deprecate_pybind11(ExposureF.getCalib,
+           reason="Replaced by getPhotoCalib. (Will be removed in 18.0)")
  
 If only one overload of a set is being deprecated, state that in the reason string.
 Over-warning is considered better than under-warning in this case.
-
-For wrapped class methods, it is necessary to use more complicated syntax::
-
-    Class.function = classmethod(deprecated(reason="why", category=FutureWarning)(Class.function.__func__))
 
 C++ Deprecation
 ===============
