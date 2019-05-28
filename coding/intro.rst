@@ -35,14 +35,14 @@ In our style guides we use `RFC-2119 <http://www.ietf.org/rfc/rfc2119.txt>`_\ -s
 
 REQUIRED
    The Rule is an absolute requirement of the specification.
-   The developer needs to petition the DM TCT_ to acquire explicit approval to contravene the Rule.
+   The developer needs to petition the DM `Software Architect`_ to acquire explicit approval to contravene the Rule.
 
 PROHIBITED
    The opposite of REQUIRED.
 
 MUST and SHALL
-   mean that there may exist valid reasons in particular circumstances to ignore a particular Rule, but the full implications must be understood and carefully weighed before choosing a different course.
-   The developer needs to petition the lead developer to acquire explicit approval to contravene the Rule.
+   There may exist valid reasons in particular circumstances to ignore a particular Rule, but the full implications must be understood and carefully weighed before choosing a different course.
+   The developer needs to petition the DM `Software Architect`_ to acquire explicit approval to contravene the Rule.
 
 MUST NOT and SHALL NOT
    The opposites of MUST and SHALL.
@@ -53,6 +53,8 @@ SHOULD, RECOMMENDED and MAY
 
 SHOULD NOT, NOT RECOMMENDED and MAY NOT
    The opposites of SHOULD, RECOMMENDED and MAY.
+
+.. _Software Architect: https://github.com/lsst-dm/images/blob/master/DmOrg.pdf
 
 .. _style-guide-deviations:
 
@@ -70,5 +72,3 @@ Here are two plausible reasons to break a particular rule:
 
 - When applying the rule would make the code less readable, even for someone who is used to reading code that follows the rules.
 - To be consistent with surrounding code that also breaks it (maybe for historic reasons)---although this is also an opportunity to clean up someone else's mess.
-
-.. _TCT: https://confluence.lsstcorp.org/display/DM/Technical+Control+Team
