@@ -95,6 +95,7 @@ Options include:
 
 - Bouncing your connection through a `host on the Peyton network <http://www.astro.princeton.edu/docs/Hardware>`_ (this is usually the easiest way to go);
 - Making use of the `University's VPN service <https://www.net.princeton.edu/vpn/>`_.
+- Using the Research Computing gateway.
 
 If you choose the first option, you may find the ``ProxyCommand`` option to SSH helpful.
 For example, adding the following to :file:`~/.ssh/config` will automatically route your connection to the right place when you run :command:`ssh tiger`::
@@ -102,6 +103,23 @@ For example, adding the following to :file:`~/.ssh/config` will automatically ro
   Host tiger
       Hostname tiger2-sumire.princeton.edu
       ProxyCommand ssh coma.astro.princeton.edu -W %h:%p
+
+The following SSH configuration allows access via the Research Computing gateway::
+
+    Host tigressgateway
+        HostName tigressgateway.princeton.edu
+    Host tiger* perseus* tigressdata*
+        ProxyCommand ssh -q -W %h:%p tigressgateway.princeton.edu
+    Host tiger
+        Hostname tiger2-sumire.princeton.edu
+
+(It may also be necessary to add a ``User`` line under ``Host tigressgateway`` if there is a mismatch between your local and Princeton usernames.)
+Entry to ``tigressgateway`` requires `2FA <https://www.princeton.edu/duoportal>`_;
+we recommend using the ``ControlMaster`` feature of SSH to persist connections, e.g.::
+
+    ControlMaster auto
+    ControlPath ~/.ssh/controlmaster-%r@%h:%p
+    ControlPersist 10m
 
 See also the `Peyton Hall tips on using SSH <http://www.astro.princeton.edu/docs/SSH>`_.
 
