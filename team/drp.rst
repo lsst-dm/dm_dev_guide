@@ -62,6 +62,9 @@ To initialize the stack in your ``bash`` shell, run:
 .. _Tiger: http://www.princeton.edu/researchcomputing/computational-hardware/tiger
 .. _Perseus: http://www.princeton.edu/researchcomputing/computational-hardware/perseus
 
+The Princeton astronomical software group owns a head node on the Tiger cluster called ``tiger2-sumire``.
+You can use this node for building software and running small and/or short-lived jobs.
+
 Storage
 -------
 
@@ -94,10 +97,10 @@ Options include:
 - Making use of the `University's VPN service <https://www.net.princeton.edu/vpn/>`_.
 
 If you choose the first option, you may find the ``ProxyCommand`` option to SSH helpful.
-For example, adding the follwing to :file:`~/.ssh/config` will automatically route your connection to the right place when you run :command:`ssh tiger`::
+For example, adding the following to :file:`~/.ssh/config` will automatically route your connection to the right place when you run :command:`ssh tiger`::
 
   Host tiger
-      Hostname tiger3.princeton.edu
+      Hostname tiger2-sumire.princeton.edu
       ProxyCommand ssh coma.astro.princeton.edu -W %h:%p
 
 See also the `Peyton Hall tips on using SSH <http://www.astro.princeton.edu/docs/SSH>`_.
