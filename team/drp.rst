@@ -71,6 +71,7 @@ Storage
 HSC data (both public data releases and private data, which may not be shared outside the collaboration) is available in :file:`/tigress/HSC` on both clusters.
 This filesystem is available from both clusters, and you may use it to store your results.
 However, note that space is at a premium, especially during our periodic HSC data release processing: please clean up any data you are not actively using.
+Also, be sure to set :command:`umask 002` so that your colleagues can reorganize the shared space.
 
 Space is also available in your home directory, but note that it is not shared across clusters.
 
