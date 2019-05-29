@@ -45,18 +45,12 @@ Available Systems
 
 Typically, LSST (and HSC) data processing is carried out using either the `Tiger`_ or `Perseus`_ clusters.
 Both of these have access to regularly-updated installations of the LSST “stack” through the shared :file:`/tigress` filesystem.
-Be aware, however, that you must use a version of the stack corresponding to
-the operating system installed on the system you are using:
-
-- The Tiger system (accessed through the head node ``tiger2-sumire``) should use :file:`/tigress/HSC/LSST/stack_tiger2`;
-- Perseus should use :file:`/tigress/HSC/LSST/stack_perseus`.
-
 To initialize the stack in your ``bash`` shell, run:
 
 .. prompt:: bash
 
   module load rh/devtoolset/6
-  . /tigress/HSC/LSST/stack_tiger2/loadLSST.bash  # Or stack_perseus, as appropriate.
+  . /tigress/HSC/LSST/stack_tiger2/loadLSST.bash
   setup lsst_apps
 
 .. note::
