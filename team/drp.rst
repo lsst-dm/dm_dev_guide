@@ -45,18 +45,12 @@ Available Systems
 
 Typically, LSST (and HSC) data processing is carried out using either the `Tiger`_ or `Perseus`_ clusters.
 Both of these have access to regularly-updated installations of the LSST “stack” through the shared :file:`/tigress` filesystem.
-Be aware, however, that you must use a version of the stack corresponding to
-the operating system installed on the system you are using:
-
-- The Tiger system (accessed through the head node ``tiger2-sumire``) should use :file:`/tigress/HSC/LSST/stack_tiger2`;
-- Perseus should use :file:`/tigress/HSC/LSST/stack_perseus`.
-
 To initialize the stack in your ``bash`` shell, run:
 
 .. prompt:: bash
 
   module load rh/devtoolset/6
-  . /tigress/HSC/LSST/stack_tiger2/loadLSST.bash  # Or stack_perseus, as appropriate.
+  . /tigress/HSC/LSST/stack_tiger2/loadLSST.bash
   setup lsst_apps
 
 .. note::
@@ -68,12 +62,16 @@ To initialize the stack in your ``bash`` shell, run:
 .. _Tiger: http://www.princeton.edu/researchcomputing/computational-hardware/tiger
 .. _Perseus: http://www.princeton.edu/researchcomputing/computational-hardware/perseus
 
+The Princeton astronomical software group owns a head node on the Tiger cluster called ``tiger2-sumire``.
+You can use this node for building software and running small and/or short-lived jobs.
+
 Storage
 -------
 
 HSC data (both public data releases and private data, which may not be shared outside the collaboration) is available in :file:`/tigress/HSC` on both clusters.
 This filesystem is available from both clusters, and you may use it to store your results.
 However, note that space is at a premium, especially during our periodic HSC data release processing: please clean up any data you are not actively using.
+Also, be sure to set :command:`umask 002` so that your colleagues can reorganize the shared space.
 
 Space is also available in your home directory, but note that it is not shared across clusters.
 
@@ -98,13 +96,31 @@ Options include:
 
 - Bouncing your connection through a `host on the Peyton network <http://www.astro.princeton.edu/docs/Hardware>`_ (this is usually the easiest way to go);
 - Making use of the `University's VPN service <https://www.net.princeton.edu/vpn/>`_.
+- Using the Research Computing gateway.
 
 If you choose the first option, you may find the ``ProxyCommand`` option to SSH helpful.
-For example, adding the follwing to :file:`~/.ssh/config` will automatically route your connection to the right place when you run :command:`ssh tiger`::
+For example, adding the following to :file:`~/.ssh/config` will automatically route your connection to the right place when you run :command:`ssh tiger`::
 
   Host tiger
-      Hostname tiger3.princeton.edu
+      Hostname tiger2-sumire.princeton.edu
       ProxyCommand ssh coma.astro.princeton.edu -W %h:%p
+
+The following SSH configuration allows access via the Research Computing gateway::
+
+    Host tigressgateway
+        HostName tigressgateway.princeton.edu
+    Host tiger* perseus* tigressdata*
+        ProxyCommand ssh -q -W %h:%p tigressgateway.princeton.edu
+    Host tiger
+        Hostname tiger2-sumire.princeton.edu
+
+(It may also be necessary to add a ``User`` line under ``Host tigressgateway`` if there is a mismatch between your local and Princeton usernames.)
+Entry to ``tigressgateway`` requires `2FA <https://www.princeton.edu/duoportal>`_;
+we recommend using the ``ControlMaster`` feature of SSH to persist connections, e.g.::
+
+    ControlMaster auto
+    ControlPath ~/.ssh/controlmaster-%r@%h:%p
+    ControlPersist 10m
 
 See also the `Peyton Hall tips on using SSH <http://www.astro.princeton.edu/docs/SSH>`_.
 
