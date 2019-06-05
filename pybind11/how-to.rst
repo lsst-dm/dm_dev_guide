@@ -582,8 +582,7 @@ If the symbols are part of the public API then this is typically done by adding 
 Advanced Wrappers
 =================
 
-In this section we are going to look at some more advanced wrapping.
-In particular inheritance and templates
+In this section we are going to look at some more advanced wrapping, in particular inheritance and templates.
 We shall also cover how to add pure Python members to wrapped C++ classes.
 
 We wrap the following two header files from the ``templates`` package, ``ExampleTwo.h``:
