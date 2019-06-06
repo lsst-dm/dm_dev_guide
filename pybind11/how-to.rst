@@ -582,8 +582,7 @@ If the symbols are part of the public API then this is typically done by adding 
 Advanced Wrappers
 =================
 
-In this section we are going to look at some more advanced wrapping.
-In particular inheritance and templates
+In this section we are going to look at some more advanced wrapping, in particular inheritance and templates.
 We shall also cover how to add pure Python members to wrapped C++ classes.
 
 We wrap the following two header files from the ``templates`` package, ``ExampleTwo.h``:
@@ -796,6 +795,22 @@ Following :ref:`this rule <style-guide-pybind11-declare-template-wrappers>` we d
       - ``U`` for ``uint16_t``.
 
     (For historical reasons we have a mix of both traditional integer types and defined-size integer types.)
+
+.. _pybind11-special-functions:
+
+Special Functions
+-----------------
+
+By default, pybind11 copies the result of a C++ function call into a new Python object, unless the result is a C-style pointer (in which case it assumes it points to a new object whose memory needs to be managed by Python).
+This behavior is not always safe or appropriate, particularly for references or pointers to object internals.
+pybind11 provides `return value policies <https://pybind11.readthedocs.io/en/stable/advanced/functions.html#return-value-policies>`_ that let developers customize how pybind11 interprets object ownership.
+
+For example, to let Python code change the state of a C++ object through an internal reference:
+
+.. code-block:: cpp
+
+    cls.def("getModifiableInternal", &Class::getModifiableInternal,
+            py::return_value_policy::reference_internal)
 
 .. _pybind11-cross-module-dependencies:
 

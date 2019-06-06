@@ -550,17 +550,6 @@ Wrapping ``__div__`` allows old-style division to work, which should be disallow
 
 The same rule applies for in-place operators:  ``__itruediv__`` and ``__ifloordiv__`` may be defined, but ``__idiv__`` should not.
 
-.. _style-guide-pybind11-internal-data-member-access:
-
-The ``reference_internal`` policy SHALL be used for functions (or properties) giving write access to internal data members
---------------------------------------------------------------------------------------------------------------------------
-
-When a C++ method returns a non-const reference or (smart) pointer to a data member, it SHALL be wrapped with the ``py::return_value_policy::reference_internal`` call policy, even if there is an overload returning a const object of the same type.
-
-When a C++ method returns a const reference or (smart) pointer to a data member (not a new object), and provides no non-const way to access that data member, that method SHALL be wrapped with the ``py::return_value_policy::automatic`` call policy (the default, so no need to specify), to prevent accidental modification of the internal data member (which is a much more serious offence in C++ than Python).
-
-In rare cases, ``py::return_value_policy::reference_internal`` may be used if the expense of copying the object is large and the likelihood of accidental modification is low.
-
 .. _style-guide-pybind11-properties:
 
 All rules from the Python style guide regarding properties SHALL also apply to C++ wrappers
