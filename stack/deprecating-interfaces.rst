@@ -44,6 +44,19 @@ For each class or function to be deprecated, decorate it as follows::
 
    @deprecated(reason="why", category=FutureWarning)
 
+Class and static methods should be decorated in the order given here::
+
+    class Foo:
+        @classmethod
+        @deprecated(reason="why", category=FutureWarning)
+        def cm(cls, x):
+            pass
+
+        @staticmethod
+        @deprecated(reason="why", category=FutureWarning)
+        def sm(x):
+            pass
+
 The reason string should include the replacement API when available or explain why there is no replacement.
 The reason string will be automatically added to the docstring for the class or function; there is no need to change that.
 You do not need to specify the optional version argument to the decorator since deprecation decorators are typically not added in advance of when the deprecation actually begins.
@@ -52,9 +65,11 @@ Since our end users tend to be developers or at least may call APIs directly fro
 pybind11 Deprecation
 ====================
 
-A deprecated pybind11-wrapped function must be rewrapped in pure Python by manually using the :py:func:`~deprecated.sphinx.deprecated` decorator::
+A deprecated pybind11-wrapped function must be rewrapped in pure Python using the :py:func:`lsst.utils.deprecate_pybind11` function, which defaults to ``category=FutureWarning``::
 
-   function = deprecated(reason="why", category=FutureWarning)(function)
+   from lsst.utils.deprecated import deprecate_pybind11
+   ExposureF.getCalib = deprecate_pybind11(ExposureF.getCalib,
+           reason="Replaced by getPhotoCalib. (Will be removed in 18.0)")
  
 If only one overload of a set is being deprecated, state that in the reason string.
 Over-warning is considered better than under-warning in this case.
