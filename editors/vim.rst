@@ -77,3 +77,15 @@ With this integration you can press the bound key and clang-format will format t
 
 It operates on the current, potentially unsaved buffer and does not create or save any files. To revert a formatting, just undo.
 
+Python filetype configuration
+=============================
+
+The following configuration file should be placed in :file:`~/.vim/ftplugin/python.vim`:
+
+.. code-block:: text
+
+   setlocal shiftwidth=4
+   setlocal softtabstop=4
+   setlocal expandtab
+   setlocal textwidth=110
+
