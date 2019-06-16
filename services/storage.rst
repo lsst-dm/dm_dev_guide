@@ -15,6 +15,11 @@ Filesystems in GPFS (4.9PB of storage)
 :file:`/datasets`
     Long term storage of project-approved shared data. Contains immutable data. This is under a disaster recovery policy that every 30 days it is stored and written to nearline tape.
 
+:file:`/lsstdata`
+    Long term storage of LSST project data, including production, engineering, and test stand datasets. Contains immutable data. This is under a disaster recovery policy.
+    Currently includes :file:`/lsstdata/offline/teststand/auxTel` for datasets from the LATISS/AuxTel test stand in Tucson and :file:`/lsstdata/offline/teststand/BOT` for datasets from the Bench for Optical Testing at SLAC. The former includes read-only Gen2 Butler repositories under :file:`/lsstdata/offline/teststand/auxTel/DAQ/gen2repo` and :file:`/lsstdata/offline/teststand/auxTel/L1Archiver/gen2repo`. These are updated periodically (several times an hour) as data is taken in Tucson.
+    A writable Gen2 Butler repository for shared reruns of LATISS/AuxTel data is currently available at :file:`/project/shared/auxTel`.
+
 :file:`/home`
     Storage of individual-user data. This data is backed up on a daily basis and NCSA retains 30 days of those backups in a snapshot.  It does have quotas on this file system for 1TB for each "directory," and a 1 million INODE quota.
 

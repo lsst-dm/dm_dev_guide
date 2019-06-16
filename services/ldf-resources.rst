@@ -48,7 +48,8 @@ Machines:  (includes VM and Baremetal)
 Filesystems - in GPFS (4.9PB of storage) 
 ========================================
 
-- ``/datasets`` - Long term storage of project-approved shared data. Contains immuteable data. This is under a disaster recovery policy that every 30 days it is stored and written to nearline tape.   
+- ``/datasets`` - Long term storage of project-approved shared data, primarily precursor and simulated datasets. Contains immutable data. This is under a disaster recovery policy that every 30 days it is stored and written to nearline tape.
+- ``/lsstdata`` - Long term storage of LSST project data, including production, engineering, and test stand datasets. Contains immutable data. This is under a disaster recovery policy.
 - ``/home`` - Storage of individual-user data. This data is backed up on a daily basis and ncsa retains 30 days of those backups in a snapshot.  It does have quotas on this file system for 1TB for each "directory", and a 1 million INODE quota.  
 - ``/software`` - Central location for maintenance of project-shared software installations that require access from multiple resources. (ie batch, Nebula).
 - ``/sui`` - Shared storage for ephemeral data for the purpose of supporting SUI/T in the PDAC enclave. This file system has no backups or purging.  
