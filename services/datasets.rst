@@ -134,7 +134,7 @@ In other words, if:
 Examples on Running Tasks with the Common Dataset
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For each cameara, there is one single URI as the main :lmod:`butler` repo root (``/datasets/<camera>/repo``).
+For each camera, there is one single URI as the main :lmod:`butler` repo root (``/datasets/<camera>/repo``).
 
 Currently our task framework tools support putting outputs in a new repo by specifying a path (``--output``) or specifying a symbolic name for outputs to go to a common place (``--rerun``).
 
