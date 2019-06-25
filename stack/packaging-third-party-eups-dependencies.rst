@@ -27,7 +27,7 @@ between an LSST package and a third-party package: `the table file`_ in the
 ``lsst_thirdparty`` package and the documentation on `third party software`_
 may help.) In order to distribute a new third-party package, someone with
 administrator privileges will have to create a new repository of this form for
-you. Create a development branch on that repository and set it up to
+you. Make sure that the new repository is accessible by the "DM Externals" and "Overlords" teams as described in :doc:`adding-a-new-package`. Create a development branch on that repository and set it up to
 distribute the package as described below.  You will be able to test the
 package distribution off of your development branch before you merge to
 ``master``.
