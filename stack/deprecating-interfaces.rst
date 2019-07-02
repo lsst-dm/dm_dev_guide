@@ -36,7 +36,7 @@ Triggering such a warning does not cause a test failure.
 Python Deprecation
 ==================
 
-If you need to deprecate a class or function, import the :py:func:`~deprecated.sphinx.deprecated` decorator::
+If you need to deprecate a class or function, import the `~deprecated.sphinx.deprecated` decorator::
 
    from deprecated.sphinx import deprecated
 
@@ -60,12 +60,12 @@ Class and static methods should be decorated in the order given here::
 The reason string should include the replacement API when available or explain why there is no replacement.
 The reason string will be automatically added to the docstring for the class or function; there is no need to change that.
 You do not need to specify the optional version argument to the decorator since deprecation decorators are typically not added in advance of when the deprecation actually begins.
-Since our end users tend to be developers or at least may call APIs directly from notebooks, we will treat our APIs as end-user features and use ``category=FutureWarning`` instead of the default :py:class:`DeprecationWarning`, which is primarily for Python developers. Do not use :py:class:`PendingDeprecationWarning`.
+Since our end users tend to be developers or at least may call APIs directly from notebooks, we will treat our APIs as end-user features and use ``category=FutureWarning`` instead of the default `DeprecationWarning`, which is primarily for Python developers. Do not use `PendingDeprecationWarning`.
 
 pybind11 Deprecation
 ====================
 
-A deprecated pybind11-wrapped function must be rewrapped in pure Python using the :py:func:`lsst.utils.deprecate_pybind11` function, which defaults to ``category=FutureWarning``::
+A deprecated pybind11-wrapped function must be rewrapped in pure Python using the `lsst.utils.deprecate_pybind11` function, which defaults to ``category=FutureWarning``::
 
    from lsst.utils.deprecated import deprecate_pybind11
    ExposureF.getCalib = deprecate_pybind11(ExposureF.getCalib,

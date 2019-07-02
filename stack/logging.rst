@@ -49,8 +49,8 @@ For example:
    logger.infof("This is information about the star selector algorithm execution. {}", 3.14)
 
 In Python, two string formatting options can be used for log messages.
-The standard methods, such as :lmod:`~lsst.log.info` and :lmod:`~lsst.log.warn`, use a ``%``-format string in the message and pass in additional arguments containing variable information, which :lmod:`lsst.log` will internally merge into the message string with ``%`` formatting if the log record is to be printed.
-Another set of methods with a trailing ``f``, for example :lmod:`~lsst.log.infof` and :lmod:`~lsst.log.warnf`, can use :meth:`~str.format` string interpolation using curly braces.
+The standard methods, such as :lfunc:`~lsst.log.info` and :lfunc:`~lsst.log.warn`, use a ``%``-format string in the message and pass in additional arguments containing variable information, which :lfunc:`lsst.log` will internally merge into the message string with ``%`` formatting if the log record is to be printed.
+Another set of methods with a trailing ``f``, for example :lfunc:`~lsst.log.infof` and :lfunc:`~lsst.log.warnf`, can use `~str.format` string interpolation using curly braces.
 
 To specify the threshold or the lowest-severity log messages a logger handles, :lmeth:`setLevel` can be used:
 
