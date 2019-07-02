@@ -26,14 +26,24 @@ All data added to ``/datasets`` must adhere to the following format (caps are to
   (where actual files live)
 - CALIB = calib/default/ | calib/label/
   (ex. master20161025)
-- REFCATS = refcats/<type>/<label>
-  (ex. astrometry_net_data/sdss-dr8, htm/gaia_DR1_v1)
+- REFCATS = refcats/<type>/<version>/<label>
+  (ex. astrometry_net_data/sdss-dr8, htm/v1/gaia_DR1_v1)
 
 Some data resides within ``/datasets`` which does not adhere to this format; they are provided for general consumption though not as verification data.
 The following are currently exempted:
 
 - ``/datasets/all-sky``
 - ``/datasets/public_html``
+
+.. _reference-catalogs:
+
+Reference Catalogs
+------------------
+
+For the Gen2 Middleware, reference catalogs are contained in the repository itself, in a ``ref_cats/`` subdirectory.
+For ``/datasets`` repositories, we handle this by symlinking from ``repo/ref_cats/NAME`` to the corresponding refcat directory in ``/datasets/refcats``.
+The version subdirectory (e.g. ``v0/``, ``v1``) should match the ``REFCAT_FORMAT_VERSION`` that is set by the refcat ingestion task.
+When adding a refcat, don't forget to add a note to the relevant ``README.txt``, as described in the `responsibilities`_ section.
 
 Immutability/Sharing
 --------------------
@@ -92,6 +102,8 @@ The RFC allows a gate to confirm that things are compliant and necessary. The RF
 This does not prohibit the use of remote URI's, when supported through the butler, that point to external public repos although this does require the RFC process for addition/deletion of the URI-repo.
 This is due to operational concerns including immutability, sharing permissions, developer change of positions / jobs, etc.
 
+.. _responsibilities:
+
 Responsibilities on ingest or maintenance
 -----------------------------------------
 
@@ -134,7 +146,7 @@ In other words, if:
 Examples on Running Tasks with the Common Dataset
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For each cameara, there is one single URI as the main :lmod:`butler` repo root (``/datasets/<camera>/repo``).
+For each camera, there is one single URI as the main :lmod:`butler` repo root (``/datasets/<camera>/repo``).
 
 Currently our task framework tools support putting outputs in a new repo by specifying a path (``--output``) or specifying a symbolic name for outputs to go to a common place (``--rerun``).
 
