@@ -68,7 +68,7 @@ Modules and source files
 C++ wrapper code for a package SHOULD go in a module and source file named by adding an underscore prefix to the package name
 -----------------------------------------------------------------------------------------------------------------------------
 
-For example, the Python wrapper module for ``lsst.geom`` should be ``_geom``, defined (at least in part) in a source file `_geom.cc`.
+For example, the Python wrapper module for ``lsst.geom`` should be ``_geom``, defined (at least in part) in a source file ``_geom.cc``.
 
 .. _style-guide-pybind11-cxx-source:
 
@@ -443,7 +443,7 @@ Keyword arguments MAY be provided for non-overloaded functions with two or fewer
 Literals MUST be used for all named arguments
 ----------------------------------------------
 
-The `_a` argument literal from `pybind11::literals` MUST be used for all named arguments (e.g. ``mod.def("f", f, "arg1"_a, "arg2"_a);``).
+The ``_a`` argument literal from ``pybind11::literals`` MUST be used for all named arguments (e.g. ``mod.def("f", f, "arg1"_a, "arg2"_a);``).
 The ``py::arg()`` construct SHALL NOT be used.
 
 .. _style-guide-pybind11-enum-scoping:

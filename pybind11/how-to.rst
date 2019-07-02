@@ -566,7 +566,7 @@ Edit ``python/.../SConscript`` to look like this:
 Importing the wrapper
 ---------------------
 
-The Python name for your wrapper module is `exampleOne`.
+The Python name for your wrapper module is ``exampleOne``.
 If the wrapped classes can be returned by a function or unpickled then it is crucial that your module is imported when the package is imported.
 If the symbols are part of the public API then this is typically done by adding the following to your package's main ``__init__.py`` file:
 
@@ -963,7 +963,7 @@ We'll use the ``continueClass`` decorator to reopen the class and add a new meth
             return x + self.someOtherMethod()
 
 
-Both the combined `_tmpl` module and any pure-Python customizations should be lifted into the package in its ``__init__.py``:
+Both the combined ``_tmpl`` module and any pure-Python customizations should be lifted into the package in its ``__init__.py``:
 
 .. code-block:: python
 

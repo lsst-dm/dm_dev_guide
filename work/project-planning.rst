@@ -49,7 +49,7 @@ during Construction, the following process has been used.
 #. At the start of each 6-month period (aka each new Winter or Summer Release)
    each DM Cost Account Manager (T/CAM) interviews the institution team and
    creates a very detailed work plan, with individual activity granularity from 1
-   to 3 months (see the `T/CAM Guide`). Further, each activity is divided into
+   to 3 months (see the `T/CAM Guide`_). Further, each activity is divided into
    steps of 2 - 20 days effort. This plan is known as a Release Plan. This
    process is done via the Agile Process, including backlog and sprint meetings,
    interactive communications, and design reviews. This process is accomplished

@@ -69,8 +69,8 @@ If you look at :ref:`Foo.h <cpp_template_example_foo_h>` you'll see that there's
 The main features are that an inline member of ``Foo`` needs to be fully specified in :ref:`Foo.h <cpp_template_example_foo_h>` (how else could the compiler inline it?), and also an example of explicit instantiation of a function, rather than a class.
 There should be no surprises.
 
-What about `extern template` and `-no-implicit-templates`?
-==========================================================
+What about ``extern template`` and ``-no-implicit-templates``?
+==============================================================
 
 These code examples didn't use either ``extern template`` or ``-no-implicit-templates``; why not?
 
