@@ -100,9 +100,9 @@ exclude_patterns = [
     'restructuredtext/examples',
     '_assets']
 
-# The reST default role (used for this markup: `text`) to use for all
-# documents.
-# default_role = None
+# The reST default role (single back ticks `dict`) cross links to any code
+# object (including Python, but others as well).
+default_role = 'obj'
 
 # If true, '()' will be appended to :func: etc. cross-reference text.
 # add_function_parentheses = True
