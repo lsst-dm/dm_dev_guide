@@ -50,11 +50,12 @@ BBCP is an alternative to Gridftp when transferring large amounts of data, capab
 
 ``lsst-xfer.ncsa.illinois.edu`` is setup to use TCP ports 65001-65535 for BBCP transfers with the following external networks:
 
-- IN2P3 134.158.0.0/16
-- SLAC 134.79.0.0/16
-- UC Davis 169.237.0.0/16
-- UW 140.142.0.0/16
-- UW 205.175.96.0/19
+- IN2P3: 134.158.0.0/16
+- NCSA: 141.142.0.0/16
+- NOAO Tucson: 140.252.0.0/16
+- SLAC: 134.79.0.0/16
+- UC Davis: 169.237.0.0/16
+- UW: 140.142.0.0/16 or 205.175.96.0/19
 
 Additional subnets can be requested by `filing a JIRA ticket <https://jira.lsstcorp.org/secure/CreateIssueDetails!init.jspa?pid=12200&issuetype=10902&priority=10000&customfield_12211=12223&components=14204>`_ in the IHS project.
 
