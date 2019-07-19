@@ -1,0 +1,4 @@
+sudo: false
+language: python
+script:
+  - echo Passed

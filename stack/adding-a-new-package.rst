@@ -35,29 +35,40 @@ Replace ``afw`` with the relevant package name to get to the correct page on Git
 .. image:: /_static/build-ci/github_merge_button_settings.png
 
 2. Configure ``master`` branch to enable protections.
-For ``afw`` this is located at https://github.com/lsst/afw/settings/branches/master and can also be found from the "Branches" sidebar item on the settings screen.
-Select the "Protect this branch" option and this will make available additional checks.
-You should also enable status checks and require that branches be up to date before merging.
-With this enabled people will be able to use the GitHub merge button on Pull Requests and know that the :ref:`standard process <workflow-code-review-merge>` is being adhered to.
+For ``afw`` this is located at https://github.com/lsst/afw/settings/branches/ and can also be found from the "Branches" sidebar item on the settings screen.
+In the "Branch protection rules" section of that page you will have to click on "Add rule" to create a rul for ``master``.
+Add in ``master`` as the branch name pattern and then enable status checks and require that branches be up to date before merging.
+Administrators must be included in these protections since it's all to easy to make a mistake without realizing you have special override powers.
+With checks enabled people will be able to use the GitHub merge button on Pull Requests and know that the :ref:`standard process <workflow-code-review-merge>` is being adhered to.
 
 .. image:: /_static/build-ci/github_branch_protection.png
 
-In the image above no automated status checks are being performed.
-Whilst not required, we recommend that some basic checks are enabled on repositories using Travis.
-This will not replace normal testing with :doc:`Jenkins job <jenkins-stack-os-matrix>` but for packages that have been updated to :ref:`use flake8 <testing-flake8>` it is useful to add a simple Travis script like the following:
+In the image above no automated status checks are being performed because we have not yet enabled any.
+GitHub requires that at least one check runs before the up-to-date checks are enabled so a Travis job **must** be provided if the GitHub merge button is to be used.
+Travis does not replace normal testing done with a :doc:`Jenkins job <jenkins-stack-os-matrix>` but for packages that have been updated to :ref:`use flake8 <testing-flake8>` it is useful to add a simple Travis script like the following:
 
 .. literalinclude:: examples/flake8-travis.yml
   :language: yaml
 
 For packages containing C++ that have been tidied up using ``clang`` tools, you may consider adding a Travis check that runs the tidy tool and does a ``diff`` with the repository.
+Shell scripts can also be checked by scalling the ``shellcheck`` command.
+If nothing seems appropriate a null Travis job should be enabled to allow GitHub to do the checks it needs.
+An example null Travis file follows:
 
-Once the Travis script has been written, Travis can be enabled on the "Integrations & services" settings screen, https://github.com/lsst/afw/settings/installations, and Travis can then be added to the branch protection settings.
+.. literalinclude:: examples/null-travis.yml
+  :language: yaml
+
+Once the Travis script has been written and pushed to GitHub, new pull requests will automatically run the Travis checks without any further configuration and the results of the Travis checks will be visible in the "Checks" tab of the pull request on GitHub.
+
+When the first job completes you can return to the branches settings page on GitHub.
+Now you will see that the ``master`` branch is listed along with an EDIT button.
+The branch protection rules will now list the Travis CI checks in the "up to date before merging" section.
+Enable these and save.
 Your branch protections screen should then look something like this:
 
 .. image:: /_static/build-ci/github_branch_protection_travis.png
 
-.. note::
-  It takes a few minutes from enabling Travis to GitHub making the Travis option available on the branch protection screen.
+If your repository included a :file:`.travis.yml` file before you enabled branch protections these options will have been available to you immediately.
 
 .. _lfs-repos:
 
