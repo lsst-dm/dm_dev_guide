@@ -180,6 +180,7 @@ In all of these cases, the RFC is marked as **Flagged** to indicate that it is b
 As a result of the discussion on a **Flagged** RFC, the DMCCB may decide to approve it and move forward with the proposal.
 In this case, the RFC status is set to **Board Recommended**.
 The assignee can then attach the triggering issues and adopt the RFC following the standard process.
+During the discussion of a flagged RFC the DMCCB may ask for triggering issues to be created prior to its approval if there is some ambiguity as to the ramifications of said approval.
 
 If the DMCCB does not approve the RFC, its status will be set to **Withdrawn**.
 If the DMCCB declines to consider the RFC, the DMCCB will change the status back to **Proposed**.
