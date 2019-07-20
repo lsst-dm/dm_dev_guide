@@ -20,6 +20,7 @@ For third-party code, use the "DM Externals" and "Overlords" (but *not* "Data Ma
 
   Failing to assign a team will break the weekly builds.
   The weekly uses the team membership to determine the type of tag to be applied.
+  Having the code reside in the ``lsst`` or ``lsst-dm`` organization on GitHub is not sufficient.
 
 The new package must be added to the `etc/repos.yaml file in the lsst/repos repository`_ along with its corresponding GitHub URL.
 This file is governed by a "self-merge" policy: upon opening a pull request, it will be checked by Travis CI, and developers may merge without further review on success.
@@ -45,22 +46,27 @@ Replace ``afw`` with the relevant package name to get to the correct page on Git
 
 2. Configure ``master`` branch to enable protections.
 For ``afw`` this is located at https://github.com/lsst/afw/settings/branches/ and can also be found from the "Branches" sidebar item on the settings screen.
-In the "Branch protection rules" section of that page you will have to click on "Add rule" to create a rul for ``master``.
+In the "Branch protection rules" section of that page you will have to click on "Add rule" to create a rule for ``master``.
 Add in ``master`` as the branch name pattern and then enable status checks and require that branches be up to date before merging.
-Administrators must be included in these protections since it's all to easy to make a mistake without realizing you have special override powers.
+Administrators must be included in these protections since it's all too easy to make a mistake without realizing you have special override powers.
 With checks enabled people will be able to use the GitHub merge button on Pull Requests and know that the :ref:`standard process <workflow-code-review-merge>` is being adhered to.
 
 .. image:: /_static/build-ci/github_branch_protection.png
 
 In the image above no automated status checks are being performed because we have not yet enabled any.
 GitHub requires that at least one check runs before the up-to-date checks are enabled so a Travis job **must** be provided if the GitHub merge button is to be used.
-Travis does not replace normal testing done with a :doc:`Jenkins job <jenkins-stack-os-matrix>` but for packages that have been updated to :ref:`use flake8 <testing-flake8>` it is useful to add a simple Travis script like the following:
+Travis does not replace normal testing done with a :doc:`Jenkins job <jenkins-stack-os-matrix>`, but for packages that have been updated to :ref:`use flake8 <testing-flake8>` it is useful to add a simple Travis script like the following:
 
 .. literalinclude:: examples/flake8-travis.yml
   :language: yaml
 
+.. note::
+
+   For Travis to recognize the file in the repository it **must** be named :file:`.travis.yml` and be in the repository root.
+   Any other name will be ignored and in particular the common misnaming of the file as :file:`.travis.yaml` does not work.
+
 For packages containing C++ that have been tidied up using ``clang`` tools, you may consider adding a Travis check that runs the tidy tool and does a ``diff`` with the repository.
-Shell scripts can also be checked by scalling the ``shellcheck`` command.
+Shell scripts can also be checked by calling the ``shellcheck`` command.
 If nothing seems appropriate a null Travis job should be enabled to allow GitHub to do the checks it needs.
 An example null Travis file follows:
 
@@ -77,7 +83,7 @@ Your branch protections screen should then look something like this:
 
 .. image:: /_static/build-ci/github_branch_protection_travis.png
 
-If your repository included a :file:`.travis.yml` file before you enabled branch protections these options will have been available to you immediately.
+If your repository already included a :file:`.travis.yml` file before you enabled branch protections these options will have been available to you immediately and can be enabled as part of the initial branch protections.
 
 .. _lfs-repos:
 
