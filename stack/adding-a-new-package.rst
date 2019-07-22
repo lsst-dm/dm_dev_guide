@@ -8,7 +8,7 @@ They include ``lsst_apps``, ``lsst_distrib``, ``qserv_distrib`` and ``lsst_sims`
 Before adding a new dependency to any of these products, it must be approved through the :doc:`RFC process </processes/decision_process>`.
 Consensus must be reached regarding both the name and the suitability of the new package.
 Before adopting the RFC, implementation tickets should be created to cover package creation.
-Packages that will be optional dependencies to the above root packages do not require an RFC.
+Packages that will not be distributed as part of a release do not require an RFC.
 
 After approval, code written internally by Data Management should be packaged following the template in the `lsst/templates`_ repository.
 DM packaging of third party code should proceed as described in :doc:`packaging-third-party-eups-dependencies`.
@@ -18,8 +18,8 @@ For third-party code, use the "DM Externals" and "Overlords" (but *not* "Data Ma
 
 .. warning::
 
-  Failing to assign a team will break the weekly builds.
-  The weekly uses the team membership to determine the type of tag to be applied.
+  Failing to assign a team will break the daily and weekly builds.
+  The automated builds use the team membership to determine the type of tag to be applied.
   Having the code reside in the ``lsst`` or ``lsst-dm`` organization on GitHub is not sufficient.
 
 The new package must be added to the `etc/repos.yaml file in the lsst/repos repository`_ along with its corresponding GitHub URL.
@@ -73,7 +73,7 @@ An example null Travis file follows:
 .. literalinclude:: examples/null-travis.yml
   :language: yaml
 
-Once the Travis script has been written and pushed to GitHub, new pull requests will automatically run the Travis checks without any further configuration and the results of the Travis checks will be visible in the "Checks" tab of the pull request on GitHub.
+Once the Travis script has been written, pushed to GitHub, and ultimately merged to ``master``, new pull requests will automatically run the Travis checks without any further configuration and the results of the Travis checks will be visible in the "Checks" tab of the pull request on GitHub.
 
 When the first job completes you can return to the branches settings page on GitHub.
 Now you will see that the ``master`` branch is listed along with an EDIT button.
