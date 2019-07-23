@@ -241,8 +241,6 @@ Inheriting from `lsst.utils.tests.TestCase` rather than `unittest.TestCase` enab
 `lsst.utils.tests.TestCase.assertFloatsNotEqual`
    Asserts that floating point scalars and/or arrays are not equal.
 
-Note that `~lsst.utils.tests.TestCase.assertClose` and `~lsst.utils.tests.TestCase.assertNotClose` methods have been deprecated by the above methods.
-
 Additionally, :ref:`lsst.afw.coord <pipelines:lsst.afw.coord>`, :ref:`lsst.afw.geom <pipelines:lsst.afw.geom>`, and :ref:`lsst.afw.image <pipelines:lsst.afw.image>` provides additional asserts that get loaded into `lsst.utils.tests.TestCase` when the associated module is loaded.
 These include methods for `Coords`_, `Geom (Angles, Pairs, Boxes)`_, and `Images`_, such as:
 
@@ -353,7 +351,7 @@ For example,
 Legacy Test Code
 ================
 
-If you have legacy DM `unittest` ``suite``-based code (code that sets up a `unittest.TestSuite` object by listing specific test classes and that uses `lsst.utils.tests.run` rather than `unittest.main`), please refer to tech note `SQR-012`_ for porting instructions.
+If you have legacy DM `unittest` ``suite``-based code (code that sets up a `unittest.TestSuite` object by listing specific test classes and that uses ``lsst.utils.tests.run`` rather than `unittest.main`), please refer to tech note `SQR-012`_ for porting instructions.
 
 
 .. _`Coords`: http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/x_masterDoxyDoc/namespacelsst_1_1afw_1_1coord_1_1utils.html
