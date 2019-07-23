@@ -83,3 +83,17 @@ Use the C++14 deprecation attribute syntax to deprecate a function, variable, or
 
 It should appear on its own line, adjacent to the declaration of the function, variable, or type it applies to.
 The reason string should include the replacement API when available or explain why there is no replacement.
+
+Config Deprecation
+==================
+
+To deprecate a `~lsst.pex.config.Field` in a `~lsst.pex.config.Config`, set the ``deprecated`` field in the field's definition::
+
+    someOption = pexConfig.Field(
+            dtype=float,
+            doc="This is an configurable field that does something important.",
+            deprecated="This field is no longer used. It will be removed after v18."
+        )
+
+
+Setting this parameter will append a deprecation message to the `~lsst.pex.config.Field` docstring, and will cause the system to emit a `FutureWarning` when the field is set by a user (for example, in an obs-package override or by a commandline option).
