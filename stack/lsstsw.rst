@@ -33,7 +33,7 @@ This will:
 - Download and install `EUPS`_ in :file:`./eups`;
 - Make an empty stack directory in :file:`./stack`, with a default
   :file:`manifest.remap`;
-- Download and install a copy of `etc/repos.yaml` from `lsst/repos`;
+- Download and install a copy of ``etc/repos.yaml`` from ``lsst/repos``;
 - Run :command:`git clone lsst_build master`
 - Run :command:`git clone versiondb master`
 
@@ -255,12 +255,12 @@ Updating your EUPS version
 ==========================
 
 In order to install a new version of EUPS, first check your current
-installed version with the '-V' flag::
+installed version with the ``-V`` flag::
 
     % eups -V
 
 Next, define the relevant environment variable as so: :command:`export
-EUPS_VERSION=x.y.z` (where `x.y.z` is the version you would like to
+EUPS_VERSION=x.y.z` (where ``x.y.z`` is the version you would like to
 install).  Then install the new EUPS version by changing to your
 ${LSSTSW} directory and doing::
 
@@ -269,13 +269,11 @@ ${LSSTSW} directory and doing::
 there.  This will install that version of EUPS and set your default
 version to it, henceforth.
 
-Older versions will still be available under ${LSSTSW}/eups, and you
+Older versions will still be available under ``${LSSTSW}/eups``, and you
 can switch back to those by simply setting again :command:`export
 EUPS_VERSION=a.b.c`, opening a new terminal window, and then executing
-`source $LSSTSW/bin/setup.sh` in that window to make `a.b.c` the
+``source $LSSTSW/bin/setup.sh`` in that window to make ``a.b.c`` the
 default version.  Opening any new terminal window from here will keep
 using this version, also.
 
-The simplest place to find all available versions of EUPS is by looking at `this page`_ on github.
-
-.. _this page: https://github.com/RobertLuptonTheGood/eups/releases
+The simplest place to find all available versions of EUPS is by `looking at GitHub <https://github.com/RobertLuptonTheGood/eups/releases>`__.

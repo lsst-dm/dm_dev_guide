@@ -2095,8 +2095,8 @@ See :ref:`Rule 3-6 <style-guide-cpp-3-6>` for an almost equivalent Rule.
 
 .. _style-guide-cpp-5-43:
 
-5-43. Implementation-specific globals SHOULD go in namespace `*::detail`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5-43. Implementation-specific globals SHOULD go in namespace ``*::detail``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Sometimes implementation-specific details need to be globally visible (i.e. can't be in the private part of a class, or be declared static or in an anon namespace in a single file).
 For example, the fits i/o code in ``lsst::afw::image`` uses ``boost::gil`` internals but needs to be in a header file included by both :file:`Image.cc` and :file:`Mask.cc`; there are also Image traits classes.
@@ -2703,8 +2703,8 @@ While it is not expected that we will bring the guts of all legacy code in line 
 
 .. _style-guide-cpp-using:
 
-Appendix: On Using `Using`
-==========================
+Appendix: On Using ``using``
+============================
 
 C++ provides the ``using`` keyword for use in declarations and directives relating to namespaces.
 This powerful capability can simplify and reduce the verbosity of code, but it can also lead to reliability and maintainability challenges when the source of non-local names is not obvious.

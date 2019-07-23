@@ -16,7 +16,7 @@ The task topic file template is available in the `lsst/templates repository`_.
 
 .. note::
 
-   The `task topic file template` sets technical details like names and labels for sections, and any boilerplate autodocumenting directives.
+   The `task topic file template`_ sets technical details like names and labels for sections, and any boilerplate autodocumenting directives.
    Starting from the template is the best way to follow the task topic standard.
 
 .. _task topic file template:
@@ -114,7 +114,7 @@ Processing summary section
 The "Processing summary" section outlines the algorithm that the task implements.
 Like the context paragraph above it, the "Processing summary" should be brief and highly scannable.
 The reader should be able to quickly grasp what the task does through this section.
-For algorithmic or usage details, refer the reader to the ref:`"In depth" section <task-topic-indepth>`.
+For algorithmic or usage details, refer the reader to the :ref:`"In depth" section <task-topic-indepth>`.
 
 In most cases you can express the algorithm as an enumerated list.
 Introduce the list with a sentence like this:

@@ -9,7 +9,7 @@ Python Unit Testing
 
 This page provides technical guidance to developers writing unit tests for DM's Python code base.
 See :doc:`/coding/unit-test-policy` for an overview of LSST Stack testing.
-LSST tests should be written using the :mod:`unittest` framework, with default test discovery, and should support being run using the `pytest`_ test runner as well as from the command line.
+LSST tests should be written using the `unittest` framework, with default test discovery, and should support being run using the `pytest`_ test runner as well as from the command line.
 If you want to jump straight to a full example of the standard LSST Python testing boilerplate without reading the background, read the :ref:`section on memory testing <py-test-mem>` later in this document.
 
 .. _SQR-012: http://sqr-012.lsst.io
@@ -18,7 +18,7 @@ If you want to jump straight to a full example of the standard LSST Python testi
 Introduction to ``unittest``
 ============================
 
-This document will not attempt to explain full details of how to use :mod:`unittest` but instead shows common scenarios encountered in the LSST codebase.
+This document will not attempt to explain full details of how to use `unittest` but instead shows common scenarios encountered in the LSST codebase.
 
 A simple :mod:`unittest` example is shown below:
 
@@ -29,16 +29,16 @@ A simple :mod:`unittest` example is shown below:
 The important things to note in this example are:
 
 * Test file names must begin with ``test_`` to allow `pytest`_ to automatically detect them without requiring an explicit test list, which can be hard to maintain and can lead to missed tests.
-* If the test is being executed using :command:`python` from the command line the :py:func:`unittest.main` call performs the test discovery and executes the tests, setting exit status to non-zero if any of the tests fail.
+* If the test is being executed using :command:`python` from the command line the `unittest.main` call performs the test discovery and executes the tests, setting exit status to non-zero if any of the tests fail.
 * Test classes are executed in the order in which they appear in the test file.
   In this case the tests in ``DemoTestCase1`` will be executed before those in ``DemoTestCase2``.
-* Test classes must, ultimately, inherit from :class:`unittest.TestCase` in order to be discovered, and it is :ref:`recommended <py-utils-tests>` that :lclass:`lsst.utils.tests.TestCase` be used as the base class when :lmod:`~lsst.afw` objects are involved.
+* Test classes must, ultimately, inherit from `unittest.TestCase` in order to be discovered, and it is :ref:`recommended <py-utils-tests>` that `lsst.utils.tests.TestCase` be used as the base class when :lmod:`~lsst.afw` objects are involved.
   The tests themselves must be methods of the test class with names that begin with ``test``.
   All other methods and classes will be ignored by the test system but can be used by tests.
-* Specific test asserts, such as :meth:`~unittest.TestCase.assertGreater`, :meth:`~unittest.TestCase.assertIsNone` or :meth:`~unittest.TestCase.assertIn`, should be used wherever possible.
+* Specific test asserts, such as `~unittest.TestCase.assertGreater`, `~unittest.TestCase.assertIsNone` or `~unittest.TestCase.assertIn`, should be used wherever possible.
   It is always better to use a specific assert because the error message will contain more useful detail and the intent is more obvious to someone reading the code.
-  Only use :meth:`~unittest.TestCase.assertTrue` or :meth:`~unittest.TestCase.assertFalse` if you are checking a boolean value, or a complex statement that is unsupported by other asserts.
-* When testing that an exception is raised always use :meth:`~unittest.TestCase.assertRaises` as a context manager, as shown in line 10 of the above example.
+  Only use `~unittest.TestCase.assertTrue` or `~unittest.TestCase.assertFalse` if you are checking a boolean value, or a complex statement that is unsupported by other asserts.
+* When testing that an exception is raised always use `~unittest.TestCase.assertRaises` as a context manager, as shown in line 10 of the above example.
 * If a test method completes, the test passes; if it throws an uncaught exception the test has failed.
 
 Supporting Pytest
@@ -51,10 +51,10 @@ All LSST products that are built using :command:`scons` will execute Python test
 `pytest`_ provides a much richer execution and reporting environment for tests and can be used to run multiple test files together.
 
 The `pytest`_ scheme for discovering tests inside Python modules is much more flexible than that provided by :mod:`unittest`, but LSST test files should not take advantage of that flexibility as it can lead to inconsistency in test reports that depend on the specific test runner, and it is required that an individual test file can be executed by running it directly with :command:`python`.
-In particular, care must be taken not to have free functions that use a ``test`` prefix or non-\ :class:`~unittest.TestCase` test classes that are named with a ``Test`` prefix in the test files.
+In particular, care must be taken not to have free functions that use a ``test`` prefix or non-\ `~unittest.TestCase` test classes that are named with a ``Test`` prefix in the test files.
 
 .. note::
-  When :command:`pytest` is run by :command:`scons` full warnings are reported, including :py:class:`DeprecationWarning`.
+  When :command:`pytest` is run by :command:`scons` full warnings are reported, including `DeprecationWarning`.
   Previously these warnings were hidden in the test output but now they are more obvious, allowing you to fix any problems early.
 
 The tests/SConscript file
@@ -81,7 +81,7 @@ Automatic test discovery is preferred as this ensures that there is no differenc
 Running tests standalone
 ------------------------
 
-``pySingles`` is an optional argument to the :lmeth:`~lsst.sconsUtils.scripts.BasicSConscript.tests` method that can be used for the rare cases where a test must be run standalone and not with other test files in a shared process.
+``pySingles`` is an optional argument to the `~lsst.sconsUtils.scripts.BasicSConscript.tests` method that can be used for the rare cases where a test must be run standalone and not with other test files in a shared process.
 
 .. code-block:: python
 
@@ -137,7 +137,7 @@ Test Skipping and Expected Failures
 
 When writing tests it is important that tests are skipped using the proper :mod:`unittest` :ref:`skipping framework <python:unittest-skipping>` rather than returning from the test early.
 :mod:`unittest` supports skipping of individual tests and entire classes using decorators or skip exceptions.
-LSST code sometimes raises skip exceptions in :meth:`~unittest.TestCase.setUp` or :meth:`~unittest.TestCase.setUpClass` class methods.
+LSST code sometimes raises skip exceptions in `~unittest.TestCase.setUp` or `~unittest.TestCase.setUpClass` class methods.
 It is also possible to indicate that a particular test is expected to fail, being reported as an error if the test unexpectedly passes.
 Expected failures can be used to write test code that triggers a reported bug before the fix to the bug has been implemented and without causing the continuous integration system to die.
 One of the primary advantages of using a modern test runner such as `pytest`_ is that it is very easy to generate machine-readable pass/fail/skip/xfail statistics to see how the system is evolving over time, and it is also easy to enable code coverage.
@@ -194,7 +194,7 @@ Using a shared base class
 
 For some tests it is helpful to provide a base class and then share it amongst multiple test classes that are configured with different attributes.
 If this is required, be careful to not have helper functions prefixed with ``test``.
-Do not have the base class named with a ``Test`` prefix and ensure it does not inherit from :class:`~unittest.TestCase`; if you do, `pytest`_ will attempt to find tests inside it and will issue a warning if none can be found.
+Do not have the base class named with a ``Test`` prefix and ensure it does not inherit from `~unittest.TestCase`; if you do, `pytest`_ will attempt to find tests inside it and will issue a warning if none can be found.
 Historically LSST code has dealt with this by creating a test suite that only includes the classes to be tested, omitting the base class.
 This does not work in a `pytest`_ environment.
 
@@ -203,7 +203,7 @@ Consider the following test code:
 .. literalinclude:: examples/test_baseclass.py
    :language: python
 
-which inherits from the helper class and :class:`unittest.TestCase` and runs a single test without attempting to run any tests in ``BaseClass``.
+which inherits from the helper class and `unittest.TestCase` and runs a single test without attempting to run any tests in ``BaseClass``.
 
 .. code-block:: text
 
@@ -222,26 +222,26 @@ which inherits from the helper class and :class:`unittest.TestCase` and runs a s
 LSST Utility Test Support Classes
 =================================
 
-:lmod:`lsst.utils.tests` provides several helpful functions and classes for writing Python tests that developers should make use of.
+`lsst.utils.tests`__ provides several helpful functions and classes for writing Python tests that developers should make use of.
+
+.. __: https://pipelines.lsst.io/v/weekly/modules/lsst.utils/index.html#lsst-utils-tests-module
 
 .. _py-utils-tests:
 
 Special Asserts
 ---------------
 
-Inheriting from :lclass:`lsst.utils.tests.TestCase` rather than :class:`unittest.TestCase` enables new asserts that are useful for doing element-wise comparison of two floating-point :mod:`numpy`-like arrays or scalars.
+Inheriting from `lsst.utils.tests.TestCase` rather than `unittest.TestCase` enables new asserts that are useful for doing element-wise comparison of two floating-point `numpy`-like arrays or scalars.
 
-`lsst.utils.tests.TestCase.assertFloatsAlmostEqual`_
+`lsst.utils.tests.TestCase.assertFloatsAlmostEqual`
    Asserts that floating point scalars and/or arrays are equal within the specified tolerance.
-   The default tolerance is significantly tighter than the tolerance used by :meth:`unittest.TestCase.assertAlmostEqual` or :func:`numpy.testing.assert_almost_equal`; if you are replacing either of those methods you may have to specify ``rtol`` and/or ``atol`` to prevent failing asserts.
-`lsst.utils.tests.TestCase.assertFloatsEqual`_
+   The default tolerance is significantly tighter than the tolerance used by `unittest.TestCase.assertAlmostEqual` or `numpy.testing.assert_almost_equal`; if you are replacing either of those methods you may have to specify ``rtol`` and/or ``atol`` to prevent failing asserts.
+`lsst.utils.tests.TestCase.assertFloatsEqual`
    Asserts that floating point scalars and/or arrays are identically equal.
-`lsst.utils.tests.TestCase.assertFloatsNotEqual`_
+`lsst.utils.tests.TestCase.assertFloatsNotEqual`
    Asserts that floating point scalars and/or arrays are not equal.
 
-Note that :lmeth:`~lsst.utils.tests.TestCase.assertClose` and :lmeth:`~lsst.utils.tests.TestCase.assertNotClose` methods have been deprecated by the above methods.
-
-Additionally, :lmod:`~lsst.afw` provides additional asserts that get loaded into :lclass:`lsst.utils.tests.TestCase` when the associated module is loaded.
+Additionally, :ref:`lsst.afw.coord <pipelines:lsst.afw.coord>`, :ref:`lsst.afw.geom <pipelines:lsst.afw.geom>`, and :ref:`lsst.afw.image <pipelines:lsst.afw.image>` provides additional asserts that get loaded into `lsst.utils.tests.TestCase` when the associated module is loaded.
 These include methods for `Coords`_, `Geom (Angles, Pairs, Boxes)`_, and `Images`_, such as:
 
 :lmeth:`~lsst.afw.coord.utils.assertCoordsNearlyEqual`
@@ -276,10 +276,10 @@ The file is reproduced here:
 
 The ``EXECUTABLES`` variable can be a tuple containing the names of the executables to be run (relative to the directory containing the test file).
 ``None`` indicates that the test script should discover the executables in the same directory as that containing the test file.
-The call to :lmeth:`~lsst.utils.tests.ExecutablesTestCase.create_executable_tests` initiates executable discovery and creates a test for each executable that is found.
+The call to `~lsst.utils.tests.ExecutablesTestCase.create_executable_tests` initiates executable discovery and creates a test for each executable that is found.
 
 In some cases an explicit test has to be written either because some precondition has to be met before the test will stand a chance of running or because some arguments have to be passed to the executable.
-To support this the :lmeth:`~lsst.utils.tests.ExecutableTestCase.assertExecutable` method is available:
+To support this the `~lsst.utils.tests.ExecutablesTestCase.assertExecutable` method is available:
 
 .. code-block:: python
 
@@ -302,11 +302,11 @@ Memory and file descriptor leak testing
 
 .. _py-test-mem:
 
-:lclass:`lsst.utils.tests.MemoryTestCase` is used to detect memory leaks in C++ objects and leaks in file descriptors.
-:lclass:`~lsst.utils.tests.MemoryTestCase` should be used in *all* test files where :lmod:`~lsst.utils` is in the dependency chain, even if C++ code is not explicitly referenced.
+`lsst.utils.tests.MemoryTestCase` is used to detect memory leaks in C++ objects and leaks in file descriptors.
+`~lsst.utils.tests.MemoryTestCase` should be used in *all* test files where :lmod:`~lsst.utils` is in the dependency chain, even if C++ code is not explicitly referenced.
 
 This example shows the basic structure of an LSST Python unit test module,
-including :lclass:`~lsst.utils.tests.MemoryTestCase` (the highlighted lines indicate the memory testing modifications):
+including `~lsst.utils.tests.MemoryTestCase` (the highlighted lines indicate the memory testing modifications):
 
 .. literalinclude:: examples/test_runner_example.py
    :linenos:
@@ -331,10 +331,10 @@ which ends up running the single specified test plus the two running as part of 
 
    =========================== 3 passed in 0.28 seconds ===========================
 
-Note that :lclass:`~lsst.utils.tests.MemoryTestCase` must always be the
+Note that `~lsst.utils.tests.MemoryTestCase` must always be the
 final test suite.
-For the memory test to function properly the :lfunc:`lsst.utils.tests.init()` function must be invoked before any of the tests in the class are executed.
-Since LSST test scripts are required to run properly from the command-line and when called from within `pytest`_, the :lfunc:`~lsst.utils.tests.init()` function has to be in the file twice: once in the :ref:`setup_module <pytest:xunitsetup>` function that is called by `pytest`_ whenever a test module is loaded (`pytest`_ will not use the ``__main__`` code path), and also just before the call to :func:`unittest.main()` call to handle being called with :command:`python`.
+For the memory test to function properly the `lsst.utils.tests.init` function must be invoked before any of the tests in the class are executed.
+Since LSST test scripts are required to run properly from the command-line and when called from within `pytest`_, the `~lsst.utils.tests.init` function has to be in the file twice: once in the :ref:`setup_module <pytest:xunitsetup>` function that is called by `pytest`_ whenever a test module is loaded (`pytest`_ will not use the ``__main__`` code path), and also just before the call to `unittest.main` call to handle being called with :command:`python`.
 
 Unicode
 =======
@@ -351,12 +351,9 @@ For example,
 Legacy Test Code
 ================
 
-If you have legacy DM :mod:`unittest` ``suite``-based code (code that sets up a :class:`unittest.TestSuite` object by listing specific test classes and that uses :lfunc:`lsst.utils.tests.run` rather than :func:`unittest.main`), please refer to tech note `SQR-012`_ for porting instructions.
+If you have legacy DM `unittest` ``suite``-based code (code that sets up a `unittest.TestSuite` object by listing specific test classes and that uses ``lsst.utils.tests.run`` rather than `unittest.main`), please refer to tech note `SQR-012`_ for porting instructions.
 
 
-.. _`lsst.utils.tests.TestCase.assertFloatsAlmostEqual`: http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/namespacelsst_1_1utils_1_1tests.html#a09ee2482a2e8d71e8612c0378f4286fc
-.. _`lsst.utils.tests.TestCase.assertFloatsEqual`: http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/namespacelsst_1_1utils_1_1tests.html#a0e354bcea6ba8c11238882ede5058c03
-.. _`lsst.utils.tests.TestCase.assertFloatsNotEqual`: http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/x_masterDoxyDoc/namespacelsst_1_1utils_1_1tests.html#a4fc68518d134e3656499898653a3bce3
 .. _`Coords`: http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/x_masterDoxyDoc/namespacelsst_1_1afw_1_1coord_1_1utils.html
 .. _`Geom (Angles, Pairs, Boxes)`: http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/namespacelsst_1_1afw_1_1geom_1_1utils.html
 .. _`Images`: http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/x_masterDoxyDoc/namespacelsst_1_1afw_1_1image_1_1test_utils.html

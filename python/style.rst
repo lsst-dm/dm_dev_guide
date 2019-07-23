@@ -647,7 +647,7 @@ Within a module, follow the order:
 ``super`` MAY be used to call parent class methods
 --------------------------------------------------
 
-If you are overriding a method from a parent class, use :py:func:`super()` to call the parent class's method.
+If you are overriding a method from a parent class, use `super` to call the parent class's method.
 For example:
 
 .. code-block:: py
@@ -663,24 +663,24 @@ For example:
 
     C().method(arg)
 
-Using :py:func:`super()` ensures a consistent Method Resolution Order, and prevents inherited methods from being called multiple times.
-In Python 3, :py:func:`super()` does not require naming the class that it is part of, making its use simpler and removing a maintenance issue.
+Using `super` ensures a consistent Method Resolution Order, and prevents inherited methods from being called multiple times.
+In Python 3, `super` does not require naming the class that it is part of, making its use simpler and removing a maintenance issue.
 
 super() and Multiple Inheritance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In the presence of multiple inheritance (two or more parents, e.g. ``class C(A, B)``), the trickiest issue with the use of :py:func:`super()` is that the class author generally doesn't know a priori which overridden method will be called in what order.
+In the presence of multiple inheritance (two or more parents, e.g. ``class C(A, B)``), the trickiest issue with the use of `super` is that the class author generally doesn't know a priori which overridden method will be called in what order.
 In particular, this means that the calling signature (arguments) for all versions of a method must be compatible.
-As a result, there are a few argument-related caveats about the use of :py:func:`super()` in multiple inheritance hierarchies:
+As a result, there are a few argument-related caveats about the use of `super` in multiple inheritance hierarchies:
 
-* Only pass :py:func:`super()` the exact arguments you received.
-* When you use it on methods whose acceptable arguments can be altered on a subclass via addition of more optional arguments, always accept ``*args``, ``**kwargs``, and call :py:func:`super()` like ``super().currentmethod(arg1, arg2, ..., *args, **kwargs)``. If you don’t do this, document that addition of optional arguments in subclasses is forbidden.
+* Only pass `super` the exact arguments you received.
+* When you use it on methods whose acceptable arguments can be altered on a subclass via addition of more optional arguments, always accept ``*args``, ``**kwargs``, and call `super` like ``super().currentmethod(arg1, arg2, ..., *args, **kwargs)``. If you don’t do this, document that addition of optional arguments in subclasses is forbidden.
 * Do not use positional arguments in ``__init__`` or ``__new__``.  Instead, use keyword args in the declarations, always call them using keywords, and always pass all keywords on, e.g. ``super().__init__(**kwargs)``.
 
-To use :py:func:`super()` with multiple inheritance, all base classes in Python's Method Resolution Order need to use :py:func:`super()`; otherwise the calling chain gets interrupted.
-If your class may be used in multiple inheritance, ensure that all relevant classes use :py:func:`super()` including documenting requirements for subclasses.
+To use `super` with multiple inheritance, all base classes in Python's Method Resolution Order need to use `super`; otherwise the calling chain gets interrupted.
+If your class may be used in multiple inheritance, ensure that all relevant classes use `super` including documenting requirements for subclasses.
 
-For more details, see the :py:func:`super() documentation <super()>`, the `astropy coding guide <http://docs.astropy.org/en/stable/development/codeguide.html#super-vs-direct-calling>`__, and `this article from Raymond Hettinger <https://rhettinger.wordpress.com/2011/05/26/super-considered-super/>`__.
+For more details, see the `super documentation <super>`, the `astropy coding guide <http://docs.astropy.org/en/stable/development/codeguide.html#super-vs-direct-calling>`__, and `this article from Raymond Hettinger <https://rhettinger.wordpress.com/2011/05/26/super-considered-super/>`__.
 
 .. _style-guide-py-comparisons:
 
@@ -804,7 +804,7 @@ To test for inclusion use ``in``:
     if key in myDict:
         pass
 
-This is preferred over :meth:`~dict.keys`. Use :meth:`~dict.keys` when storing the keys for later access:
+This is preferred over `~dict.keys`. Use `~dict.keys` when storing the keys for later access:
 
 .. code-block:: py
 
@@ -817,7 +817,7 @@ where ``list`` ensures that a view or iterator is not being retained.
 The ``subprocess`` module SHOULD be used to spawn processes
 -----------------------------------------------------------
 
-Use the :py:mod:`subprocess` module to spawn processes.
+Use the `subprocess` module to spawn processes.
 
 .. _style-guide-py-lambda:
 
@@ -825,21 +825,21 @@ Use the :py:mod:`subprocess` module to spawn processes.
 -----------------------------
 
 Avoid the use of `lambda <https://docs.python.org/3/reference/expressions.html#lambda>`__.
-You can almost always write clearer code by using a named function or using the :py:mod:`functools` module to wrap a function.
+You can almost always write clearer code by using a named function or using the `functools` module to wrap a function.
 
 .. _style-guide-py-set:
 
 The ``set`` type SHOULD be used for unordered collections
 ---------------------------------------------------------
 
-Use the :py:class:`set` type for unordered collections of objects.
+Use the `set` type for unordered collections of objects.
 
 .. _style-guide-py-argparse:
 
 The ``argparse`` module SHOULD be used for command-line scripts
 ---------------------------------------------------------------
 
-Use the :py:mod:`argparse` module for command-line scripts.
+Use the `argparse` module for command-line scripts.
 
 Command line tasks for pipelines should use :lclass:`lsst.pipe.base.ArgumentParser` instead.
 

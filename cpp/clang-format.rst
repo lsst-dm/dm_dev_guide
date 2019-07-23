@@ -32,7 +32,7 @@ or Zesty (17.04) commands:
     sudo apt update
     sudo apt install clang-format-5.0
 
-This will install the ``clang-format-5.0`` binary, but will not symlink it to `clang-format`.
+This will install the ``clang-format-5.0`` binary, but will not symlink it to ``clang-format``.
 To create a system-managed symlink ("alternative"), use the following command:
 
 .. code-block:: bash

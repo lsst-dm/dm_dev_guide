@@ -242,7 +242,7 @@ Testing the package
 
 If you've created a new external package or updated an existing package, you need
 to test whether the new package builds and works. From within
-:file:`build/yourPackage` (add `-r` to build in the current directory, which
+:file:`build/yourPackage` (add ``-r`` to build in the current directory, which
 is effectively how Jenkins does it, instead using :file:`_eupspkg/`):
 
 - :command:`rm -r _eupspkg`
