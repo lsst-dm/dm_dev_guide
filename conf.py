@@ -159,7 +159,8 @@ html_context = {
 # documentation.
 html_theme_options = {
     'logo_only': True,
-    'style_nav_header_background': '#343131'
+    'style_nav_header_background': '#343131',
+    'canonical_url': 'https://developer.lsst.io/',
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
