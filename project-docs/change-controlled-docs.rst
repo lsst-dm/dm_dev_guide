@@ -189,7 +189,7 @@ Follow these steps to submit a document to the CCB and release a new baselined v
       At this stage, the Project librarian will review the change record's content (for project documents).
       If changes are needed, repeat the previous step and this one.
 
-   3. Once the Project librarian or DM documentalist has uploaded the document and made it the new preferred version, create a :ref:`semantic version tag <ccd-semantic-tag>` at the same commit as the DocuShare tag:
+   3. Once the Project librarian or DM documentalist has uploaded the document and made it the new preferred version, create a :ref:`semantic version tag <ccd-semantic-tag>` matching the version assigned in step 1 above, at the same commit as the DocuShare tag:
 
       .. code-block:: bash
 
@@ -208,16 +208,40 @@ Follow these steps to submit a document to the CCB and release a new baselined v
 
       The URL should point to the DocuShare version (same as the DocuShare tag you created in step 5.2 above).
 
-   4. Backport the amendment commits made on the release branch back to the ``master`` branch:
+   4. Apply the amendment comments and change record from the release branch to the ``master`` branch.
+      There are two approaches that can be used to move changes from the release branch to the ``master`` branch, depending on how cleanly the changes can be applied.
 
-      1. Create a user branch from the ``master`` branch:
+      **If the changes on the release branch are compatible with the** ``master`` **branch** the process can be simplified to more closely match standard code development practices by merging the release branch.
+      This is usually the case if the document is not being actively edited during the CCB process.
+      Merging the release branch has the advantage of integrating the release tags into the history of the main document and also leads to pull requests on GitHub being shown as merged rather than closed.
+
+      #. If not already done so, create a pull request from the release branch to ``master``.
+
+      #. On the release branch revert the commit that fixed the date and removed the draft.
+         If the above process has been followed the relevant commit should be at the tip of the release branch:
+
+         .. code-block:: bash
+
+            git revert HEAD
+
+      #. Push the change to the repository and wait for the Travis job to complete.
+
+      #. Once the commits have been validated the branch can be merged to master.
+         This can be done either from the command line or by pushing the merge button on GitHub.
+
+         **Do not** rebase the release branch since that will detach the release tags from the branch and remove them from the history of ``master``.
+
+      **Alternatively, if there has been significant development on** ``master`` **since the release branch was made** it may not be possible to do a simple merge of the release branch.
+      For that scenario a more nuanced approach is required where individual commits can be cherry picked as appropriate.
+
+      #. Create a user branch from the ``master`` branch:
 
          .. code-block:: bash
 
             git checkout master
             git checkout -b u/<username>/v<major>.<minor>-backport
 
-      2. Cherry-pick commits from the release branch onto the new backport branch.
+      #. Cherry-pick commits from the release branch onto the new backport branch.
          For example:
 
          .. code-block:: bash
@@ -226,7 +250,8 @@ Follow these steps to submit a document to the CCB and release a new baselined v
 
          **Do not** backport the commit that removed the ``lsstdraft`` option and set the ``\date``.
 
-      3. Push the backport branch to GitHub for continuous integration validation, rebase, and merge to master.
+      #. Rebase then push the backport branch to GitHub for continuous integration validation, and merge to master.
+         A pull request can be created on GitHub for this branch.
          For example:
 
          .. code-block:: bash
@@ -236,9 +261,12 @@ Follow these steps to submit a document to the CCB and release a new baselined v
             git checkout u/<username>/v<major>.<minor>-backport
             git rebase -i master
             git push -u  # --force
+            <wait for continuous integration validation>
             git checkout master
             git merge --no-ff u/<username>/v<major>.<minor>-backport
             git push
+
+      #. Close, do not merge, the pull request that was previously opened on the release branch, indicating that the content of the release branch was handled on a different branch (if a pull request was created for the backport branch then reference that PR).
 
 .. _ccd-hotfix:
 
