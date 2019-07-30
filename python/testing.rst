@@ -13,7 +13,8 @@ LSST tests should be written using the `unittest` framework, with default test d
 If you want to jump straight to a full example of the standard LSST Python testing boilerplate without reading the background, read the :ref:`section on memory testing <py-test-mem>` later in this document.
 
 .. note::
-   Python tests explicitly should not contain a shebang (``#!/usr/bin/env python``) and should not be executable (run directly with ``./test_Example.py``).
+   Python tests explicitly should not contain a shebang (``#!/usr/bin/env python``) and should not be executable (so cannot be run directly with ``./test_Example.py``).
+   Instead run single test files either with ``python tests/test_Example.py`` or with ``pytest tests/test_Example.py``.
    This avoids problems encountered running tests on macOS and helps ensure consistency in the way that tests are executed.
 
 .. _SQR-012: http://sqr-012.lsst.io
