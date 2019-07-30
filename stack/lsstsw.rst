@@ -82,7 +82,7 @@ you clone that to current using::
 
     eups tags --clone b6132 current
 
-The :command:`rebuild` command is is a wrapper around the lower-level
+The :command:`rebuild` command is a wrapper around the lower-level
 :command:`lsst-build` tool (described below). It will:
 
 * Search for and clone the package from our Git repositories (as configured in
