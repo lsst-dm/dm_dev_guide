@@ -12,11 +12,6 @@ See :doc:`/coding/unit-test-policy` for an overview of LSST Stack testing.
 LSST tests should be written using the `unittest` framework, with default test discovery, and should support being run using the `pytest`_ test runner as well as from the command line.
 If you want to jump straight to a full example of the standard LSST Python testing boilerplate without reading the background, read the :ref:`section on memory testing <py-test-mem>` later in this document.
 
-.. note::
-   Python tests explicitly should not contain a shebang (``#!/usr/bin/env python``) and should not be executable (so cannot be run directly with ``./test_Example.py``).
-   Instead run single test files either with ``python tests/test_Example.py`` or with ``pytest tests/test_Example.py``.
-   This avoids problems encountered running tests on macOS and helps ensure consistency in the way that tests are executed.
-
 .. _SQR-012: http://sqr-012.lsst.io
 .. _pytest: http://pytest.org
 
@@ -33,6 +28,8 @@ A simple :mod:`unittest` example is shown below:
 
 The important things to note in this example are:
 
+* Python tests explicitly should not contain a shebang (``#!/usr/bin/env python``) and should not be executable (so cannot be run directly with ``./test_Example.py``).
+  This avoids problems encountered running tests on macOS and helps ensure consistency in the way that tests are executed.
 * Test file names must begin with ``test_`` to allow `pytest`_ to automatically detect them without requiring an explicit test list, which can be hard to maintain and can lead to missed tests.
 * If the test is being executed using :command:`python` from the command line the `unittest.main` call performs the test discovery and executes the tests, setting exit status to non-zero if any of the tests fail.
 * Test classes are executed in the order in which they appear in the test file.
@@ -45,6 +42,10 @@ The important things to note in this example are:
   Only use `~unittest.TestCase.assertTrue` or `~unittest.TestCase.assertFalse` if you are checking a boolean value, or a complex statement that is unsupported by other asserts.
 * When testing that an exception is raised always use `~unittest.TestCase.assertRaises` as a context manager, as shown in line 10 of the above example.
 * If a test method completes, the test passes; if it throws an uncaught exception the test has failed.
+
+We write test files to allow them to be run by `pytest`_ or to allow them to be run directly from the command line using :command:`python`.
+Whilst `pytest`_ provides more flexibility and enhanced reporting when running tests (such as specifying that only certain tests run), it is sometimes expedient to run them using :command:`python` since there is a faster start time and all the output is visible.
+Additionally, although `pytest`_ allows `unittest.TestCase.subTest` to be used they are treated as normal tests and will fail immediately whereas running with :command:`python` the sub tests will all be executed before triggering stopping the test.
 
 Supporting Pytest
 =================
