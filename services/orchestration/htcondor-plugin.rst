@@ -245,7 +245,7 @@ Here's how this section of the Config file is set up:
 
 Remember that the keywords in the template and in the keywords list are
 completely user configurable. If the keyword appears in the template but
-doesn't exist in the keyword list, it will remain as is. If the word is the the
+doesn't exist in the keyword list, it will remain as is. If the word is the
 keyword list, but not in the template, nothing will be substituted.
 
 HTCondor DAG
@@ -330,7 +330,7 @@ Orca also supports keyword substitution in preJob, postJob and workerJob configu
    config.workflow["workflow1"].task["task1"].preJob.script.keywords["EUPS_PATH"] = "/oasis/scratch/ux453102/temp_project/lsst/beta-0713/lsst_home"
    config.workflow["workflow1"].task["task1"].preJob.script.keywords["LSST_HOME"] = "/oasis/scratch/ux453102/temp_project/lsst/beta-0713/lsst_home"
    config.workflow["workflow1"].task["task1"].preJob.script.outputFile = "preJob.sh"
-   
+
    config.workflow["workflow1"].task["task1"].preJob.condor.inputFile = "$DATAREL_DIR/dagutils/dag/sdss/ccd/dag/templates/preJob.condor.template"
    config.workflow["workflow1"].task["task1"].preJob.condor.keywords["FILE_SYSTEM_DOMAIN"] = "sdsc.edu"
    config.workflow["workflow1"].task["task1"].preJob.condor.outputFile = "S2012Pipe.pre"
@@ -383,24 +383,24 @@ template, ``workerJob.condor.template``:
 .. code-block:: text
 
    universe=vanilla
-   
+
    executable=$ORCA_SCRIPT
-   
+
    transfer_executable=true
-   
+
    Requirements = (FileSystemDomain == "$FILE_SYSTEM_DOMAIN") && (Arch != "") && (OpSys != "") && (Disk != -1) && (Memory != -1) && (DiskUsage >= 0)
-   
+
    should_transfer_files = YES
    when_to_transfer_output = ON_EXIT
    notification=Error
-   
-   
+
+
    args=$(var1)
-   
+
    output=logs/$(visit)/worker-$(var2).out
    error=logs/$(visit)/worker-$(var2).err
    remote_initialdir=$ORCA_DEFAULTROOT/$ORCA_RUNID
-   
+
    queue 1
 
 This is a template of a simple condor submit file that dagman will use to

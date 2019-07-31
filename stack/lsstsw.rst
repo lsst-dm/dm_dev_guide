@@ -74,6 +74,11 @@ Assuming you've done all of the above, simply run::
 ``lsst_apps`` is an empty package that depends on all of the LSST packages.
 You can use the :command:`rebuild` command to build other packages by name as
 well.
+By default all cores will be used for the compilation and to run tests, but if you want to limit the number of cores used by the build you can override the default with::
+
+    EUPSPKG_NJOBS=1 rebuild lsst_apps
+
+which would use a single core for the build.
 
 Once you have built a package you may want to clone the new EUPS tag to
 ``current``, so you can setup the package without specifying a particular tag.
@@ -82,7 +87,7 @@ you clone that to current using::
 
     eups tags --clone b6132 current
 
-The :command:`rebuild` command is is a wrapper around the lower-level
+The :command:`rebuild` command is a wrapper around the lower-level
 :command:`lsst-build` tool (described below). It will:
 
 * Search for and clone the package from our Git repositories (as configured in
