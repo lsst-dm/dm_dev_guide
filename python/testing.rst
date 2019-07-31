@@ -28,6 +28,8 @@ A simple :mod:`unittest` example is shown below:
 
 The important things to note in this example are:
 
+* Python tests explicitly should not contain a shebang (``#!/usr/bin/env python``) and should not be executable (so cannot be run directly with ``./test_Example.py``).
+  This avoids problems encountered running tests on macOS and helps ensure consistency in the way that tests are executed.
 * Test file names must begin with ``test_`` to allow `pytest`_ to automatically detect them without requiring an explicit test list, which can be hard to maintain and can lead to missed tests.
 * If the test is being executed using :command:`python` from the command line the `unittest.main` call performs the test discovery and executes the tests, setting exit status to non-zero if any of the tests fail.
 * Test classes are executed in the order in which they appear in the test file.
@@ -40,6 +42,10 @@ The important things to note in this example are:
   Only use `~unittest.TestCase.assertTrue` or `~unittest.TestCase.assertFalse` if you are checking a boolean value, or a complex statement that is unsupported by other asserts.
 * When testing that an exception is raised always use `~unittest.TestCase.assertRaises` as a context manager, as shown in line 10 of the above example.
 * If a test method completes, the test passes; if it throws an uncaught exception the test has failed.
+
+We write test files to allow them to be run by `pytest`_ or to allow them to be run directly from the command line using :command:`python`.
+Whilst `pytest`_ provides more flexibility and enhanced reporting when running tests (such as specifying that only certain tests run), it is sometimes expedient to run them using :command:`python` since there is a faster start time and all the output is visible.
+Additionally, although `pytest`_ allows `unittest.TestCase.subTest` to be used they are treated as normal tests and will fail immediately whereas running with :command:`python` the sub tests will all be executed before triggering stopping the test.
 
 Supporting Pytest
 =================
@@ -297,16 +303,16 @@ Arguments can be provided to the ``args`` keyword parameter in the form of a seq
    When the codebase has migrated to consistently use the testing scheme described in this section :lmod:`~lsst.sconsUtils` will be modified to disable the duplicate testing.
 
 
-Memory and file descriptor leak testing
----------------------------------------
+File descriptor leak testing
+----------------------------
 
 .. _py-test-mem:
 
-`lsst.utils.tests.MemoryTestCase` is used to detect memory leaks in C++ objects and leaks in file descriptors.
-`~lsst.utils.tests.MemoryTestCase` should be used in *all* test files where :lmod:`~lsst.utils` is in the dependency chain, even if C++ code is not explicitly referenced.
+`lsst.utils.tests.MemoryTestCase` is used to detect leaks in file descriptors.
+`~lsst.utils.tests.MemoryTestCase` should be used in *all* test files where :lmod:`~lsst.utils` is in the dependency chain.
 
 This example shows the basic structure of an LSST Python unit test module,
-including `~lsst.utils.tests.MemoryTestCase` (the highlighted lines indicate the memory testing modifications):
+including `~lsst.utils.tests.MemoryTestCase` (the highlighted lines indicate the leak testing modifications):
 
 .. literalinclude:: examples/test_runner_example.py
    :linenos:
@@ -327,9 +333,9 @@ which ends up running the single specified test plus the two running as part of 
 
    test_runner_example.py::DemoTestCase::testDemo PASSED
    test_runner_example.py::MemoryTester::testFileDescriptorLeaks <- .../lsstsw/stack/DarwinX86/utils/12.0.rc1+f79d1f7db4/python/lsst/utils/tests.py PASSED
-   test_runner_example.py::MemoryTester::testLeaks <- .../lsstsw/stack/DarwinX86/utils/12.0.rc1+f79d1f7db4/python/lsst/utils/tests.py PASSED
 
-   =========================== 3 passed in 0.28 seconds ===========================
+
+   =========================== 2 passed in 0.28 seconds ===========================
 
 Note that `~lsst.utils.tests.MemoryTestCase` must always be the
 final test suite.
