@@ -122,6 +122,41 @@ Since the content for this section is automatically generated through Sphinx ext
 If a module does not provide command-line tasks, regular tasks, or standalone config classes, omit the corresponding subsections from the "Task reference" section.
 If a module does not provide any of these topic types, omit the "Task reference" section entirely.
 
+.. _module-homepage-script-reference:
+
+Script reference section
+========================
+
+This section lists command-line scripts, aside from those that are implemented as command-line tasks, that are provided by the package and implemented by the module.
+These scripts can be Python scripts or any other type of shell script.
+
+To use this section, uncomment it from the :ref:`template <module-homepage-template>`.
+Individual scripts have corresponding :ref:`script topic pages <script-topic-type>` in the :file:`scripts/` subdirectory of the module documentation directory.
+List each of those files in the `toctree`_ of the "Script reference" section.
+
+For example, suppose the :file:`scripts/` subdirectory has these contents:
+
+.. code-block:: text
+
+   scripts
+   ├── myScript.py.rst
+   └── myBashScript.bash.rst
+
+The "Scripts reference" section then should look like this:
+
+.. code-block:: rst
+
+   .. _lsst.example-scripts:
+
+   Script reference
+   ================
+
+   .. toctree::
+      :maxdepth: 1
+
+      scripts/myScript.py
+      scripts/myBashScript.bash
+
 .. _module-homepage-python-reference:
 
 Python API reference
