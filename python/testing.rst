@@ -303,16 +303,16 @@ Arguments can be provided to the ``args`` keyword parameter in the form of a seq
    When the codebase has migrated to consistently use the testing scheme described in this section :lmod:`~lsst.sconsUtils` will be modified to disable the duplicate testing.
 
 
-Memory and file descriptor leak testing
----------------------------------------
+File descriptor leak testing
+----------------------------
 
 .. _py-test-mem:
 
-`lsst.utils.tests.MemoryTestCase` is used to detect memory leaks in C++ objects and leaks in file descriptors.
-`~lsst.utils.tests.MemoryTestCase` should be used in *all* test files where :lmod:`~lsst.utils` is in the dependency chain, even if C++ code is not explicitly referenced.
+`lsst.utils.tests.MemoryTestCase` is used to detect leaks in file descriptors.
+`~lsst.utils.tests.MemoryTestCase` should be used in *all* test files where :lmod:`~lsst.utils` is in the dependency chain.
 
 This example shows the basic structure of an LSST Python unit test module,
-including `~lsst.utils.tests.MemoryTestCase` (the highlighted lines indicate the memory testing modifications):
+including `~lsst.utils.tests.MemoryTestCase` (the highlighted lines indicate the leak testing modifications):
 
 .. literalinclude:: examples/test_runner_example.py
    :linenos:
@@ -333,9 +333,9 @@ which ends up running the single specified test plus the two running as part of 
 
    test_runner_example.py::DemoTestCase::testDemo PASSED
    test_runner_example.py::MemoryTester::testFileDescriptorLeaks <- .../lsstsw/stack/DarwinX86/utils/12.0.rc1+f79d1f7db4/python/lsst/utils/tests.py PASSED
-   test_runner_example.py::MemoryTester::testLeaks <- .../lsstsw/stack/DarwinX86/utils/12.0.rc1+f79d1f7db4/python/lsst/utils/tests.py PASSED
 
-   =========================== 3 passed in 0.28 seconds ===========================
+
+   =========================== 2 passed in 0.28 seconds ===========================
 
 Note that `~lsst.utils.tests.MemoryTestCase` must always be the
 final test suite.
