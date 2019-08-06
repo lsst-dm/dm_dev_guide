@@ -25,7 +25,9 @@ The :file:`doc/` directory structure of the example package looks like this:
    ├── doxygen.conf.in
    ├── index.rst
    ├── lsst.example
-   │   └── index.rst
+   │   ├── index.rst
+   │   │── scripts
+   │   └── tasks
    └── manifest.yaml
 
 .. _docdir-manifest-yaml:
@@ -158,10 +160,17 @@ Module documentation directories
 
 :file:`doc/` directories contain a module documentation directory for each major public Python namespace provided by the package.
 These directories correspond to the modules listed in the :ref:`modules field <docdir-manifest-yaml-modules>` in the :ref:`manifest.yaml file <docdir-manifest-yaml>`.
-
 Each module documentation directory provides a place to document the corresponding Python and C++ APIs.
 
-See the :doc:`module-homepage-topic-type` for details on the :file:`index.rst` file contained in each module documentation directory.
+The :file:`index.rst` file contained in this directory follows the :doc:`module topic type <module-homepage-topic-type>`.
+
+There are two standard **subdirectories** that a module documentation directory may have:
+
+:file:`tasks/`
+    For :doc:`task <task-topic-type>` and :doc:`config <config-topic-type>` topic pages.
+
+:file:`scripts/`
+    For :doc:`script topic <script-topic-type>` (or :doc:`argparse-script-topic-type`) pages.
 
 .. _docdir-package-doc-directory:
 

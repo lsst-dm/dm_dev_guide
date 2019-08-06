@@ -340,6 +340,8 @@ Documentation.
     - :doc:`stack/module-homepage-topic-type`
     - :doc:`stack/task-topic-type`
     - :doc:`stack/config-topic-type`
+    - :doc:`stack/script-topic-type`
+    - :doc:`stack/argparse-script-topic-type`
     - :doc:`stack/generic-guide-topic-type`
 
 - Documentation in the main repository:

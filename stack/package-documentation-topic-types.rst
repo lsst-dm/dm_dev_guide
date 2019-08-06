@@ -18,6 +18,8 @@ These are the available topic types for package documentation:
    module-homepage-topic-type
    task-topic-type
    config-topic-type
+   script-topic-type
+   argparse-script-topic-type
    generic-guide-topic-type
 
 Additional topic types are being developed.
