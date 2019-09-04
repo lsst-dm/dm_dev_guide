@@ -14,14 +14,17 @@ This page describes how to document config classes like ``ColortermLibrary``.
 Starter template
 ================
 
-The config topic file template is available in the `lsst/templates repository`_.
+Create a new config topic from Slack.\ [#template]_
+Open a |dmw-sqrbot| and type:
 
-.. note::
+.. code-block:: text
 
-   The `config topic file template`_ sets technical details like labels for sections, names of sections, and ordering of sections.
-   Starting from the template is the best way to follow the config topic standard.
+   create file
 
-.. _config topic file template:
+Then select **Science Pipelines documentation > Config topic**.
+
+.. [#template] The config topic file template is maintained in the `lsst/templates repository`_.
+
 .. _lsst/templates repository: https://github.com/lsst/templates/tree/master/file_templates/config_topic
 
 For an example config named ``lsst.example.ExampleConfig``, the rendered template looks like this:

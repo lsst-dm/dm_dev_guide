@@ -5,6 +5,7 @@ Technotes for Stand-Alone Technical Documentation
 Technotes are a way for Data Management team members to write standalone documents that are native to the web, can be cited in literature, and are easy to write, publish, and update.
 You can write with either our reStructuredText or LaTeX templates.
 All technotes are developed on GitHub and published with `LSST the Docs`_.
+You can find a listing of available technotes at `www.lsst.io <https://www.lsst.io>`__.
 
 .. _LSST the Docs: https://sqr-006.lsst.io
 
@@ -70,50 +71,45 @@ Technote series
 Create a technote
 =================
 
-Follow these steps to create a new technote:
+Creating a new technote is easy and takes just a moment.
+In Slack, open a |dmw-sqrbot| and type:
 
-1. Identify the next-available technote handle in the series you are creating a technote for.
-   You can do this by searching the series's GitHub organization.
+.. code-block:: text
 
-   For example, to identify the next-available DMTN repository, search the `lsst-dm <https://github.com/lsst-dm>`__ organization:
+   create project
 
-   https://github.com/search?o=desc&q=org%3Alsst-dm+dmtn-&s=updated&type=Repositories
+From the drop-down, select **Documents > Technote (reStructuredText)** or **(LaTeX)** depending on the format you wish to work in.
+Once you select the template type and fill in the form on Slack, the bot will create and configure the technote on GitHub.
+Watch for Slack messages from the bot about the technote's GitHub repository, including a link to a pull request.
 
-   For discussion, the highest-numbered repository in the search result might be ``https://github.com/lsst-dm/dmtn-100``.
-   Try to go to the *next* repository, ``https://github.com/lsst-dm/dmtn-101``:
+.. important::
 
-   - If the page is a 404 (Not Found), that URL corresponds to the next-available repository.
+   You need to merge the bot's pull request in order for your technote to appear on the web.
 
-   - If the page exists, keep incrementing the serial number in the URL until you find a page that is unavailable (try visiting ``https://github.com/lsst-dm/dmtn-102``, ``https://github.com/lsst-dm/dmtn-103``, and so on).
+Once the initial configuration pull request is merged, any time you push to GitHub your technote will be republished at its ``lsst.io`` site.
+Pushes to the ``master`` branch update your technote's main page, while updates to other branches update preview editions behind the ``/v/`` URL path.
+Click on the **Switch editions** or **Change version** link from your published technote to get links for other editions.
 
-2. `Create a GitHub repository <https://help.github.com/articles/creating-a-new-repository/>`_ in the GitHub organization corresponding to the handle you identified in the previous step.
-   Leave the repo empty — don't seed it with a ``.gitignore`` or ``README``.
+.. _technote-latex:
 
-3. Create a Git repository from a template.
-   Which template you use depends on the technote's format:
+Working with LaTeX-formatted technotes
+======================================
 
-   - If you are creating a reStructuredText-based technote that is built with Sphinx into HTML, run the following commands in a shell:
+LaTeX-formatted technotes use the ``lsstdoc`` class.
+The `lsst-texmf documentation <https://lsst-texmf.lsst.io/lsstdoc.html>`__ explains how to write ``lsstdoc``-based documents.
 
-     .. code-block:: sh
+.. _technote-rst:
 
-        git clone https://github.com/lsst/templates
-        pip install -r templates/requirements.txt
-        templatekit make technote_rst
+Working with reStructuredText-formatted technotes
+=================================================
 
-   - If you are creating a LaTeX-formatted technote that is built into a PDF, follow the `lsst-texmf documentation <https://lsst-texmf.lsst.io/templates/document.html>`_
-
-   Be sure to commit and push the new technote to GitHub.
-   When you create a new repository on GitHub, the repository's initial GitHub homepage provides instructions on how to push to GitHub.
-
-4. Message the `#dm-docs <https://lsstc.slack.com/archives/dm-docs>`__ Slack channel so that the Travis integration for your technote can be activated.
-
-   Don't wait to configure your document's deployment.
-   By configuring your technote's deployment early on, it's easier for collaborators to view your content.
+See the :doc:`/restructuredtext/style` for a primer on writing reStructuredText.
+The sections below deal with specific issues for technote projects.
 
 .. _technote-rst-bib:
 
 Using bibliographies in reStructuredText technotes
-==================================================
+--------------------------------------------------
 
 The lsst-texmf project includes `shared BibTeX bibliographic databases <https://lsst-texmf.lsst.io/lsstdoc.html#bibliographies>`_.
 You can also use these bibliographies from reStructuredText technotes.
@@ -149,7 +145,7 @@ In-text citations are numbered, not author-year style.
 .. _technote-rst-metadata:
 
 Editing metadata in reStructuredText technotes
-==============================================
+----------------------------------------------
 
 ReStructuredText-format technotes use a :file:`metadata.yaml` in their repositories to describe attributes like the document's title, author list, and abstract.
 To change the technote's title or author list, for example, commit a change to the :file:`metadata.yaml` file.
