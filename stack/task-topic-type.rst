@@ -12,14 +12,17 @@ This page describes how to write task topic pages for `pipelines.lsst.io <https:
 Starter template
 ================
 
-The task topic file template is available in the `lsst/templates repository`_.
+Create a new task topic from Slack.\ [#template]_
+Open a |dmw-sqrbot| and type:
 
-.. note::
+.. code-block:: text
 
-   The `task topic file template`_ sets technical details like names and labels for sections, and any boilerplate autodocumenting directives.
-   Starting from the template is the best way to follow the task topic standard.
+   create file
 
-.. _task topic file template:
+Then select **Science Pipelines documentation > Task topic**.
+
+.. [#template] The task topic file template is maintained in the `lsst/templates repository`_.
+
 .. _lsst/templates repository: https://github.com/lsst/templates/tree/master/file_templates/task_topic
 
 For an example task named ``lsst.example.ExampleCmdLineTask``, the rendered template looks like this:

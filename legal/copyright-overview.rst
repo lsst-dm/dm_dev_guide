@@ -151,7 +151,18 @@ For example:
 
 The :file:`COPYRIGHT` file does not contain any other content.
 
-`A template <https://github.com/lsst/templates/tree/master/file_templates/copyright>`_ for COPYRIGHT files is available.
+.. tip::
+
+   **Create a COPYRIGHT file from Slack.**
+   Open a |dmw-sqrbot| and type:
+
+   .. code-block:: text
+
+      create file
+
+   Then select **General > COPYRIGHT file**.
+
+`A template <https://github.com/lsst/templates/tree/master/file_templates/copyright>`_ for COPYRIGHT files is also available.
 
 Background
 ----------

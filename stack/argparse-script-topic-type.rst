@@ -18,7 +18,16 @@ This topic type is a specialization of the :doc:`script-topic-type` that lets yo
 Starter template
 ================
 
-The argparse-based script topic template is available in the `lsst/templates repository`_.
+Create a new argparse-based script topic from Slack.\ [#template]_
+Open a |dmw-sqrbot| and type:
+
+.. code-block:: text
+
+   create file
+
+Then select **Science Pipelines documentation > Script topic (argparse)**.
+
+.. [#template] The argparse-based script topic template is maintained in the `lsst/templates repository`_.
 
 .. _lsst/templates repository: https://github.com/lsst/templates/tree/master/file_templates/argparse_script_topic
 

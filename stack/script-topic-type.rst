@@ -22,14 +22,17 @@ If your script is written in Python and uses `argparse`, you can automate this r
 Starter template
 ================
 
-The script topic file template is available in the `lsst/templates repository`_.
+Create a new script topic from Slack.\ [#template]_
+Open a |dmw-sqrbot| and type:
 
-.. note::
+.. code-block:: text
 
-   The `script topic template`_ sets technical details like names and labels for sections.
-   Starting from the template is the best way to follow the script topic standard.
+   create file
 
-.. _script topic template:
+Then select **Science Pipelines documentation > Script topic (generic)**.
+
+.. [#template] The script topic file template is available in the `lsst/templates repository`_.
+
 .. _lsst/templates repository: https://github.com/lsst/templates/tree/master/file_templates/script_topic
 
 For an example script named ``exampleScript.sh``, the rendered template looks like this:

@@ -21,6 +21,17 @@ You can find the LICENSE file in the `stack_package template <https://github.com
 
 Be careful not to modify the LICENSE file.
 
+.. tip::
+
+   **Create a LICENSE file from Slack.**
+   Open a |dmw-sqrbot| and type:
+
+   .. code-block:: text
+
+      create file
+
+   Then select **General > GPLv3 LICENSE**.
+
 .. _stack-package-copyright:
 
 The COPYRIGHT file
@@ -32,6 +43,17 @@ See :ref:`copyright-file` for information on how to format the :file:`COPYRIGHT`
 All DM developers are expected to participate in maintaining the :file:`COPYRIGHT` file on behalf of your institution.
 Include additions to :file:`COPYRIGHT` files as part of your regular pull requests.
 :download:`/legal/copyright.py` is a script that may help maintain :file:`COPYRIGHT` files.
+
+.. tip::
+
+   **Create a COPYRIGHT file from Slack.**
+   Open a |dmw-sqrbot| and type:
+
+   .. code-block:: text
+
+      create file
+
+   Then select **General > COPYRIGHT file**.
 
 .. _stack-package-preambles:
 
@@ -58,9 +80,20 @@ The license preamble specifically for use in Python files is:
 
 Replace ``{{ cookiecutter.package_name }}`` with the repository's name (``afw``, for example).
 
+.. tip::
+
+   **Create a Python license preamble from Slack.**
+   Open a |dmw-sqrbot| and type:
+
+   .. code-block:: text
+
+      create file
+
+   Then select **Source license preambles > Python**.
+
 See also: :ref:`style-guide-license` in the LSST DM Python Style Guide.
 
-This preamble is available as `a template <https://github.com/lsst/templates/tree/master/file_templates/stack_license_preamble_py>`__.
+This preamble is also available as `a template <https://github.com/lsst/templates/tree/master/file_templates/stack_license_preamble_py>`__.
 
 C++ preamble
 ------------
@@ -72,6 +105,17 @@ The license preamble specifically for use in C++ source and header files is:
 
 Replace ``{{ cookiecutter.package_name }}`` with the repository's name (``afw``, for example).
 
-This preamble is available as `a template <https://github.com/lsst/templates/tree/master/file_templates/stack_license_preamble_cpp>`__.
+.. tip::
+
+   **Create a C++ license preamble from Slack.**
+   Open a |dmw-sqrbot| and type:
+
+   .. code-block:: text
+
+      create file
+
+   Then select **Source license preambles > C++**.
+
+This preamble is also available as `a template <https://github.com/lsst/templates/tree/master/file_templates/stack_license_preamble_cpp>`__.
 
 .. _`GPL-3.0`: https://choosealicense.com/licenses/gpl-3.0/
