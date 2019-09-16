@@ -42,7 +42,7 @@ Membership
 ==========
 
 The ITSC consists of Core and Representative Members.
-The Core Members consist of representatives from entities that are key providers of IT Services to the project, including the PMO, the Tucson IT Services Team, the LSST Information Security Officer: Alex Withers, the DM NCSA team, the DM SQuARE team, and the LSST Compliance Officer: Veronica Kinnison (non-voting).
+The Core Members consist of representatives from entities that are key providers of IT Services to the project, including the PMO, the Tucson IT Services Team, the LSST Information Security Officer(s), the DM NCSA team, the DM SQuARE team, and the LSST Compliance Officer: Veronica Kinnison (non-voting).
 
 The Representative Members represent a cross-section of the various project groups that have a responsibility for delivery consisting of and/or a vested interest in IT Services, including:  Systems Engineering, Data Management, Telescope and Site, Camera, and EPO.
 
