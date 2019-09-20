@@ -135,6 +135,7 @@ Name             Description
 ``devtoolset-4`` Updated compiler toolchain providing GCC 5.3.1.
 ``devtoolset-6`` Updated compiler toolchain providing GCC 6.3.1.
 ``devtoolset-7`` Updated compiler toolchain providing GCC 7.1.1.
+``devtoolset-8`` Updated compiler toolchain providing GCC 8.3.1.
 ``git19``        The `Git`_ version control system version 1.9.4.
 ``rh-git29``     The `Git`_ version control system version 2.9.3.
 ================ ================================================
@@ -143,10 +144,10 @@ To enable a particular Software Collection use the ``scl`` command. For example:
 
 .. prompt:: bash $ auto
 
-   $ scl enable devtoolset-6 bash
+   $ scl enable devtoolset-8 bash
    $ gcc --version
-   gcc (GCC) 6.3.1 20170216 (Red Hat 6.3.1-3)
-   Copyright (C) 2016 Free Software Foundation, Inc.
+   gcc (GCC) 8.3.1 20190311 (Red Hat 8.3.1-3)
+   Copyright (C) 2018 Free Software Foundation, Inc.
    This is free software; see the source for copying conditions.  There is NO
    warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
@@ -162,7 +163,7 @@ If you are using `Bash`_ — the default shell on ``lsst-dev`` servers — try p
 .. code-block:: bash
 
    # User-specified space-delimited list of SCLs to enable.
-   desired_scls="rh-git29 devtoolset-6"
+   desired_scls="rh-git29 devtoolset-8"
 
    # Only do anything if /usr/bin/scl is executable.
    if [ -x /usr/bin/scl ]; then
