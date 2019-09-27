@@ -491,9 +491,10 @@ We **always use non-fast forward merges** so that the merge point is marked in G
    git push
 
 We force push the rebased branch for three reasons:
-(1) In many repos, branch protection requires that Travis was run on any commits before they can be pushed onto master
-(2) The policy is to delete branches that have been merged. This is only possible if the exact commit has been merged.
-(3) For convenience, Github will automatically close pull requests if the corresponding branch has been merged to master.
+
+1. In many repos, branch protection requires that Travis was run on any commits before they can be pushed onto master
+2. The policy is to delete branches that have been merged. This is only possible if the exact commit has been merged.
+3. For convenience, GitHub will automatically close pull requests if the corresponding branch has been merged to master.
 
 **GitHub pull request pages also offer a 'big green button' for merging a branch to master**.
 We discourage you from using this button since there isn't a convenient way of knowing that the merged development history graph will be linear from GitHub's interface.
