@@ -21,10 +21,11 @@ The baseline system is currently CentOS 7 on Intel x86_64 with gcc 6.3.1 from de
 .. note ::
     We aim to stay current with CentOS 7 minor releases, updating within 6 months of their release.
 
-We regularly-test the following platforms in addition to the baseline platform:
+We regularly test the following platforms in addition to the baseline platform:
 
 * CentOS 6 with devtoolset-6
-* macOS Sierra with Apple clang compilers
-* macOS High Sierra with Apple clang compilers
+* macOS Mojave (10.14) with Apple clang compilers
+* macOS High Sierra (10.13) with Apple clang compilers
 
 See https://ci.lsst.codes for the current list of regularly-tested platforms.
+(The "osx" platform there for the "stack-os-matrix" job randomly chooses a Mojave or High Sierra machine for each execution to limit load.)
