@@ -211,8 +211,6 @@ Path                                    Toolchain        Description
 :file:`/software/lsstsw/stack_20191001` ``devtoolset-8`` Provides weekly ``w_2019_38`` and later as well as daily ``d_2019_09_30``.
 ======================================= ================ ==========================================================================
 
-The following stacks are not currently being updated, but remain available.
-
 .. note::
 
    When using a shared stack, you *must* use the corresponding developer toolchain. See above for details on how to :ref:`lsst-dev-tools`.
