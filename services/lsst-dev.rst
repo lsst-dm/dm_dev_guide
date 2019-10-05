@@ -205,11 +205,11 @@ The currently stack is regularly updated to include the latest weekly release, w
 
 The following stacks are currently being updated:
 
-======================================= ================ =============================================================================================
+======================================= ================ ==========================================================================
 Path                                    Toolchain        Description
-======================================= ================ =============================================================================================
-:file:`/software/lsstsw/stack_20190330` ``devtoolset-6`` Provides weekly ``w_2019_12`` and later. Based on the post-:jira:`RFC-584` Conda environment.
-======================================= ================ =============================================================================================
+======================================= ================ ==========================================================================
+:file:`/software/lsstsw/stack_20191001` ``devtoolset-8`` Provides weekly ``w_2019_38`` and later as well as daily ``d_2019_09_30``.
+======================================= ================ ==========================================================================
 
 The following stacks are not currently being updated, but remain available.
 
@@ -252,6 +252,7 @@ Path                                    Toolchain        Description
 ======================================= ================ ==========================================================================================================================================================================================================================
 :file:`/software/lsstsw/stack_20171023` ``devtoolset-6`` Provides a selection of weekly and release builds dating between October 2017 and October 2018.
 :file:`/software/lsstsw/stack_20181012` ``devtoolset-6`` Provides weeklies ``w_2018_41`` through ``w_2019_12``; release candidates ``v17_0_rc1``, ``v17_0_rc2``, and ``v17_0_1_rc1``; and releases ``v_17_0`` and ``v_17_0_1``. Based on the pre-:jira:`RFC-584` Conda environment.
+:file:`/software/lsstsw/stack_20190330` ``devtoolset-6`` Provides weekly ``w_2019_12`` through ``w_2019_38`` and daily ``d_2019_09_30``. Based on the post-:jira:`RFC-584` Conda environment.
 ======================================= ================ ==========================================================================================================================================================================================================================
 
 Administrators may wish to note that the shared stack is automatically updated using the script :file:`~lsstsw/shared-stack/shared_stack.py`, which is executed nightly by Cron.
