@@ -96,7 +96,7 @@ Some important channels are:
 - `dm-square <https://lsstc.slack.com/archives/dm-square>`__ for developer support services.
 - `dm-jenkins <https://lsstc.slack.com/archives/dm-jenkins>`__ for automatic notifications from our Continuous Integration system.
 - `dm-tavern <https://lsstc.slack.com/archives/dm-tavern>`__ for “water cooler” type talk.
-- `dm-tea-time <https://lsstc.slack.com/archives/dm-tea-team>`__ for more serious but still non-LSST conversation.
+- `dm-tea-time <https://lsstc.slack.com/archives/dm-tea-time>`__ for more serious but still non-LSST conversation.
 - `dm-admin-support <https://lsstc.slack.com/archives/dm-admin-support>`__ to contact DM's administrator.
 
 Your team may also have specific channels, and you can send private messages to individuals.
