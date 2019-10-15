@@ -4,6 +4,29 @@ Vim Configuration for LSST Development
 
 This page will help you configure Vim to be consistent with LSST's coding standards and development practices.
 
+Vim runtime configuration setup
+===============================
+
+The vimrc file contains optional user-defined configuration settings. On Unix based systems, the file is located at ``~/.vimrc`` (create if needed). 
+
+Depending on your particular setup, Vim may or may not be configured to automatically recognize filetype configurations such as those listed below. To force Vim to recognize such files, add the following to your vimrc file: 
+
+.. code-block:: text
+
+   filetype plugin on
+
+You may also need to tell vim to indent according to your filetype plugins by adding the following to your vim rc file: 
+
+.. code-block:: text
+
+   filetype indent on
+
+or alternatively, combining the two commands into one line: 
+
+.. code-block:: text
+
+   filetype plugin indent on
+
 C++ filetype configuration
 ==========================
 
@@ -18,12 +41,6 @@ The following configuration file should be placed in :file:`~/.vim/ftplugin/c.vi
    setlocal cino=:0,l1,g0,(0,u0,W2s
    setlocal comments^=s2:/**,mb:*,ex:*/
    syntax match cTodo /\todo/
-
-You may also need to tell vim to indent according to your filetype plugins by adding the following to :file:`~/.vimrc`:
-
-.. code-block:: text
-
-   filetype plugin indent on
 
 Explanation
 -----------
