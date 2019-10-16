@@ -24,7 +24,6 @@ Label                Meaning
 ``galmodel``         Work related to galaxy model fitting.
 ``hsc``              Work requested and/or carried out by the HSC team.
 ``pfs``              Work requested and/or carried out by the PFS team.
-``SciencePipelines`` Work which should be performed by either AP (02C.03) or DRP (02C.04), but it's not (yet) clear which so we can't easily set the “team” field.
 ==================== =============================================================================================================================================
 
 Princeton HPC Systems
