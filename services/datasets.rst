@@ -43,7 +43,40 @@ Reference Catalogs
 For the Gen2 Middleware, reference catalogs are contained in the repository itself, in a ``ref_cats/`` subdirectory.
 For ``/datasets`` repositories, we handle this by symlinking from ``repo/ref_cats/NAME`` to the corresponding refcat directory in ``/datasets/refcats``.
 The version subdirectory (e.g. ``v0/``, ``v1``) should match the ``REFCAT_FORMAT_VERSION`` that is set by the refcat ingestion task.
-When adding a refcat, don't forget to add a note to the relevant ``README.txt``, as described in the `responsibilities`_ section.
+
+When adding a refcat, you have a :ref:`responsibility <responsibilities>` to supply a ``README.txt`` for the new refcat, and update the overall ``README.txt`` for that type of refcat (e.g. ``/datasets/ref_cats/htm/README.txt``).
+Updates to the readme should be reviewed on a Jira ticket about the new reference catalog (for example, `DM-20267 <https://jira.lsstcorp.org/browse/DM-20267>`_).
+Here is a template for what each refcat's readme should contain:
+
+::
+
+    Reference Catalog: Example
+    ##########################
+
+    Sky coverage: full sky (or give ra/dec range)
+    Number of sources: 1,234,567
+    Magnitude range: 10 - 20 (G magnitude)
+    Disk space: 100 GB
+
+    Original data: https://www.example.com/DataRelease9000
+    Jira ticket or Epic: https://jira.lsstcorp.org/browse/DM-Example
+    Jira acceptance RFC: https://jira.lsstcorp.org/browse/RFC-Example
+    Contact: Example name, email@example.com, Slack: examplename
+
+    This is a brief paragraph summarizing this reference catalog.
+
+    Citations/acknowledgements
+    ==========================
+    Users of this reference catalog should follow the citation and
+    acknowledgement instructions from this website:
+    https://www.example.com/citations
+
+    Catalog creation
+    ================
+    This catalog was created by following the instructions on this page:
+    https://pipelines.lsst.io/modules/lsst.meas.algorithms/creating-a-reference-catalog.html
+    The configuration that was used to ingest the data is included in this
+    directory as `IngestIndexedReferenceTask.py`.
 
 Immutability/Sharing
 --------------------
@@ -119,8 +152,10 @@ Regardless of the reason for the RFC (implementation or maintenance), as part of
 - If preprocessed, a description of the preprocessed data products available
 - If a subset is preprocessed, a description of how the subset was created (and why)
 
-For butler repository datasets, the root level is the directory just above the butler repository: e.g. ``/datasets/hsc/README.txt``. For reference catalogs, there should be one ``README.txt`` for all reference catalogs of a particular type: e.g. ``/datasets/refcats/htm/README.txt``. Each reference catalog should have an entry in that file with the above information.
-
+For butler repository datasets, the root level is the directory just above the butler repository: e.g. ``/datasets/hsc/README.txt``.
+For reference catalogs, there should be one ``README.txt`` for all reference catalogs of a particular type: e.g. ``/datasets/refcats/htm/README.txt`` with a brief description of the available reference catalogs of that type.
+Separately, each reference catalog should also contain a ``README.txt`` with details about that reference catalog's contents.
+See `reference-catalogs`_ for a template for the contents of those respective readme files.
 
 .. _CaveatForPrivate:
 
