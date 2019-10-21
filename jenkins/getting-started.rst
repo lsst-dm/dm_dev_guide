@@ -181,7 +181,7 @@ More resources
 
 - `Jenkins documentation`_.
   The `Jenkins dashboard documentation`_ includes additional information about the Jenkins interface.
-- The `lsst-sqre/jenkins-dm-jobs`_ GitHub repository is where DM's Jenkins jobs are defined.
+- The `lsst-dm/jenkins-dm-jobs`_ GitHub repository is where DM's Jenkins jobs are defined.
 
 .. _`lsst`: https://github.com/lsst
 .. _`lsst-dm`: https://github.com/lsst-dm
@@ -192,7 +192,7 @@ More resources
 .. _`qserv/qserv_distrib`: https://ci.lsst.codes/blue/organizations/jenkins/qserv%2Fqserv_distrib/activity
 .. _`Jenkins documentation`: https://jenkins.io/doc/book/blueocean/
 .. _`Jenkins dashboard documentation`: https://jenkins.io/doc/book/blueocean/dashboard/
-.. _`lsst-sqre/jenkins-dm-jobs`: https://github.com/lsst-sqre/jenkins-dm-jobs
+.. _`lsst-dm/jenkins-dm-jobs`: https://github.com/lsst-dm/jenkins-dm-jobs
 .. _`#dm-jenkins`: https://lsstc.slack.com/messages/C2NCSTY3A
 .. _`search the channel listing`: https://get.slack.help/hc/en-us/articles/205239967-Browse-and-join-channels
 .. _`mute the channel`: https://get.slack.help/hc/en-us/articles/204411433-Mute-a-channel
