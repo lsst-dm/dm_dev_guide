@@ -37,7 +37,7 @@ import subprocess
 import sys
 
 INSTITUTIONS = {
-        "Association of Universities for Research in Astronomy":
+        "Association of Universities for Research in Astronomy, Inc. (AURA)":
             ["noao.edu", "lsst.org", "LSST.org", "simon.krughoff@gmail.com",
                 "wmwv@pitt.edu", "josh@hoblitt.com", "womullan@sciops.esa.int",
                 "womullan@users.noreply.github.com", "jonathansick@mac.com",
