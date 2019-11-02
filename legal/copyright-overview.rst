@@ -29,7 +29,7 @@ The contracts allow these institutions to retain the copyright for the intellect
 
 Use these legal names when assigning copyright for work you contribute on behalf of your institution:
 
-- Association of Universities for Research in Astronomy
+- Association of Universities for Research in Astronomy, Inc. (AURA)
 - University of Washington
 - The Trustees of Princeton University
 - The Board of Trustees of the Leland Stanford Junior University, through SLAC National Accelerator Laboratory
@@ -79,7 +79,7 @@ Here is an example of a copyright statement with two contributing institutions:
 .. code-block:: text
 
    Copyright 2012-2014 LSST Corporation
-   Copyright 2014-2017 Association of Universities for Research in Astronomy
+   Copyright 2014-2017 Association of Universities for Research in Astronomy, Inc. (AURA)
 
 The "years" in a copyright statement must reflect when contributions were made:
 
@@ -87,23 +87,23 @@ The "years" in a copyright statement must reflect when contributions were made:
 
   .. code-block:: text
 
-     Copyright 2015 Association of Universities for Research in Astronomy
+     Copyright 2015 Association of Universities for Research in Astronomy, Inc. (AURA)
 
 - A continuous span of years:
 
   .. code-block:: text
 
-     Copyright 2015-2018 Association of Universities for Research in Astronomy
+     Copyright 2015-2018 Association of Universities for Research in Astronomy, Inc. (AURA)
 
 - A sequence of multiple single years and spans of years:
 
   .. code-block:: text
 
-     Copyright 2015-2016, 2018 Association of Universities for Research in Astronomy
+     Copyright 2015-2016, 2018 Association of Universities for Research in Astronomy, Inc. (AURA)
 
   .. code-block:: text
 
-     Copyright 2015, 2017 Association of Universities for Research in Astronomy
+     Copyright 2015, 2017 Association of Universities for Research in Astronomy, Inc. (AURA)
 
 .. important::
 
@@ -147,7 +147,7 @@ For example:
 
    Copyright 2012-2014 LSST Corporation
    Copyright 2016, 2018 University of Washington
-   Copyright 2014-2018 Association of Universities for Research in Astronomy
+   Copyright 2014-2018 Association of Universities for Research in Astronomy, Inc. (AURA)
 
 The :file:`COPYRIGHT` file does not contain any other content.
 
