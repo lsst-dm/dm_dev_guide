@@ -14,7 +14,7 @@ This is our playbook for going to Project and public meetings, and presenting on
 Sign up for a meeting on Confluence (required)
 ==============================================
 
-DM tracks meetings, along with who will attend them, at https://confluence.lsstcorp.org/display/DM/DM+Meetings.
+DM tracks meetings, along with who will attend them, at https://confluence.lsstcorp.org/x/4IKhAg.
 
 If you're interesting in attending a meeting, add your name to the column "Expressed Interest in Attending."
 
