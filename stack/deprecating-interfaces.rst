@@ -65,7 +65,7 @@ Since our end users tend to be developers or at least may call APIs directly fro
 pybind11 Deprecation
 ====================
 
-A deprecated pybind11-wrapped function must be rewrapped in pure Python using the `lsst.utils.deprecate_pybind11` function, which defaults to ``category=FutureWarning``::
+A deprecated pybind11-wrapped function, method or class must be rewrapped in pure Python using the `lsst.utils.deprecate_pybind11` function, which defaults to ``category=FutureWarning``::
 
    from lsst.utils.deprecated import deprecate_pybind11
    ExposureF.getCalib = deprecate_pybind11(ExposureF.getCalib,
@@ -73,6 +73,9 @@ A deprecated pybind11-wrapped function must be rewrapped in pure Python using th
  
 If only one overload of a set is being deprecated, state that in the reason string.
 Over-warning is considered better than under-warning in this case.
+
+.. note: 
+	The message printed for deprecated classes will refer to the constructor function but this is how we deprecated the entire class. 
 
 C++ Deprecation
 ===============
