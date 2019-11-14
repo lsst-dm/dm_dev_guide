@@ -183,6 +183,8 @@ Normal editing and formatting will still work, but most tab-completion, type sym
 Unlike Python, our way of declaring include paths to ``sconsUtils`` makes fixing this quite difficult in general.
 An experimental (but still unsatisfactory) solution is to use the ``tickets/DM-22074`` branch of ``sconsUtils`` to build the package *from scratch* with:
 
+.. code-block:: sh
+
     scons lib python tests compile_commands.json [other options and targets]
 
 This will create a CMake-style file that VSCode can use to find missing headers.
