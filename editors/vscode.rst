@@ -21,25 +21,25 @@ The official (Microsoft-maintained) extensions generally have quite good documen
 Extensions useful specifically for LSST development
 ---------------------------------------------------
 
-Python:
+`Python <https://code.visualstudio.com/docs/languages/python>`_:
     The official Python extension, from Microsoft.  See :ref:`vscode-python`.
 
-C/C++:
+`C/C++ <https://code.visualstudio.com/docs/languages/cpp>`_:
     The official C++ extension, from Microsoft.  See :ref:`vscode-cpp`.
 
-Latex Workshop:
+`Latex Workshop <https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)>`_:
     Useful for writing Latex docs.
 
-restructuredText:
+`restructuredText <https://docs.restructuredtext.net/>`_:
     Useful for writing Sphinx docs.
 
-Remote Development, Remote - SSH:
+`Remote Development, Remote - SSH <https://code.visualstudio.com/docs/remote/ssh>`_:
     Provides support for editing, browsing, and debugging code on a remote server from a local editor, over SSH.
 
-Trailing Spaces:
+`Trailing Spaces <https://marketplace.visualstudio.com/items?itemName=shardulm94.trailing-spaces>`_:
     Highlights and/or deletes trailing spaces, which Flake8 will otherwise complain about.
 
-Python Index:
+`Python Indent <https://marketplace.visualstudio.com/items?itemName=KevinRose.vsc-python-indent>`_:
     As of this writing, VSCode's automatic indentation for Python isn't very good.
     This extension makes it a lot better - still not as good as (at least) Emacs or Sublime, but good enough that the difference is rarely noticeable.
 
@@ -47,22 +47,22 @@ Python Index:
 General extension recommendations from LSST developers
 ------------------------------------------------------
 
-Bracket Pair Colorizer:
+`Bracket Pair Colorizer <https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer>`_:
     Keep track of parentheses/bracket/brace pairs using colors.
 
-Clipboard Ring:
+`Clipboard Ring <https://marketplace.visualstudio.com/items?itemName=SirTobi.code-clip-ring>`_:
     Remembers the last few things you've copy/pasted; a very limited version of what (at least) Emacs does.
 
-Git Graph:
+`Git Graph <https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph>`_:
     An in-editor, easy-to-read version of ``git log --graph``.
 
-Git Lens:
+`Git Lens <https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens>`_:
     In-editor ``git blame`` annotation and more.
 
-Rewrap
+`Rewrap <https://marketplace.visualstudio.com/items?itemName=stkb.rewrap>`_
     Hard-wrapping of full paragraphs.  Unfortunately tends to be a bit aggressive in the context I want it most - wrapping elements of the Parameters section of Python docstrings - but much better than nothing, which strangely seems to be what VSCode ships with.
 
-Transpose:
+`Transpose <https://marketplace.visualstudio.com/items?itemName=v4run.transpose>`_:
     Swap the letters on either side of the cursor, which you may have gotten addicted to from other editors.
 
 
@@ -159,7 +159,8 @@ One way to do this that works even with remote editing is to use something like 
 
 While this unfortunately adds another step (and a bit of fragility) to typical developer workflow, the benefits are substantial:
 
- - Python scripts can be debugged from within the editor by opening the script file, adding ``breakpoint()`` somewhere, and starting the in-editor debugger on that file (e.g. via ``F5``).  Local variables are automatically shown in the GUI (it's remarkable how much faster this is than asking ``pdb`` to print individual variables), and you can toggle additional breakpoints visually while looking directly at the code.
+ - Python scripts can be debugged from within the editor by opening the script file, adding ``breakpoint()`` somewhere, and starting the in-editor debugger on that file (e.g. via ``F5``).
+   Local variables are automatically shown in the GUI (it's remarkable how much faster this is than asking ``pdb`` to print individual variables), and you can toggle additional breakpoints visually while looking directly at the code.
 
  - Directly imported symbols - and local variables/arguments with type annotations - are fully recognized; you can get docstrings, jump to definitions, and even see function signatures overlaid as you type.
 
