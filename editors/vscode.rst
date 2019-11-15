@@ -117,7 +117,7 @@ The ``"rulers"`` setting doesn't affect actual indentation (unless you use the `
 Python
 ======
 
-The official Python extension includes linting, symbol lookup, and integrated debugging, as long as it configured to use the right Python executable and module search path.
+The official Python extension includes linting, symbol lookup, and integrated debugging, as long as it is configured to use the right Python executable and module search path.
 VSCode automatically searches for conda environments, and generally does a good job of guessing the right one.
 When it guesses wrong, it's easy to change via the GUI (and presumably more permanent configuration).
 Using the right conda environment (and the above configuration to use ``flake8`` instead of ``pylint``) should be enough enable in-editor linting with LSST configuration (as long as that configuration is in the package's ``setup.cfg``, as usual).
@@ -167,7 +167,7 @@ While this unfortunately adds another step (and a bit of fragility) to typical d
 Most importantly, all of this is available during remote editing; while you may need to restart the editor after you first connect to a remote directory (after you enable/install remote extensions, and then to write the ``.env`` file to the workspace directory), the rest is fairly automatic, including remote debugging of scripts.
 
 You can also install the ``ptvsd`` tool on the server manually (it's available via ``pip``) to launch Python code from another terminal that VSCode can later attach to.
-This also requires setting up some SSH tunnels; see [instructions in the VSCode Python docs](https://code.visualstudio.com/docs/python/debugging#_remote-debugging) for more information, but it can be very useful for debugging more complex or long-running Python processes.
+This also requires setting up some SSH tunnels (see [instructions in the VSCode Python docs](https://code.visualstudio.com/docs/python/debugging#_remote-debugging) for more information), but it can be very useful for debugging more complex or long-running Python processes.
 
 
 .. _vscode-cpp:
@@ -176,10 +176,10 @@ C++
 ===
 
 The official C++ extension includes support for clang-format, and it should work out of the box as long as you've installed ``clang-format`` and put a ``.clang-format`` file in a root directory of your source tree (see :ref:`using_clang_format`).
-Automatically formatting on save or while editing can be enabled via the ``editor.formatOnSave`` and ``editor.formatOnType`` options, but note that these are global settings, and will apply to any language for which a formatter is configured unless the overrides are [explicitly marked as language-specific](https://vscode.readthedocs.io/en/latest/getstarted/settings/).
+Automatically formatting on save or while editing can be enabled via the ``editor.formatOnSave`` and ``editor.formatOnType`` options, but note that these are global settings, and will apply to any language for which a formatter is configured, unless the overrides are [explicitly marked as language-specific](https://vscode.readthedocs.io/en/latest/getstarted/settings/).
 
-Like Python, many C++ features require giving VSCode more information about the development environment - in this case, include paths - than it can typically discover automatically.
-Normal editing and formatting will still work, but most tab-completion, type symbol lookup, and debug support will be missing, and the built-in linter will produce a lot of distracting squiggles.
+As with Python, many C++ features require giving VSCode more information about the development environment - in this case, include paths - than it can typically discover automatically.
+Normal editing and formatting will still work, but most tab-completion, type symbol lookup, and debug support will be missing, and the built-in linter will produce a lot of distracting squiggles and other warnings.
 Unlike Python, our way of declaring include paths to ``sconsUtils`` makes fixing this quite difficult in general.
 An experimental (but still unsatisfactory) solution is to use the ``tickets/DM-22074`` branch of ``sconsUtils`` to build the package *from scratch* with:
 
