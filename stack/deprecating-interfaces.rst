@@ -16,6 +16,8 @@ Release notes
 When a feature, class, or function is deprecated, a description of the deprecation is included in the release notes for the next official release (major or minor or bugfix).
 It may be desirable to repeat that description in succeeding release notes until the code is removed.
 
+.. _code_removal:
+
 Code removal
 ------------
 
@@ -42,23 +44,26 @@ If you need to deprecate a class or function, import the `~deprecated.sphinx.dep
 
 For each class or function to be deprecated, decorate it as follows::
 
-   @deprecated(reason="why", category=FutureWarning)
+   @deprecated(reason="This method is no longer used for ISR. Will be removed after v15.", category=FutureWarning)
+   def _extractAmpId(self, dataId):
 
 Class and static methods should be decorated in the order given here::
 
     class Foo:
         @classmethod
-        @deprecated(reason="why", category=FutureWarning)
+        @deprecated(reason="This has been replaced with `mm()`. Will be removed after v10.", category=FutureWarning)
         def cm(cls, x):
             pass
 
         @staticmethod
-        @deprecated(reason="why", category=FutureWarning)
+        @deprecated(reason="This has been replaced with `mm()`. Will be removed after v10.", category=FutureWarning)
         def sm(x):
             pass
 
 The reason string should include the replacement API when available or explain why there is no replacement.
 The reason string will be automatically added to the docstring for the class or function; there is no need to change that.
+The reason string must also specify the version after which the method may be removed, as discussed in :ref:`code_removal`.
+
 You do not need to specify the optional version argument to the decorator since deprecation decorators are typically not added in advance of when the deprecation actually begins.
 Since our end users tend to be developers or at least may call APIs directly from notebooks, we will treat our APIs as end-user features and use ``category=FutureWarning`` instead of the default `DeprecationWarning`, which is primarily for Python developers. Do not use `PendingDeprecationWarning`.
 
@@ -69,20 +74,24 @@ A deprecated pybind11-wrapped function must be rewrapped in pure Python using th
 
    from lsst.utils.deprecated import deprecate_pybind11
    ExposureF.getCalib = deprecate_pybind11(ExposureF.getCalib,
-           reason="Replaced by getPhotoCalib. (Will be removed in 18.0)")
+           reason="Replaced by getPhotoCalib. Will be removed after v18.")
  
 If only one overload of a set is being deprecated, state that in the reason string.
 Over-warning is considered better than under-warning in this case.
+The reason string must also specify the version after which the function may be removed, as discussed in :ref:`code_removal`.
+
 
 C++ Deprecation
 ===============
 
 Use the C++14 deprecation attribute syntax to deprecate a function, variable, or type::
 
-   [[deprecated("why")]]
+   class [[deprecated("Replaced by PixelAreaBoundedField. Will be removed after v19.")]]
+        PixelScaleBoundedField : public BoundedField {
 
 It should appear on its own line, adjacent to the declaration of the function, variable, or type it applies to.
 The reason string should include the replacement API when available or explain why there is no replacement.
+The reason string must also specify the version after which the object may be removed, as discussed in :ref:`code_removal`.
 
 Config Deprecation
 ==================
@@ -92,8 +101,9 @@ To deprecate a `~lsst.pex.config.Field` in a `~lsst.pex.config.Config`, set the 
     someOption = pexConfig.Field(
             dtype=float,
             doc="This is an configurable field that does something important.",
-            deprecated="This field is no longer used. It will be removed after v18."
+            deprecated="This field is no longer used. Will be removed after v18."
         )
 
 
 Setting this parameter will append a deprecation message to the `~lsst.pex.config.Field` docstring, and will cause the system to emit a `FutureWarning` when the field is set by a user (for example, in an obs-package override or by a commandline option).
+The deprecated string must also specify the version after which the config may be removed, as discussed in :ref:`code_removal`.
