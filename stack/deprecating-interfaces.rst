@@ -81,7 +81,7 @@ Over-warning is considered better than under-warning in this case.
 The reason string must also specify the version after which the function may be removed, as discussed in :ref:`code_removal`.
 
 
-.. note: 
+.. note::
 	The message printed for deprecated classes will refer to the constructor function but this is how we deprecated the entire class. 
 
 C++ Deprecation
