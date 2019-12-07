@@ -342,6 +342,64 @@ final test suite.
 For the memory test to function properly the `lsst.utils.tests.init` function must be invoked before any of the tests in the class are executed.
 Since LSST test scripts are required to run properly from the command-line and when called from within `pytest`_, the `~lsst.utils.tests.init` function has to be in the file twice: once in the :ref:`setup_module <pytest:xunitsetup>` function that is called by `pytest`_ whenever a test module is loaded (`pytest`_ will not use the ``__main__`` code path), and also just before the call to `unittest.main` call to handle being called with :command:`python`.
 
+
+Decorators for iteration
+------------------------
+
+``lsst.utils.tests.classParameters`` is a class decorator for generating classes with different combinations of class variables.
+This is useful for when the ``setUp`` method generates the object being tested:
+placing the decorator on the class allows generating that object with different values.
+The decorator takes multiple lists of named parameters (which must have the same length) and iterates over the combinations.
+For example:
+
+.. code-block:: python
+
+    @classParameters(foo=[1, 2], bar=[3, 4])
+    class MyTestCase(unittest.TestCase):
+        ...
+
+will generate two classes, as if you wrote:
+
+.. code-block:: python
+
+    class MyTestCase_1_3(unittest.TestCase):
+        foo = 1
+        bar = 3
+        ...
+    
+    class MyTestCase_2_4(unittest.TestCase):
+        foo = 2
+        bar = 4
+        ...
+
+Note that the values are embedded in the class name, which allows identification of the particular class in the event of a test failure.
+
+``lsst.utils.tests.methodParameters`` is a method decorator for running a test method with different value combinations.
+This is useful for when you want an individual test to iterate over multiple values.
+As for ``classParameters``, the decorator takes multiple lists of named parameters (which must have the same length) and iterates over the combinations.
+For example:
+
+.. code-block:: python
+
+    class MyTestCase(unittest.TestCase):
+        @methodParameters(foo=[1, 2], bar=[3, 4])
+        def testSomething(self, foo, bar):
+            ...
+
+will run tests:
+
+.. code-block:: python
+
+        testSomething(foo=1, bar=3)
+        testSomething(foo=2, bar=4)
+
+Note that the method being decorated must be within a subclass of ``unittest.TestCase``, since it relies on the existence of the ``subTest`` method for identifying the individual iterations.
+This use of ``subTest`` also means that all iterations will be executed, not stopping at the first failure.
+
+See also ``pytest.mark.parametrize``, which is more complex but offers similar functionality;
+however, this module is not yet approved for use.
+
+
 Unicode
 =======
 
