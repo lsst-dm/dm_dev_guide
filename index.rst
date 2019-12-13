@@ -400,6 +400,7 @@ Git
    editors/emacs
    editors/sublime
    editors/vim
+   editors/vscode
 
 .. _part-editors:
 
