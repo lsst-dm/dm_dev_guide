@@ -9,16 +9,19 @@ There are a few other documents that might have the info you are looking for:
 - The :doc:`data_protection` policy page describes what the retention policy is, what are immutable files, what is to be placed in each file system area.
 - The :doc:`ldf-resources` LDF resources pages for explanation of each of the file systems, and the type of data and where it's to be located and the policies of each of the file systems.
 
-Filesystems in GPFS (4.9PB of storage)
+Filesystems in GPFS (6.3PB of storage)
 ======================================
 
-:file:`/datasets`
-    Long term storage of project-approved shared data. Contains immutable data. This is under a disaster recovery policy that every 30 days it is stored and written to nearline tape.
-
-:file:`/lsstdata`
+:file:`/lsstdata/offline/teststand`
     Long term storage of LSST project data, including production, engineering, and test stand datasets. Contains immutable data. This is under a disaster recovery policy.
     Currently includes :file:`/lsstdata/offline/teststand/auxTel` for datasets from the LATISS/AuxTel test stand in Tucson and :file:`/lsstdata/offline/teststand/BOT` for datasets from the Bench for Optical Testing at SLAC. The former includes read-only Gen2 Butler repositories under :file:`/lsstdata/offline/teststand/auxTel/DAQ/gen2repo` and :file:`/lsstdata/offline/teststand/auxTel/L1Archiver/gen2repo`. These are updated periodically (several times an hour) as data is taken in Tucson.
     A *writable* Gen2 Butler repository for LATISS/AuxTel data with associated calibrations and shared reruns is currently available at :file:`/project/shared/auxTel`.  This repository is what should be used for typical staff analysis.
+
+:file:`/lsstdata/dac/services`
+    Storage area for data that is owned primarily by a service running at the DAC (eg. ELK stack, Jenkins, etc.) A fileset for a new service can be requested via an IHS ticket, and will be provisioned by NCSA staff.  If desired a quota can be set on the area to limit the application's file system usage, if desired please note this in the ticket.
+
+:file:`/datasets`
+    Long term storage of project-approved shared data. Contains immutable data. This is under a disaster recovery policy that every 30 days it is stored and written to nearline tape.
 
 :file:`/home`
     Storage of individual-user data. This data is backed up on a daily basis and NCSA retains 30 days of those backups in a snapshot.  It does have quotas on this file system for 1TB for each "directory," and a 1 million INODE quota.
@@ -49,13 +52,14 @@ The command to see your disk usage and limits is :command:`quota`. Example:
    $ quota
    Directories quota usage for user jdoe:
 
-   -------------------------------------------------------------------------------------
-   |      Fileset       |  Used   |  Soft   |  Hard   |   Used   |   Soft   |   Hard   |
-   |                    |  Block  |  Quota  |  Limit  |   File   |   Quota  |   Limit  |
-   -------------------------------------------------------------------------------------
-   | home               | 501.1M  | 2G      | 4G      | 14       | 0        | 0        |
-   | stuff              | 0       | 1.465T  | 1.953T  | 1        | 0        | 0        |
-   -------------------------------------------------------------------------------------
+---------------------------------------------------------------
+| GPFS Fileset         | Used (GB)  | Quota (GB) | # Of Files |
+---------------------------------------------------------------
+| home                 | 1          | 1000       | 22,533     |
+| jhome                | 0          | 100        | 9          |
+| scratch              | 0          | 0          | 2          |
+| project              | 0          | 0          | 2          |
+---------------------------------------------------------------
 
 Home directories are backed up using snapshots and a separate DR process.
 
