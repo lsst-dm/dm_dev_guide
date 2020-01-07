@@ -114,13 +114,24 @@ If there is documentation describing how to develop (contribute) to the module, 
 Task reference section
 ======================
 
-This section lists any tasks, command-line tasks, and standalone configuration classes that are provided by the module.
+This section lists any tasks, pipeline tasks, command-line tasks, and standalone configuration classes that are provided by the module.
 See the :doc:`task-topic-type` and :doc:`config-topic-type` pages for descriptions of how to document tasks and standalone configuration classes.
 
 Since the content for this section is automatically generated through Sphinx extensions, refer to the :ref:`template and example <module-homepage-template>` for the boilerplate needed to implement this section.
+There are two scenarios where the boilerplate needs to be customized:
 
-If a module does not provide command-line tasks, regular tasks, or standalone config classes, omit the corresponding subsections from the "Task reference" section.
-If a module does not provide any of these topic types, omit the "Task reference" section entirely.
+1. If a module does not provide pipeline tasks, command-line tasks, regular tasks, or standalone config classes, omit the corresponding subsections from the "Task reference" section.
+   If a module does not provide any of these topic types, omit the "Task reference" section entirely.
+
+2. If the module does not provide tasks, but does provide either pipeline tasks or command-line tasks, move the ``:toctree: tasks`` field to either of :rst:dir:`lsst-pipelinetasks` or :rst:dir:`lsst-cmdlinetasks`.
+   One (and only one) of :rst:dir:`lsst-pipelinetasks`, :rst:dir:`lsst-cmdlinetasks`, or :rst:dir:`lsst-tasks` needs to include the ``:toctree: tasks`` field — it doesn't matter which, though.
+
+For more information, refer to these sections in Documenteer's documentation:
+
+- :rst:dir:`lsst-tasks`
+- :rst:dir:`lsst-cmdlinetasks`
+- :rst:dir:`lsst-pipelinetasks`
+- :rst:dir:`lsst-configs`
 
 .. _module-homepage-script-reference:
 
