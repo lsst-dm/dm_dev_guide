@@ -31,7 +31,7 @@ Alert Production                   John Swinbank
 Data Release Production            Yusra AlSayyad & John Swinbank
 Science User Interface             Xiuqin Wu
 Data Access and Database           Fritz Mueller
-Data Facility                      Margaret Gelman
+Data Facility                      Michelle Butler 
 International Comms and Base Site  Jeff Kantor
 SQuaRE                             Frossie Economou
 Telescope and Site                 Andy Clements
