@@ -89,6 +89,10 @@ Improvement
    Like a *bug*, an improvement is emergent, and hence belongs in a special epic.
    Unlike a bug, an improvement adds new functionality.
 
+You might notice that you also have the ability to create issues of type “Epic” and ”Milestone”.
+You should only create the former in consultation with your T/CAM.
+The latter are not used in the DM workflow: you should never create them.
+
 Issue semantics were discussed in `RFC-43 <https://jira.lsstcorp.org/browse/RFC-43>`_.
 
 As a developer, you can create tickets to work on.
