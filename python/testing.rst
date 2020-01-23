@@ -163,7 +163,7 @@ To enable automatic :command:`flake8` testing as part of the normal test executi
 
    [tool:pytest]
    addopts = --flake8
-   flake8-ignore = E133 E226 E228 N802 N803 N806 N812 N813 N815 N816 W504
+   flake8-ignore = E133 E226 E228 N802 N803 N806 N812 N813 N815 N816 W503
 
 The ``addopts`` parameter adds additional command-line options to the :command:`pytest` command when it is run either from the command-line or from :command:`scons`.
 A wrinkle with the configuration of the ``pytest-flake8`` plugin is that it inherits the ``max-line-length`` and ``exclude`` settings from the ``[flake8]`` section of :file:`setup.cfg` but you are required to explicitly list the codes to ignore when running within `pytest`_ by using the ``flake8-ignore`` parameter.
@@ -176,19 +176,17 @@ For example, at the time of writing this is an extract from the :file:`setup.cfg
   [flake8]
   max-line-length = 110
   max-doc-length = 79
-  ignore = E133, E226, E228, N802, N803, N806, N812, N813, N815, N816, W504
+  ignore = E133, E226, E228, N802, N803, N806, N812, N813, N815, N816, W503
   exclude = __init__.py, tests/testLib.py
 
   [tool:pytest]
   addopts = --flake8
-  flake8-ignore = E133 E226 E228 N802 N803 N806 N812 N813 N815 N816 W504
-      # This will go away for newer flake8 versions
-      forcedPhotCoadd.py W503
+  flake8-ignore = E133 E226 E228 N802 N803 N806 N812 N813 N815 N816 W503
       # These will not be needed when we use numpydoc
       baseMeasurement.py E266
       forcedMeasurement.py E266
 
-Here one file is triggering a ``W503`` warning erroneously because of a bug in the version of :command:`flake8` currently included in the stack, and two files trigger an error because Doxygen syntax sometimes requires non-compliant comment code.
+Here two files trigger an error because Doxygen syntax sometimes requires non-compliant comment code.
 
 .. note::
   With this configuration each Python file tested by :command:`pytest` will have :command:`flake8` run on it.
@@ -366,7 +364,7 @@ will generate two classes, as if you wrote:
         foo = 1
         bar = 3
         ...
-    
+
     class MyTestCase_2_4(unittest.TestCase):
         foo = 2
         bar = 4

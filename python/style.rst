@@ -63,9 +63,9 @@ Maximum line length
 The style checker in ``pycodestyle`` also provides warnings that can be used to request a specific style that is ambiguous in :pep:`8`.
 These codes should be ignored to choose the LSST preferred style:
 
-W504
-   Line break after binary operator.
-   Disabling this enables W503 that checks that line breaks do not occur before binary operators.
+W503
+   Line break before binary operator.
+   Disabling this enables W504 that checks that line breaks occur before binary operators.
    See :ref:`style-guide-py-binary-operator-line-break`.
 
 Additionally, packages listed in :ref:`style-guide-py-sci-pi-naming` should disable the following rules:
@@ -157,7 +157,7 @@ This configuration, included in a :file:`setup.cfg` file at the root of code rep
    [flake8]
    max-line-length = 110
    max-doc-length = 79
-   ignore = E133, E226, E228, N802, N803, N806, N812, N813, N815, N816, W504
+   ignore = E133, E226, E228, N802, N803, N806, N812, N813, N815, N816, W503
    exclude =
      bin,
      doc,
@@ -201,7 +201,7 @@ Many :pep:`8` issues in existing code can be fixed with `autopep8`_ version 1.2 
 .. code-block:: bash
 
    autopep8 . --in-place --recursive \
-       --ignore E133,E226,E228,N802,N803,N806,W504 --max-line-length 110
+       --ignore E133,E226,E228,N802,N803,N806,W503 --max-line-length 110
 
 The ``.`` specifies the current directory.
 Together with ``--recursive``, the full tree of Python files will be processed by :command:`autopep8`.
@@ -395,13 +395,13 @@ Error codes: E226 and E228.
 
 .. _style-guide-py-binary-operator-line-break:
 
-Wrap lines after binary operators
----------------------------------
+Wrap lines before binary operators
+----------------------------------
 
-`PEP 8 does not prescribe <https://www.python.org/dev/peps/pep-0008/#should-a-line-break-before-or-after-a-binary-operator>`_ whether lines should be broken before or after binary operators.
-For consistency with our :ref:`C++ code <style-guide-cpp-4-8>`, we choose after.
+`PEP 8 suggests <https://www.python.org/dev/peps/pep-0008/#should-a-line-break-before-or-after-a-binary-operator>`_ that lines should be broken before binary operators but allows after.
+For consistency with modern Python conventions and tools such as ``black``, and languages such as SQL, we choose before.
 
-This requires that W504 be disabled in pycodestyle.
+This requires that W503 be disabled in pycodestyle.
 
 .. _style-guide-py-comments:
 
