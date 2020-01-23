@@ -398,7 +398,7 @@ Error codes: E226 and E228.
 Wrap lines before binary operators
 ----------------------------------
 
-`PEP 8 does not prescribe <https://www.python.org/dev/peps/pep-0008/#should-a-line-break-before-or-after-a-binary-operator>`_ whether lines should be broken before or after binary operators.
+`PEP 8 suggests <https://www.python.org/dev/peps/pep-0008/#should-a-line-break-before-or-after-a-binary-operator>`_ that lines should be broken before binary operators but allows after.
 For consistency with modern Python conventions and tools such as ``black``, and languages such as SQL, we choose before.
 
 This requires that W503 be disabled in pycodestyle.
