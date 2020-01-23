@@ -156,7 +156,7 @@ Here is an example configuration for ``SublimeLinter`` and ``flake8``:
                 "args": [
                     // from https://developer.lsst.io/python/testing.html#enabling-additional-pytest-options-flake8
                     "--max-line-length", "110",
-                    "--ignore", "E133,E226,E228,N802,N803,N806,N812,N813,N815,N816,W504",
+                    "--ignore", "E133,E226,E228,N802,N803,N806,N812,N813,N815,N816,W503",
                 ],
             },
         },
@@ -169,7 +169,7 @@ Alternately, instead of configuring line length and the ignore list in SublimeTe
 
     [flake8]
     # from https://developer.lsst.io/python/testing.html#enabling-additional-pytest-options-flake8
-    ignore = E133, E226, E228, N802, N803, N806, N812, N813, N815, N816, W504
+    ignore = E133, E226, E228, N802, N803, N806, N812, N813, N815, N816, W503
     max-line-length = 110
 
 Note that there are SublimeLinter plugins for other languages (e.g. RestructuredText, yaml, javascript) as well.
