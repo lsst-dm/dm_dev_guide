@@ -196,7 +196,7 @@ The Database Schema document should be reviewed for existing appropriate names
 
    struct {
        float bar;
-       int yoMama;
+       int someValue;
    } Foo;
    Foo myFoo;
 
