@@ -655,6 +655,13 @@ You can markup Python code blocks using a lightweight syntax:
 
 Interactive python sections can be marked up as
 
+.. code-block:: rst
+
+   >>> print('Hello world!')
+   Hello world!
+
+which produces
+
 >>> print('Hello world!')
 Hello world!
 
