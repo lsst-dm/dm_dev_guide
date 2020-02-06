@@ -211,9 +211,14 @@ The second method is to put the URL inline:
 .. code-block:: rst
 
    When writing Python, it's a good idea to use the
-   `PEP8 style guide <https://www.python.org/dev/peps/pep-0008/>`_.
+   `PEP8 style guide <https://www.python.org/dev/peps/pep-0008/>`__.
 
-You may decide to use either method, taking readability into consideration.
+Note the two underscores at the end of the reference.
+This creates an anonymous link, which means the same URL cannot later be referenced using only its anchor text.
+While you can use a single underscore instead to both inline the URL and create a reference, this is normally less readable and harder to update.
+If you expect to reference the URL repeatedly, use the first method of link so that the URL only has to be updated in one place.
+
+Otherwise, you may decide to use either method, taking readability into consideration.
 
 .. _rst-internal-links:
 
