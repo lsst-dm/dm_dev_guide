@@ -59,7 +59,7 @@ In addition to the fundamental inline typesetting styles above, you may use addi
 The documentation's CSS takes advantage of this semantic meaning to provide visual cues to readers.
 
 Abbreviations
-   ``:abbr:`LSST (Large Synoptic Survey Telescope``` → :abbr:`LSST (Large Synoptic Survey Telescope)` (a tool tip exposes the definition)
+   ``:abbr:`LSST (Large Synoptic Survey Telescope)``` → :abbr:`LSST (Large Synoptic Survey Telescope)` (a tool tip exposes the definition)
 
 Filenames and paths
    ``:file:`repos.yaml``` → :file:`repos.yaml`
@@ -211,9 +211,14 @@ The second method is to put the URL inline:
 .. code-block:: rst
 
    When writing Python, it's a good idea to use the
-   `PEP8 style guide <https://www.python.org/dev/peps/pep-0008/>`_.
+   `PEP8 style guide <https://www.python.org/dev/peps/pep-0008/>`__.
 
-You may decide to use either method, taking readability into consideration.
+Note the two underscores at the end of the reference.
+This creates an anonymous link, which means the same URL cannot later be referenced using only its anchor text.
+While you can use a single underscore instead to both inline the URL and create a reference, this is normally less readable and harder to update.
+If you expect to reference the URL repeatedly, use the first method of link so that the URL only has to be updated in one place.
+
+Otherwise, you may decide to use either method, taking readability into consideration.
 
 .. _rst-internal-links:
 
@@ -649,6 +654,13 @@ You can markup Python code blocks using a lightweight syntax:
       print('hello world!')
 
 Interactive python sections can be marked up as
+
+.. code-block:: rst
+
+   >>> print('Hello world!')
+   Hello world!
+
+which produces
 
 >>> print('Hello world!')
 Hello world!
