@@ -325,6 +325,7 @@ General policies and procedures.
 
 Development.
 
+- `Building a package with the installed Science Pipelines stack <https://pipelines.lsst.io/install/package-development.html>`__
 - :doc:`stack/logging`
 - :doc:`stack/debug`
 
