@@ -205,11 +205,26 @@ The currently stack is regularly updated to include the latest weekly release, w
 
 The following stacks are currently being updated:
 
-======================================= ================ ========================================
+======================================= ================ ===========
 Path                                    Toolchain        Description
-======================================= ================ ========================================
-:file:`/software/lsstsw/stack_20191101` ``devtoolset-8`` Provides weekly ``w_2019_43`` and later.
-======================================= ================ ========================================
+======================================= ================ ===========
+:file:`/software/lsstsw/stack_20200220` ``devtoolset-8`` Provides weekly ``w_2020_07`` and later of lsst_distrib.
+                                                         Based on `scipipe_conda_env`_ ``984c9f7`` (:jira:`RFC-664`).
+
+                                                         .. note::
+
+                                                            This stack does not currently contain lsst_sims due to :jira:`SIM-2621`.
+                                                            When that ticket is resolved, lsst_sims will be added.
+
+:file:`/software/lsstsw/stack_20191101` ``devtoolset-8`` Provides weekly ``w_2019_43`` and later of both lsst_sims and lsst_distrib.
+                                                         Based on `scipipe_conda_env`_ ``4d7b902`` (:jira:`RFC-641`).
+
+                                                         .. note::
+
+                                                            This environment will only continue being updated until the earlier of :jira:`SIM-2621` is resolved or build failures due to the old Conda environment.
+======================================= ================ ===========
+
+.. _scipipe_conda_env: https://github.com/lsst/scipipe_conda_env
 
 .. note::
 
