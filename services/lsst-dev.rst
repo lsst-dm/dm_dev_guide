@@ -215,13 +215,6 @@ Path                                    Toolchain        Description
 
                                                             This stack does not currently contain lsst_sims due to :jira:`SIM-2621`.
                                                             When that ticket is resolved, lsst_sims will be added.
-
-:file:`/software/lsstsw/stack_20191101` ``devtoolset-8`` Provides weekly ``w_2019_43`` and later of both lsst_sims and lsst_distrib.
-                                                         Based on `scipipe_conda_env`_ ``4d7b902`` (:jira:`RFC-641`).
-
-                                                         .. note::
-
-                                                            This environment will only continue being updated until the earlier of :jira:`SIM-2621` is resolved or build failures due to the old Conda environment.
 ======================================= ================ ===========
 
 .. _scipipe_conda_env: https://github.com/lsst/scipipe_conda_env
@@ -260,14 +253,16 @@ Although the latest weeklies of LSST software are regularly installed into the s
 We therefore periodically retire old stacks and replace them with new ones.
 The following retired stacks are currently available:
 
-======================================= ================ ==========================================================================================================================================================================================================================
+======================================= ================ ===========
 Path                                    Toolchain        Description
-======================================= ================ ==========================================================================================================================================================================================================================
+======================================= ================ ===========
 :file:`/software/lsstsw/stack_20171023` ``devtoolset-6`` Provides a selection of weekly and release builds dating between October 2017 and October 2018.
 :file:`/software/lsstsw/stack_20181012` ``devtoolset-6`` Provides weeklies ``w_2018_41`` through ``w_2019_12``; release candidates ``v17_0_rc1``, ``v17_0_rc2``, and ``v17_0_1_rc1``; and releases ``v_17_0`` and ``v_17_0_1``. Based on the pre-:jira:`RFC-584` Conda environment.
 :file:`/software/lsstsw/stack_20190330` ``devtoolset-6`` Provides weekly ``w_2019_12`` through ``w_2019_38`` and daily ``d_2019_09_30``. Based on the post-:jira:`RFC-584` Conda environment.
 :file:`/software/lsstsw/stack_20191001` ``devtoolset-8`` Provides weeklies ``w_2019_38`` through ``w_2019_42``.
-======================================= ================ ==========================================================================================================================================================================================================================
+:file:`/software/lsstsw/stack_20191101` ``devtoolset-8`` Provides weekly ``w_2019_43`` through ``w_2020_09`` of lsst_distrib, and ``w_2019_43`` through ``w_2020_07`` of lsst_sims.
+                                                         Based on `scipipe_conda_env`_ ``4d7b902`` (:jira:`RFC-641`).
+======================================= ================ ===========
 
 Administrators may wish to note that the shared stack is automatically updated using the script :file:`~lsstsw/shared-stack/shared_stack.py`, which is executed nightly by Cron.
 
