@@ -549,9 +549,6 @@ The preference is that a pull request, when merged, should have a coherent devel
 If such a rebase is too difficult (e.g., because it would result in excessive merge conflicts), then post-review commits may be left appended to the pre-review commits.
 Any commits not squashed in this way should represent :ref:`discrete logical changes <git-commit-organization-logical-units>` and have :ref:`informative commit messages <git-commit-message-best-practices>`, as if the changes had been made before review.
 
-There is *no need* to retain post-review commits in order to preserve code review discussions.
-So long as comments are made in the 'Conversation' and 'Files changed' tabs of the pull request GitHub will preserve that content.
-
 .. _git-commit-message-best-practices:
 
 Appendix: Commit Message Best Practices
