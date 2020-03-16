@@ -448,6 +448,11 @@ Code reviews are a collaborative check-and-improve process.
 Reviewers do not hold absolute authority, nor can developers ignore the reviewer's suggestions.
 The aim is to discuss, iterate, and improve the pull request until the work is ready to be deployed on ``master``.
 
+Changes in response to a review should be made by squashing changes onto the main commit implementing that feature, where practical.
+This avoids cluttering the final Git commit history with iterative improvements from code review.
+If this is not practical, changes may be made by new commits, which must be as well-organized and well-documented as the original work (see :ref:`git-commit-organization-best-practices`).
+In no event should you simply commit all changes as "Response to review".
+
 If the review becomes stuck on a design decision, that aspect of the review can be elevated into an RFC to seek team-wide consensus.
 
 If an issue is outside the ticket's scope, the reviewer should file a new ticket.
@@ -471,8 +476,6 @@ Merging
 
 Putting a ticket in a **Reviewed** state gives the developer the go-ahead to merge the ticket branch.
 If it has not been done already, the developer should rebase the ticket branch against the latest master.
-During this rebase, we recommend squashing any fixup commits into the main commit implementing that feature.
-Git commit history should not record the iterative improvements from code review.
 If a rebase was required, a final check with Jenkins should be done.
 
 We **always use non-fast forward merges** so that the merge point is marked in Git history, with the merge commit containing the ticket number:
@@ -540,11 +543,11 @@ Rebase commits from code reviews rather than having 'review feedback' commits
 -----------------------------------------------------------------------------
 
 Code review will result in additional commits that address code style, documentation and implementation issues.
-Authors should rebase (i.e., ``git rebase -i master``) their ticket branch to squash the post-review fixes to the pre-review commits.
-The end-goal is that a pull request, when merged, should have a coherent development story and look as if the code was written correctly the first time.
+Where possible, authors should rebase (i.e., ``git rebase -i master``) their ticket branch to squash the post-review fixes to the pre-review commits.
+The preference is that a pull request, when merged, should have a coherent development story and look as if the code was written correctly the first time.
 
-There is *no need* to retain post-review commits in order to preserve code review discussions.
-So long as comments are made in the 'Conversation' and 'Files changed' tabs of the pull request GitHub will preserve that content.
+If such a rebase is too difficult (e.g., because it would result in excessive merge conflicts), then post-review commits may be left appended to the pre-review commits.
+Any commits not squashed in this way should represent :ref:`discrete logical changes <git-commit-organization-logical-units>` and have :ref:`informative commit messages <git-commit-message-best-practices>`, as if the changes had been made before review.
 
 .. _git-commit-message-best-practices:
 
