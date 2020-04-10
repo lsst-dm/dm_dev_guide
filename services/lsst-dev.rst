@@ -134,8 +134,9 @@ Name             Description
 ``devtoolset-3`` Updated compiler toolchain providing GCC 4.9.2.
 ``devtoolset-4`` Updated compiler toolchain providing GCC 5.3.1.
 ``devtoolset-6`` Updated compiler toolchain providing GCC 6.3.1.
-``devtoolset-7`` Updated compiler toolchain providing GCC 7.1.1.
+``devtoolset-7`` Updated compiler toolchain providing GCC 7.3.1.
 ``devtoolset-8`` Updated compiler toolchain providing GCC 8.3.1.
+``devtoolset-9`` Updated compiler toolchain providing GCC 9.1.1.
 ``git19``        The `Git`_ version control system version 1.9.4.
 ``rh-git29``     The `Git`_ version control system version 2.9.3.
 ================ ================================================
