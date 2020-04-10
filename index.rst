@@ -499,6 +499,7 @@ Jenkins CI
    :hidden:
 
    services/lsst-dev
+   services/lsst-login
    services/lsst-db
    services/verification
    services/datasets
@@ -517,6 +518,7 @@ LSST Data Facility services
 ---------------------------
 
 - :doc:`services/lsst-dev`
+- :doc:`services/lsst-login`
 - :doc:`services/lsst-db`
 - :doc:`services/verification`
 - :doc:`services/datasets`
