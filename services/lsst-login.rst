@@ -75,6 +75,6 @@ Development Work
 
 ``lsst-login`` nodes can be used for (light) development work in a manner to the :doc:`lsst-dev <lsst-dev>` nodes. (Users are encouraged to utilize batch compute nodes when more significant resources are required.)
 
-The ``lsst-login`` systems are configured with the latest CentOS 7.x as their operating system. This release of CentOS provides an old set of development tools, centered around version 4.8.5 of the GNU Compiler Collection (GCC). Several updated toolchains are made available through the “Software Collection” system as described :doc:`here <lsst-dev#lsst-dev-tools>` (specific toolchains available on ``lsst-login`` nodes may vary).
+The ``lsst-login`` systems are configured with the latest CentOS 7.x as their operating system. This release of CentOS provides an old set of development tools, centered around version 4.8.5 of the GNU Compiler Collection (GCC). Several updated toolchains are made available through the “Software Collection” system as described in the docs for `lsst-dev` servers (specific toolchains available on ``lsst-login`` nodes may vary).
 
-A ready-to-use “shared” version of the LSST software stack is provided to enable developers to get up and running quickly with no installation step. See :doc:`here <lsst-dev#_lsst-login-loadlsst>` for more information.
+A ready-to-use “shared” version of the LSST software stack is provided to enable developers to get up and running quickly with no installation step. See the docs for `lsst-dev` servers for more information.
