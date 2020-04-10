@@ -5,6 +5,7 @@ LSST Data Facility services
 ###########################
 
 - :doc:`lsst-dev`
+- :doc:`lsst-login`
 - :doc:`lsst-db`
 - :doc:`verification`
 - :doc:`datasets`
