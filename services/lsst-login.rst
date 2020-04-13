@@ -7,15 +7,18 @@ The following login nodes are run by NCSA for access to select LSST DM developme
 - ``lsst-login02.ncsa.illinois.edu``
 - ``lsst-login03.ncsa.illinois.edu``
 
+A round-robin DNS hostname ``lsst-login.ncsa.illinois.edu`` also exists for convenience.
+
 To get an account, see the :doc:`Onboarding Checklist </team/onboarding>`.
 
 This page is designed to assist developers in use of the ``lsst-login`` servers:
 
 #. :ref:`lsst-login-overview`
-#. :ref:`lsst-login-password`
+#. :ref:`lsst-login-connect`
 #. :ref:`lsst-login-htcondor`
 #. :ref:`lsst-login-slurm`
 #. :ref:`lsst-login-development`
+
 
 .. _lsst-login-overview:
 
@@ -25,7 +28,8 @@ Overview
 The ``lsst-login`` servers are primarily intended as bastions used to access other resources at NCSA. Additional capabilities are planned to include:
 - submission of HTCondor jobs (workflows should not be run here outside of HTCondor)
 - submission of Slurm jobs
-- light development work with short-running processes that require modest resources (e.g., build docs)
+- light development work with short-running processes that require modest resources (e.g., build docs, short compilations against LSST software stack)
+- view files (e.g., FITS files)
 
 Users are encouraged to submit batch jobs to perform work that requires more significant resources.
 
@@ -37,19 +41,36 @@ For system status and issues:
 - To report system issues, `file a JIRA ticket <https://jira.lsstcorp.org/secure/CreateIssueDetails!init.jspa?pid=12200&issuetype=10901&priority=10000&customfield_12211=12223&components=14213>`_ in the IT Helpdesk Support (IHS) project.
 
 
-.. _lsst-login-password:
+.. _lsst-login-connect:
 
-Account Password
-================
+Connecting and Authenticating
+=============================
 
-You can log into LSST development servers at NCSA with your NCSA account and password along with NCSA Duo.
+You can log into LSST development servers at NCSA with your NCSA account as follows:
+   - NCSA username and password *OR* valid Kerberos ticket from workstation/laptop, *AND*
+   - NCSA Duo authentication
 
 You can reset your NCSA password at the following URL:
-
    - https://identity.lsst.org/reset
 
 Information on setting up NCSA Duo is available at the following URL:
    - https://wiki.ncsa.illinois.edu/display/cybersec/Duo+at+NCSA
+
+If you are using OpenSSH on your local machine and you wish to use Kerberos from your local machine (instead of entering your password on the login node), you could add something like this to your local ~/.ssh/config file:
+.. prompt:: bash $ auto
+
+  GSSAPIAuthentication yes
+  PreferredAuthentications gssapi-with-mic,keyboard-interactive,password
+
+You may wish to use an ``lsst-login`` node as a "jump host". If using OpenSSH on your local machine you can do this as follows:
+.. prompt:: bash $ auto
+
+   Host lsst-someinternalhost
+      User ncsausername
+      ProxyJump lsst-login.ncsa.illinois.edu
+
+You may also wish to reuse a single connection to/through an ``lsst-login`` node via a control socket/multiplexing. See for example
+`OpenSSH Cookbook - Multiplexing <https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Multiplexing>`_.
 
 
 .. _lsst-login-htcondor:
