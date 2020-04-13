@@ -58,11 +58,13 @@ Information on setting up NCSA Duo is available at the following URL:
 
 If you are using OpenSSH on your local machine and you wish to use Kerberos from your local machine (instead of entering your password on the login node), you could add something like this to your local ~/.ssh/config file:
 .. prompt:: bash $ auto
+
   GSSAPIAuthentication yes
   PreferredAuthentications gssapi-with-mic,keyboard-interactive,password
 
 You may wish to use an ``lsst-login`` node as a "jump host". If using OpenSSH on your local machine you can do this as follows:
 .. prompt:: bash $ auto
+
    Host lsst-someinternalhost
       User ncsausername
       ProxyJump lsst-login.ncsa.illinois.edu
