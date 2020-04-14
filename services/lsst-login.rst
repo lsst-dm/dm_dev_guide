@@ -47,9 +47,11 @@ For system status and issues:
 Connecting and Authenticating
 =============================
 
+.. ATTENTION:: The lsst-login servers are still being developed and access is currently restricted to select project users and IP addresses.
+
 You can log into LSST development servers at NCSA with your NCSA account as follows:
 
-   - NCSA username and password *OR* valid Kerberos ticket from workstation/laptop, *AND*
+   - NCSA username and password **OR** valid Kerberos ticket from workstation/laptop, **AND**
    - NCSA Duo authentication
 
 You can reset your NCSA password at the following URL:
@@ -71,9 +73,18 @@ You may wish to use an ``lsst-login`` node as a "jump host". If using OpenSSH on
 
 .. prompt:: bash $ auto
 
-   Host lsst-someinternalhost
+   Host lsst-someinternalhost.ncsa.illinois.edu
       User ncsausername
       ProxyJump lsst-login.ncsa.illinois.edu
+
+When using an ``lsst-login`` node as a "jump host" you may also wish to configure port forwarding through the lsst-login node to the internal cluster node. To do that you would include something like this in your OpenSSH config file:
+
+.. prompt:: bash $ auto
+
+   Host lsst-someinternalhost.ncsa.illinois.edu
+      User ncsausername
+      ProxyJump lsst-login.ncsa.illinois.edu
+      DynamicForward yourportnumber
 
 You may also wish to reuse a single connection to/through an ``lsst-login`` node via a control socket/multiplexing. See for example
 `OpenSSH Cookbook - Multiplexing <https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Multiplexing>`_.
@@ -83,7 +94,7 @@ You may also wish to reuse a single connection to/through an ``lsst-login`` node
 HTCondor Job Submission
 =======================
 
-Job submission to the NCSA HTCondor DAC cluster will be possible from the ``lsst-login`` nodes in the near future.
+Job submission to the NCSA HTCondor DAC cluster will be possible from the ``lsst-login`` nodes in the near future. See :doc:`lsst-condor` for more information.
 
 .. _lsst-login-slurm:
 
