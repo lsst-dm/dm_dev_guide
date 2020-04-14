@@ -498,9 +498,10 @@ Jenkins CI
    :caption: LDF Services
    :hidden:
 
-   services/lsst-dev
    services/lsst-login
+   services/lsst-dev
    services/lsst-db
+   services/lsst-condor
    services/verification
    services/datasets
    services/data_protection
