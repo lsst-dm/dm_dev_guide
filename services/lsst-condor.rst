@@ -85,7 +85,7 @@ Submit (schedd) nodes also each have a subset of their own CPU and RAM resources
 
 Jobs can also be submitted to run in the Scheduler Universe (#7) on each submit (schedd) node. Default and maximum Walltime are currently not set for jobs submitted in the Scheduler Universe (#7).
 
-Job submission from the :doc:`lsst-login <lsst-login`> nodes will soon be possible. The ``lsst-login`` nodes do not have any startd slots nor do they accept submission to the Scheduler or Local Universes (#7 & #12). (The ``lsst-login`` nodes are **not** intended to support long-running compute processes.)
+Job submission from the :doc:`lsst-login <lsst-login>` nodes will soon be possible. The ``lsst-login`` nodes do not have any startd slots nor do they accept submission to the Scheduler or Local Universes (#7 & #12). (The ``lsst-login`` nodes are **not** intended to support long-running compute processes.)
 
 Nodeset Details
 ---------------
