@@ -253,7 +253,7 @@ It also produced a ``job.err.63.0`` file (empty) and a ``job.log.63.0`` file (co
 
 Elements from the job description file can also generally be specified at the command line instead. For instance, if we were to omit ``queue 1`` from the above job description file, the job could still be submitted as follows:
 
-.. code-blocks:: text
+.. code-block:: text
 
     $ condor_submit job.submit -queue 1
 
