@@ -200,7 +200,7 @@ Job Submission
 
 Jobs can be submitted with the ``condor_submit`` command. ``man condor_submit`` provides detailed information and there are many tutorials available on the web. But we can provide some very basic usage here.
 
-Details of the job request are usually provided in a "submit description file". Here this file will be called ``job.submit``. Our other submission materials will be an executable script (`test.sh``) and an input file (``test.in``). These look like this:
+Details of the job request are usually provided in a "submit description file". Here this file will be called ``job.submit``. Our other submission materials will be an executable script (``test.sh``) and an input file (``test.in``). These look like this:
 
 .. code-block:: text
 
