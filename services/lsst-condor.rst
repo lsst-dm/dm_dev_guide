@@ -14,6 +14,7 @@ This page is designed primarily to assist users of the ``HTCondor DAC Cluster``.
 #. :ref:`condor-config`
 #. :ref:`condor-status`
 #. :ref:`condor-submit`
+#. :ref:`condor-workflow`
 
 
 .. _condor-overview:
@@ -331,3 +332,14 @@ Note that it **should** be possible to request additional resources at the comma
     $ condor_submit -i request_cpus=4 request_memory=16G
 
 But currently request_memory will not be honored (request_cpus is honored).
+
+
+.. _condor-workflow:
+
+Running Workflows
+=================
+
+Workflow managers such as Dask and Pegasus can be used to launch jobs in the ``HTCondor DAC Cluster``. The following ports have been set aside to support Dask workflows in particular but could be utilized for similar purposes:
+
+- 20000-20999: Dask dashboard (Bokeh server), JupyterLab, etc. - these ports are open between all workers (compute nodes) and to/from workers and submit nodes
+- 29000-29999: Dask scheduler and Dask worker processes - these ports are not open but processes that need to listen locally for this type of purpose should be configured to use this range/a port within this range
