@@ -4,9 +4,10 @@
 LSST Data Facility services
 ###########################
 
-- :doc:`lsst-dev`
 - :doc:`lsst-login`
+- :doc:`lsst-dev`
 - :doc:`lsst-db`
+- :doc:`lsst-condor`
 - :doc:`verification`
 - :doc:`datasets`
 - :doc:`data_protection`
