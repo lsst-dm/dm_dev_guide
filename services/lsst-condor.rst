@@ -21,7 +21,7 @@ This page is designed primarily to assist users of the ``HTCondor DAC Cluster``.
 Overview of the HTCondor DAC Cluster
 ====================================
 
-Access to the ``HTCondor DAC Cluster`` is currently limited to select users and the cluster is currently small in size compared to the :doc:`Slurm Verification Cluster <verification>`. Access to the ``HTCondor DAC Cluster`` will be opened up to the LSST developer community as a whole (and the cluster will be scaled) as batch workflows are updated to utilize Gen3 middleware. But if you have an interest in using the ``HTCondor DAC Cluster`` sooner please `file a JIRA ticket <https://jira.lsstcorp.org/secure/CreateIssueDetails!init.jspa?pid=12200&issuetype=10901&priority=10000&customfield_12211=12223&components=14213>`_ in the IT Helpdesk Support (IHS) project.
+.. ATTENTION:: Access to the ``HTCondor DAC Cluster`` is currently limited to select users and the cluster is currently small in size compared to the :doc:`Slurm Verification Cluster <verification>`. Access to the ``HTCondor DAC Cluster`` will be opened up to the LSST developer community as a whole (and the cluster will be scaled) as batch workflows are updated to utilize Gen3 middleware. But if you have an interest in using the ``HTCondor DAC Cluster`` sooner please `file a JIRA ticket <https://jira.lsstcorp.org/secure/CreateIssueDetails!init.jspa?pid=12200&issuetype=10901&priority=10000&customfield_12211=12223&components=14213>`_ in the IT Helpdesk Support (IHS) project.
 
 The ``HTCondor DAC Cluster`` has the following submit (schedd) nodes from which users can submit jobs and run workflows:
 
@@ -136,8 +136,8 @@ The configuration of any HTCondor node can be viewed with the ``condor_config_va
 
 .. _condor-status:
 
-Status of Jobs, Slots, and Queue
-================================
+Status of Jobs, Slots, and Schedd Queues
+========================================
 
 In HTCondor jobs are submitted as/grouped into clusters. A job submitted individually simply forms a cluster of one. Below ``JobID`` may be of the form ``ClusterID`` or ``ClusterID.ProcessID``.
 
