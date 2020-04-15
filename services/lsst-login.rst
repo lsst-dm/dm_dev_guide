@@ -10,8 +10,6 @@ The following login nodes are run by NCSA for access to select LSST DM developme
 - ``lsst-login02.ncsa.illinois.edu``
 - ``lsst-login03.ncsa.illinois.edu``
 
-A round-robin DNS hostname ``lsst-login.ncsa.illinois.edu`` also exists for convenience.
-
 To get an account, see the :doc:`Onboarding Checklist </team/onboarding>`.
 
 This page is designed to assist developers in use of the ``lsst-login`` servers:
