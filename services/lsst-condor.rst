@@ -310,6 +310,8 @@ An interactive (SSH only) job can be requested as follows:
     Welcome to slot1_1@lsst-verify-worker40.ncsa.illinois.edu!
     You will be logged out after 7200 seconds of inactivity.
 
+This will allocate a job/slot with a single CPU and a minimal amount of RAM and start a terminal session in that slot as soon as the job starts.
+
 Note that the automatic logout after inactivity is in addition to our Walltime enforcement. That is, your job may still hit its promised Walltime and be killed even without even reaching an inactive state.
 
 Additional resources could be requested as follows:
@@ -325,13 +327,11 @@ Additional resources could be requested as follows:
     $ condor_submit -i int.submit
     ...
 
-Note that it **should** be possible to request additional resources at the command line as follows:
+It is also possible to request additional resources at the command line as follows:
 
 .. code-block:: text
 
-    $ condor_submit -i request_cpus=4 request_memory=16G
-
-But currently request_memory will not be honored (request_cpus is honored).
+    $ condor_submit -append request_cpus=4 -append request_memory=16G -i
 
 
 .. _condor-workflow:
