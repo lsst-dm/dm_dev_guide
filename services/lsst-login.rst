@@ -2,7 +2,7 @@
 Using the lsst-login Servers
 ############################
 
-.. ATTENTION:: The lsst-login servers are still being developed and access is currently restricted to select project users and IP addresses.
+.. ATTENTION:: The lsst-login servers are still being developed and access is currently restricted to select IP addresses.
 
 The following login nodes are run by NCSA for access to select LSST DM development resources:
 
@@ -49,7 +49,7 @@ For system status and issues:
 Connecting and Authenticating
 =============================
 
-.. ATTENTION:: The lsst-login servers are still being developed and access is currently restricted to select project users and IP addresses.
+.. ATTENTION:: The lsst-login servers are still being developed and access is currently restricted to select IP addresses.
 
 You can log into LSST development servers at NCSA with your NCSA account as follows:
 
