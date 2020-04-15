@@ -69,6 +69,12 @@ If you are using OpenSSH on your local machine and you wish to use Kerberos from
   GSSAPIAuthentication yes
   PreferredAuthentications gssapi-with-mic,keyboard-interactive,password
 
+The Kerberos domain for the ``lsst-login`` servers is ``NCSA.EDU``, so something like this may work to generate a Kerberos ticket on your local machine:
+
+.. prompt:: bash $ auto
+
+  kinit username@NCSA.EDU
+
 You may wish to use an ``lsst-login`` node as a "jump host". If using OpenSSH on your local machine you can do this as follows:
 
 .. prompt:: bash $ auto
