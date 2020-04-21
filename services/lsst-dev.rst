@@ -130,7 +130,7 @@ The following Software Collections are currently available:
 
 ================ ================================================
 Name             Description
-================ ================================================
+================ ==================================================
 ``devtoolset-3`` Updated compiler toolchain providing GCC 4.9.2.
 ``devtoolset-4`` Updated compiler toolchain providing GCC 5.3.1.
 ``devtoolset-6`` Updated compiler toolchain providing GCC 6.3.1.
@@ -139,7 +139,8 @@ Name             Description
 ``devtoolset-9`` Updated compiler toolchain providing GCC 9.1.1.
 ``git19``        The `Git`_ version control system version 1.9.4.
 ``rh-git29``     The `Git`_ version control system version 2.9.3.
-================ ================================================
+``rh-git218``    The `Git`_ version control system version 2.18.2.
+================ ==================================================
 
 To enable a particular Software Collection use the ``scl`` command. For example:
 
