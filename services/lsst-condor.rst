@@ -75,7 +75,9 @@ The ``HTCondor DAC Cluster`` has intentionally been configured to be somewhat li
 - jobs are scheduled according to the default/requested Walltime; jobs that exceed their promised Walltime are killed
 - maintenance reservations can be set to facilitate preventing jobs from running during a full outage of the system
 
-That being said, the ``HTCondor DAC Cluster`` is different from a traditional batch cluster (and HTCondor is different from Slurm) in various ways. In particular MPI is not explicitly supported. Aspects of Gen2 middleware that depend on 
+That being said, the ``HTCondor DAC Cluster`` is different from a traditional batch cluster, and HTCondor is different from Slurm, in various ways. Users familiar with HTCondor should find that they can submit jobs to the ``HTCondor DAC Cluster`` and expect it to behave largely like a standard HTCondor pool. Submitting a job without specifying a Nodeset or Walltime should result in the job running in the main (NORMAL) set of nodes with the long, default Walltime (3 days) essentially acting as a failsafe.
+
+Note that MPI is not explicitly supported on the ``HTCondor DAC Cluster``. This cluster is intended for use with Gen3 LSST middleware (rather than Gen2).
 
 Compute (startd) Slots
 ----------------------
@@ -85,6 +87,8 @@ Compute nodes are configured with partitionable slots. This means that the compu
 Submit (schedd) nodes also each have a subset of their own CPU and RAM resources dedicated to a partitionable compute (startd) slot. This is to allow for local, priority execution of processes associated with job workflows.
 
 Jobs can also be submitted to run in the Scheduler Universe (#7) on each submit (schedd) node. Default and maximum Walltime are currently not set for jobs submitted in the Scheduler Universe (#7).
+
+.. NOTE:: Use of the Scheduler Universe should be limited to workflow management processes. Such jobs would manage the sequence and execution of other "payload" job but would themselves be largely idle most of the time, despite potentially running for days.
 
 Job submission from the :doc:`lsst-login <lsst-login>` nodes will soon be possible. The ``lsst-login`` nodes do not have any startd slots nor do they accept submission to the Scheduler or Local Universes (#7 & #12). (The ``lsst-login`` nodes are **not** intended to support long-running compute processes.)
 
