@@ -65,7 +65,8 @@ The reason string will be automatically added to the docstring for the class or 
 The reason string must also specify the version after which the method may be removed, as discussed in :ref:`code_removal`.
 
 You do not need to specify the optional version argument to the decorator since deprecation decorators are typically not added in advance of when the deprecation actually begins.
-Since our end users tend to be developers or at least may call APIs directly from notebooks, we will treat our APIs as end-user features and use ``category=FutureWarning`` instead of the default `DeprecationWarning`, which is primarily for Python developers. Do not use `PendingDeprecationWarning`.
+Since our end users tend to be developers or at least may call APIs directly from notebooks, we will treat our APIs as end-user features and use ``category=FutureWarning`` instead of the default `DeprecationWarning`, which is primarily for Python developers.
+Do not use `PendingDeprecationWarning`.
 
 pybind11 Deprecation
 ====================
@@ -75,14 +76,14 @@ A deprecated pybind11-wrapped function, method or class must be rewrapped in pur
    from lsst.utils.deprecated import deprecate_pybind11
    ExposureF.getCalib = deprecate_pybind11(ExposureF.getCalib,
            reason="Replaced by getPhotoCalib. Will be removed after v18.")
- 
+
 If only one overload of a set is being deprecated, state that in the reason string.
 Over-warning is considered better than under-warning in this case.
 The reason string must also specify the version after which the function may be removed, as discussed in :ref:`code_removal`.
 
 
 .. note::
-	The message printed for deprecated classes will refer to the constructor function but this is how we deprecated the entire class. 
+	The message printed for deprecated classes will refer to the constructor function but this is how we deprecated the entire class.
 
 C++ Deprecation
 ===============
