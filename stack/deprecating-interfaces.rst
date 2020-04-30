@@ -111,3 +111,31 @@ To deprecate a `~lsst.pex.config.Field` in a `~lsst.pex.config.Config`, set the 
 
 Setting this parameter will append a deprecation message to the `~lsst.pex.config.Field` docstring, and will cause the system to emit a `FutureWarning` when the field is set by a user (for example, in an obs-package override or by a commandline option).
 The deprecated string must also specify the version after which the config may be removed, as discussed in :ref:`code_removal`.
+
+Package Deprecation
+===================
+
+To deprecate an entire package, first have its top-level :file:`__init__.py` (e.g. :file:`python/lsst/example/package/__init__.py`; create it if necessary) issue an appropriate `FutureWarning` when it is imported::
+
+    import warnings
+
+    warnings.warn('lsst.example.package is deprecated; it will be removed from the Rubin Observatory'
+                  'Science Pipelines after release 21.0.0', category=FutureWarning)
+
+Add a similar warning to the :file:`index.rst` file documenting this package (e.g. :file:`doc/lsst.example.package/index.rst)`::
+
+    .. py:currentmodule:: lsst.example.package
+
+    .. _lsst.example.package:
+
+    ####################
+    lsst.example.package
+    ####################
+
+    ``lsst.example.package`` is an example package.
+
+    .. warning:: This package is deprecated, and will be removed from the Rubin Observatory Science Pipelines after release 21.0.0.
+
+Finally, add a note to the top-level :file:`README` file in the package::
+
+    *Warning:* This package is deprecated, and will be removed from the Rubin Observatory Science Pipelines distribution after release 21.0.0.
