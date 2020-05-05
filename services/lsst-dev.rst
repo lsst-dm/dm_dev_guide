@@ -123,6 +123,11 @@ For more information on using SSH public/private keys:
 Select Appropriate Developer Tools
 ==================================
 
+.. note::
+
+   Although the material presented below remains valid, the shared stack from May 2020 onwards (:file:`/software/lsstsw/stack_20200504`) provides the complete toolchain required for Science Pipelines development.
+   It is no longer necessary to load a software collection to work with the shared stack.
+
 The ``lsst-dev`` systems are configured with the latest CentOS 7.x as its operating system.
 This release of CentOS provides an old set of development tools, centered around version 4.8.5 of the `GNU Compiler Collection`_ (GCC).
 Updated toolchains are made available through the “Software Collection” system.
@@ -206,8 +211,8 @@ The following stacks are currently being updated:
 ======================================= ================ ===========
 Path                                    Toolchain        Description
 ======================================= ================ ===========
-:file:`/software/lsstsw/stack_20200220` ``devtoolset-8`` Provides weekly ``w_2020_07`` and later of lsst_distrib, and weekly ``w_2020_10`` and later of lsst_sims.
-                                                         Based on `scipipe_conda_env`_ ``984c9f7`` (:jira:`RFC-664`).
+:file:`/software/lsstsw/stack_20200504` Internal (Conda) Provides weekly ``w_2020_18`` and later of lsst_distrib.
+                                                         Based on `scipipe_conda_env`_ ``2deae7a`` (:jira:`RFC-679`).
 ======================================= ================ ===========
 
 .. _scipipe_conda_env: https://github.com/lsst/scipipe_conda_env
@@ -255,6 +260,8 @@ Path                                    Toolchain        Description
 :file:`/software/lsstsw/stack_20191001` ``devtoolset-8`` Provides weeklies ``w_2019_38`` through ``w_2019_42``.
 :file:`/software/lsstsw/stack_20191101` ``devtoolset-8`` Provides weekly ``w_2019_43`` through ``w_2020_09`` of lsst_distrib, and ``w_2019_43`` through ``w_2020_07`` of lsst_sims.
                                                          Based on `scipipe_conda_env`_ ``4d7b902`` (:jira:`RFC-641`).
+:file:`/software/lsstsw/stack_20200220` ``devtoolset-8`` Provides weekly ``w_2020_07`` through ``w_2020_17`` of lsst_distrib, and weekly ``w_2020_10`` through ``w_2020_16`` of lsst_sims.
+                                                         Based on `scipipe_conda_env`_ ``984c9f7`` (:jira:`RFC-664`).
 ======================================= ================ ===========
 
 Administrators may wish to note that the shared stack is automatically updated using the script :file:`~lsstsw/shared-stack/shared_stack.py`, which is executed nightly by Cron.
