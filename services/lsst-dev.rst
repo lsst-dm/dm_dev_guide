@@ -260,7 +260,7 @@ Path                                    Toolchain        Description
 :file:`/software/lsstsw/stack_20191001` ``devtoolset-8`` Provides weeklies ``w_2019_38`` through ``w_2019_42``.
 :file:`/software/lsstsw/stack_20191101` ``devtoolset-8`` Provides weekly ``w_2019_43`` through ``w_2020_09`` of lsst_distrib, and ``w_2019_43`` through ``w_2020_07`` of lsst_sims.
                                                          Based on `scipipe_conda_env`_ ``4d7b902`` (:jira:`RFC-641`).
-:file:`/software/lsstsw/stack_20200220` ``devtoolset-8`` Provides weekly ``w_2020_07`` and later of lsst_distrib, and weekly ``w_2020_10`` and later of lsst_sims.
+:file:`/software/lsstsw/stack_20200220` ``devtoolset-8`` Provides weekly ``w_2020_07`` through ``w_2020_17`` of lsst_distrib, and weekly ``w_2020_10`` through ``w_2020_16`` of lsst_sims.
                                                          Based on `scipipe_conda_env`_ ``984c9f7`` (:jira:`RFC-664`).
 ======================================= ================ ===========
 
