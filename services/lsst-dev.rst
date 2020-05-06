@@ -219,7 +219,8 @@ Path                                    Toolchain        Description
 
 .. note::
 
-   When using a shared stack, you *must* use the corresponding developer toolchain. See above for details on how to :ref:`lsst-dev-tools`.
+   When using a shared stack, you *must* use the corresponding developer toolchain.
+   If this is listed in the table above as “Internal (Conda)” then no further action on your part is required; otherwise, see above for details of how to :ref:`lsst-dev-tools`.
 
 In addition, the following symbolic links point to particular versions of the stack:
 
@@ -308,6 +309,11 @@ Please ask in the ``#dm-infrastructure`` Slack channel in case of problems.
 
 Configure Git LFS
 =================
+
+.. note::
+
+   Although the material presented below remains valid, the shared stack from May 2020 onwards (:file:`/software/lsstsw/stack_20200504`) provides Git LFS as part of the environment: it is no longer necessary to explicitly run :command:`setup`, as described below (although it is still necessary to follow DM's :doc:`Git LFS guide </git/git-lfs>`.
+   The :command:`setup` step is still necessary for older stacks.
 
 After you have initialized a shared stack, you can enable Git LFS using EUPS:
 
