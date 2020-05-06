@@ -7,7 +7,12 @@ They include ``lsst_apps``, ``lsst_distrib``, ``qserv_distrib`` and ``lsst_sims`
 
 Before adding a new dependency to any of these products, it must be approved through the :doc:`RFC process </processes/decision_process>`.
 Consensus must be reached regarding both the name and the suitability of the new package.
-Before adopting the RFC, implementation tickets should be created to cover package creation.
+Before adopting the RFC, the following steps must be completed:
+
+* Implementation tickets are created to cover package creation.
+* The package is migrated to the ``lsst`` org, if not already there.
+* An audit is done of any dependencies with a focus on identifying implied dependencies.
+
 Packages that will not be distributed as part of a release do not require an RFC.
 
 After approval, code written internally by Data Management should be packaged following the template in the `lsst/templates`_ repository.
