@@ -84,7 +84,7 @@ This list will then be passed explicitly to the :command:`pytest` command, bypas
 
 Automatic test discovery is preferred as this ensures that there is no difference between running the tests with :command:`scons` and running them with :command:`pytest` without arguments, and it enables the possibility of adjusting :command:`pytest` test discovery to add additional testing of all Python files in the package.
 
-If there is code in ``tests/`` that must be compiled for the python tests to run (for example, a test C++ library that must be loaded by the python tests), there must be a ``BasicSConscript.pybind11()`` entry *before* the ``BasicSConscript.tests()`` entry in the :file:`tests/SConscript`.
+If there is pybind wrapper code in ``tests/`` that must be compiled for the python tests to run (for example, a test C++ library that must be loaded by the python tests), there must be a ``BasicSConscript.pybind11()`` entry *before* the ``BasicSConscript.tests()`` entry in the :file:`tests/SConscript`.
 Having the ``pybind11`` come first ensures the necessary code will be compiled before any tests are loaded and run.
 
 Running tests standalone
