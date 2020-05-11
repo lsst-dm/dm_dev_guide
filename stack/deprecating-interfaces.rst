@@ -65,7 +65,8 @@ The reason string will be automatically added to the docstring for the class or 
 The reason string must also specify the version after which the method may be removed, as discussed in :ref:`code_removal`.
 
 You do not need to specify the optional version argument to the decorator since deprecation decorators are typically not added in advance of when the deprecation actually begins.
-Since our end users tend to be developers or at least may call APIs directly from notebooks, we will treat our APIs as end-user features and use ``category=FutureWarning`` instead of the default `DeprecationWarning`, which is primarily for Python developers. Do not use `PendingDeprecationWarning`.
+Since our end users tend to be developers or at least may call APIs directly from notebooks, we will treat our APIs as end-user features and use ``category=FutureWarning`` instead of the default `DeprecationWarning`, which is primarily for Python developers.
+Do not use `PendingDeprecationWarning`.
 
 pybind11 Deprecation
 ====================
@@ -75,14 +76,14 @@ A deprecated pybind11-wrapped function, method or class must be rewrapped in pur
    from lsst.utils.deprecated import deprecate_pybind11
    ExposureF.getCalib = deprecate_pybind11(ExposureF.getCalib,
            reason="Replaced by getPhotoCalib. Will be removed after v18.")
- 
+
 If only one overload of a set is being deprecated, state that in the reason string.
 Over-warning is considered better than under-warning in this case.
 The reason string must also specify the version after which the function may be removed, as discussed in :ref:`code_removal`.
 
 
 .. note::
-	The message printed for deprecated classes will refer to the constructor function but this is how we deprecated the entire class. 
+	The message printed for deprecated classes will refer to the constructor function but this is how we deprecated the entire class.
 
 C++ Deprecation
 ===============
@@ -110,3 +111,31 @@ To deprecate a `~lsst.pex.config.Field` in a `~lsst.pex.config.Config`, set the 
 
 Setting this parameter will append a deprecation message to the `~lsst.pex.config.Field` docstring, and will cause the system to emit a `FutureWarning` when the field is set by a user (for example, in an obs-package override or by a commandline option).
 The deprecated string must also specify the version after which the config may be removed, as discussed in :ref:`code_removal`.
+
+Package Deprecation
+===================
+
+To deprecate an entire package, first have its top-level :file:`__init__.py` (e.g. :file:`python/lsst/example/package/__init__.py`; create it if necessary) issue an appropriate `FutureWarning` when it is imported::
+
+    import warnings
+
+    warnings.warn('lsst.example.package is deprecated; it will be removed from the Rubin Observatory'
+                  'Science Pipelines after release 21.0.0', category=FutureWarning)
+
+Add a similar warning to the :file:`index.rst` file documenting this package (e.g. :file:`doc/lsst.example.package/index.rst)`::
+
+    .. py:currentmodule:: lsst.example.package
+
+    .. _lsst.example.package:
+
+    ####################
+    lsst.example.package
+    ####################
+
+    ``lsst.example.package`` is an example package.
+
+    .. warning:: This package is deprecated, and will be removed from the Rubin Observatory Science Pipelines after release 21.0.0.
+
+Finally, add a note to the top-level :file:`README` file in the package::
+
+    *Warning:* This package is deprecated, and will be removed from the Rubin Observatory Science Pipelines distribution after release 21.0.0.
