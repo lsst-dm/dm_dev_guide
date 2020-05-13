@@ -70,6 +70,12 @@ Travis does not replace normal testing done with a :doc:`Jenkins job <jenkins-st
    For Travis to recognize the file in the repository it **must** be named :file:`.travis.yml` and be in the repository root.
    Any other name will be ignored and in particular the common misnaming of the file as :file:`.travis.yaml` does not work.
 
+.. note::
+
+   The the `linting`_ repository provides a ``requirements.txt`` which specifies an appropriate version of ``flake8``.
+
+   .. _linting: https://github.com/lsst/linting
+
 For packages containing C++ that have been tidied up using ``clang`` tools, you may consider adding a Travis check that runs the tidy tool and does a ``diff`` with the repository.
 Shell scripts can also be checked by calling the ``shellcheck`` command.
 If nothing seems appropriate a null Travis job should be enabled to allow GitHub to do the checks it needs.
