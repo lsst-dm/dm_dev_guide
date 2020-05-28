@@ -253,19 +253,19 @@ These include methods for `Coords`_, `Geom (Angles, Pairs, Boxes)`_, and `Images
 
 :lmeth:`~lsst.afw.coord.utils.assertCoordsNearlyEqual`
    Assert that two coords represent nearly the same point on the sky (provided by :lmod:`lsst.afw.coord.utils`).
-:lmeth:`~lsst.afw.geom.utils.assertAnglesNearlyEqual`
+:lmeth:`~lsst.afw.geom.utils.assertAnglesAlmostEqual`
    Assert that two angles are nearly equal, ignoring wrap differences by default (provided by :lmod:`lsst.afw.geom.utils`).
-:lmeth:`~lsst.afw.geom.utils.assertPairsNearlyEqual`
+:lmeth:`~lsst.afw.geom.utils.assertPairsAlmostEqual`
    Assert that two planar pairs (e.g. :lclass:`~lsst.afw.geom.Point2D` or :lclass:`~lsst.afw.geom.Extent2D`) are nearly equal (provided by :lmod:`lsst.afw.geom.utils`).
-:lmeth:`~lsst.afw.geom.utils.assertBoxesNearlyEqual`
+:lmeth:`~lsst.afw.geom.utils.assertBoxesAlmostEqual`
    Assert that two boxes (:lclass:`~lsst.afw.geom.Box2D` or :lclass:`~lsst.afw.geom.Box2I`) are nearly equal (provided by :lmod:`lsst.afw.geom.utils`).
-:lmeth:`~lsst.afw.image.basicUtils.assertWcsNearlyEqualOverBBox`
+:lmeth:`~lsst.afw.image.basicUtils.assertWcsAlmostEqualOverBBox`
    Compare :lmeth:`~lsst.afw.image.imageLib.Wcs.pixelToSky` and :lmeth:`~lsst.afw.image.imageLib.Wcs.skyToPixel` for two WCS over a rectangular grid of pixel positions (provided by :lmod:`lsst.afw.image.basicUtils`).
-:lmeth:`~lsst.afw.image.testUtils.assertImagesNearlyEqual`
+:lmeth:`~lsst.afw.image.testUtils.assertImagesAlmostEqual`
    Assert that two images are nearly equal, including non-finite values (provided by :lmod:`lsst.afw.image.testUtils`).
 :lmeth:`~lsst.afw.image.testUtils.assertMasksEqual`
    Assert that two masks are equal (provided by :lmod:`lsst.afw.image.testUtils`).
-:lmeth:`~lsst.afw.image.testUtils.assertMaskedImagesNearlyEqual`
+:lmeth:`~lsst.afw.image.testUtils.assertMaskedImagesAlmostEqual`
    Assert that two masked images are nearly equal, including non-finite values (provided by :lmod:`lsst.afw.image.testUtils`).
 
 Testing Executables
