@@ -248,19 +248,19 @@ Inheriting from `lsst.utils.tests.TestCase` rather than `unittest.TestCase` enab
 `lsst.utils.tests.TestCase.assertFloatsNotEqual`
    Asserts that floating point scalars and/or arrays are not equal.
 
-Additionally, :ref:`lsst.afw.geom <pipelines:lsst.afw.geom>` and :ref:`lsst.afw.image <pipelines:lsst.afw.image>` provides additional asserts that get loaded into `lsst.utils.tests.TestCase` when the associated module is loaded.
-These include methods for `Geom (Angles, Pairs, Boxes)`_, and `Images`_, such as:
+Additionally, :ref:`lsst.geom <pipelines:lsst.geom>`, :ref:`lsst.afw.geom <pipelines:lsst.afw.geom>`, and :ref:`lsst.afw.image <pipelines:lsst.afw.image>` provide additional asserts that get loaded into `lsst.utils.tests.TestCase` when the associated module is loaded.
+These include methods for `Geom (SpherePoints, Angles, Pairs, Boxes)`_, and `Images`_, such as:
 
-:lmeth:`~lsst.afw.coord.utils.assertSpherePointsAlmostEqual`
-   Assert that two sphere points (:lclass:`~lsst.geom.SpherePoint`) are nearly equal (provided by :lmod:`lsst.afw.geom.utils`).
-:lmeth:`~lsst.afw.geom.utils.assertAnglesAlmostEqual`
-   Assert that two angles are nearly equal, ignoring wrap differences by default (provided by :lmod:`lsst.afw.geom.utils`).
-:lmeth:`~lsst.afw.geom.utils.assertPairsAlmostEqual`
-   Assert that two planar pairs (e.g. :lclass:`~lsst.afw.geom.Point2D` or :lclass:`~lsst.afw.geom.Extent2D`) are nearly equal (provided by :lmod:`lsst.afw.geom.utils`).
-:lmeth:`~lsst.afw.geom.utils.assertBoxesAlmostEqual`
-   Assert that two boxes (:lclass:`~lsst.afw.geom.Box2D` or :lclass:`~lsst.afw.geom.Box2I`) are nearly equal (provided by :lmod:`lsst.afw.geom.utils`).
-:lmeth:`~lsst.afw.image.basicUtils.assertWcsAlmostEqualOverBBox`
-   Compare :lmeth:`~lsst.afw.image.imageLib.Wcs.pixelToSky` and :lmeth:`~lsst.afw.image.imageLib.Wcs.skyToPixel` for two WCS over a rectangular grid of pixel positions (provided by :lmod:`lsst.afw.image.basicUtils`).
+:lmeth:`~lsst.geom.testUtils.assertSpherePointsAlmostEqual`
+   Assert that two sphere points (:lclass:`~lsst.geom.SpherePoint`) are nearly equal (provided by :lmod:`lsst.geom.testUtils`).
+:lmeth:`~lsst.geom.testUtils.assertAnglesAlmostEqual`
+   Assert that two angles (:lclass:`~lsst.geom.Angle`) are nearly equal, ignoring wrap differences by default (provided by :lmod:`lsst.geom.testUtils`).
+:lmeth:`~lsst.geom.testUtils.assertPairsAlmostEqual`
+   Assert that two planar pairs (e.g. :lclass:`~lsst.geom.Point2D` or :lclass:`~lsst.geom.Extent2D`) are nearly equal (provided by :lmod:`lsst.geom.testUtils`).
+:lmeth:`~lsst.geom.testUtils.assertBoxesAlmostEqual`
+   Assert that two boxes (:lclass:`~lsst.geom.Box2D` or :lclass:`~lsst.geom.Box2I`) are nearly equal (provided by :lmod:`lsst.geom.testUtils`).
+:lmeth:`~lsst.afw.geom.utils.assertWcsAlmostEqualOverBBox`
+   Compare :lmeth:`~lsst.afw.image.imageLib.Wcs.pixelToSky` and :lmeth:`~lsst.afw.image.imageLib.Wcs.skyToPixel` for two WCS over a rectangular grid of pixel positions (provided by :lmod:`lsst.afw.geom.utils`).
 :lmeth:`~lsst.afw.image.testUtils.assertImagesAlmostEqual`
    Assert that two images are nearly equal, including non-finite values (provided by :lmod:`lsst.afw.image.testUtils`).
 :lmeth:`~lsst.afw.image.testUtils.assertMasksEqual`
@@ -420,5 +420,5 @@ If you have legacy DM `unittest` ``suite``-based code (code that sets up a `unit
 
 
 .. _`Coords`: http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/x_masterDoxyDoc/namespacelsst_1_1afw_1_1coord_1_1utils.html
-.. _`Geom (Angles, Pairs, Boxes)`: http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/namespacelsst_1_1afw_1_1geom_1_1utils.html
+.. _`Geom (SpherePoints, Angles, Pairs, Boxes)`: http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/namespacelsst_1_1afw_1_1geom_1_1utils.html
 .. _`Images`: http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/x_masterDoxyDoc/namespacelsst_1_1afw_1_1image_1_1test_utils.html
