@@ -248,11 +248,11 @@ Inheriting from `lsst.utils.tests.TestCase` rather than `unittest.TestCase` enab
 `lsst.utils.tests.TestCase.assertFloatsNotEqual`
    Asserts that floating point scalars and/or arrays are not equal.
 
-Additionally, :ref:`lsst.afw.coord <pipelines:lsst.afw.coord>`, :ref:`lsst.afw.geom <pipelines:lsst.afw.geom>`, and :ref:`lsst.afw.image <pipelines:lsst.afw.image>` provides additional asserts that get loaded into `lsst.utils.tests.TestCase` when the associated module is loaded.
-These include methods for `Coords`_, `Geom (Angles, Pairs, Boxes)`_, and `Images`_, such as:
+Additionally, :ref:`lsst.afw.geom <pipelines:lsst.afw.geom>` and :ref:`lsst.afw.image <pipelines:lsst.afw.image>` provides additional asserts that get loaded into `lsst.utils.tests.TestCase` when the associated module is loaded.
+These include methods for `Geom (Angles, Pairs, Boxes)`_, and `Images`_, such as:
 
-:lmeth:`~lsst.afw.coord.utils.assertCoordsNearlyEqual`
-   Assert that two coords represent nearly the same point on the sky (provided by :lmod:`lsst.afw.coord.utils`).
+:lmeth:`~lsst.afw.coord.utils.assertSpherePointsAlmostEqual`
+   Assert that two sphere points (:lclass:`~lsst.geom.SpherePoint`) are nearly equal (provided by :lmod:`lsst.afw.geom.utils`).
 :lmeth:`~lsst.afw.geom.utils.assertAnglesAlmostEqual`
    Assert that two angles are nearly equal, ignoring wrap differences by default (provided by :lmod:`lsst.afw.geom.utils`).
 :lmeth:`~lsst.afw.geom.utils.assertPairsAlmostEqual`
