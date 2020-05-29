@@ -20,7 +20,8 @@ Running a stack-os-matrix job
 
      For example, if you enter ``tickets/DM-2 tickets/DM-1``, the build system will attempt to check out the ``tickets/DM-2`` branch in Stack packages.
      If a package does not have a ``tickets/DM-2`` branch, it will attempt to check out the ``tickets/DM-1`` branch.
-     If a package has neither branch, it falls back to checking out the ``master`` branch.
+     If a package has neither branch, it falls back to checking out the ``master`` branch or the branch configured in ``repos.yaml`` in the case of forked third-party packages.
+     Because of those third-party packages, you *never* want to specify ``master`` explicitly in this field.
 
    - **Set the list of EUPS packages** to build.
      Use the default (``lsst_distrib``) to build and test your changes with a full Stack.
