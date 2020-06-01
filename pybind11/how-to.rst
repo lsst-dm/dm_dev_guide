@@ -393,6 +393,13 @@ Here we use both approaches:
     cls.def("__iadd__", &ExampleOne::operator+= /* no py::is_operator() here */);
     cls.def("__add__", [](ExampleOne const & self, ExampleOne const & other) { return self + other; }, py::is_operator());
 
+Additionally, ``lsst::utils::python::addOutputOp`` can be used to generate one or both of the ``__str__`` and ``__repr__`` methods using the stream insertion operator (``operator<<``):
+
+.. code-block:: cpp
+
+    utils::python::addOutputOp(cls, "__str__");
+    utils::python::addOutputOp(cls, "__repr__");
+
 .. note::
 
     * We use ``py::is_operator()`` to return ``NotImplemented`` on failure.
