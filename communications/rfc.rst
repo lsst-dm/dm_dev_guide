@@ -56,33 +56,6 @@ Members of DM should comment on the RFC by posting comments to the JIRA issue.
 
 Refer to :ref:`rfc-discussion` for guidelines on discussion and consensus building within an RFC.
 
-Adopting an RFC
----------------
-
-.. _rfc-adopt-it:
-
-Adoption in JIRA
-^^^^^^^^^^^^^^^^
-
-After the **Planned End** date has passed, and there is positive consensus, the Assignee is responsible for adopting the RFC.
-
-Do this by clicking the **Adopt RFC** button on the RFC's JIRA issue page.
-JIRA will pop up a text box where you can confirm the adoption and add an optional text message.
-This message will automatically appear in the `#dm`_ channel.
-
-When you adopt an RFC, ensure that the resolution of the discussion is clearly stated, especially if the resolution is different from the proposal.
-
-.. _rfc-triggering:
-
-Triggering tickets
-^^^^^^^^^^^^^^^^^^
-
-In conjunction with adopting a ticket, create one or more JIRA stories (in the regular DM project) that implement the RFC's decision.
-
-Those stories must have an **Is triggered by** relationship with the parent RFC issue.
-
-Next, see :ref:`rfc-implementing`.
-
 .. _rfc-escalating:
 
 Escalating an RFC
@@ -92,6 +65,40 @@ If the discussion is not converging, but you still feel that a decision must be 
 Click the **Escalate RFC** button on the RFC's JIRA issue page to do this; the RFC will be marked as **Flagged**.
 
 Some types of RFCs are immediately flagged as a matter of routine: see :ref:`rfc-exceptions` for details.
+
+Adopting an RFC
+---------------
+
+.. _rfc-triggering:
+
+Triggering tickets
+^^^^^^^^^^^^^^^^^^
+
+Before an RFC may be adopted, one or more JIRA stories must be created in the regular DM project to capture the work required to implement the RFC's decision.
+
+Those stories must have an **Is triggered by** relationship with the parent RFC issue.
+
+.. _rfc-adopt-it:
+
+Adoption in JIRA
+^^^^^^^^^^^^^^^^
+
+When
+
+- the **Planned End** data has passed;
+- the RFC is either in state **Proposed** (that is, it has not been :ref:`escalated <rfc-escalating>`) or **Board Recommended** (it has been escalated and subsequently approved);
+- the assignee judges that positive consensus has been reached; and
+- a set of :ref:`triggered tickets <rfc-triggering>` have been defined
+
+the Assignee is responsible for adopting the RFC.
+
+Do this by clicking the **Adopt RFC** button on the RFC's JIRA issue page.
+JIRA will pop up a text box where you can confirm the adoption and add an optional text message.
+This message will automatically appear in the `#dm`_ channel.
+
+When you adopt an RFC, ensure that the resolution of the discussion is clearly stated, especially if the resolution is different from the proposal.
+
+Next, see :ref:`rfc-implementing`.
 
 .. _rfc-withdrawing:
 
