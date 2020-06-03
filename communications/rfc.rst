@@ -16,12 +16,31 @@ On this page:
 - :ref:`rfc-jira`.
 - :ref:`rfc-cases`.
 - :ref:`rfc-discussion`.
-- :ref:`rfc-exceptions`.
 - :ref:`rfc-formalities`.
 
 .. seealso::
 
    :doc:`rfd` has a similar name, but has to do with convening discussions across DM teams.
+
+.. _rfc-cases:
+
+Standard procedures that require an RFC
+=======================================
+
+The following procedures **always** require an RFC:
+
+- :doc:`/stack/adding-a-new-package`.
+- :doc:`/stack/packaging-third-party-eups-dependencies`, or with Conda.
+- :doc:`Updating change-controlled documentation </project-docs/change-controlled-docs>`.
+  An RFC can be used to directly obtain approval for modifying documents which are change-controlled at the DM level (those with “LDM-” handles).
+  An RFC should also be used to to develop subsystem-level consensus before submitting an LCR to modify documents which are change controlled at the project level (for example, those with “LSE-” or “LPM-” handles).
+- :doc:`/stack/deprecating-interfaces`, including changes to programming interfaces, configuration fields, and removal of packages.
+- Making changes to the data products which are or will be provided by the Data Management System.
+  This includes both changes to construction-era data products (such as intermediate stages in the evolution of an on-disk format) and to operations-era data products (which will normally be covered by an update to the baselined documentation describing the product).
+- Changes to certain procedures or policies described in this Developer Guide, including changes to coding standards.
+  Pages which may only be edited by means of an RFC are clearly marked.
+
+In all except the last case above, the RFC *must* be approved by the DM Change Control Board (DMCCB) through the :ref:`escalation procedure <rfc-escalating>`.
 
 .. _rfc-jira:
 
@@ -61,10 +80,21 @@ Refer to :ref:`rfc-discussion` for guidelines on discussion and consensus buildi
 Escalating an RFC
 -----------------
 
-If the discussion is not converging, but you still feel that a decision must be taken, you (or the DMCCB) may escalate the RFC to be considered by the DM Change Control Board (DMCCB).
-Click the **Escalate RFC** button on the RFC's JIRA issue page to do this; the RFC will be marked as **Flagged**.
+On occasion, RFCs are “escalated” for consideration by the DM Change Control Board (DMCCB; :ldm:`294`).
+The DMCCB may choose to approve these escalated RFCs, or to request that they be withdrawn.
 
-Some types of RFCs are immediately flagged as a matter of routine: see :ref:`rfc-exceptions` for details.
+DMCCB approval is *required* for RFCs falling into the categories listed in :ref:`rfc-cases`.
+The DMCCB will audit newly-filed RFCs to see if they meet the above criteria, and will escalate them appropriately.
+
+In addition, any member of the DM team --- including members of the DMCCB --- may request that the DMCCB consider a particular RFC.
+This may be used, for example, in situations where the discussion is not converging, but a decision must ultimately be taken.
+
+The **Escalate RFC** button on the RFC's JIRA issue page is used to escalate RFCs; after the RFC has been escalated, it will be marked as **Flagged**.
+Escalated RFCs may only be :ref:`adopted <rfc-adopt-it>` when the DMCCB has transitioned its status from **Flagged** to **Board Recommended** (in addition to the other adoption criteria).
+If the DMCCB does not approve an escalated RFC, its status will be set to **Withdrawn**.
+If the DMCCB declines to consider the RFC, the DMCCB will change the status back to **Proposed**.
+
+Escalating the RFC should not prevent discussion among the wider DM community: others are welcome to continue to comment on the JIRA issue while it is in the **Flagged** or **Board Recommended** states, and the DMCCB may solicit specific input from the community when appropriate.
 
 Adopting an RFC
 ---------------
@@ -85,7 +115,7 @@ Adoption in JIRA
 
 When
 
-- the **Planned End** data has passed;
+- the **Planned End** date has passed;
 - the RFC is either in state **Proposed** (that is, it has not been :ref:`escalated <rfc-escalating>`) or **Board Recommended** (it has been escalated and subsequently approved);
 - the assignee judges that positive consensus has been reached; and
 - a set of :ref:`triggered tickets <rfc-triggering>` have been defined
@@ -99,6 +129,8 @@ This message will automatically appear in the `#dm`_ channel.
 When you adopt an RFC, ensure that the resolution of the discussion is clearly stated, especially if the resolution is different from the proposal.
 
 Next, see :ref:`rfc-implementing`.
+
+.. note:: RFCs on DM controlled documents will be set directly to **Adopted** by the DMCCB, since they do not require implementation issues.
 
 .. _rfc-withdrawing:
 
@@ -117,17 +149,6 @@ After an RFC has been successfully adopted, it needs to be implemented.
 An RFC is considered implemented once all JIRA issues linked as **Is triggering** from the RFC issue are marked as **Done**.
 
 To then formally marked the RFC as implemented, click the **We shipped it!** button on the RFC's JIRA issue page.
-
-.. _rfc-cases:
-
-Standard procedures that require an RFC
-=======================================
-
-Some procedures **always require** an RFC, including:
-
-- :doc:`/stack/adding-a-new-package`.
-- :doc:`/stack/packaging-third-party-eups-dependencies`.
-- :ref:`Releasing a change-controlled document <ccd-release>`.
 
 .. _rfc-discussion:
 
@@ -162,37 +183,6 @@ The requestor must be especially careful about not making irreversible changes i
 If something is broken, the requestor must be be ready to fix it.
 It is critical to apply sound reasoning and good judgment about what may be acceptable and what might be not.
 Mistakes will happen; accept that occasionally there will be a requirement to revert an action for which it was thought agreement existed.
-
-.. _rfc-exceptions:
-
-Exceptions and appeals
-======================
-
-Some proposed resolutions may require changes to one or more of the baselined, change-controlled documents describing the Data Management system (those in DocuShare with an LDM- handle or marked as change-controlled in Confluence). 
-Note that major changes to budget or scope will almost certainly affect one or more LDM- documents.
-In this case only, the DM Change Control Board (DMCCB) may empanel an ad hoc committee including the lead author of the document and other relevant experts.
-This committee or the CCB itself must explicitly approve the change.
-
-Change-controlled documents with other handles, such as LSE- or LPM-, including inter-subsystem interfaces, have project-wide change control processes.
-Please consult the DM PM, SA, or IS for more information.
-At least one member of the DM CCB will read each RFC to determine if it might affect a change-controlled document.
-
-If the DM team can’t converge on a resolution to an RFC that has no serious objections but the requestor still feel that something must be done, the request will be escalated.
-In most non-trivial cases, they will, with the advice of the SA, empanel a group of experts to which they will delegate the right to make the decision, by voting if need be.
-
-If an RFC includes API changes, including deprecations, or updates to a data model such as the catalog schema generated by DRP, it must be approved by the DMCCB.
-
-In all of these cases, the RFC is marked as **Flagged** to indicate that it is being considered by the DMCCB.
-
-As a result of the discussion on a **Flagged** RFC, the DMCCB may decide to approve it and move forward with the proposal.
-In this case, the RFC status is set to **Board Recommended**.
-The assignee can then attach the triggering issues and adopt the RFC following the standard process.
-During the discussion of a flagged RFC the DMCCB may ask for triggering issues to be created prior to its approval if there is some ambiguity as to the ramifications of said approval.
-
-If the DMCCB does not approve the RFC, its status will be set to **Withdrawn**.
-If the DMCCB declines to consider the RFC, the DMCCB will change the status back to **Proposed**.
-
-All RFCs on DM controlled documents will be set directly to **Adopted** by the DMCCB, since they do not require implementation issues.
 
 .. _rfc-formalities:
 
