@@ -96,13 +96,6 @@ We follow the official: International Standard ISO/IEC 14882:2014(E) – Program
    We use compilers provided by a specific :ref:`Conda environment <platforms-environment>` executing on a defined :ref:`baseline platform <platforms-baseline>`.
    This environment provides complete support for C++14, but --- in the case of compiler bugs --- the allowed set of C++14 features is those which can be shown to work properly in this reference environment.
 
-.. seealso::
-
-   - :ref:`pipelines:source-install-redhat-prereqs` from the `LSST Science Pipelines <https://pipelines.lsst.io>`__ documentation.
-     But note that installation instructions for stack versions 14.0 and below refer to our older baseline compilers.
-     These are now superseded by the minimum required compiler versions listed above.
-   - :doc:`/services/lsst-dev` provides :ref:`instructions for using devtoolset-8 <lsst-dev-tools>` to obtain a more modern GCC on LSST cluster machines.
-
 .. _style-guide-cpp-2-3:
 
 2-3. Some rules MAY be violated under certain circumstances.
