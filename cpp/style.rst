@@ -93,13 +93,8 @@ We follow the official: International Standard ISO/IEC 14882:2014(E) – Program
 
 .. note::
 
-    Our minimum required compiler versions are:
-
-        * GCC 6.3.1 (Linux)
-        * Clang 800.0.42.1 (macOS)
-
-    these both have complete support for C++14, but in case of compiler bugs the actually allowed set
-    of C++14 features is the intersection of those supported by our compilers and the standard.
+   We use compilers provided by a specific :ref:`Conda environment <platforms-environment>` executing on a defined :ref:`baseline platform <platforms-baseline>`.
+   This environment provides complete support for C++14, but --- in the case of compiler bugs --- the allowed set of C++14 features is those which can be shown to work properly in this reference environment.
 
 .. seealso::
 

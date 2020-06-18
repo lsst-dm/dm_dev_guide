@@ -9,6 +9,8 @@ The Science Pipelines are required to be portable across many compute platforms 
 The software will likely work on any Unix-like systems but we limit our testing and support to a fixed set of platforms.
 Patches may be accepted from developers who test on other operating systems.
 
+.. _platforms-baseline:
+
 Platforms
 =========
 
@@ -28,6 +30,8 @@ We regularly test the following platforms in addition to the baseline platform:
 
 See https://ci.lsst.codes for the current list of regularly-tested platforms.
 (The "osx" platform there for the "stack-os-matrix" job randomly chooses a Mojave or High Sierra machine for each execution to limit load.)
+
+.. _platforms-environment:
 
 Environment
 ===========
