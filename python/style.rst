@@ -20,10 +20,11 @@ The :doc:`/coding/intro` provides the overarching Coding Standards policy applic
 
 .. _style-guide-py-version-py3:
 
-All DM Python code MUST work with Python 3.7
---------------------------------------------
+All DM Python code MUST work with our standard environment
+----------------------------------------------------------
 
-All the Python code written by LSST Data Management must run under Python 3.7 and may use any of its features.
+All the Python code written by LSST Data Management must run under the version of Python provided in our :ref:`standard environment <platforms-environment>`.
+Any feature available in that version of Python may be used.
 There is no requirement to support Python 2 or earlier Python 3 versions.
 
 .. _style-guide-py-pep8-baseline:
