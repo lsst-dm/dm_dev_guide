@@ -5,9 +5,8 @@ Supported Platforms
 Introduction
 ============
 
-The LSST Data Management software is required to be portable across many compute platforms ranging from high-performance computing centers to laptops (DMS-REQ-0308).
+The Science Pipelines are required to be portable across many compute platforms ranging from high-performance computing centers to laptops (refer to DMS-REQ-0308 in :lse:`61`).
 The software will likely work on any Unix-like systems but we limit our testing and support to a fixed set of platforms.
-
 Patches may be accepted from developers who test on other operating systems.
 
 Platforms
