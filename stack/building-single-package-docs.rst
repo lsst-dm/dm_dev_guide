@@ -43,6 +43,12 @@ In a base working directory — not inside a repository directory — get the :f
 
 Do this *after* setting up the EUPS Stack with a command like :command:`setup lsst_distrib`.
 
+If it is not already present in your environment, you may also want to install the `graphviz`_ package to enable generation of diagrams:
+
+.. code-block:: bash
+
+   conda install graphviz
+
 .. note::
 
    On a shared resource, like :doc:`lsst-dev </services/lsst-dev>`, you will need to use a ``--user`` flag with :command:`pip install`.
@@ -117,3 +123,4 @@ Further reading
 .. _`pipelines.lsst.io`: https://pipelines.lsst.io
 .. _`pipelines_lsst_io`: https://github.com/lsst/pipelines_lsst_io
 .. _`pipe_base`: https://github.com/lsst/pipe_base
+.. _`graphviz`: https://graphviz.org
