@@ -61,6 +61,12 @@ Since it’s a `PyPI-distributed Python package <https://pypi.org/project/docume
 
 Do this *after* :ref:`running the setup command <local-pipelines-lsst-io-build-clone>`.
 
+If it is not already present in your environment, you may also want to install the `graphviz`_ package to enable generation of diagrams:
+
+.. code-block:: bash
+
+   conda install graphviz
+
 .. note::
 
    On a shared resource, you will need to use a ``--user`` flag with :command:`pip install`.
@@ -144,3 +150,4 @@ Further reading
 .. _`pipelines.lsst.io`: https://pipelines.lsst.io
 .. _`pipelines_lsst_io`: https://github.com/lsst/pipelines_lsst_io
 .. _`pipe_base`: https://github.com/lsst/pipe_base
+.. _`graphviz`: https://graphviz.org
