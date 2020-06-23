@@ -2,8 +2,6 @@
 Using the lsst-login Servers
 ############################
 
-.. ATTENTION:: The lsst-login servers are still being developed and access is currently restricted to select IP addresses.
-
 The following login nodes are run by NCSA for access to select LSST DM development resources:
 
 - ``lsst-login01.ncsa.illinois.edu``
