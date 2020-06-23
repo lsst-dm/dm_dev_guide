@@ -51,6 +51,7 @@ BBCP is an alternative to Gridftp when transferring large amounts of data, capab
 ``lsst-xfer.ncsa.illinois.edu`` is setup to use TCP ports 65001-65535 for BBCP transfers with the following external networks:
 
 - IN2P3: 134.158.0.0/16
+- LSST Commissioning Cluster: 139.229.146.0/24
 - NCSA: 141.142.0.0/16
 - NOAO Tucson: 140.252.0.0/16
 - SLAC: 134.79.0.0/16
