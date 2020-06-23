@@ -45,8 +45,6 @@ For system status and issues:
 Connecting and Authenticating
 =============================
 
-.. ATTENTION:: The lsst-login servers are still being developed and access is currently restricted to select IP addresses.
-
 You can log into LSST development servers at NCSA with your NCSA account as follows:
 
    - NCSA username and password **OR** valid Kerberos ticket from workstation/laptop, **AND**
