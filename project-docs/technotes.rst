@@ -78,15 +78,11 @@ In Slack, open a |dmw-sqrbot| and type:
 
    create project
 
-From the drop-down, select **Documents > Technote (reStructuredText)** or **(LaTeX)** depending on the format you wish to work in.
+From the drop-down, select **Documents > Technote (reStructuredText)** or **(lsstdoc LaTeX)** depending on the format you wish to work in.
 Once you select the template type and fill in the form on Slack, the bot will create and configure the technote on GitHub.
-Watch for Slack messages from the bot about the technote's GitHub repository, including a link to a pull request.
+Watch for Slack messages from the bot about the technote's GitHub repository and publication URL.
 
-.. important::
-
-   You need to merge the bot's pull request in order for your technote to appear on the web.
-
-Once the initial configuration pull request is merged, any time you push to GitHub your technote will be republished at its ``lsst.io`` site.
+Any time you push to GitHub, your technote will be republished at its ``lsst.io`` site.
 Pushes to the ``master`` branch update your technote's main page, while updates to other branches update preview editions behind the ``/v/`` URL path.
 Click on the **Switch editions** or **Change version** link from your published technote to get links for other editions.
 
