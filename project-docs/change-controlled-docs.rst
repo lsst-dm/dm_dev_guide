@@ -20,6 +20,7 @@ Overall, the project-wide change control process is described in `LPM-19`_ and t
 This page describes the specific development and release processes for change-controlled documents produced by DM:
 
 - :ref:`ccd-formats`
+- :ref:`ccd-create`
 - :ref:`ccd-drafting`
 - :ref:`ccd-release`
 - :ref:`ccd-hotfix`
@@ -59,6 +60,8 @@ LaTeX documents must use the `lsstdoc document class`_ provided by the `lsst-tex
 The source content for LaTeX documents must be managed by Git and hosted in the LSST organization on GitHub (https://github.com/lsst).
 A document's GitHub repository is named after the document's handle (see https://github.com/lsst/LDM-151 for example).
 
+See :ref:`ccd-create`.
+
 Word documents
 --------------
 
@@ -89,6 +92,23 @@ When editing or adding requirements, the following checklist may be of assistanc
 8. Check that flowdown from higher-level requirements (e.g. LSE-30) is present where appropriate
 9. Inform (Project or DM) SE to add verification elements
 
+.. _ccd-create:
+
+Creating a new LaTeX (lsstdoc) change-controlled document
+=========================================================
+
+**Before creating a new change-controlled document, reserve its handle on DocuShare.**
+Contact the CCB (`#dm-ccb <slack://channel?team=T06D204F2&id=C2JPBA2SU>`_) for assistance.
+
+In Slack, open a |dmw-sqrbot| and type:
+
+.. code-block:: text
+
+   create project
+
+From the drop-down, select **Documents > Change-controlled doc (lsstdoc LaTeX)**.
+Once you select the template type and fill in the form on Slack, the bot will create and configure the document on GitHub.
+Watch for Slack messages from the bot about the documents' GitHub repository, including a link to a pull request that you will need to merge manually.
 
 .. _ccd-drafting:
 
