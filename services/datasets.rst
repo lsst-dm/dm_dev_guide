@@ -33,7 +33,6 @@ Some data resides within ``/datasets`` which does not adhere to this format; the
 The following are currently exempted:
 
 - ``/datasets/all-sky``
-- ``/datasets/public_html``
 
 .. _reference-catalogs:
 
