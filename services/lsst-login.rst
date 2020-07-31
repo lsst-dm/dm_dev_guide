@@ -28,7 +28,7 @@ Overview
 
 The ``lsst-login`` servers are primarily intended as bastions used to access other resources at NCSA. Additional capabilities include:
 
-- light :ref:`lsst-login-development` work with short-running processes that require modest resources (e.g., build docs, short compilations against LSST software stack)
+- light :ref:`lsst-login-development` with short-running processes that require modest resources (e.g., build docs, short compilations against LSST software stack)
 - view files (e.g., FITS files)
 
 Users are encouraged to submit batch jobs to perform work that requires more significant resources.
@@ -120,7 +120,7 @@ Name             Description
 ``devtoolset-6`` Updated compiler toolchain providing GCC 6.3.1.
 ``devtoolset-7`` Updated compiler toolchain providing GCC 7.3.1.
 ``devtoolset-8`` Updated compiler toolchain providing GCC 8.3.1.
-``devtoolset-9`` Updated compiler toolchain providing GCC 9.1.1.
+``devtoolset-9`` Updated compiler toolchain providing GCC 9.3.1.
 ================ ===========
 
 To enable a particular Software Collection use the ``scl`` command. For example:
