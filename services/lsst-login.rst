@@ -26,11 +26,9 @@ This page is designed to assist developers in use of the ``lsst-login`` servers:
 Overview
 ========
 
-The ``lsst-login`` servers are primarily intended as bastions used to access other resources at NCSA. Additional capabilities are planned to include:
+The ``lsst-login`` servers are primarily intended as bastions used to access other resources at NCSA. Additional capabilities include:
 
-- submission of HTCondor jobs (workflows should not be run here outside of HTCondor)
-- submission of Slurm jobs
-- light development work with short-running processes that require modest resources (e.g., build docs, short compilations against LSST software stack)
+- light :ref:`lsst-login-development` work with short-running processes that require modest resources (e.g., build docs, short compilations against LSST software stack)
 - view files (e.g., FITS files)
 
 Users are encouraged to submit batch jobs to perform work that requires more significant resources.
