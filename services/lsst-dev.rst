@@ -2,7 +2,7 @@
 Using the lsst-dev Server
 #########################
 
-``lsst-dev`` is the development set of servers run by NCSA for LSST DM development work.
+``lsst-dev`` is a set of servers run by NCSA for LSST DM development work.
 The cname ``lsst-dev.ncsa.illinois.edu`` directs to ``lsst-dev01.ncsa.illinois.edu`` and this system serves as the primary development server for the team. There are currently 3 identical development servers to choose from:
 
 - ``lsst-dev01.ncsa.illinois.edu``
