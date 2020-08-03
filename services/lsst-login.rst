@@ -120,7 +120,6 @@ Name             Description
 ``devtoolset-6`` Updated compiler toolchain providing GCC 6.3.1.
 ``devtoolset-7`` Updated compiler toolchain providing GCC 7.3.1.
 ``devtoolset-8`` Updated compiler toolchain providing GCC 8.3.1.
-``devtoolset-9`` Updated compiler toolchain providing GCC 9.3.1.
 ================ ===========
 
 To enable a particular Software Collection use the ``scl`` command. For example:
