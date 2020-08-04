@@ -2,6 +2,13 @@
 Using the lsst-dev Server
 #########################
 
+.. ATTENTION:: **The ``lsst-dev`` servers will be turned off on Aug 31, 2020.**
+
+.. ATTENTION:: Developers should instead use :doc:`lsst-login <lsst-login>` and/or :doc:`batch <batch>` nodes.
+
+The material presented below is for historical reference and will be removed in the future.
+
+
 ``lsst-dev`` is a set of servers run by NCSA for LSST DM development work.
 The cname ``lsst-dev.ncsa.illinois.edu`` directs to ``lsst-dev01.ncsa.illinois.edu`` and this system serves as the primary development server for the team. There are currently 3 identical development servers to choose from:
 
