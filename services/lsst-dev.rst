@@ -3,7 +3,7 @@ Using the lsst-dev Server
 #########################
 
 .. ATTENTION::
-  **The ``lsst-dev`` servers will be turned off on Aug 31, 2020.**
+  **The lsst-dev servers will be turned off on Aug 31, 2020.**
   
   Developers should instead use :doc:`lsst-login <lsst-login>` and/or :doc:`batch <batch>` nodes.
 
