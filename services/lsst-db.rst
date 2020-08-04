@@ -2,6 +2,15 @@
 Using the lsst-dev-db Server
 ############################
 
+.. ATTENTION::
+  **The lsst-dev-db server will be turned off on Aug 31, 2020.**
+  
+  Services that make use of this server should move to using alternate, supported databases.
+
+The material presented below is for historical reference and will be removed in the future.
+
+------------
+
 ``lsst-dev-db`` is the development MySQL database server run by NCSA for LSST DM development work.
 The CNAMEs ``lsst-db.ncsa.illinois.edu`` and ``lsst10.ncsa.illinois.edu`` direct to ``lsst-dev-db.ncsa.illinois.edu`` to support historical usage of those hostnames.
 
