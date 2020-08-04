@@ -518,10 +518,12 @@ Jenkins CI
 LSST Data Facility services
 ---------------------------
 
-- :doc:`services/lsst-dev`
 - :doc:`services/lsst-login`
-- :doc:`services/lsst-db`
+- :doc:`services/batch`
+- :doc:`services/lsst-condor`
 - :doc:`services/verification`
+- :doc:`services/lsst-dev`
+- :doc:`services/lsst-db`
 - :doc:`services/datasets`
 - :doc:`services/data_protection`
 - :doc:`services/ncsa_bulk_transfer`
