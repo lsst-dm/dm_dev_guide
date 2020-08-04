@@ -5,11 +5,11 @@ LSST Data Facility services
 ###########################
 
 - :doc:`lsst-login`
-- :doc:`lsst-dev`
-- :doc:`lsst-db`
 - :doc:`batch`
 - :doc:`lsst-condor`
 - :doc:`verification`
+- :doc:`lsst-dev`
+- :doc:`lsst-db`
 - :doc:`datasets`
 - :doc:`data_protection`
 - :doc:`ldf-tickets`
