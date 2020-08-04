@@ -499,10 +499,11 @@ Jenkins CI
    :hidden:
 
    services/lsst-login
-   services/lsst-dev
-   services/lsst-db
+   services/batch
    services/lsst-condor
    services/verification
+   services/lsst-dev
+   services/lsst-db
    services/datasets
    services/data_protection
    services/ncsa_bulk_transfer
