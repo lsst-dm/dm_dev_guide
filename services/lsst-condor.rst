@@ -28,8 +28,6 @@ The ``HTCondor DAC Cluster`` has the following submit (schedd) nodes from which 
 
 - ``lsst-condordac-sub01.ncsa.illinois.edu``
 
-In the near future it will also be possible to submit standalone jobs from the :doc:`lsst-login <lsst-login>` nodes. (Please do not run workflows outside of HTCondor on the ``lsst-login`` nodes; e.g., do not run Dask workflows on the login nodes.)
-
 The ``HTCondor DAC Cluster`` also has a number of dedicated compute (startd) nodes configured with partitionable slots. Commands such as those described below in :ref:`condor-status` can be used to view the resources available in the cluster.
 
 The nodes in the cluster utilize the General Parallel File System (GPFS) to provide shared storage across all of the nodes. Please see :doc:`Storage Resources <storage>` for more information.
@@ -90,8 +88,6 @@ Jobs can also be submitted to run in the Scheduler Universe (#7) on each submit 
 
 .. NOTE:: Use of the Scheduler Universe should be limited to workflow management processes. Such jobs would manage the sequence and execution of other "payload" job but would themselves be largely idle most of the time, despite potentially running for days.
 
-Job submission from the :doc:`lsst-login <lsst-login>` nodes will soon be possible. The ``lsst-login`` nodes do not have any startd slots nor do they accept submission to the Scheduler or Local Universes (#7 & #12). (The ``lsst-login`` nodes are **not** intended to support long-running compute processes.)
-
 Nodeset Details
 ---------------
 
@@ -118,9 +114,9 @@ Shared and Local Storage
 
 The nodes in the ``HTCondor DAC Cluster`` all have access to the :doc:`GPFS shared filesystem <storage>` (including /datasets, /home, /project, /scratch, /software).
 
-The HTCondor LOCAL_DIR mostly lives on local disk on each node. Notably the SPOOL sub-directory on each submit node takes advantage of a fast SSD RAID for better performance. (``lsst-login`` nodes will have much smaller and somewhat slower SPOOL directories. More involved HTCondor work should be submitted from the dedicated submit nodes.) The EXECUTE (job scratch) directory is located in GPFS scratch space in order to provide plenty of space.
+The HTCondor LOCAL_DIR mostly lives on local disk on each node. Notably the SPOOL sub-directory on each submit node takes advantage of a fast SSD RAID for better performance. The EXECUTE (job scratch) directory is located in GPFS scratch space in order to provide plenty of space.
 
-The /tmp directory on each submit node is moderate in size. GPFS scratch space should be used when significant, temporary space is needed on submit nodes. (``lsst-login`` nodes have much smaller and somewhat slower /tmp directories.) Also note that /tmp is mapped into the HTCondor EXECUTE (job scratch) directory within Vanilla Universe (default, #5) jobs, so utilizing local /tmp storage on compute (startd) nodes will generally not be an option.
+The /tmp directory on each submit node is moderate in size. GPFS scratch space should be used when significant, temporary space is needed on submit nodes. Also note that /tmp is mapped into the HTCondor EXECUTE (job scratch) directory within Vanilla Universe (default, #5) jobs, so utilizing local /tmp storage on compute (startd) nodes will generally not be an option.
 
 Viewing Configuration Details
 -----------------------------
