@@ -401,7 +401,7 @@ The ``Slurm Cluster`` is a cluster of servers run by NCSA for LSST DM developmen
 
 Submit nodes for the ``Slurm Cluster`` are listed above at :ref:`batch-overview`. Users can submit jobs to Slurm from any of the submit nodes.
 
-Users can view the compute resources available in the ``Slurm Cluster`` using commands such as `sinfo -Nl`, `scontrol show part`, and `scontrol show node`.
+Users can view the compute resources available in the ``Slurm Cluster`` using commands such as ``sinfo -Nl``, ``scontrol show part``, and ``scontrol show node``.
 
 The nodes in the ``Slurm Cluster`` all have access to the :doc:`GPFS shared filesystem <storage>` (including /datasets, /home, /project, /scratch, /software).
 
@@ -443,7 +443,7 @@ one can use the SLURM command  ``sinfo``::
 
 In this view ``sinfo`` shows the nodes to reside within a single partition ``debug``, and the worker nodes show 24 possible cores on a node (hyperthreading is disabled).
 
-NOTE: The memory displayed per node by `sinfo` does not accurately reflect what is actually schedulable/usable. Please use `scontrol show partition` do see what is available (look for `MaxMemPerNode`).
+NOTE: The memory displayed per node by ``sinfo`` does not accurately reflect what is actually schedulable/usable. Please use ``scontrol show partition`` do see what is available (look for ``MaxMemPerNode``).
 
 The Slurm configuration tracks historical usage but does not perform actual accounting per se (all jobs are submitted without an account), and places no quotas on users' total time usage. Historical usage can be displayed with the `sacct` command.
 
