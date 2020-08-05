@@ -41,7 +41,7 @@ Per-Capability Acceptable use
 
  - ``/home`` - Storage of individual-user data.
 
- - ``/software`` - Central location for maintenance of project-shared software installations that require access from multiple capabilities (ie batch, Nebula). Access is provided to all project members, however, maintenance of the software is based on project role which is subject to change control procedures.
+ - ``/software`` - Central location for maintenance of project-shared software installations that require access from multiple capabilities (ie batch). Access is provided to all project members, however, maintenance of the software is based on project role which is subject to change control procedures.
 
  - ``/sui`` - Shared storage for ephemeral data for the purpose of supporting SUI/T in the PDAC enclave.
 
