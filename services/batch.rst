@@ -415,7 +415,7 @@ Documentation on using SLURM client commands and submitting jobs may be found at
 
 On this page we display some simple examples for getting started with submitting jobs to the ``Slurm Cluster``.
 
-The ``Slurm Cluster``is configured with 2 queues (partitions):
+The ``Slurm Cluster`` is configured with 2 queues (partitions):
 
    - **normal**: more nodes, no run time limit.  For runs after your code is debugged.  Default.
    - **debug**:  ~1-2 nodes, 30 min run time limit.  For short testing & debugging runs.
