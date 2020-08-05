@@ -507,7 +507,6 @@ Jenkins CI
    services/datasets
    services/data_protection
    services/ncsa_bulk_transfer
-   services/nebula/index
    services/orchestration/index
    services/ldf-tickets
    services/ldf-resources
@@ -528,7 +527,6 @@ LSST Data Facility services
 - :doc:`services/datasets`
 - :doc:`services/data_protection`
 - :doc:`services/ncsa_bulk_transfer`
-- :doc:`services/nebula/index`
 - :doc:`services/orchestration/index`
 - :doc:`services/ldf-tickets`
 - :doc:`services/ldf-resources`
