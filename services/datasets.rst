@@ -2,7 +2,7 @@
 Common Dataset Organization and Policy
 ######################################
 
-This document covers the specific :ref:`format <format>` and :ref:`policies <policy>` governing the shared datasets in ``/datasets``, project GPFS space available on the login node ``lsst-dev01`` and on all of the compute nodes of the :doc:`Verification Cluster </services/verification>`.
+This document covers the specific :ref:`format <format>` and :ref:`policies <policy>` governing the shared datasets in ``/datasets``, project GPFS space available on the :doc:`login nodes </services/lsst-login>` and on all of the compute nodes of the :doc:`Verification Cluster </services/verification>`.
 
 .. _format:
 
