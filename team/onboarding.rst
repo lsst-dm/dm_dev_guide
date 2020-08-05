@@ -43,15 +43,9 @@ Data Facility resources
 
 You'll also need an account for the LSST Data Facility services, hosted at NCSA, which include:
 
-- Development Servers (`lsst-dev </services/lsst-dev.html>`_)
-- MySQL Database (`lsst-dev-db </services/lsst-db.html>`_)
+- Development Servers (`lsst-dev </services/lsst-login.html>`_)
 
 This account will be automatically issued along with your LSST account.
-
-.. seealso::
-
-   The LSST Data Facility also provides Nebula, an `OpenStack <https://www.openstack.org>`_-based cloud computing system.
-   Accounts for Nebula are managed separately; see the `user guide </services/nebula/index.html>`_.
 
 .. _getting-started-github:
 
