@@ -39,7 +39,7 @@ For system status and issues:
 
 - `Service status <https://confluence.lsstcorp.org/display/DM/LSST+Service+Status+page>`_ including announcements of upcoming planned down-time.
 - `Real-time system status <https://monitor-ncsa.lsst.org/>`_ (requires login).
-- To report system issues, log into `LSST JIRA >https://jira.lsstcorp.org/>` and file a `JIRA ticket in the IT Helpdesk Support (IHS) <https://ls.st/ihsticket>` project tagging NCSA as the responsible organization.
+- To report system issues, log into `LSST JIRA <https://jira.lsstcorp.org/>` and file a `JIRA ticket in the IT Helpdesk Support (IHS) <https://ls.st/ihsticket>` project tagging NCSA as the responsible organization.
 
 .. _lsst-login-connect:
 
