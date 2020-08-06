@@ -5,7 +5,7 @@ Using the Verification Cluster
 .. ATTENTION::
   **The legacy Slurm Verification Cluster will be turned off on Aug 31, 2020.**
   
-  It is being refreshed as the new general-use `Slurm Cluster </services/batch.html#slurm-usage>`.
+  It is being refreshed as the new general-use :ref:`Slurm Cluster <batch-slurm-usage>`.
 
 The material presented below is for historical reference and will be removed in the future.
 
