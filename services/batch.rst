@@ -36,8 +36,7 @@ Access to the ``HTCondor Prod Cluster`` is restricted to users working formal da
 
 Jobs can be submitted to the ``Slurm Cluster`` from any of the above submit nodes.
 
-Report system issues by `filing a JIRA ticket <https://jira.lsstcorp.org/secure/CreateIssueDetails!init.jspa?pid=12200&issuetype=10901&priority=10000&customfield_12211=12223&components=14205>`_ in the IT Helpdesk Support (IHS) project.
-
+To report system issues, log into `LSST JIRA >https://jira.lsstcorp.org/>` and file a `JIRA ticket in the IT Helpdesk Support (IHS) <https://ls.st/ihsticket>` project tagging NCSA as the responsible organization.
 
 .. _batch-connect:
 
