@@ -36,7 +36,7 @@ Access to the ``HTCondor Prod Cluster`` is restricted to users working formal da
 
 Jobs can be submitted to the ``Slurm Cluster`` from any of the above submit nodes.
 
-To report system issues, log into `LSST JIRA <https://jira.lsstcorp.org/>` and file a `JIRA ticket in the IT Helpdesk Support <https://ls.st/ihsticket>` project tagging NCSA as the responsible organization.
+To report system issues, log into `LSST JIRA <https://jira.lsstcorp.org/>`_ and file a `JIRA ticket in the IT Helpdesk Support <https://ls.st/ihsticket>`_ project tagging NCSA as the responsible organization.
 
 
 .. _batch-connect:
@@ -112,7 +112,7 @@ NOTE: Walltime policies are somewhat more relaxed on the ``HTCondor Prod Cluster
 
 NOTE: MPI is not explicitly supported on the ``HTCondor DAC Cluster`` and ``HTCondor Prod Cluster``. These clusters are intended for use with Gen3 LSST middleware (rather than Gen2).
 
-Report system issues by `filing a JIRA ticket <https://jira.lsstcorp.org/secure/CreateIssueDetails!init.jspa?pid=12200&issuetype=10901&priority=10000&customfield_12211=12223&components=14205>`_ in the IT Helpdesk Support (IHS) project.
+To report system issues, log into `LSST JIRA <https://jira.lsstcorp.org/>`_ and file a `JIRA ticket in the IT Helpdesk Support <https://ls.st/ihsticket>`_ project tagging NCSA as the responsible organization.
 
 
 HTCondor: Compute (startd) Slots
@@ -405,8 +405,7 @@ Users can view the compute resources available in the ``Slurm Cluster`` using co
 
 The nodes in the ``Slurm Cluster`` all have access to the :doc:`GPFS shared filesystem <storage>` (including /datasets, /home, /project, /scratch, /software).
 
-Report system issues by `filing a JIRA ticket <https://jira.lsstcorp.org/secure/CreateIssueDetails!init.jspa?pid=12200&issuetype=10901&priority=10000&customfield_12211=12223&components=14205>`_ in the IT Helpdesk Support (IHS) project.
-
+To report system issues, log into `LSST JIRA <https://jira.lsstcorp.org/>`_ and file a `JIRA ticket in the IT Helpdesk Support <https://ls.st/ihsticket>`_ project tagging NCSA as the responsible organization.
 
 SLURM: Job Submission
 ---------------------
