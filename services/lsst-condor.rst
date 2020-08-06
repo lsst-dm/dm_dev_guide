@@ -2,7 +2,7 @@
 Using the HTCondor DAC Cluster
 ###################################################################
 
-**This content has moved: `HTCondor Usage </services/batch.html#batch-condor>`.**
+**This content has moved: :ref:`HTCondor Usage <batch-condor>`.**
 
 The material presented below is for historical reference and will be removed in the future.
 
