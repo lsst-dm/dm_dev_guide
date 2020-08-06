@@ -445,7 +445,7 @@ In this view ``sinfo`` shows the nodes to reside within a single partition ``deb
 
 NOTE: The memory displayed per node by ``sinfo`` does not accurately reflect what is actually schedulable/usable. Please use ``scontrol show partition`` do see what is available (look for ``MaxMemPerNode``).
 
-The Slurm configuration tracks historical usage but does not perform actual accounting per se (all jobs are submitted without an account), and places no quotas on users' total time usage. Historical usage can be displayed with the `sacct` command.
+The Slurm configuration tracks historical usage but does not perform actual accounting per se (all jobs are submitted without an account), and places no quotas on users' total time usage. Historical usage can be displayed with the ``sacct`` command.
 
 
 Slurm: Simple Jobs
