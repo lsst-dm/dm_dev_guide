@@ -2,6 +2,12 @@
 Using the HTCondor DAC Cluster
 ###################################################################
 
+**This content has moved: `HTCondor Usage </services/batch.html#batch-condor>`.**
+
+The material presented below is for historical reference and will be removed in the future.
+
+------------
+
 NCSA hosts a few of `HTCondor <https://research.cs.wisc.edu/htcondor/>`_ clusters for LSST. Of particular interest to LSST DM developers will be:
 
 - ``HTCondor DAC Cluster`` - general user HTCondor pool
