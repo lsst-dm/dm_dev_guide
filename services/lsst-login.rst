@@ -310,7 +310,9 @@ Configure Git LFS
 .. note::
 
    Although the material presented below remains valid, the shared stack from May 2020 onwards (:file:`/software/lsstsw/stack_20200504`) provides Git LFS as part of the environment: it is no longer necessary to explicitly run :command:`setup`, as described below (although it is still necessary to follow DM's :doc:`Git LFS guide </git/git-lfs>`.
-   The :command:`setup` step is only necessary for older shared stacks — those marked with ``toolchain: devtoolset-8`` (or ``-6``) in the table above.    **For newer shared stacks (``toolchain: Internal (Conda)``), they are not relevant.**
+   The :command:`setup` step is only necessary for older shared stacks — those marked with ``toolchain: devtoolset-8`` (or ``-6``) in the table above.
+   
+   For newer shared stacks (``toolchain: Internal (Conda)``), they are not relevant.
 
 After you have initialized a shared stack, you can enable Git LFS using EUPS:
 
