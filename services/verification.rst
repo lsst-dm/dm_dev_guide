@@ -3,11 +3,9 @@ Using the Verification Cluster
 ###################################################################
 
 .. ATTENTION::
-  **The legacy Slurm Verification Cluster will be turned off on Aug 31, 2020.**
+  **The legacy Slurm Verification Cluster will soon be refeshed.**
   
   It is being refreshed as the new general-use :doc:`Slurm Cluster <batch>`.
-
-The material presented below is for historical reference and will be removed in the future.
 
 ------------
 
