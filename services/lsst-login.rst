@@ -2,7 +2,7 @@
 Using the lsst-login Servers
 ############################
 
-The following login nodes are run by NCSA for access to select Rubin Observatory development resources:
+The following login nodes are run by NCSA for access to select Rubin Observatory development resources at NCSA:
 
 - ``lsst-login01.ncsa.illinois.edu``
 - ``lsst-login02.ncsa.illinois.edu``
@@ -138,7 +138,7 @@ To enable a particular Software Collection use the ``scl`` command. For example:
    Code compiled by different versions of GCC may not be compatible: it is generally better to stick to a particular toolchain for a given project.
    In particular, if you are using a :ref:`shared stack <lsst-login-loadlsst>` you *must* use the matching toolchain.
 
-You may wish to automatically enable a particular software collection every time you log in to ``lsst-login01`` and other Rubin Observatory systems at NCSA.
+You may wish to automatically enable a particular software collection every time you log in to ``lsst-login01`` and other Rubin Observatory development systems at NCSA.
 Take care if you do this: it's easy to accidentally to either start recursively spawning shells and run out of resources or lock yourself out of machines which don't have the particular collection you're interested in installed.
 If you are using `Bash`_ — the default shell on ``lsst-dev`` servers — try placing the following at the end of :file:`~/.bash_profile` and customising the list of ``desired_scls``.
 
@@ -182,7 +182,7 @@ Load the LSST Environment
 
 We provide a ready-to-use “shared” version of the LSST software stack to enable developers to get up and running quickly with no installation step.
 The shared stack includes a fully-fledged Miniconda-based Python environment, a selection of additional development tools, and a selection of builds of the lsst_distrib meta-package.
-It is located on GPFS-based network storage; as such, it is cross-mounted across a variety of Rubin Observatory systems at the Data Facility including those configured as part of the `HTCondor pool`_ and :doc:`Verification Cluster <verification>`.
+It is located on GPFS-based network storage; as such, it is cross-mounted across a variety of Rubin Observatory development systems at the Data Facility including those configured as part of the `HTCondor pool`_ and :doc:`Verification Cluster <verification>`.
 The currently stack is regularly updated to include the latest weekly release, which is tagged as ``current``.
 
 The following stacks are currently being updated:
@@ -331,7 +331,7 @@ Configure Remote Display with :command:`xpra`
 =============================================
 
 :command:`xpra` can be thought of as "screen for X" and offers advantages over VNC.
-It can be very handy and efficient for remote display to your machine from Rubin Observatory compute nodes (e.g., debugging with :command:`ds9`) because it is much faster than a regular X connection when you don't have a lot of bandwidth (e.g., working remotely), and it saves state between connections.
+It can be very handy and efficient for remote display to your machine from Rubin Observatory development compute nodes (e.g., debugging with :command:`ds9`) because it is much faster than a regular X connection when you don't have a lot of bandwidth (e.g., working remotely), and it saves state between connections.
 Here's how to use it:
 
 On ``lsst-login01``:
