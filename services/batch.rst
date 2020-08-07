@@ -1,8 +1,8 @@
-############################
-Using the LSST Batch Systems
-############################
+#########################################
+Using the Rubin Observatory Batch Systems
+#########################################
 
-NCSA hosts a few `HTCondor <https://research.cs.wisc.edu/htcondor/>`_ clusters and a `Slurm <https://slurm.schedmd.com/overview.html>`_ cluster for LSST. Of particular interest to LSST DM developers will be:
+NCSA hosts a few `HTCondor <https://research.cs.wisc.edu/htcondor/>`_ clusters and a `Slurm <https://slurm.schedmd.com/overview.html>`_ cluster for Rubin Observatory. Of particular interest to DM developers will be:
 
 - ``HTCondor DAC Cluster`` - general user HTCondor pool
 - ``HTCondor Prod Cluster`` - HTCondor pool for formal data products
@@ -20,8 +20,8 @@ This page is designed primarily to assist users of the ``HTCondor DAC Cluster`` 
 
 .. _batch-overview:
 
-LSST Batch Systems: Overview
-============================
+Rubin Observatory Batch Systems: Overview
+=========================================
 
 THe ``HTCondor DAC Cluster`` has the following submit (schedd) nodes from which users can submit jobs and run workflows:
 
@@ -41,8 +41,8 @@ To report system issues, log into `LSST JIRA <https://jira.lsstcorp.org/>`_ and 
 
 .. _batch-connect:
 
-LSST Batch Systems: Connecting and Authenticating
-=================================================
+Rubin Observatory Batch Systems: Connecting and Authenticating
+==============================================================
 
 The batch submit nodes can be accessed after first connecting to the :doc:`lsst-login <lsst-login>` nodes. Once connected to an ``lsst-login`` node a user can connect to a submit node via its short hostname (e.g., ``lsst-condordac-sub01``) without having to enter a password (Kerberos authentication should be used by default; if your Kerberos ticket expires on the login node you may need to ``kinit`` again before proceeding to the submit node).
 
@@ -66,8 +66,8 @@ If you using an ``lsst-login`` node as a "jump host" and are authenticating to a
 
 .. _batch-gpfs:
 
-LSST Batch Systems: GPFS Directory Spaces
-=========================================
+Rubin Observatory Batch Systems: GPFS Directory Spaces
+======================================================
 
 The nodes in the batch clusters utilize the General Parallel File System (GPFS) to provide shared storage across all of the nodes.
 
@@ -80,8 +80,8 @@ To add/change/delete datasets, see :doc:`Common Dataset Organization and Policy 
 
 .. _batch-stack:
 
-LSST Batch Systems: Shared Software Stack in GPFS
-=================================================
+Rubin Observatory Batch Systems: Shared Software Stack in GPFS
+==============================================================
 A shared software stack on the GPFS file systems, suitable for computation on the
 ``Verification Cluster``, has been provided and is maintained by Science Pipelines and
 is available under :file:`/software/lsstsw`.  This stack may be initialized via:  ::
@@ -397,7 +397,7 @@ Slurm Usage
 Slurm: Overview
 ---------------
 
-The ``Slurm Cluster`` is a cluster of servers run by NCSA for LSST DM development work. It uses `Slurm <https://slurm.schedmd.com/overview.html>`_ for scheduling and resource management.
+The ``Slurm Cluster`` is a cluster of servers run by NCSA for Rubin Observatory DM development work. It uses `Slurm <https://slurm.schedmd.com/overview.html>`_ for scheduling and resource management.
 
 Submit nodes for the ``Slurm Cluster`` are listed above at :ref:`batch-overview`. Users can submit jobs to Slurm from any of the submit nodes.
 
@@ -410,7 +410,7 @@ To report system issues, log into `LSST JIRA <https://jira.lsstcorp.org/>`_ and 
 SLURM: Job Submission
 ---------------------
 
-Documentation on using SLURM client commands and submitting jobs may be found at standard locations (e.g., a `quickstart guide <http://slurm.schedmd.com/quickstart.html>`_). In addition to the basic SLURM client commands, there are higher level tools that can serve to distribute jobs to a SLURM cluster, with one example being the combination of `pipe_drivers <https://github.com/lsst/pipe_drivers>`_ and `ctrl_pool <https://github.com/lsst/ctrl_pool>`_ within LSST DM. There are also likely updated batch tools available for use with LSST pipelines (although some may be designed for use with HTCondor). For exhaustive documentation and specific use cases, we refer the user to such resources.
+Documentation on using SLURM client commands and submitting jobs may be found at standard locations (e.g., a `quickstart guide <http://slurm.schedmd.com/quickstart.html>`_). In addition to the basic SLURM client commands, there are higher level tools that can serve to distribute jobs to a SLURM cluster, with one example being the combination of `pipe_drivers <https://github.com/lsst/pipe_drivers>`_ and `ctrl_pool <https://github.com/lsst/ctrl_pool>`_ within Rubin Observatory DM. There are also likely updated batch tools available for use with LSST pipelines (although some may be designed for use with HTCondor). For exhaustive documentation and specific use cases, we refer the user to such resources.
 
 On this page we display some simple examples for getting started with submitting jobs to the ``Slurm Cluster``.
 
