@@ -376,3 +376,22 @@ When you reattach, they'll reappear.
 
    The solution in this case is to start ``xpra`` in a separate shell where you haven't yet ``setup`` the Python 3 LSST Stack.
 
+.. note::
+
+   If you run into issues getting :command:`xpra` to authenticate when you attempt to attach, you may find that including explicit authentication options helps:
+
+   .. code-block:: bash
+
+      xpra attach -ssh="ssh -o='PreferredAuthentications=gssapi-with-mic,keyboard-interactive,password'" ssh:lsst-login01.ncsa.illinois.edu:100
+
+.. note::
+
+   It is possible to use xpra through a tunneled connection to an "interior" node that also has xpra, e.g., when using a login nodes as a "jump host" to reach a submit node, as described above, you may wish to use xpra on the submit node.
+   
+   First, make your tunneled connection to the destination host (as detailed above).
+   
+   Then attach xpra to the submit host by also telling xpra to jump/tunnel through the login node:
+
+   .. code-block:: bash
+
+      xpra attach ssh:lsst-condorprod-sub01.ncsa.illinois.edu:10 --ssh="ssh -J lsst-login01.ncsa.illinois.edu"
