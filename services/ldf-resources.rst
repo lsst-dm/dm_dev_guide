@@ -15,6 +15,7 @@ Machines:  (includes VM and Baremetal)
 ======================================
 
 - :doc:`lsst-login</services/lsst-login>` - login nodes, "jump" host to get into the NCSA lsst infrasturcture environment
+- lsst-dev - interactive developement nodes
 - lsst-web - web services machine 
 - VM server machines - running VMware vSphere software.   (@ NCSA 3003, NCSA NPCF) 
    - virtual machines for numberous development environments 
