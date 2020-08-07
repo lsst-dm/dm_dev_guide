@@ -2,7 +2,7 @@
 Overall Resources 
 ###########################
 
-These are the resources in a list form that are currently (8/10/2020) available to lsst developers.  
+These are the resources in a list form that are currently (8/10/2020) available to Rubin Observatory developers.  
 
 
 1. :ref:`Machines on the floor <machines>`.
@@ -14,7 +14,7 @@ These are the resources in a list form that are currently (8/10/2020) available 
 Machines:  (includes VM and Baremetal)
 ======================================
 
-- :doc:`lsst-login</services/lsst-login>` - login nodes, "jump" host to get into the NCSA lsst infrasturcture environment
+- :doc:`lsst-login</services/lsst-login>` - login nodes, "jump" host to get into the NCSA's Rubin Observatory infrasturcture environment
 - lsst-dev - interactive developement nodes
 - lsst-web - web services machine 
 - VM server machines - running VMware vSphere software.   (@ NCSA 3003, NCSA NPCF) 
@@ -46,7 +46,7 @@ Filesystems - in GPFS (4.9PB of storage)
 ========================================
 
 - ``/datasets`` - Long term storage of project-approved shared data, primarily precursor and simulated datasets. Contains immutable data. This is under a disaster recovery policy that every 30 days it is stored and written to nearline tape.
-- ``/lsstdata`` - Long term storage of LSST project data, including production, engineering, and test stand datasets. Contains immutable data. This is under a disaster recovery policy.
+- ``/lsstdata`` - Long term storage of Rubin Observatory project data, including production, engineering, and test stand datasets. Contains immutable data. This is under a disaster recovery policy.
 - ``/home`` - Storage of individual-user data. This data is backed up on a daily basis and ncsa retains 30 days of those backups in a snapshot.  It does have quotas on this file system for 1TB for each "directory", and a 1 million INODE quota.  
 - ``/software`` - Central location for maintenance of project-shared software installations that require access from multiple resources. (ie batch, Nebula).
 - ``/sui`` - Shared storage for ephemeral data for the purpose of supporting SUI/T in the PDAC enclave. This file system has no backups or purging.  
