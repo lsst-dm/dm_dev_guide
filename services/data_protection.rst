@@ -1,6 +1,6 @@
-###########################
-LSST Data Protection Policy
-###########################
+########################################
+Rubin Observatory Data Protection Policy
+########################################
 
 This policy is based, in part, on the understanding of the level of effort required for
 implementation(s) and operation and combined with resource capabilities
@@ -29,7 +29,7 @@ use must adhere to the following restrictions:
 
   - Resource usage is restricted to activities directly associated with the project’s development and integration activities during construction.
 
-  - Access is restricted to LSST project personnel and infrastructure personnel residing at NCSA.
+  - Access is restricted to Rubin Observatory project personnel and infrastructure personnel residing at NCSA.
 
   - All access is subject to vetting for security considerations.
 
@@ -115,7 +115,7 @@ Per File System Data Protection
 Capacity Restrictions
 ---------------------
 
-In order to guarantee sufficient capacity in support of LSST development and
+In order to guarantee sufficient capacity in support of Rubin Observatory development and
 integration efforts during the construction phase, quotas are imposed, as shown
 below, in order to limit resource consumption and encourage project staff
 members to further consider retention of ephemeral data.
