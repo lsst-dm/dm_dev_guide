@@ -1,6 +1,6 @@
-#########################################
-Using the Rubin Observatory Batch Systems
-#########################################
+#############################
+Using the Rubin Batch Systems
+#############################
 
 NCSA hosts a few `HTCondor <https://research.cs.wisc.edu/htcondor/>`_ clusters and a `Slurm <https://slurm.schedmd.com/overview.html>`_ cluster for Rubin Observatory. Of particular interest to DM developers will be:
 
@@ -20,8 +20,8 @@ This page is designed primarily to assist users of the ``HTCondor DAC Cluster`` 
 
 .. _batch-overview:
 
-Rubin Observatory Batch Systems: Overview
-=========================================
+Rubin Batch Systems: Overview
+=============================
 
 THe ``HTCondor DAC Cluster`` has the following submit (schedd) nodes from which users can submit jobs and run workflows:
 
@@ -41,8 +41,8 @@ To report system issues, log into `LSST JIRA <https://jira.lsstcorp.org/>`_ and 
 
 .. _batch-connect:
 
-Rubin Observatory Batch Systems: Connecting and Authenticating
-==============================================================
+Rubin Batch Systems: Connecting and Authenticating
+==================================================
 
 The batch submit nodes can be accessed after first connecting to the :doc:`lsst-login <lsst-login>` nodes. Once connected to an ``lsst-login`` node a user can connect to a submit node via its short hostname (e.g., ``lsst-condordac-sub01``) without having to enter a password (Kerberos authentication should be used by default; if your Kerberos ticket expires on the login node you may need to ``kinit`` again before proceeding to the submit node).
 
@@ -66,8 +66,8 @@ If you using an ``lsst-login`` node as a "jump host" and are authenticating to a
 
 .. _batch-gpfs:
 
-Rubin Observatory Batch Systems: GPFS Directory Spaces
-======================================================
+Rubin Batch Systems: GPFS Directory Spaces
+==========================================
 
 The nodes in the batch clusters utilize the General Parallel File System (GPFS) to provide shared storage across all of the nodes.
 
@@ -80,8 +80,8 @@ To add/change/delete datasets, see :doc:`Common Dataset Organization and Policy 
 
 .. _batch-stack:
 
-Rubin Observatory Batch Systems: Shared Software Stack in GPFS
-==============================================================
+Rubin Batch Systems: Shared Software Stack in GPFS
+==================================================
 A shared software stack on the GPFS file systems, suitable for computation on the
 ``Verification Cluster``, has been provided and is maintained by Science Pipelines and
 is available under :file:`/software/lsstsw`.  This stack may be initialized via:  ::
