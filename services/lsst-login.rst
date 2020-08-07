@@ -31,7 +31,7 @@ The ``lsst-login`` servers are primarily intended as bastions used to access oth
 - light :ref:`lsst-login-development` with short-running processes that require modest resources (e.g., build docs, short compilations against LSST software stack)
 - view files (e.g., FITS files)
 
-Users are encouraged to submit batch jobs to perform work that requires more significant resources.
+Users are encouraged to submit batch jobs to perform work that requires more significant resources. Please see :doc:`/services/batch` for more information.
 
 The ``lsst-login`` nodes have access to the :doc:`LDF file systems <storage>`.
 
@@ -97,7 +97,7 @@ You may also wish to reuse a single connection to/through an ``lsst-login`` node
 Development Work
 ================
 
-``lsst-login`` nodes can be used for (light) development work. Users are encouraged to utilize batch compute nodes when more significant resources are required.
+``lsst-login`` nodes can be used for (light) development work. Users are encouraged to utilize batch compute nodes when more significant resources are required. Please see :doc:`/services/batch` for more information.
 
 .. _lsst-login-tools:
 
