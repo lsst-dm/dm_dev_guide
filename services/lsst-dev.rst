@@ -39,7 +39,7 @@ Refer to :ref:`lsst-login-overview` for a general overview of LDF cluster resour
 Account Password
 ================
 
-You can log into Rubin Observatory development servers at NCSA with your NCSA account and password. You can reset your NCSA password at the following URL:
+You can log into Rubin development servers at NCSA with your NCSA account and password. You can reset your NCSA password at the following URL:
 
    - https://identity.lsst.org/reset
 
