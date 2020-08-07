@@ -4,9 +4,7 @@
 Using the HTCondor DAC Cluster
 ###################################################################
 
-This content has moved: :doc:`/services/batch`.
-
-The material presented below is for historical reference and will be removed in the future.
+.. ATTENTION:: This content has moved: :doc:`/services/batch`. The material presented below is for historical reference and will be removed in the future.
 
 ------------
 
