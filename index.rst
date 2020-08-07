@@ -502,7 +502,6 @@ Jenkins CI
    services/lsst-dev
    services/lsst-db
    services/batch
-   services/lsst-condor
    services/verification
    services/datasets
    services/data_protection
@@ -522,7 +521,6 @@ LSST Data Facility services
 - :doc:`services/lsst-dev`
 - :doc:`services/lsst-db`
 - :doc:`services/batch`
-- :doc:`services/lsst-condor`
 - :doc:`services/verification`
 - :doc:`services/datasets`
 - :doc:`services/data_protection`
