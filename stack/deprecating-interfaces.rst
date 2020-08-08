@@ -51,12 +51,14 @@ Class and static methods should be decorated in the order given here::
 
     class Foo:
         @classmethod
-        @deprecated(reason="This has been replaced with `mm()`. Will be removed after v10.", category=FutureWarning)
+        @deprecated(reason="This has been replaced with `mm()`. Will be removed after v10.",
+	            version="v9.0", category=FutureWarning)
         def cm(cls, x):
             pass
 
         @staticmethod
-        @deprecated(reason="This has been replaced with `mm()`. Will be removed after v10.", category=FutureWarning)
+        @deprecated(reason="This has been replaced with `mm()`. Will be removed after v10.",
+	            version="v9.0", category=FutureWarning)
         def sm(x):
             pass
 
@@ -64,7 +66,9 @@ The reason string should include the replacement API when available or explain w
 The reason string will be automatically added to the docstring for the class or function; there is no need to change that.
 The reason string must also specify the version after which the method may be removed, as discussed in :ref:`code_removal`.
 
-You do not need to specify the optional version argument to the decorator since deprecation decorators are typically not added in advance of when the deprecation actually begins.
+The version argument to the decorator specifies the next release, when the deprecation will be in effect but the interface has not yet been removed.
+It is not required that developers inserting deprecation decorators know exactly what the next release will be; they may use the next major release in the version argument, even if it is later than the actual first deprecation notice.
+
 Since our end users tend to be developers or at least may call APIs directly from notebooks, we will treat our APIs as end-user features and use ``category=FutureWarning`` instead of the default `DeprecationWarning`, which is primarily for Python developers.
 Do not use `PendingDeprecationWarning`.
 
@@ -74,12 +78,15 @@ pybind11 Deprecation
 A deprecated pybind11-wrapped function, method or class must be rewrapped in pure Python using the `lsst.utils.deprecate_pybind11` function, which defaults to ``category=FutureWarning``::
 
    from lsst.utils.deprecated import deprecate_pybind11
-   ExposureF.getCalib = deprecate_pybind11(ExposureF.getCalib,
-           reason="Replaced by getPhotoCalib. Will be removed after v18.")
+   ExposureF.getCalib = deprecate_pybind11(
+       ExposureF.getCalib,
+       reason="Replaced by getPhotoCalib. Will be removed after v18."
+       version="v17.0")
 
 If only one overload of a set is being deprecated, state that in the reason string.
 Over-warning is considered better than under-warning in this case.
 The reason string must also specify the version after which the function may be removed, as discussed in :ref:`code_removal`.
+The version argument specifies the upcoming release, at which time the deprecation will be in effect.
 
 
 .. note::
