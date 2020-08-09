@@ -4,11 +4,11 @@ Using the Rubin Batch Systems
 
 NCSA hosts a few `HTCondor <https://research.cs.wisc.edu/htcondor/>`_ clusters and a `Slurm <https://slurm.schedmd.com/overview.html>`_ cluster for Rubin Observatory. Of particular interest to DM developers will be:
 
-- ``HTCondor DAC Cluster`` - general user HTCondor pool
-- ``HTCondor Prod Cluster`` - HTCondor pool for formal data products
-- ``Slurm Cluster`` - general use Slurm cluster (replaces legacy Slurm "verification cluster")
+- **HTCondor DAC Cluster** - general user HTCondor pool
+- **HTCondor Prod Cluster** - HTCondor pool for formal data products
+- **Slurm Cluster** - general use Slurm cluster (replaces legacy Slurm "verification cluster")
 
-This page is designed primarily to assist users of the ``HTCondor DAC Cluster`` and ``Slurm Cluster``.
+This page is designed primarily to assist users of the **HTCondor DAC Cluster** and **Slurm Cluster**.
 
 #. :ref:`batch-overview`
 #. :ref:`batch-connect`
@@ -23,18 +23,18 @@ This page is designed primarily to assist users of the ``HTCondor DAC Cluster`` 
 Rubin Batch Systems: Overview
 =============================
 
-THe ``HTCondor DAC Cluster`` has the following submit (schedd) nodes from which users can submit jobs and run workflows:
+THe **HTCondor DAC Cluster** has the following submit (schedd) nodes from which users can submit jobs and run workflows:
 
 - ``lsst-condordac-sub01.ncsa.illinois.edu``
 - ``lsst-condordac-sub02.ncsa.illinois.edu``
 
-The ``HTCondor DAC Cluster`` also has a number of dedicated compute (startd) nodes configured with partitionable slots. Commands such as those described below in :ref:`batch-condor` can be used to view the resources available in the cluster.
+The **HTCondor DAC Cluster** also has a number of dedicated compute (``startd``) nodes configured with partitionable slots. Commands such as those described below in :ref:`batch-condor` can be used to view the resources available in the cluster.
 
-Access to the ``HTCondor Prod Cluster`` is restricted to users working formal data products. It has the following dedicated submit (schedd) nodes:
+Access to the **HTCondor Prod Cluster** is restricted to users working formal data products. It has the following dedicated submit (schedd) nodes:
 
 - ``lsst-condorprod-sub01.ncsa.illinois.edu``
 
-Jobs can be submitted to the ``Slurm Cluster`` from any of the above submit nodes.
+Jobs can be submitted to the **Slurm Cluster** from any of the above submit nodes.
 
 To report system issues, log into `LSST JIRA <https://jira.lsstcorp.org/>`_ and file a `JIRA ticket in the IT Helpdesk Support <https://ls.st/ihsticket>`_ project tagging NCSA as the responsible organization.
 
@@ -84,7 +84,9 @@ Rubin Batch Systems: Shared Software Stack in GPFS
 ==================================================
 A shared software stack on the GPFS file systems, suitable for computation on the
 ``Verification Cluster``, has been provided and is maintained by Science Pipelines and
-is available under :file:`/software/lsstsw`.  This stack may be initialized via:  ::
+is available under :file:`/software/lsstsw`.  This stack may be initialized via:
+
+.. code-block:: text
 
      % .  /software/lsstsw/stack/loadLSST.bash
 
@@ -98,7 +100,7 @@ HTCondor Usage
 HTCondor: Overview
 ------------------
 
-The ``HTCondor DAC Cluster`` and ``HTCondor Prod Cluster`` have intentionally been configured to be somewhat like traditional "batch" compute clusters. This makes them a little less traditional in relation to typical HTCondor pools. In particular:
+The **HTCondor DAC Cluster** and **HTCondor Prod Cluster** have intentionally been configured to be somewhat like traditional "batch" compute clusters. This makes them a little less traditional in relation to typical HTCondor pools. In particular:
 
 - nodes are organized into Nodesets (equivalent to queues or partitions)
 - jobs can be submitted to a particular Nodeset (a default Nodeset is applied if the user does not specify one)
@@ -106,11 +108,11 @@ The ``HTCondor DAC Cluster`` and ``HTCondor Prod Cluster`` have intentionally be
 - jobs are scheduled according to the default/requested Walltime; jobs that exceed their promised Walltime are killed
 - maintenance reservations can be set to facilitate preventing jobs from running during a full outage of the system
 
-That being said, the ``HTCondor DAC Cluster`` and ``HTCondor Prod Cluster`` are different from a traditional batch cluster, and HTCondor is different from Slurm, in various ways. Users familiar with HTCondor should find that they can submit jobs to these clusters and expect them to behave largely like standard HTCondor pools. Submitting a job without specifying a Nodeset or Walltime should result in the job running in the main (NORMAL) set of nodes with the long, default Walltime (3 days) essentially acting as a failsafe.
+That being said, the **HTCondor DAC Cluster** and **HTCondor Prod Cluster** are different from a traditional batch cluster, and HTCondor is different from Slurm, in various ways. Users familiar with HTCondor should find that they can submit jobs to these clusters and expect them to behave largely like standard HTCondor pools. Submitting a job without specifying a Nodeset or Walltime should result in the job running in the main (NORMAL) set of nodes with the long, default Walltime (3 days) essentially acting as a failsafe.
 
-NOTE: Walltime policies are somewhat more relaxed on the ``HTCondor Prod Cluster``.
+NOTE: Walltime policies are somewhat more relaxed on the **HTCondor Prod Cluster**.
 
-NOTE: MPI is not explicitly supported on the ``HTCondor DAC Cluster`` and ``HTCondor Prod Cluster``. These clusters are intended for use with Gen3 LSST middleware (rather than Gen2).
+NOTE: MPI is not explicitly supported on the **HTCondor DAC Cluster** and **HTCondor Prod Cluster**. These clusters are intended for use with Gen3 LSST middleware (rather than Gen2).
 
 To report system issues, log into `LSST JIRA <https://jira.lsstcorp.org/>`_ and file a `JIRA ticket in the IT Helpdesk Support <https://ls.st/ihsticket>`_ project tagging NCSA as the responsible organization.
 
@@ -138,7 +140,7 @@ Compute (startd) slots are organized by "Nodeset" (queue/partition) as follows:
 
 - default Nodeset
 - longer Walltime (def: 3 days; max: 30 days)
-- NOTE: there is no default walltime for the ``NORMAL`` Nodeset on the ``HTCondor Prod Cluster``
+- NOTE: there is no default walltime for the ``NORMAL`` Nodeset on the **HTCondor Prod Cluster**
 
 ``DEBUG``:
 
@@ -151,13 +153,13 @@ Compute (startd) slots are organized by "Nodeset" (queue/partition) as follows:
 - a submit node's Nodeset is equal to its short hostname
 - for local, priority job execution (for workflows)
 - longer Walltime (same as ``NORMAL``)
-- NOTE: there are no default or maximum walltimes for the ``<schedd>`` Nodesets on the ``HTCondor Prod Cluster``
+- NOTE: there are no default or maximum walltimes for the ``<schedd>`` Nodesets on the **HTCondor Prod Cluster**
 
 
 HTCondor: Shared and Local Storage
 ----------------------------------
 
-The nodes in the ``HTCondor DAC Cluster`` and ``HTCondor Prod Cluster`` all have access to the :doc:`GPFS shared filesystem <storage>` (including /datasets, /home, /project, /scratch, /software).
+The nodes in the **HTCondor DAC Cluster** and **HTCondor Prod Cluster** all have access to the :doc:`GPFS shared filesystem <storage>` (including /datasets, /home, /project, /scratch, /software).
 
 The HTCondor LOCAL_DIR mostly lives on local disk on each node. Notably the SPOOL sub-directory on each submit node takes advantage of a fast SSD RAID for better performance. The EXECUTE (job scratch) directory is located in GPFS scratch space in order to provide plenty of space.
 
@@ -169,8 +171,7 @@ HTCondor: Viewing Configuration Details
 
 The configuration of any HTCondor node can be viewed with the ``condor_config_val`` command, e.g.:
 
-.. code-block:: text
-
+/
     # config for the local node
     $ condor_config_val -dump
 
@@ -306,7 +307,7 @@ Again, ``man condor_submit`` offers more detailed information on this.
 HTCondor: Nodeset and Walltime
 ------------------------------
 
-The ``HTCondor DAC Cluster`` and ``HTCondor Prod Cluster`` have two custom parameters that a user might want to specify for their jobs:
+The **HTCondor DAC Cluster** and **HTCondor Prod Cluster** have two custom parameters that a user might want to specify for their jobs:
 
 ``Nodeset``: By default ``NORMAL`` is used but this can be explicitly specified or overridden at submission. Available Nodesets are discussed above at :ref:`batch-condor-nodesets`.
 
@@ -382,7 +383,7 @@ It is also possible to request additional resources at the command line as follo
 HTCondor: Running Workflows
 ---------------------------
 
-Workflow managers such as Dask and Pegasus can be used to launch jobs in the ``HTCondor DAC Cluster`` and ``HTCondor Prod Cluster``. The following ports have been set aside to support Dask workflows in particular but could be utilized for similar purposes:
+Workflow managers such as Dask and Pegasus can be used to launch jobs in the **HTCondor DAC Cluster** and **HTCondor Prod Cluster**. The following ports have been set aside to support Dask workflows in particular but could be utilized for similar purposes:
 
 - 20000-20999: Dask dashboard (Bokeh server), JupyterLab, etc. - these ports are open between all workers (compute nodes) and to/from workers and submit nodes
 - 29000-29999: Dask scheduler and Dask worker processes - these ports are not open but processes that need to listen locally for this type of purpose should be configured to use this range/a port within this range
@@ -397,24 +398,24 @@ Slurm Usage
 Slurm: Overview
 ---------------
 
-The ``Slurm Cluster`` is a cluster of servers run by NCSA for Rubin Observatory DM development work. It uses `Slurm <https://slurm.schedmd.com/overview.html>`_ for scheduling and resource management.
+The **Slurm Cluster** is a cluster of servers run by NCSA for Rubin DM development work. It uses `Slurm <https://slurm.schedmd.com/overview.html>`_ for scheduling and resource management.
 
-Submit nodes for the ``Slurm Cluster`` are listed above at :ref:`batch-overview`. Users can submit jobs to Slurm from any of the submit nodes.
+Submit nodes for the **Slurm Cluster** are listed above at :ref:`batch-overview`. Users can submit jobs to Slurm from any of the submit nodes.
 
-Users can view the compute resources available in the ``Slurm Cluster`` using commands such as ``sinfo -Nl``, ``scontrol show part``, and ``scontrol show node``.
+Users can view the compute resources available in the **Slurm Cluster** using commands such as ``sinfo -Nl``, ``scontrol show part``, and ``scontrol show node``.
 
-The nodes in the ``Slurm Cluster`` all have access to the :doc:`GPFS shared filesystem <storage>` (including /datasets, /home, /project, /scratch, /software).
+The nodes in the **Slurm Cluster** all have access to the :doc:`GPFS shared filesystem <storage>` (including /datasets, /home, /project, /scratch, /software).
 
 To report system issues, log into `LSST JIRA <https://jira.lsstcorp.org/>`_ and file a `JIRA ticket in the IT Helpdesk Support <https://ls.st/ihsticket>`_ project tagging NCSA as the responsible organization.
 
 SLURM: Job Submission
 ---------------------
 
-Documentation on using SLURM client commands and submitting jobs may be found at standard locations (e.g., a `quickstart guide <http://slurm.schedmd.com/quickstart.html>`_). In addition to the basic SLURM client commands, there are higher level tools that can serve to distribute jobs to a SLURM cluster, with one example being the combination of `pipe_drivers <https://github.com/lsst/pipe_drivers>`_ and `ctrl_pool <https://github.com/lsst/ctrl_pool>`_ within Rubin Observatory DM. There are also likely updated batch tools available for use with LSST pipelines (although some may be designed for use with HTCondor). For exhaustive documentation and specific use cases, we refer the user to such resources.
+Documentation on using SLURM client commands and submitting jobs may be found at standard locations (e.g., a `quickstart guide <http://slurm.schedmd.com/quickstart.html>`_). In addition to the basic SLURM client commands, there are higher level tools that can serve to distribute jobs to a SLURM cluster, with one example being the combination of `pipe_drivers <https://github.com/lsst/pipe_drivers>`_ and `ctrl_pool <https://github.com/lsst/ctrl_pool>`_ within Rubin DM. There are also likely updated batch tools available for use with LSST pipelines (although some may be designed for use with HTCondor). For exhaustive documentation and specific use cases, we refer the user to such resources.
 
-On this page we display some simple examples for getting started with submitting jobs to the ``Slurm Cluster``.
+On this page we display some simple examples for getting started with submitting jobs to the **Slurm Cluster**.
 
-The ``Slurm Cluster`` is configured with 2 queues (partitions):
+The **Slurm Cluster** is configured with 2 queues (partitions):
 
    - **normal**: more nodes, no run time limit.  For runs after your code is debugged.  Default.
    - **debug**:  ~1-2 nodes, 30 min run time limit.  For short testing & debugging runs.
@@ -423,7 +424,7 @@ The ``normal`` queue is the default, so any ``debug`` jobs will need to be told 
 
      #SBATCH -p debug
 
-To examine the current state and availability of the nodes in the ``Slurm Cluster``,
+To examine the current state and availability of the nodes in the **Slurm Cluster**,
 one can use the SLURM command  ``sinfo``::
 
      % sinfo
@@ -450,7 +451,7 @@ The Slurm configuration tracks historical usage but does not perform actual acco
 Slurm: Simple Jobs
 ------------------
 
-In submitting SLURM jobs to the ``Slurm Cluster`` it is advisable to have the software stack, data, and any utilities stored on the GPFS :file:`/scratch` , :file:`/datasets` , and/or :file:`/software` spaces so that all are reachable from both the submit node and each of the worker nodes.  Some simple SLURM job description files that make use of the ``srun`` command are shown in this section. These are submitted to the queue from a standard login shell on submit node using the SLURM client command ``sbatch``, and their status can be checked with the command ``squeue`` :
+In submitting SLURM jobs to the **Slurm Cluster** it is advisable to have the software stack, data, and any utilities stored on the GPFS :file:`/scratch` , :file:`/datasets` , and/or :file:`/software` spaces so that all are reachable from both the submit node and each of the worker nodes.  Some simple SLURM job description files that make use of the ``srun`` command are shown in this section. These are submitted to the queue from a standard login shell on submit node using the SLURM client command ``sbatch``, and their status can be checked with the command ``squeue`` :
 
 For a single task on a single node:
 
@@ -512,7 +513,7 @@ For these test submissions a user might submit from a working directory in the :
 Slurm: Interactive Jobs
 -----------------------
 
-A user can schedule and gain interactive access to ``Slurm Cluster`` compute nodes using the SLURM ``salloc`` command. Example usage is:
+A user can schedule and gain interactive access to **Slurm Cluster** compute nodes using the SLURM ``salloc`` command. Example usage is:
 
 For a single node: ::
 
