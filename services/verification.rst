@@ -2,6 +2,13 @@
 Using the Verification Cluster
 ###################################################################
 
+.. ATTENTION::
+  **The legacy Slurm Verification Cluster will soon be refeshed.**
+  
+  It is being refreshed as the new general-use :doc:`Slurm Cluster <batch>`.
+
+------------
+
 The ``Verification Cluster`` is a cluster of servers run by NCSA for LSST DM development work.
 
 To get an account, see the :doc:`Onboarding Checklist </team/onboarding>`.

@@ -2,7 +2,7 @@
 Using the lsst-dev Server
 #########################
 
-``lsst-dev`` is a set of servers run by NCSA for LSST DM development work.
+``lsst-dev`` is a set of servers run by NCSA for Rubin Observatory development work.
 The cname ``lsst-dev.ncsa.illinois.edu`` directs to ``lsst-dev01.ncsa.illinois.edu`` and this system serves as the primary development server for the team. There are currently 3 identical development servers to choose from:
 
 - ``lsst-dev01.ncsa.illinois.edu``
@@ -39,7 +39,7 @@ Refer to :ref:`lsst-login-overview` for a general overview of LDF cluster resour
 Account Password
 ================
 
-You can log into LSST development servers at NCSA with your NCSA account and password. You can reset your NCSA password at the following URL:
+You can log into Rubin development servers at NCSA with your NCSA account and password. You can reset your NCSA password at the following URL:
 
    - https://identity.lsst.org/reset
 

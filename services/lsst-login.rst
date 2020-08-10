@@ -2,7 +2,7 @@
 Using the lsst-login Servers
 ############################
 
-The following login nodes are run by NCSA for access to select LSST DM development resources:
+The following login nodes are run by NCSA for access to select Rubin Observatory development resources at NCSA:
 
 - ``lsst-login01.ncsa.illinois.edu``
 - ``lsst-login02.ncsa.illinois.edu``
@@ -31,7 +31,7 @@ The ``lsst-login`` servers are primarily intended as bastions used to access oth
 - light :ref:`lsst-login-development` with short-running processes that require modest resources (e.g., build docs, short compilations against LSST software stack)
 - view files (e.g., FITS files)
 
-Users are encouraged to submit batch jobs to perform work that requires more significant resources.
+Users are encouraged to submit batch jobs to perform work that requires more significant resources. Please see :doc:`/services/batch` for more information.
 
 The ``lsst-login`` nodes have access to the :doc:`LDF file systems <storage>`.
 
@@ -39,14 +39,14 @@ For system status and issues:
 
 - `Service status <https://confluence.lsstcorp.org/display/DM/LSST+Service+Status+page>`_ including announcements of upcoming planned down-time.
 - `Real-time system status <https://monitor-ncsa.lsst.org/>`_ (requires login).
-- To report system issues, `file a JIRA ticket <https://jira.lsstcorp.org/secure/CreateIssueDetails!init.jspa?pid=12200&issuetype=10901&priority=10000&customfield_12211=12223&components=14213>`_ in the IT Helpdesk Support (IHS) project.
+- To report system issues, log into `LSST JIRA <https://jira.lsstcorp.org/>`_ and file a `JIRA ticket in the IT Helpdesk Support <https://ls.st/ihsticket>`_ project tagging NCSA as the responsible organization.
 
 .. _lsst-login-connect:
 
 Connecting and Authenticating
 =============================
 
-You can log into LSST development servers at NCSA with your NCSA account as follows:
+You can log into Rubin Observatory development servers at NCSA with your NCSA account as follows:
 
    - NCSA username and password **OR** valid Kerberos ticket from workstation/laptop, **AND**
    - NCSA Duo authentication
@@ -97,7 +97,7 @@ You may also wish to reuse a single connection to/through an ``lsst-login`` node
 Development Work
 ================
 
-``lsst-login`` nodes can be used for (light) development work. Users are encouraged to utilize batch compute nodes when more significant resources are required.
+``lsst-login`` nodes can be used for (light) development work. Users are encouraged to utilize batch compute nodes when more significant resources are required. Please see :doc:`/services/batch` for more information.
 
 .. _lsst-login-tools:
 
@@ -138,7 +138,7 @@ To enable a particular Software Collection use the ``scl`` command. For example:
    Code compiled by different versions of GCC may not be compatible: it is generally better to stick to a particular toolchain for a given project.
    In particular, if you are using a :ref:`shared stack <lsst-login-loadlsst>` you *must* use the matching toolchain.
 
-You may wish to automatically enable a particular software collection every time you log in to ``lsst-login01`` and other LSST systems.
+You may wish to automatically enable a particular software collection every time you log in to ``lsst-login01`` and other Rubin Observatory development systems at NCSA.
 Take care if you do this: it's easy to accidentally to either start recursively spawning shells and run out of resources or lock yourself out of machines which don't have the particular collection you're interested in installed.
 If you are using `Bash`_ — the default shell on ``lsst-dev`` servers — try placing the following at the end of :file:`~/.bash_profile` and customising the list of ``desired_scls``.
 
@@ -182,7 +182,7 @@ Load the LSST Environment
 
 We provide a ready-to-use “shared” version of the LSST software stack to enable developers to get up and running quickly with no installation step.
 The shared stack includes a fully-fledged Miniconda-based Python environment, a selection of additional development tools, and a selection of builds of the lsst_distrib meta-package.
-It is located on GPFS-based network storage; as such, it is cross-mounted across a variety of LSST systems at the Data Facility including those configured as part of the `HTCondor pool`_ and :doc:`Verification Cluster <verification>`.
+It is located on GPFS-based network storage; as such, it is cross-mounted across a variety of Rubin Observatory development systems at the Data Facility including those configured as part of the `HTCondor pool`_ and :doc:`Verification Cluster <verification>`.
 The currently stack is regularly updated to include the latest weekly release, which is tagged as ``current``.
 
 The following stacks are currently being updated:
@@ -310,7 +310,9 @@ Configure Git LFS
 .. note::
 
    Although the material presented below remains valid, the shared stack from May 2020 onwards (:file:`/software/lsstsw/stack_20200504`) provides Git LFS as part of the environment: it is no longer necessary to explicitly run :command:`setup`, as described below (although it is still necessary to follow DM's :doc:`Git LFS guide </git/git-lfs>`.
-   The :command:`setup` step is still necessary for older stacks.
+   The :command:`setup` step is only necessary for older shared stacks — those marked with ``toolchain: devtoolset-8`` (or ``-6``) in the table above.
+   
+   For newer shared stacks (``toolchain: Internal (Conda)``), they are not relevant.
 
 After you have initialized a shared stack, you can enable Git LFS using EUPS:
 
@@ -329,7 +331,7 @@ Configure Remote Display with :command:`xpra`
 =============================================
 
 :command:`xpra` can be thought of as "screen for X" and offers advantages over VNC.
-It can be very handy and efficient for remote display to your machine from the LSST cluster (e.g., debugging with :command:`ds9`) because it is much faster than a regular X connection when you don't have a lot of bandwidth (e.g., working remotely), and it saves state between connections.
+It can be very handy and efficient for remote display to your machine from Rubin Observatory development compute nodes (e.g., debugging with :command:`ds9`) because it is much faster than a regular X connection when you don't have a lot of bandwidth (e.g., working remotely), and it saves state between connections.
 Here's how to use it:
 
 On ``lsst-login01``:
@@ -376,3 +378,22 @@ When you reattach, they'll reappear.
 
    The solution in this case is to start ``xpra`` in a separate shell where you haven't yet ``setup`` the Python 3 LSST Stack.
 
+.. note::
+
+   If you run into issues getting :command:`xpra` to authenticate when you attempt to attach, you may find that including explicit authentication options helps:
+
+   .. code-block:: bash
+
+      xpra attach -ssh="ssh -o='PreferredAuthentications=gssapi-with-mic,keyboard-interactive,password'" ssh:lsst-login01.ncsa.illinois.edu:100
+
+.. note::
+
+   It is possible to use xpra through a tunneled connection to an "interior" node that also has xpra, e.g., when using a login nodes as a "jump host" to reach a submit node, as described above, you may wish to use xpra on the submit node.
+   
+   First, make your tunneled connection to the destination host (as detailed above).
+   
+   Then attach xpra to the submit host by also telling xpra to jump/tunnel through the login node:
+
+   .. code-block:: bash
+
+      xpra attach ssh:lsst-condorprod-sub01.ncsa.illinois.edu:10 --ssh="ssh -J lsst-login01.ncsa.illinois.edu"

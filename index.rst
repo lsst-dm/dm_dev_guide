@@ -501,12 +501,11 @@ Jenkins CI
    services/lsst-login
    services/lsst-dev
    services/lsst-db
-   services/lsst-condor
+   services/batch
    services/verification
    services/datasets
    services/data_protection
    services/ncsa_bulk_transfer
-   services/nebula/index
    services/orchestration/index
    services/ldf-tickets
    services/ldf-resources
@@ -518,14 +517,14 @@ Jenkins CI
 LSST Data Facility services
 ---------------------------
 
-- :doc:`services/lsst-dev`
 - :doc:`services/lsst-login`
+- :doc:`services/lsst-dev`
 - :doc:`services/lsst-db`
+- :doc:`services/batch`
 - :doc:`services/verification`
 - :doc:`services/datasets`
 - :doc:`services/data_protection`
 - :doc:`services/ncsa_bulk_transfer`
-- :doc:`services/nebula/index`
 - :doc:`services/orchestration/index`
 - :doc:`services/ldf-tickets`
 - :doc:`services/ldf-resources`
