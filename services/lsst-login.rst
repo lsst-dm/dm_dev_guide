@@ -109,7 +109,7 @@ A relatively complete ``~/.ssh/config`` "recipe" for streamlining your SSH conne
       GSSAPIDelegateCredentials yes
       # configure OpenSSH Control Master "multiplexing" (to allow reuse of an initial connection)
       ControlMaster auto
-      ControlPath ~/.ssh/cm_socket/%r@%h:%p
+      ControlPath ~/.ssh/cm_socket_%r@%h:%p
       ControlPersist 24h
 
    # Define aliases onto full hostnames for each login node
