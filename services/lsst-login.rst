@@ -71,8 +71,11 @@ The Kerberos domain for the ``lsst-login`` servers is ``NCSA.EDU``, so something
 .. prompt:: bash $ auto
 
   kinit username@NCSA.EDU
+  
+  # you may get an error like this: 'kinit: Cannot find KDC for realm "NCSA.EDU" while getting initial credentials';
+  # if that's the case, the Kerberos config on the local machine may need to be updated with 'dns_lookup_kdc = true'
 
-You may wish to use an ``lsst-login`` node as a "jump host". If using OpenSSH on your local machine you can do this as follows:
+You may wish to use an ``lsst-login`` node as a "jump host" (a gateway to an interior node). If using OpenSSH on your local machine you can do this as follows:
 
 .. prompt:: bash $ auto
 
@@ -89,7 +92,7 @@ When using an ``lsst-login`` node as a "jump host" you may also wish to configur
       ProxyJump lsst-login01.ncsa.illinois.edu
       DynamicForward yourportnumber
 
-You may also wish to reuse a single connection to/through an ``lsst-login`` node via a control socket/multiplexing. This means you can authenticate to the login node once, and reuse that connection in a 2nd terminal without authenticating again. See for example
+You may also wish to reuse a single connection to/through an ``lsst-login`` node via an OpenSSH ControlMaster socket. This allows you to authenticate to the login node one time and reuse that initial connection to make additional connections without authenticating again. See for example
 `OpenSSH Cookbook - Multiplexing <https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Multiplexing>`_.
 
 A relatively complete ``~/.ssh/config`` "recipe" for streamlining your SSH connections (assuming OpenSSH, e.g., on Linux or macOS) through the ``lsst-login`` nodes might look like this:
@@ -175,6 +178,30 @@ With such config in ``~/.ssh/config`` on your local machine, your SSH connection
      OS: CentOS 7.8.2003   HW: Dell   CPU: 24x 2.60GHz   RAM: 252 GB
      Site: ncsa  DC: npcf  Cluster: condor_dac  Role: condor_submit
    [ncsauser@lsst-condordac-sub01 ~]$
+
+(3) Your control master master connection will persist in the background after your initial client connection terminates, according to the value of ``ControlPersist``. To terminate your control master connection immediately, do the following on your local machine:
+
+.. prompt:: bash $ auto
+
+   localuser@localmachine ~ % ssh -O exit lsst-login03
+   Exit request sent.
+   localuser@localmachine ~ %
+
+NOTE: This will break all connections in any terminals that depend on this master connection, e.g.:
+
+.. prompt:: bash $ auto
+
+   [ncsauser@lsst-condordac-sub01 ~]$ client_loop: send disconnect: Broken pipe
+   localuser@localmachine ~ %
+
+.. tip::
+
+   **More tips on working Kerberos tickets and OpenSSH ControlMaster**
+
+   - Your Kerberos ticket on your local machine will need to be renewed occasionally, which you can do with ``kinit -R``.
+   - Renewing the ticket on your local machine will not generally renew any tickets you have forwarded to remote machines. (NOTE: OpenSSH has a GSSAPIRenewalForcesRekey option that will cascade your ticket renewal out wherever you have forwarded them, however it is not implemented on all platforms, e.g. macOS.)
+   - The example above shows you can request a ticket with a maximum lifetime (25 hours) and maximum renewable life time (7 days), again, ``kinit -l 25h -r 7d ...``.
+   - If your local ticket expires before you renew it you will have to ``kinit`` (and authenticate with your password) to create a new ticket.
 
 .. _lsst-login-development:
 
