@@ -89,8 +89,92 @@ When using an ``lsst-login`` node as a "jump host" you may also wish to configur
       ProxyJump lsst-login01.ncsa.illinois.edu
       DynamicForward yourportnumber
 
-You may also wish to reuse a single connection to/through an ``lsst-login`` node via a control socket/multiplexing. See for example
+You may also wish to reuse a single connection to/through an ``lsst-login`` node via a control socket/multiplexing. This means you can authenticate to the login node once, and reuse that connection in a 2nd terminal without authenticating again. See for example
 `OpenSSH Cookbook - Multiplexing <https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Multiplexing>`_.
+
+A relatively complete ``~/.ssh/config`` "recipe" for streamlining your SSH connections (assuming OpenSSH, e.g., on Linux or macOS) through the ``lsst-login`` nodes might look like this:
+
+.. prompt:: bash $ auto
+
+   # Set common config for the lsst-login nodes
+   Host lsst-login*
+      # if your account on your local workstation/laptop does not match your LSST username, indicate the latter should be used;
+      # substitute your own NCSA username
+      User ncsausername               
+      # allow use of a Kerberos ticket on your local machine for auth to LSST machines
+      GSSAPIAuthentication yes   
+      # prefer Kerberos ticket auth, amongst other possibilities (order/include others as desired)
+      PreferredAuthentications gssapi-with-mic,keyboard-interactive,password
+      # forward your local Kerberos ticket to the login node if you need to continue to another LSST server after the login
+      GSSAPIDelegateCredentials yes
+      # configure OpenSSH Control Master "multiplexing" (to allow reuse of an initial connection)
+      ControlMaster auto
+      ControlPath ~/.ssh/cm_socket_%r@%h:%p
+      ControlPersist 5m
+
+   # Define aliases onto full hostnames for each login node
+   Host lsst-login01
+      HostName lsst-login01.ncsa.illinois.edu
+   Host lsst-login02
+      HostName lsst-login02.ncsa.illinois.edu
+   Host lsst-login03
+      HostName lsst-login03.ncsa.illinois.edu
+
+   # Define an alias and config for an internal node, which can only be reached through a login node
+   Host lsst-cnd-sub01
+      HostName lsst-condordac-sub01.ncsa.illinois.edu
+      # you may need to specify your NCSA username again
+      User ncsausername
+      # when connecting to this internal host, tunnel/jump through a login node (using an alias you defined above)
+      ProxyJump lsst-login01
+      # if you want to use your local Kerberos ticket to authenticate on the interior node, configure that:
+      GSSAPIAuthentication yes
+      PreferredAuthentications gssapi-with-mic
+      # if the internal node is a batch submit node where you might want a Kerberos ticket (e.g., to
+      # submit jobs to HTCondor), you can choose to forward your credentials:
+      GSSAPIDelegateCredentials yes
+      # if you need to configure port forwarding to the internal node, you can do that here;
+      # substitute your actual port number
+      DynamicForward yourportnumber
+
+With such config in ``~/.ssh/config`` on your local machine, your SSH connections can be significantly streamlined. Your experience may look like this:
+
+(1) Your first connection attempt involves typing your password once, on your local machine, along with a Duo push for the login node. There's no need to type your password on the login node or the internal node due to GSSAPI authentication. And your local Kerberos ticket is forwarded into your session on the internal node:
+
+.. prompt:: bash $ auto
+
+   localuser@localmachine ~ % kinit ncsauser@NCSA.EDU
+   ncsauser@NCSA.EDU's password: 
+   localuser@localmachine ~ % ssh lsst-cnd-sub01
+   Duo two-factor login for ncsauser
+   
+   Enter a passcode or select one of the following options:
+   
+    1. Duo Push to XXX-XXX-####
+   
+   Passcode or option (1-1): 1
+   Last login: Fri Aug 14 15:06:35 2020 from 141.142.181.18
+   lsst-condordac-sub01.ncsa.illinois.edu (141.142.181.231)
+     OS: CentOS 7.8.2003   HW: Dell   CPU: 24x 2.60GHz   RAM: 252 GB
+     Site: ncsa  DC: npcf  Cluster: condor_dac  Role: condor_submit
+   [ncsauser@lsst-condordac-sub01 ~]$ klist
+   Ticket cache: FILE:/tmp/krb5cc_11111_OrKJ2p97xr
+   Default principal: ncsauser@NCSA.EDU
+   
+   Valid starting       Expires              Service principal
+   08/14/2020 15:06:12  08/15/2020 01:05:59  krbtgt/NCSA.EDU@NCSA.EDU
+   [ncsauser@lsst-condordac-sub01 ~]$
+
+(2) In a 2nd terminal window, you can connect again without any need to authenticate whatsoever (thanks to your ControlMaster config):
+
+.. prompt:: bash $ auto
+
+   localuser@localmachine ~ % ssh lsst-cnd-sub01
+   Last login: Fri Aug 14 15:07:34 2020 from 141.142.181.18
+   lsst-condordac-sub01.ncsa.illinois.edu (141.142.181.231)
+     OS: CentOS 7.8.2003   HW: Dell   CPU: 24x 2.60GHz   RAM: 252 GB
+     Site: ncsa  DC: npcf  Cluster: condor_dac  Role: condor_submit
+   [ncsauser@lsst-condordac-sub01 ~]$
 
 .. _lsst-login-development:
 
