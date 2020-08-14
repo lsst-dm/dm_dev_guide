@@ -78,7 +78,7 @@ You may wish to use an ``lsst-login`` node as a "jump host". If using OpenSSH on
 
    Host lsst-someinternalhost.ncsa.illinois.edu
       User ncsausername
-      ProxyJump lsst-login.ncsa.illinois.edu
+      ProxyJump lsst-login01.ncsa.illinois.edu
 
 When using an ``lsst-login`` node as a "jump host" you may also wish to configure port forwarding through the lsst-login node to the internal cluster node. To do that you would include something like this in your OpenSSH config file:
 
@@ -86,7 +86,7 @@ When using an ``lsst-login`` node as a "jump host" you may also wish to configur
 
    Host lsst-someinternalhost.ncsa.illinois.edu
       User ncsausername
-      ProxyJump lsst-login.ncsa.illinois.edu
+      ProxyJump lsst-login01.ncsa.illinois.edu
       DynamicForward yourportnumber
 
 You may also wish to reuse a single connection to/through an ``lsst-login`` node via a control socket/multiplexing. See for example
