@@ -110,7 +110,7 @@ A relatively complete ``~/.ssh/config`` "recipe" for streamlining your SSH conne
       # configure OpenSSH Control Master "multiplexing" (to allow reuse of an initial connection)
       ControlMaster auto
       ControlPath ~/.ssh/cm_socket_%r@%h:%p
-      ControlPersist 24h
+      ControlPersist 5m
 
    # Define aliases onto full hostnames for each login node
    Host lsst-login01
