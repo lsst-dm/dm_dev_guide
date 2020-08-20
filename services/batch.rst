@@ -25,8 +25,10 @@ Rubin Batch Systems: Overview
 
 THe **HTCondor DAC Cluster** has the following submit (schedd) nodes from which users can submit jobs and run workflows:
 
+- ``lsst-devl01.ncsa.illinois.edu``
+- ``lsst-devl02.ncsa.illinois.edu`` (available Sep 14, 2020)
+- ``lsst-devl03.ncsa.illinois.edu`` (available Sep 14, 2020)
 - ``lsst-condordac-sub01.ncsa.illinois.edu``
-- ``lsst-condordac-sub02.ncsa.illinois.edu``
 
 The **HTCondor DAC Cluster** also has a number of dedicated compute (``startd``) nodes configured with partitionable slots. Commands such as those described below in :ref:`batch-condor` can be used to view the resources available in the cluster.
 
@@ -44,7 +46,7 @@ To report system issues, log into `LSST JIRA <https://jira.lsstcorp.org/>`_ and 
 Rubin Batch Systems: Connecting and Authenticating
 ==================================================
 
-The batch submit nodes can be accessed after first connecting to the :doc:`lsst-login <lsst-login>` nodes. Once connected to an ``lsst-login`` node a user can connect to a submit node via its short hostname (e.g., ``lsst-condordac-sub01``) without having to enter a password (Kerberos authentication should be used by default; if your Kerberos ticket expires on the login node you may need to ``kinit`` again before proceeding to the submit node).
+The batch submit nodes can be accessed after first connecting to the :doc:`lsst-login <lsst-login>` nodes. Once connected to an ``lsst-login`` node a user can connect to a submit node via its short hostname (e.g., ``lsst-devl01``) without having to enter a password (Kerberos authentication should be used by default; if your Kerberos ticket expires on the login node you may need to ``kinit`` again before proceeding to the submit node).
 
 For various suggestions on streamlining connections through the ``lsst-login`` nodes ("jump host" configuration, port forwarding, Kerberos) see :doc:`related documentation <lsst-login>`.
 
@@ -148,7 +150,7 @@ Compute (startd) slots are organized by "Nodeset" (queue/partition) as follows:
 - shorter Walltime (30 min)
 - NOTE: there may not be any nodes in the DEBUG nodeset during the earlier stages of our migration from Slurm to HTCondor
 
-``<schedd>`` e.g., ``lsst-condordac-sub01``:
+``<schedd>`` e.g., ``lsst-devl01``:
 
 - a submit node's Nodeset is equal to its short hostname
 - for local, priority job execution (for workflows)
@@ -328,9 +330,9 @@ Or at the command line:
 
 .. code-block:: text
 
-    $ condor_submit job.submit -append '+Nodeset="lsst-condordac-sub01"' -append '+Walltime=7200'
+    $ condor_submit job.submit -append '+Nodeset="lsst-devl01"' -append '+Walltime=7200'
 
-The above submits to the ``lsst-condordac-sub01`` Nodeset (that is, the partitionable slot local to that submit node) with a Walltime of 7200 seconds.
+The above submits to the ``lsst-dev01`` Nodeset (that is, the partitionable slot local to that submit node) with a Walltime of 7200 seconds.
 
 
 HTCondor: SSH to Running Job
@@ -525,12 +527,12 @@ For a single node: ::
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
                108     debug     bash    daues  R       0:58      1 lsst-verify-worker46
     % hostname -f
-    lsst-condordac-sub01.ncsa.illinois.edu
+    lsst-devl01.ncsa.illinois.edu
 
     % srun hostname -f
     lsst-verify-worker46.ncsa.illinois.edu
 
-One can observe that after the job resources have been granted, the user shell is still on the login node ``lsst-condordac-sub01``. The command ``srun`` can be utilized to run commands on the job's allocated compute nodes. Commands issued without ``srun``  will still be executed locally on ``lsst-condordac-sub01``.
+One can observe that after the job resources have been granted, the user shell is still on the node ``lsst-devl01``. The command ``srun`` can be utilized to run commands on the job's allocated compute nodes. Commands issued without ``srun``  will still be executed locally on ``lsst-devl01``.
 
 You can also use ``srun`` without first being allocated resources (via ``salloc``). For example, to immediately obtain a command-line prompt on a compute node: ::
 
