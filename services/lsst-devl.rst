@@ -52,14 +52,17 @@ Text Editors
 
 The following basic text editors are installed and available: ``vim``, ``emacs``, ``nano``
 
-Several LSST developers have setup integrations with their remote editors to connect through ``lsst-devl`` nodes (e.g. rsub/rmate, VSCode, tramp integrations). Ask peers for advice on how they do this.
+.. tip::
+
+   Several developers have setup integrations with their remote editors to connect through ``lsst-devl`` nodes (e.g. rsub/rmate, VSCode, tramp integrations). Ask peers for advice on how they do this.
+
 
 .. _lsst-devl-git:
 
 Git
 ---
 
-While most LSST developers use ``git`` from the :ref:`lsst-devl-stack`, a relatively recent version of git (2.24.x) is also installed from `IUS <https://ius.io/>`_ on the host. 
+While most developers use ``git`` from the :ref:`lsst-devl-stack`, a relatively recent version of ``git`` (2.24.x) is also installed as a package from `IUS YUM repo <https://ius.io/>`_ on the host. 
 
 .. _lsst-devl-terminal-multiplex:
 
@@ -172,6 +175,8 @@ Refer to :ref:`lsst-login-testdata` for details on validation and test data sets
 
 Processing Data
 ===============
+
+Users are encouraged to submit batch jobs to perform work that requires more significant resources. Refer to :doc:`/services/batch` for more information.
 
 .. _lsst-devl-processing-interactive:
 
