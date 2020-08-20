@@ -79,11 +79,11 @@ Compilers, Debuggers, & Build Tools
 
 In addition to developer tools provided by the :ref:`lsst-devl-stack`, the following tools are installed as OS packages:
 
-- **Compilers**: ``c``, ``c++``, and ``fortran``` from gcc 4.8.5
+- **Compilers**: ``c``, ``c++``, and ``fortran`` from gcc 4.8.5
 - **Debuggers**: ``glibc-debuginfo`` (i.e. ``gdb``)
 - **Build Tools**: ``autoconf``, ``automake``, ``bison``, ``blas``, ``byacc``, ``cmake``, ``flex``, ``fontconfig``, ``make``, ``valgrind``, ``yum-utils``, etc.
 
-Refer to :ref:`lsst-login-tools` for details on using optional ``devtoolset``s from SCL.
+Refer to :ref:`lsst-login-tools` for details on using an optional ``devtoolset`` from SCL.
 
 .. _lsst-devl-x11-xpra:
 
