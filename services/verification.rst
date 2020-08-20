@@ -3,10 +3,11 @@ Using the Verification Cluster
 ###################################################################
 
 .. ATTENTION::
-  **The legacy Slurm Verification Cluster will soon be refeshed.**
+  **The legacy Slurm Verification Cluster will be turned off on Oct 1, 2020.**
   
   It is being refreshed as the new general-use :doc:`Slurm Cluster <batch>`.
 
+The material presented below is for historical reference and will be removed in the future.
 ------------
 
 The ``Verification Cluster`` is a cluster of servers run by NCSA for LSST DM development work.

@@ -2,6 +2,15 @@
 Using the lsst-dev Server
 #########################
 
+.. ATTENTION::
+  **The lsst-dev servers will be turned off on Oct 1, 2020.**
+
+  It is being refreshed as the new general-use :doc:`Slurm Cluster <batch>`.
+  Developers should instead use :doc:`lsst-login <lsst-login>` and/or :doc:`lsst-devl <lsst-devl>` nodes.
+
+The material presented below is for historical reference and will be removed in the future.
+------------
+
 ``lsst-dev`` is a set of servers run by NCSA for Rubin Observatory development work.
 The cname ``lsst-dev.ncsa.illinois.edu`` directs to ``lsst-dev01.ncsa.illinois.edu`` and this system serves as the primary development server for the team. There are currently 3 identical development servers to choose from:
 

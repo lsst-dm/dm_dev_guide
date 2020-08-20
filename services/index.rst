@@ -5,10 +5,8 @@ LSST Data Facility services
 ###########################
 
 - :doc:`lsst-login`
-- :doc:`lsst-dev`
-- :doc:`lsst-db`
+- :doc:`lsst-devl`
 - :doc:`batch`
-- :doc:`verification`
 - :doc:`datasets`
 - :doc:`data_protection`
 - :doc:`ldf-tickets`
@@ -16,3 +14,6 @@ LSST Data Facility services
 - :doc:`ncsa_bulk_transfer`
 - :doc:`orchestration/index`
 - :doc:`storage`
+- :doc:`lsst-dev`
+- :doc:`lsst-db`
+- :doc:`verification`
