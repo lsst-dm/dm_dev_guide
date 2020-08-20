@@ -342,6 +342,7 @@ It is possible to SSH into the allocated slot of a running job as follows:
 
     $ condor_ssh_to_job <JobID>
 
+.. _batch-htcondor-interactive-job:
 
 HTCondor: Interactive Job
 -------------------------
