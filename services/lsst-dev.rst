@@ -9,6 +9,7 @@ Using the lsst-dev Server
   Developers should instead use :doc:`lsst-login <lsst-login>` and/or :doc:`lsst-devl <lsst-devl>` nodes.
 
 The material presented below is for historical reference and will be removed in the future.
+
 ------------
 
 ``lsst-dev`` is a set of servers run by NCSA for Rubin Observatory development work.

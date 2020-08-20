@@ -8,6 +8,7 @@ Using the lsst-dev-db Server
   Services that make use of this server should move to using alternate, supported databases.
 
 The material presented below is for historical reference and will be removed in the future.
+
 ------------
 
 ``lsst-dev-db`` is the development MySQL database server run by NCSA for LSST DM development work.

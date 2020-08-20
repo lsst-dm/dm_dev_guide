@@ -17,8 +17,8 @@ This page is designed to assist developers in their work on the ``lsst-devl`` se
 
 .. _lsst-devl-overview:
 
-lsst-devl: Overview
-=============================
+Overview
+========
 
 The ``lsst-devl`` nodes can be used for software development, new batch job submission, and longer running interactive work.
 Any intensive work requiring high CPU/memory usage, long running jobs, storage IO, etc. should be performed from ``lsst-devl`` nodes, rather than the ``lsst-login`` nodes.
@@ -32,8 +32,8 @@ To report system issues, log into `LSST JIRA <https://jira.lsstcorp.org/>`_ and 
 
 .. _lsst-devl-connect:
 
-lsst-devl: Connecting and Authenticating
-==================================================
+Connecting and Authenticating
+=============================
 
 The ``lsst-devl`` nodes can be accessed after first connecting to the :doc:`lsst-login <lsst-login>` nodes. Once connected to an ``lsst-login`` node a user can connect to a ``lsst-devl`` node via its short hostname (e.g., ``lsst-devl01``) without having to enter a password (Kerberos authentication should be used by default; if your Kerberos ticket expires on the login node you may need to ``kinit`` again before proceeding to the ``lsst-devl`` node).
 
@@ -43,8 +43,8 @@ If you using an ``lsst-login`` node as a "jump host" and are authenticating to a
 
 .. _lsst-devl-gpfs:
 
-lsst-devl: GPFS Directory Spaces
-==========================================
+GPFS Directory Spaces
+=====================
 
 The ``lsst-devl`` nodes utilize the General Parallel File System (GPFS) to provide shared storage across all of the nodes.
 
