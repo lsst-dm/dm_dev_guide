@@ -355,13 +355,6 @@ LSST Stack Python
 
 Refer to :doc:`/python/index` for more details on using Python from the LSST Stack.
 
-.. _software-stack-tasks:
-
-LSST Stack Tasks
-----------------
-
-(We need to add content related to using pipeline tasks from the LSST Stack)
-
 
 .. _software-data:
 
