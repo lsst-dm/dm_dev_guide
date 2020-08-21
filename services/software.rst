@@ -2,6 +2,8 @@
 Software Common to LDF Servers
 ##############################
 
+LSST developers have a set of common software packages and tools that are installed and available on many servers in the LDF.
+
 #. :ref:`software-overview`
 #. :ref:`software-connect`
 #. :ref:`software-system`
@@ -15,9 +17,7 @@ Software Common to LDF Servers
 Overview
 ========
 
-LSST developers have a set of common software packages and tools on many servers in the LDF.
-
-This page is designed to assist developers with common software available on :doc:`lsst-login <lsst-login>`, :doc:`lsst-devl <lsst-devl>`, and :doc:`batch <batch>` servers:
+This page is designed to assist developers with common software available on :doc:`lsst-login <lsst-login>`, :doc:`lsst-devl <lsst-devl>`, and :doc:`batch <batch>` servers.
 
 To report system issues, please submit an :doc:`IHS ticket <ldf-tickets>` tagging NCSA as the responsible organization.
 
@@ -26,9 +26,9 @@ To report system issues, please submit an :doc:`IHS ticket <ldf-tickets>` taggin
 Connecting and Authenticating
 =============================
 
-Most LDF server nodes can be accessed after first connecting to the :doc:`lsst-login <lsst-login>` nodes. Once connected to an ``lsst-login`` node a user can connect to a node via its short hostname (e.g., ``lsst-devl01``) without having to enter a password (Kerberos authentication should be used by default; if your Kerberos ticket expires on the login node you may need to ``kinit`` again before proceeding to the ``lsst-devl`` node).
+Most LDF server nodes can be accessed after first connecting to the :doc:`lsst-login <lsst-login>` nodes. Once connected to an ``lsst-login`` node a user can connect to a node via its short hostname (e.g., ``lsst-devl01``) without having to enter a password (Kerberos authentication should be used by default; if your Kerberos ticket expires on the login node you may need to ``kinit`` again before proceeding to the second node).
 
-For various suggestions on streamlining connections through the ``lsst-login`` nodes ("jump host" configuration, port forwarding, Kerberos) see :doc:`related documentation <lsst-login>`.
+For various suggestions on streamlining connections through the ``lsst-login`` nodes ("jump host" configuration, port forwarding, Kerberos) see :ref:`related documentation <lsst-login-connect>`.
 
 If you using an ``lsst-login`` node as a "jump host" and are authenticating to another server node using a Kerberos ticket from your local machine (workstation/laptop), you may not have a Kerberos ticket when you arrive on the second node. You may wish to configure ``GSSAPIDelegateCredentials yes`` in your local ``~/.ssh/config`` file in order to forward your Kerberos credentials to the second node and automatically create a ticket there upon connection.
 
@@ -72,7 +72,7 @@ Here are some tutorials for each:
 Compilers, Debuggers, & Build Tools
 -----------------------------------
 
-In addition to developer tools provided by the :ref:`software-stack`, the following tools are installed as OS packages:
+In addition to developer tools provided by the :ref:`software-stack`, the following tools are installed as system level packages:
 
 - **Compilers**: ``c``, ``c++``, and ``fortran`` from gcc 4.8.5
 - **Debuggers**: ``glibc-debuginfo`` (i.e. ``gdb``)
@@ -231,7 +231,7 @@ When you reattach, they'll reappear.
 Miscellaneous Packages
 ----------------------
 
-A few other developer resources are also installed directly as OS packages:
+A few other developer resources are also installed directly as system level packages:
 
 - ImageMagick
 - Midnight Commander
