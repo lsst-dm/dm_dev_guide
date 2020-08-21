@@ -198,12 +198,6 @@ NOTE: This will break all connections in any terminals that depend on this maste
    - The example above shows you can request a ticket with a maximum lifetime (25 hours) and maximum renewable life time (7 days), again, ``kinit -l 25h -r 7d ...``.
    - If your local ticket expires before you renew it you will have to ``kinit`` (and authenticate with your password) to create a new ticket.
 
-.. _lsst-login-development:
-.. _lsst-login-tools:
-.. _lsst-login-loadlsst:
-.. _lsst-login-testdata:
-.. _lsst-login-gitlfs:
-.. _lsst-login-xpra:
 .. _lsst-login-software:
 
 Common Software Available

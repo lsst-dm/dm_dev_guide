@@ -120,11 +120,6 @@ For more information on using SSH public/private keys:
 - `Using SSH Public Key Authentication <http://macnugget.org/projects/publickeys/>`_
 - `SSH Public Key Based Authentication Howto <http://www.cyberciti.biz/tips/ssh-public-key-based-authentication-how-to.html>`_
 
-.. _lsst-dev-tools:
-.. _lsst-dev-loadlsst:
-.. _lsst-dev-testdata:
-.. _lsst-dev-gitlfs:
-.. _lsst-dev-xpra:
 .. _lsst-dev-software:
 
 Common Software Available
