@@ -114,7 +114,7 @@ A few other developer resources are also installed directly as OS packages:
 LSST Software Stack
 ===================
 
-Refer to :doc:`</stack>` for more details on using the LSST Software Stack.
+Refer to `DM Stack guides <https://developer.lsst.io/stack/index.html>`_ for more details on using the LSST Software Stack.
 
 .. _lsst-devl-stack-shared:
 
@@ -137,7 +137,7 @@ Refer to :doc:`</stack/eups-tutorial>` and :doc:`</stack/lsstsw>` for more detai
 LSST Stack Python
 -----------------
 
-Refer to :doc:`</python>` for more details on using Python from the LSST Stack.
+Refer to `Python guides <https://developer.lsst.io/python/index.html>`_ for more details on using Python from the LSST Stack.
 
 .. _lsst-devl-stack-tasks:
 
