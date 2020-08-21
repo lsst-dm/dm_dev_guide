@@ -20,7 +20,7 @@ Overview
 ========
 
 The ``lsst-devl`` nodes can be used for software development, new batch job submission, and longer running interactive work.
-Intensive work requiring high CPU/memory usage, long running jobs, storage IO, etc. should be performed from ``lsst-devl`` nodes, rather than the ``lsst-login`` nodes.
+Intensive work requiring high CPU/memory usage, long running jobs, storage IO, etc. should be performed from ``lsst-devl`` nodes rather than the ``lsst-login`` nodes.
 There are 3 nearly identical ``lsst-devl`` servers to choose from:
 
 - ``lsst-devl01.ncsa.illinois.edu`` (Intel, 24core, 256G RAM)
@@ -54,7 +54,7 @@ The following basic text editors are installed and available: ``vim``, ``emacs``
 
 .. tip::
 
-   Several developers have setup integrations with their remote editors to connect through ``lsst-devl`` nodes (e.g. rsub/rmate, VSCode, tramp integrations). Ask peers for advice on how they do this.
+   Several developers have setup integrations with their remote editors to connect to ``lsst-devl`` nodes (e.g. rsub/rmate, VSCode, tramp integrations). Ask peers for advice on how they do this.
 
 
 .. _lsst-devl-git:
