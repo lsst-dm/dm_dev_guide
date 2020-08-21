@@ -125,7 +125,7 @@ A relatively complete ``~/.ssh/config`` "recipe" for streamlining your SSH conne
 
    # Define an alias and config for an internal node, which can only be reached through a login node
    Host lsst-cnd-sub01
-      HostName lsst-condordac-sub01.ncsa.illinois.edu
+      HostName lsst-devl01.ncsa.illinois.edu
       # you may need to specify your NCSA username again
       User ncsausername
       # when connecting to this internal host, tunnel/jump through a login node (using an alias you defined above)
@@ -157,16 +157,16 @@ With such config in ``~/.ssh/config`` on your local machine, your SSH connection
    
    Passcode or option (1-1): 1
    Last login: Fri Aug 14 15:06:35 2020 from 141.142.181.18
-   lsst-condordac-sub01.ncsa.illinois.edu (141.142.181.231)
+   lsst-devl01.ncsa.illinois.edu (141.142.181.231)
      OS: CentOS 7.8.2003   HW: Dell   CPU: 24x 2.60GHz   RAM: 252 GB
      Site: ncsa  DC: npcf  Cluster: condor_dac  Role: condor_submit
-   [ncsauser@lsst-condordac-sub01 ~]$ klist
+   [ncsauser@lsst-devl01 ~]$ klist
    Ticket cache: FILE:/tmp/krb5cc_11111_OrKJ2p97xr
    Default principal: ncsauser@NCSA.EDU
    
    Valid starting       Expires              Service principal
    08/14/2020 15:06:12  08/15/2020 01:05:59  krbtgt/NCSA.EDU@NCSA.EDU
-   [ncsauser@lsst-condordac-sub01 ~]$
+   [ncsauser@lsst-devl01 ~]$
 
 (2) In a 2nd terminal window, you can connect again without any need to authenticate whatsoever (thanks to your ControlMaster config):
 
@@ -174,10 +174,10 @@ With such config in ``~/.ssh/config`` on your local machine, your SSH connection
 
    localuser@localmachine ~ % ssh lsst-cnd-sub01
    Last login: Fri Aug 14 15:07:34 2020 from 141.142.181.18
-   lsst-condordac-sub01.ncsa.illinois.edu (141.142.181.231)
+   lsst-devl01.ncsa.illinois.edu (141.142.181.231)
      OS: CentOS 7.8.2003   HW: Dell   CPU: 24x 2.60GHz   RAM: 252 GB
      Site: ncsa  DC: npcf  Cluster: condor_dac  Role: condor_submit
-   [ncsauser@lsst-condordac-sub01 ~]$
+   [ncsauser@lsst-devl01 ~]$
 
 (3) Your control master master connection will persist in the background after your initial client connection terminates, according to the value of ``ControlPersist``. To terminate your control master connection immediately, do the following on your local machine:
 
@@ -191,7 +191,7 @@ NOTE: This will break all connections in any terminals that depend on this maste
 
 .. prompt:: bash $ auto
 
-   [ncsauser@lsst-condordac-sub01 ~]$ client_loop: send disconnect: Broken pipe
+   [ncsauser@lsst-devl01 ~]$ client_loop: send disconnect: Broken pipe
    localuser@localmachine ~ %
 
 .. tip::
