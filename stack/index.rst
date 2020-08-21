@@ -1,4 +1,4 @@
-:hidden:
+:orphan:
 
 ###############
 DM Stack guides
