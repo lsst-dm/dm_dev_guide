@@ -126,5 +126,5 @@ For more information on using SSH public/private keys:
 Common Software Available
 =========================
 
-Refer to :doc:`</services/software>` for more details about software available for use on ``lsst-dev`` nodes.
+Refer to :doc:`software` for more details about software available for use on ``lsst-dev`` nodes.
 

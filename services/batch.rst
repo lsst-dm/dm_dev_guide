@@ -84,7 +84,7 @@ To add/change/delete datasets, see :doc:`Common Dataset Organization and Policy 
 Common Software Available
 =========================
 
-Refer to :doc:`</services/software>` for more details about software available for use on Rubin Batch systems.
+Refer to :doc:`software` for more details about software available for use on Rubin Batch systems.
 
 
 .. _batch-condor:
