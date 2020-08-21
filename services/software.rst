@@ -78,6 +78,8 @@ In addition to developer tools provided by the :ref:`software-stack`, the follow
 - **Debuggers**: ``glibc-debuginfo`` (i.e. ``gdb``)
 - **Build Tools**: ``autoconf``, ``automake``, ``bison``, ``blas``, ``byacc``, ``cmake``, ``flex``, ``fontconfig``, ``make``, ``valgrind``, ``yum-utils``, etc.
 
+.. _software-devtoolset:
+
 Using SCL devtoolsets
 ---------------------
 
@@ -86,7 +88,7 @@ Using SCL devtoolsets
    Although the material presented below remains valid, the shared stack from May 2020 onwards (:file:`/software/lsstsw/stack_20200504`) provides the complete toolchain required for Science Pipelines development.
    It is no longer necessary to load a software collection to work with the shared stack.
 
-The ``lsst-login`` systems are configured with the latest CentOS 7.x as its operating system.
+The LDF server nodes are configured with the latest CentOS 7.x as its operating system.
 This release of CentOS provides an old set of development tools, centered around version 4.8.5 of the `GNU Compiler Collection`_ (GCC).
 Updated toolchains are made available through the “Software Collection” system.
 The following Software Collections are currently available:
@@ -94,8 +96,6 @@ The following Software Collections are currently available:
 ================ ===========
 Name             Description
 ================ ===========
-``devtoolset-6`` Updated compiler toolchain providing GCC 6.3.1.
-``devtoolset-7`` Updated compiler toolchain providing GCC 7.3.1.
 ``devtoolset-8`` Updated compiler toolchain providing GCC 8.3.1.
 ================ ===========
 
@@ -113,9 +113,9 @@ To enable a particular Software Collection use the ``scl`` command. For example:
 .. warning::
 
    Code compiled by different versions of GCC may not be compatible: it is generally better to stick to a particular toolchain for a given project.
-   In particular, if you are using a :ref:`shared stack <lsst-login-loadlsst>` you *must* use the matching toolchain.
+   In particular, if you are using a :ref:`shared stack <software-stack-shared>` you *must* use the matching toolchain.
 
-You may wish to automatically enable a particular software collection every time you log in to ``lsst-login01`` and other Rubin Observatory development systems at NCSA.
+You may wish to automatically enable a particular software collection every time you log in to systems at NCSA.
 Take care if you do this: it's easy to accidentally to either start recursively spawning shells and run out of resources or lock yourself out of machines which don't have the particular collection you're interested in installed.
 If you are using `Bash`_ — the default shell on ``lsst-dev`` servers — try placing the following at the end of :file:`~/.bash_profile` and customising the list of ``desired_scls``.
 
@@ -245,7 +245,7 @@ A few other developer resources are also installed directly as OS packages:
 LSST Software Stack
 ===================
 
-Refer to `DM Stack guides <https://developer.lsst.io/stack/index.html>`_ for more details on using the LSST Software Stack.
+Refer to :doc:`/stack/index` for more details on using the LSST Software Stack.
 
 .. _software-stack-shared:
 
@@ -289,7 +289,7 @@ Path                                    Toolchain        Description
 .. note::
 
    When using a shared stack, you *must* use the corresponding developer toolchain.
-   If this is listed in the table above as “Internal (Conda)” then no further action on your part is required; otherwise, see above for details of how to :ref:`lsst-login-tools`.
+   If this is listed in the table above as “Internal (Conda)” then no further action on your part is required; otherwise, see above for details of how to :ref:`software-devtoolset`.
 
 In addition, the following symbolic links point to particular versions of the stack:
 
@@ -346,14 +346,14 @@ Administrators may wish to note that the shared stack is automatically updated u
 LSST Stack Setup
 ----------------
 
-Refer to `EUPS Tutorial <https://developer.lsst.io/stack/eups-tutorial.html>`_ and `The LSST Software Build Tool <https://developer.lsst.io/stack/lsstsw.html>`_ for more details on setting up the LSST Stack and customizing it.
+Refer to :doc:`/stack/eups-tutorial` and :doc:`/stack/lsstsw` for more details on setting up the LSST Stack and customizing it.
 
 .. _software-stack-python:
 
 LSST Stack Python
 -----------------
 
-Refer to `Python guides <https://developer.lsst.io/python/index.html>`_ for more details on using Python from the LSST Stack.
+Refer to :doc:`/python/index` for more details on using Python from the LSST Stack.
 
 .. _software-stack-tasks:
 
