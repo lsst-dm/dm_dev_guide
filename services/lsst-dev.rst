@@ -25,11 +25,7 @@ This page is designed to assist developers in their work on the ``lsst-dev`` ser
 #. :ref:`lsst-dev-overview`
 #. :ref:`lsst-dev-password`
 #. :ref:`lsst-dev-ssh-keys`
-#. :ref:`lsst-dev-tools`
-#. :ref:`lsst-dev-loadlsst`
-#. :ref:`lsst-dev-testdata`
-#. :ref:`lsst-dev-gitlfs`
-#. :ref:`lsst-dev-xpra`
+#. :ref:`lsst-dev-software`
 
 .. _lsst-dev-overview:
 
@@ -124,37 +120,11 @@ For more information on using SSH public/private keys:
 - `Using SSH Public Key Authentication <http://macnugget.org/projects/publickeys/>`_
 - `SSH Public Key Based Authentication Howto <http://www.cyberciti.biz/tips/ssh-public-key-based-authentication-how-to.html>`_
 
-.. _lsst-dev-tools:
 
-Select Appropriate Developer Tools
-==================================
+.. _lsst-dev-software:
 
-Refer to :ref:`lsst-login-tools` for general notes on setting up software collection developer tools.
-
-.. _lsst-dev-loadlsst:
-
-Load the LSST Environment
+Common Software Available
 =========================
 
-Refer to :ref:`lsst-login-loadlsst` for notes on loading the LSST environment.
+Refer to :doc:`<software>` for more details about software available for use on ``lsst-dev`` nodes.
 
-.. _lsst-dev-testdata:
-
-Validation/Test Data Sets
-=========================
-
-Refer to :ref:`lsst-login-testdata` for notes on our validation and test data sets.
-
-.. _lsst-dev-gitlfs:
-
-Configure Git LFS
-=================
-
-Refer to :ref:`lsst-login-gitlfs` for notes on configuring Git LFS.
-
-.. _lsst-dev-xpra:
-
-Configure Remote Display with :command:`xpra`
-=============================================
-
-Refer to :ref:`lsst-login-xpra` for notes on configuring remote display with :command:`xpra`.
