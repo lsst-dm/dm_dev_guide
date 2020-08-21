@@ -130,7 +130,7 @@ Refer to :ref:`lsst-login-loadlsst` for details on loading and using the shared 
 LSST Stack Setup
 ----------------
 
-Refer to :doc:`</stack/eups-tutorial>` and :doc:`</stack/lsstsw>` for more details on setting up the LSST Stack and customizing it.
+Refer to `EUPS Tutorial <https://developer.lsst.io/stack/eups-tutorial.html>`_ and `The LSST Software Build Tool <https://developer.lsst.io/stack/lsstsw.html>`_ for more details on setting up the LSST Stack and customizing it.
 
 .. _lsst-devl-stack-python:
 
