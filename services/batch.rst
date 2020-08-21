@@ -23,7 +23,7 @@ This page is designed primarily to assist users of the **HTCondor DAC Cluster** 
 Rubin Batch Systems: Overview
 =============================
 
-THe **HTCondor DAC Cluster** has the following submit (schedd) nodes from which users can submit jobs and run workflows:
+The **HTCondor DAC Cluster** has the following submit (schedd) nodes from which users can submit jobs and run workflows:
 
 - ``lsst-devl01.ncsa.illinois.edu``
 - ``lsst-devl02.ncsa.illinois.edu`` (available Sep 14, 2020)
