@@ -5,7 +5,7 @@ Using the Verification Cluster
 .. ATTENTION::
   **The legacy Slurm Verification Cluster will be turned off on Oct 1, 2020.**
   
-  It is being refreshed as the new general-use :doc:`Slurm Cluster <batch>`.
+  It is being refreshed as the new general-use :doc:`Slurm Cluster <batch>`. Several compute nodes from the ``Verification Cluster`` have already been migrated to the :doc:`HTCondor pools <batch>` and the new :doc:`Slurm Cluster <batch>`.
 
 The material presented below is for historical reference and will be removed in the future.
 
