@@ -78,7 +78,7 @@ Please see :doc:`Storage Resources <storage>` for more general information.
 
 To add/change/delete datasets, see :doc:`Common Dataset Organization and Policy </services/datasets>`.
 
-
+.. _batch-stack:
 .. _batch-software:
 
 Common Software Available
