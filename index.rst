@@ -501,6 +501,7 @@ Jenkins CI
    services/lsst-login
    services/lsst-devl
    services/batch
+   services/software
    services/datasets
    services/data_protection
    services/ncsa_bulk_transfer
@@ -521,6 +522,7 @@ LSST Data Facility services
 - :doc:`services/lsst-login`
 - :doc:`services/lsst-devl`
 - :doc:`services/batch`
+- :doc:`services/software`
 - :doc:`services/datasets`
 - :doc:`services/data_protection`
 - :doc:`services/ncsa_bulk_transfer`
