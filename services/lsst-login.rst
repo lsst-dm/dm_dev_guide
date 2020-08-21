@@ -124,7 +124,7 @@ A relatively complete ``~/.ssh/config`` "recipe" for streamlining your SSH conne
       HostName lsst-login03.ncsa.illinois.edu
 
    # Define an alias and config for an internal node, which can only be reached through a login node
-   Host lsst-cnd-sub01
+   Host lsst-devl01
       HostName lsst-devl01.ncsa.illinois.edu
       # you may need to specify your NCSA username again
       User ncsausername
@@ -148,7 +148,7 @@ With such config in ``~/.ssh/config`` on your local machine, your SSH connection
 
    localuser@localmachine ~ % kinit ncsauser@NCSA.EDU
    ncsauser@NCSA.EDU's password: 
-   localuser@localmachine ~ % ssh lsst-cnd-sub01
+   localuser@localmachine ~ % ssh lsst-devl01
    Duo two-factor login for ncsauser
    
    Enter a passcode or select one of the following options:
@@ -172,7 +172,7 @@ With such config in ``~/.ssh/config`` on your local machine, your SSH connection
 
 .. prompt:: bash $ auto
 
-   localuser@localmachine ~ % ssh lsst-cnd-sub01
+   localuser@localmachine ~ % ssh lsst-devl01
    Last login: Fri Aug 14 15:07:34 2020 from 141.142.181.18
    lsst-devl01.ncsa.illinois.edu (141.142.181.231)
      OS: CentOS 7.8.2003   HW: Dell   CPU: 24x 2.60GHz   RAM: 252 GB
@@ -507,4 +507,4 @@ When you reattach, they'll reappear.
 
    .. code-block:: bash
 
-      xpra attach ssh:lsst-condorprod-sub01.ncsa.illinois.edu:10 --ssh="ssh -J lsst-login01.ncsa.illinois.edu"
+      xpra attach ssh:lsst-devl01.ncsa.illinois.edu:10 --ssh="ssh -J lsst-login01.ncsa.illinois.edu"

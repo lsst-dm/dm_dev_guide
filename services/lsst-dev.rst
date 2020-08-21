@@ -5,7 +5,6 @@ Using the lsst-dev Server
 .. ATTENTION::
   **The lsst-dev servers will be turned off on Oct 1, 2020.**
 
-  It is being refreshed as the new general-use :doc:`Slurm Cluster <batch>`.
   Developers should instead use :doc:`lsst-login <lsst-login>` and/or :doc:`lsst-devl <lsst-devl>` nodes.
 
 The material presented below is for historical reference and will be removed in the future.
