@@ -27,7 +27,7 @@ There are 3 nearly identical ``lsst-devl`` servers to choose from:
 - ``lsst-devl02.ncsa.illinois.edu`` (Intel, 24core, 256G RAM) (available Sep 14, 2020)
 - ``lsst-devl03.ncsa.illinois.edu`` (AMD, 32core, 256G RAM) (available Sep 14, 2020)
 
-To report system issues, log into `LSST JIRA <https://jira.lsstcorp.org/>`_ and file a `JIRA ticket in the IT Helpdesk Support <https://ls.st/ihsticket>`_ project tagging NCSA as the responsible organization.
+To report system issues, please submit an :doc:`IHS ticket <ldf-tickets>` tagging NCSA as the responsible organization.
 
 .. _lsst-devl-connect:
 
@@ -54,7 +54,7 @@ The following basic text editors are installed and available: ``vim``, ``emacs``
 
 .. tip::
 
-   Several developers have setup integrations with their remote editors to connect to ``lsst-devl`` nodes (e.g. rsub/rmate, VSCode, tramp integrations). Ask peers for advice on how they do this.
+   Several developers have setup integrations with their remote editors to connect to ``lsst-devl`` nodes (e.g. rsub/rmate, :doc:`VSCode </editors/vscode>`, :doc:`SublimeText </editors/sublime>`, tramp integrations). Ask peers for advice on how they do this.
 
 
 .. _lsst-devl-git:
@@ -114,6 +114,8 @@ A few other developer resources are also installed directly as OS packages:
 LSST Software Stack
 ===================
 
+Refer to :doc:`</stack>` for more details on using the LSST Software Stack.
+
 .. _lsst-devl-stack-shared:
 
 Shared Software Stack
@@ -128,15 +130,15 @@ Refer to :ref:`lsst-login-loadlsst` for details on loading and using the shared 
 LSST Stack Setup
 ----------------
 
-(Add content related to ``setup``, ``eups``, ``conda``, etc.)
+Refer to :doc:`</stack/eups-tutorial>` and :doc:`</stack/lsstsw>` for more details on setting up the LSST Stack and customizing it.
 
 .. _lsst-devl-stack-python:
 
 LSST Stack Python
 -----------------
 
-(Add content related to using ``python``, ``pip``, ``iPython``, ``jupyter``, etc. from the LSST Stack)
-	
+Refer to :doc:`</python>` for more details on using Python from the LSST Stack.
+
 .. _lsst-devl-stack-tasks:
 
 LSST Stack Tasks
@@ -176,7 +178,7 @@ Refer to :ref:`lsst-login-testdata` for details on validation and test data sets
 Processing Data
 ===============
 
-Users are encouraged to submit batch jobs to perform work that requires more significant resources. Refer to :doc:`/services/batch` for more information.
+Users are encouraged to submit batch jobs to perform work that requires more significant resources. Refer to :doc:`batch` for more information.
 
 .. _lsst-devl-processing-interactive:
 
@@ -198,5 +200,5 @@ Refer to :doc:`batch` for details on how to submit batch jobs.
 CRON Jobs
 =========
 
-CRON jobs are disabled by default for users of the ``lsst-devl`` nodes. If a CRON job is necessary, please submit an IHS ticket.
+CRON jobs are disabled by default for users of the ``lsst-devl`` nodes. If a CRON job is necessary, please submit an :doc:`IHS ticket <ldf-tickets>`.
 
