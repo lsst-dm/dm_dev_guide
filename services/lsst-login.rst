@@ -23,7 +23,7 @@ Overview
 
 The ``lsst-login`` servers are primarily intended as bastions used to access other resources at NCSA. Additional capabilities include:
 
-- light :ref:`lsst-login-development` with short-running processes that require modest resources (e.g., build docs, short compilations against LSST software stack)
+- light development with short-running processes that require modest resources (e.g., build docs, short compilations against LSST software stack)
 - view files (e.g., FITS files)
 
 Users are encouraged to submit batch jobs to perform work that requires more significant resources. Please see :doc:`/services/batch` for more information.
@@ -204,5 +204,5 @@ NOTE: This will break all connections in any terminals that depend on this maste
 Common Software Available
 =========================
 
-Refer to :doc:`<software>` for more details about software available for use on ``lsst-login`` nodes.
+Refer to :doc:`</services/software>` for more details about software available for use on ``lsst-login`` nodes.
 

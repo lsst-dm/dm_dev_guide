@@ -42,7 +42,7 @@ If you using an ``lsst-login`` node as a "jump host" and are authenticating to a
 Common Software Available
 =========================
 
-Refer to :doc:`<software>` for more details about software available for use on ``lsst-devl`` nodes.
+Refer to :doc:`</services/software>` for more details about software available for use on ``lsst-devl`` nodes.
 
 
 .. _lsst-devl-cron:

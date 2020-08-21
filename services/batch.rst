@@ -13,7 +13,7 @@ This page is designed primarily to assist users of the **HTCondor DAC Cluster** 
 #. :ref:`batch-overview`
 #. :ref:`batch-connect`
 #. :ref:`batch-gpfs`
-#. :ref:`batch-stack`
+#. :ref:`batch-software`
 #. :ref:`batch-condor`
 #. :ref:`batch-slurm`
 
@@ -79,17 +79,12 @@ Please see :doc:`Storage Resources <storage>` for more general information.
 To add/change/delete datasets, see :doc:`Common Dataset Organization and Policy </services/datasets>`.
 
 
-.. _batch-stack:
+.. _batch-software:
 
-Rubin Batch Systems: Shared Software Stack in GPFS
-==================================================
-A shared software stack on the GPFS file systems, suitable for computation on the
-``Verification Cluster``, has been provided and is maintained by Science Pipelines and
-is available under :file:`/software/lsstsw`.  This stack may be initialized via:
+Common Software Available
+=========================
 
-.. code-block:: text
-
-     % .  /software/lsstsw/stack/loadLSST.bash
+Refer to :doc:`</services/software>` for more details about software available for use on Rubin Batch systems.
 
 
 .. _batch-condor:
