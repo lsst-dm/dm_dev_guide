@@ -70,7 +70,7 @@ Here are some tutorials for each:
 .. _software-compilers:
 
 Compilers, Debuggers, and Build Tools
------------------------------------
+-------------------------------------
 
 In addition to developer tools provided by the :ref:`software-stack`, the following tools are installed as system level packages:
 
