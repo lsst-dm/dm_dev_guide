@@ -215,7 +215,7 @@ When you reattach, they'll reappear.
 
 .. note::
 
-   It is possible to use xpra through a tunneled connection to an "interior" node that also has xpra, e.g., when using a login nodes as a "jump host" to reach a `lsst-devl` node, you use use xpra on the "interior" node.
+   It is possible to use xpra through a tunneled connection to an "interior" node that also has xpra, e.g., when using a login nodes as a "jump host" to reach a :doc:`lsst-devl <lsst-devl>` node, you use use xpra on the "interior" node.
 
    First, make your tunneled connection to the destination host (as detailed above).
 
