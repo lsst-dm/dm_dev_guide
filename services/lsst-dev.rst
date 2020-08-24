@@ -4,6 +4,7 @@ Using the lsst-dev Server
 
 .. ATTENTION::
   **The lsst-dev servers will be turned off on Oct 1, 2020.**
+  (dev03 will be turned off Sept 21, dev02 turned off Sept 28, dev01 turned off Oct 1.)
 
   Developers should instead use :doc:`lsst-login <lsst-login>` and/or :doc:`lsst-devl <lsst-devl>` nodes.
 
