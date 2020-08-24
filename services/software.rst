@@ -26,7 +26,7 @@ To report system issues, please submit an :doc:`IHS ticket <ldf-tickets>` taggin
 Connecting and Authenticating
 =============================
 
-Most LDF server nodes can be accessed after first connecting to the :doc:`lsst-login <lsst-login>` nodes. Once connected to an ``lsst-login`` node a user can connect to a node via its short hostname (e.g., ``lsst-devl01``) without having to enter a password (Kerberos authentication should be used by default; if your Kerberos ticket expires on the login node you may need to ``kinit`` again before proceeding to the second node).
+Most LDF server nodes can be accessed after first connecting to the :doc:`lsst-login <lsst-login>` nodes. Once connected to an ``lsst-login`` node, a user can connect to a node via its short hostname (e.g., ``lsst-devl01``) without having to enter a password (Kerberos authentication should be used by default; if your Kerberos ticket expires on the login node you may need to ``kinit`` again before proceeding to the second node).
 
 For various suggestions on streamlining connections through the ``lsst-login`` nodes ("jump host" configuration, port forwarding, Kerberos) see :ref:`related documentation <lsst-login-connect>`.
 
@@ -42,7 +42,7 @@ System Level Software
 Text Editors
 ------------
 
-The following basic text editors are installed and available: ``vim``, ``emacs``, ``nano``
+The following text editors are installed and available: ``vim``, ``emacs``, ``nano``
 
 .. tip::
 
@@ -54,7 +54,7 @@ The following basic text editors are installed and available: ``vim``, ``emacs``
 Git
 ---
 
-While most developers use ``git`` from the :ref:`software-stack`, a relatively recent version of ``git`` (2.24.x) is also installed as a package from `IUS YUM repo <https://ius.io/>`_ on the host. 
+While most developers use ``git`` from the :ref:`software-stack`, a relatively recent version of ``git`` (2.24.x) is also installed as a package from the `IUS YUM repo <https://ius.io/>`_ on the host. 
 
 .. _software-terminal-multiplex:
 
@@ -69,7 +69,7 @@ Here are some tutorials for each:
 
 .. _software-compilers:
 
-Compilers, Debuggers, & Build Tools
+Compilers, Debuggers, and Build Tools
 -----------------------------------
 
 In addition to developer tools provided by the :ref:`software-stack`, the following tools are installed as system level packages:
@@ -115,7 +115,7 @@ To enable a particular Software Collection use the ``scl`` command. For example:
    Code compiled by different versions of GCC may not be compatible: it is generally better to stick to a particular toolchain for a given project.
    In particular, if you are using a :ref:`shared stack <software-stack-shared>` you *must* use the matching toolchain.
 
-You may wish to automatically enable a particular software collection every time you log in to systems at NCSA.
+You may wish to automatically enable a particular software collection every time you log in to LDF servers.
 Take care if you do this: it's easy to accidentally to either start recursively spawning shells and run out of resources or lock yourself out of machines which don't have the particular collection you're interested in installed.
 If you are using `Bash`_ — the default shell on LDF servers — try placing the following at the end of :file:`~/.bash_profile` and customising the list of ``desired_scls``.
 
@@ -154,12 +154,13 @@ If you are using `Bash`_ — the default shell on LDF servers — try placing th
 
 .. _software-x11-xpra:
 
-Configure Remote Display with :command:`xpra`
----------------------------------------------
+Configure Remote Display with Xpra
+----------------------------------
 
 :command:`xpra` can be thought of as "screen for X" and offers advantages over VNC.
 It can be very handy and efficient for remote display to your machine from Rubin Observatory development compute nodes (e.g., debugging with :command:`ds9`) because it is much faster than a regular X connection when you don't have a lot of bandwidth (e.g., working remotely), and it saves state between connections.
-Here's how to use it:
+
+Here is an example of how to use :command:`xpra`:
 
 On ``lsst-login01``:
 
@@ -219,7 +220,7 @@ When you reattach, they'll reappear.
 
    First, make your tunneled connection to the destination host (as detailed above).
 
-   Then attach xpra to the submit host by also telling xpra to jump/tunnel through the login node:
+   Then attach xpra to the "interior" host by also telling xpra to jump/tunnel through the login node:
 
    .. code-block:: bash
 
@@ -252,12 +253,12 @@ Refer to :doc:`/stack/index` for more details on using the LSST Software Stack.
 Shared Software Stack
 ---------------------
 
-A shared software stack on the GPFS file systems has been provided and is maintained by Science Pipelines and is available under :file:`/software/lsstsw`.
+A shared software stack on the GPFS file systems has been provided and is maintained by Science Pipelines. It is available under :file:`/software/lsstsw`.
 
-We provide this ready-to-use “shared” version of the LSST software stack to enable developers to get up and running quickly with no installation step.
+This ready-to-use “shared” version of the LSST software stack enables developers to get up and running quickly with no installation steps.
 The shared stack includes a fully-fledged Miniconda-based Python environment, a selection of additional development tools, and a selection of builds of the lsst_distrib meta-package.
-It is located on GPFS-based network storage; as such, it is cross-mounted across a variety of Rubin Observatory development systems at the Data Facility including those configured as part of the :ref:`batch-condor` and :ref:`batch-slurm`.
-The currently stack is regularly updated to include the latest weekly release, which is tagged as ``current``.
+It is located on GPFS-based network storage; as such, it is cross-mounted across a variety of Rubin Observatory development systems at the Data Facility, including those configured as part of the :doc:`Rubin Batch Systems <batch>`.
+The current stack is regularly updated to include the latest weekly release, which is tagged as ``current``.
 
 The following stacks are currently being updated:
 
@@ -289,7 +290,7 @@ Path                                    Toolchain        Description
 .. note::
 
    When using a shared stack, you *must* use the corresponding developer toolchain.
-   If this is listed in the table above as “Internal (Conda)” then no further action on your part is required; otherwise, see above for details of how to :ref:`software-devtoolset`.
+   If this is listed in the table above as “Internal (Conda)” then no further action on your part is required; otherwise, see above for details on :ref:`software-devtoolset`.
 
 In addition, the following symbolic links point to particular versions of the stack:
 
@@ -317,14 +318,14 @@ Add a shared stack to your environment and set up the latest build of the LSST a
 
       conda config --set changeps1 false
 
-Although the latest weeklies of LSST software are regularly installed into the shared stacks, the rest of their contents is held fixed (to avoid API or ABI incompatibilities with old stack builds).
+Although the latest weeklies of LSST software are regularly installed into the shared stacks, the rest of their content is held fixed (to avoid API or ABI incompatibilities with old stack builds).
 We therefore periodically retire old stacks and replace them with new ones.
 The following retired stacks are currently available:
 
 ======================================= ================ ===========
 Path                                    Toolchain        Description
 ======================================= ================ ===========
-:file:`/software/lsstsw/stack_20171023` ``devtoolset-6`` Provides a selection of weekly and release builds dating between October 2017 and October 2018.
+:file:`/software/lsstsw/stack_20171023` ``devtoolset-6`` Provides a selection of weekly and release builds dating from October 2017 to October 2018.
 :file:`/software/lsstsw/stack_20181012` ``devtoolset-6`` Provides weeklies ``w_2018_41`` through ``w_2019_12``; release candidates ``v17_0_rc1``, ``v17_0_rc2``, and ``v17_0_1_rc1``; and releases ``v_17_0`` and ``v_17_0_1``. Based on the pre-:jira:`RFC-584` Conda environment.
 :file:`/software/lsstsw/stack_20190330` ``devtoolset-6`` Provides weekly ``w_2019_12`` through ``w_2019_38`` and daily ``d_2019_09_30``. Based on the post-:jira:`RFC-584` Conda environment.
 :file:`/software/lsstsw/stack_20191001` ``devtoolset-8`` Provides weeklies ``w_2019_38`` through ``w_2019_42``.
@@ -379,10 +380,10 @@ To add/change/delete datasets, see :doc:`Common Dataset Organization and Policy 
 Validation/Test Data Sets
 -------------------------
 
-There are two ``cron`` jobs that will update a set of validation data repositories and test data repositories.
+There are two ``cron`` jobs that update a set of validation data repositories and test data repositories.
 In most cases, this will be a fairly straightforward ``git pull``, but if corruption is detected, the repository will be cloned afresh.
-The verification data are currently being used primarily by ``validate_drp`` to measure various metrics on the reduced data.
-The test data serve a variety of purposes, but generally are included via a ``setupOptional`` in a package table file.
+The verification data is currently being used primarily by ``validate_drp`` to measure various metrics on the reduced data.
+The test data serves a variety of purposes, but is generally included via a ``setupOptional`` in a package table file.
 
 Test data location is: ``/project/shared/data/test_data``
 
@@ -407,7 +408,7 @@ Included validation data repositories are::
   validation_data_cfht
 
 These are maintained by the ``lsstsw`` user (this is the same user that curates the shared stack).
-Please ask in the ``#dm-infrastructure`` Slack channel in case of problems.
+In case of any problems, please ask in the ``#dm-infrastructure`` Slack channel.
 
 
 .. _software-processing:

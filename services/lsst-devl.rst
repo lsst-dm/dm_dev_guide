@@ -16,7 +16,7 @@ This page is designed to assist developers in their work on the ``lsst-devl`` se
 Overview
 ========
 
-The ``lsst-devl`` nodes can be used for software development, new batch job submission, and longer running interactive work.
+The ``lsst-devl`` nodes can be used for software development, new batch job submissions, and longer running interactive work.
 Intensive work requiring high CPU/memory usage, long running jobs, storage IO, etc. should be performed from ``lsst-devl`` nodes rather than the ``lsst-login`` nodes.
 There are 3 nearly identical ``lsst-devl`` servers to choose from:
 
@@ -31,11 +31,11 @@ To report system issues, please submit an :doc:`IHS ticket <ldf-tickets>` taggin
 Connecting and Authenticating
 =============================
 
-The ``lsst-devl`` nodes can be accessed after first connecting to the :doc:`lsst-login <lsst-login>` nodes. Once connected to an ``lsst-login`` node a user can connect to a ``lsst-devl`` node via its short hostname (e.g., ``lsst-devl01``) without having to enter a password (Kerberos authentication should be used by default; if your Kerberos ticket expires on the login node you may need to ``kinit`` again before proceeding to the ``lsst-devl`` node).
+The ``lsst-devl`` nodes can be accessed after first connecting to the :doc:`lsst-login <lsst-login>` nodes. Once connected to an ``lsst-login`` node, a user can connect to a ``lsst-devl`` node via its short hostname (e.g., ``lsst-devl01``) without having to enter a password (Kerberos authentication should be used by default; if your Kerberos ticket expires on the login node, you may need to ``kinit`` again before proceeding to the ``lsst-devl`` node).
 
 For various suggestions on streamlining connections through the ``lsst-login`` nodes ("jump host" configuration, port forwarding, Kerberos) see :doc:`related documentation <lsst-login>`.
 
-If you using an ``lsst-login`` node as a "jump host" and are authenticating to a ``lsst-devl`` node using a Kerberos ticket from your local machine (workstation/laptop), you may not have a Kerberos ticket when you arrive on the ``lsst-devl`` node itself. You may wish to configure ``GSSAPIDelegateCredentials yes`` in your local ``~/.ssh/config`` file in order to forward your Kerberos credentials to the ``lsst-devl`` node and automatically create a ticket there upon connection.
+If you are using an ``lsst-login`` node as a "jump host" and are authenticating to a ``lsst-devl`` node using a Kerberos ticket from your local machine (workstation/laptop), you may not have a Kerberos ticket when you arrive on the ``lsst-devl`` node itself. You may wish to configure ``GSSAPIDelegateCredentials yes`` in your local ``~/.ssh/config`` file in order to forward your Kerberos credentials to the ``lsst-devl`` node and automatically create a ticket there upon connection.
 
 .. _lsst-devl-software:
 

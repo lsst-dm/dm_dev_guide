@@ -10,7 +10,7 @@ The following login nodes are run by NCSA for access to select Rubin Observatory
 
 To get an account, see the :doc:`Onboarding Checklist </team/onboarding>`.
 
-This page is designed to assist developers in use of the ``lsst-login`` servers:
+This page is designed to assist developers in the use of the ``lsst-login`` servers:
 
 #. :ref:`lsst-login-overview`
 #. :ref:`lsst-login-connect`
@@ -23,7 +23,7 @@ Overview
 
 The ``lsst-login`` servers are primarily intended as bastions used to access other resources at NCSA. Additional capabilities include:
 
-- light development with short-running processes that require modest resources (e.g., build docs, short compilations against LSST software stack)
+- light development with short-running processes that require modest resources (e.g., building docs, short compilations against LSST software stack)
 - view files (e.g., FITS files)
 
 Users are encouraged to submit batch jobs to perform work that requires more significant resources. Please see :doc:`/services/batch` for more information.
@@ -70,7 +70,7 @@ The Kerberos domain for the ``lsst-login`` servers is ``NCSA.EDU``, so something
   # you may get an error like this: 'kinit: Cannot find KDC for realm "NCSA.EDU" while getting initial credentials';
   # if that's the case, the Kerberos config on the local machine may need to be updated with 'dns_lookup_kdc = true'
 
-You may wish to use an ``lsst-login`` node as a "jump host" (a gateway to an interior node). If using OpenSSH on your local machine you can do this as follows:
+You may wish to use an ``lsst-login`` node as a "jump host" (a gateway to an interior node). If you are using OpenSSH on your local machine, you can do this as follows:
 
 .. prompt:: bash $ auto
 
@@ -78,7 +78,7 @@ You may wish to use an ``lsst-login`` node as a "jump host" (a gateway to an int
       User ncsausername
       ProxyJump lsst-login01.ncsa.illinois.edu
 
-When using an ``lsst-login`` node as a "jump host" you may also wish to configure port forwarding through the lsst-login node to the internal cluster node. To do that you would include something like this in your OpenSSH config file:
+When using an ``lsst-login`` node as a "jump host" you may also wish to configure port forwarding through the lsst-login node to the internal cluster node. To do that, you can include something like this in your OpenSSH config file:
 
 .. prompt:: bash $ auto
 
@@ -87,7 +87,7 @@ When using an ``lsst-login`` node as a "jump host" you may also wish to configur
       ProxyJump lsst-login01.ncsa.illinois.edu
       DynamicForward yourportnumber
 
-You may also wish to reuse a single connection to/through an ``lsst-login`` node via an OpenSSH ControlMaster socket. This allows you to authenticate to the login node one time and reuse that initial connection to make additional connections without authenticating again. See for example
+You may also wish to reuse a single connection to/through an ``lsst-login`` node via an OpenSSH ControlMaster socket. This allows you to authenticate to the login node once and reuse that initial connection to make additional connections without authenticating again. See, for example, 
 `OpenSSH Cookbook - Multiplexing <https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Multiplexing>`_.
 
 A relatively complete ``~/.ssh/config`` "recipe" for streamlining your SSH connections (assuming OpenSSH, e.g., on Linux or macOS) through the ``lsst-login`` nodes might look like this:
@@ -123,7 +123,7 @@ A relatively complete ``~/.ssh/config`` "recipe" for streamlining your SSH conne
       HostName lsst-devl01.ncsa.illinois.edu
       # you may need to specify your NCSA username again
       User ncsausername
-      # when connecting to this internal host, tunnel/jump through a login node (using an alias you defined above)
+      # when connecting to this internal host, tunnel/jump through a login node (using the alias you defined above)
       ProxyJump lsst-login01
       # if you want to use your local Kerberos ticket to authenticate on the interior node, configure that:
       GSSAPIAuthentication yes
@@ -137,7 +137,7 @@ A relatively complete ``~/.ssh/config`` "recipe" for streamlining your SSH conne
 
 With such config in ``~/.ssh/config`` on your local machine, your SSH connections can be significantly streamlined. Your experience may look like this:
 
-(1) Your first connection attempt involves typing your password once, on your local machine, along with a Duo push for the login node. There's no need to type your password on the login node or the internal node due to GSSAPI authentication. And your local Kerberos ticket is forwarded into your session on the internal node:
+(1) Your first connection attempt involves typing your password once on your local machine, along with a Duo push for the login node. There's no need to type your password on the login node or the internal node due to GSSAPI authentication. Your local Kerberos ticket is forwarded into your session on the internal node:
 
 .. prompt:: bash $ auto
 
@@ -174,7 +174,7 @@ With such config in ``~/.ssh/config`` on your local machine, your SSH connection
      Site: ncsa  DC: npcf  Cluster: condor_dac  Role: condor_submit
    [ncsauser@lsst-devl01 ~]$
 
-(3) Your control master master connection will persist in the background after your initial client connection terminates, according to the value of ``ControlPersist``. To terminate your control master connection immediately, do the following on your local machine:
+(3) Your control master connection will persist in the background after your initial client connection terminates, according to the value of ``ControlPersist``. To terminate your control master connection immediately, do the following on your local machine:
 
 .. prompt:: bash $ auto
 
@@ -182,7 +182,7 @@ With such config in ``~/.ssh/config`` on your local machine, your SSH connection
    Exit request sent.
    localuser@localmachine ~ %
 
-NOTE: This will break all connections in any terminals that depend on this master connection, e.g.:
+NOTE: This will break all connections in any terminal that depends on this master connection, e.g.:
 
 .. prompt:: bash $ auto
 
@@ -193,10 +193,10 @@ NOTE: This will break all connections in any terminals that depend on this maste
 
    **More tips on working Kerberos tickets and OpenSSH ControlMaster**
 
-   - Your Kerberos ticket on your local machine will need to be renewed occasionally, which you can do with ``kinit -R``.
-   - Renewing the ticket on your local machine will not generally renew any tickets you have forwarded to remote machines. (NOTE: OpenSSH has a GSSAPIRenewalForcesRekey option that will cascade your ticket renewal out wherever you have forwarded them, however it is not implemented on all platforms, e.g. macOS.)
-   - The example above shows you can request a ticket with a maximum lifetime (25 hours) and maximum renewable life time (7 days), again, ``kinit -l 25h -r 7d ...``.
-   - If your local ticket expires before you renew it you will have to ``kinit`` (and authenticate with your password) to create a new ticket.
+   - Your Kerberos ticket on your local machine will occasionally need to be renewed, which you can do with ``kinit -R``.
+   - Renewing the ticket on your local machine will not generally renew any tickets you have forwarded to remote machines. (NOTE: OpenSSH has a GSSAPIRenewalForcesRekey option that will cascade your ticket renewals out wherever you have forwarded them, however it is not implemented on all platforms, e.g. macOS.)
+   - The example above shows that you can request a ticket with a maximum lifetime (25 hours) and maximum renewable life time (7 days), again, ``kinit -l 25h -r 7d ...``.
+   - If your local ticket expires before you renew it, you will have to ``kinit`` (and authenticate with your password) to create a new ticket.
 
 .. _lsst-login-software:
 
