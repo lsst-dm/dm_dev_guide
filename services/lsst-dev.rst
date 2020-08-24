@@ -2,6 +2,16 @@
 Using the lsst-dev Server
 #########################
 
+.. ATTENTION::
+  **The lsst-dev servers will be turned off on Oct 1, 2020.**
+  (dev03 will be turned off Sept 21, dev02 turned off Sept 28, dev01 turned off Oct 1.)
+
+  Developers should instead use :doc:`lsst-login <lsst-login>` and/or :doc:`lsst-devl <lsst-devl>` nodes.
+
+The material presented below is for historical reference and will be removed in the future.
+
+------------
+
 ``lsst-dev`` is a set of servers run by NCSA for Rubin Observatory development work.
 The cname ``lsst-dev.ncsa.illinois.edu`` directs to ``lsst-dev01.ncsa.illinois.edu`` and this system serves as the primary development server for the team. There are currently 3 identical development servers to choose from:
 
@@ -16,11 +26,7 @@ This page is designed to assist developers in their work on the ``lsst-dev`` ser
 #. :ref:`lsst-dev-overview`
 #. :ref:`lsst-dev-password`
 #. :ref:`lsst-dev-ssh-keys`
-#. :ref:`lsst-dev-tools`
-#. :ref:`lsst-dev-loadlsst`
-#. :ref:`lsst-dev-testdata`
-#. :ref:`lsst-dev-gitlfs`
-#. :ref:`lsst-dev-xpra`
+#. :ref:`lsst-dev-software`
 
 .. _lsst-dev-overview:
 
@@ -115,37 +121,10 @@ For more information on using SSH public/private keys:
 - `Using SSH Public Key Authentication <http://macnugget.org/projects/publickeys/>`_
 - `SSH Public Key Based Authentication Howto <http://www.cyberciti.biz/tips/ssh-public-key-based-authentication-how-to.html>`_
 
-.. _lsst-dev-tools:
+.. _lsst-dev-software:
 
-Select Appropriate Developer Tools
-==================================
-
-Refer to :ref:`lsst-login-tools` for general notes on setting up software collection developer tools.
-
-.. _lsst-dev-loadlsst:
-
-Load the LSST Environment
+Common Software Available
 =========================
 
-Refer to :ref:`lsst-login-loadlsst` for notes on loading the LSST environment.
+Refer to :doc:`software` for more details about software available for use on ``lsst-dev`` nodes.
 
-.. _lsst-dev-testdata:
-
-Validation/Test Data Sets
-=========================
-
-Refer to :ref:`lsst-login-testdata` for notes on our validation and test data sets.
-
-.. _lsst-dev-gitlfs:
-
-Configure Git LFS
-=================
-
-Refer to :ref:`lsst-login-gitlfs` for notes on configuring Git LFS.
-
-.. _lsst-dev-xpra:
-
-Configure Remote Display with :command:`xpra`
-=============================================
-
-Refer to :ref:`lsst-login-xpra` for notes on configuring remote display with :command:`xpra`.

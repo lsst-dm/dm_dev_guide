@@ -499,10 +499,9 @@ Jenkins CI
    :hidden:
 
    services/lsst-login
-   services/lsst-dev
-   services/lsst-db
+   services/lsst-devl
    services/batch
-   services/verification
+   services/software
    services/datasets
    services/data_protection
    services/ncsa_bulk_transfer
@@ -511,6 +510,9 @@ Jenkins CI
    services/ldf-resources
    services/storage
    services/monitoring_applications
+   services/lsst-dev
+   services/lsst-db
+   services/verification
 
 .. _part-ldf:
 
@@ -518,10 +520,9 @@ LSST Data Facility services
 ---------------------------
 
 - :doc:`services/lsst-login`
-- :doc:`services/lsst-dev`
-- :doc:`services/lsst-db`
+- :doc:`services/lsst-devl`
 - :doc:`services/batch`
-- :doc:`services/verification`
+- :doc:`services/software`
 - :doc:`services/datasets`
 - :doc:`services/data_protection`
 - :doc:`services/ncsa_bulk_transfer`
@@ -530,3 +531,6 @@ LSST Data Facility services
 - :doc:`services/ldf-resources`
 - :doc:`services/storage`
 - :doc:`services/monitoring_applications`
+- :doc:`services/lsst-dev`
+- :doc:`services/lsst-db`
+- :doc:`services/verification`

@@ -13,7 +13,7 @@ This page is designed primarily to assist users of the **HTCondor DAC Cluster** 
 #. :ref:`batch-overview`
 #. :ref:`batch-connect`
 #. :ref:`batch-gpfs`
-#. :ref:`batch-stack`
+#. :ref:`batch-software`
 #. :ref:`batch-condor`
 #. :ref:`batch-slurm`
 
@@ -23,20 +23,21 @@ This page is designed primarily to assist users of the **HTCondor DAC Cluster** 
 Rubin Batch Systems: Overview
 =============================
 
-THe **HTCondor DAC Cluster** has the following submit (schedd) nodes from which users can submit jobs and run workflows:
+The **HTCondor DAC Cluster** has the following submit (schedd) nodes from which users can submit jobs and run workflows:
 
-- ``lsst-condordac-sub01.ncsa.illinois.edu``
-- ``lsst-condordac-sub02.ncsa.illinois.edu``
+- ``lsst-devl01.ncsa.illinois.edu``
+- ``lsst-devl02.ncsa.illinois.edu`` (available Sep 14, 2020)
+- ``lsst-devl03.ncsa.illinois.edu`` (available Sep 14, 2020)
 
 The **HTCondor DAC Cluster** also has a number of dedicated compute (``startd``) nodes configured with partitionable slots. Commands such as those described below in :ref:`batch-condor` can be used to view the resources available in the cluster.
 
-Access to the **HTCondor Prod Cluster** is restricted to users working formal data products. It has the following dedicated submit (schedd) nodes:
+Access to the **HTCondor Prod Cluster** is restricted to users working on formal data products. It has the following dedicated submit (schedd) nodes:
 
 - ``lsst-condorprod-sub01.ncsa.illinois.edu``
 
 Jobs can be submitted to the **Slurm Cluster** from any of the above submit nodes.
 
-To report system issues, log into `LSST JIRA <https://jira.lsstcorp.org/>`_ and file a `JIRA ticket in the IT Helpdesk Support <https://ls.st/ihsticket>`_ project tagging NCSA as the responsible organization.
+To report system issues, please submit an :doc:`IHS ticket <ldf-tickets>` tagging NCSA as the responsible organization.
 
 
 .. _batch-connect:
@@ -44,7 +45,7 @@ To report system issues, log into `LSST JIRA <https://jira.lsstcorp.org/>`_ and 
 Rubin Batch Systems: Connecting and Authenticating
 ==================================================
 
-The batch submit nodes can be accessed after first connecting to the :doc:`lsst-login <lsst-login>` nodes. Once connected to an ``lsst-login`` node a user can connect to a submit node via its short hostname (e.g., ``lsst-condordac-sub01``) without having to enter a password (Kerberos authentication should be used by default; if your Kerberos ticket expires on the login node you may need to ``kinit`` again before proceeding to the submit node).
+The batch submit nodes can be accessed after first connecting to the :doc:`lsst-login <lsst-login>` nodes. Once connected to an ``lsst-login`` node, a user can connect to a submit node via its short hostname (e.g., ``lsst-devl01``) without having to enter a password (Kerberos authentication should be used by default; if your Kerberos ticket expires on the login node you may need to ``kinit`` again before proceeding to the submit node).
 
 For various suggestions on streamlining connections through the ``lsst-login`` nodes ("jump host" configuration, port forwarding, Kerberos) see :doc:`related documentation <lsst-login>`.
 
@@ -61,7 +62,7 @@ In order to use HTCondor commands on the submit nodes you must have a valid Kerb
     # create a new Kerberos ticket
     $ kinit
 
-If you using an ``lsst-login`` node as a "jump host" and are authenticating to a submit node using a Kerberos ticket from your local machine (workstation/laptop), you may not have a Kerberos ticket when you arrive on the submit node itself. You can ``kinit`` on the submit node as described. Alternatively may wish to configure ``GSSAPIDelegateCredentials yes`` in your local ``~/.ssh/config`` file in order to forward your Kerberos credentials to the submit node and automatically create a ticket there upon connection.
+If you are using an ``lsst-login`` node as a "jump host" and are authenticating to a submit node using a Kerberos ticket from your local machine (workstation/laptop), you may not have a Kerberos ticket when you arrive on the submit node itself. You can ``kinit`` on the submit node as described. Alternatively, you may wish to configure ``GSSAPIDelegateCredentials yes`` in your local ``~/.ssh/config`` file in order to forward your Kerberos credentials to the submit node and automatically create a ticket there upon connection.
 
 
 .. _batch-gpfs:
@@ -77,18 +78,12 @@ Please see :doc:`Storage Resources <storage>` for more general information.
 
 To add/change/delete datasets, see :doc:`Common Dataset Organization and Policy </services/datasets>`.
 
+.. _batch-software:
 
-.. _batch-stack:
+Common Software Available
+=========================
 
-Rubin Batch Systems: Shared Software Stack in GPFS
-==================================================
-A shared software stack on the GPFS file systems, suitable for computation on the
-``Verification Cluster``, has been provided and is maintained by Science Pipelines and
-is available under :file:`/software/lsstsw`.  This stack may be initialized via:
-
-.. code-block:: text
-
-     % .  /software/lsstsw/stack/loadLSST.bash
+Refer to :doc:`software` for more details about software available for use on Rubin Batch systems.
 
 
 .. _batch-condor:
@@ -106,7 +101,7 @@ The **HTCondor DAC Cluster** and **HTCondor Prod Cluster** have intentionally be
 - jobs can be submitted to a particular Nodeset (a default Nodeset is applied if the user does not specify one)
 - jobs are submitted with a Walltime (a default Walltime is set if the user does not specify one; a maximum Walltime is configured per Nodeset)
 - jobs are scheduled according to the default/requested Walltime; jobs that exceed their promised Walltime are killed
-- maintenance reservations can be set to facilitate preventing jobs from running during a full outage of the system
+- maintenance reservations can be set up to facilitate preventing jobs from running during a full outage of the system
 
 That being said, the **HTCondor DAC Cluster** and **HTCondor Prod Cluster** are different from a traditional batch cluster, and HTCondor is different from Slurm, in various ways. Users familiar with HTCondor should find that they can submit jobs to these clusters and expect them to behave largely like standard HTCondor pools. Submitting a job without specifying a Nodeset or Walltime should result in the job running in the main (NORMAL) set of nodes with the long, default Walltime (3 days) essentially acting as a failsafe.
 
@@ -126,7 +121,7 @@ The submit (schedd) nodes also each have a subset of their own CPU and RAM resou
 
 Jobs can also be submitted to run in the Scheduler Universe (#7) on each submit (schedd) node. Default and maximum Walltime are currently not set for jobs submitted in the Scheduler Universe (#7).
 
-.. NOTE:: Use of the Scheduler Universe should be limited to workflow management processes. Such jobs would manage the sequence and execution of other "payload" job but would themselves be largely idle most of the time, despite potentially running for days.
+.. NOTE:: Use of the Scheduler Universe should be limited to workflow management processes. Such jobs would manage the sequence and execution of other "payload" jobs but would themselves be largely idle most of the time, despite potentially running for days.
 
 
 .. _batch-condor-nodesets:
@@ -148,7 +143,7 @@ Compute (startd) slots are organized by "Nodeset" (queue/partition) as follows:
 - shorter Walltime (30 min)
 - NOTE: there may not be any nodes in the DEBUG nodeset during the earlier stages of our migration from Slurm to HTCondor
 
-``<schedd>`` e.g., ``lsst-condordac-sub01``:
+``<schedd>`` e.g., ``lsst-devl01``:
 
 - a submit node's Nodeset is equal to its short hostname
 - for local, priority job execution (for workflows)
@@ -161,13 +156,13 @@ HTCondor: Shared and Local Storage
 
 The nodes in the **HTCondor DAC Cluster** and **HTCondor Prod Cluster** all have access to the :doc:`GPFS shared filesystem <storage>` (including /datasets, /home, /project, /scratch, /software).
 
-The HTCondor LOCAL_DIR mostly lives on local disk on each node. Notably the SPOOL sub-directory on each submit node takes advantage of a fast SSD RAID for better performance. The EXECUTE (job scratch) directory is located in GPFS scratch space in order to provide plenty of space.
+The HTCondor LOCAL_DIR mostly lives on local disk on each node. Notably, the SPOOL sub-directory on each submit node takes advantage of a fast SSD RAID for better performance. The EXECUTE (job scratch) directory is located in GPFS scratch space in order to provide plenty of space.
 
 The /tmp directory on each submit node is moderate in size. GPFS scratch space should be used when significant, temporary space is needed on submit nodes. Also note that /tmp is mapped into the HTCondor EXECUTE (job scratch) directory within Vanilla Universe (default, #5) jobs, so utilizing local /tmp storage on compute (startd) nodes will generally not be an option.
 
 
-HTCondor: Viewing Configuration Details
----------------------------------------
+HTCondor: View Configuration Details
+------------------------------------
 
 The configuration of any HTCondor node can be viewed with the ``condor_config_val`` command, e.g.:
 
@@ -178,7 +173,7 @@ The configuration of any HTCondor node can be viewed with the ``condor_config_va
     # config for another node in the pool
     $ condor_config_val -name nodename -dump
 
-    # view the value of a particular parameter (in this case the next maintenance scheduled in HTCondor)
+    # view the value of a particular parameter (in this case, the next maintenance scheduled in HTCondor)
     $ condor_config_val NEXTMAINTENANCE
 
 
@@ -244,7 +239,7 @@ HTCondor: Job Submission
 
 Jobs can be submitted with the ``condor_submit`` command. ``man condor_submit`` provides detailed information and there are many tutorials available on the web. But we can provide some very basic usage here.
 
-Details of the job request are usually provided in a "submit description file". Here this file will be called ``job.submit``. Our other submission materials will be an executable script (``test.sh``) and an input file (``test.in``). These look like this:
+Details of the job request are usually provided in a "submit description file". Here this file will be called ``job.submit``. Our other submission materials will be an executable script (``test.sh``) and an input file (``test.in``). They look like this:
 
 .. code-block:: text
 
@@ -275,13 +270,13 @@ Details of the job request are usually provided in a "submit description file". 
     # contents of "test.in" file
     this is my input
 
-The above job description file could be used in job submission as follows:
+The above job description file could be used for job submission as follows:
 
 .. code-block:: text
 
     $ condor_submit job.submit
 
-This would result in a job being queued and (hopefully) running. In this case it ran with JobID = 63.0 and resulted with an output file ``job.out.63.0`` with the following contents:
+This would result in a job being queued and (hopefully) running. In this case, it ran with JobID = 63.0 and resulted with an output file ``job.out.63.0`` with the following contents:
 
 .. code-block:: text
 
@@ -328,9 +323,9 @@ Or at the command line:
 
 .. code-block:: text
 
-    $ condor_submit job.submit -append '+Nodeset="lsst-condordac-sub01"' -append '+Walltime=7200'
+    $ condor_submit job.submit -append '+Nodeset="lsst-devl01"' -append '+Walltime=7200'
 
-The above submits to the ``lsst-condordac-sub01`` Nodeset (that is, the partitionable slot local to that submit node) with a Walltime of 7200 seconds.
+The above submits to the ``lsst-dev01`` Nodeset (that is, the partitionable slot local to that submit node) with a Walltime of 7200 seconds.
 
 
 HTCondor: SSH to Running Job
@@ -342,6 +337,7 @@ It is possible to SSH into the allocated slot of a running job as follows:
 
     $ condor_ssh_to_job <JobID>
 
+.. _batch-htcondor-interactive-job:
 
 HTCondor: Interactive Job
 -------------------------
@@ -418,7 +414,7 @@ On this page we display some simple examples for getting started with submitting
 The **Slurm Cluster** is configured with 2 queues (partitions):
 
    - **normal**: more nodes, no run time limit.  For runs after your code is debugged.  Default.
-   - **debug**:  ~1-2 nodes, 30 min run time limit.  For short testing & debugging runs.
+   - **debug**:  ~1-2 nodes, 30 min run time limit.  For short testing and debugging runs.
 
 The ``normal`` queue is the default, so any ``debug`` jobs will need to be told to run in the debug queue. This can be done by adding ``-p debug`` to your sbatch command line, or adding the following to your job's batch file::
 
@@ -443,7 +439,7 @@ one can use the SLURM command  ``sinfo``::
 
 In this view ``sinfo`` shows the nodes to reside within a single partition ``debug``, and the worker nodes show 24 possible cores on a node (hyperthreading is disabled).
 
-NOTE: The memory displayed per node by ``sinfo`` does not accurately reflect what is actually schedulable/usable. Please use ``scontrol show partition`` do see what is available (look for ``MaxMemPerNode``).
+NOTE: The memory displayed per node by ``sinfo`` does not accurately reflect what is actually schedulable/usable. Please use ``scontrol show partition`` to see what is available (look for ``MaxMemPerNode``).
 
 The Slurm configuration tracks historical usage but does not perform actual accounting per se (all jobs are submitted without an account), and places no quotas on users' total time usage. Historical usage can be displayed with the ``sacct`` command.
 
@@ -483,7 +479,7 @@ For a single task on a single node:
         JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
           109     debug     job1    daues  R       0:02      1 lsst-verify-worker11
 
-This example job was assigned jobid 109 by the Slurm scheduler, and consequently the standard output and error of the job were written to a default file :file:`slurm-109.out` in the current working directory. ::
+In this example, the job was assigned jobid 109 by the Slurm scheduler, and consequently the standard output and error of the job were written to a default file :file:`slurm-109.out` in the current working directory. ::
 
     % cat slurm-109.out
      lsst-verify-worker11.ncsa.illinois.edu
@@ -524,12 +520,12 @@ For a single node: ::
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
                108     debug     bash    daues  R       0:58      1 lsst-verify-worker46
     % hostname -f
-    lsst-condordac-sub01.ncsa.illinois.edu
+    lsst-devl01.ncsa.illinois.edu
 
     % srun hostname -f
     lsst-verify-worker46.ncsa.illinois.edu
 
-One can observe that after the job resources have been granted, the user shell is still on the login node ``lsst-condordac-sub01``. The command ``srun`` can be utilized to run commands on the job's allocated compute nodes. Commands issued without ``srun``  will still be executed locally on ``lsst-condordac-sub01``.
+One can observe that after the job resources have been granted, the user shell is still on the node ``lsst-devl01``. The command ``srun`` can be utilized to run commands on the job's allocated compute nodes. Commands issued without ``srun``  will still be executed locally on ``lsst-devl01``.
 
 You can also use ``srun`` without first being allocated resources (via ``salloc``). For example, to immediately obtain a command-line prompt on a compute node: ::
 
