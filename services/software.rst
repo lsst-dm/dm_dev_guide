@@ -30,7 +30,7 @@ Most LDF server nodes can be accessed after first connecting to the :doc:`lsst-l
 
 For various suggestions on streamlining connections through the ``lsst-login`` nodes ("jump host" configuration, port forwarding, Kerberos) see :ref:`related documentation <lsst-login-connect>`.
 
-If you using an ``lsst-login`` node as a "jump host" and are authenticating to another server node using a Kerberos ticket from your local machine (workstation/laptop), you may not have a Kerberos ticket when you arrive on the second node. You may wish to configure ``GSSAPIDelegateCredentials yes`` in your local ``~/.ssh/config`` file in order to forward your Kerberos credentials to the second node and automatically create a ticket there upon connection.
+If you use an ``lsst-login`` node as a "jump host" and authenticate to another server node using a Kerberos ticket from your local machine (workstation/laptop), you may not have a Kerberos ticket when you arrive on the second node. You can configure ``GSSAPIDelegateCredentials yes`` in your local ``~/.ssh/config`` file in order to forward your Kerberos credentials to the second node and automatically create a ticket there upon connection.
 
 .. _software-system:
 
@@ -117,7 +117,7 @@ To enable a particular Software Collection use the ``scl`` command. For example:
 
 You may wish to automatically enable a particular software collection every time you log in to systems at NCSA.
 Take care if you do this: it's easy to accidentally to either start recursively spawning shells and run out of resources or lock yourself out of machines which don't have the particular collection you're interested in installed.
-If you are using `Bash`_ — the default shell on ``lsst-dev`` servers — try placing the following at the end of :file:`~/.bash_profile` and customising the list of ``desired_scls``.
+If you are using `Bash`_ — the default shell on LDF servers — try placing the following at the end of :file:`~/.bash_profile` and customising the list of ``desired_scls``.
 
 .. code-block:: bash
 
@@ -215,7 +215,7 @@ When you reattach, they'll reappear.
 
 .. note::
 
-   It is possible to use xpra through a tunneled connection to an "interior" node that also has xpra, e.g., when using a login nodes as a "jump host" to reach a submit node, as described above, you may wish to use xpra on the submit node.
+   It is possible to use xpra through a tunneled connection to an "interior" node that also has xpra, e.g., when using a login nodes as a "jump host" to reach a `lsst-devl` node, you use use xpra on the "interior" node.
 
    First, make your tunneled connection to the destination host (as detailed above).
 
@@ -254,9 +254,9 @@ Shared Software Stack
 
 A shared software stack on the GPFS file systems has been provided and is maintained by Science Pipelines and is available under :file:`/software/lsstsw`.
 
-We provide a ready-to-use “shared” version of the LSST software stack to enable developers to get up and running quickly with no installation step.
+We provide this ready-to-use “shared” version of the LSST software stack to enable developers to get up and running quickly with no installation step.
 The shared stack includes a fully-fledged Miniconda-based Python environment, a selection of additional development tools, and a selection of builds of the lsst_distrib meta-package.
-It is located on GPFS-based network storage; as such, it is cross-mounted across a variety of Rubin Observatory development systems at the Data Facility including those configured as part of the `HTCondor pool`_ and :doc:`Verification Cluster <verification>`.
+It is located on GPFS-based network storage; as such, it is cross-mounted across a variety of Rubin Observatory development systems at the Data Facility including those configured as part of the :ref:`batch-condor` and :ref:`batch-slurm`.
 The currently stack is regularly updated to include the latest weekly release, which is tagged as ``current``.
 
 The following stacks are currently being updated:
@@ -380,7 +380,6 @@ Validation/Test Data Sets
 -------------------------
 
 There are two ``cron`` jobs that will update a set of validation data repositories and test data repositories.
-These updates will trigger overnight on the ``lsst-dev`` system.
 In most cases, this will be a fairly straightforward ``git pull``, but if corruption is detected, the repository will be cloned afresh.
 The verification data are currently being used primarily by ``validate_drp`` to measure various metrics on the reduced data.
 The test data serve a variety of purposes, but generally are included via a ``setupOptional`` in a package table file.
@@ -407,7 +406,7 @@ Included validation data repositories are::
   validation_data_decam
   validation_data_cfht
 
-These are maintained by the ``lsstsw`` user (this is the same user that curates the shared stack on the ``lsst-dev`` system).
+These are maintained by the ``lsstsw`` user (this is the same user that curates the shared stack).
 Please ask in the ``#dm-infrastructure`` Slack channel in case of problems.
 
 
