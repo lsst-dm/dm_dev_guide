@@ -77,7 +77,7 @@ In addition to developer tools provided by the :ref:`software-stack`, the follow
 - **Compilers**: ``c``, ``c++``, and ``fortran`` from gcc 4.8.5
 - **Debuggers**: ``glibc-debuginfo`` (i.e. ``gdb``)
 - **Build Tools**: ``autoconf``, ``automake``, ``bison``, ``blas``, ``byacc``, ``cmake``, ``flex``, ``fontconfig``, ``make``, ``valgrind``, ``yum-utils``, etc.
-- **Python**: ``python2`` / ``pip2`` (v2.7) and ``python3`` / ``pip3`` (v3.6)
+- **Python**: ``python3`` / ``pip3`` (v3.6)
 
 .. _software-devtoolset:
 
@@ -440,4 +440,3 @@ CRON Jobs
 =========
 
 CRON jobs are disabled by default for normal users. If a CRON job is necessary, please submit an :doc:`IHS ticket <ldf-tickets>`.
-
