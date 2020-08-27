@@ -511,15 +511,28 @@ For historical reasons, Science Pipelines code (nominally, all packages included
 - class names are ``CamelCase`` with leading uppercase,
 - module variables used as module global constants are ``UPPERCASE_WITH_UNDERSCORES``,
 
-but all other names are ``camelCase`` with leading lowercase.
+but all other names are traditionally ``camelCase`` with leading lowercase, and local (class, file, module) consistency in naming is important.
 In particular:
 
 .. _style-guide-py-naming-attributes:
 .. _style-guide-py-naming-functions:
 
-- Class Attribute Names SHOULD be camelCase with leading lowercase (Error code: N803).
-- Module methods (free functions) SHOULD be camelCase with leading lowercase (Error code: N802)
-- Compound variable names SHOULD be camelCase with leading lowercase (Error code: N806).
+- Class Attribute Names MAY be camelCase with leading lowercase (Error code: N803).
+- Module methods (free functions) MAY be camelCase with leading lowercase (Error code: N802)
+- Compound variable names MAY be camelCase with leading lowercase (Error code: N806).
+
+Recognizing that this style is becoming less common in Python at large, new Science Pipelines code MAY also be be written in full :pep:`8` style, according to the following guidelines:
+
+- :pep:`8` style ("snake_case") public names are preferred in "primarily new" code, such as new modules and classes that do not primarily implement an existing camelCase interface.
+  "snake_case" local variables names are similarly preferred in new functions, even functions with a camelCase public API.
+  The strict definition of "primarily new code" is case by case and left to developer judgement.
+
+- camelCase is still permitted in new code, and is preferred when adding public methods, arguments, and attributes to existing classes with an established camelCase API, or making modifications to existing functions with camelCase local variables.
+
+- Under no circumstances should the Python side of a pybind11-wrapped C++ function use a different naming convention than the C++ function.  C++ naming conventions and the guidelines for applying them in new/old code are no different from those of Python, but it is never permitted to just change things at the pybind11 level; either both C++ and Python or neither should be changed.
+
+Changing existing names from camelCase to snake_case is generally discouraged as unnecessary churn, and should only be done in highly localized code (e.g. individual function bodies) that already being extensively modified.
+Name changes to public interfaces are of course API changes, and must go through the usual RFC and deprecation procedure.
 
 .. _style-guide-py-naming-class-modules:
 
@@ -597,10 +610,10 @@ When working with an established part of the codebase — editing an existing fi
 
 .. _style-guide-py-file-name:
 
-A Python source file name SHOULD be camelCase-with-leading-lowercase and ending in '.py'
-----------------------------------------------------------------------------------------
+A Python source file name SHOULD be camelCase-with-leading-lowercase or snake_case, and end in '.py'
+----------------------------------------------------------------------------------------------------
 
-A module containing a single class should be a ``camelCase``-with-leading-lowercase transliteration of the class's name.
+A module containing a single class should be a ``camelCase``-with-leading-lowercase transliteration of the class's name (if the code within primarily adheres to the older, camelCase version of :ref:`Science Pipelines naming conventions <style-guide-py-sci-pi-naming>`) or a snake_case version of the class's name (if the code within primarily adheres to the full :pep:`8` naming conventions).
 
 Test files must have the form ``test_{description}.py`` for compatibility with Pytest.
 The name of a test case should be descriptive without the need for a trailing numeral to distinguish one test case from another.

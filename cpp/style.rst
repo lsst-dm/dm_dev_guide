@@ -195,16 +195,19 @@ The capitalization rule for class names should be all words in the name capitali
 
 .. _style-guide-cpp-3-2:
 
-3-2. Variable names MUST be in mixed case starting with lower case.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+3-2. Variable names MUST be camelCase or snake_case.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: cpp
 
    int lineWidth;
+   // OR, in primarily new code:
+   int line_width;
 
-Common practice in the C++ development community.
-Makes variables easy to distinguish from types, and effectively resolves potential naming collision as in the declaration Line line.
-Keep variable names balanced between short and longer, more meaningful.
+While the broader C++ community has not strongly converged on either of these styles, the Python community has converged towards snake_case while much of our code is historically camelCase, and consistency between our C++ and Python code is our priority in naming conventions.
+See :ref:`style-guide-py-naming` for guidelines for when to use each style.
+
+In general, keep variable names balanced between short and longer, more meaningful.
 Use 8 to 20 characters as a guideline (excluding integer loop counters which may be as little as 1 character).
 
 .. _style-guide-cpp-3-3:
@@ -239,8 +242,8 @@ Note that this rule applies only to ``const`` variables that represent constants
 
 .. _style-guide-cpp-3-4:
 
-3-4. Names representing methods or functions SHOULD naturally describe the action of the method (and so will usually start with a verb) and MUST be written in mixed case starting with lowercase. Private member function names MUST additionally lead with an underscore.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+3-4. Names representing methods or functions SHOULD naturally describe the action of the method (and so will usually start with a verb) and MUST be written in camelCase or snake_case. Private member function names MUST additionally lead with an underscore.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Do not put a space between the function name and the opening parenthesis when declaring or invoking the function.
 
@@ -258,10 +261,24 @@ Do not put a space between the function name and the opening parenthesis when de
    void getName() { ... }            // OK
    void computeTotalWidth() { ... }  // OK
 
+   // OR, in primarily new code:
+
+   class GoodClass {
+   public:
+       void const get_public() {}  // OK
+   protected:
+       void const get_protected() {}  // OK
+   private:
+       void const _get_private() {}  // OK
+   };
+
+   void get_name() { ... }            // OK
+   void compute_total_width() { ... }  // OK
+
+
 Refer to :ref:`Rule 3-10 <style-guide-cpp-3-10>` for a discussion on the leading underscore requirement for private member functions.
 
-Common practice in the C++ development community.
-This is identical to variable names, but functions in C++ are already distinguishable from variables by their specific form.
+This is identical to variable names and Python function/method names (see :ref:`style-guide-py-naming` for a complete discussion), but functions in C++ are already distinguishable from variables by their specific form.
 
 .. _style-guide-cpp-3-4a:
 
