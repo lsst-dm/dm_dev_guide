@@ -14,6 +14,7 @@ This page is designed to assist developers in the use of the ``lsst-login`` serv
 
 #. :ref:`lsst-login-overview`
 #. :ref:`lsst-login-connect`
+#. :ref:`lsst-login-forwarding`
 #. :ref:`lsst-login-software`
 
 .. _lsst-login-overview:
@@ -54,6 +55,9 @@ Information on setting up NCSA Duo is available at the following URL:
 
    - https://wiki.ncsa.illinois.edu/display/cybersec/Duo+at+NCSA
 
+SSH With Kerberos
+-----------------
+
 If you are using OpenSSH on your local machine and you wish to use Kerberos from your local machine (instead of entering your password on the login node), you could add something like this to your local ~/.ssh/config file:
 
 .. prompt:: bash $ auto
@@ -69,6 +73,9 @@ The Kerberos domain for the ``lsst-login`` servers is ``NCSA.EDU``, so something
   
   # you may get an error like this: 'kinit: Cannot find KDC for realm "NCSA.EDU" while getting initial credentials';
   # if that's the case, the Kerberos config on the local machine may need to be updated with 'dns_lookup_kdc = true'
+
+SSH Jump Host
+-------------
 
 You may wish to use an ``lsst-login`` node as a "jump host" (a gateway to an interior node). If you are using OpenSSH on your local machine, you can do this as follows:
 
@@ -87,8 +94,14 @@ When using an ``lsst-login`` node as a "jump host" you may also wish to configur
       ProxyJump lsst-login01.ncsa.illinois.edu
       DynamicForward yourportnumber
 
+SSH Multiplexing
+----------------
+
 You may also wish to reuse a single connection to/through an ``lsst-login`` node via an OpenSSH ControlMaster socket. This allows you to authenticate to the login node once and reuse that initial connection to make additional connections without authenticating again. See, for example, 
 `OpenSSH Cookbook - Multiplexing <https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Multiplexing>`_.
+
+SSH Config Example
+------------------
 
 A relatively complete ``~/.ssh/config`` "recipe" for streamlining your SSH connections (assuming OpenSSH, e.g., on Linux or macOS) through the ``lsst-login`` nodes might look like this:
 
@@ -197,6 +210,67 @@ NOTE: This will break all connections in any terminal that depends on this maste
    - Renewing the ticket on your local machine will not generally renew any tickets you have forwarded to remote machines. (NOTE: OpenSSH has a GSSAPIRenewalForcesRekey option that will cascade your ticket renewals out wherever you have forwarded them, however it is not implemented on all platforms, e.g. macOS.)
    - The example above shows that you can request a ticket with a maximum lifetime (25 hours) and maximum renewable life time (7 days), again, ``kinit -l 25h -r 7d ...``.
    - If your local ticket expires before you renew it, you will have to ``kinit`` (and authenticate with your password) to create a new ticket.
+
+.. _lsst-login-forwarding:
+
+Forwarding and Proxying
+=======================
+
+Forwarding via SSH (SSH tunneling) creates a secure connection between a local computer and a remote machine through which services can be relayed. Below are 3 common ways to interactively forward through ``lsst-login`` nodes with SSH. (See :ref:`lsst-login-connect` for ways to make these persistent with your local SSH configuration.)
+
+.. _lsst-login-forwarding-local:
+
+Local Port Forwarding
+---------------------
+
+With local port forwarding, connections from the SSH client are forwarded via the SSH server, then to a destination server. Local port forwarding lets you bypass a firewall, presuming you have SSH access.
+
+For example, if you have a notebook running on port ``8555`` of ``lsst-devl01.ncsa.illinois.edu``, you can local port forward to it with OpenSSH as follows:
+
+.. prompt:: bash $ auto
+
+   ssh -L 8555:localhost:8555 -J lsst-login01.ncsa.illinois.edu lsst-devl01.ncsa.illinois.edu
+
+The ``-J lsst-login01.ncsa.illinois.edu`` parameter specifies a **jump host** which has SSH access to the destination server.
+
+``localhost:8555`` is used in this example because the port is not open in ``lsst-devl01.ncsa.illinois.edu``'s firewall.
+
+Then, you could open http://localhost:8555/ in your local web browser to access the notebook.
+
+.. _lsst-login-forwarding-dynamic:
+
+Dynamic Port Forwarding (SOCKS Proxy)
+-------------------------------------
+
+Dynamic port forwarding turns your SSH client into a SOCKS proxy server, allowing programs to request any internet connection through that proxy server.
+
+You can use a ``lsst-login`` node as your proxy server with the following OpenSSH command:
+
+.. prompt:: bash $ auto
+
+   ssh -D 8090 lsst-login01.ncsa.illinois.edu
+
+Or, set your proxy to be from a host within a cluster by specifying a ``lsst-login`` node as a jump host:
+
+.. prompt:: bash $ auto
+
+   ssh -D 8090 -J lsst-login01.ncsa.illinois.edu lsst-devl01.ncsa.illinois.edu
+
+Then, setup your software (e.g. a browser or network stack) to use ``localhost:8090`` as your SOCKS proxy.  This allows you to connect like you are connecting from the remote host at NCSA.
+
+With the above example, you could open https://lsst-lsp-stable.ncsa.illinois.edu/ on your computer, proxying through ``lsst-devl01.ncsa.illinois.edu``.
+
+.. _lsst-login-forwarding-x11:
+
+X11 Forwarding
+--------------
+
+X11 forwarding lets you forward X11 applications over SSH. The following example uses a ``lsst-login`` node as a jump host to run the ``xeyes`` application from ``lsst-devl01.ncsa.illinois.edu``:
+
+.. prompt:: bash $ auto
+
+   ssh -Y -J lsst-login01.ncsa.illinois.edu lsst-devl01.ncsa.illinois.edu xeyes	
+
 
 .. _lsst-login-software:
 
