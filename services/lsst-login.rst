@@ -55,6 +55,9 @@ Information on setting up NCSA Duo is available at the following URL:
 
    - https://wiki.ncsa.illinois.edu/display/cybersec/Duo+at+NCSA
 
+SSH With Kerberos
+-----------------
+
 If you are using OpenSSH on your local machine and you wish to use Kerberos from your local machine (instead of entering your password on the login node), you could add something like this to your local ~/.ssh/config file:
 
 .. prompt:: bash $ auto
@@ -70,6 +73,9 @@ The Kerberos domain for the ``lsst-login`` servers is ``NCSA.EDU``, so something
   
   # you may get an error like this: 'kinit: Cannot find KDC for realm "NCSA.EDU" while getting initial credentials';
   # if that's the case, the Kerberos config on the local machine may need to be updated with 'dns_lookup_kdc = true'
+
+SSH Jump Host
+-------------
 
 You may wish to use an ``lsst-login`` node as a "jump host" (a gateway to an interior node). If you are using OpenSSH on your local machine, you can do this as follows:
 
@@ -88,8 +94,14 @@ When using an ``lsst-login`` node as a "jump host" you may also wish to configur
       ProxyJump lsst-login01.ncsa.illinois.edu
       DynamicForward yourportnumber
 
+SSH Multiplexing
+----------------
+
 You may also wish to reuse a single connection to/through an ``lsst-login`` node via an OpenSSH ControlMaster socket. This allows you to authenticate to the login node once and reuse that initial connection to make additional connections without authenticating again. See, for example, 
 `OpenSSH Cookbook - Multiplexing <https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Multiplexing>`_.
+
+SSH Config Example
+------------------
 
 A relatively complete ``~/.ssh/config`` "recipe" for streamlining your SSH connections (assuming OpenSSH, e.g., on Linux or macOS) through the ``lsst-login`` nodes might look like this:
 
