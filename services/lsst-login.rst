@@ -229,13 +229,13 @@ For example, if you have a notebook running on port ``8555`` of ``lsst-devl01.nc
 
 .. prompt:: bash $ auto
 
-   ssh -L 8080:localhost:8555 -J lsst-login01.ncsa.illinois.edu lsst-devl01.ncsa.illinois.edu
+   ssh -L 8555:localhost:8555 -J lsst-login01.ncsa.illinois.edu lsst-devl01.ncsa.illinois.edu
 
 The ``-J lsst-login01.ncsa.illinois.edu`` parameter specifies a **jump host** which has SSH access to the destination server.
 
 ``localhost:8555`` is used in this example because the port is not open in ``lsst-devl01.ncsa.illinois.edu``'s firewall.
 
-Then open http://localhost:8080/ in your local web browser.
+Then, you could open http://localhost:8555/ in your local web browser to access the notebook.
 
 .. _lsst-login-forwarding-dynamic:
 
@@ -244,20 +244,20 @@ Dynamic Port Forwarding (SOCKS Proxy)
 
 Dynamic port forwarding turns your SSH client into a SOCKS proxy server, allowing programs to request any internet connection through that proxy server.
 
-You can use a ``lsst-login`` server as your proxy server with the following OpenSSH command:
+You can use a ``lsst-login`` node as your proxy server with the following OpenSSH command:
 
 .. prompt:: bash $ auto
 
    ssh -D 8090 lsst-login01.ncsa.illinois.edu
 
-Or, set your proxy to be from a host within a cluster by specifying a lsst-login node as a jump host:
+Or, set your proxy to be from a host within a cluster by specifying a ``lsst-login`` node as a jump host:
 
 .. prompt:: bash $ auto
 
    ssh -D 8090 -J lsst-login01.ncsa.illinois.edu lsst-devl01.ncsa.illinois.edu
 
-Then setup your software (e.g. a browser or network stack) to use localhost:8090 as your SOCKS proxy.  This allows you to connect like you are connecting from the remote host.
-		
+Then, setup your software (e.g. a browser or network stack) to use ``localhost:8090`` as your SOCKS proxy.  This allows you to connect like you are connecting from the remote host at NCSA.
+
 With the above example, you could open https://lsst-lsp-stable.ncsa.illinois.edu/ on your computer, proxying through ``lsst-devl01.ncsa.illinois.edu``.
 
 .. _lsst-login-forwarding-x11:
@@ -265,7 +265,7 @@ With the above example, you could open https://lsst-lsp-stable.ncsa.illinois.edu
 X11 Forwarding
 --------------
 
-X11 forwarding lets you forward X11 applications over SSH. The following example uses a lsst-login node as a jump host to run the ``xeyes`` application from ``lsst-devl01.ncsa.illinois.edu``:
+X11 forwarding lets you forward X11 applications over SSH. The following example uses a ``lsst-login`` node as a jump host to run the ``xeyes`` application from ``lsst-devl01.ncsa.illinois.edu``:
 
 .. prompt:: bash $ auto
 
