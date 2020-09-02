@@ -65,7 +65,7 @@ Information on setting up NCSA Duo is available at the following URL:
 SSH With Kerberos
 -----------------
 
-If you are using OpenSSH on your local machine and you wish to use `Kerberos <https://web.mit.edu/kerberos/`_ from your local machine (instead of entering your password on the login node), you could add something like this to your local ~/.ssh/config file:
+If you are using OpenSSH on your local machine and you wish to use `Kerberos <https://web.mit.edu/kerberos/>`_ from your local machine (instead of entering your password on the login node), you could add something like this to your local ~/.ssh/config file:
 
 .. prompt:: bash $ auto
 
