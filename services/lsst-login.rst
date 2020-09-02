@@ -89,8 +89,8 @@ The Kerberos domain for the ``lsst-login`` servers is ``NCSA.EDU``, so something
    - If your local ticket expires before you renew it, you will have to ``kinit`` (and authenticate with your password) to create a new ticket.
 
 
-SSH Jump Host
--------------
+OpenSSH Jump Host
+-----------------
 
 You may wish to use an ``lsst-login`` node as a "jump host" (a gateway to an interior node). If you are using OpenSSH on your local machine, you can do this as follows:
 
