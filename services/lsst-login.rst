@@ -74,6 +74,14 @@ The Kerberos domain for the ``lsst-login`` servers is ``NCSA.EDU``, so something
   # you may get an error like this: 'kinit: Cannot find KDC for realm "NCSA.EDU" while getting initial credentials';
   # if that's the case, the Kerberos config on the local machine may need to be updated with 'dns_lookup_kdc = true'
 
+.. tip:: 
+
+   **Kerberos Tickets Expire**
+
+   - Your Kerberos ticket on your local machine will expire (generally 25 hours after inititally granted) and need to be renewed, which you can do with ``kinit -R``.
+   - If your local ticket expires before you renew it, you will have to ``kinit`` (and authenticate with your password) to create a new ticket.
+
+
 SSH Jump Host
 -------------
 
@@ -202,7 +210,7 @@ NOTE: This will break all connections in any terminal that depends on this maste
    [ncsauser@lsst-devl01 ~]$ client_loop: send disconnect: Broken pipe
    localuser@localmachine ~ %
 
-.. tip::
+.. tip:: 
 
    **More tips on working Kerberos tickets and OpenSSH ControlMaster**
 
