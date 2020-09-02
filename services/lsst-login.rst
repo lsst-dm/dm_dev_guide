@@ -57,9 +57,9 @@ Information on setting up NCSA Duo is available at the following URL:
 
 .. note:: 
 
-   **SSH public-key authentication is not allowed on the lsst-login nodes**
+   **SSH public-key authentication is not allowed on the lsst-login nodes.**
 
-   Only password (keyboard-interactive) and Kerberos (gssapi) authentication are allowed on the lsst-login nodes.
+   Only password (keyboard-interactive) and Kerberos (gssapi) authentication are allowed via SSH on the lsst-login nodes.
 
 
 SSH With Kerberos
