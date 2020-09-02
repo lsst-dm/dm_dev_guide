@@ -44,7 +44,7 @@ Connecting and Authenticating
 
 You can log into Rubin Observatory development servers at NCSA with your NCSA account as follows:
 
-   - NCSA username and password **OR** valid Kerberos ticket from workstation/laptop, **AND**
+   - NCSA username and password **OR** valid Kerberos ticket, **AND**
    - NCSA Duo authentication
 
 You can reset your NCSA password at the following URL:
@@ -102,10 +102,10 @@ When using an ``lsst-login`` node as a "jump host" you may also wish to configur
       ProxyJump lsst-login01.ncsa.illinois.edu
       DynamicForward yourportnumber
 
-SSH Multiplexing
-----------------
+Reusing SSH Connections
+-----------------------
 
-You may also wish to reuse a single connection to/through an ``lsst-login`` node via an OpenSSH ControlMaster socket. This allows you to authenticate to the login node once and reuse that initial connection to make additional connections without authenticating again. See, for example, 
+You may also wish to reuse a single connection to/through an ``lsst-login`` node via a single SSH ControlMaster socket. This allows you to authenticate to the login node once and reuse that initial connection to make additional connections without authenticating again. See, for example, 
 `OpenSSH Cookbook - Multiplexing <https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Multiplexing>`_.
 
 SSH Config Example
