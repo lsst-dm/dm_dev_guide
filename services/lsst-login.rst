@@ -44,7 +44,7 @@ Connecting and Authenticating
 
 You can log into Rubin Observatory development servers at NCSA with your NCSA account as follows:
 
-   - NCSA username and password **OR** valid Kerberos ticket from workstation/laptop, **AND**
+   - NCSA username and password **OR** valid NCSA `Kerberos <https://web.mit.edu/kerberos/>`_ ticket, **AND**
    - NCSA Duo authentication
 
 You can reset your NCSA password at the following URL:
@@ -55,17 +55,24 @@ Information on setting up NCSA Duo is available at the following URL:
 
    - https://wiki.ncsa.illinois.edu/display/cybersec/Duo+at+NCSA
 
+.. note:: 
+
+   **SSH public-key authentication is not allowed on the lsst-login nodes.**
+
+   Only password (keyboard-interactive) and Kerberos (gssapi) authentication are allowed via SSH on the lsst-login nodes.
+
+
 SSH With Kerberos
 -----------------
 
-If you are using OpenSSH on your local machine and you wish to use Kerberos from your local machine (instead of entering your password on the login node), you could add something like this to your local ~/.ssh/config file:
+If you are using OpenSSH on your local machine and you wish to use `Kerberos <https://web.mit.edu/kerberos/>`_ from your local machine (instead of entering your password on the login node), you could add something like this to your local ~/.ssh/config file:
 
 .. prompt:: bash $ auto
 
   GSSAPIAuthentication yes
   PreferredAuthentications gssapi-with-mic,keyboard-interactive,password
 
-The Kerberos domain for the ``lsst-login`` servers is ``NCSA.EDU``, so something like this may work to generate a Kerberos ticket on your local machine:
+The Kerberos domain for the ``lsst-login`` servers is ``NCSA.EDU``, so something like this may work to generate a `Kerberos ticket <https://web.mit.edu/kerberos/krb5-latest/doc/user/tkt_mgmt.html>`_ on your local machine:
 
 .. prompt:: bash $ auto
 
@@ -74,8 +81,16 @@ The Kerberos domain for the ``lsst-login`` servers is ``NCSA.EDU``, so something
   # you may get an error like this: 'kinit: Cannot find KDC for realm "NCSA.EDU" while getting initial credentials';
   # if that's the case, the Kerberos config on the local machine may need to be updated with 'dns_lookup_kdc = true'
 
-SSH Jump Host
--------------
+.. tip::
+
+   **Kerberos Tickets Expire**
+
+   - Your Kerberos ticket on your local machine will expire (generally 25 hours after inititally granted) and need to be renewed, which you can do with ``kinit -R``.
+   - If your local ticket expires before you renew it, you will have to ``kinit`` (and authenticate with your password) to create a new ticket.
+
+
+OpenSSH Jump Host
+-----------------
 
 You may wish to use an ``lsst-login`` node as a "jump host" (a gateway to an interior node). If you are using OpenSSH on your local machine, you can do this as follows:
 
@@ -94,10 +109,10 @@ When using an ``lsst-login`` node as a "jump host" you may also wish to configur
       ProxyJump lsst-login01.ncsa.illinois.edu
       DynamicForward yourportnumber
 
-SSH Multiplexing
-----------------
+Reusing SSH Connections
+-----------------------
 
-You may also wish to reuse a single connection to/through an ``lsst-login`` node via an OpenSSH ControlMaster socket. This allows you to authenticate to the login node once and reuse that initial connection to make additional connections without authenticating again. See, for example, 
+You may also wish to share a single connection to/through an ``lsst-login`` node. This allows you to authenticate to the login node once and reuse that initial connection to make additional connections without authenticating again. If you are using OpenSSH on your local machine, this is done with a ControlMaster socket. See, for example, 
 `OpenSSH Cookbook - Multiplexing <https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Multiplexing>`_.
 
 SSH Config Example
@@ -278,4 +293,3 @@ Common Software Available
 =========================
 
 Refer to :doc:`software` for more details about software available for use on ``lsst-login`` nodes.
-
