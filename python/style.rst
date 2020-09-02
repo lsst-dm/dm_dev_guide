@@ -619,7 +619,9 @@ Test files must have the form ``test_{description}.py`` for compatibility with P
 The name of a test case should be descriptive without the need for a trailing numeral to distinguish one test case from another.
 
 This rule does not apply to executable script files, for which both no extension and a '.py' extension are acceptable.
-Script files should always be minimal (ideally a single non-import statement), and delegate any actual logic to importable code; this means the impact of having no extension on tools that rely on the file extension should be negligible.
+Script files should always be minimal (ideally a single non-import statement), and delegate any actual logic to importable code.
+This maximizes usability from other Python code (including test code) and makes it much easier to include script interfaces in documentation.
+It also means the impact of having no extension on tools that rely on the file extension should be negligible.
 Legacy scripts that do contain signficant logic should have a '.py' script to support this tooling.
 
 .. TODO consider refactoring tests into their own section
