@@ -44,7 +44,7 @@ Connecting and Authenticating
 
 You can log into Rubin Observatory development servers at NCSA with your NCSA account as follows:
 
-   - NCSA username and password **OR** valid NCSA `Kerberos<https://web.mit.edu/kerberos/>` ticket, **AND**
+   - NCSA username and password **OR** valid NCSA `Kerberos<https://web.mit.edu/kerberos/>`_ ticket, **AND**
    - NCSA Duo authentication
 
 You can reset your NCSA password at the following URL:
@@ -65,14 +65,14 @@ Information on setting up NCSA Duo is available at the following URL:
 SSH With Kerberos
 -----------------
 
-If you are using OpenSSH on your local machine and you wish to use `Kerberos <https://web.mit.edu/kerberos/` from your local machine (instead of entering your password on the login node), you could add something like this to your local ~/.ssh/config file:
+If you are using OpenSSH on your local machine and you wish to use `Kerberos <https://web.mit.edu/kerberos/`_ from your local machine (instead of entering your password on the login node), you could add something like this to your local ~/.ssh/config file:
 
 .. prompt:: bash $ auto
 
   GSSAPIAuthentication yes
   PreferredAuthentications gssapi-with-mic,keyboard-interactive,password
 
-The Kerberos domain for the ``lsst-login`` servers is ``NCSA.EDU``, so something like this may work to generate a `Kerberos ticket <https://web.mit.edu/kerberos/krb5-latest/doc/user/tkt_mgmt.html>` on your local machine:
+The Kerberos domain for the ``lsst-login`` servers is ``NCSA.EDU``, so something like this may work to generate a `Kerberos ticket <https://web.mit.edu/kerberos/krb5-latest/doc/user/tkt_mgmt.html>`_ on your local machine:
 
 .. prompt:: bash $ auto
 
