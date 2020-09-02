@@ -112,7 +112,7 @@ When using an ``lsst-login`` node as a "jump host" you may also wish to configur
 Reusing SSH Connections
 -----------------------
 
-You may also wish to reuse a single connection to/through an ``lsst-login`` node via a single SSH ControlMaster socket. This allows you to authenticate to the login node once and reuse that initial connection to make additional connections without authenticating again. See, for example, 
+You may also wish to share a single connection to/through an ``lsst-login`` node. This allows you to authenticate to the login node once and reuse that initial connection to make additional connections without authenticating again. If you are using OpenSSH on your local machine, this is done with a ControlMaster socket. See, for example, 
 `OpenSSH Cookbook - Multiplexing <https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Multiplexing>`_.
 
 SSH Config Example
@@ -293,4 +293,3 @@ Common Software Available
 =========================
 
 Refer to :doc:`software` for more details about software available for use on ``lsst-login`` nodes.
-
