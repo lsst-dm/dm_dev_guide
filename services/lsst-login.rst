@@ -44,7 +44,7 @@ Connecting and Authenticating
 
 You can log into Rubin Observatory development servers at NCSA with your NCSA account as follows:
 
-   - NCSA username and password **OR** valid NCSA `Kerberos<https://web.mit.edu/kerberos/>`_ ticket, **AND**
+   - NCSA username and password **OR** valid NCSA `Kerberos <https://web.mit.edu/kerberos/>`_ ticket, **AND**
    - NCSA Duo authentication
 
 You can reset your NCSA password at the following URL:
