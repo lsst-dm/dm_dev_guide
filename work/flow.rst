@@ -415,12 +415,12 @@ Using GitHub pull requests
 
 Code review discussion should happen on the GitHub pull request, with the reviewer giving a discussion summary and conclusive thumbs-up on the JIRA ticket.
 
-When conducting an extensive code review in a PR, reviewers should use GitHub's `"Start a review" feature <github-review>`_.
+When conducting an extensive code review in a PR, reviewers should use GitHub's `"Start a review" feature`_ .
 This mode lets the reviewer queue multiple comments that are only sent once the review is submitted.
 Note that GitHub allows a reviewer to classify a code review: "Comment," "Approve," or "Request changes."
 While useful, this feature doesn't replace JIRA for formally :ref:`marking a ticket as being reviewed <workflow-resolving-review>`.
 
-.. _github-review: https://help.github.com/articles/reviewing-proposed-changes-in-a-pull-request/
+.. _"Start a review" feature: https://help.github.com/articles/reviewing-proposed-changes-in-a-pull-request/
 
 Reviewers should use GitHub's `line comments`_ to discuss specific pieces of code.
 As line comments are addressed, the developer may use GitHub's `emoji reactions`_ to indicate that the work is done (the "👍" works well).
