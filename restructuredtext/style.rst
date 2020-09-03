@@ -780,6 +780,20 @@ Shorter sentences are easier to read.
 
 .. _One-sentence-per-line: https://xkcd.com/1285/
 
+If using this style with Emacs, you may find these configuration settings useful:
+
+.. code-block:: emacs-lisp
+
+   (add-hook 'rst-mode-hook 'turn-on-visual-line-mode)
+   (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
+   ;; or (setq visual-line-fringe-indicators '(nil right-curly-arrow))
+   ;; or (setq visual-line-fringe-indicators '(left-curly-arrow nil))
+
+This changes Emacs's default of soft-wrapping at the width of the display frame to instead soft-wrapping at the nearest whitespace.
+You may find this makes one-sentence-per-line text more readable (or not).
+The last three lines control whether to mark wrapped lines with fringe indicators; some prefer to see those indicators, and others find them visual clutter.
+The Emacs default for Visual Line mode is to not use fringe indicators.
+
 At LSST, we place a **single blank line** between all content blocks, such as directives, paragraphs and lists.
 
 Indentation
