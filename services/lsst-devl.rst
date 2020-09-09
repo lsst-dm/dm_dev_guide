@@ -21,7 +21,7 @@ Intensive work requiring high CPU/memory usage, long running jobs, storage IO, e
 There are 3 nearly identical ``lsst-devl`` servers to choose from:
 
 - ``lsst-devl01.ncsa.illinois.edu`` (Intel, 24core, 256G RAM)
-- ``lsst-devl02.ncsa.illinois.edu`` (Intel, 24core, 256G RAM) (available Sep 14, 2020)
+- ``lsst-devl02.ncsa.illinois.edu`` (Intel, 24core, 256G RAM)
 - ``lsst-devl03.ncsa.illinois.edu`` (AMD, 32core, 256G RAM) (available Sep 14, 2020)
 
 To report system issues, please submit an :doc:`IHS ticket <ldf-tickets>` tagging NCSA as the responsible organization.
