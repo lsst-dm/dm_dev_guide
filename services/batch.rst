@@ -26,7 +26,7 @@ Rubin Batch Systems: Overview
 The **HTCondor DAC Cluster** has the following submit (schedd) nodes from which users can submit jobs and run workflows:
 
 - ``lsst-devl01.ncsa.illinois.edu``
-- ``lsst-devl02.ncsa.illinois.edu`` (available Sep 14, 2020)
+- ``lsst-devl02.ncsa.illinois.edu``
 - ``lsst-devl03.ncsa.illinois.edu`` (available Sep 14, 2020)
 
 The **HTCondor DAC Cluster** also has a number of dedicated compute (``startd``) nodes configured with partitionable slots. Commands such as those described below in :ref:`batch-condor` can be used to view the resources available in the cluster.
