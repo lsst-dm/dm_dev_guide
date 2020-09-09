@@ -284,14 +284,14 @@ In this example, continuation is naturally implied within the ``__init__`` metho
                     color='black', emphasis=None, highlight=0):
 
            # Discouraged: continuation with '\'
-           if width == 0 and height == 0 and \
-                  color == 'red' and emphasis == 'strong' or \
-                  highlight > 100:
+           if width == 0 and height == 0 \
+                  and color == 'red' and emphasis == 'strong' \
+                  or highlight > 100:
                raise ValueError("sorry, you lose")
 
            # Preferred: continuation with parentheses
-           if width == 0 and height == 0 and (color == 'red' or
-                                              emphasis is None):
+           if width == 0 and height == 0 and (color == 'red'
+                                              or emphasis is None):
                raise ValueError("I don't think so")
 
            Blob.__init__(self, width, height,
@@ -302,16 +302,16 @@ For example, this will generate an E129 error:
 
 .. code-block:: py
 
-   if (width == 0 and
-       height == 0):
+   if (width == 0
+       and height == 0):
        pass
 
 Instead, the continued line should be indented:
 
 .. code-block:: py
 
-   if (width == 0 and
-           height == 0):
+   if (width == 0
+           and height == 0):
        pass
 
 .. _style-guide-py-cpp-consistency:
