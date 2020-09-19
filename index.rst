@@ -33,6 +33,7 @@ Check out the `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/READM
 
    team/onboarding
    team/code-of-conduct
+   team/quiet
    team/empowerment
    team/drp
 
@@ -49,6 +50,7 @@ Learn more about the Data Management Subsystem in :ldm:`294`.
 
 - :doc:`team/onboarding`
 - :doc:`team/code-of-conduct`
+- :doc:`team/quiet`
 - :doc:`team/empowerment`
 
 Team-specific pages:
