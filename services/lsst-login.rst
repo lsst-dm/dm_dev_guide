@@ -76,7 +76,7 @@ The Kerberos domain for the ``lsst-login`` servers is ``NCSA.EDU``, so something
 
 .. prompt:: bash $ auto
 
-  kinit username@NCSA.EDU
+  kinit -l 25h -r 7d username@NCSA.EDU
   
   # you may get an error like this: 'kinit: Cannot find KDC for realm "NCSA.EDU" while getting initial credentials';
   # if that's the case, the Kerberos config on the local machine may need to be updated with 'dns_lookup_kdc = true'
