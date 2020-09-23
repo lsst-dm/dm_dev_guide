@@ -90,6 +90,7 @@ The Kerberos domain for the ``lsst-login`` servers is ``NCSA.EDU``, so something
 
    - Your Kerberos ticket on your local machine will expire (by default 10 hours but up to 25 hours after initially granted with the ``-l`` option shown above) and need to be renewed, which you can do with ``kinit -R``.
    - If your local ticket expires before you renew it, you will have to ``kinit`` (and authenticate with your password) to create a new ticket.
+   - You can see when your ticket will expire with ``klist``.
 
 
 OpenSSH Jump Host
