@@ -76,17 +76,21 @@ The Kerberos domain for the ``lsst-login`` servers is ``NCSA.EDU``, so something
 
 .. prompt:: bash $ auto
 
-  kinit username@NCSA.EDU
+  kinit -l 25h -r 7d username@NCSA.EDU
   
   # you may get an error like this: 'kinit: Cannot find KDC for realm "NCSA.EDU" while getting initial credentials';
   # if that's the case, the Kerberos config on the local machine may need to be updated with 'dns_lookup_kdc = true'
 
+  # On a Mac, your Kerberos password may be saved in your keychain.
+  # Use /usr/bin/kinit (instead of any conda kinit you may have in your path) and specify "--keychain" to save.
+  
 .. tip::
 
    **Kerberos Tickets Expire**
 
-   - Your Kerberos ticket on your local machine will expire (generally 25 hours after inititally granted) and need to be renewed, which you can do with ``kinit -R``.
+   - Your Kerberos ticket on your local machine will expire (by default 10 hours but up to 25 hours after initially granted with the ``-l`` option shown above) and need to be renewed, which you can do with ``kinit -R``.
    - If your local ticket expires before you renew it, you will have to ``kinit`` (and authenticate with your password) to create a new ticket.
+   - You can see when your ticket will expire with ``klist``.
 
 
 OpenSSH Jump Host
