@@ -81,6 +81,9 @@ The Kerberos domain for the ``lsst-login`` servers is ``NCSA.EDU``, so something
   # you may get an error like this: 'kinit: Cannot find KDC for realm "NCSA.EDU" while getting initial credentials';
   # if that's the case, the Kerberos config on the local machine may need to be updated with 'dns_lookup_kdc = true'
 
+  # On a Mac, your Kerberos password may be saved in your keychain.
+  # Use /usr/bin/kinit (instead of any conda kinit you may have in your path) and specify "--keychain" to save.
+  
 .. tip::
 
    **Kerberos Tickets Expire**
