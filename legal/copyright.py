@@ -90,7 +90,8 @@ def find_institution(email, year, month):
     All code was assigned to LSST Corporation prior to the start of
     construction in 2014-08.
 
-    John Swinbank moved from Princeton to UW at the end of 2017-09.
+    John Swinbank moved from Princeton to UW at the end of 2017-09, and from
+    UW to ASTRON in 2020-10.
     Fabrice Jammes from IN2P3 works under contract to SLAC.
 
     Parameters
@@ -113,7 +114,12 @@ def find_institution(email, year, month):
     if email == "swinbank@lsst.org":
         if year < 2017 or (year == 2017 and month < 10):
             return "The Trustees of Princeton University"
-        return "University of Washington"
+        elif year < 2020 or (year == 2020 and month < 11):
+            # This awards UW a couple of weeks more credit than they deserve,
+            # as they stop paying Swinbank from mid-October.
+            return "University of Washington"
+        return ("Stichting Nederlandse Wetenschappelijk Onderzoek Instituten, "
+                "ASTRON Netherlands Institute for Radio Astronomy")
     if email.startswith("fabrice.jammes"):
         return ("The Board of Trustees of the Leland Stanford Junior "
                 "University, through SLAC National Accelerator Laboratory")
