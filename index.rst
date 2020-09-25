@@ -216,6 +216,7 @@ C++
    python/numpydoc
    python/astropy
    python/profiling
+   python/cli
 
 .. _part-python:
 
@@ -227,6 +228,7 @@ Python
 - :doc:`python/numpydoc`
 - :doc:`python/astropy`
 - :doc:`python/profiling`
+- :doc:`python/cli`
 
 .. PYBIND11 SECTION ==========================================================
 

@@ -9,3 +9,4 @@ Python guides
 - :doc:`numpydoc`
 - :doc:`astropy`
 - :doc:`profiling`
+- :doc:`cli`
