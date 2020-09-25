@@ -159,7 +159,7 @@ Here's what T/CAMs need to do to get their new hire started:
    - `LSST <https://community.lsst.org/groups/LSST>`__.
    - `LSSTDM <https://community.lsst.org/groups/LSSTDM>`__.
 
-#. Give the hire's email address to a Slack administrator: `@brianv0 <https://lsstc.slack.com/team/brianv0>`__, `@jonathansick <https://lsstc.slack.com/team/jonathansick>`__, `@frossie <https://lsstc.slack.com/team/frossie>`__, and `@plutchak <https://lsstc.slack.com/team/plutchak>`__ can make Slack accounts.
+#. Give the hire's email address to a Slack administrator: `@brianv0 <https://lsstc.slack.com/team/brianv0>`__, `@jonathansick <https://lsstc.slack.com/team/jonathansick>`__, and `@frossie <https://lsstc.slack.com/team/frossie>`__, can make Slack accounts.
 
 Your new hire should automatically be issued a Data Facility (NCSA) account along with their LSST account.
 However, if for some reason this doesn't happen, send the following information to ``lsst-account _at_ ncsa.illinois.edu`` (and CC ``lsst-sysadmins _at_ lsst.org``):
