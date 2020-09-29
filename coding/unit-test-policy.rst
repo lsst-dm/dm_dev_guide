@@ -66,16 +66,16 @@ validate the changed internals.
 
 The division of responsibility between DM developer groups is highlighted in
 the :ref:`diagram below <fig-test-development-responsibility>`. In essence,
-the Applications group, which is responsible for all science algorithm
-development, also develops the unit testers for: algorithm components, a stage
-wrapped algorithm, and the sequences of stage wrapped algorithms comprising a
-simple-stage-tester algorithm pipeline (i.e.  without parallel processing job
+the Science Pipelines group, which is responsible for all science algorithm
+development, also develops the unit testers for: algorithm components, a Task
+wrapped algorithm, and the sequences of Task wrapped algorithms comprising an
+algorithmic pipeline (i.e. without parallel processing job
 management). The Middleware group, so named because it is responsible for all
 low level framework software, develops the unit testers for those framework
-modules. Finally, the SQA team is responsible for the higher level testers for
+modules. Finally, the Science Validation team is responsible for the highest level test plans for
 integration, system performance, and acceptance testing.
 
-.. figure:: /_static/development/test_development_responsibility.jpg
+.. figure:: /_static/development/test_development_responsibility.png
    :name: fig-test-development-responsibility
 
 Testing Frameworks
@@ -89,6 +89,9 @@ C++: boost.test
     Test Framework`_. When unit testing C++ private functions using the Boost
     util test macros, refer to the standard methods described in :doc:`private
     function testing </cpp/testing-private-functions>`.
+    
+    However, C++ code that is made available to Python via simple :doc:`wrappers </pybind11/how-to>` should be tested via Python as below.
+    If the wrappers are complex, which should be rare, the underlying functionality should be tested from C++.
 
 Python: unittest
     LSST DM developers should use the Python :mod:`unittest` framework.
