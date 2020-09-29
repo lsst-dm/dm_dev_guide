@@ -116,7 +116,7 @@ Set up a Git credential helper
 Rather than entering your GitHub username and password (or 2FA access token) every time you push, you can set up a Git credential helper to manage this for you.
 A credential helper is especially important for working with our :doc:`Git LFS-backed repositories <git-lfs>`.
 
-**Mac users** can use the secure OS X keychain:
+**Mac users** can use the secure macOS keychain:
 
 .. code-block:: bash
 
@@ -139,6 +139,8 @@ Only do this for machines where you can ensure some level of security.
 Once a credential helper is enabled, the next time you ``git push``, you will add your credentials to the helper.
 
 Remember that if you have 2FA enabled, you will create and use a `personal access token <https://github.com/settings/tokens>`_ instead of your GitHub password.
+
+If you find that ``git push`` is not working but also not asking you for credentials, you may need to manually insert the username/password or token into the credential store or macOS keychain.
 
 The DM Git LFS documentation has further information about :ref:`authenticating with our LFS storage backend <git-lfs-auth>`.
 
