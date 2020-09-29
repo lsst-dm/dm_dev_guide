@@ -75,7 +75,7 @@ low level framework software, develops the unit testers for those framework
 modules. Finally, the Science Validation team is responsible for the highest level test plans for
 integration, system performance, and acceptance testing.
 
-.. figure:: /_static/development/test_development_responsibility.jpg
+.. figure:: /_static/development/test_development_responsibility.png
    :name: fig-test-development-responsibility
 
 Testing Frameworks
