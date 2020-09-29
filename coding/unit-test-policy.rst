@@ -89,6 +89,9 @@ C++: boost.test
     Test Framework`_. When unit testing C++ private functions using the Boost
     util test macros, refer to the standard methods described in :doc:`private
     function testing </cpp/testing-private-functions>`.
+    
+    However, C++ code that is made available to Python via simple :doc:`wrappers </pybind11/how-to>` should be tested via Python as below.
+    If the wrappers are complex, which should be rare, the underlying functionality should be tested from C++.
 
 Python: unittest
     LSST DM developers should use the Python :mod:`unittest` framework.
