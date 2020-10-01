@@ -64,3 +64,7 @@ See:
 
 - http://www.slac.stanford.edu/~abh/bbcp/
 - http://www.nics.tennessee.edu/computing-resources/data-transfer/bbcp
+
+.. tip::
+
+   Since SSH access into ``lsst-xfer.ncsa.illinois.edu`` is limited to from :doc:`lsst-login <lsst-login>` nodes, transfers may need to be initiated on ``lsst-xfer`` rather than remote hosts.
