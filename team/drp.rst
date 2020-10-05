@@ -6,7 +6,7 @@ Travel Calendar
 ===============
 
 We use Google Calendar to keep track of group travel.
-Please ask Jim, Robert or John for access.
+Please ask Jim, Robert or Yusra for access.
 Use it to share details of any substantial travel plans: vacations, conferences, etc.
 It is not expected that you record the minutiae of everyday life: please don't bother telling us about your trip to the dentist, DMV, etc!
 
@@ -29,14 +29,14 @@ Label                Meaning
 Princeton HPC Systems
 =====================
 
-In addition to the regular LSST-provided compute systems (:doc:`lsst-dev </services/lsst-dev>`, the :doc:`Verification Cluster </services/verification>`, etc), DRP team members have access to two clusters hosted by the `Research Computing Group <https://researchcomputing.princeton.edu>`_ in Princeton.
+In addition to the regular LSST-provided compute systems (:doc:`lsst-devl </services/lsst-devl>`), DRP team members have access to two clusters hosted by the `Research Computing Group <https://researchcomputing.princeton.edu>`_ in Princeton.
 Please refer to the Research Computing Group's pages for information on getting started, how to connect with SSH, usage policies, FAQs, etc, and be aware that you *must* comply with all their rules when using these systems
 
 Obtaining Accounts
 ------------------
 
 Accounts are issued on demand at the request of an appropriate PI.
-For our group, that means you should speak to either Robert or John, and they will arrange one for you.
+For our group, that means you should speak to either Robert or Yusra, and they will arrange one for you.
 When your account has been created, you should check that you are a member of the groups ``astro``, ``hsc``, and ``lsst`` (use the :command:`groups` command).
 
 Available Systems
