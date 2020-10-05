@@ -74,6 +74,7 @@ Slack
 
 `Slack <https://slack.com/>`_ is LSST's real-time chat platform.
 It is used across the project and by external science collaborations.
+Please be aware of our guidance on :doc:`/communications/community-support` when interacting with the latter.
 
 Ask your T/CAM for access to the ‘lsstc’ Slack team.
 You can access it online at https://lsstc.slack.com, and through `Slack's mobile and desktop apps <https://get.slack.help/hc/en-us/articles/201746897-Slack-apps-for-computers-phones-tablets>`__.
