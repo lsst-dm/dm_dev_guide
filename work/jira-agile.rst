@@ -27,11 +27,11 @@ Team Name                          Responsible Manager
 System Management                  Wil O'Mullane
 DM Science                         Leanne Guy
 Architecture                       K-T Lim
-Alert Production                   John Swinbank
-Data Release Production            Yusra AlSayyad & John Swinbank
+Alert Production                   Ian Sullivan
+Data Release Production            Yusra AlSayyad
 Science User Interface             Xiuqin Wu
 Data Access and Database           Fritz Mueller
-Data Facility                      Michelle Butler 
+Data Facility                      Michelle Butler
 International Comms and Base Site  Jeff Kantor
 SQuaRE                             Frossie Economou
 Telescope and Site                 Andy Clements
