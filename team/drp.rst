@@ -29,7 +29,7 @@ Label                Meaning
 Princeton HPC Systems
 =====================
 
-In addition to the regular LSST-provided compute systems (:doc:`lsst-dev </services/lsst-dev>`, the :doc:`Verification Cluster </services/verification>`, etc), DRP team members have access to two clusters hosted by the `Research Computing Group <https://researchcomputing.princeton.edu>`_ in Princeton.
+In addition to the regular LSST-provided compute systems (:doc:`lsst-devl </services/lsst-devl>`), DRP team members have access to two clusters hosted by the `Research Computing Group <https://researchcomputing.princeton.edu>`_ in Princeton.
 Please refer to the Research Computing Group's pages for information on getting started, how to connect with SSH, usage policies, FAQs, etc, and be aware that you *must* comply with all their rules when using these systems
 
 Obtaining Accounts
