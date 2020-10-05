@@ -91,7 +91,9 @@ def find_institution(email, year, month):
     construction in 2014-08.
 
     John Swinbank moved from Princeton to UW at the end of 2017-09, and from
-    UW to ASTRON in 2020-10.
+    UW to ASTRON in 2020-10. For now, we assume that any contributions created
+    after 2020-10 were not produced during the performance of his work, so
+    they employer does not claim copyright.
     Fabrice Jammes from IN2P3 works under contract to SLAC.
 
     Parameters
@@ -118,8 +120,7 @@ def find_institution(email, year, month):
             # This awards UW a couple of weeks more credit than they deserve,
             # as they stop paying Swinbank from mid-October.
             return "University of Washington"
-        return ("Stichting Nederlandse Wetenschappelijk Onderzoek Instituten, "
-                "ASTRON Netherlands Institute for Radio Astronomy")
+        return "John Swinbank"
     if email.startswith("fabrice.jammes"):
         return ("The Board of Trustees of the Leland Stanford Junior "
                 "University, through SLAC National Accelerator Laboratory")
