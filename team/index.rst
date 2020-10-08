@@ -9,7 +9,7 @@ Learn about the Data Management Subsystem in :ldm:`294`.
 
 - :doc:`onboarding`
 - :doc:`code-of-conduct`
-- :doc:`quiet`
+- :doc:`focus-friday`
 - :doc:`empowerment`
 
 Team-specific pages:

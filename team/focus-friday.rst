@@ -1,13 +1,13 @@
 
 ############
-Quiet Friday
+Focus Friday
 ############
 
-DM will observe  **Quiet Friday**. 
+DM will observe  **Focus Friday**. 
 
 Guidelines
 ==========
-The driver for the quiet day is to allow staff a block of time without interruptions or the need to be online and receptive. 
+The driver for the focus day is to allow staff a block of time without interruptions or the need to be online and receptive. 
 By reducing traffic we will reduce the need to participate in threads on specific discussion topics. 
 Hence there should be: 
 
@@ -29,7 +29,7 @@ Emergencies and on call
 There may on occasion be an emergency, urgent bug, machine failure, fire, flooding etc. 
 In this case it is OK to make Friday noisy.
 As we approach operations there may also be agreed people on call who may need to
-respond to communications even on a quiet day. 
+respond to communications even on a focus day. 
 
 Feedback
 ========
@@ -37,5 +37,6 @@ Though we did one experimental day and changed the rules according to feedback w
 assume there may be more refinements needed to get this correct. 
 Feedback on the form and format of the day is welcome and may be sent to your T/CAM or 
 directly to William O'Mullane.
+This concept will then be reassessed in the DMLT Face to Face meeting in Nov 2020.
 
 
