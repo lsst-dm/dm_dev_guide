@@ -266,8 +266,8 @@ The following stacks are currently being updated:
 ======================================= ================ ===========
 Path                                    Toolchain        Description
 ======================================= ================ ===========
-:file:`/software/lsstsw/stack_20200515` Internal (Conda) Provides weekly ``w_2020_19`` and later of lsst_distrib and ``w_2020_20`` and later of lsst_sims.
-                                                         Based on `scipipe_conda_env`_ ``46b24e8`` with the following additional packages installed:
+:file:`/software/lsstsw/stack_20200922` Internal (Conda) Provides weekly ``w_2020_38`` and later of lsst_distrib and lsst_sims.
+                                                         Based on `scipipe_conda_env`_ ``cb4e2dc`` with the following additional packages installed:
 
                                                          - bokeh
                                                          - cx_Oracle
@@ -336,6 +336,25 @@ Path                                    Toolchain        Description
                                                          Based on `scipipe_conda_env`_ ``984c9f7`` (:jira:`RFC-664`).
 :file:`/software/lsstsw/stack_20200504` Internal (Conda) Provides weeklies ``w_2020_18`` and ``w_2020_19`` of lsst_distrib.
                                                          Based on `scipipe_conda_env`_ ``2deae7a`` (:jira:`RFC-679`).
+:file:`/software/lsstsw/stack_20200515` Internal (Conda) Provides weekly ``w_2020_19`` through ``w_2020_38`` of lsst_distrib and ``w_2020_20`` through ``w_2020_38`` of lsst_sims.
+                                                         Based on `scipipe_conda_env`_ ``46b24e8`` with the following additional packages installed:
+
+                                                         - bokeh
+                                                         - cx_Oracle
+                                                         - dask-jobqueue
+                                                         - datashader
+                                                         - pyct
+                                                         - fastparquet
+                                                         - holoviews
+                                                         - hvplot
+                                                         - ipdb
+                                                         - jupyter
+                                                         - numba
+                                                         - panel
+                                                         - pep8
+                                                         - psycopg2
+                                                         - pyflakes
+                                                         - pyviz_comms
 ======================================= ================ ===========
 
 Administrators may wish to note that the shared stack is automatically updated using the script :file:`~lsstsw/shared-stack/shared_stack.py`, which is executed nightly by Cron.
