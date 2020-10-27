@@ -387,9 +387,7 @@ to track problems with installing the stack in :ref:`JIRA <workflow-jira>`,
 even if they are already known in the EUPS tracker.
 
 EUPS ships with a `manual`_, but it can be hard to read when getting started.
-There are also some tips on the `old LSST wiki`_.
 
 .. _independent GitHub repository: https://github.com/RobertLuptonTheGood/eups
 .. _issue tracker: https://github.com/RobertLuptonTheGood/eups/issues
 .. _manual: https://github.com/RobertLuptonTheGood/eups/blob/master/doc/eups.tex
-.. _old LSST wiki: https://dev.lsstcorp.org/trac/wiki/EupsTips
