@@ -27,7 +27,7 @@ Extensions useful specifically for LSST development
 `C/C++ <https://code.visualstudio.com/docs/languages/cpp>`_:
     The official C++ extension, from Microsoft.  See :ref:`vscode-cpp`.
 
-`Latex Workshop <https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)>`_:
+`Latex Workshop <https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop>`_:
     Useful for writing Latex docs.
 
 `restructuredText <https://docs.restructuredtext.net/>`_:
