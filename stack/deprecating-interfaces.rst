@@ -7,8 +7,7 @@ Deprecation Procedure
 
 Deprecations are changes to interfaces.
 (If they were limited to implementation alone, they wouldn't require deprecation, as no one would notice when the change was made.)
-As a result they often require or result from :doc:`RFCs </communications/rfc>`.
-But our usual policy applies; if no one would object, a deprecation can be made without an RFC.
+They require approval from the DMCCB by means of an :doc:`RFC </communications/rfc>`.
 
 Release notes
 -------------
