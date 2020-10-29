@@ -15,6 +15,7 @@
 from __future__ import print_function
 import sys
 import os
+import re
 
 from documenteer.sphinxconfig.utils import form_ltd_edition_name
 
@@ -74,8 +75,17 @@ author = u'LSST Data Management'
 # built documents.
 #
 # The short X.Y version.
-version = form_ltd_edition_name(
-    git_ref_name=os.getenv('TRAVIS_BRANCH', default='master'))
+github_ref = os.getenv("GITHUB_REF", "")
+if github_ref == "":
+    git_ref = "master"
+else:
+    match = re.match(r"refs/(heads|tags|pull)/(?P<ref>.+)", github_ref)
+    if not match:
+        git_ref = "master"
+    else:
+        git_ref = match.group("ref")
+
+version = form_ltd_edition_name(git_ref)
 # The full version, including alpha/beta/rc tags.
 release = version
 
@@ -157,7 +167,7 @@ html_context = {
     'github_user': 'lsst-dm',
     'github_repo': 'dm_dev_guide',
     # TRAVIS_BRANCH is available in CI, but master is a safe default
-    'github_version': os.getenv('TRAVIS_BRANCH', default='master') + '/'
+    'github_version': git_ref + '/'
 }
 
 # Theme options are theme-specific and customize the look and feel of a theme
