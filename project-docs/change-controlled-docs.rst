@@ -244,7 +244,7 @@ Follow these steps to submit a document to the CCB and release a new baselined v
 
             git revert HEAD
 
-      #. Push the change to the repository and wait for the Travis job to complete.
+      #. Push the change to the repository and wait for the GitHub Actions checks (or legacy Travis job) to complete.
 
       #. Once the commits have been validated the branch can be merged to master.
          This can be done either from the command line or by pushing the merge button on GitHub.
