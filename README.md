@@ -1,5 +1,5 @@
 [![Web site](https://img.shields.io/badge/developer-lsst.io-brightgreen.svg)](https://developer.lsst.io)
-[![Travis branch](https://img.shields.io/travis/lsst-dm/dm_dev_guide/master.svg?maxAge=2592000)](https://travis-ci.com/lsst-dm/dm_dev_guide)
+[![GitHub Actions](https://github.com/lsst-dm/dm_dev_guide/workflows/CI/badge.svg)](https://github.com/lsst-dm/dm_dev_guide/actions?query=workflow%3A%22CI%22)
 
 # LSST DM Developer Guide
 
@@ -21,9 +21,9 @@ Other branches are also deployed: find them at https://developer.lsst.io/v.
 
 3. Make and commit your edits. Content is written in reStructuredText. Our [reStructuredText Style Guide](https://developer.lsst.io/restructuredtext/style.html) covers the syntax you'll need.
 
-4. Push your development branch to GitHub and make a pull request. The pull request page will help you track the publishing and testing status of your branch. You can also track your branch's status directly on [Travis CI](https://travis-ci.com/lsst-dm/dm_dev_guide).
+4. Push your development branch to GitHub and make a pull request. The pull request page will help you track the publishing and testing status of your branch. 
 
-5. If your build on [Travis](https://travis-ci.org/lsst-dm/dm_dev_guide) is successful, your branch is be published with LSST the Docs. **Find your branch listed at https://developer.lsst.io/v.**
+5. If your build on [GitHub Actions](https://github.com/lsst-dm/dm_dev_guide/actions?query=workflow%3A%22CI%22) is successful, your branch will be published with LSST the Docs. **Find your branch listed at https://developer.lsst.io/v.**
 
 6. Once you're done, press the green button on your pull request to merge to `master`. Your changes are automatically published to the main URL: https://developer.lsst.io. Don't worry about messing things up, GitHub branch protections will ensure that your edits build successfully, and that your branch is up-to-date with `master`.
 
