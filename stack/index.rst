@@ -21,5 +21,6 @@ DM Stack guides
 - :doc:`lsstsw`
 - :doc:`eups-tutorial`
 - :doc:`adding-a-new-package`
+- :doc:`moving-to-github-actions`
 - :doc:`packaging-third-party-eups-dependencies`
 - :doc:`renaming-a-package`

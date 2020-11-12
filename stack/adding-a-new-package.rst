@@ -28,7 +28,7 @@ For third-party code, use the "DM Externals" and "Overlords" (but *not* "Data Ma
   Having the code reside in the ``lsst`` or ``lsst-dm`` organization on GitHub is not sufficient.
 
 The new package must be added to the `etc/repos.yaml file in the lsst/repos repository`_ along with its corresponding GitHub URL.
-This file is governed by a "self-merge" policy: upon opening a pull request, it will be checked by Travis CI, and developers may merge without further review on success.
+This file is governed by a "self-merge" policy: upon opening a pull request, it will be checked by GitHub Actions, and developers may merge without further review on success.
 This change **must** be merged before the package can be built on Jenkins.
 Refer to :jira:`RFC-75` for background.
 
@@ -59,42 +59,23 @@ With checks enabled people will be able to use the GitHub merge button on Pull R
 .. image:: /_static/build-ci/github_branch_protection.png
 
 In the image above no automated status checks are being performed because we have not yet enabled any.
-GitHub requires that at least one check runs before the up-to-date checks are enabled so a Travis job **must** be provided if the GitHub merge button is to be used.
-Travis does not replace normal testing done with a :doc:`Jenkins job <jenkins-stack-os-matrix>`, but for packages that have been updated to :ref:`use flake8 <testing-flake8>` it is useful to add a simple Travis script like the following:
+GitHub requires that at least one check runs before the up-to-date checks are enabled so a GitHub Action or Travis job **must** be provided if the GitHub merge button is to be used.
+GitHub Actions or Travis do not replace normal testing done with a :doc:`Jenkins job <jenkins-stack-os-matrix>`.
+For packages that contain Python, it is useful to add a simple GitHub Action by selecting "Actions" from the GitHub repository page, selecting "New Workflow" if necessary, and choosing the "LSST DM Python lint Workflow".
+If Python typing is used, it can be checked using ``mypy`` via the "LSST DM Python mypy Workflow".
+Similarly, YAML files can be checked via the "LSST DM YAML lint Workflow", and shell scripts can be checked via the "LSST DM shellcheck Workflow".
+(Both of those checks can be configured, either via an external file such as ``.yamllint.yaml`` or via modifications to the workflow as described in the link in the shellcheck workflow.)
+If nothing seems appropriate the "LSST DM null Workflow" should be enabled to allow GitHub to do the checks it needs.
 
-.. literalinclude:: examples/flake8-travis.yml
-  :language: yaml
-
-.. note::
-
-   For Travis to recognize the file in the repository it **must** be named :file:`.travis.yml` and be in the repository root.
-   Any other name will be ignored and in particular the common misnaming of the file as :file:`.travis.yaml` does not work.
-
-.. note::
-
-   The the `linting`_ repository provides a ``requirements.txt`` which specifies an appropriate version of ``flake8``.
-
-   .. _linting: https://github.com/lsst/linting
-
-For packages containing C++ that have been tidied up using ``clang`` tools, you may consider adding a Travis check that runs the tidy tool and does a ``diff`` with the repository.
-Shell scripts can also be checked by calling the ``shellcheck`` command.
-If nothing seems appropriate a null Travis job should be enabled to allow GitHub to do the checks it needs.
-An example null Travis file follows:
-
-.. literalinclude:: examples/null-travis.yml
-  :language: yaml
-
-Once the Travis script has been written, pushed to GitHub, and ultimately merged to ``master``, new pull requests will automatically run the Travis checks without any further configuration and the results of the Travis checks will be visible in the "Checks" tab of the pull request on GitHub.
+Pull requests will automatically run the GitHub Actions and their results will be visible in the "Checks" tab of the pull request on GitHub.
 
 When the first job completes you can return to the branches settings page on GitHub.
 Now you will see that the ``master`` branch is listed along with an EDIT button.
-The branch protection rules will now list the Travis CI checks in the "up to date before merging" section.
+The branch protection rules will now list the GitHub Actions checks in the "up to date before merging" section.
 Enable these and save.
 Your branch protections screen should then look something like this:
 
 .. image:: /_static/build-ci/github_branch_protection_travis.png
-
-If your repository already included a :file:`.travis.yml` file before you enabled branch protections these options will have been available to you immediately and can be enabled as part of the initial branch protections.
 
 .. _lfs-repos:
 

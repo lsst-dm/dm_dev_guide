@@ -314,6 +314,7 @@ ReStructuredText
    stack/eups-tutorial
    stack/lsstsw
    stack/adding-a-new-package
+   stack/moving-to-github-actions
    stack/license-and-copyright
    stack/packaging-third-party-eups-dependencies
    stack/renaming-a-package
@@ -372,6 +373,7 @@ Packaging.
 - :doc:`stack/eups-tutorial`
 - :doc:`stack/lsstsw`
 - :doc:`stack/adding-a-new-package`
+- :doc:`stack/moving-to-github-actions`
 - :doc:`stack/license-and-copyright`
 - :doc:`stack/packaging-third-party-eups-dependencies`
 - :doc:`stack/renaming-a-package`
