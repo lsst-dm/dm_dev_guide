@@ -54,7 +54,7 @@ Command line
 #. Create a branch: ``git checkout -b u/{user}/migrate-to-gha``
 #. ``git rm .travis.yml``
 #. ``mkdir -p .github/workflows; cd .github/workflows``
-#. ``curl -LO https://https://raw.githubusercontent.com/lsst/.github/master/workflow-templates/lint.yaml``
+#. ``curl -LO https://raw.githubusercontent.com/lsst/.github/master/workflow-templates/lint.yaml``
 #. ``git add lint.yaml``
 #. ``git commit`` and add a commit message such as "Migrate from Travis to GitHub Actions."
 #. ``git push -u origin u/{user}/migrate-to-gha``
