@@ -482,10 +482,23 @@ We **always use non-fast forward merges** so that the merge point is marked in G
 
 .. code-block:: bash
 
+   # Prepare to merge
    git checkout master
-   git pull  # Sanity check; rebase ticket if master was updated.
+   git pull  # Sanity check; if master is up-to-date, skip ahead to "Merge" below
+   git checkout tickets/DM-NNNN
+   git rebase master
+   git push --force  # so that the commits on the remote branch match the commits merged*
+   # Merge
+   git checkout master
    git merge --no-ff tickets/DM-NNNN
    git push
+
+We force push the rebased branch for three reasons:
+
+1. In many repos, GitHub branch protection requires that Travis was run on any commits before they can be pushed onto master.
+   Branch protections also require that the branch is up-to-date with ``master`` before a merge is allowed.
+2. The policy is to delete branches that have been merged. This is only possible if the exact commit has been merged.
+3. For convenience, GitHub will automatically close pull requests if the corresponding branch has been merged to master.
 
 **GitHub pull request pages also offer a 'big green button' for merging a branch to master**.
 We discourage you from using this button since there isn't a convenient way of knowing that the merged development history graph will be linear from GitHub's interface.
