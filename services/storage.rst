@@ -52,14 +52,14 @@ The command to see your disk usage and limits is :command:`quota`. Example:
    $ quota
    Directories quota usage for user jdoe:
 
----------------------------------------------------------------
-| GPFS Fileset         | Used (GB)  | Quota (GB) | # Of Files |
----------------------------------------------------------------
-| home                 | 1          | 1000       | 22,533     |
-| jhome                | 0          | 100        | 9          |
-| scratch              | 0          | 0          | 2          |
-| project              | 0          | 0          | 2          |
----------------------------------------------------------------
+   ---------------------------------------------------------------
+   | GPFS Fileset         | Used (GB)  | Quota (GB) | # Of Files |
+   ---------------------------------------------------------------
+   | home                 | 1          | 1000       | 22,533     |
+   | jhome                | 0          | 100        | 9          |
+   | scratch              | 0          | 0          | 2          |
+   | project              | 0          | 0          | 2          |
+   ---------------------------------------------------------------
 
 Home directories are backed up using snapshots and a separate DR process.
 
