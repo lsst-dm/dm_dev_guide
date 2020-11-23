@@ -12,7 +12,7 @@ There are a few other documents that might have the info you are looking for:
 Filesystems in GPFS (6.3PB of storage)
 ======================================
 
-:file:`/lsstdata/offline/teststand`
+:file:`/lsstdata/offline`
     Long term storage of LSST project data, including production, engineering, and test stand datasets. Contains immutable data. This is under a disaster recovery policy.
     Currently includes :file:`/lsstdata/offline/teststand/auxTel` for datasets from the LATISS/AuxTel test stand in Tucson and :file:`/lsstdata/offline/teststand/BOT` for datasets from the Bench for Optical Testing at SLAC. The former includes read-only Gen2 Butler repositories under :file:`/lsstdata/offline/teststand/auxTel/DAQ/gen2repo` and :file:`/lsstdata/offline/teststand/auxTel/L1Archiver/gen2repo`. These are updated periodically (several times an hour) as data is taken in Tucson.
     A *writable* Gen2 Butler repository for LATISS/AuxTel data with associated calibrations and shared reruns is currently available at :file:`/project/shared/auxTel`.  This repository is what should be used for typical staff analysis.
