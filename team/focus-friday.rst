@@ -12,7 +12,7 @@ By reducing traffic we will reduce the need to participate in threads on specifi
 Hence there should be: 
 
 - No planned meetings, generally. There may of course be exceptions, for example if your focused work includes a co-work with others who agree to meet, this is OK. Such agreements should be between peers and not use any hierarchy. You may elect to attend meetings/workshops outside DM — or occasionally we may be required to attend such meetings.
-- No Slack messages on general channels. You may slack an individual, or a group of individuals if you have agreed such interactions ahead of time. Conversations should not be carried out on general channels. There should be no expectation of response to Slack messages.
+- Slack messages on general channels are discouraged and one should not expect a response. Conversations are discouraged on general channels and specific users should not be @ed. You may slack an individual, or a group of individuals if you have agreed such interactions ahead of time. There should be no expectation of response to Slack messages.
 
 Asynchronous communication is perfectly acceptable on the understanding that no response is to be expected before the next work day (normally Monday).
 Hence it is OK to, for example:
