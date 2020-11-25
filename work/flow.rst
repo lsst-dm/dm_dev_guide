@@ -478,6 +478,11 @@ Putting a ticket in a **Reviewed** state gives the developer the go-ahead to mer
 If it has not been done already, the developer should rebase the ticket branch against the latest master.
 If a rebase was required, a final check with Jenkins should be done.
 
+**GitHub pull request pages offer a 'big green button' for merging a branch to master**.
+We encourage you to use this button when GitHub says "This branch has no conflicts with the base branch", "All checks have passed", and at least one of the checks has "Required" next to it, which should be the case for almost all repos that are being changed.
+For normally-configured repos, using the button will also delete the ticket branch after the merge.
+Do *not* select a different merge strategy from the pulldown next to the button; these should be disabled anyway.
+
 We **always use non-fast forward merges** so that the merge point is marked in Git history, with the merge commit containing the ticket number:
 
 .. code-block:: bash
@@ -486,10 +491,6 @@ We **always use non-fast forward merges** so that the merge point is marked in G
    git pull  # Sanity check; rebase ticket if master was updated.
    git merge --no-ff tickets/DM-NNNN
    git push
-
-**GitHub pull request pages also offer a 'big green button' for merging a branch to master**.
-We discourage you from using this button since there isn't a convenient way of knowing that the merged development history graph will be linear from GitHub's interface.
-Rebasing the ticket branch against ``master`` and doing the non-fast forward merging on the command line is the safest workflow.
 
 The ticket branch may be deleted from the GitHub remote if its name is in the merge commit comment (which it is by default).
 
