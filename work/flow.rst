@@ -482,6 +482,7 @@ If a rebase was required, a final check with Jenkins should be done.
 We encourage you to use this button when GitHub says "This branch has no conflicts with the base branch", "All checks have passed", and at least one of the checks has "Required" next to it, which should be the case for almost all repos that are being changed.
 For normally-configured repos, using the button will also delete the ticket branch after the merge.
 Do *not* select a different merge strategy from the pulldown next to the button; these should be disabled anyway.
+Also do *not* use the "Update my branch" button as that does a merge; rebase from the command line instead.
 
 We **always use non-fast forward merges** so that the merge point is marked in Git history, with the merge commit containing the ticket number:
 
