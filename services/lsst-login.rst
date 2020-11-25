@@ -62,6 +62,16 @@ Information on setting up NCSA Duo is available at the following URL:
    Only password (keyboard-interactive) and Kerberos (gssapi) authentication are allowed via SSH on the lsst-login nodes.
 
 
+.. tip::
+
+   **Using passcodes**
+
+   When logging in, you will be prompted for the device on which you wish the Duo push notice to arrive.
+   Instead of selecting a device, you may, instead, enter the six digit passcode from your Duo app.
+   This can be useful if, for whatever reason, your device cannot recieve push notices.
+   Take note that the passcodes from the Duo app do expire on timescales of less than a minute.
+
+
 SSH With Kerberos
 -----------------
 
