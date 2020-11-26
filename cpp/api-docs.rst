@@ -10,6 +10,9 @@ We document C++ code in two ways:
 
    Doxygen comment blocks are the public specification of our C++ API.
 
+   Our Doxygen configuration file is located in the `base package <https://github.com/lsst/base/blob/master/doc/base.inc>`_.
+   For Science Pipelines packages, it is automatically included in all documentation builds.
+
 2. By commenting our code internally with C++ comments (``//`` or ``/* .. */``).
 
    These comments are meant to be read only by developers reading and editing the source code.
