@@ -1725,10 +1725,11 @@ For example:
 
 .. _style-guide-cpp-5-27:
 
-5-27. Constructors taking one argument MUST be declared as ``explicit``.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5-27. Constructors MUST be declared as ``explicit``.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A default constructor must be provided. Avoid implicit copy constructors.
+This includes zero-argument constructors, to avoid some C++11 nuances.
+The only exception is for copy and move constructors; they MAY be non-explicit to permit assignment-like syntax.
 
 .. code-block:: cpp
 
@@ -1738,11 +1739,13 @@ A default constructor must be provided. Avoid implicit copy constructors.
 
    public:
        explicit Year(int i) : y(i) {}
+       Year(Year const&);    // copy constructor, not explicit
    };
 
    Year y1 = 1947;        // illegal
    Year y2 = Year(1947);  // OK
    Year y3(1947);         // Better
+   Year y4 = y2;          // OK
 
    // Example of unintended result and no error reported
    class String {
@@ -1761,7 +1764,7 @@ A default constructor must be provided. Avoid implicit copy constructors.
 
 This avoids implicit type conversions (see :ref:`Rule 5-3 <style-guide-cpp-5-3>`).
 The declaration of ``y1`` would be legal had ``explicit`` not been used.
-This type of implicit conversion can result in incorrect and unintentional side effects.
+This type of implicit conversion can result in incorrect and unintentional side effects, especially in function calls.
 
 
 .. _style-guide-cpp-5-27a:
