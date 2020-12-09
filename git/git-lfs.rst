@@ -109,12 +109,14 @@ If you want to push to a LSST Git LFS-backed repository you'll need to configure
 First, set up a credential helper to manage your GitHub credentials (Git LFS won't use your SSH keys).
 :ref:`We describe how to set up a credential helper for your system in the Git set up guide <git-credential-helper>`.
 
-Then the next time you run a Git command that requires authentication, Git will ask you to authenticate with LSST's Git LFS server::
+Then the next time you run a Git command that requires authentication, Git may ask you to authenticate with both GitHub (for the push via HTTPS) and with LSST's Git LFS server (for authentication of the LFS upload)::
 
+   Username for 'https://github.com': <GitHub username>
+   Password for 'https://<user>@github.com': <GitHub password or token>
    Username for 'https://git-lfs.lsst.codes': <GitHub username>
-   Password for 'https://<git>@git-lfs.lsst.codes': <GitHub password or token>
+   Password for 'https://<user>@git-lfs.lsst.codes': <GitHub password or token>
 
-At the prompts, enter your GitHub username and password.
+At the prompts, enter your GitHub username and password (or token, see below).
 
 Once your credentials are cached, you won't need to repeat this process on your system (:ref:`unless you opted for the cache-based credential helper <git-credential-helper>`).
 
