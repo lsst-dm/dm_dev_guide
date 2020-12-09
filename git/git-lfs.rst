@@ -124,7 +124,7 @@ Once your credentials are cached, you won't need to repeat this process on your 
 
    **Working with GitHub Two Factor Authentication**
 
-   If you have `GitHub's two-factor authentication <https://help.github.com/articles/about-two-factor-authentication/>`_ enabled, use a personal access token instead of a password.
+   If you have `GitHub's two-factor authentication <https://help.github.com/articles/about-two-factor-authentication/>`_ enabled, you must use a personal access token instead of a password.
    You can set up a personal token at https://github.com/settings/tokens with ``public_repo`` and ``read:org`` permissions.
 
 If you find that ``git push`` is not working but also not asking you for credentials, you may need to manually insert the username/password or token into the credential store or macOS keychain.
