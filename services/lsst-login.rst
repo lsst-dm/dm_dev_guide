@@ -22,12 +22,10 @@ This page is designed to assist developers in the use of the ``lsst-login`` serv
 Overview
 ========
 
-The ``lsst-login`` servers are primarily intended as bastions used to access other resources at NCSA. Additional capabilities include:
-
-- light development with short-running processes that require modest resources (e.g., building docs, short compilations against LSST software stack)
-- view files (e.g., FITS files)
-
-Users are encouraged to submit batch jobs to perform work that requires more significant resources. Please see :doc:`/services/batch` for more information.
+The ``lsst-login`` servers are primarily intended as bastions used to access other resources at NCSA.
+These servers should only be used as a jump host for the ``lsst-devl`` machines (see :doc:`/services/lsst-devl`) or to submit batch jobs to perform work that requires more significant resources (see :doc:`/services/batch`).
+It may also be easier to use these machines than the ``lsst-devl`` machines with remote editors and IDEs.
+These servers have resource limits, such as a small amount of memory per core, that will cause larger tasks (such as compiling ``afw``) to fail.
 
 The ``lsst-login`` nodes have access to the :doc:`LDF file systems <storage>`.
 
