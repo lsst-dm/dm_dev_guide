@@ -1,6 +1,3 @@
-.. note::
-
-   This page is based on :ldm:`294` Appendix C.
 
 ##########################
 Request for comments (RFC)
