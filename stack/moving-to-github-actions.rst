@@ -6,6 +6,8 @@ GitHub Actions execute faster and more reliably than Travis jobs, so we are conv
 This document describes how to accomplish this transition for existing packages.
 New packages should start with GitHub Actions by default; additional customizations that may be useful are suggested in :doc:`the new package documentation</stack/adding-a-new-package>`.
 
+**Note:** you must have administrator rights to the repository to follow this procedure.
+
 Travis uses a ``.travis.yml`` file that specifies the workflow to be executed when events such as pushes or pull requests occur for the repository.
 GitHub Actions use ``.github/workflows/*.yaml`` files instead.
 These workflows execute in parallel.
