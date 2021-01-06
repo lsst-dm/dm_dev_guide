@@ -1,10 +1,12 @@
-.. note::
-
-   This page is based on :ldm:`294` Appendix C.
 
 ##########################
 Request for comments (RFC)
 ##########################
+
+.. note::
+
+    Changes to this document must be approved by the DMCCB. 
+    To request changes to the process, please file an :doc:`RFC </communications/rfc>` and flag it.
 
 By creating a **Request for comments (RFC)**, you can make a make a proposal to the Data Management subsystem, collect feedback, build consensus, adopt a course of action, and track a decision's implementation.
 
