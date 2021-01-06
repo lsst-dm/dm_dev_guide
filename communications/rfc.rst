@@ -3,6 +3,11 @@
 Request for comments (RFC)
 ##########################
 
+.. note::
+
+    Changes to this document must be approved by the DMCCB. 
+    To request changes to the process, please file an :doc:`RFC </communications/rfc>` and flag it.
+
 By creating a **Request for comments (RFC)**, you can make a make a proposal to the Data Management subsystem, collect feedback, build consensus, adopt a course of action, and track a decision's implementation.
 
 In general, DM team members are empowered by the DM Project Manager (PM) and DM Subsystem Scientist (SS) to make decisions on any DM-internal matter provided they meet the criteria listed in :doc:`/team/empowerment`.

@@ -2,6 +2,11 @@
 ##############################
 Empowerment of DM team members
 ##############################
+.. note::
+
+   Changes to this document must be approved by the DMCCB. 
+   To request changes to this please file an :doc:`RFC </communications/rfc>` and flag it.
+
 
 As a DM team member, you are empowered by the DM Project Manager (PM) and DM Subsystem Scientist (SS) to make decisions on any DM-internal matter --- including technical/algorithm issues, process improvements, and tool choices --- provided that **all** of these criteria are met:
 
