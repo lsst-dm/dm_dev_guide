@@ -6,6 +6,8 @@ GitHub Actions execute faster and more reliably than Travis jobs, so we are conv
 This document describes how to accomplish this transition for existing packages.
 New packages should start with GitHub Actions by default; additional customizations that may be useful are suggested in :doc:`the new package documentation</stack/adding-a-new-package>`.
 
+**Note:** you must have administrator rights to the repository to follow this procedure.
+
 Travis uses a ``.travis.yml`` file that specifies the workflow to be executed when events such as pushes or pull requests occur for the repository.
 GitHub Actions use ``.github/workflows/*.yaml`` files instead.
 These workflows execute in parallel.
@@ -58,7 +60,7 @@ Command line
 #. ``git add lint.yaml``
 #. ``git commit`` and add a commit message such as "Migrate from Travis to GitHub Actions."
 #. ``git push -u origin u/{user}/migrate-to-gha``
-#. Create a pull request and merge it.
+#. Create a pull request from your branch.
 #. Go to the "Settings" page of the repository.
    This may be under the right-side "..." menu depending on your window width.
 #. Choose "Branches" in the left sidebar.
@@ -66,6 +68,7 @@ Command line
 #. Under "Require branches to be up to date before merging", uncheck any status checks that contain "travis-ci".
    Check any other status checks, in particular ``lint``.
 #. Click "Save changes" at the bottom of the page.
+#. Merge your pull request.
 #. If you like, you may choose "Webhooks" in the left sidebar and delete the ``https://notify.travis-ci.org/`` entry, but it does no harm to leave it.
 
 
