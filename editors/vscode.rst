@@ -190,3 +190,4 @@ An experimental (but still unsatisfactory) solution is to use the ``tickets/DM-2
 This will create a CMake-style file that VSCode can use to find missing headers.
 Rebuilds that do not add or remove files can then be done by running ``scons`` without the ``compile_commands.json`` target (with whatever targets you would normally use).
 Unfortunately, any time the ``compile_commands.json`` target is included, the file will be overwritten with information about only the files being compiled in that invocation.
+The external tool bear can also be used to create ``compile_commands.json``: See :ref:`clion-bear`

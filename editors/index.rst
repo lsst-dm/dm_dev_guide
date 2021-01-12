@@ -8,3 +8,4 @@ Editor guides
 - :doc:`sublime`
 - :doc:`vim`
 - :doc:`vscode`
+- :doc:`clion`

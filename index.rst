@@ -411,6 +411,7 @@ Git
    editors/sublime
    editors/vim
    editors/vscode
+   editors/clion
 
 .. _part-editors:
 
