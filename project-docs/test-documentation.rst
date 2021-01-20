@@ -18,9 +18,9 @@ However, in order to make this possible, it is important to follow a well-organi
 
 You can get a global overview of the process in ths `SPIE paper`_ presented in December 2020.
 The `DM Test Approach`_ Confluence page provides more practical information including details on how to create each TM4J object, how they are related to each other, and how to fill in the right information.
-Detailed procedures for document generation are given in `a companion document to DMTN-140`_.
+Detailed procedures for document generation are given in the `Docsteady Usecases`_ technote.
 
-.. _a companion document to DMTN-140: https://dmtn-140.lsst.io/howto.pdf
+.. _Docsteady Usecases: https://dmtn-178.lsst.io
 
 .. _SPIE paper: https://dmtn-140.lsst.io
 .. _DM Test Approach: https://confluence.lsstcorp.org/display/DM/DM+Test+Approach
