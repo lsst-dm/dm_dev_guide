@@ -104,6 +104,7 @@ How to use DM's communication channels.
    project-docs/change-controlled-docs.rst
    project-docs/publication-policy.rst
    project-docs/technotes.rst
+   project-docs/test-documentation.rst
 
 .. _part-project-docs:
 
@@ -118,6 +119,7 @@ Controlled documentation and publications.
 Technical notes.
 
 - :doc:`project-docs/technotes`
+- :doc:`project-docs/test-documentation`
 
 .. WORK MANAGEMENT SECTION ===================================================
 
