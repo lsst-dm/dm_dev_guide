@@ -544,3 +544,19 @@ LSST Data Facility services
 - :doc:`services/lsst-dev`
 - :doc:`services/lsst-db`
 - :doc:`services/verification`
+
+.. IDF SECTION ===========================================================
+
+.. toctree::
+   :maxdepth: 1
+   :caption: IDF
+   :hidden:
+
+   idf/overview
+
+.. _part-idf:
+
+Interim Data Facility
+---------------------
+
+- :doc:`idf/overview`
