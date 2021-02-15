@@ -112,6 +112,33 @@ NOTE: MPI is not explicitly supported on the **HTCondor DAC Cluster** and **HTCo
 To report system issues, log into `LSST JIRA <https://jira.lsstcorp.org/>`_ and file a `JIRA ticket in the IT Helpdesk Support <https://ls.st/ihsticket>`_ project tagging NCSA as the responsible organization.
 
 
+HTCondor: Running Pipelines
+---------------------------
+
+.. warning::
+
+   Pipelines using Gen2 Middleware must use Slurm for batch processing.
+
+The Batch Production Service (BPS) allows you to manage executions of large-scale scientific workflows on distributed computational resources (e.g. multi-node clusters).
+
+BPS functionality is provided by the `ctrl_bps <https://github.com/lsst/ctrl_bps>`_ package which is included by ``lsst_distrib`` in the LSST shared software stack.  To find out how to use it, see its `quick start guide <https://pipelines.lsst.io/modules/lsst.ctrl.bps/index.html>`_.
+
+.. note::
+
+   The above guide link is to the latest major release documentation.  ``ctrl_bps`` is under active development.  It is always best to use the documentation which comes with the version of the LSST stack you are using to ensure it has the most recent changes/updates. For example, if you are using version ``w_2021_05`` of the stack, use the guide located at `<https://pipelines.lsst.io/v/w_2021_05/modules/lsst.ctrl.bps/index.html>`_.
+
+On NCSA HTCondor clusters even HTCondor uses Kerberos authentication. To be able to use BPS with these clusters, make sure you have a valid (unexpired) NCSA Kerberos ticket. See `this <https://developer.lsst.io/services/lsst-login.html#ssh-with-kerberos>`_ section of the guide for more information on how to create or renew your NCSA Kerberos ticket.
+
+Additionally, BPS uses HTCondor’s Python API. We are still working through issues that prevent it from just being installed in the shared software stack.  Don’t install/use the htcondor package from pip or conda though. You need to use one which is installed on the NCSA servers. Currently, to add the API package to your environment **after** you set up your LSST stack and packages, ``/usr/lib64/python3.6/site-packages`` needs to be added to the end of the ``PYTHONPATH``.  For example, in bash shell run:
+
+.. code-block:: bash
+
+   export PYTHONPATH=$PYTHONPATH:/usr/lib64/python3.6/site-packages
+
+.. note::
+
+   To minimize the risk of causing any issues with the stack, make sure this entry is at the end of your ``PYTHONPATH`` environment variable.
+
 HTCondor: Compute (startd) Slots
 --------------------------------
 
