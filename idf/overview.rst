@@ -70,6 +70,6 @@ Support (interim)
 =================
 
 Questions can be sent to the `#ops-google-idf <https://lsstc.slack.com/archives/CC82DT23Y>`_ Slack channel.
-For requests or infrastructure service issues, file a `JIRA <https://jira.lsstcorp.org/>`_ ticket, add the ``idf`` label, and mention the ticket in the #ops-google-idf Slack channel.
+For requests or infrastructure service issues, file a `JIRA <https://jira.lsstcorp.org/>`_ DM ticket, add the ``idf`` label, and mention the ticket in the #ops-google-idf Slack channel.
 Infrastructure issues will be redirected to Google Support.
 See `Google's Best practices on ticketing issues <https://cloud.google.com/support/docs/best-practice>`_.
