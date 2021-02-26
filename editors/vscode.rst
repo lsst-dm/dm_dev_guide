@@ -79,7 +79,7 @@ The ``"rulers"`` setting doesn't affect actual indentation (unless you use the `
 
     {
         "editor.rulers": [
-            80,
+            79,
             110
         ],
         "files.exclude": {
