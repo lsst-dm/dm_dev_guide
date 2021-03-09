@@ -24,7 +24,6 @@ The baseline platform is currently CentOS 7 on Intel x86_64.
 
 We regularly test the following platforms in addition to the baseline platform:
 
-* CentOS 8;
 * macOS Mojave (10.14);
 * macOS High Sierra (10.13).
 
