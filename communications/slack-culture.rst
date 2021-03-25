@@ -14,19 +14,6 @@ In addition, different types of channels may work in different ways.
 This page documents the common, accepted Data Management culture, with specific adjustments for four types of channels: announcement, support, discussion, and informal.
 But note that when it comes to communication, there are always exceptions, and culture can also change with time, deliberately or organically.
 
-Announcement channels are ones in which notices are posted, sometimes by automated "bots", and little or no response is anticipated.
-These are often but not always indicated in the channel name with "announce" or "-status".
-
-Support channels are ones in which users of a service, software package, or dataset interact with developers, primarily by asking questions and reporting problems.
-These are often but not always indicated in the channel name with "-support", "-users", "-problems", "-ask", or "help-".
-
-Informal channels are ones for interactions that are not at all or not directly work-related.
-They are often location-specific or oriented towards particular interests or hobbies.
-
-Discussion channels are all the rest: work-related discussions about particular topics.
-
-We are looking into renaming channels to make their type more obvious.
-
 .. _slack-summary:
 
 Summary
@@ -55,6 +42,24 @@ Summary
 - Follow Data Management's Focus Friday rules. (:ref:`Details<slack-focus-friday>`)
 
 - Be professional and courteous in informal channels. (:ref:`Details<slack-informal-channels>`)
+
+.. _slack-channel-types:
+
+Channel Types
+=============
+
+Announcement channels are ones in which notices are posted, sometimes by automated "bots", and little or no response is anticipated.
+These are often but not always indicated in the channel name with "announce" or "-status".
+
+Support channels are ones in which users of a service, software package, or dataset interact with developers, primarily by asking questions and reporting problems.
+These are often but not always indicated in the channel name with "-support", "-users", "-problems", "-ask", or "help-".
+
+Informal channels are ones for interactions that are not at all or not directly work-related.
+They are often location-specific or oriented towards particular interests or hobbies.
+
+Discussion channels are all the rest: work-related discussions about particular topics.
+
+We are looking into renaming channels to make their type more obvious.
 
 .. _slack-general-practices:
  
