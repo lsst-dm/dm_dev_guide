@@ -73,13 +73,22 @@ Docstrings SHOULD begin with ``"""`` and terminate with ``"""`` on its own line
 
 The docstring's :ref:`summary sentence <py-docstring-short-summary>` occurs on the same line as the opening ``"""``.
 
-The terminating ``"""`` should be on its own line, even for 'one-line' docstrings (this is a minor departure from :pep:`257`).
-For example, a one-line docstring:
+The terminating ``"""`` should be on its own line except for one-line docstrings.
+If the docstring is a single line, the terminating ``"""`` may be either on the same line or on its own line.
+(Be aware that :pep:`257` requires that it be on the same line and `black`_ will enforce this rule.)
+
+.. _black: https://github.com/psf/black
 
 .. code-block:: py
 
    """Sum numbers in an array.
    """
+
+or:
+
+.. code-block:: py
+
+   """Sum numbers in an array."""
 
 (*Note:* one-line docstrings are rarely used for public APIs, see :ref:`py-docstring-sections`.)
 
