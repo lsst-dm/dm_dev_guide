@@ -27,6 +27,34 @@ Discussion channels are all the rest: work-related discussions about particular 
 
 We are looking into renaming channels to make their type more obvious.
 
+.. _slack-summary:
+
+Summary
+=======
+
+- Use common emoji as reactions in place of messages. (:ref:`Details<slack-emoji-responses>`)
+
+- Use text snippets or posts instead of long code or text blocks. (:ref:`Details<slack-snippets>`)
+
+- Use threads for side conversations; suggest replies go to a thread with ``→``, ``-->``, or ``:thread:``. (:ref:`Details<slack-general-threading>`)
+
+- Use ``@channel``, ``@here``, and @-mentions of people sparingly, and be aware of timezones when mentioning people. (:ref:`Details<slack-general-mentions>`)
+
+- In announcement channels, any non-announcements should be in threads. (:ref:`Details<slack-announcement-threading>`)
+
+- In announcement channels, use @-mentions even more rarely. (:ref:`Details<slack-announcement-mentions>`)
+
+- Follow documented procedures for providing community support to non-staff members. (:ref:`Details<slack-support-non-staff>`)
+
+- In support channels, use threads to analyze and follow up on questions and problems. Consider moving detailed conversations to a team channel. (:ref:`Details<slack-support-threading>`)
+
+- In support channels, use ``@here`` to announce urgent items and forestall questions for widespread issues. Use @-mentions to report solutions to the person who had a problem. (:ref:`Details<slack-support-mentions>`)
+
+- In discussion channels, be aware of the limitations of Slack's threads. (:ref:`Details<slack-discussion-threading>`)
+
+- Follow Data Management's Focus Friday rules. (:ref:`Details<slack-focus-friday>`)
+
+- Be professional and courteous in informal channels. (:ref:`Details<slack-informal-channels>`)
 
 .. _slack-general-practices:
  
