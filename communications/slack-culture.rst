@@ -11,7 +11,7 @@ Partnering users and projects may also be allowed to join specific channels as g
 
 Teams may evolve different cultures around the use of Slack.
 In addition, different types of channels may work in different ways.
-This page documents the common, accepted Data Management culture, with specific adjustments for four types of channels: announcement, support, discussion, and social.
+This page documents the common, accepted Data Management culture, with specific adjustments for four types of channels: announcement, support, discussion, and informal.
 But note that when it comes to communication, there are always exceptions, and culture can also change with time, deliberately or organically.
 
 Announcement channels are ones in which notices are posted, sometimes by automated "bots", and little or no response is anticipated.
@@ -20,7 +20,7 @@ These are often but not always indicated in the channel name with "announce" or 
 Support channels are ones in which users of a service, software package, or dataset interact with developers, primarily by asking questions and reporting problems.
 These are often but not always indicated in the channel name with "-support", "-users", "-problems", "-ask", or "help-".
 
-Social channels are ones for interactions that are not at all or not directly work-related.
+Informal channels are ones for interactions that are not at all or not directly work-related.
 They are often location-specific or oriented towards particular interests or hobbies.
 
 Discussion channels are all the rest: work-related discussions about particular topics.
@@ -252,9 +252,9 @@ See that page for information on use of Slack versus asynchronous communications
 Do not use any @-mentions in a discussion channel on Focus Friday.
 
 
-.. _slack-social-channels:
+.. _slack-informal-channels:
 
-Social Channels
-===============
+Informal Channels
+=================
 
-While social channels are not about work topics, you should still behave professionally and courteously within them, including exhibiting a welcoming attitude towards newcomers.
+While informal channels are not about work topics, you should still behave professionally and courteously within them, including exhibiting a welcoming attitude towards newcomers.
