@@ -75,7 +75,9 @@ The docstring's :ref:`summary sentence <py-docstring-short-summary>` occurs on t
 
 The terminating ``"""`` should be on its own line except for one-line docstrings.
 If the docstring is a single line, the terminating ``"""`` may be either on the same line or on its own line.
-(Be aware that :pep:`257` requires that it be on the same line and black will enforce this rule.)
+(Be aware that :pep:`257` requires that it be on the same line and `black`_ will enforce this rule.)
+
+.. _black: https://github.com/psf/black
 
 .. code-block:: py
 

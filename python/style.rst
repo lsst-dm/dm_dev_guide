@@ -400,7 +400,9 @@ Wrap lines before binary operators
 ----------------------------------
 
 `PEP 8 suggests <https://www.python.org/dev/peps/pep-0008/#should-a-line-break-before-or-after-a-binary-operator>`_ that lines should be broken before binary operators but allows after.
-For consistency with modern Python conventions and tools such as ``black``, and languages such as SQL, we choose before.
+For consistency with modern Python conventions and tools such as `black`_, and languages such as SQL, we choose before.
+
+.. _black: https://github.com/psf/black
 
 This requires that W503 be disabled in pycodestyle.
 
