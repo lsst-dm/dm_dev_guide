@@ -66,6 +66,7 @@ Team-specific pages:
    :caption: Communications
    :hidden:
 
+   communications/slack-culture.rst
    communications/slack-github-username.rst
    communications/rfc.rst
    communications/rfd.rst
@@ -84,6 +85,7 @@ Communications
 
 How to use DM's communication channels.
 
+- :doc:`communications/slack-culture`
 - :doc:`communications/slack-github-username`
 - :doc:`communications/rfc`
 - :doc:`communications/rfd`
