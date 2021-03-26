@@ -23,7 +23,7 @@ Summary
 
 - Use text snippets or posts instead of long code or text blocks. (:ref:`Details<slack-snippets>`)
 
-- Use threads for side conversations; suggest replies go to a thread with ``→``, ``-->``, or ``:thread:``. (:ref:`Details<slack-general-threading>`)
+- Use threads for side conversations; suggest replies go to a thread with ``→``, ``-->``, or ``:thread:`` (🧵). (:ref:`Details<slack-general-threading>`)
 
 - Use ``@channel``, ``@here``, and @-mentions of people sparingly, and be aware of timezones when mentioning people. (:ref:`Details<slack-general-mentions>`)
 
@@ -71,7 +71,15 @@ General Practices
 Emoji responses
 ---------------
 
-You can save space, time, and distractions to others by using commonly understood emoji (``:heavy_plus_sign:`` = me too; ``:white_check_mark:`` or ``:heavy_check_mark:`` = this is correct; ``:+1:`` or ``:thumbsup:`` = OK; ``:thank_you:`` or ``:thankyou:``) instead of messages when semantically equivalent to your response.
+You can save space, time, and distractions to others by using commonly understood emoji instead of messages when semantically equivalent to your response.
+
+- ``:heavy_plus_sign:`` (➕) = me too
+
+-  ``:white_check_mark:`` (✅) or ``:heavy_check_mark:`` (✔︎) = this is correct
+
+-  ``:+1:`` or ``:thumbsup:`` (👍) = OK
+
+-  ``:thank_you:`` (🙏) or ``:thankyou:``
 
 .. _slack-snippets:
 
@@ -80,16 +88,40 @@ Text snippets and posts
 
 Slack has several ways to include blocks of text or code in a message.
 
-- Inline code can be written using the backtick "\`" character before and after or using the "code" button in the formatting bar.  This should typically be used for short (one or a few words) code elements embedded within normal text statements.
+- Inline code can be written using the backtick ````` character before and after or using the "code" button in the formatting bar.  This should typically be used for short (one or a few words) code elements embedded within normal text statements.
 
-- Code blocks can be written using the triple-backtick "\`\`\`" before and after or using the "code block" button in the formatting bar.  This should typically be used for short (one to 10 lines) code blocks.
+- Code blocks can be written using the triple-backtick ``````` before and after or using the "code block" button in the formatting bar.  This should typically be used for short (one to 10 lines) code blocks.
 
-- Block quotes can be written using a ">" before each line or using the "blockquote" button in the formatting bar.  This should typically be used for short (one to 10 lines) text quotations from other messages or documents.
+- Block quotes can be written using a ``>`` before each line or using the "blockquote" button in the formatting bar.  This should typically be used for short (one to 10 lines) text quotations from other messages or documents.
+
+.. figure:: /_static/communications/slack-culture/format-bar.png
+   :name: fig-slack-format-bar
+   :alt: Slack formatting bar with inline code, code block, block quote buttons indicated
+
+   Slack formatting bar.
 
 - Entire messages can be shared from one place to another using the "Share message" button that appears when you hover over or select a message.
 
 There are two less-known but very powerful features for code and text blocks.
-Within the "lightning bolt" Shortcuts menu to the left of the message input area or the formatting bar, there are entries for "Create a text snippet" and "Create a post".
+Within the "lightning bolt" Shortcuts menu to the left of the :ref:`formatting bar <fig-slack-bolt-normal>` or the :ref:`message input area <fig-slack-bolt-advanced>`, there are entries for "Create a text snippet" and "Create a post".
+
+.. figure:: /_static/communications/slack-culture/bolt-normal.png
+   :name: fig-slack-bolt-normal
+   :alt: Shortcut "lightning bolt" icon with the normal formatting bar
+
+   Shortcut "lightning bolt" icon with the normal formatting bar.
+
+.. figure:: /_static/communications/slack-culture/bolt-advanced.png
+   :name: fig-slack-bolt-advanced
+   :alt: Shortcut "lightning bolt" icon with the markup-only preference set
+
+   Shortcut "lightning bolt" icon with the markup-only preference set.
+
+.. figure:: /_static/communications/slack-culture/snippet-post.png
+   :name: fig-slack-snippet-post
+   :alt: Text snippet and post shortcuts
+
+   Text snippet and post shortcuts.
 
 A `text snippet`_ is a file, but it appears as a message attachment.
 It can have a title (like a filename with extension).
@@ -121,7 +153,7 @@ Threading
 Threads allow conversations to take place among a subset of the members of a channel.
 They can branch off from any message at any time, and messages in a thread can also be shared with the main channel.
 At times you may want to post several messages in sequence that don't all belong in the main channel, or you may anticipate follow-up conversation that only involves a few of the channel members.
-In these cases, you can signal that replies (yours or others) to a message should be in a thread with either a rightward arrow (``→`` or ``-->``) or the ``:thread:`` emoji.
+In these cases, you can signal that replies (yours or others) to a message should be in a thread with either a rightward arrow (``→`` or ``-->``) or the ``:thread:`` (🧵) emoji.
 
 There are more specifics on thread usage in certain types of channels below.
 
