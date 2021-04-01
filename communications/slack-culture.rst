@@ -37,6 +37,8 @@ Summary
 
 - In support channels, use ``@here`` to announce urgent items and forestall questions for widespread issues. Use @-mentions to report solutions to the person who had a problem. (:ref:`Details<slack-support-mentions>`)
 
+- Decisions in discussion channels must be formally recorded elsewhere. (:ref:`Details<slack-discussion-decisions>`)
+
 - In discussion channels, be aware of the limitations of Slack's threads. (:ref:`Details<slack-discussion-threading>`)
 
 - Follow Data Management's Focus Friday rules. (:ref:`Details<slack-focus-friday>`)
@@ -292,6 +294,11 @@ If a problem affects only one person, however, an @-mention of that person is su
 
 Discussion Channels
 ===================
+
+.. _slack-discussion-decisions:
+
+Decisions
+---------
 
 In Data Management, discussions in Slack do not produce an authoritative record of decisions.
 All decisions emerging from such discussions need to be formalized elsewhere, often an :doc:`RFC </communications/rfc>`, a :doc:`technical note </project-docs/technotes>`, or, at minimum, a `Confluence page <https://confluence.lsstcorp.org/>`__ or `Jira issue <https://jira.lsstcorp.org/>`__.
