@@ -13,7 +13,7 @@ Using Boost
 A Boost library may be used only if:
 
 1. the desired effect cannot be accomplished with a C++17 standard language feature, and
-2. a C++ standard library equivalent is either unavailable or unusable with our minimum required compiler version (i.e. ``gcc`` version 6.3.1).
+2. a C++ standard library equivalent is either unavailable or unusable with our :ref:`minimum required compiler version <style-guide-cpp-2-2>`.
 
 In particular, the following Boost libraries are no longer accepted as they have standard equivalents in gcc 6.3.1 and above:
 
