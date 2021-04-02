@@ -84,17 +84,25 @@ These tasks are made much simpler if the code is easily readable and well-docume
 
 .. _style-guide-cpp-2-2:
 
-2-2. We are writing C++14
+2-2. We are writing C++17
 -------------------------
 
-The C++11 standard and the C++14 improvements to it bring a number of useful language features that make the resulting code more expressive, easier to read, and safer.
-
-We follow the official: International Standard ISO/IEC 14882:2014(E) – Programming Language C++, without any compiler specific extensions.
+We follow the official: International Standard ISO/IEC 14882:2017(E) – Programming Language C++, without any compiler specific extensions.
 
 .. note::
 
    We use compilers provided by a specific :ref:`Conda environment <platforms-environment>` executing on a defined :ref:`baseline platform <platforms-baseline>`.
-   This environment provides complete support for C++14, but --- in the case of compiler bugs --- the allowed set of C++14 features is those which can be shown to work properly in this reference environment.
+   This environment provides complete support for C++17, but --- in the case of compiler bugs --- the allowed set of C++17 features is those which can be shown to work properly in this reference environment.
+
+The C++17 standard adds a number of useful features such as nested namespace definitions, structured binding declarations, initializers in ``if`` and ``switch`` statements, class template argument deduction, ``std::optional``, ``std::any``, ``std::filesystem``, and ``std::variant``.
+A parallel algorithms library has also been added, although use of this in Science Pipelines code should be vetted, as we typically use one-core-per-process parallelization.
+``std::auto_ptr`` has been removed and should typically be replaced by ``std::unique_ptr``.
+
+When using C++17 features, be careful about readability for developers familiar only with C++14.
+
+If you find that any Style Guide rules conflict with C++17 best practices, such as those in the `C++ Core Guidelines`_, please propose updates.
+
+.. _C++ Core Guidelines: https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md
 
 .. _style-guide-cpp-2-3:
 
