@@ -8,7 +8,7 @@ DM uses Git LFS to manage test datasets within our :doc:`normal Git workflow </w
 `Git LFS is developed by GitHub <https://git-lfs.github.com/>`_, though DM uses its own backend storage infrastructure (see `SQR-001: The Git LFS Architecture <http://sqr-001.lsst.io>`_ for background).
 
 All DM repositories should use Git LFS to store binary data, such as FITS files, for :abbr:`CI (Continuous Integration)`.
-Examples of LFS-backed repositories are `lsst/afw <https://github.com/lsst/afw>`_, `lsst/hsc_ci <https://github.com/lsst/ci_hsc>`_, `lsst/testdata_decam <https://github.com/lsst/testdata_decam>`_ and `lsst/testdata_cfht <https://github.com/lsst/testdata_cfht>`_.
+Examples of LFS-backed repositories are `lsst/afwdata <https://github.com/lsst/afwdata>`_, `lsst/testdata_ci_hsc <https://github.com/lsst/testdata_ci_hsc>`_, `lsst/testdata_decam <https://github.com/lsst/testdata_decam>`_ and `lsst/testdata_cfht <https://github.com/lsst/testdata_cfht>`_.
 
 **On this page**
 
@@ -24,18 +24,20 @@ Examples of LFS-backed repositories are `lsst/afw <https://github.com/lsst/afw>`
 Installing Git LFS
 ==================
 
-Download and install the :command:`git-lfs` client by visiting the `Git LFS <https://git-lfs.github.com>`_ homepage.
+In most Science Pipelines installations, including those in the Rubin Science Platform, :command:`git lfs` is already installed as part of the ``rubin-env`` conda metapackage.
+
+Otherwise, you can download and install the :command:`git-lfs` client by visiting the `Git LFS <https://git-lfs.github.com>`_ homepage.
 Many package managers, like Homebrew_ on the Mac, also provide :command:`git-lfs` (``brew install git-lfs`` for example).
 
 We recommend using the latest Git LFS client.
-The *minimum* usable client version for LSST is :command:`git-lfs` is 2.3.4.
+The *minimum* usable client version for LSST is :command:`git-lfs` 2.3.4.
 
 .. Generally our stated Git LFS version requirements should track what's used in CI:
 .. https://github.com/lsst/lsstsw/blob/master/bin/deploy
 
 Git LFS requires Git version 1.8.2 or later to be installed.
 
-Before you can use Git LFS with LSST data you'll need to configure by following the next section.
+Before you can use Git LFS with LSST data you'll need to configure it by following the next section.
 
 .. _git-lfs-config:
 
@@ -47,7 +49,7 @@ Configuring Git LFS
 Basic configuration
 -------------------
 
-After you've installed Git LFS, run:
+Once, after you've installed Git LFS, run:
 
 .. code-block:: bash
 
@@ -63,7 +65,6 @@ Configuration for LSST
 
 LSST uses its own Git LFS servers.
 This section describes how to configure Git LFS to pull from LSST's servers.
-If you are running an older client, version 1.2 or earlier, follow the note at the end of this section.
 
 First, add these lines into your :file:`~/.gitconfig` file:
 
@@ -82,22 +83,6 @@ Trying cloning a small data repository to test your configuration:
    git clone https://github.com/lsst/testdata_subaru
 
 *That's it.*
-
-.. note::
-
-   **Configuration for Git LFS v1.2 and earlier***
-
-   The legacy Git LFS client (versions *earlier* than 1.3) has two configuration differences compared to the modern configuration described above.
-
-   First, add these lines into your :file:`~/.gitconfig` file:
-
-   .. literalinclude:: samples/git_lfs_gitconfig_legacy.txt
-      :language: text
-
-   Then add these lines into your :file:`~/.git-credentials` file (create one, if necessary):
-
-   .. literalinclude:: samples/git_lfs_git-credentials_legacy.txt
-      :language: text
 
 .. _git-lfs-auth:
 
@@ -199,9 +184,6 @@ Make a file called :file:`.lfsconfig` *within the repository*, and write these l
 
    [lfs]
         url = https://git-lfs.lsst.codes
-
-Note that older versions of Git LFS used :file:`.gitconfig` rather than :file:`.lfsconfig`.
-As of Git LFS version 1.1 `.gitconfig has been deprecated <https://github.com/github/git-lfs/pull/837>`_, but support will not be dropped until LFS version 2.
 
 Next, track some files types.
 For example, to have FITS and ``*.gz`` files tracked by Git LFS,
