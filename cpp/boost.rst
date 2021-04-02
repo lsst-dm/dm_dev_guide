@@ -68,7 +68,7 @@ In particular, the following Boost libraries are no longer accepted as they have
 ``variant``
         use ``<variant>``
 
-Certain Boost libraries are recommended: they should be used whenever applicable in preference to any other method of accomplishing the same effect. In general, any library that is tagged with *"Standard .... {something}"* in the `Boost library listing <http://www.boost.org/doc/libs>`_ falls into this category (unless its use conflicts with the above rules on the availability of standard library / language equivalents).
+Certain Boost libraries are recommended: they should be used whenever applicable in preference to any other method of accomplishing the same effect.
 Among others, this category includes:
 
 * ``current_function``
@@ -85,7 +85,7 @@ Additional Boost libraries are considered safe: they may be used freely where ap
 * ``tokenizer``
 
 Most other Boost libraries may be used after appropriate design review.
-Particular caution should be used when the library involves substantial template metaprogramming or requires linking (is not listed on the above page as *"Build & Link .... Header-only"*).
+Particular caution should be used when the library involves substantial template metaprogramming or requires linking.
 Among others, the following libraries fall into the extra-caution category:
 
 * ``Fusion``
