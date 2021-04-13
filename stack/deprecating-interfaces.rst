@@ -43,7 +43,8 @@ If you need to deprecate a class or function, import the `~deprecated.sphinx.dep
 
 For each class or function to be deprecated, decorate it as follows::
 
-   @deprecated(reason="This method is no longer used for ISR. Will be removed after v15.", category=FutureWarning)
+   @deprecated(reason="This method is no longer used for ISR. Will be removed after v15.",
+               version="v14.0", category=FutureWarning)
    def _extractAmpId(self, dataId):
 
 Class and static methods should be decorated in the order given here::
