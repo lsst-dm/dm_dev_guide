@@ -93,6 +93,7 @@ We follow the official: International Standard ISO/IEC 14882:2017(E) – Program
 
    We use compilers provided by a specific :ref:`Conda environment <platforms-environment>` executing on a defined :ref:`baseline platform <platforms-baseline>`.
    This environment provides complete support for C++17, but --- in the case of compiler bugs --- the allowed set of C++17 features is those which can be shown to work properly in this reference environment.
+   In practice, we further restrict the feature set to those that also work on our commonly-tested platforms.
 
 The C++17 standard adds a number of useful features such as nested namespace definitions, structured binding declarations, initializers in ``if`` and ``switch`` statements, class template argument deduction, ``std::optional``, ``std::any``, ``std::filesystem``, and ``std::variant``.
 A parallel algorithms library has also been added, although use of this in Science Pipelines code should be vetted, as we typically use one-core-per-process parallelization.
