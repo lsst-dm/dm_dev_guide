@@ -54,11 +54,12 @@ LSST Corporation and preconstruction era
 ----------------------------------------
 
 Prior to the start of LSST construction (before August 2014) all copyright was granted to the LSST Corporation.
+LSST Corporation `have transferred <http://ls.st/agreement-221>`_ those copyrights to AURA and any remaining references to the LSST Corporation owning copyright should be corrected.
 
 .. note::
 
    Since the beginning of construction (August 2014) some copyrights have been erroneously granted to the LSST Corporation because of a lack of policy communication.
-   These post-2014 copyright assignments to LSST Corporation are errors and should be fixed.
+   Any remaining statement of code being owned by the LSST Corporation should be changed to AURA.
 
 .. _copyright-formatting:
 
