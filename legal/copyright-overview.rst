@@ -79,8 +79,8 @@ Here is an example of a copyright statement with two contributing institutions:
 
 .. code-block:: text
 
-   Copyright 2012-2014 LSST Corporation
-   Copyright 2014-2017 Association of Universities for Research in Astronomy, Inc. (AURA)
+   Copyright 2012-2017 Association of Universities for Research in Astronomy, Inc. (AURA)
+   Copyright 2016-2017 University of Washington
 
 The "years" in a copyright statement must reflect when contributions were made:
 
@@ -146,9 +146,8 @@ For example:
 
 .. code-block:: text
 
-   Copyright 2012-2014 LSST Corporation
    Copyright 2016, 2018 University of Washington
-   Copyright 2014-2018 Association of Universities for Research in Astronomy, Inc. (AURA)
+   Copyright 2012-2018 Association of Universities for Research in Astronomy, Inc. (AURA)
 
 The :file:`COPYRIGHT` file does not contain any other content.
 
