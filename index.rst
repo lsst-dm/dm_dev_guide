@@ -2,7 +2,7 @@
 LSST DM Developer Guide
 #######################
 
-This is an internal guide for `LSST DM <https://www.lsst.org/about/dm>`_ staff during project construction, and Rubin Observatory Data Production during operations. 
+This is an internal guide for `LSST DM <https://www.lsst.org/about/dm>`_ staff during project construction, and for Rubin Observatory Data Production staff in operations. 
 It's also openly available so that others can understand how we're building the LSST's data management subsystem. In some cases, other Rubin groups (for example Telescope & Site Software) have chosen to follow various sections as it applies to them. 
 
 This guide includes a mix of normative requirements and helpful, descriptive, pages.
