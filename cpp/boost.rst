@@ -12,10 +12,13 @@ Using Boost
 
 A Boost library may be used only if:
 
-1. the desired effect cannot be accomplished with a C++14 standard language feature, and
-2. a C++ standard library equivalent is either unavailable or unusable with our minimum required compiler version (i.e. ``gcc`` version 6.3.1).
+1. the desired effect cannot be accomplished with a C++17 standard language feature, and
+2. a C++ standard library equivalent is either unavailable or unusable with our :ref:`minimum required compiler version <style-guide-cpp-2-2>`.
 
 In particular, the following Boost libraries are no longer accepted as they have standard equivalents in gcc 6.3.1 and above:
+
+``any``
+        use ``<any>``
 
 ``array``
         use ``<array>``
@@ -62,31 +65,32 @@ In particular, the following Boost libraries are no longer accepted as they have
 ``unordered_map``
         use ``<unordered_map>``
 
-Certain Boost libraries are recommended: they should be used whenever applicable in preference to any other method of accomplishing the same effect. In general, any library that is tagged with *"Standard .... {something}"* in the `Boost library listing <http://www.boost.org/doc/libs>`_ falls into this category (unless its use conflicts with the above rules on the availability of standard library / language equivalents).
+``variant``
+        use ``<variant>``
+
+Certain Boost libraries are recommended: they should be used whenever applicable in preference to any other method of accomplishing the same effect.
 Among others, this category includes:
 
 * ``current_function``
 * ``format``
-* ``regex``
 * ``test``
 
 Additional Boost libraries are considered safe: they may be used freely where applicable.
 
-* ``any``
 * ``GIL``
 * ``iterator``
 * ``MPI``
 * ``multi_index``
 * ``numeric``
 * ``tokenizer``
-* ``variant``
 
 Most other Boost libraries may be used after appropriate design review.
-Particular caution should be used when the library involves substantial template metaprogramming or requires linking (is not listed on the above page as *"Build & Link .... Header-only"*).
+Particular caution should be used when the library involves substantial template metaprogramming or requires linking.
 Among others, the following libraries fall into the extra-caution category:
 
 * ``Fusion``
 * ``MPL``
+* ``regex``
 * ``serialization``
 
 Certain Boost libraries conflict with LSST-standard ways of doing things, are inappropriate for LSST code, are insufficiently developed or well-maintained, or have been found to be excessively complicated.
