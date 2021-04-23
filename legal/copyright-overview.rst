@@ -54,11 +54,12 @@ LSST Corporation and preconstruction era
 ----------------------------------------
 
 Prior to the start of LSST construction (before August 2014) all copyright was granted to the LSST Corporation.
+LSST Corporation `have transferred <http://ls.st/agreement-221>`_ those copyrights to AURA and any remaining references to the LSST Corporation owning copyright should be corrected.
 
 .. note::
 
    Since the beginning of construction (August 2014) some copyrights have been erroneously granted to the LSST Corporation because of a lack of policy communication.
-   These post-2014 copyright assignments to LSST Corporation are errors and should be fixed.
+   Any remaining statement of code being owned by the LSST Corporation should be changed to AURA.
 
 .. _copyright-formatting:
 
@@ -78,8 +79,8 @@ Here is an example of a copyright statement with two contributing institutions:
 
 .. code-block:: text
 
-   Copyright 2012-2014 LSST Corporation
-   Copyright 2014-2017 Association of Universities for Research in Astronomy, Inc. (AURA)
+   Copyright 2012-2017 Association of Universities for Research in Astronomy, Inc. (AURA)
+   Copyright 2016-2017 University of Washington
 
 The "years" in a copyright statement must reflect when contributions were made:
 
@@ -145,9 +146,8 @@ For example:
 
 .. code-block:: text
 
-   Copyright 2012-2014 LSST Corporation
    Copyright 2016, 2018 University of Washington
-   Copyright 2014-2018 Association of Universities for Research in Astronomy, Inc. (AURA)
+   Copyright 2012-2018 Association of Universities for Research in Astronomy, Inc. (AURA)
 
 The :file:`COPYRIGHT` file does not contain any other content.
 
