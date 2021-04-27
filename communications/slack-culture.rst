@@ -96,6 +96,18 @@ See this `community post`_ for why direct messages are considered harmful.
 
 .. _community post: https://community.lsst.org/t/dms-in-slack-considered-harmful/4036
 
+.. _slack-editing:
+
+Editing messages
+----------------
+
+Slack has a feature that allows a user to edit a message sent by that user.
+This feature must be used for  typographical or grammatical errors that the user wishes to correct, or if the message is accidentally sent  before it is fully typed out.
+While Slack is less formal than email, messages should be coherent and in multiple sentences if required, instead of multiple single-line messages in short bursts. This is so that it is easy to link to them elsewhere in the future.
+In place of amending a message, it is preferable to use strikethrough to retract an idea or statement that If you post something you recognize as wrong.
+A corrected statement can be added next to it.
+A message should be deleted only if posted in a wrong channel, or if it is not appropriate in a social forum.
+
 .. _slack-snippets:
 
 Text snippets and posts
