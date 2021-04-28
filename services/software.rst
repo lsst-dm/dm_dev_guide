@@ -400,7 +400,7 @@ To add/change/delete datasets, see :doc:`Common Dataset Organization and Policy 
 Validation/Test Data Sets
 -------------------------
 
-There are two ``cron`` jobs that update a set of validation data repositories and test data repositories.
+There are two ``cron`` jobs that update a set of validation data repositories and test data repositories from ``master`` on a nightly basis.
 In most cases, this will be a fairly straightforward ``git pull``, but if corruption is detected, the repository will be cloned afresh.
 The verification data is currently being used primarily by ``validate_drp`` to measure various metrics on the reduced data.
 The test data serves a variety of purposes, but is generally included via a ``setupOptional`` in a package table file.

@@ -49,21 +49,6 @@ The batch submit nodes can be accessed after first connecting to the :doc:`lsst-
 
 For various suggestions on streamlining connections through the ``lsst-login`` nodes ("jump host" configuration, port forwarding, Kerberos) see :doc:`related documentation <lsst-login>`.
 
-In order to use HTCondor commands on the submit nodes you must have a valid Kerberos ticket. The following commands may be helpful in working with Kerberos tickets on the submit nodes:
-
-.. code-block:: text
-
-    # list current Kerberos tickets
-    $ klist
-
-    # renew your current Kerberos ticket
-    $ kinit -R
-
-    # create a new Kerberos ticket
-    $ kinit
-
-If you are using an ``lsst-login`` node as a "jump host" and are authenticating to a submit node using a Kerberos ticket from your local machine (workstation/laptop), you may not have a Kerberos ticket when you arrive on the submit node itself. You can ``kinit`` on the submit node as described. Alternatively, you may wish to configure ``GSSAPIDelegateCredentials yes`` in your local ``~/.ssh/config`` file in order to forward your Kerberos credentials to the submit node and automatically create a ticket there upon connection.
-
 
 .. _batch-gpfs:
 
@@ -127,9 +112,7 @@ BPS functionality is provided by the `ctrl_bps <https://github.com/lsst/ctrl_bps
 
    The above guide link is to the latest major release documentation.  ``ctrl_bps`` is under active development.  It is always best to use the documentation which comes with the version of the LSST stack you are using to ensure it has the most recent changes/updates. For example, if you are using version ``w_2021_05`` of the stack, use the guide located at `<https://pipelines.lsst.io/v/w_2021_05/modules/lsst.ctrl.bps/index.html>`_.
 
-On NCSA HTCondor clusters even HTCondor uses Kerberos authentication. To be able to use BPS with these clusters, make sure you have a valid (unexpired) NCSA Kerberos ticket. See `this <https://developer.lsst.io/services/lsst-login.html#ssh-with-kerberos>`_ section of the guide for more information on how to create or renew your NCSA Kerberos ticket.
-
-Additionally, BPS uses HTCondor’s Python API. We are still working through issues that prevent it from just being installed in the shared software stack.  Don’t install/use the htcondor package from pip or conda though. You need to use one which is installed on the NCSA servers. Currently, to add the API package to your environment **after** you set up your LSST stack and packages, ``/usr/lib64/python3.6/site-packages`` needs to be added to the end of the ``PYTHONPATH``.  For example, in bash shell run:
+BPS uses HTCondor’s Python API. We are still working through issues that prevent it from just being installed in the shared software stack.  Don’t install/use the htcondor package from pip or conda though. You need to use one which is installed on the NCSA servers. Currently, to add the API package to your environment **after** you set up your LSST stack and packages, ``/usr/lib64/python3.6/site-packages`` needs to be added to the end of the ``PYTHONPATH``.  For example, in bash shell run:
 
 .. code-block:: bash
 

@@ -19,7 +19,8 @@ After approval, code written internally by Data Management should be packaged fo
 DM packaging of third party code should proceed as described in :doc:`packaging-third-party-eups-dependencies`.
 
 New packages must be added to the `LSST organization on GitHub`_ and access must be granted to appropriate teams. For DM-written code, these include "Data Management" and "Overlords."
-For third-party code, use the "DM Externals" and "Overlords" (but *not* "Data Management") teams.
+For third-party code, either forked or packaged as "TaP" tarball-and-patch, use the "DM Externals" and "Overlords" (but *not* "Data Management") teams.
+Note that the "DM Auxilliaries" [sic] team is used to mark packages that are *not* part of the release distribution; it is used to tag them alongside the release as well as to catch accidental inclusions.
 
 .. warning::
 
