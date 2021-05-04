@@ -38,7 +38,7 @@ Then set up the `pipelines_lsst_io`_ package with EUPS:
 
 .. code:: bash
 
-   setup -r pipelines_lsst_io
+   setup -k -r pipelines_lsst_io
 
 .. _local-pipelines-lsst-io-build-documenteer:
 
