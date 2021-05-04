@@ -27,35 +27,9 @@ This installation should already be set up with a command like :command:`setup l
 This installation needs to be a recent daily or weekly build since you’ll be compiling the `pipe_base`_ repository from its ``master`` branch.
 Working from the tip of the ``master`` branch is the norm for LSST software development.
 
-.. _build-package-docs-documenteer:
-
-Install Documenteer, the documentation tooling
-==============================================
-
-Documenteer_ provides tooling to build `pipelines.lsst.io`_.
-Since it’s a `PyPI-distributed Python package <https://pypi.org/project/documenteer/>`__, you need to install it separately from the EUPS Stack.
-In a base working directory — not inside a repository directory — get the :file:`requirements.txt` file for `pipelines_lsst_io`_ and install it:
-
-.. code-block:: bash
-
-   curl -O https://raw.githubusercontent.com/lsst/pipelines_lsst_io/master/requirements.txt
-   pip install -r requirements.txt
-
-Do this *after* setting up the EUPS Stack with a command like :command:`setup lsst_distrib`.
-
-If it is not already present in your environment, you may also want to install the `graphviz`_ package to enable generation of diagrams:
-
-.. code-block:: bash
-
-   conda install graphviz
-
-.. note::
-
-   On a shared resource, like :doc:`lsst-dev </services/lsst-dev>`, you will need to use a ``--user`` flag with :command:`pip install`.
-
-.. note::
-
-   By using the :file:`requirements.txt` file in the `pipelines_lsst_io`_ repository, you can ensure you’re using the same version of Documenteer_ and its dependencies as in the CI builds of `pipelines.lsst.io`_.
+Finally, the documentation build uses Documenteer_ and related Sphinx_ documentation packages.
+Documenteer_ is already installed if you are using the Rubin Conda environment (part of the usual Science Pipelines installation).
+If this is not the case, see the `Documenteer installation documentation <https://documenteer.lsst.io/pipelines/install.html>`__.
 
 .. _build-package-docs-setup-package:
 
@@ -120,7 +94,8 @@ Further reading
 .. _`Documenteer`: https://documenteer.lsst.io
 .. _`Documenteer’s documentation for more information about the package-docs command`:
 .. _`Documentation for the package-docs command in Documenteer`: https://documenteer.lsst.io/pipelines/package-docs-cli.html
+.. _`Documenteer installation documentation`: https://documenteer.lsst.io/pipelines/install.html
 .. _`pipelines.lsst.io`: https://pipelines.lsst.io
 .. _`pipelines_lsst_io`: https://github.com/lsst/pipelines_lsst_io
 .. _`pipe_base`: https://github.com/lsst/pipe_base
-.. _`graphviz`: https://graphviz.org
+.. _`Sphinx`: https://www.sphinx-doc.org/en/master/

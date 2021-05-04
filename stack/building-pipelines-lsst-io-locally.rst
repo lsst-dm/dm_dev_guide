@@ -38,13 +38,7 @@ Then set up the `pipelines_lsst_io`_ package with EUPS:
 
 .. code:: bash
 
-   setup -r pipelines_lsst_io
-
-.. warning::
-
-   If you’ve already have packages set up with the :command:`setup` command, you might need to un-setup them with the :command:`unsetup` command before running ``setup -r pipelines_lsst_io``.
-
-   `pipelines_lsst_io`_ acts as a top-level EUPS package, and its table file defines what packages are included in the `pipelines.lsst.io`_ documentation site.
+   setup -k -r pipelines_lsst_io
 
 .. _local-pipelines-lsst-io-build-documenteer:
 
