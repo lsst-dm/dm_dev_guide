@@ -161,17 +161,17 @@ A relatively complete ``~/.ssh/config`` "recipe" for streamlining your SSH conne
    # Define an alias and config for the internal nodes, which can only be reached through a login node.
    Host lsst-devl*
       User NCSAUSERNAME
-      ForwardAgent yes
+      ForwardAgent yes  # To allow Github ssh without re-authentication.
       ServerAliveInterval 120
    Host lsst-devl01
       HostName lsst-devl01.ncsa.illinois.edu
-      ProxyCommand ssh lsst-login01 -W %h:%p
+      ProxyJump lsst-login01
    Host lsst-devl02
       HostName lsst-devl02.ncsa.illinois.edu
-      ProxyCommand ssh lsst-login02 -W %h:%p
+      ProxyJump lsst-login02
    Host lsst-devl03
       HostName lsst-devl03.ncsa.illinois.edu
-      ProxyCommand ssh lsst-login03 -W %h:%p
+      ProxyJump lsst-login03
 
 With such config in ``~/.ssh/config`` on your local machine, your SSH connections can be significantly streamlined. Your experience may look like this:
 
