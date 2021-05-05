@@ -138,7 +138,7 @@ A relatively complete ``~/.ssh/config`` "recipe" for streamlining your SSH conne
    Host lsst-login*
       # if your account on your local workstation/laptop does not match your LSST username, indicate the latter should be used;
       # substitute your own NCSA username
-      User ncsausername               
+      User NCSAUSERNAME               
       # allow use of a Kerberos ticket on your local machine for auth to LSST machines
       GSSAPIAuthentication yes   
       # prefer Kerberos ticket auth, amongst other possibilities (order/include others as desired)
@@ -150,7 +150,7 @@ A relatively complete ``~/.ssh/config`` "recipe" for streamlining your SSH conne
       ControlPath ~/.ssh/cm_socket_%r@%h:%p
       ControlPersist 5m
 
-   # Define aliases onto full hostnames for each login node
+   # Define aliases onto full hostnames for each login node.
    Host lsst-login01
       HostName lsst-login01.ncsa.illinois.edu
    Host lsst-login02
@@ -158,22 +158,20 @@ A relatively complete ``~/.ssh/config`` "recipe" for streamlining your SSH conne
    Host lsst-login03
       HostName lsst-login03.ncsa.illinois.edu
 
-   # Define an alias and config for an internal node, which can only be reached through a login node
+   # Define an alias and config for the internal nodes, which can only be reached through a login node.
+   Host lsst-devl*
+      User NCSAUSERNAME
+      ForwardAgent yes
+      ServerAliveInterval 120
    Host lsst-devl01
       HostName lsst-devl01.ncsa.illinois.edu
-      # you may need to specify your NCSA username again
-      User ncsausername
-      # when connecting to this internal host, tunnel/jump through a login node (using the alias you defined above)
-      ProxyJump lsst-login01
-      # if you want to use your local Kerberos ticket to authenticate on the interior node, configure that:
-      GSSAPIAuthentication yes
-      PreferredAuthentications gssapi-with-mic
-      # if the internal node is a batch submit node where you might want a Kerberos ticket (e.g., to
-      # submit jobs to HTCondor), you can choose to forward your credentials:
-      GSSAPIDelegateCredentials yes
-      # if you need to configure port forwarding to the internal node, you can do that here;
-      # substitute your actual port number
-      DynamicForward yourportnumber
+      ProxyCommand ssh lsst-login01 -W %h:%p
+   Host lsst-devl02
+      HostName lsst-devl02.ncsa.illinois.edu
+      ProxyCommand ssh lsst-login02 -W %h:%p
+   Host lsst-devl03
+      HostName lsst-devl03.ncsa.illinois.edu
+      ProxyCommand ssh lsst-login03 -W %h:%p
 
 With such config in ``~/.ssh/config`` on your local machine, your SSH connections can be significantly streamlined. Your experience may look like this:
 
