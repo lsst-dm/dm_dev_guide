@@ -1271,7 +1271,7 @@ Never rely on implicit type conversion.
    floatValue = intValue;                         // NO!
    floatValue = (float)intValue;                  // NO C-style casts!
 
-By this, the programmer indicates that he is aware of the different types involved and that the mix is intentional.
+This is an indication that the programmer is aware of the different types involved and that the mix is intentional.
 If you find you are casting a lot, stop and think!
 Maybe there is a better way to do things.
 
