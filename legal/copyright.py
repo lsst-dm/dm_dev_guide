@@ -65,7 +65,7 @@ INSTITUTIONS = {
             ["steven.bickerton@gmail.com"],
         "University of Illinois Board of Trustees":
             ["illinois.edu", "daues@users.noreply.github.com",
-                "aloftus@gmail.com"],
+                "aloftus@gmail.com", "mgckind@gmail.com"],
         "University of Washington":
             ["uw.edu", "washington.edu", "ctslater@umich.edu",
                 "ianssullivan@gmail.com", "scott.f.daniel@gmail.com",
