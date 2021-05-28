@@ -338,13 +338,14 @@ Make a pull request
 
 On GitHub, `create a pull request <https://help.github.com/articles/creating-a-pull-request/>`_ for your ticket branch.
 
-The pull request's name should be formatted as
+The pull request's title should be prefixed with the Jira ticket handle, followed by a short summary:
 
 .. code-block:: text
 
-   DM-NNNN: {{JIRA Ticket Title}}
+   DM-NNNN: {{Short summary}}
 
-This helps you and other developers find the right pull request when browsing repositories on GitHub.
+This format helps you and other developers find the right pull request when browsing repositories on GitHub.
+The short summary does not need to match the Jira issue's title, but should describe the code changes.
 
 The pull request's description shouldn't be exhaustive; only include information that will help frame the review.
 Background information should already be in the JIRA ticket description, commit messages, and code documentation.
