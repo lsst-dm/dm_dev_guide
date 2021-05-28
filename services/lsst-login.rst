@@ -168,8 +168,7 @@ A relatively complete ``~/.ssh/config`` "recipe" for streamlining your SSH conne
       # if you want to use your local Kerberos ticket to authenticate on the interior node, configure that:
       GSSAPIAuthentication yes
       PreferredAuthentications gssapi-with-mic
-      # if the internal node is a batch submit node where you might want a Kerberos ticket (e.g., to
-      # submit jobs to HTCondor), you can choose to forward your credentials:
+      # if you want a Kerberos ticket on an internal node you can choose to forward your credentials:
       GSSAPIDelegateCredentials yes
       # if you need to configure port forwarding to the internal node, you can do that here;
       # substitute your actual port number
