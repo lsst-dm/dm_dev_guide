@@ -555,9 +555,7 @@ The same rule applies for in-place operators:  ``__itruediv__`` and ``__ifloordi
 All rules from the Python style guide regarding properties SHALL also apply to C++ wrappers
 -------------------------------------------------------------------------------------------
 
-.. note::
-
-    These rules are currently under development.
+See :ref:`style-guide-py-properties` in the python guide.
 
 .. _style-guide-pybind11-module-docstrings:
 
