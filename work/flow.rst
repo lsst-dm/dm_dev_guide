@@ -214,6 +214,19 @@ Use personal repositories for side projects done after hours or on "science time
 Work by DM staff that is delivered to LSST in ticketed work **can't** be developed in personal GitHub repositories outside of the `lsst <https://github.com/lsst>`__, `lsst-dm <https://github.com/lsst-dm>`__, and `lsst-sqre <https://github.com/lsst-sqre>`__ GitHub organizations, though.
 
 Community contributors can of course use personal repositories (and forks of LSST repositories) to make contributions to LSST.
+In such cases, a staff member should make a Jira ticket for the contribution and create a corresponding ticket branch in the repository.
+This allows the code change to be tested using the :ref:`Jenkins CI system <workflow-testing>` and to be tracked using the existing tooling.
+The process for creating the repository branch looks like this:
+
+.. code-block:: bash
+
+   git remote add fork https://github.com/contributor/afw
+   git pull fork patch-3
+   git checkout patch-3
+   git checkout -b tickets/DM-98765
+   git push -u origin tickets/DM-98765
+
+After creating this branch, a new pull request should be created from it and the original pull request should be closed.
 
 .. _git-branching:
 
