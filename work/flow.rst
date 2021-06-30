@@ -220,10 +220,8 @@ The process for creating the repository branch looks like this:
 
 .. code-block:: bash
 
-   git remote add fork https://github.com/contributor/afw
-   git pull fork patch-3
-   git checkout patch-3
-   git checkout -b tickets/DM-98765
+   # Assume PR #456 corresponds to Jira ticket DM-98765
+   git fetch origin pull/456/head:tickets/DM-98765
    git push -u origin tickets/DM-98765
 
 After creating this branch, a new pull request should be created from it and the original pull request should be closed.
