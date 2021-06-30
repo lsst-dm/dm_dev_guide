@@ -341,9 +341,6 @@ Start a :doc:`stack-os-matrix Jenkins job </stack/jenkins-stack-os-matrix>` to r
 To learn more about DM's Jenkins continuous integration service, see :doc:`/jenkins/getting-started`.
 Then follow the steps listed in :doc:`/stack/jenkins-stack-os-matrix` to run the tests.
 
-Ensure that you **do not** skip the demo before submitting a pull request.
-Otherwise, your testing may be incomplete.
-
 .. _workflow-pr:
 
 Make a pull request
