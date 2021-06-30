@@ -214,6 +214,18 @@ Use personal repositories for side projects done after hours or on "science time
 Work by DM staff that is delivered to LSST in ticketed work **can't** be developed in personal GitHub repositories outside of the `lsst <https://github.com/lsst>`__, `lsst-dm <https://github.com/lsst-dm>`__, and `lsst-sqre <https://github.com/lsst-sqre>`__ GitHub organizations, though.
 
 Community contributors can of course use personal repositories (and forks of LSST repositories) to make contributions to LSST.
+In such cases, a staff member should make a Jira ticket for the contribution.
+Once the code has been automatically checked for style (using GitHub Actions), reviewed, and approved by a staff member on the original pull request, a corresponding ticket branch can be created in the LSST repository.
+This branch allows the code change to be tested using the :ref:`Jenkins CI system <workflow-testing>` and to be tracked using the existing tooling.
+The process for creating the repository branch looks like this:
+
+.. code-block:: bash
+
+   # Assume PR #456 corresponds to Jira ticket DM-98765
+   git fetch origin pull/456/head:tickets/DM-98765
+   git push -u origin tickets/DM-98765
+
+After creating this branch, a new pull request should be created from it and the original pull request should be closed.
 
 .. _git-branching:
 
@@ -327,9 +339,6 @@ Start a :doc:`stack-os-matrix Jenkins job </stack/jenkins-stack-os-matrix>` to r
 
 To learn more about DM's Jenkins continuous integration service, see :doc:`/jenkins/getting-started`.
 Then follow the steps listed in :doc:`/stack/jenkins-stack-os-matrix` to run the tests.
-
-Ensure that you **do not** skip the demo before submitting a pull request.
-Otherwise, your testing may be incomplete.
 
 .. _workflow-pr:
 
