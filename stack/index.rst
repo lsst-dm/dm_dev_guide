@@ -24,3 +24,4 @@ DM Stack guides
 - :doc:`moving-to-github-actions`
 - :doc:`packaging-third-party-eups-dependencies`
 - :doc:`renaming-a-package`
+- :doc:`conda`
