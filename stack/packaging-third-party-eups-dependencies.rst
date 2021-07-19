@@ -4,6 +4,11 @@ Distributing Third-Party Packages with EUPS
 
 This page documents how to make a third-party software package install-able using the :command:`eups distrib install` command.
 
+Generally, most dependencies :doc:`should be added via conda </stack/conda>` using the ``rubin-env`` metapackage.
+The primary reason to add an eups tarball-and-patch (TaP) package as described here is if we require a fix that has not been released in conda-forge (or if the package has no conda-forge recipe at all, and we do not want to create one).
+
+Other packages that are under active development by Rubin developers may be maintained as forked repositories and distributed as normal eups packages.
+
 Getting Approval
 ================
 

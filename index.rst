@@ -322,6 +322,7 @@ ReStructuredText
    stack/license-and-copyright
    stack/packaging-third-party-eups-dependencies
    stack/renaming-a-package
+   stack/conda
 
 .. _part-dm-stack:
 
@@ -381,6 +382,7 @@ Packaging.
 - :doc:`stack/license-and-copyright`
 - :doc:`stack/packaging-third-party-eups-dependencies`
 - :doc:`stack/renaming-a-package`
+- :doc:`stack/conda`
 
 .. GIT SECTION ===============================================================
 
