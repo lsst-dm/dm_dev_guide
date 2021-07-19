@@ -31,7 +31,7 @@ Versioning ``rubin-env``
 ``rubin-env`` has a standard semantic version number with major, minor, and patch components, in addition to a conda-internal build number.
 These components are updated as follows:
 
-* Build: increment when adding a ``<`` pin for an existing dependency.
+* Build: increment when adding a ``<`` pin for an existing dependency, as this preserves compatibility with previous builds of the environment.
 * Patch: increment when adding a ``>`` pin for an existing dependency that is compatible with old code (no major version update) or when adding a ``<`` pin that is earlier than the previous pin.
 * Minor: increment when adding a new dependency.
 * Major: increment when removing a dependency, or when removing a pin, or when changing a dependency major version
