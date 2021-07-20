@@ -398,6 +398,27 @@ will run tests:
 Note that the method being decorated must be within a subclass of ``unittest.TestCase``, since it relies on the existence of the ``subTest`` method for identifying the individual iterations.
 This use of ``subTest`` also means that all iterations will be executed, not stopping at the first failure.
 
+``classParameters`` and ``methodParameters`` require listing all combinations of the parameters.
+If you want to instead iterate over all possible combinations of the parameters,
+use ``classParametersProduct`` and ``methodParametersProduct``.
+For example:
+
+.. code-block:: python
+
+    class MyTestCase(unittest.TestCase):
+        @methodParametersProduct(foo=[1, 2], bar=["black", "white"])
+        def testSomething(self, foo, bar):
+            ...
+
+will run tests:
+
+.. code-block:: python
+
+        testSomething(foo=1, bar="black")
+        testSomething(foo=1, bar="white")
+        testSomething(foo=2, bar="black")
+        testSomething(foo=2, bar="white")
+
 See also ``pytest.mark.parametrize``, which is more complex but offers similar functionality;
 however, this module is not yet approved for use.
 
