@@ -37,6 +37,8 @@ The new package then needs to be added to the :file:`ups/*.table` file (and poss
 Table files should use ``setupRequired(package_name)`` or ``setupOptional(package_name)`` as necessary; test data packages are usually optional to allow releases to be made without requiring large additional data packages to be included.
 Packages that use optional dependencies must be written to ensure that they can pass their unit tests when the package is not available.
 
+The new package may be added to the :file:`ups/pipelines_lsst_io.table` file in `lsst/pipelines_lsst_io`_ repository so that its documentation is built as HTML pages and made available at https://pipelines.lsst.io/v/daily.
+
 .. _github-repository-configuration:
 
 Configuring GitHub Repositories
@@ -113,6 +115,7 @@ New :doc:`Git LFS-backed </git/git-lfs>` repos (or existing repos being converte
 
 .. _LSST organization on GitHub: https://github.com/lsst
 .. _lsst/templates: https://github.com/lsst/templates/tree/master/project_templates/stack_package
+.. _lsst/pipelines_lsst_io: https://github.com/lsst/pipelines_lsst_io/blob/master/ups/pipelines_lsst_io.table
 .. _Distributing third-party packages with EUPS: https://confluence.lsstcorp.org/display/LDMDG/Distributing+third-party+packages+with+EUPS
 .. _etc/repos.yaml file in the lsst/repos repository: https://github.com/lsst/repos/blob/master/etc/repos.yaml
 .. _repos.yaml: https://github.com/lsst/repos/blob/master/etc/repos.yaml
