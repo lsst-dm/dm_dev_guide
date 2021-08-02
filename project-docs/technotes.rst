@@ -42,7 +42,7 @@ Technote series
   `Find DMTN technotes <https://github.com/search?o=desc&q=org%3Alsst-dm+dmtn-&s=updated&type=Repositories>`_.
 
 - **Rubin Technical Notes (RTN).**
-  This series if for technotes by Rubin Operations.
+  The RTN series is for technotes relating to Operations that cut across individual systems, or relate to functions that cut across departments such as management, planning and operational procedures.
   RTN technotes are hosted in the https://github.com/lsst organization.
   `Find RTN technotes <https://github.com/search?q=org%3Alsst+rtn-&type=Repositories>`_.
 
@@ -68,12 +68,10 @@ Technote series
 
 .. _which-series:
 
-Which series to use for a note
-==============================
-
-If the note is for operations and about operation choose the RTN series regardless of operations department.
-If the topic is more construction/design oriented  use the SQR, DMTN or SITCOMTN as appropriate. 
-The DMTN and SQR series will still exist in operations and so it may still be used. 
+Operations vs Construction
+==========================
+The DMTN and SQR series will still exist in operations and so it may still be used.
+In general if a topic fits in a given series use the series without hesitation.
 
 .. _technote-create:
 
