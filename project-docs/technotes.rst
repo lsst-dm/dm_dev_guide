@@ -41,10 +41,10 @@ Technote series
   DMTN technotes are hosted in the https://github.com/lsst-dm organization.
   `Find DMTN technotes <https://github.com/search?o=desc&q=org%3Alsst-dm+dmtn-&s=updated&type=Repositories>`_.
 
-- **LSST Operations Technical Notes (OPSTN).**
-  This series if for technotes by LSST Operations.
-  OPSTN technotes are hosted in the https://github.com/lsst-ops organization.
-  `Find OPSTN technotes <https://github.com/search?o=desc&q=org%3Alsst-ops+opstn-&s=updated&type=Repositories>`_.
+- **Rubin Technical Notes (RTN).**
+  This series if for technotes by Rubin Operations.
+  RTN technotes are hosted in the https://github.com/lsst organization.
+  `Find RTN technotes <https://github.com/search?q=org%3Alsst+rtn-&type=Repositories>`_.
 
 - **Project Science Team Technical Notes (PSTN).**
   This series is for technotes by the LSST PST.
@@ -65,6 +65,15 @@ Technote series
   This series is for technotes by the LSST Simulations team.
   SMTN technotes are hosted in the https://github.com/lsst-sims organization.
   `Find SMTN technotes <https://github.com/search?o=desc&q=org%3Alsst-sims+smtn-&s=updated&type=Repositories>`_.
+
+.. _which-series:
+
+Which series to use for a note
+==============================
+
+If the note is for operations and about operation choose the RTN series regardless of operations department.
+If the topic is more construction/design oriented  use the SQR, DMTN or SITCOMTN as appropriate. 
+The DMTN and SQR series will still exist in operations and so it may still be used. 
 
 .. _technote-create:
 
