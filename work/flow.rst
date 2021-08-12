@@ -214,18 +214,29 @@ Use personal repositories for side projects done after hours or on "science time
 Work by DM staff that is delivered to LSST in ticketed work **can't** be developed in personal GitHub repositories outside of the `lsst <https://github.com/lsst>`__, `lsst-dm <https://github.com/lsst-dm>`__, and `lsst-sqre <https://github.com/lsst-sqre>`__ GitHub organizations, though.
 
 Community contributors can of course use personal repositories (and forks of LSST repositories) to make contributions to LSST.
-In such cases, a staff member should make a Jira ticket for the contribution.
-Once the code has been automatically checked for style (using GitHub Actions), reviewed, and approved by a staff member on the original pull request, a corresponding ticket branch can be created in the LSST repository.
-This branch allows the code change to be tested using the :ref:`Jenkins CI system <workflow-testing>` and to be tracked using the existing tooling.
-The process for creating the repository branch looks like this:
+When an external user has created a pull request (which should be automatically checked for style using GitHub Actions), a staff member should follow these steps to help the community member merge their contribution:
 
-.. code-block:: bash
+    1. Review the community member's pull request, following our :ref:`code review guidelines<workflow-code-review>`.
+    2. Create a jira ticket (``DM-98765`` in this example) for the contribution, and a local branch of the respective repository.
 
-   # Assume PR #456 corresponds to Jira ticket DM-98765
-   git fetch origin pull/456/head:tickets/DM-98765
-   git push -u origin tickets/DM-98765
+    .. code-block:: bash
 
-After creating this branch, a new pull request should be created from it and the original pull request should be closed.
+        git checkout -b tickets/DM-98765
+
+    3. Fetch their pull request to your ticket branch:
+
+    .. code-block:: bash
+
+        # Assume PR #456 is the community member's PR with newly-created Jira ticket DM-98765
+        git fetch origin pull/456/head:tickets/DM-98765
+
+    4. Build and test the ticket (locally and with :ref:`Jenkins CI system <workflow-testing>`) as normal, so that it can be tracked using our existing tooling. As part of this, push to your own ticket branch:
+
+    .. code-block:: bash
+
+        git push -u origin tickets/DM-98765
+
+    5. After pushing the new branch, a new pull request should be created for it, and the original pull request should be closed with a comment linking to the jira ticket and new PR.
 
 .. _git-branching:
 
