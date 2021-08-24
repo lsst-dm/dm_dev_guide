@@ -46,7 +46,6 @@ The important things to note in this example are:
 * If a test method completes, the test passes; if it throws an uncaught exception the test has failed.
 
 We write test files to allow them to be run by `pytest`_ rather than simply :command:`python`, as the former provides more flexibility and enhanced reporting when running tests (such as specifying that only certain tests run).
-Note that while `pytest`_ allows `unittest.TestCase.subTest` to be used they are treated as normal tests and will fail immediately (whereas running with :command:`python` the sub tests will all be executed before triggering stopping the test).
 
 Supporting Pytest
 =================
