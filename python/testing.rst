@@ -9,7 +9,9 @@ Python Unit Testing
 
 This page provides technical guidance to developers writing unit tests for DM's Python code base.
 See :doc:`/coding/unit-test-policy` for an overview of LSST Stack testing.
-LSST tests should be written using the `unittest` framework, with default test discovery, and should support being run using the `pytest`_ test runner as well as from the command line.
+LSST tests must support being run using the `pytest`_ test runner and may use its features.
+They can be, and traditionally have been, written using the `unittest` framework, with default test discovery.
+The use of this framework is described below.
 If you want to jump straight to a full example of the standard LSST Python testing boilerplate without reading the background, read the :ref:`section on memory testing <py-test-mem>` later in this document.
 
 .. _SQR-012: http://sqr-012.lsst.io
@@ -43,9 +45,8 @@ The important things to note in this example are:
 * When testing that an exception is raised always use `~unittest.TestCase.assertRaises` as a context manager, as shown in line 10 of the above example.
 * If a test method completes, the test passes; if it throws an uncaught exception the test has failed.
 
-We write test files to allow them to be run by `pytest`_ or to allow them to be run directly from the command line using :command:`python`.
-Whilst `pytest`_ provides more flexibility and enhanced reporting when running tests (such as specifying that only certain tests run), it is sometimes expedient to run them using :command:`python` since there is a faster start time and all the output is visible.
-Additionally, although `pytest`_ allows `unittest.TestCase.subTest` to be used they are treated as normal tests and will fail immediately whereas running with :command:`python` the sub tests will all be executed before triggering stopping the test.
+We write test files to allow them to be run by `pytest`_ rather than simply :command:`python`, as the former provides more flexibility and enhanced reporting when running tests (such as specifying that only certain tests run).
+Note that while `pytest`_ allows `unittest.TestCase.subTest` to be used they are treated as normal tests and will fail immediately (whereas running with :command:`python` the sub tests will all be executed before triggering stopping the test).
 
 Supporting Pytest
 =================
@@ -56,7 +57,7 @@ Supporting Pytest
 All LSST products that are built using :command:`scons` will execute Python tests using `pytest`_ so all tests should be written using it.
 `pytest`_ provides a much richer execution and reporting environment for tests and can be used to run multiple test files together.
 
-The `pytest`_ scheme for discovering tests inside Python modules is much more flexible than that provided by :mod:`unittest`, but LSST test files should not take advantage of that flexibility as it can lead to inconsistency in test reports that depend on the specific test runner, and it is required that an individual test file can be executed by running it directly with :command:`python`.
+The `pytest`_ scheme for discovering tests inside Python modules is much more flexible than that provided by :mod:`unittest`.
 In particular, care must be taken not to have free functions that use a ``test`` prefix or non-\ `~unittest.TestCase` test classes that are named with a ``Test`` prefix in the test files.
 
 .. note::
@@ -144,13 +145,15 @@ to run all files in the ``tests`` directory named ``test_*.py``. To ensure that 
 Test Skipping and Expected Failures
 -----------------------------------
 
-When writing tests it is important that tests are skipped using the proper :mod:`unittest` :ref:`skipping framework <python:unittest-skipping>` rather than returning from the test early.
-:mod:`unittest` supports skipping of individual tests and entire classes using decorators or skip exceptions.
+When writing tests it is important that tests are skipped using the `pytest skipping framework`_ or the :mod:`unittest` :ref:`skipping framework <python:unittest-skipping>` rather than returning from the test early.
+Both `pytest`_ and :mod:`unittest` support skipping of individual tests and entire classes using decorators or skip exceptions.
 LSST code sometimes raises skip exceptions in `~unittest.TestCase.setUp` or `~unittest.TestCase.setUpClass` class methods.
 It is also possible to indicate that a particular test is expected to fail, being reported as an error if the test unexpectedly passes.
 Expected failures can be used to write test code that triggers a reported bug before the fix to the bug has been implemented and without causing the continuous integration system to die.
 One of the primary advantages of using a modern test runner such as `pytest`_ is that it is very easy to generate machine-readable pass/fail/skip/xfail statistics to see how the system is evolving over time, and it is also easy to enable code coverage.
 Jenkins now provides test result information.
+
+.. _pytest skipping framework: https://docs.pytest.org/en/6.2.x/skipping.html
 
 .. _testing-flake8:
 
@@ -340,14 +343,21 @@ which ends up running the single specified test plus the two running as part of 
 
 Note that `~lsst.utils.tests.MemoryTestCase` must always be the
 final test suite.
-For the memory test to function properly the `lsst.utils.tests.init` function must be invoked before any of the tests in the class are executed.
-Since LSST test scripts are required to run properly from the command-line and when called from within `pytest`_, the `~lsst.utils.tests.init` function has to be in the file twice: once in the :ref:`setup_module <pytest:xunitsetup>` function that is called by `pytest`_ whenever a test module is loaded (`pytest`_ will not use the ``__main__`` code path), and also just before the call to `unittest.main` call to handle being called with :command:`python`.
+For the file descriptor test to function properly the `lsst.utils.tests.init` function must be invoked before any of the tests in the class are executed.
+Since LSST test scripts are required to run properly when called from within `pytest`_, the `~lsst.utils.tests.init` function has to be in the :ref:`setup_module <pytest:xunitsetup>` function that is called by `pytest`_ whenever a test module is loaded.
+It is no longer required that this function also be present just before the call to `unittest.main` to handle being called with :command:`python`.
 If you see strange failures in the file descriptor leak check when tests are run in parallel, make sure that `lsst.utils.tests.init` is being called properly.
 
 
 Decorators for iteration
 ------------------------
 
+It can be useful to parametrize a class or test function to execute with different combinations of variables.
+`pytest`_ has `parametrizing decorators`_ to enable this.
+
+.. _parametrizing decorators: https://docs.pytest.org/en/6.2.x/parametrize.html
+
+In addition, we have custom decorators that have been used to provide similar functionality but should generally be avoided in new code.
 ``lsst.utils.tests.classParameters`` is a class decorator for generating classes with different combinations of class variables.
 This is useful for when the ``setUp`` method generates the object being tested:
 placing the decorator on the class allows generating that object with different values.
@@ -397,10 +407,6 @@ will run tests:
 
 Note that the method being decorated must be within a subclass of ``unittest.TestCase``, since it relies on the existence of the ``subTest`` method for identifying the individual iterations.
 This use of ``subTest`` also means that all iterations will be executed, not stopping at the first failure.
-
-See also ``pytest.mark.parametrize``, which is more complex but offers similar functionality;
-however, this module is not yet approved for use.
-
 
 Unicode
 =======
