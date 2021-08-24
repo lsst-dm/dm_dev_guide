@@ -311,7 +311,8 @@ File descriptor leak testing
 
 .. _py-test-mem:
 
-`lsst.utils.tests.MemoryTestCase` is used to detect leaks in file descriptors.
+`lsst.utils.tests.MemoryTestCase`, despite its name, is used to detect leaks of file descriptors.
+(It is named that way because it was also used to detect some types of memory leaks in C++ code, and it may be used for similar functionality in the future.)
 `~lsst.utils.tests.MemoryTestCase` should be used in *all* test files where :lmod:`~lsst.utils` is in the dependency chain.
 
 This example shows the basic structure of an LSST Python unit test module,
@@ -344,7 +345,7 @@ Note that `~lsst.utils.tests.MemoryTestCase` must always be the
 final test suite.
 For the file descriptor test to function properly the `lsst.utils.tests.init` function must be invoked before any of the tests in the class are executed.
 Since LSST test scripts are required to run properly when called from within `pytest`_, the `~lsst.utils.tests.init` function has to be in the :ref:`setup_module <pytest:xunitsetup>` function that is called by `pytest`_ whenever a test module is loaded.
-It is no longer required that this function also be present just before the call to `unittest.main` to handle being called with :command:`python`.
+It is no longer required that this function also be present just before the call to `unittest.main` to handle being called with :command:`python`, but if the code is otherwise fully unittest-compatible, it can be useful to have this.
 If you see strange failures in the file descriptor leak check when tests are run in parallel, make sure that `lsst.utils.tests.init` is being called properly.
 
 
