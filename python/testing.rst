@@ -114,6 +114,24 @@ If a test command fails, that output is renamed to have a :file:`.failed` extens
 
 For convenience the output from the main :command:`pytest` run (as opposed to the rare standalone usages) is also written to standard output so it is visible in the log or in the shell along with other :command:`scons` output.
 
+Useful pytest options
+---------------------
+
+:command:`pytest` options that have been found useful:
+
+- Install :command:`pdbpp` to get an ipython-like interface for the ``pytest --pdb`` command.
+
+- Use ``pytest -k name test.py`` to only run tests that match the ``name`` pattern.
+  This is generally easier and more flexible than specifying individual tests via ``ClassName.testName`` in the ``unittest`` style.
+
+- Run with ``-sv`` to get extended output during the run (normally :command:`pytest` grabs all of stdout).
+
+- Run with ``-r`` to get a summary of successes and failures at the end that can be useful when you have many failing tests.
+
+- Run with ``-n X`` to run your tests with ``X`` processes to speed things up (like ``scons -jX``).
+
+- Run with ``--durations=N`` to get a list of the top ``N`` longest-running tests.
+
 Common Issues
 =============
 
