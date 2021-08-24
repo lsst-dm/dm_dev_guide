@@ -181,13 +181,13 @@ For example, at the time of writing this is an extract from the :file:`setup.cfg
   [flake8]
   max-line-length = 110
   max-doc-length = 79
-  ignore = E133, E226, E228, N802, N803, N806, N812, N813, N815, N816, W503
+  ignore = E133, E226, E228, E266, N802, N803, N806, N812, N815, N816, W503
   exclude = __init__.py, tests/testLib.py
 
   [tool:pytest]
   addopts = --flake8
-  flake8-ignore = E133 E226 E228 N802 N803 N806 N812 N813 N815 N816 W503
-      # These will not be needed when we use numpydoc
+  flake8-ignore = E133 E226 E228 N802 N803 N806 N812 N815 N816 W503
+      # TODO: remove E266 lines when Task documentation is converted to rst
       baseMeasurement.py E266
       forcedMeasurement.py E266
 
