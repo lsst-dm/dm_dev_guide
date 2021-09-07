@@ -18,7 +18,10 @@ Packages that will not be distributed as part of a release do not require an RFC
 After approval, code written internally by Data Management should be packaged following the template in the `lsst/templates`_ repository.
 DM packaging of third party code should proceed as described in :doc:`packaging-third-party-eups-dependencies`.
 
-New packages must be added to the `LSST organization on GitHub`_ and access must be granted to appropriate teams. For DM-written code, these include "Data Management" and "Overlords."
+New packages must be added to the `LSST organization on GitHub`_.
+
+Access to the repository must be granted by a repository administrator to appropriate teams.
+For DM-written code, these include "Data Management" and "Overlords."
 For third-party code, either forked or packaged as "TaP" tarball-and-patch, use the "DM Externals" and "Overlords" (but *not* "Data Management") teams.
 Note that the "DM Auxilliaries" [sic] team is used to mark packages that are *not* part of the release distribution; it is used to tag them alongside the release as well as to catch accidental inclusions.
 
@@ -42,7 +45,7 @@ Packages that use optional dependencies must be written to ensure that they can 
 Configuring GitHub Repositories
 ===============================
 
-All LSST DM repositories on GitHub must be configured to protect the ``master`` branch and to ensure that the merge button for pull requests can not be pushed without the branch being up to date with ``master``.
+All LSST DM repositories on GitHub must be configured by a repository administrator to protect the ``master`` branch and to ensure that the merge button for pull requests can not be pushed without the branch being up to date with ``master``.
 There are a number of settings required to ensure this and they are described below with URLs referring to the ``afw`` package.
 Replace ``afw`` with the relevant package name to get to the correct page on GitHub.
 
