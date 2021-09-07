@@ -19,6 +19,7 @@ After approval, code written internally by Data Management should be packaged fo
 DM packaging of third party code should proceed as described in :doc:`packaging-third-party-eups-dependencies`.
 
 New packages must be added to the `LSST organization on GitHub`_.
+The simplest way to do this is to send a "create project" Slack message to ``@sqrbot-jr`` and select "LSST EUPS package" as the project type.
 
 Access to the repository must be granted by a repository administrator to appropriate teams.
 For DM-written code, these include "Data Management" and "Overlords."
