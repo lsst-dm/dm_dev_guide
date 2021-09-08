@@ -4,7 +4,7 @@ Logging
 
 This page provides guidance to developers for using logging in the Science Pipelines code base.
 In general, all logging in Python code should be done with the standard :mod:`logging` package.
-All logging from C++ code should be done using the :lmod:`lsst.log` package and reference documentation on that logging framework can be found on the `Doxygen page on logging`_.
+All logging from C++ code should be done using the :lmod:`lsst.log` package; reference documentation on that logging framework can be found at the `Doxygen page on logging`_.
 For an example of configuring the logging framework in pipeline tasks, see the `pipelines.lsst.io page on logging`_.
 
 Developers are encouraged to insert log messages whenever and wherever they might be useful, with appropriate component names and levels.
