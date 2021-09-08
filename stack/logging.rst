@@ -5,12 +5,11 @@ Logging
 This page provides guidance to developers for using logging in the Science Pipelines code base.
 In general, all logging in Python code should be done with the standard :mod:`logging` package.
 All logging from C++ code should be done using the :lmod:`lsst.log` package; reference documentation on that logging framework can be found at the `Doxygen page on logging`_.
+Application code that uses both Python and C++ logging should include configuration code to forward C++ log messages to the Python :mod:`logging` system.
+This is handled automatically when using, for example, the `pipetask`_ command.
 For an example of configuring the logging framework in pipeline tasks, see the `pipelines.lsst.io page on logging`_.
 
 Developers are encouraged to insert log messages whenever and wherever they might be useful, with appropriate component names and levels.
-
-Application code that uses both Python and C++ logging should include configuration code to forward C++ log messages to the Python :mod:`logging` system.
-This is handled automatically when using, for example, the `pipetask`_ command.
 
 Whether using :mod:`logging` or any other logging mechanism, timestamps recorded in logs should use Internet `RFC 3339`_ format, which is sortable and includes the timezone.  See the discussion in :jira:`DM-1203` for history.
 
@@ -32,8 +31,6 @@ A common Python recommendation is to create the logger name from the module hier
 
    log = logging.getLogger(__name__.partition(".")[2])
 
-**(Aside to be removed: moving all the logging support code to utils should allow us to have a helper function for this -- an argument could be made that it's better to include the ``lsst.`` prefix to allow simpler global log configuration. It should also allow a proper Rubin getLogger that can return a thing that supports verbose/trace).**
-
 If the logger is saved as a variable in a class, it is often appropriate to name the logger after the class.
 
 Logger names use ``.`` as component separators, not ``::``, even in C++.
@@ -53,6 +50,13 @@ The example logs to the default (root) logger.
 By default Python logs warning messages and no other log messages.
 This means that the above example code will only write a single log message.
 Application code is required to configure the logging state for libraries and this is generally done by calling :func:`logging.basicConfig` to set a default logger level and default log format.
+For example, to enable ``INFO`` level output reporting the name of the logger and log message level as well as the message use the following:
+
+.. code-block:: python
+
+   logging.basicConfig(level=logging.INFO, format="{name} {levelname}: {message}", style="{")
+
+Our execution environment and butler commands configure this automatically.
 
 A better naming practice is to use a named logger following our :ref:`name convention <logger-names>` to indicate where the logging messages originate.
 For example:
@@ -128,8 +132,9 @@ The guideline of using the log levels is as follows:
 In addition there are two additional log levels allowed for specialist pipelines-specific loggers (such as those used for :lclass:`lsst.pipe.base.Task`):
 
 - VERBOSE: for messages of a more detailed nature than would normally be expected to be shown by default but that will not swamp the user in the way that DEBUG messages would.
-- TRACE: for detailed information when debugging.
+- TRACE: for detailed information when debugging, particularly inside loops.
 
+An alternative approach for TRACE and VERBOSE is to consider using DEBUG messages with a separate logger name (possibly even in a new ``verbose.`` or ``trace.`` hierarchy) that can be enabled when desired, :ref:`as described below <logger-trace-verbosity>`.
 
 For loggers used at DEBUG and TRACE levels, it is often desirable to add further components to the logger name; these would indicate which specific portion of the code or algorithm that the logged information pertains to.
 For example:
@@ -161,6 +166,8 @@ For example, to make the ``calibrate`` stage of ``processCcd`` less verbose:
 .. code-block:: bash
 
      pipetask --log-level processCcd.calibrate=WARN run [pipeline options]
+
+.. _logger-trace-verbosity:
 
 Fine-level Verbosity in Tracing
 ===============================
