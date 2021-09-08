@@ -42,6 +42,8 @@ The new package then needs to be added to the :file:`ups/*.table` file (and poss
 Table files should use ``setupRequired(package_name)`` or ``setupOptional(package_name)`` as necessary; test data packages are usually optional to allow releases to be made without requiring large additional data packages to be included.
 Packages that use optional dependencies must be written to ensure that they can pass their unit tests when the package is not available.
 
+If the new package needs a distinct Jira component (most will), any DMLT member (such as your manager) can add one.
+
 .. _github-repository-configuration:
 
 Configuring GitHub Repositories
