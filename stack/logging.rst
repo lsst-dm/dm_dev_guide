@@ -117,6 +117,8 @@ For example:
 
    LOGL_WARN("meas.algorithms.starSelector.psfCandidate", "Failed to make a psfCandidate")
 
+.. _logger-levels:
+
 Log Levels
 ==========
 
@@ -131,10 +133,12 @@ The guideline of using the log levels is as follows:
 
 In addition there are two additional log levels allowed for specialist pipelines-specific loggers (such as those used for :lclass:`lsst.pipe.base.Task`):
 
-- VERBOSE: for messages of a more detailed nature than would normally be expected to be shown by default but that will not swamp the user in the way that DEBUG messages would.
+- VERBOSE: for messages of a more detailed nature than would normally be expected to be shown by default but that will not swamp the user in the way that DEBUG messages would if that level of output was enabled.
 - TRACE: for detailed information when debugging, particularly inside loops.
 
-An alternative approach for TRACE and VERBOSE is to consider using DEBUG messages with a separate logger name (possibly even in a new ``verbose.`` or ``trace.`` hierarchy) that can be enabled when desired, :ref:`as described below <logger-trace-verbosity>`.
+An alternative approach for TRACE and VERBOSE is to consider using DEBUG messages with a separate logger name that can be enabled when desired, :ref:`as described below <logger-trace-verbosity>`.
+Remember though that the default output level for general users is usually INFO and for large-scale pipeline processing it is VERBOSE.
+This means that VERBOSE logging will be available by default when analyzing log output for big processing runs in a way that would not happen if specially named loggers were used which had to be explicitly enabled by the person submitting the job.
 
 For loggers used at DEBUG and TRACE levels, it is often desirable to add further components to the logger name; these would indicate which specific portion of the code or algorithm that the logged information pertains to.
 For example:
