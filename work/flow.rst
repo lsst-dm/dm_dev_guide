@@ -217,18 +217,18 @@ Community contributors can of course use personal repositories (and forks of LSS
 When an external user has created a pull request (which should be automatically checked for style using GitHub Actions), a staff member should follow these steps to help the community member merge their contribution:
 
     1. Review the community member's pull request, following our :ref:`code review guidelines<workflow-code-review>`.
-    2. Create a jira ticket (``DM-98765`` in this example) for the contribution, and a local branch of the respective repository.
-
-    .. code-block:: bash
-
-        git checkout -b tickets/DM-98765
-
-    3. Fetch their pull request to your ticket branch:
+    2. Create a jira ticket (``DM-98765`` in this example) for the contribution, and fetch their pull request to this ticket branch:
 
     .. code-block:: bash
 
         # Assume PR #456 is the community member's PR with newly-created Jira ticket DM-98765
         git fetch origin pull/456/head:tickets/DM-98765
+
+    3. Checkout the local branch of the respective repository.
+
+    .. code-block:: bash
+
+        git checkout -b tickets/DM-98765
 
     4. Build and test the ticket (locally and with :ref:`Jenkins CI system <workflow-testing>`) as normal, so that it can be tracked using our existing tooling. As part of this, push to your own ticket branch:
 
