@@ -106,6 +106,7 @@ Slack has several ways to include blocks of text or code in a message.
 
 There are two less-known but very powerful features for code and text blocks.
 Within the "lightning bolt" Shortcuts menu to the left of the :ref:`formatting bar <fig-slack-bolt-normal>` or the :ref:`message input area <fig-slack-bolt-advanced>`, there are entries for "Create a text snippet" and "Create a post".
+(These may be found under the "Slack" app in the "Browse by app" section if they don't show up near the top as in the screenshot below.)
 
 .. figure:: /_static/communications/slack-culture/bolt-normal.png
    :name: fig-slack-bolt-normal
