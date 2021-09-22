@@ -228,7 +228,7 @@ When an external user has created a pull request (which should be automatically 
 
     .. code-block:: bash
 
-        git checkout -b tickets/DM-98765
+        git checkout tickets/DM-98765
 
     4. Build and test the ticket (locally and with :ref:`Jenkins CI system <workflow-testing>`) as normal, so that it can be tracked using our existing tooling. As part of this, push to your own ticket branch:
 
