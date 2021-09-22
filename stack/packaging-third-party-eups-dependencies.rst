@@ -9,6 +9,8 @@ The primary reason to add an eups tarball-and-patch (TaP) package as described h
 
 Other packages that are under active development by Rubin developers may be maintained as forked repositories and distributed as normal eups packages.
 
+.. _third-party-approval:
+
 Getting Approval
 ================
 
@@ -20,6 +22,8 @@ See `this page`_ for a list of compatible licenses.
 .. _this page: https://www.gnu.org/licenses/license-list.html
 
 
+.. _third-party-creating:
+
 Creating the Package
 ====================
 
@@ -28,7 +32,7 @@ Repositories containing third-party packages exist in the `LSST GitHub organizat
 In order to distribute a new third-party package, someone with administrator privileges will have to create a new repository of this form for you.
 Make sure that the new repository is accessible by the "DM Externals" and "Overlords" teams as described in :doc:`adding-a-new-package`.
 Create a development branch on that repository and set it up to distribute the package as described below.
-You will be able to test the package distribution off of your development branch before you merge to ``master``.
+You will be able to test the package distribution off of your development branch before you merge to the default branch.
 
 The repository, once created, needs to contain the following directories:
 
@@ -37,7 +41,7 @@ The repository, once created, needs to contain the following directories:
     Literally, that is all it should contain.
     The code should not be altered from whatever is distributed by the package's author.
     Any changes that need to be made to the source code should be done with patches in the patches/ directory.
-    If you are testing out a version that is not a distributed package (e.g. ``master``), you can create the correct type of repository from within a clone of the package with, e.g.::
+    If you are testing out a version that is not a distributed package (e.g. from the package's git repo), you can create the correct type of repository from within a clone of the package with, e.g.::
 
         git archive --format=tar --prefix=astrometry.net-68b1/ HEAD | gzip > astrometry.net-68b1.tar.gz
 
@@ -205,6 +209,8 @@ Therefore, in the interests of future proofing, both:
 
 .. _version of EUPS: https://github.com/RobertLuptonTheGood/eups/blob/2.0.2/Release_Notes#L21
 
+.. _third-party-testing:
+
 Testing the package
 ===================
 
@@ -222,7 +228,9 @@ From within :file:`build/yourPackage` (add ``-r`` to build in the current direct
 - When your local tests pass, :command:`git push`.
 - See if the stack will build with your branch in :ref:`Jenkins <workflow-testing>`.
   For the branch name, specify the branch you created above (i.e. ``tickets/DM-NNNN``), leaving the rest of the fields as they are.
-- Merge to master after Jenkins passes and your changes are reviewed.
+- Merge to the default branch after Jenkins passes and your changes are reviewed.
+
+.. _third-party-updating:
 
 Updating the Package
 ====================
@@ -240,12 +248,17 @@ Then:
 - Copy the new version of the external tarball into :file:`upstream/` and :command:`git add` it.
 - :command:`git commit`
 
-Now test your package by following the instructions above.
+Now test your package by following :ref:`the instructions above <third-party-testing>`.
+Then continue with the tagging and distribution instructions below.
+
+.. _installed using the lsstsw tool: https://pipelines.lsst.io/install/lsstsw.html
+
+.. _third-party-distributing:
 
 Distributing the Package
 ========================
 
-Once the package builds and passes review (or vice-versa), you need to tell EUPS that it is available for distribution to the wide world.
+Once the package builds, passes tests, passes review, and is merged to the default branch, you need to tell EUPS that it is available for distribution to the wide world.
 To do this, add an annotated tag to your package repository using::
 
     git tag -a versionNumber -m "Some comment."
@@ -255,48 +268,16 @@ If the package does not supply an appropriate version number, one can be generat
 Note that the version number should never start with a letter, as EUPS regards that as semantically significant.
 
 If changes are required to the packaging (in the :file:`ups` or :file:`patches` directories) but not the external package source (in the :file:`upstream` directory), the string ``.lsst1`` (and ``.lsst2`` etc.  thereafter) should be appended to the external package's version number.
-Merge your changes to ``master``, then push your changes to the remote repository.
+
 Push your tags to the remote repository using::
 
     git push --tags
 
-Now you must log onto ``lsst-dev`` as the user ``lsstsw`` (this will require special permissions): see the :doc:`documentation on using this machine </services/lsst-dev>`.
-Once logged in as ``lsstsw``, the steps are:
+Also add the package to :doc:`repos.yaml </stack/adding-a-new-package>` and to the table file(s) of the package(s) that depend on it.
 
-- Build your package with the command::
+The third-party package will be published by Jenkins with the next nightly release.
 
-      rebuild yourPackage
-
-  This will cause ``lsst-dev`` to build your package and all of its dependencies.
-  This build will be assigned a build number formatted as ``bNNN``
-
-- Once the build is complete, release it to the world using::
-
-      publish -b bNNN yourPackage
-
-  This will make your package installable using::
-
-      eups distrib install yourPackage versionNumber
-
-  If you wish to add a distribution server tag to your package, you can do so by changing the publish command to::
-
-      publish -b bNNN -t yourTag yourPackage
-
-  .. warning::
-
-     Do not use the tag 'current' as that will overwrite all other packages marked as current and break the stack.
-     Let the people in charge of official releases handle marking things as 'current.'
-     it is not usually necessary to distribution-server-tag a particular third party package.
-
-- Generally, if you're publishing a third party package, it should be because it is a dependency in the build of some (or all) top-level package(s).
-  When the top-level package(s) are next published (and optionally tagged), your new package will be incorporated.
-  If you need something sooner, you can do this publishing yourself using the steps above with the top-level package.
-  In this case, a distribution-server-tag (something like ``qserv-dev``) is usually desirable.
-  That makes the top-level product (or any of its dependency components, including your third-party package) installable using::
-
-      eups distrib install -t yourTag packageName
-
-.. _installed using the lsstsw tool: http://pipelines.lsst.io/en/latest/development/lsstsw_tutorial.html
+.. third-party-announcing:
 
 Announcing the Package
 ======================
