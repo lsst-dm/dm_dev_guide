@@ -20,7 +20,9 @@ For each product, we also have a number of other platforms which are regularly t
 The baseline platform is currently CentOS 7 on Intel x86_64.
 
 .. note ::
-    We aim to stay current with CentOS 7 minor releases, updating within 6 months of their release.
+    We aim to stay current with CentOS 7 minor releases.
+    Our base OS container will typically be updated to the current CentOS 7 release shortly *after* each major release of the Science Pipelines.
+    Shared development machines will be updated on their own schedule during periodic maintenance downtime.
 
 We regularly test the following platforms in addition to the baseline platform:
 
