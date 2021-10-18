@@ -21,6 +21,7 @@ Other related pages:
 - :doc:`/git/setup`.
 - :doc:`/git/git-lfs`.
 - :doc:`jira-tips`.
+- :doc:`backports`.
 
 .. _git-setup:
 
