@@ -133,6 +133,7 @@ Technical notes.
    :hidden:
 
    work/flow.rst
+   work/backports.rst
    work/project-planning.rst
    work/jira-agile.rst
    work/jira-tips.rst
