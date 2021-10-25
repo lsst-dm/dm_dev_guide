@@ -28,7 +28,7 @@ If you have any questions, ask in `#dm-docs <https://lsstc.slack.com/archives/dm
   4. :ref:`Returns <py-docstring-returns>` or :ref:`Yields <py-docstring-yields>`
   5. :ref:`Other parameters <py-docstring-other-parameters>`
   6. :ref:`Raises <py-docstring-raises>`
-  7. :ref:`See also <py-docstring-see-also>`
+  7. :ref:`See Also <py-docstring-see-also>`
   8. :ref:`Notes <py-docstring-notes>`
   9. :ref:`References <py-docstring-references>`
   10. :ref:`Examples <py-docstring-examples>`
@@ -319,7 +319,7 @@ These are the sections and their relative order:
 4. :ref:`Returns <py-docstring-returns>` or :ref:`Yields <py-docstring-yields>` (if applicable; for functions, methods, and generators)
 5. :ref:`Other parameters <py-docstring-other-parameters>` (if applicable; for classes, methods, and functions)
 6. :ref:`Raises <py-docstring-raises>` (if applicable)
-7. :ref:`See also <py-docstring-see-also>` (optional)
+7. :ref:`See Also <py-docstring-see-also>` (optional)
 8. :ref:`Notes <py-docstring-notes>` (optional)
 9. :ref:`References <py-docstring-references>` (optional)
 10. :ref:`Examples <py-docstring-examples>` (optional)
@@ -1018,11 +1018,11 @@ Stylistically, write the first sentence of each description in the form:
 
 .. _py-docstring-see-also:
 
-See also
+See Also
 --------
 
-Use the 'See also' section to link to related APIs that the user may not be aware of, or may not easily discover from other parts of the docstring.
-Here are some good uses of the 'See also' section:
+Use the 'See Also' section to link to related APIs that the user may not be aware of, or may not easily discover from other parts of the docstring.
+Here are some good uses of the 'See Also' section:
 
 - If a function wraps another function, you may want to reference the lower-level function.
 - If a function is typically used with another API, you can reference that API.
@@ -1032,18 +1032,18 @@ As an example, for a function such as ``numpy.cos``, we would have:
 
 .. code-block:: rst
 
-   See also
+   See Also
    --------
    sin
    tan
 
-Numpydoc assumes that the contents of the 'See also' section are API names, so don't wrap each name with backticks, as we do when describing types in :ref:`Parameters <py-docstring-parameters>` and :ref:`Returns <py-docstring-returns>`).
+Numpydoc assumes that the contents of the 'See Also' section are API names, so don't wrap each name with backticks, as we do when describing types in :ref:`Parameters <py-docstring-parameters>` and :ref:`Returns <py-docstring-returns>`).
 No namespace prefix is needed when referring to functions in the same module.
 Providing the full namespace is always safe, though, and provides clarity to fellow developers:
 
 .. code-block:: rst
 
-   See also
+   See Also
    --------
    numpy.sin
    numpy.tan
@@ -1170,7 +1170,7 @@ Module docstrings contain the following sections:
 
 1. :ref:`Short summary <py-docstring-short-summary>`
 2. :ref:`Extended summary <py-docstring-extended-summary>` (optional)
-3. :ref:`See also <py-docstring-see-also>` (optional)
+3. :ref:`See Also <py-docstring-see-also>` (optional)
 
 .. note::
 
@@ -1238,7 +1238,7 @@ Class docstrings contain the following sections:
 3. :ref:`Parameters <py-docstring-parameters>` (if applicable)
 4. :ref:`Other parameters <py-docstring-other-parameters>` (if applicable)
 5. :ref:`Raises <py-docstring-raises>` (if applicable)
-6. :ref:`See also <py-docstring-see-also>` (optional)
+6. :ref:`See Also <py-docstring-see-also>` (optional)
 7. :ref:`Notes <py-docstring-notes>` (optional)
 8. :ref:`References <py-docstring-references>` (optional)
 9. :ref:`Examples <py-docstring-examples>` (optional)
@@ -1288,7 +1288,7 @@ Here's an example of a more comprehensive class docstring with :ref:`Short Summa
        ValueError
            Raised when input angles are outside range.
 
-       See also
+       See Also
        --------
        lsst.example.GalacticCoordinate
 
@@ -1319,7 +1319,7 @@ Method and function docstrings contain the following sections:
 4. :ref:`Returns <py-docstring-returns>` or :ref:`Yields <py-docstring-yields>` (if applicable)
 5. :ref:`Other parameters <py-docstring-other-parameters>` (if applicable)
 6. :ref:`Raises <py-docstring-raises>` (if applicable)
-7. :ref:`See also <py-docstring-see-also>` (optional)
+7. :ref:`See Also <py-docstring-see-also>` (optional)
 8. :ref:`Notes <py-docstring-notes>` (optional)
 9. :ref:`References <py-docstring-references>` (optional)
 10. :ref:`Examples <py-docstring-examples>` (optional)
@@ -1387,7 +1387,7 @@ Here's an example function:
            `True` if the units are equivalent, meaning that the quantity
            can be presented in the units of this metric. `False` if not.
 
-       See also
+       See Also
        --------
        astropy.units.is_equivalent
 
