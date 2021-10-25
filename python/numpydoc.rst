@@ -26,7 +26,7 @@ If you have any questions, ask in `#dm-docs <https://lsstc.slack.com/archives/dm
   2. :ref:`Extended summary <py-docstring-extended-summary>`
   3. :ref:`Parameters <py-docstring-parameters>`
   4. :ref:`Returns <py-docstring-returns>` or :ref:`Yields <py-docstring-yields>`
-  5. :ref:`Other parameters <py-docstring-other-parameters>`
+  5. :ref:`Other Parameters <py-docstring-other-parameters>`
   6. :ref:`Raises <py-docstring-raises>`
   7. :ref:`See Also <py-docstring-see-also>`
   8. :ref:`Notes <py-docstring-notes>`
@@ -317,7 +317,7 @@ These are the sections and their relative order:
 2. :ref:`Extended summary <py-docstring-extended-summary>` (optional)
 3. :ref:`Parameters <py-docstring-parameters>` (if applicable; for classes, methods, and functions)
 4. :ref:`Returns <py-docstring-returns>` or :ref:`Yields <py-docstring-yields>` (if applicable; for functions, methods, and generators)
-5. :ref:`Other parameters <py-docstring-other-parameters>` (if applicable; for classes, methods, and functions)
+5. :ref:`Other Parameters <py-docstring-other-parameters>` (if applicable; for classes, methods, and functions)
 6. :ref:`Raises <py-docstring-raises>` (if applicable)
 7. :ref:`See Also <py-docstring-see-also>` (optional)
 8. :ref:`Notes <py-docstring-notes>` (optional)
@@ -968,7 +968,7 @@ For example:
 
 .. _py-docstring-other-parameters:
 
-Other parameters
+Other Parameters
 ----------------
 
 *For classes, methods and functions.*
@@ -1236,7 +1236,7 @@ Class docstrings contain the following sections:
 1. :ref:`Short summary <py-docstring-short-summary>`
 2. :ref:`Extended summary <py-docstring-extended-summary>` (optional)
 3. :ref:`Parameters <py-docstring-parameters>` (if applicable)
-4. :ref:`Other parameters <py-docstring-other-parameters>` (if applicable)
+4. :ref:`Other Parameters <py-docstring-other-parameters>` (if applicable)
 5. :ref:`Raises <py-docstring-raises>` (if applicable)
 6. :ref:`See Also <py-docstring-see-also>` (optional)
 7. :ref:`Notes <py-docstring-notes>` (optional)
@@ -1317,7 +1317,7 @@ Method and function docstrings contain the following sections:
 2. :ref:`Extended summary <py-docstring-extended-summary>` (optional)
 3. :ref:`Parameters <py-docstring-parameters>` (if applicable)
 4. :ref:`Returns <py-docstring-returns>` or :ref:`Yields <py-docstring-yields>` (if applicable)
-5. :ref:`Other parameters <py-docstring-other-parameters>` (if applicable)
+5. :ref:`Other Parameters <py-docstring-other-parameters>` (if applicable)
 6. :ref:`Raises <py-docstring-raises>` (if applicable)
 7. :ref:`See Also <py-docstring-see-also>` (optional)
 8. :ref:`Notes <py-docstring-notes>` (optional)
