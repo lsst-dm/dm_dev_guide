@@ -6,7 +6,8 @@ So you have a ticket that you think should be backported to ``v23.0.0`` and/or b
 What next?
 
 1) First, add the label "backport-v23" to your jira ticket.
-   This will flag it for review by both the CCB and the DP0.2 campaign managers.
+
+   This will flag it for review by the DM-CCB or the DP0.2 campaign managers.
    Continue merging your ticket to the default branch (``main``) and mark the ticket ``Done`` per instructions in the normal :doc:`flow`.
 
 2) Wait for approval. The ticket will gain the label "backport-approved."  A comment will be posted on the ticket that you may start the backporting process.
