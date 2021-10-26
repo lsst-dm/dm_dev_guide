@@ -33,7 +33,8 @@ What next?
 
       git checkout tickets/DM-XXXXX
       git checkout -b tickets/DM-XXXXX-v23
-      git rebase v23.0.x
+      git rebase --onto v23.0.x <sha_of_last_commit_before_your_branch>
+
 
    In a new clone, this branch may not exist anymore if you have already merged your PR because merged branches may be automatically deleted.
    In this case, you can branch ``tickets/DM-XXXXX-v23`` from ``v23.0.x``, and cherry-pick the ticket commits.
