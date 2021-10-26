@@ -1,2 +1,2 @@
-documenteer>=0.5.1,<0.6.0
-sphinx_rtd_theme>=0.4.3,<0.5.0
+documenteer
+sphinx_rtd_theme
