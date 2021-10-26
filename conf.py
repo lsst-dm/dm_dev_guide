@@ -421,11 +421,11 @@ epub_exclude_files = ['search.html']
 # http://www.sphinx-doc.org/en/stable/ext/intersphinx.html
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3', None),
-    'astropy': ('http://docs.astropy.org/en/stable/', None),
-    'numpy': ('https://docs.scipy.org/doc/numpy/', None),
-    'pytest': ('https://pytest.readthedocs.io/en/latest/', None),
+    'astropy': ('https://docs.astropy.org/en/stable/', None),
+    'numpy': ('https://numpy.org/doc/stable/', None),
+    'pytest': ('https://docs.pytest.org/en/latest/', None),
     'pipelines': ('https://pipelines.lsst.io/v/weekly/', None),
     'documenteer': ('https://documenteer.lsst.io/', None),
-    'sphinx': ('http://www.sphinx-doc.org/en/master/', None),
+    'sphinx': ('https://www.sphinx-doc.org/en/master/', None),
     'deprecated': ('https://deprecated.readthedocs.io/en/latest/', None),
 }
