@@ -67,7 +67,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'LSST DM Developer Guide'
-copyright = u'2016-2020 Association of Universities for Research in Astronomy, Inc. (AURA)'
+copyright = u'2016-2021 Association of Universities for Research in Astronomy, Inc. (AURA)'
 author = u'LSST Data Management'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -175,9 +175,10 @@ html_context = {
 # documentation.
 html_theme_options = {
     'logo_only': True,
-    'style_nav_header_background': '#343131',
-    'canonical_url': 'https://developer.lsst.io/',
+    'style_nav_header_background': '#343131'
 }
+
+html_baseurl = "https://developer.lsst.io/"
 
 # Add any paths that contain custom themes here, relative to this directory.
 # html_theme_path = []
@@ -191,7 +192,7 @@ html_theme_options = {
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = '_static/lsst-logo-dark.svg'
+html_logo = '_static/rubin-imagotype-color-on-black.svg'
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
