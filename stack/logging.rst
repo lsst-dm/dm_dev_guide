@@ -23,15 +23,16 @@ Whether using :mod:`logging` or any other logging mechanism, timestamps recorded
 Logger Names
 ============
 
-Logger names should generally start with the fully qualified name of the module/file containing the logger, without the leading ``lsst.``.
-Some example logger names are ``afw.image.MaskedImage`` and ``meas.algorithms.starSelector``.
+Logger names should generally start with the fully qualified name of the module/file containing the logger, with the leading ``lsst.``.
+Some example logger names are ``lsst.afw.image.MaskedImage`` and ``lsst.meas.algorithms.starSelector``.
 A common Python recommendation is to create the logger name from the module hierarchy automatically:
 
 .. code-block:: python
 
-   log = logging.getLogger(__name__.partition(".")[2])
+   log = logging.getLogger(__name__)
 
 If the logger is saved as a variable in a class, it is often appropriate to name the logger after the class.
+Such a logger can be derived from the module logger using ``log.getChild()``.
 
 Logger names use ``.`` as component separators, not ``::``, even in C++.
 
@@ -63,7 +64,7 @@ For example:
 
 .. code-block:: python
 
-   logger = logging.getLogger("meas.algorithms.starSelector")
+   logger = logging.getLogger("lsst.meas.algorithms.starSelector")
    logger.info("This is information about the star selector algorithm execution. %f", 3.14)
 
 The standard methods, such as :meth:`~logging.Logger.info` and :meth:`~logging.Logger.warning`, use a ``%``-format string in the message and pass in additional arguments containing variable information, which :class:`logging.Logger` will internally merge into the message string with ``%`` formatting if the log record is to be printed.
@@ -102,7 +103,7 @@ The following shows an example to get a logger object and log using it:
 
 .. code-block:: c++
 
-   LOG_LOGGER _log = LOG_GET("afw.image.ExposureInfo");
+   LOG_LOGGER _log = LOG_GET("lsst.afw.image.ExposureInfo");
    LOGLS_INFO(_log, "Empty WCS extension, using FITS header");
    LOGLS_WARN(_log, "Missing empty chunks info for " << "something");
    LOGL_DEBUG(_log, "St. Dev = %g", sd);
@@ -145,7 +146,7 @@ For example:
 
 .. code-block:: python
 
-   debugLogger = logging.getLogger("meas.algorithms.starSelector.catalogReader")
+   debugLogger = logging.getLogger(__name__).getChild("catalogReader")
    debugLogger.debug("Catalog reading took %f seconds", finish - start)
    debugLogger.debug("Took %f seconds and found %d sources", elapsed, nstars)
 
@@ -181,30 +182,26 @@ For example, in C++:
 
 .. code-block:: c++
 
-   LOG_LOGGER traceLogger = LOG_GET("TRACE2.meas.algorithms.starSelector");
+   LOG_LOGGER traceLogger = LOG_GET("TRACE2.lsst.meas.algorithms.starSelector");
    LOGL_DEBUG(traceLogger, "On %d-th iteration of star selection", iteration);
-   LOG_LOGGER innerTraceLogger = LOG_GET("TRACE2.meas.algorithms.starSelector.catalogReader");
+   LOG_LOGGER innerTraceLogger = LOG_GET("TRACE2.lsst.meas.algorithms.starSelector.catalogReader");
    LOGL_DEBUG(innerTraceLogger, "Reading catalog %s", catalogName);
    // Or log to a component directly
-   LOGL_DEBUG("TRACE4.meas.algorithms.starSelector.psfCandidate", "Making a psfCandidate from star %d", starId)
+   LOGL_DEBUG("TRACE4.lsst.meas.algorithms.starSelector.psfCandidate", "Making a psfCandidate from star %d", starId)
 
 and in Python:
 
 .. code-block:: python
 
-   traceLogger = logging.getLogger("TRACE2.meas.algorithms.starSelector")
+   traceLogger = logging.getLogger("TRACE2.lsst.meas.algorithms.starSelector")
    traceLogger.debug("On %d-th iteration of star selection", iteration)
    innerTraceLogger = traceLogger.getChild("catalogReader")
    innerTraceLogger.debug("Reading catalog %s", catalogName)
    logging.getLogger("TRACE4.meas.algorithms.starSelector.psfCandidate").log(logging.DEBUG, "Making a psfCandidate from star %d", starId)
 
 Notice that all loggers in the hierarchy under a given component at a given trace level can be enabled easily using, e.g., ``TRACE2.lsst.meas.algorithms.starSelector``.
-Besides, a utility function :lfunc:`lsst.log.utils.traceSetAt()` is provided to adjust logging level of a group of loggers so to display messages with trace number <= NUMBER. This is demonstrated in the following example:
+Besides, a utility function :lfunc:`lsst.utils.logging.trace_set_at` is provided to adjust logging level of a group of loggers so to display messages with trace number <= NUMBER. This is demonstrated in the following example:
 
-.. warning::
-
-   This example still uses :lmod:`lsst.log` and so will require that the correct log forwarding is enabled to support :mod:`logging`.
-   The ``traceSetAt`` function will be converted to Python :mod:`logging` as part of :jira:`RFC-795`.
 
 .. literalinclude:: examples/tracing.py
    :language: python
