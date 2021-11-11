@@ -199,12 +199,8 @@ and in Python:
    logging.getLogger("TRACE4.meas.algorithms.starSelector.psfCandidate").log(logging.DEBUG, "Making a psfCandidate from star %d", starId)
 
 Notice that all loggers in the hierarchy under a given component at a given trace level can be enabled easily using, e.g., ``TRACE2.lsst.meas.algorithms.starSelector``.
-Besides, a utility function :lfunc:`lsst.log.utils.traceSetAt()` is provided to adjust logging level of a group of loggers so to display messages with trace number <= NUMBER. This is demonstrated in the following example:
+Besides, a utility function :lfunc:`lsst.utils.logging.trace_set_at` is provided to adjust logging level of a group of loggers so to display messages with trace number <= NUMBER. This is demonstrated in the following example:
 
-.. warning::
-
-   This example still uses :lmod:`lsst.log` and so will require that the correct log forwarding is enabled to support :mod:`logging`.
-   The ``traceSetAt`` function will be converted to Python :mod:`logging` as part of :jira:`RFC-795`.
 
 .. literalinclude:: examples/tracing.py
    :language: python
