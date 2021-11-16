@@ -119,6 +119,8 @@ To deprecate a `~lsst.pex.config.Field` in a `~lsst.pex.config.Config`, set the 
 Setting this parameter will append a deprecation message to the `~lsst.pex.config.Field` docstring, and will cause the system to emit a `FutureWarning` when the field is set by a user (for example, in an obs-package override or by a commandline option).
 The deprecated string must also specify the version after which the config may be removed, as discussed in :ref:`code_removal`.
 
+.. _package-deprecation:
+
 Package Deprecation
 ===================
 
@@ -146,3 +148,14 @@ Add a similar warning to the :file:`index.rst` file documenting this package (e.
 Finally, add a note to the top-level :file:`README` file in the package::
 
     *Warning:* This package is deprecated, and will be removed from the Rubin Observatory Science Pipelines distribution after release 21.0.0.
+
+
+Package Removal
+===============
+
+After deprecating a package as described `above <package-deprecation>`_, there are four steps that need to take place to actually remove the package.
+
+1. Remove the package from all eups table files that contain it.
+2. Rename the package, prefixing the string ``legacy-``, using the "Rename" button at the top of the repository settings page.
+3. Move the package to the ``lsst-dm`` GitHub organization using the "Transfer ownership" button at the bottom of the repository settings page.
+4. Edit the URL in the ``etc/repos.yaml`` file in the ``lsst/repos`` repository to correspond to the new location of the package's GitHub repository.
