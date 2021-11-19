@@ -153,9 +153,17 @@ Finally, add a note to the top-level :file:`README` file in the package::
 Package Removal
 ===============
 
-After deprecating a package as described `above <package-deprecation>`_, there are four steps that need to take place to actually remove the package.
+After deprecating a package as described :ref:`above <package-deprecation>`, there are four steps that need to take place to actually remove the package.
 
 1. Remove the package from all eups table files that contain it.
+   This effectively removes the package for all future builds.
+   The following steps can then occur whenever reasonable.
 2. Rename the package, prefixing the string ``legacy-``, using the "Rename" button at the top of the repository settings page.
+   GitHub will redirect references to the old name to the new one.
+   The primary reason for this step is to avoid confusing the repo with an active one.
 3. Move the package to the ``lsst-dm`` GitHub organization using the "Transfer ownership" button at the bottom of the repository settings page.
+   GitHub redirects should still occur.
+   This step helps keep the ``lsst`` organization clean, containing only distributed code.
 4. Edit the URL in the ``etc/repos.yaml`` file in the ``lsst/repos`` repository to correspond to the new location of the package's GitHub repository.
+   This step is to make it easy to find the relocated repository, particularly for historical builds.
+   Because of the redirects, this step does not have to occur immediately, but it is simple enough to do right away given the self-merge policy on the ``lsst/repos`` repository.
