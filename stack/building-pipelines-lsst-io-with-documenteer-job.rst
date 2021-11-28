@@ -94,7 +94,7 @@ LSST the Docs uses this information to populate the version slug of the edition 
 
 Follow these guidelines:
 
-- If you are building with a non-\ ``master`` Git ref of the `pipelines_lsst_io`_ repository (see :ref:`jenkins-pipelines-lsst-io-build-github-repo-ref`), set this field to the name of the `pipelines_lsst_io`_ branch being built.
+- If you are building with a non-\ ``main`` Git ref of the `pipelines_lsst_io`_ repository (see :ref:`jenkins-pipelines-lsst-io-build-github-repo-ref`), set this field to the name of the `pipelines_lsst_io`_ branch being built.
 
   Example: you have a branch called ``tickets/DM-16182`` in the `pipelines_lsst_io`_ repository.
   Set this field to ``tickets/DM-16182``.

@@ -15,11 +15,11 @@ The module homepage is linked from the “Python API reference” section of the
 Starter template
 ================
 
-The `stack_package`_ project template includes the `Jinja-formatted template for the module homepage <https://raw.githubusercontent.com/lsst/templates/master/project_templates/stack_package/%7B%7Bcookiecutter.package_name%7D%7D/doc/%7B%7Bcookiecutter.python_module%7D%7D/index.rst>`__.
+The `stack_package`_ project template includes the `Jinja-formatted template for the module homepage <https://raw.githubusercontent.com/lsst/templates/main/project_templates/stack_package/%7B%7Bcookiecutter.package_name%7D%7D/doc/%7B%7Bcookiecutter.python_module%7D%7D/index.rst>`__.
 
 For an example module named ``lsst.example``, the rendered template looks like this:
 
-.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/master/project_templates/stack_package/example/doc/lsst.example/index.rst
+.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/main/project_templates/stack_package/example/doc/lsst.example/index.rst
    :language: rst
 
 The next sections describe the key components of the module homepage.
@@ -278,7 +278,7 @@ The module homepage topic type will continue to evolve. These are the near-term 
 -  EUPS dependencies: an automatically-generated list of both direct and implicit EUPS package dependencies.
 
 .. _pipelines.lsst.io: https://pipelines.lsst.io
-.. _stack_package: https://github.com/lsst/templates/tree/master/project_templates/stack_package
+.. _stack_package: https://github.com/lsst/templates/tree/main/project_templates/stack_package
 .. _toctree: http://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-toctree
 .. _automodapi: http://sphinx-automodapi.readthedocs.io/en/latest/automodapi.html
 .. _`#dm-square`: https://lsstc.slack.com/archives/dm-docs

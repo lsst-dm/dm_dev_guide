@@ -24,8 +24,8 @@ Prerequisites
 Before starting this tutorial, you’ll need a working ``lsst_distrib`` installation.
 This installation should already be set up with a command like :command:`setup lsst_distrib`.
 
-This installation needs to be a recent daily or weekly build since you’ll be compiling the `pipe_base`_ repository from its ``master`` branch.
-Working from the tip of the ``master`` branch is the norm for LSST software development.
+This installation needs to be a recent daily or weekly build since you’ll be compiling the `pipe_base`_ repository from its ``main`` branch.
+Working from the tip of the ``main`` branch is the norm for LSST software development.
 
 Finally, the documentation build uses Documenteer_ and related Sphinx_ documentation packages.
 Documenteer_ is already installed if you are using the Rubin Conda environment (part of the usual Science Pipelines installation).

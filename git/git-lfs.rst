@@ -33,7 +33,7 @@ We recommend using the latest Git LFS client.
 The *minimum* usable client version for LSST is :command:`git-lfs` 2.3.4.
 
 .. Generally our stated Git LFS version requirements should track what's used in CI:
-.. https://github.com/lsst/lsstsw/blob/master/bin/deploy
+.. https://github.com/lsst/lsstsw/blob/main/bin/deploy
 
 Git LFS requires Git version 1.8.2 or later to be installed.
 
@@ -200,7 +200,7 @@ You can then push the repo up to github with
 .. code-block:: bash
 
    git remote add origin <remote repository URL>
-   git push origin master
+   git push origin main
 
 We also recommend that you include a link to this documentation page in your :file:`README` to help those who aren't familiar with DM's Git LFS.
 

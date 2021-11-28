@@ -29,11 +29,11 @@ Then select **Science Pipelines documentation > Script topic (argparse)**.
 
 .. [#template] The argparse-based script topic template is maintained in the `lsst/templates repository`_.
 
-.. _lsst/templates repository: https://github.com/lsst/templates/tree/master/file_templates/argparse_script_topic
+.. _lsst/templates repository: https://github.com/lsst/templates/tree/main/file_templates/argparse_script_topic
 
 For an example script named ``exampleScript.py``, the rendered template looks like this:
 
-.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/master/file_templates/argparse_script_topic/exampleScript.py.rst
+.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/main/file_templates/argparse_script_topic/exampleScript.py.rst
    :language: rst
 
 The next sections describe the key components of argparse-based script topics.

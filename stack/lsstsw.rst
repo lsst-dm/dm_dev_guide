@@ -34,8 +34,8 @@ This will:
 - Make an empty stack directory in :file:`./stack`, with a default
   :file:`manifest.remap`;
 - Download and install a copy of ``etc/repos.yaml`` from ``lsst/repos``;
-- Run :command:`git clone lsst_build master`
-- Run :command:`git clone versiondb master`
+- Run :command:`git clone lsst_build main`
+- Run :command:`git clone versiondb main`
 
 Once the bootstrap has completed, set up the environment as directed. For
 example::
@@ -131,7 +131,7 @@ You can build specific branch(es) by running::
 
 Before building, the code above will attempt to checkout ``branch1`` (both in the
 package and its dependencies), and fall back to ``branch2`` if it doesn't exist,
-and then fall back to master (or another default branch configured in
+and then fall back to main (or another default branch configured in
 :file:`etc/repos.yaml`).
 
 Other command-line options for :command:`rebuild`
@@ -195,12 +195,12 @@ Importantly, :command:`lsst-build prepare` can take one or more ``--ref
 
     lsst-build prepare \
       ... \
-      --ref tickets/1234 --ref next --ref master \
+      --ref tickets/1234 --ref next --ref main \
       build lsst_distrib
 
 and, upon cloning each repository, it will attempt to checkout
 ``tickets/1234``, falling back to ``next`` if it doesn't exist, and finally to
-``master``. This is how we test whether the changes on a branch break the
+``main``. This is how we test whether the changes on a branch break the
 stack.
 
 Implementing that was the easy part. The hard part was making these tools
@@ -241,7 +241,7 @@ The new (automated) workflow is as follows:
    ``EUPS_PATH`` to point to it.
 
 #. :command:`lsst-build` right now periodically runs from :command:`cron` and
-   builds the ``master`` branch any time it changes. The results end up in
+   builds the ``main`` branch any time it changes. The results end up in
    :file:`~lsstsw/stack`.  each build is EUPS-tagged with a unique build
    number (e.g., ``b1``, ``b2``, ``b3``, ...).  The latest build gets EUPS
    tagged as ``current``. There's no more need to run ``submitRelease``, since
@@ -252,7 +252,7 @@ The new (automated) workflow is as follows:
    create`, possibly EUPS-tagging it as something more memorable than ``bNNN``
    (e.g., ``Winter2014``). If it's useful, we could also automatically release
    the ``bNNN`` builds.  Right now there is a set of product with ``b1`` EUPS
-   tag there. These are a build of master as of yesterday, which I Git-tagged
+   tag there. These are a build of main as of yesterday, which I Git-tagged
    as ``8.0.0.0``. Consider this a release candidate for Winter'14, and take a
    look.  I'll proceed to build an EUPS distribution as well soon.
 

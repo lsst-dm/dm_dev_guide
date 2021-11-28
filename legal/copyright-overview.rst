@@ -162,7 +162,7 @@ The :file:`COPYRIGHT` file does not contain any other content.
 
    Then select **General > COPYRIGHT file**.
 
-`A template <https://github.com/lsst/templates/tree/master/file_templates/copyright>`_ for COPYRIGHT files is also available.
+`A template <https://github.com/lsst/templates/tree/main/file_templates/copyright>`_ for COPYRIGHT files is also available.
 
 Background
 ----------
@@ -182,7 +182,7 @@ Related pages
 
 - :doc:`licensing-overview`
 - :doc:`/stack/license-and-copyright`
-- `COPYRIGHT file template <https://github.com/lsst/templates/tree/master/file_templates/copyright>`_
+- `COPYRIGHT file template <https://github.com/lsst/templates/tree/main/file_templates/copyright>`_
 
 .. _`MIT license`: https://choosealicense.com/licenses/mit/
 .. _`GPL-3.0`: https://choosealicense.com/licenses/gpl-3.0/

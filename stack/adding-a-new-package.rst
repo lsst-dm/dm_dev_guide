@@ -49,7 +49,7 @@ If the new package needs a distinct Jira component (most will), any DMLT member 
 Configuring GitHub Repositories
 ===============================
 
-All LSST DM repositories on GitHub must be configured by a repository administrator to protect the ``master`` branch and to ensure that the merge button for pull requests can not be pushed without the branch being up to date with ``master``.
+All LSST DM repositories on GitHub must be configured by a repository administrator to protect the ``main`` branch and to ensure that the merge button for pull requests can not be pushed without the branch being up to date with ``main``.
 There are a number of settings required to ensure this and they are described below with URLs referring to the ``afw`` package.
 Replace ``afw`` with the relevant package name to get to the correct page on GitHub.
 
@@ -57,10 +57,10 @@ Replace ``afw`` with the relevant package name to get to the correct page on Git
 
 .. image:: /_static/build-ci/github_merge_button_settings.png
 
-2. Configure ``master`` branch to enable protections.
+2. Configure ``main`` branch to enable protections.
 For ``afw`` this is located at https://github.com/lsst/afw/settings/branches/ and can also be found from the "Branches" sidebar item on the settings screen.
-In the "Branch protection rules" section of that page you will have to click on "Add rule" to create a rule for ``master``.
-Add in ``master`` as the branch name pattern and then enable status checks and require that branches be up to date before merging.
+In the "Branch protection rules" section of that page you will have to click on "Add rule" to create a rule for ``main``.
+Add in ``main`` as the branch name pattern and then enable status checks and require that branches be up to date before merging.
 Administrators must be included in these protections since it's all too easy to make a mistake without realizing you have special override powers.
 With checks enabled people will be able to use the GitHub merge button on Pull Requests and know that the :ref:`standard process <workflow-code-review-merge>` is being adhered to.
 
@@ -78,7 +78,7 @@ If nothing seems appropriate the "LSST DM null Workflow" should be enabled to al
 Pull requests will automatically run the GitHub Actions and their results will be visible in the "Checks" tab of the pull request on GitHub.
 
 When the first job completes you can return to the branches settings page on GitHub.
-Now you will see that the ``master`` branch is listed along with an EDIT button.
+Now you will see that the ``main`` branch is listed along with an EDIT button.
 The branch protection rules will now list the GitHub Actions checks in the "up to date before merging" section.
 Enable these and save.
 Your branch protections screen should then look something like this:
@@ -119,8 +119,8 @@ New :doc:`Git LFS-backed </git/git-lfs>` repos (or existing repos being converte
    This is required because of constraints imposed by the EUPS publication mechanism.
 
 .. _LSST organization on GitHub: https://github.com/lsst
-.. _lsst/templates: https://github.com/lsst/templates/tree/master/project_templates/stack_package
+.. _lsst/templates: https://github.com/lsst/templates/tree/main/project_templates/stack_package
 .. _Distributing third-party packages with EUPS: https://confluence.lsstcorp.org/display/LDMDG/Distributing+third-party+packages+with+EUPS
-.. _etc/repos.yaml file in the lsst/repos repository: https://github.com/lsst/repos/blob/master/etc/repos.yaml
-.. _repos.yaml: https://github.com/lsst/repos/blob/master/etc/repos.yaml
-.. _manifest.remap:  https://github.com/lsst/lsstsw/blob/master/etc/manifest.remap
+.. _etc/repos.yaml file in the lsst/repos repository: https://github.com/lsst/repos/blob/main/etc/repos.yaml
+.. _repos.yaml: https://github.com/lsst/repos/blob/main/etc/repos.yaml
+.. _manifest.remap:  https://github.com/lsst/lsstsw/blob/main/etc/manifest.remap

@@ -118,24 +118,24 @@ Drafting workflow
 Write change-controlled documents using :doc:`DM's standard workflow </work/flow>`.
 That is:
 
-1. Create a ticket branch from ``master``.
+1. Create a ticket branch from ``main``.
 2. Work on the ticket branch.
 3. Have the ticket peer-reviewed.
-4. Rebase and merge the ticket branch to ``master``.
+4. Rebase and merge the ticket branch to ``main``.
 
-Merging to ``master`` does not denote acceptance by a CCB.
+Merging to ``main`` does not denote acceptance by a CCB.
 Instead, it adds to the changeset that will be included in the next CCB review (see next).
 
 .. _ccd-release:
 
-Releasing a new version from the master branch
-==============================================
+Releasing a new version from the main branch
+============================================
 
 Follow these steps to submit a document to the CCB and release a new baselined version:
 
-1. Check out the head of the ``master`` branch and follow the procedure in :ref:`ccd-docushare-upload`.
+1. Check out the head of the ``main`` branch and follow the procedure in :ref:`ccd-docushare-upload`.
 
-   You can get the PDF for the DocuShare upload either by building the document locally or downloading it from the document's landing page at ``https://<handle>.lsst.io/v/master``.
+   You can get the PDF for the DocuShare upload either by building the document locally or downloading it from the document's landing page at ``https://<handle>.lsst.io/v/main``.
 
 2. Submit a request to the CCB.
    The procedure depends on the CCB:
@@ -228,14 +228,14 @@ Follow these steps to submit a document to the CCB and release a new baselined v
 
       The URL should point to the DocuShare version (same as the DocuShare tag you created in step 5.2 above).
 
-   4. Apply the amendment comments and change record from the release branch to the ``master`` branch.
-      There are two approaches that can be used to move changes from the release branch to the ``master`` branch, depending on how cleanly the changes can be applied.
+   4. Apply the amendment comments and change record from the release branch to the ``main`` branch.
+      There are two approaches that can be used to move changes from the release branch to the ``main`` branch, depending on how cleanly the changes can be applied.
 
-      **If the changes on the release branch are compatible with the** ``master`` **branch** the process can be simplified to more closely match standard code development practices by merging the release branch.
+      **If the changes on the release branch are compatible with the** ``main`` **branch** the process can be simplified to more closely match standard code development practices by merging the release branch.
       This is usually the case if the document is not being actively edited during the CCB process.
       Merging the release branch has the advantage of integrating the release tags into the history of the main document and also leads to pull requests on GitHub being shown as merged rather than closed.
 
-      #. If not already done so, create a pull request from the release branch to ``master``.
+      #. If not already done so, create a pull request from the release branch to ``main``.
 
       #. On the release branch revert the commit that fixed the date and removed the draft.
          If the above process has been followed the relevant commit should be at the tip of the release branch:
@@ -246,19 +246,19 @@ Follow these steps to submit a document to the CCB and release a new baselined v
 
       #. Push the change to the repository and wait for the GitHub Actions checks (or legacy Travis job) to complete.
 
-      #. Once the commits have been validated the branch can be merged to master.
+      #. Once the commits have been validated the branch can be merged to main.
          This can be done either from the command line or by pushing the merge button on GitHub.
 
-         **Do not** rebase the release branch since that will detach the release tags from the branch and remove them from the history of ``master``.
+         **Do not** rebase the release branch since that will detach the release tags from the branch and remove them from the history of ``main``.
 
-      **Alternatively, if there has been significant development on** ``master`` **since the release branch was made** it may not be possible to do a simple merge of the release branch.
+      **Alternatively, if there has been significant development on** ``main`` **since the release branch was made** it may not be possible to do a simple merge of the release branch.
       For that scenario a more nuanced approach is required where individual commits can be cherry picked as appropriate.
 
-      #. Create a user branch from the ``master`` branch:
+      #. Create a user branch from the ``main`` branch:
 
          .. code-block:: bash
 
-            git checkout master
+            git checkout main
             git checkout -b u/<username>/v<major>.<minor>-backport
 
       #. Cherry-pick commits from the release branch onto the new backport branch.
@@ -270,19 +270,19 @@ Follow these steps to submit a document to the CCB and release a new baselined v
 
          **Do not** backport the commit that removed the ``lsstdraft`` option and set the ``\date``.
 
-      #. Rebase then push the backport branch to GitHub for continuous integration validation, and merge to master.
+      #. Rebase then push the backport branch to GitHub for continuous integration validation, and merge to main.
          A pull request can be created on GitHub for this branch.
          For example:
 
          .. code-block:: bash
 
-            git checkout master
+            git checkout main
             git pull
             git checkout u/<username>/v<major>.<minor>-backport
-            git rebase -i master
+            git rebase -i main
             git push -u  # --force
             <wait for continuous integration validation>
-            git checkout master
+            git checkout main
             git merge --no-ff u/<username>/v<major>.<minor>-backport
             git push
 
@@ -293,14 +293,14 @@ Follow these steps to submit a document to the CCB and release a new baselined v
 Hotfixing a released document
 =============================
 
-The procedure above (:ref:`ccd-release`) describes how to make a new version of a document from the ``master`` branch.
+The procedure above (:ref:`ccd-release`) describes how to make a new version of a document from the ``main`` branch.
 Sometimes it is necessary to hotfix a released document to fix a typo or make a similar minor change.
-In these cases you may not want to make a new release from the ``master`` branch because ``master`` has substantive, and unrelated, new content.
+In these cases you may not want to make a new release from the ``main`` branch because ``main`` has substantive, and unrelated, new content.
 Instead, you may hotfix a document from the release branch.
 
 .. note::
 
-   If no changes have been merged to ``master`` since the document was released, you can follow the regular procedure for :ref:`ccd-release`.
+   If no changes have been merged to ``main`` since the document was released, you can follow the regular procedure for :ref:`ccd-release`.
 
 Follow these steps to hotfix a document:
 
@@ -329,8 +329,8 @@ Follow these steps to hotfix a document:
 
 3. Commit fixes onto that ``tickets/DM-<N>`` branch and push to GitHub.
 
-4. Follow the steps in :ref:`ccd-release`, noting that the base branch is now ``tickets/DM-<N>``, not ``master``.
-   In the last step, the amendment commits (such as those on the ``tickets/DM-<N>`` branch and on the release branch) are still backported to ``master``.
+4. Follow the steps in :ref:`ccd-release`, noting that the base branch is now ``tickets/DM-<N>``, not ``main``.
+   In the last step, the amendment commits (such as those on the ``tickets/DM-<N>`` branch and on the release branch) are still backported to ``main``.
    The hotfix release branch is not merged onto the previous release branch.
 
 .. _ccd-docushare-upload:
@@ -429,15 +429,15 @@ Release branches
 
 Submissions to the DM CCB have an associated RFC and submissions to the `Project CCB`_ have an associated LCR.
 Work related to a release is done on a release branch named after the RFC or LCR number: ``tickets/RFC-N`` or ``tickets/LCR-N``.
-These release branches are never merged back to the ``master`` branch.
-Instead, amendments are backported to ``master`` using :command:`git cherry-pick`.
+These release branches are never merged back to the ``main`` branch.
+Instead, amendments are backported to ``main`` using :command:`git cherry-pick`.
 
 Note that because creating an RFC or LCR requires a document in DocuShare, release branches are only created after the initial :ref:`DocuShare tag <ccd-docushare-tag>` is created.
 
-.. _ccd-master-branch:
+.. _ccd-main-branch:
 
-master branch
--------------
+main branch
+-----------
 
-The ``master`` branch is the main development branch where individual ticket branches are integrated.
-The document on the ``master`` branch is understood to be peer-reviewed but not baselined by the CCB.
+The ``main`` branch is the main development branch where individual ticket branches are integrated.
+The document on the ``main`` branch is understood to be peer-reviewed but not baselined by the CCB.

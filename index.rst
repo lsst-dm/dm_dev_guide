@@ -10,7 +10,7 @@ When it's particularly important that you closely follow a standard, we include 
 
 Any member of DM can contribute to this guide.
 It's published from the https://github.com/lsst-dm/dm_dev_guide GitHub repo.
-Check out the `README <https://github.com/lsst-dm/dm_dev_guide/blob/master/README.md>`__ to get started.
+Check out the `README <https://github.com/lsst-dm/dm_dev_guide/blob/main/README.md>`__ to get started.
 
 ****
 

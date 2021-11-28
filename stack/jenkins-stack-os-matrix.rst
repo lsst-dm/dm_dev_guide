@@ -20,8 +20,8 @@ Running a stack-os-matrix job
 
      For example, if you enter ``tickets/DM-2 tickets/DM-1``, the build system will attempt to check out the ``tickets/DM-2`` branch in Stack packages.
      If a package does not have a ``tickets/DM-2`` branch, it will attempt to check out the ``tickets/DM-1`` branch.
-     If a package has neither branch, it falls back to checking out the ``master`` branch or the branch configured in ``repos.yaml`` in the case of forked third-party packages.
-     Because of those third-party packages, you *never* want to specify ``master`` explicitly in this field.
+     If a package has neither branch, it falls back to checking out the ``main`` branch or the branch configured in ``repos.yaml`` in the case of forked third-party packages.
+     Because of those third-party packages, you *never* want to specify ``main`` explicitly in this field.
 
    - **Set the list of EUPS packages** to build.
      Use the default (``lsst_distrib``) to build and test your changes with a full Stack.
@@ -29,7 +29,7 @@ Running a stack-os-matrix job
 
    - **Check the Skip Demo** option only if you are testing your package alone (in conjunction with specifying your package in the prior text box).
 
-     Before you merge a ticket branch to ``master``, **you must** run a stack-os-matrix Job without **Skip Demo** enabled so that the full Stack is built and tested with your changes.
+     Before you merge a ticket branch to ``main``, **you must** run a stack-os-matrix Job without **Skip Demo** enabled so that the full Stack is built and tested with your changes.
 
      When the ``demo`` is run, the `lsst_ci`_ top-level package is automatically added to the build and the `lsst_dm_stack_demo`_ is run to test a simple :command:`processCcd.py`\ -based pipeline.
 

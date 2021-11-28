@@ -33,11 +33,11 @@ Then select **Science Pipelines documentation > Script topic (generic)**.
 
 .. [#template] The script topic file template is available in the `lsst/templates repository`_.
 
-.. _lsst/templates repository: https://github.com/lsst/templates/tree/master/file_templates/script_topic
+.. _lsst/templates repository: https://github.com/lsst/templates/tree/main/file_templates/script_topic
 
 For an example script named ``exampleScript.sh``, the rendered template looks like this:
 
-.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/master/file_templates/script_topic/exampleScript.sh.rst
+.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/main/file_templates/script_topic/exampleScript.sh.rst
    :language: rst
 
 The next sections describe the key components of script topics.

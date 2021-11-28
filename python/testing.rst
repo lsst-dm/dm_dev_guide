@@ -444,6 +444,6 @@ Legacy Test Code
 If you have legacy DM `unittest` ``suite``-based code (code that sets up a `unittest.TestSuite` object by listing specific test classes and that uses ``lsst.utils.tests.run`` rather than `unittest.main`), please refer to tech note `SQR-012`_ for porting instructions.
 
 
-.. _`Coords`: http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/x_masterDoxyDoc/namespacelsst_1_1afw_1_1coord_1_1utils.html
-.. _`Geom (SpherePoints, Angles, Pairs, Boxes)`: http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/namespacelsst_1_1afw_1_1geom_1_1utils.html
-.. _`Images`: http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/x_masterDoxyDoc/namespacelsst_1_1afw_1_1image_1_1test_utils.html
+.. _`Coords`: http://doxygen.lsst.codes/stack/doxygen/x_mainDoxyDoc/x_mainDoxyDoc/namespacelsst_1_1afw_1_1coord_1_1utils.html
+.. _`Geom (SpherePoints, Angles, Pairs, Boxes)`: http://doxygen.lsst.codes/stack/doxygen/x_mainDoxyDoc/namespacelsst_1_1afw_1_1geom_1_1utils.html
+.. _`Images`: http://doxygen.lsst.codes/stack/doxygen/x_mainDoxyDoc/x_mainDoxyDoc/namespacelsst_1_1afw_1_1image_1_1test_utils.html

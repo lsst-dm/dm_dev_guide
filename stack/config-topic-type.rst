@@ -25,11 +25,11 @@ Then select **Science Pipelines documentation > Config topic**.
 
 .. [#template] The config topic file template is maintained in the `lsst/templates repository`_.
 
-.. _lsst/templates repository: https://github.com/lsst/templates/tree/master/file_templates/config_topic
+.. _lsst/templates repository: https://github.com/lsst/templates/tree/main/file_templates/config_topic
 
 For an example config named ``lsst.example.ExampleConfig``, the rendered template looks like this:
 
-.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/master/file_templates/config_topic/lsst.example.ExampleConfig.rst
+.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/main/file_templates/config_topic/lsst.example.ExampleConfig.rst
    :language: rst
 
 The next sections describe the key components of config topics.

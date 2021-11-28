@@ -40,7 +40,7 @@ For each top-level folder except ``Shared Services`` and ``Scratch``, we have th
 ``Dev`` and ``Integration`` provide testing and staging environments where one can deploy near-production services.
 
 All environments on IDF are managed with `Terraform <https://www.terraform.io/>`_, an infrastructure-as-code tool, via configuration files in the `idf_deploy <https://github.com/lsst/idf_deploy>`_ repo.
-See the documentation in idf_deploy's `run book <https://github.com/lsst/idf_deploy/tree/master/runbook>`_.
+See the documentation in idf_deploy's `run book <https://github.com/lsst/idf_deploy/tree/main/runbook>`_.
 GitHub Actions are used to automatically deploy GCP resources on IDF in response to pull requests on the configuration files.
 All resources should be deployed this way so that operations can be repeated consistently.
 
@@ -62,7 +62,7 @@ See :ref:`idf-internal-support` to request to be added to an existing group.
 Monitoring
 ==========
 
-A number of dashboards have been configured in Cloud Monitoring; for more information, see `Monitoring and Logging in the run book <https://github.com/lsst/idf_deploy/blob/master/runbook/monitoring-logging.md>`_.
+A number of dashboards have been configured in Cloud Monitoring; for more information, see `Monitoring and Logging in the run book <https://github.com/lsst/idf_deploy/blob/main/runbook/monitoring-logging.md>`_.
 
 .. _idf-internal-support:
 
