@@ -60,7 +60,7 @@ We discuss the contents of :file:`ups/` and :file:`patches/` in more detail belo
    See the section on :ref:`build-third-party-other-files`, below.
 
 .. _LSST GitHub organization: https://github.com/lsst
-.. _the table file: https://github.com/lsst/lsst_thirdparty/blob/master/ups/lsst_thirdparty.table
+.. _the table file: https://github.com/lsst/lsst_thirdparty/blob/main/ups/lsst_thirdparty.table
 .. _third party software: https://confluence.lsstcorp.org/display/DM/DM+Third+Party+Software
 
 The :file:`ups/` Directory

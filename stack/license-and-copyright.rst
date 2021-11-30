@@ -17,7 +17,7 @@ The LICENSE file
 ================
 
 Each Stack package must have a file called :file:`LICENSE` at its root.
-You can find the LICENSE file in the `stack_package template <https://github.com/lsst/templates/blob/master/project_templates/stack_package/%7B%7Bcookiecutter.package_name%7D%7D/LICENSE>`__.
+You can find the LICENSE file in the `stack_package template <https://github.com/lsst/templates/blob/main/project_templates/stack_package/%7B%7Bcookiecutter.package_name%7D%7D/LICENSE>`__.
 
 Be careful not to modify the LICENSE file.
 
@@ -63,19 +63,19 @@ License preambles in source files
 The `GPL-3.0`_ license requires each source file to have a preamble comment containing a license statement.
 This is the generic license preamble:
 
-.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/master/file_templates/stack_license_preamble_txt/template.txt.jinja
+.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/main/file_templates/stack_license_preamble_txt/template.txt.jinja
    :language: jinja
 
 Replace ``{{ cookiecutter.package_name }}`` with the repository's name (``afw``, for example).
 
-This preamble is available as `a template <https://github.com/lsst/templates/tree/master/file_templates/stack_license_preamble_txt>`__.
+This preamble is available as `a template <https://github.com/lsst/templates/tree/main/file_templates/stack_license_preamble_txt>`__.
 
 Python preamble
 ---------------
 
 The license preamble specifically for use in Python files is:
 
-.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/master/file_templates/stack_license_preamble_py/template.py.jinja
+.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/main/file_templates/stack_license_preamble_py/template.py.jinja
    :language: jinja
 
 Replace ``{{ cookiecutter.package_name }}`` with the repository's name (``afw``, for example).
@@ -93,14 +93,14 @@ Replace ``{{ cookiecutter.package_name }}`` with the repository's name (``afw``,
 
 See also: :ref:`style-guide-license` in the LSST DM Python Style Guide.
 
-This preamble is also available as `a template <https://github.com/lsst/templates/tree/master/file_templates/stack_license_preamble_py>`__.
+This preamble is also available as `a template <https://github.com/lsst/templates/tree/main/file_templates/stack_license_preamble_py>`__.
 
 C++ preamble
 ------------
 
 The license preamble specifically for use in C++ source and header files is:
 
-.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/master/file_templates/stack_license_preamble_cpp/template.cc.jinja
+.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/main/file_templates/stack_license_preamble_cpp/template.cc.jinja
    :language: jinja
 
 Replace ``{{ cookiecutter.package_name }}`` with the repository's name (``afw``, for example).
@@ -116,6 +116,6 @@ Replace ``{{ cookiecutter.package_name }}`` with the repository's name (``afw``,
 
    Then select **Source license preambles > C++**.
 
-This preamble is also available as `a template <https://github.com/lsst/templates/tree/master/file_templates/stack_license_preamble_cpp>`__.
+This preamble is also available as `a template <https://github.com/lsst/templates/tree/main/file_templates/stack_license_preamble_cpp>`__.
 
 .. _`GPL-3.0`: https://choosealicense.com/licenses/gpl-3.0/

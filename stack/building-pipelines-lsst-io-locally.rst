@@ -18,7 +18,7 @@ Prerequisites
 
 Before starting, you’ll need a working ``lsst_distrib`` installation.
 
-This installation needs to be a recent daily or weekly build so that any in-development packages will compile with the Stack. Working from the tip of the ``master`` branch is the norm for LSST software development.
+This installation needs to be a recent daily or weekly build so that any in-development packages will compile with the Stack. Working from the tip of the ``main`` branch is the norm for LSST software development.
 
 .. _local-pipelines-lsst-io-build-clone:
 

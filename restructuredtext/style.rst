@@ -65,7 +65,7 @@ Filenames and paths
    ``:file:`repos.yaml``` → :file:`repos.yaml`
 
 Shell commands
-   ``:command:`git rebase -i master``` → :command:`git rebase -i master`
+   ``:command:`git rebase -i main``` → :command:`git rebase -i main`
 
 ..
   FIXME need to clarify that this is actual for linking, no semantics

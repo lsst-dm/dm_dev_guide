@@ -232,10 +232,10 @@ Style changes must be encapsulated in a distinct commit (see :ref:`git-commit-or
 Each Python file MUST contain the standard license preamble
 -----------------------------------------------------------
 
-A copyright and license block using `the standard text <https://github.com/lsst/templates/tree/master/file_templates/stack_license_preamble_py>`_ MUST be included at the top of each file.
+A copyright and license block using `the standard text <https://github.com/lsst/templates/tree/main/file_templates/stack_license_preamble_py>`_ MUST be included at the top of each file.
 This can be written as a Python comment.
 
-.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/master/file_templates/stack_license_preamble_py/template.py.jinja
+.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/main/file_templates/stack_license_preamble_py/template.py.jinja
    :language: jinja
 
 Replace ``{{ cookiecutter.package_name }}`` with the package's name.
@@ -647,7 +647,7 @@ Standard code order SHOULD be followed
 Within a module, follow the order:
 
 #. Shebang line, ``#! /usr/bin/env python`` (only for executable scripts)
-#. Module-level comments (such as the `license statement <https://github.com/lsst/templates/tree/master/file_templates/stack_license_py>`__)
+#. Module-level comments (such as the `license statement <https://github.com/lsst/templates/tree/main/file_templates/stack_license_py>`__)
 #. Module-level docstring
 #. ``__all__ = [...]`` statement, if present
 #. Imports

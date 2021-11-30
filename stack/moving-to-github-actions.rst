@@ -27,7 +27,7 @@ GitHub web interface
 #. Go to the "Settings" page of the repository.
    This may be under the right-side "..." menu depending on your window width.
 #. Choose "Branches" in the left sidebar.
-#. Under "Branch protection rules", click "Edit" next to branch "master".
+#. Under "Branch protection rules", click "Edit" next to branch "main".
 #. Under "Require branches to be up to date before merging", uncheck any status checks that contain "travis-ci".
 #. Click "Save changes" at the bottom of the page.
 #. Go back to the "Code" page and select ``.travis.yml``.
@@ -41,7 +41,7 @@ GitHub web interface
 #. Add a commit comment such as "Add Python lint workflow." and choose a branch name.
    Again, something like ``u/{user}/add-lint-workflow`` is sufficient as a branch name.
 #. Commit the change, create a pull request, and merge it.
-#. Go back to the "Settings" page, "Branches", "Branch protection rules", and "Edit" next to branch "master".
+#. Go back to the "Settings" page, "Branches", "Branch protection rules", and "Edit" next to branch "main".
 #. Under "Require branches to be up to date before merging", check the new "lint" checkbox.
 #. Click "Save changes" at the bottom of the page.
 #. If you like, you may choose "Webhooks" in the left sidebar and delete the ``https://notify.travis-ci.org/`` entry, but it does no harm to leave it.
@@ -56,7 +56,7 @@ Command line
 #. Create a branch: ``git checkout -b u/{user}/migrate-to-gha``
 #. ``git rm .travis.yml``
 #. ``mkdir -p .github/workflows; cd .github/workflows``
-#. ``curl -LO https://raw.githubusercontent.com/lsst/.github/master/workflow-templates/lint.yaml``
+#. ``curl -LO https://raw.githubusercontent.com/lsst/.github/main/workflow-templates/lint.yaml``
 #. ``git add lint.yaml``
 #. ``git commit`` and add a commit message such as "Migrate from Travis to GitHub Actions."
 #. ``git push -u origin u/{user}/migrate-to-gha``
@@ -64,7 +64,7 @@ Command line
 #. Go to the "Settings" page of the repository.
    This may be under the right-side "..." menu depending on your window width.
 #. Choose "Branches" in the left sidebar.
-#. Under "Branch protection rules", click "Edit" next to branch "master".
+#. Under "Branch protection rules", click "Edit" next to branch "main".
 #. Under "Require branches to be up to date before merging", uncheck any status checks that contain "travis-ci".
    Check any other status checks, in particular ``lint``.
 #. Click "Save changes" at the bottom of the page.
@@ -77,5 +77,5 @@ Command line
 Further reading
 ===============
 
-- `LSST workflow templates <https://github.com/lsst/.github/tree/master/workflow-templates>`__
+- `LSST workflow templates <https://github.com/lsst/.github/tree/main/workflow-templates>`__
 - `GitHub Actions <https://docs.github.com/en/free-pro-team@latest/actions>`__

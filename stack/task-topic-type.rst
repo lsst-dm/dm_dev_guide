@@ -23,11 +23,11 @@ Then select **Science Pipelines documentation > Task topic**.
 
 .. [#template] The task topic file template is maintained in the `lsst/templates repository`_.
 
-.. _lsst/templates repository: https://github.com/lsst/templates/tree/master/file_templates/task_topic
+.. _lsst/templates repository: https://github.com/lsst/templates/tree/main/file_templates/task_topic
 
 For an example task named ``lsst.example.ExampleCmdLineTask``, the rendered template looks like this:
 
-.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/master/file_templates/task_topic/lsst.example.ExampleCmdLineTask.rst
+.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/main/file_templates/task_topic/lsst.example.ExampleCmdLineTask.rst
    :language: rst
 
 The next sections describe the key components of task topics.

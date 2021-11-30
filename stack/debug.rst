@@ -4,7 +4,7 @@ Debugging Tasks with ``lsstDebug``
 
 .. note::
 
-   See also the `Doxygen documentation on lsstDebug <http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/base_debug.html>`_.
+   See also the `Doxygen documentation on lsstDebug <http://doxygen.lsst.codes/stack/doxygen/x_mainDoxyDoc/base_debug.html>`_.
 
 Task Authors
 ============
@@ -43,7 +43,7 @@ Then you can write your task to optionally enable a display (or whatever) by doi
 Task Users
 ==========
 
-Refer to the `task documentation <http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/group___l_s_s_t__task__documentation.html>`_ and look for “debug variables” to discover what debugging options are available for existing ``Task``\s.
+Refer to the `task documentation <http://doxygen.lsst.codes/stack/doxygen/x_mainDoxyDoc/group___l_s_s_t__task__documentation.html>`_ and look for “debug variables” to discover what debugging options are available for existing ``Task``\s.
 
 Your goal is to customize the behaviour of ``debug`` to meet your particular needs by redefining the ``lsstDebug.Info`` function to return an object that returns non-``False`` values for certain combinations of ``__name__`` and attribute.
 

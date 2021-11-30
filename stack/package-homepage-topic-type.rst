@@ -15,11 +15,11 @@ Specifically, if a package provides a Python module, it won't have a package doc
 Starter template
 ================
 
-The `stack_package`_ project template includes the `Jinja-formatted template for the package homepage <https://raw.githubusercontent.com/lsst/templates/master/project_templates/stack_package/%7B%7Bcookiecutter.package_name%7D%7D/doc/%7B%7Bcookiecutter.package_name%7D%7D/index.rst>`_.
+The `stack_package`_ project template includes the `Jinja-formatted template for the package homepage <https://raw.githubusercontent.com/lsst/templates/main/project_templates/stack_package/%7B%7Bcookiecutter.package_name%7D%7D/doc/%7B%7Bcookiecutter.package_name%7D%7D/index.rst>`_.
 
 For an example package named ``example_dataonly``, the rendered template looks like this:
 
-.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/master/project_templates/stack_package/example_dataonly/doc/example_dataonly/index.rst
+.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/main/project_templates/stack_package/example_dataonly/doc/example_dataonly/index.rst
    :language: rst
 
 The next sections describe the key components of the package homepage.
@@ -93,6 +93,6 @@ The `template <package-homepage-template>`__ seeds this section with links to th
 
 If there is documentation describing how to develop (contribute) to the package, as opposed to using the package, you should link to those topics with a `toctree`_ in this section.
 
-.. _stack_package: https://github.com/lsst/templates/tree/master/project_templates/stack_package
+.. _stack_package: https://github.com/lsst/templates/tree/main/project_templates/stack_package
 .. _toctree: http://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html#directive-toctree
 .. _`#dm-square`: https://lsstc.slack.com/archives/dm-docs

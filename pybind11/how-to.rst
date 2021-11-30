@@ -1012,4 +1012,4 @@ As with ``ExampleTwo``, add this to a pure-Python ``_ExampleThree.py``:
     ExampleThree.alias("D", ExampleThreeD)
 
 .. _pybind11_example: https://github.com/lsst-dm/pybind11_example
-.. _`ExampleOne class in pybind11_example`: https://github.com/lsst-dm/pybind11_example/blob/master/src/ExampleOne.cc
+.. _`ExampleOne class in pybind11_example`: https://github.com/lsst-dm/pybind11_example/blob/main/src/ExampleOne.cc

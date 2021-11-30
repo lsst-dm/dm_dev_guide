@@ -4,5 +4,5 @@ matrix:
   include:
     - python: '3.6'
       install:
-      - pip install -r <(curl https://raw.githubusercontent.com/lsst/linting/master/requirements.txt)
+      - pip install -r <(curl https://raw.githubusercontent.com/lsst/linting/main/requirements.txt)
       script: flake8

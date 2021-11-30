@@ -45,7 +45,7 @@ the following procedure should be used:
        ``--no-ff`` to preserve the transfer branch name in the git commit.
 
 #. Make further changes as necessary on the ``tickets/DM-XXXX`` branches and have
-   the issue reviewed and merged to master as usual.
+   the issue reviewed and merged to main as usual.
 
 #. Summarize the code transfer on the `DM Stack Package History`_ page.
 

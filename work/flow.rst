@@ -251,19 +251,19 @@ See `RFC-21 <https://jira.lsstcorp.org/browse/RFC-21>`_ for discussion.
 
 .. _git-branch-integration:
 
-The master branch
------------------
+The main branch
+---------------
 
-``master`` is the main integration branch for our repositories.
-The master branch should always be stable and deployable.
+``main`` is the main integration branch for our repositories.
+The main branch should always be stable and deployable.
 In some circumstances, a ``release`` integration branch may be used by the release manager.
-Development is not done directly on the ``master`` branch, but instead on *ticket branches*.
+Development is not done directly on the ``main`` branch, but instead on *ticket branches*.
 
-Documentation edits and additions are the only scenarios where working directly on ``master`` and by-passing the code review process is permitted.
-When the ``master`` branch is protected from direct pushes, as in most of our code packages, `user branches <git-branch-user>`_ may be used for documentation edits.
+Documentation edits and additions are the only scenarios where working directly on ``main`` and by-passing the code review process is permitted.
+When the ``main`` branch is protected from direct pushes, as in most of our code packages, `user branches <git-branch-user>`_ may be used for documentation edits.
 In most cases, documentation writing benefits from peer editing (code review) and *can* be done on a ticket branch.
 
-The Git history of ``master`` **must never be re-written** with force pushes.
+The Git history of ``main`` **must never be re-written** with force pushes.
 
 .. _git-branch-user:
 
@@ -283,7 +283,7 @@ Before offering unsolicited code review on your colleagues' user branches, remem
 
 Developers can feel free to rebase and force push work to their personal user branches.
 
-A user branch *cannot* be merged into master; it must be converted into a *ticket branch* first.
+A user branch *cannot* be merged into main; it must be converted into a *ticket branch* first.
 The only exception is for documentation edits and additions.
 
 .. _git-branch-ticket:
@@ -292,7 +292,7 @@ Ticket branches
 ---------------
 
 Ticket branches are associated with a JIRA ticket.
-Only ticket branches can be merged into ``master``.
+Only ticket branches can be merged into ``main``.
 (In other words, developing on a ticket branch is the only way to record earned value for code development.)
 
 If the JIRA ticket is named ``DM-NNNN``, then the ticket branch will be named
@@ -330,15 +330,15 @@ This section describes how to prepare your work for review.
 Pushing code
 ------------
 
-We recommend that you organize commits, improve commit messages, and ensure that your work is made against the latest commits on ``master`` with an `interactive rebase <https://help.github.com/articles/about-git-rebase/>`_.
+We recommend that you organize commits, improve commit messages, and ensure that your work is made against the latest commits on ``main`` with an `interactive rebase <https://help.github.com/articles/about-git-rebase/>`_.
 A common pattern is:
 
 .. code-block:: bash
 
-   git checkout master
+   git checkout main
    git pull
    git checkout tickets/DM-NNNN
-   git rebase -i master
+   git rebase -i main
    # interactive rebase
    git push --force
 
@@ -468,7 +468,7 @@ Resolving a review
 
 Code reviews are a collaborative check-and-improve process.
 Reviewers do not hold absolute authority, nor can developers ignore the reviewer's suggestions.
-The aim is to discuss, iterate, and improve the pull request until the work is ready to be deployed on ``master``.
+The aim is to discuss, iterate, and improve the pull request until the work is ready to be deployed on ``main``.
 
 Changes in response to a review should be made by squashing changes onto the main commit implementing that feature, where practical.
 This avoids cluttering the final Git commit history with iterative improvements from code review.
@@ -497,10 +497,10 @@ Merging
 -------
 
 Putting a ticket in a **Reviewed** state gives the developer the go-ahead to merge the ticket branch.
-If it has not been done already, the developer should rebase the ticket branch against the latest master.
+If it has not been done already, the developer should rebase the ticket branch against the latest main.
 If a rebase was required, a final check with Jenkins should be done.
 
-**GitHub pull request pages offer a 'big green button' for merging a branch to master**.
+**GitHub pull request pages offer a 'big green button' for merging a branch to main**.
 We encourage you to use this button when GitHub says "This branch has no conflicts with the base branch", "All checks have passed", and at least one of the checks has "Required" next to it, which should be the case for almost all repos that are being changed.
 For normally-configured repos, using the button will also delete the ticket branch after the merge.
 Do *not* select a different merge strategy from the pulldown next to the button; these should be disabled anyway.
@@ -510,19 +510,19 @@ We **always use non-fast forward merges** so that the merge point is marked in G
 
 .. code-block:: bash
 
-   git checkout master
-   git pull  # Sanity check; rebase ticket if master was updated.
+   git checkout main
+   git pull  # Sanity check; rebase ticket if main was updated.
    git merge --no-ff tickets/DM-NNNN
    git push
 
 The ticket branch may be deleted from the GitHub remote if its name is in the merge commit comment (which it is by default).
 
-.. _workflow-fixing-breakage-master:
+.. _workflow-fixing-breakage-main:
 
-Fixing a breakage on master
+Fixing a breakage on main
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In rare cases, despite the pre-merge integration testing process described :ref:`above <workflow-testing>`, a merge to master might accidentally contain an error and "break the build".
+In rare cases, despite the pre-merge integration testing process described :ref:`above <workflow-testing>`, a merge to main might accidentally contain an error and "break the build".
 If this occurs, the merge may be reverted by anyone who notices the breakage and verifies that the merge is the cause -- unless a fix can be created, tested, reviewed, and merged very promptly.
 
 .. _workflow-announce:
@@ -567,7 +567,7 @@ Rebase commits from code reviews rather than having 'review feedback' commits
 -----------------------------------------------------------------------------
 
 Code review will result in additional commits that address code style, documentation and implementation issues.
-Where possible, authors should rebase (i.e., ``git rebase -i master``) their ticket branch to squash the post-review fixes to the pre-review commits.
+Where possible, authors should rebase (i.e., ``git rebase -i main``) their ticket branch to squash the post-review fixes to the pre-review commits.
 The preference is that a pull request, when merged, should have a coherent development story and look as if the code was written correctly the first time.
 
 If such a rebase is too difficult (e.g., because it would result in excessive merge conflicts), then post-review commits may be left appended to the pre-review commits.
@@ -593,7 +593,7 @@ Writing commit summary lines
 Consider 50 characters as a hard limit; your summary will be truncated in the  GitHub UI otherwise.
 Write the message in the **imperative** tense, not the past tense.
 For example, "Add feature ..." and "Fix issue ..." rather than "Added feature..." and "Fixed feature...."
-Ensure the summary line contains the right keywords so that someone examining `a commit listing <https://github.com/lsst/afw/commits/master>`_ can understand what parts of the codebase are being changed.
+Ensure the summary line contains the right keywords so that someone examining `a commit listing <https://github.com/lsst/afw/commits/main>`_ can understand what parts of the codebase are being changed.
 For example, it is useful to prefix the commit summary with the area of code being addressed.
 
 .. _git-commit-message-body:

@@ -40,7 +40,7 @@ The build process uses the :file:`doc/manifest.yaml` file to symlink documentati
 
 The :file:`doc/manifest.yaml` file for a package named `example`_ looks like this:
 
-.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/master/project_templates/stack_package/example/doc/manifest.yaml
+.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/main/project_templates/stack_package/example/doc/manifest.yaml
    :language: yaml
 
 .. _docdir-manifest-yaml-modules:
@@ -65,7 +65,7 @@ For example, the ``afw`` package provides ``lsst.afw.cameraGeom``, ``lsst.afw.co
 The ``lsst.afw`` module, on its own, isn’t used.
 For example, ``afw``\ ’s :file:`manifest.yaml` file looks like this:
 
-.. remote-code-block:: https://raw.githubusercontent.com/lsst/afw/master/doc/manifest.yaml
+.. remote-code-block:: https://raw.githubusercontent.com/lsst/afw/main/doc/manifest.yaml
    :language: yaml
 
 .. _docdir-manifest-yaml-statics:
@@ -91,7 +91,7 @@ The ``package`` field must match the package’s EUPS name, which also correspon
 
 This is an example :file:`manifest.yaml` for the `example_dataonly`_ package:
 
-.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/master/project_templates/stack_package/example_dataonly/doc/manifest.yaml
+.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/main/project_templates/stack_package/example_dataonly/doc/manifest.yaml
    :language: yaml
 
 .. _docdir-conf:
@@ -102,7 +102,7 @@ The doc/conf.py file
 The :file:`doc/conf.py` file provides Sphinx configurations during a :doc:`single-package build <building-single-package-docs>`.
 The :file:`doc/conf.py` file should look like this example:
 
-.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/master/project_templates/stack_package/example/doc/conf.py
+.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/main/project_templates/stack_package/example/doc/conf.py
    :language: py
 
 Fill in the ``project_name`` and ``version`` keyword arguments as appropriate.
@@ -117,7 +117,7 @@ The doc/.gitignore file
 The :file:`doc/.gitignore` file ensures that documentation build products don’t get accidentally checked into the package’s Git repository.
 The file looks like this:
 
-.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/master/project_templates/stack_package/example/doc/.gitignore
+.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/main/project_templates/stack_package/example/doc/.gitignore
 
 .. _docdir-index:
 
@@ -130,7 +130,7 @@ Instead, it’s a temporary stand-in for `pipelines_lsst_io`_\ ’s :file:`index
 
 The :file:`doc/index.rst` file for an example package looks like this:
 
-.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/master/project_templates/stack_package/example/doc/index.rst
+.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/main/project_templates/stack_package/example/doc/index.rst
    :language: rst
 
 Customize the title and the entries in the ``toctree`` directive for your own package.
@@ -151,7 +151,7 @@ The doc/SConscript file
 If your package has C++ code, it needs to have Doxygen run on it.
 Add this standardized :file:`doc/SConcript` file:
 
-.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/master/project_templates/stack_package/example/doc/SConscript
+.. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/main/project_templates/stack_package/example/doc/SConscript
 
 .. _docdir-module-doc-directories:
 
@@ -215,7 +215,7 @@ For example:
    :download:`/_static/afw/document.pdf`
 
 .. _pipelines.lsst.io: https://pipelines.lsst.io
-.. _`stack_package template`: https://github.com/lsst/templates/tree/master/project_templates/stack_package
+.. _`stack_package template`: https://github.com/lsst/templates/tree/main/project_templates/stack_package
 .. _`pipelines_lsst_io`: https://github.com/lsst/pipelines_lsst_io
-.. _`example`: https://github.com/lsst/templates/tree/master/project_templates/stack_package/example
-.. _`example_dataonly`: https://github.com/lsst/templates/tree/master/project_templates/stack_package/example_dataonly
+.. _`example`: https://github.com/lsst/templates/tree/main/project_templates/stack_package/example
+.. _`example_dataonly`: https://github.com/lsst/templates/tree/main/project_templates/stack_package/example_dataonly

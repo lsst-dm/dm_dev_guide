@@ -77,7 +77,7 @@ author = u'LSST Data Management'
 # The short X.Y version.
 github_ref = os.getenv("GITHUB_REF", "")
 if github_ref == "":
-    git_ref = "master"
+    git_ref = "main"
 else:
     match = re.match(r"refs/(heads|tags|pull)/(?P<ref>.+)", github_ref)
     if not match:
@@ -166,7 +166,7 @@ html_context = {
     #     {{ github_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}
     'github_user': 'lsst-dm',
     'github_repo': 'dm_dev_guide',
-    # TRAVIS_BRANCH is available in CI, but master is a safe default
+    # TRAVIS_BRANCH is available in CI, but main is a safe default
     'github_version': git_ref + '/'
 }
 

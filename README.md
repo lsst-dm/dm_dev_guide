@@ -10,7 +10,7 @@ The contribution process is outlined below.
 
 Documentation is written in reStructuredText, built using [Sphinx](http://sphinx-doc.org), and hosted with our in-house platform, [LSST the Docs](https://sqr-006.lsst.io).
 
-**Changes to the `master` branch are automatically deployed to https://developer.lsst.io.**
+**Changes to the `main` branch are automatically deployed to https://developer.lsst.io.**
 Other branches are also deployed: find them at https://developer.lsst.io/v.
 
 ## Contributing
@@ -25,7 +25,7 @@ Other branches are also deployed: find them at https://developer.lsst.io/v.
 
 5. If your build on [GitHub Actions](https://github.com/lsst-dm/dm_dev_guide/actions?query=workflow%3A%22CI%22) is successful, your branch will be published with LSST the Docs. **Find your branch listed at https://developer.lsst.io/v.**
 
-6. Once you're done, press the green button on your pull request to merge to `master`. Your changes are automatically published to the main URL: https://developer.lsst.io. Don't worry about messing things up, GitHub branch protections will ensure that your edits build successfully, and that your branch is up-to-date with `master`.
+6. Once you're done, press the green button on your pull request to merge to `main`. Your changes are automatically published to the main URL: https://developer.lsst.io. Don't worry about messing things up, GitHub branch protections will ensure that your edits build successfully, and that your branch is up-to-date with `main`.
 
 ### Installing and building these docs locally
 

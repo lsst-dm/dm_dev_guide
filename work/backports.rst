@@ -7,7 +7,7 @@ What next?
 
 1) First, add the label "backport-v23" to your jira ticket.
    This will flag it for review by both the CCB and the DP0.2 campaign managers.
-   Continue merging your ticket to the default branch (currently ``master``, soon to be ``main``) and mark the ticket ``Done`` per instructions in the normal :doc:`flow`.
+   Continue merging your ticket to the default branch (``main``) and mark the ticket ``Done`` per instructions in the normal :doc:`flow`.
 
 2) Wait for approval. The ticket will gain the label "backport-approved."  A comment will be posted on the ticket that you may start the backporting process.
 
@@ -25,7 +25,7 @@ What next?
       git checkout -b v23.0.x
       git push -u origin v23.0.x
 
-   Now treat ``v23.0.x`` same as you would the default branch (``master`` soon to be called ``main``).
+   Now treat ``v23.0.x`` same as you would the default branch (``main``).
 
 4) Create a copy of your ticket branch called ``tickets/DM-XXXXX-v23``.
 
@@ -44,7 +44,7 @@ What next?
       git checkout -b tickets/DM-XXXXX-v23
       git cherry-pick <ticket commit>
 
-   The following may help you find your hash[es] from ``master``/``main``:
+   The following may help you find your hash[es] from ``main``:
    ``git show --quiet $(git log --oneline | grep 'Merge.*DM-XXXXX' | cut -d' ' -f1)^2``
 
 5) Resolve any rebase or cherry-pick problems depending on your method.

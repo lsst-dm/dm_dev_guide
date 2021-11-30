@@ -37,7 +37,7 @@ command in the v11_0 lsst_distrib install.  What happened?
    AttributeError: 'module' object has no attribute 'EventLog'
 
 A.  The cutoff for v11.0 of the stack during the time when updates to the
-``ctrl_orca`` package were in review.  The master branch of ``ctrl_orca`` has
+``ctrl_orca`` package were in review.  The main branch of ``ctrl_orca`` has
 the version you need to use.  You can get it by installing
 
 .. prompt:: bash

@@ -90,7 +90,7 @@ Once you select the template type and fill in the form on Slack, the bot will cr
 Watch for Slack messages from the bot about the technote's GitHub repository and publication URL.
 
 Any time you push to GitHub, your technote will be republished at its ``lsst.io`` site.
-Pushes to the ``master`` branch update your technote's main page, while updates to other branches update preview editions behind the ``/v/`` URL path.
+Pushes to the ``main`` branch update your technote's main page, while updates to other branches update preview editions behind the ``/v/`` URL path.
 Click on the **Switch editions** or **Change version** link from your published technote to get links for other editions.
 
 .. _technote-latex:

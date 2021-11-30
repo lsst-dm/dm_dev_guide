@@ -6,11 +6,11 @@ We document C++ code in two ways:
 
 1. By writing *documentation blocks* for all public or protected C++ components (namespaces, types, methods, functions, and constants).
 
-   The LSST Stack uses `Doxygen <http://www.doxygen.org/>`_ to build C++ API reference documentation from comment blocks. This documentation is exposed to users in a variety of contexts, from developers reading the code to readers of the `Stack Doxygen Documentation <http://doxygen.lsst.codes/stack/doxygen/x_masterDoxyDoc/>`_.
+   The LSST Stack uses `Doxygen <http://www.doxygen.org/>`_ to build C++ API reference documentation from comment blocks. This documentation is exposed to users in a variety of contexts, from developers reading the code to readers of the `Stack Doxygen Documentation <http://doxygen.lsst.codes/stack/doxygen/x_mainDoxyDoc/>`_.
 
    Doxygen comment blocks are the public specification of our C++ API.
 
-   Our Doxygen configuration file is located in the `base package <https://github.com/lsst/base/blob/master/doc/base.inc>`_.
+   Our Doxygen configuration file is located in the `base package <https://github.com/lsst/base/blob/main/doc/base.inc>`_.
    For Science Pipelines packages, it is automatically included in all documentation builds.
 
 2. By commenting our code internally with C++ comments (``//`` or ``/* .. */``).
@@ -41,9 +41,9 @@ The beginning of both header and source code files should include
 
       // -*- lsst-c++ -*-
 
-2. A copyright and license block (note: **NOT** a Doxygen comment block) using `the standard text <https://github.com/lsst/templates/tree/master/file_templates/stack_license_preamble_cpp>`_.
+2. A copyright and license block (note: **NOT** a Doxygen comment block) using `the standard text <https://github.com/lsst/templates/tree/main/file_templates/stack_license_preamble_cpp>`_.
 
-   .. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/master/file_templates/stack_license_preamble_cpp/template.cc.jinja
+   .. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/main/file_templates/stack_license_preamble_cpp/template.cc.jinja
       :language: jinja
 
    Replace ``{{ cookiecutter.package_name }}`` with the package's name.

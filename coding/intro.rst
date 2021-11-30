@@ -54,7 +54,7 @@ SHOULD, RECOMMENDED and MAY
 SHOULD NOT, NOT RECOMMENDED and MAY NOT
    The opposites of SHOULD, RECOMMENDED and MAY.
 
-.. _Software Architect: https://github.com/lsst-dm/images/blob/master/DmOrg.pdf
+.. _Software Architect: https://github.com/lsst-dm/images/blob/main/DmOrg.pdf
 
 .. _style-guide-deviations:
 

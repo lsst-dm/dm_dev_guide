@@ -122,7 +122,7 @@ For details on how to run this job, see :doc:`/stack/jenkins-stack-os-matrix`.
 science-pipelines/lsst\_distrib
 -------------------------------
 
-`science-pipelines/lsst_distrib`_ is automatically run nightly to test the ``master`` branches of all packages in the ``lsst_distrib`` stack.
+`science-pipelines/lsst_distrib`_ is automatically run nightly to test the ``main`` branches of all packages in the ``lsst_distrib`` stack.
 This job runs from a clean slate to discover issues that might be hidden by the caching behavior of the stack-os-matrix job.
 
 .. _jenkins-job-qserv-dax-webserv:
@@ -130,7 +130,7 @@ This job runs from a clean slate to discover issues that might be hidden by the 
 qserv/dax\_webserv
 ------------------
 
-`qserv/dax_webserv`_ is automatically run nightly to test the ``master`` branches of all packages in the ``dax_webserv`` stack.
+`qserv/dax_webserv`_ is automatically run nightly to test the ``main`` branches of all packages in the ``dax_webserv`` stack.
 This job runs from a clean slate to discover issues that might be hidden by the caching behavior of the stack-os-matrix job.
 
 .. _jenkins-job-qserv-distrib:
@@ -138,7 +138,7 @@ This job runs from a clean slate to discover issues that might be hidden by the 
 qserv/qserv\_distrib
 --------------------
 
-`qserv/qserv_distrib`_ is automatically run nightly to test the ``master`` branches of all packages in the ``qserv_distrib`` stack.
+`qserv/qserv_distrib`_ is automatically run nightly to test the ``main`` branches of all packages in the ``qserv_distrib`` stack.
 This job runs from a clean slate to discover issues that might be hidden by the caching behavior of the stack-os-matrix job.
 
 .. _jenkins-slack-notifications:
