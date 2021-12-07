@@ -695,7 +695,7 @@ If the keys are well-known, document the keys using a pattern similar to :ref:`p
 
            - The first item of the list. Lorem ipsum dolor sit amet, consectetur
              adipiscing elit.
-             
+
              Proin nulla magna, egestas quis nisi id, dictum mollis diam. Duis lorem
              eros, tempor egestas ligula eget, dapibus posuere justo.
 
@@ -726,11 +726,11 @@ Describe each attribute of a ``Struct`` parameter as a :ref:`definition list <rs
       ``z``
           z-axis coordinate (`int`). Nam ut ligula tristique, consequat risus vel,
           sodales tellus. Sed sit amet vehicula felis, placerat pharetra nunc:
-          
+
           - Morbi commodo euismod faucibus.
           - Fusce quis tortor et ex tincidunt dapibus quis ac lorem. Morbi quis
             tellus suscipit quam elementum euismod.
-          
+
           Morbi vehicula facilisis diam ac volutpat. Proin suscipit mi ac ullamcorper
           vulputate. Nullam aliquet iaculis aliquam.
 
