@@ -62,7 +62,7 @@ Docstrings MUST be delimited by triple double quotes
 
 Docstrings **must** be delimited by triple double quotes: ``"""``.
 This allows docstrings to span multiple lines.
-You may use ``u"""`` for unicode, but it's usually preferable to stick to ASCII.
+In cases where the restructured text contains a backslash, it may be necessary to use a raw string with ``r"""``.
 
 For consistency, *do not* use triple single quotes: ``'''``.
 
@@ -695,7 +695,7 @@ If the keys are well-known, document the keys using a pattern similar to :ref:`p
 
            - The first item of the list. Lorem ipsum dolor sit amet, consectetur
              adipiscing elit.
-             
+
              Proin nulla magna, egestas quis nisi id, dictum mollis diam. Duis lorem
              eros, tempor egestas ligula eget, dapibus posuere justo.
 
@@ -726,11 +726,11 @@ Describe each attribute of a ``Struct`` parameter as a :ref:`definition list <rs
       ``z``
           z-axis coordinate (`int`). Nam ut ligula tristique, consequat risus vel,
           sodales tellus. Sed sit amet vehicula felis, placerat pharetra nunc:
-          
+
           - Morbi commodo euismod faucibus.
           - Fusce quis tortor et ex tincidunt dapibus quis ac lorem. Morbi quis
             tellus suscipit quam elementum euismod.
-          
+
           Morbi vehicula facilisis diam ac volutpat. Proin suscipit mi ac ullamcorper
           vulputate. Nullam aliquet iaculis aliquam.
 
