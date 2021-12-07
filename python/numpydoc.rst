@@ -62,7 +62,7 @@ Docstrings MUST be delimited by triple double quotes
 
 Docstrings **must** be delimited by triple double quotes: ``"""``.
 This allows docstrings to span multiple lines.
-You may use ``u"""`` for unicode, but it's usually preferable to stick to ASCII.
+In cases where the restructured text contains a backslash, it may be necessary to use a raw string with ``r"""``.
 
 For consistency, *do not* use triple single quotes: ``'''``.
 
