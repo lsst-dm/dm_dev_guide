@@ -22,7 +22,7 @@ Hence it is OK to, for example:
 - Update confluence, which will also result in email notifications that are OK.
 - Perform GitHub work. Code reviews, merges etc. which will result in notifications are OK.
 
-It is acceptable  to set up an out-of-office reply pointing to this page on Quiet Friday. 
+It is acceptable  to set up an out-of-office reply pointing to this page on Focus Friday. 
 
 Emergencies and on call
 =======================
