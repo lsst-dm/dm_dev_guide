@@ -260,7 +260,7 @@ In some circumstances, a ``release`` integration branch may be used by the relea
 Development is not done directly on the ``main`` branch, but instead on *ticket branches*.
 
 Documentation edits and additions are the only scenarios where working directly on ``main`` and by-passing the code review process is permitted.
-When the ``main`` branch is protected from direct pushes, as in most of our code packages, `user branches <git-branch-user>`_ may be used for documentation edits.
+When the ``main`` branch is protected from direct pushes, as in most of our code packages, :ref:`user branches <git-branch-user>` may be used for documentation edits.
 In most cases, documentation writing benefits from peer editing (code review) and *can* be done on a ticket branch.
 
 The Git history of ``main`` **must never be re-written** with force pushes.
