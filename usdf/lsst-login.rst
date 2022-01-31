@@ -2,7 +2,7 @@
 Using the lsst-login Servers
 ############################
 
-The following login load-balancer is run by SLAC for access to select Rubin Observatory development resources at NCSA:
+The following login load-balancer is run by SLAC for access to select Rubin Observatory development resources at SLAC:
 
 - ``sdf@slac.stanford.edu``
 
