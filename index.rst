@@ -578,11 +578,11 @@ Interim Data Facility
    :caption: USDF
    :hidden:
 
-   usdf/lsst-login.rst
+   usdf/lsst-login
 
 .. _part-usdf:
 
 US Data Facility
 ---------------------
 
-- :doc:`usdf/lsst-login.rst`
+- :doc:`usdf/lsst-login`
