@@ -570,3 +570,19 @@ Interim Data Facility
 ---------------------
 
 - :doc:`idf/overview`
+
+.. USDF SECTION ===========================================================
+
+.. toctree::
+   :maxdepth: 1
+   :caption: USDF
+   :hidden:
+
+   usdf/lsst-login.rst
+
+.. _part-idf:
+
+US Data Facility
+---------------------
+
+- :doc:`usdf/lsst-login.rst`
