@@ -580,7 +580,7 @@ Interim Data Facility
 
    usdf/lsst-login.rst
 
-.. _part-idf:
+.. _part-usdf:
 
 US Data Facility
 ---------------------
