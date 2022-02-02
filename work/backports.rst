@@ -36,7 +36,6 @@ What next?
       git checkout -b tickets/DM-XXXXX-v23
       git rebase --onto v23.0.x <sha_of_last_commit_before_your_branch>
 
-
    In a new clone, this branch may not exist anymore if you have already merged your PR because merged branches may be automatically deleted.
    In this case, you can branch ``tickets/DM-XXXXX-v23`` from ``v23.0.x``, and cherry-pick the ticket commits.
 
@@ -50,19 +49,28 @@ What next?
    ``git show --quiet $(git log --oneline | grep 'Merge.*DM-XXXXX' | cut -d' ' -f1)^2``
 
 5) Resolve any rebase or cherry-pick problems depending on your method.
+   Continue using the same procedure outlined in :ref:`review-preparation`.
    Check that it cleanly builds via scons. There should be a latest shared v23.0.0.rcN stack on lsst-devl.
-   Run Jenkins. When running Jenkins, build against the release branch and rc1 even if later rcNs exist:
+   Run Jenkins. When running Jenkins, build against the release branch and rc1 even if later rcNs exist.
+   The default ``SPLENV_REF`` may no longer be appropriate for ``v23.0.x``.
+   If you are unsure of the recommended env for the release, check with the release manager.
 
    .. code-block:: bash
 
       REFS: tickets/DM-XXXXX-v23 v23.0.x v23.0.0.rc1
       PRODUCTS: lsst_distrib lsst_ci ci_imsim ci_hsc
+      SPLENV_REF: 0.8.0
 
    You may find that the ticket cannot be cleanly backported without first backporting another ticket.
 
-6) When it passes, merge to ``v23.0.x`` using the same procedure outlined in :doc:`flow` including creating a PR.
+6) When it passes, merge to ``v23.0.x`` using the same procedure outlined in :ref:`workflow-code-review-merge`,
+   including creating a pull request.
+   On your pull request, remember to change the base branch to ``v23.0.x``.
    If the backport was clean, you may self-review.
-   When merged to ``v23.0.x``, label your Jira ticket ``backport-done``.
+   If the backport was not clean and you would like another pair of eyes, you may ask someone to hit the "Approved" button on GitHub,
+   but please *do not* put your ticket status back into ``In Review`` on Jira.
+
+7) When merged to ``v23.0.x``, label your Jira ticket ``backport-done``.
 
 
 Interaction between v23 and DP0.2
