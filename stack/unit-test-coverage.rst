@@ -33,22 +33,57 @@ code segments which have not been adequately tested and should then revise the
 unit test suite as appropriate. Coverage analysis reports should be generated
 in concert with the routine automated CI testing.
 
-DM Coverage Analysis Metrics
-============================
-
-Refer to `Code Coverage Analysis`_, by Steve Cornett, for a discussion of
-coverage metrics and to `Minimum Acceptable Code Coverage`_, also by Steve
-Cornett, for the companion discussion on determining 'good-enough' overall test
-coverage.
-
-A specific metric for lines of code executed and/or metric for branch
-conditionals executed is expected to be defined for Construction.
-
-.. _Code Coverage Analysis: http://www.bullseye.com/coverage.html
-.. _Minimum Acceptable Code Coverage: http://www.bullseye.com/minimum.html
+A line having test coverage does not mean that any test actually checks that the line does the correct thing, only that that line was run by python when executing the tests.
+Coverage is a minimal check ("did we even run this line?"), not a functionality check ("did this line do what it was supposed to do?").
 
 Using Coverage Analysis Tools
 =============================
+
+Python
+------
+
+The LSST DM pytest suite runs `pytest-cov`_ to run `Coverage.py`_ when running tests via :command:`scons`, producing a coverage report in the ``tests/.test/pytest-PACKAGE.xml-htmlcov`` directory.
+The exact path is printed at the end of the pytest section of the :command:`scons` output.
+Open the ``index.html`` file contained therein (for example, on a mac run ``open tests/.test/pytest-PACKAGE.xml-htmlcov/index.html`` to load it in your default browser) for a listing of the coverage percent for each file.
+Click on a filename in the list to get a line-by-line listing of what was and wasn't run.
+
+.. figure:: /_static/stack/coverage-summary-page.png
+   :name: coverage_summary
+   :target: ../_images/coverage-summary-page.png
+   :alt: python test coverage summary
+
+   Coverage HTML summary page. This is the ``index.html`` page produced from running :command:`scons` on the ``meas_astrom`` package. Click on a file to get a summary of that file.
+
+The "coverage" of a given file--shown on the summary page, and at the top of the individual file page--is the total lines of code excluding docstrings/comments/blank lines divided by the number of lines run.
+Red lines were not run by the tests you ran, yellow are "partially run" (e.g. an ``if``-statement condition that is only satisfied in one way).
+Imports, class and function declarations, and Configs are some examples of lines of code that get executed when a file is imported.
+Those can artificially inflate coverage statistics: a file with only 1-2 lines per function that is included in ``__init__.py`` might have >50% coverage, even though no tests actually run any of the functions!
+
+.. figure:: /_static/stack/coverage-single-file.png
+   :name: coverage_single_file
+   :target: ../_images/coverage-single-file.png
+   :alt: python test coverage single file
+
+   Coverage HTML single file view for ``match_probabilistic_task.py``. Mouse hover over colored lines to see why they are marked. In this case, line 92 is only ever ``true`` in the tests (the inside of that ``if`` is never skipped), and line 95 is only ever ``false``, resulting in lines 96-98 never being run. Adding tests that set ``config.mag_brightest_ref``/``config.mag_faintest_ref`` and checking that the correct sources are selected would be an improvement.
+
+While viewing the coverage html, use ``j`` to go to the next un-executed line, and ``k`` to the previous. Click the small keyboard icon on the upper right of the page for other keyboard shortcuts.
+
+Read the `Coverage.py`_ docs for more on how to use this tool.
+
+Single test coverage
+^^^^^^^^^^^^^^^^^^^^
+
+To get the HTML coverage report for a single test, run pytest with ``--cov-report html --cov python`` arguments, and your individual test (see example below).
+The ``--cov python`` argument tells pytest-cov what directory to output the coverage report for, in this case, everything in ``python/``.
+To get the output written to a different directory, put that path after the ``html``, like this example in meas_algorithms::
+
+    pytest -sv --cov-report html:htmlcov-gen2 --cov python tests/test_loadReferenceObjects.py
+
+At the end of the test run, pytest will output ``Coverage HTML written to dir htmlcov-gen2``: open the ``index.html`` file in that directory to view the report.
+Changing the output directory can help compare coverage before and after tests have been modified.
+
+.. _pytest-cov: https://pytest-cov.readthedocs.io/
+.. _Coverage.py: http://coverage.readthedocs.org/
 
 C++
 ---
@@ -132,34 +167,6 @@ files. In order to permanently ignore all :command:`gcov` output files, add
 the extensions :file:`.gcno` and  :file:`.gcda`, to the :file:`.gitignore`
 file.
 
-Python
-------
-
-.. note::
-
-   No recommendations have been made for Python coverage analysis tools. The
-   following are options to explore when time becomes available.
-
-Coverage.py
-^^^^^^^^^^^
-
-`Coverage.py`_, written by Ned Batchelder, is a Python module that measures
-code coverage during Python execution. It uses the code analysis tools and
-tracing hooks provided in the Python standard library to determine which lines
-are executable and which have been executed.
-
-.. _Coverage.py: http://coverage.readthedocs.org/
-
-figleaf
-^^^^^^^
-
-`figleaf`_, written by Titus Brown, is a Python code coverage analysis tool,
-built somewhat on the model of Ned Batchelder's Coverage.py module. The
-goals of figleaf are to be a minimal replacement of Coverage.py that
-supports more configurable coverage gathering and reporting.
-
-.. _figleaf: http://darcs.idyll.org/~t/projects/figleaf/doc/
-
 Java
 ----
 
@@ -179,3 +186,15 @@ Later when a Python unittester invokes an instrumented C++ routine, the
 coverage is recorded into the well-known coverage data files
 :file:`<src>.gcda` and :file:`<src>.gcno`. Post-processing of the coverage
 data files is done by the developer's choice of C++ coverage analysis tool.
+
+Further reading
+===============
+
+Refer to `Code Coverage Analysis`_, by Steve Cornett, for a discussion of
+coverage metrics and to `Minimum Acceptable Code Coverage`_, also by Steve
+Cornett, for the companion discussion on determining 'good-enough' overall test
+coverage.
+
+.. _Code Coverage Analysis: http://www.bullseye.com/coverage.html
+.. _Minimum Acceptable Code Coverage: http://www.bullseye.com/minimum.html
+
