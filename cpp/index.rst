@@ -12,3 +12,4 @@ C++ guides
 - :doc:`boost`
 - :doc:`eigen`
 - :doc:`profiling`
+- :doc:`compilation-db`

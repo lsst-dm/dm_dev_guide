@@ -194,6 +194,7 @@ Overview of Code Style Guides & Policies
    cpp/boost
    cpp/eigen
    cpp/profiling
+   cpp/compilation-db
 
 .. _part-cpp:
 
@@ -208,6 +209,7 @@ C++
 - :doc:`cpp/boost`
 - :doc:`cpp/eigen`
 - :doc:`cpp/profiling`
+- :doc:`cpp/compilation-db`
 
 .. PYTHON SECTION ============================================================
 
