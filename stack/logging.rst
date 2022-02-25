@@ -88,6 +88,8 @@ To specify the threshold or the lowest-severity log messages a logger handles, :
 
    logger.setLevel(logging.DEBUG)
 
+Note that our default logging configuration results in pytest automatically capturing log message output and reporting it separately from output sent to stdout/stderr; successful tests don't show any log output, while the logs from failed tests are collated at the end. To override this and get log messages printed directly (for example to see logs from successful tests, or to see log messages while you are stepping through a debugger), include ``--log-cli-level=INFO -sv`` in your ``pytest`` command when running your tests. The first option sets the log level that pytest will send directly to stderr (in this case, ``INFO``), while the ``-sv`` options get pytest to show which tests it is executing (``-v``) and to print all output as it appears (``-s``).
+
 Basic Usage in C++
 ==================
 
