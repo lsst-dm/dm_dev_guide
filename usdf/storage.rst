@@ -6,8 +6,8 @@ This document describes the file systems available at the LSST Data Facility and
 
 There are a few other documents that might have the info you are looking for:
 
-- The doc:`data_protection` policy page describes what the retention policy is, what are immutable files, what is to be placed in each file system area.
-- The doc:`ldf-resources` LDF resources pages for explanation of each of the file systems, and the type of data and where it's to be located and the policies of each of the file systems.
+- The doc:data_protection policy page describes what the retention policy is, what are immutable files, what is to be placed in each file system area.
+- The doc:ldf-resources LDF resources pages for explanation of each of the file systems, and the type of data and where it's to be located and the policies of each of the file systems.
 
 Filesystems in GPFS (6.3PB of storage)
 ======================================
@@ -20,9 +20,6 @@ Filesystems in GPFS (6.3PB of storage)
 
 :file:`/software`
     Central location for maintenance of project-shared software installations that require access from multiple resources. (i.e., batch, Nebula).
-
-:file:`/sui`
-    Shared storage for ephemeral data for the purpose of supporting SUI/T in the PDAC enclave. This file system has no backups or purging.
 
 :file:`/scratch`
     Ephemeral big-data storage for use in computation and other project-related activities. This is not backed up.  This file system is purged.   Every 30 days a purge policy deletes files older than 180 days.
