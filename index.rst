@@ -579,6 +579,7 @@ Interim Data Facility
    :hidden:
 
    usdf/lsst-login
+   usdf/storage
 
 .. _part-usdf:
 
@@ -586,3 +587,4 @@ US Data Facility
 ---------------------
 
 - :doc:`usdf/lsst-login`
+- :doc:`usdf/storage`
