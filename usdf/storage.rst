@@ -6,19 +6,11 @@ This document describes the file systems available at the LSST Data Facility and
 
 There are a few other documents that might have the info you are looking for:
 
-- The :doc:`data_protection` policy page describes what the retention policy is, what are immutable files, what is to be placed in each file system area.
-- The :doc:`ldf-resources` LDF resources pages for explanation of each of the file systems, and the type of data and where it's to be located and the policies of each of the file systems.
+- The doc:`data_protection` policy page describes what the retention policy is, what are immutable files, what is to be placed in each file system area.
+- The doc:`ldf-resources` LDF resources pages for explanation of each of the file systems, and the type of data and where it's to be located and the policies of each of the file systems.
 
 Filesystems in GPFS (6.3PB of storage)
 ======================================
-
-:file:`/lsstdata/offline`
-    Long term storage of LSST project data, including production, engineering, and test stand datasets. Contains immutable data. This is under a disaster recovery policy.
-    Currently includes :file:`/lsstdata/offline/teststand/auxTel` for datasets from the LATISS/AuxTel test stand in Tucson and :file:`/lsstdata/offline/teststand/BOT` for datasets from the Bench for Optical Testing at SLAC. The former includes read-only Gen2 Butler repositories under :file:`/lsstdata/offline/teststand/auxTel/DAQ/gen2repo` and :file:`/lsstdata/offline/teststand/auxTel/L1Archiver/gen2repo`. These are updated periodically (several times an hour) as data is taken in Tucson.
-    A *writable* Gen2 Butler repository for LATISS/AuxTel data with associated calibrations and shared reruns is currently available at :file:`/project/shared/auxTel`.  This repository is what should be used for typical staff analysis.
-
-:file:`/lsstdata/dac/services`
-    Storage area for data that is owned primarily by a service running at the DAC (eg. ELK stack, Jenkins, etc.) A fileset for a new service can be requested via an IHS ticket, and will be provisioned by NCSA staff.  If desired a quota can be set on the area to limit the application's file system usage, if desired please note this in the ticket.
 
 :file:`/datasets`
     Long term storage of project-approved shared data. Contains immutable data. This is under a disaster recovery policy that every 30 days it is stored and written to nearline tape.
