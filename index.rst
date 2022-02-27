@@ -580,6 +580,7 @@ Interim Data Facility
 
    usdf/lsst-login
    usdf/storage
+   usdf/datasets
 
 .. _part-usdf:
 
@@ -588,3 +589,4 @@ US Data Facility
 
 - :doc:`usdf/lsst-login`
 - :doc:`usdf/storage`
+- :doc:`usdf/datasets`
