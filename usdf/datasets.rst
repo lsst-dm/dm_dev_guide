@@ -154,7 +154,7 @@ Regardless of the reason for the RFC (implementation or maintenance), as part of
 For butler repository datasets, the root level is the directory just above the butler repository: e.g. ``/datasets/hsc/README.txt``.
 For reference catalogs, there should be one ``README.txt`` for all reference catalogs of a particular type: e.g. ``/datasets/refcats/htm/README.txt`` with a brief description of the available reference catalogs of that type.
 Separately, each reference catalog should also contain a ``README.txt`` with details about that reference catalog's contents.
-See `reference-catalogs`_ for a template for the contents of those respective readme files.
+See `reference-catalogs_usdf`_ for a template for the contents of those respective readme files.
 
 .. _CaveatForPrivate_usdf:
 
