@@ -114,6 +114,13 @@ If a test command fails, that output is renamed to have a :file:`.failed` extens
 
 For convenience the output from the main :command:`pytest` run (as opposed to the rare standalone usages) is also written to standard output so it is visible in the log or in the shell along with other :command:`scons` output.
 
+.. _pytest_logging_output:
+
+Our default logging configuration results in pytest automatically capturing log message output and reporting it separately from output sent to stdout/stderr; successful tests don't show any log output, while the logs from failed tests are collated at the end.
+To override this and get log messages printed directly (for example to see logs from successful tests, or to see log messages while you are stepping through a debugger), include ``--log-cli-level=INFO -sv`` in your ``pytest`` command when running your tests.
+The first option sets the log level that pytest will send directly to stderr (in this case, ``INFO``), while the ``-sv`` options get pytest to show which tests it is executing (``-v``) and to print all output as it appears (``-s``).
+
+
 Useful pytest options
 ---------------------
 
@@ -131,6 +138,8 @@ Useful pytest options
 - Run with ``-n X`` to run your tests with ``X`` processes to speed things up (like ``scons -jX``).
 
 - Run with ``--durations=N`` to get a list of the top ``N`` longest-running tests.
+
+- Run with ``--log-cli-level=INFO -sv`` to print log messages as they are emitted. See the note about :ref:`pytest capturing log messages<pytest_logging_output>` for more details.
 
 Common Issues
 =============
