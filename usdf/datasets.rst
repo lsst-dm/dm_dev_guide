@@ -4,7 +4,7 @@ Common Dataset Organization and Policy
 
 This document covers the specific :ref:`format <format>` and :ref:`policies <policy>` governing the shared datasets in ``/datasets``, project GPFS space available on the :doc:`login nodes </services/lsst-login>` and on all of the compute nodes of the :doc:`Batch Systems </services/batch>`.
 
-.. _format:
+.. _format_usdf:
 
 Format
 ======
@@ -34,7 +34,7 @@ The following are currently exempted:
 
 - ``/datasets/all-sky``
 
-.. _reference-catalogs:
+.. _reference-catalogs_usdf:
 
 Reference Catalogs
 ------------------
@@ -104,7 +104,7 @@ Steps to modify/remove from datasets
 #. (you) Reorganize, ask to have it locked down
 #. Sharing and immutability reapplied (to parent directory, as applicable)
 
-.. _policy:
+.. _policy_usdf:
 
 Policy
 ======
@@ -134,7 +134,7 @@ The RFC allows a gate to confirm that things are compliant and necessary. The RF
 This does not prohibit the use of remote URI's, when supported through the butler, that point to external public repos although this does require the RFC process for addition/deletion of the URI-repo.
 This is due to operational concerns including immutability, sharing permissions, developer change of positions / jobs, etc.
 
-.. _responsibilities:
+.. _responsibilities_usdf:
 
 Responsibilities on ingest or maintenance
 -----------------------------------------
@@ -156,7 +156,7 @@ For reference catalogs, there should be one ``README.txt`` for all reference cat
 Separately, each reference catalog should also contain a ``README.txt`` with details about that reference catalog's contents.
 See `reference-catalogs`_ for a template for the contents of those respective readme files.
 
-.. _CaveatForPrivate:
+.. _CaveatForPrivate_usdf:
 
 Caveats / Implementation Details for PRIVATE
 --------------------------------------------
