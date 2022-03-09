@@ -579,6 +579,7 @@ Interim Data Facility
    :hidden:
 
    usdf/lsst-login
+   usdf/kubernetes
    usdf/storage
    usdf/datasets
 
@@ -588,5 +589,6 @@ US Data Facility
 ---------------------
 
 - :doc:`usdf/lsst-login`
+- :doc:`usdf/kubernetes`
 - :doc:`usdf/storage`
 - :doc:`usdf/datasets`
