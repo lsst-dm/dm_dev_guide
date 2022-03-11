@@ -33,7 +33,7 @@ Although LSST the Docs will publish your development branch, you might want to b
 
 Assuming you've cloned the docs (following the guide above):
 
-1. Create a [Python virtual environment](http://docs.python-guide.org/en/latest/dev/virtualenvs/) for this project using your tool of choice: [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/) or [pyvenv](https://docs.python.org/3.5/library/venv.html) (for Python 3).
+1. Create a [Python virtual environment](http://docs.python-guide.org/en/latest/dev/virtualenvs/) for this project using your tool of choice: [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/) or [pyvenv](https://docs.python.org/3/library/venv.html) (for Python 3).
 
 2. Install dependencies
 
