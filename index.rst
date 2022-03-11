@@ -2,8 +2,8 @@
 LSST DM Developer Guide
 #######################
 
-This is an internal guide for `LSST DM <https://www.lsst.org/about/dm>`_ staff during project construction, and for Rubin Observatory Data Production staff in operations. 
-It's also openly available so that others can understand how we're building the LSST's data management subsystem. In some cases, other Rubin groups (for example Telescope & Site Software) have chosen to follow various sections as it applies to them. 
+This is an internal guide for `LSST DM <https://www.lsst.org/about/dm>`_ staff during project construction, and for Rubin Observatory Data Production staff in operations.
+It's also openly available so that others can understand how we're building the LSST's data management subsystem. In some cases, other Rubin groups (for example Telescope & Site Software) have chosen to follow various sections as it applies to them.
 
 This guide includes a mix of normative requirements and helpful, descriptive, pages.
 When it's particularly important that you closely follow a standard, we include an annotation box at the top of the page.
@@ -221,6 +221,7 @@ C++
    :hidden:
 
    python/style
+   python/formatting
    python/testing
    python/numpydoc
    python/astropy
@@ -233,6 +234,7 @@ Python
 ------
 
 - :doc:`python/style`
+- :doc:`python/formatting`
 - :doc:`python/testing`
 - :doc:`python/numpydoc`
 - :doc:`python/astropy`
