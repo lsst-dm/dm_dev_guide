@@ -578,6 +578,7 @@ Interim Data Facility
    :caption: USDF
    :hidden:
 
+   usdf/onboarding.rst
    usdf/lsst-login
    usdf/kubernetes
    usdf/storage
@@ -588,6 +589,7 @@ Interim Data Facility
 US Data Facility
 ---------------------
 
+- :doc:`usdf/onboarding`
 - :doc:`usdf/lsst-login`
 - :doc:`usdf/kubernetes`
 - :doc:`usdf/storage`
