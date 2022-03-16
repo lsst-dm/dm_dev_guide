@@ -17,3 +17,8 @@ The SLAC onboarding procedure involves the following steps:
 Procedure Details
 =============================
 
+SLUO input form
+
+.. image:: /_static/development/usdf/images/SLUO_New_User_Form.png
+
+
