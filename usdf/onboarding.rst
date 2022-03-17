@@ -17,9 +17,17 @@ The SLAC onboarding procedure involves the following steps:
 Procedure Details
 =============================
 
-SLUO input form
+To obtain a SLAC SID number and SLAC account, you first need to become a SLAC User. Please follow the below steps and complete the registration form.  
+
+
+1)	New users are required to complete the SLUO registration form using the below `form <https://oraweb4.slac.stanford.edu/apex/epnprod/f?p=134:1::::::>`__.
+
+2)	The first page of the SLUO registration form asks for new users’ information (screenshot below). Once you complete the form, click the “Continue” button.
+
 
 .. image:: /_static/usdf/dev_guide/SLUO_New_User_Form.png
+
+3)	The second page of the SLUO registration form asks users of their research activity at SLAC (screenshot below). After completing the form, please click the “Submit” button. 
 
 4)	Once the SLUO registration form is submitted, the VUE center Coordinator receives an email notification of the completed form.
 
