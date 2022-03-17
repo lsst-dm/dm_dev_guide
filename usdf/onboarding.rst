@@ -29,6 +29,8 @@ To obtain a SLAC SID number and SLAC account, you first need to become a SLAC Us
 
 3)	The second page of the SLUO registration form asks users of their research activity at SLAC (screenshot below). After completing the form, please click the “Submit” button. 
 
+.. image:: /_static/usdf/dev_guide/SLUO_New_User_Form_p2.jpg
+	
 4)	Once the SLUO registration form is submitted, the VUE center Coordinator receives an email notification of the completed form.
 
 5)	The VUE center Coordinator sends an email to the SLAC poc listed on the form and asks to confirm the registration. 
