@@ -31,7 +31,7 @@ This gives you access to:
   - The IT Team have some `further information about Docushare <https://confluence.lsstcorp.org/display/IT/Docushare>`_.
     Note in particular the comments on licensing.
 
-You can always update your LSST password at https://lsstsspc.lsst.org/lsstsspc.
+You can always update or reset your LSST password at https://pwdreset.lsst.org/
 
 Finally, read over the LSST Project's `New Employee Onboarding <https://project.lsst.org/onboarding>`_ page.
 That will get you up to speed with the LSST Project; the rest of this page is specific to DM.
