@@ -12,6 +12,8 @@ The SLAC onboarding procedure involves the following steps:
    - fill out the SLAC Site Access Portal `form <https://vue.slac.stanford.edu/content/slac-site-access-portal>`__
 - a SLAC ServiceNow ticket is submitted to IT to request the account
 - IT creates the account and sends a link to reset the passwords
+  (note: this will result in 2 accounts at present: a Windows account
+  used for authentication to SDF, and a unix account) 
 - do the SLAC Cyber training
 
 Procedure Details
