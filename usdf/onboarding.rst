@@ -42,7 +42,14 @@ To obtain a SLAC SID number and SLAC account, you first need to become a SLAC Us
 
 8)	After the SLAC SID number is issued, the VUE Center Coordinator completes the user’s SLUO registration form and sends an email to the user with instructions of the next steps. The email instructs the users to complete the SLAC Cyber 100 training and to email the SLAC poc to request for a SLAC account.  
 
-9)	The SLAC poc submits a ticket to IT requesting a SLAC account for the new user.  
+9)	The SLAC poc submits a ticket to IT requesting a SLAC account
+	for the new user.
+
+10) SLAC IT will send a url to the user to reset their initial
+    passwords
+
+11) SLAC Cyber training must be done within 2 weeks to keep the
+    account enabled.
 
 
 
