@@ -192,6 +192,19 @@ For example, to import a module without using it (to build a namespace, as in a 
    - `pycodestyle error codes <https://pycodestyle.readthedocs.io/en/latest/intro.html#error-codes>`_
    - `pep8-naming error codes <https://github.com/PyCQA/pep8-naming#plugin-for-flake8>`_
 
+.. _style-guide-py-black:
+
+Black MAY be used to fix PEP 8 compliance
+-----------------------------------------
+
+Many :pep:`8` issues in existing code can be fixed with :ref:`black<formatting-python-code>`.
+If ``black`` is used for a repository the codebase should continue to use it to ensure consistency.
+
+.. note::
+
+   When using ``black`` there is no control over the whitespace around operators.
+   The benefits of consistency from using ``black`` outweigh the reasons for using a :ref:`bespoke rule <style-guide-py-operator-whitespace>` and therefore the :ref:`PEP-8 exceptions noted elsewhere <style-guide-py-ignored-errors>` (E133, E226, and E228) can be removed.
+
 .. _style-guide-py-autopep8:
 
 autopep8 MAY be used to fix PEP 8 compliance
