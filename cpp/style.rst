@@ -1683,12 +1683,20 @@ Passing by ``const`` reference when possible is much more efficient than passing
 
 .. _style-guide-cpp-5-24b:
 
-5-24b. Smart pointers (such as ``shared_ptr``) should only be used as arguments if a reference or const reference cannot be used.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+5-24b. Smart pointers (such as ``shared_ptr``) should only be used as arguments if a reference, const reference, or raw pointer cannot be used.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Examples of when a smart pointer argument is appropriate include when the pointer itself may be reset, when a null pointer is considered a valid input, and when the pointer (not the *pointee*) will be copied and held after after the function returns (as in a constructor or member function setter).
-In all other cases, reference or ``const`` reference arguments should be used.
+Examples of when a smart pointer argument is appropriate include when the pointer itself may be reset, when the pointer (not the *pointee*) will be copied and held after the function returns (as in a constructor or member function setter), or when an override of a method may need to similarly copy or hold the pointer after the function returns (even when the default base implementation does not).
+In most other cases, reference or ``const`` reference arguments should be used.
+When null values are a possibility, raw pointers should be used if the pointer is not copied.
+
 Motivation: it is difficult and sometimes expensive to create a smart pointer from a reference or plain value, so a smart pointer should not be required to call a function unless necessary.
+See also `C++ Core Guidelines rule F7 <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#f7-for-general-use-take-t-or-t-arguments-rather-than-smart-pointers>`__.
+
+.. note::
+
+   This rule does *not* permit using raw pointers when any kind of transfer or sharing of ownership of the pointer may be in play; they are only
+   recommended here for nullable pointer arguments with scope limited to a single function call.
 
 .. _style-guide-cpp-5-25:
 
