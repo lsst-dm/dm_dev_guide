@@ -53,37 +53,38 @@ All LSST DM repositories on GitHub must be configured by a repository administra
 There are a number of settings required to ensure this and they are described below with URLs referring to the ``afw`` package.
 Replace ``afw`` with the relevant package name to get to the correct page on GitHub.
 
-1. On the main settings page for the repository, https://github.com/lsst/afw/settings, disable squash and rebase merging:
+1. On the main settings page for the repository, https://github.com/lsst/afw/settings, disable squash and rebase merging, and enable automatic deletion of head branches after merging a pull request:
 
-.. image:: /_static/build-ci/github_merge_button_settings.png
+.. image:: /_static/build-ci/github_pull_requests_settings.png
 
-2. Configure ``main`` branch to enable protections.
+.. note::
+
+  If the Settings tab is not visible at the top of the repo page, an administrator likely needs to grant admin privileges first.
+
+2. Configure the ``main`` branch to enable protections.
 For ``afw`` this is located at https://github.com/lsst/afw/settings/branches/ and can also be found from the "Branches" sidebar item on the settings screen.
 In the "Branch protection rules" section of that page you will have to click on "Add rule" to create a rule for ``main``.
-Add in ``main`` as the branch name pattern and then enable status checks and require that branches be up to date before merging.
-Administrators must be included in these protections since it's all too easy to make a mistake without realizing you have special override powers.
+First, add in ``main`` as the branch name pattern.
+Second, enable ``Require a pull request before merging``, but disable ``Require approvals``.
+Third, enable status checks, require that branches be up to date before merging, and add the ``lint`` GitHub action to the list of required status checks.
+To enable the ``lint`` GitHub action, type ``lint`` into the search box and select the ``lint`` GitHub action.
+Finally, include Administrators in these protections, since it's all too easy to make a mistake without realizing you have special override powers.
 With checks enabled people will be able to use the GitHub merge button on Pull Requests and know that the :ref:`standard process <workflow-code-review-merge>` is being adhered to.
 
-.. image:: /_static/build-ci/github_branch_protection.png
+Once the above settings have been configured correctly, click CREATE to save the new rule.
+The new rule settings should look something like this:
 
-In the image above no automated status checks are being performed because we have not yet enabled any.
-GitHub requires that at least one check runs before the up-to-date checks are enabled so a GitHub Action or Travis job **must** be provided if the GitHub merge button is to be used.
-GitHub Actions or Travis do not replace normal testing done with a :doc:`Jenkins job <jenkins-stack-os-matrix>`.
+.. image:: /_static/build-ci/github_branch_protection_rule_settings.png
+
+GitHub requires that at least one check runs before the up-to-date checks are enabled, so a GitHub Action **must** be provided if the GitHub merge button is to be used.
+GitHub Actions do not replace normal testing done with a :doc:`Jenkins job <jenkins-stack-os-matrix>`.
 For packages that contain Python, it is useful to add a simple GitHub Action by selecting "Actions" from the GitHub repository page, selecting "New Workflow" if necessary, and choosing the "LSST DM Python lint Workflow".
 If Python typing is used, it can be checked using ``mypy`` via the "LSST DM Python mypy Workflow".
 Similarly, YAML files can be checked via the "LSST DM YAML lint Workflow", and shell scripts can be checked via the "LSST DM shellcheck Workflow".
-(Both of those checks can be configured, either via an external file such as ``.yamllint.yaml`` or via modifications to the workflow as described in the link in the shellcheck workflow.)
-If nothing seems appropriate the "LSST DM null Workflow" should be enabled to allow GitHub to do the checks it needs.
+(All of these checks can be configured, either via an external file such as ``.yamllint.yaml``, or via modifications to the workflow as described in the link in the shellcheck workflow.)
+If nothing seems appropriate, the "LSST DM null Workflow" should be enabled to allow GitHub to do the checks it needs.
 
-Pull requests will automatically run the GitHub Actions and their results will be visible in the "Checks" tab of the pull request on GitHub.
-
-When the first job completes you can return to the branches settings page on GitHub.
-Now you will see that the ``main`` branch is listed along with an EDIT button.
-The branch protection rules will now list the GitHub Actions checks in the "up to date before merging" section.
-Enable these and save.
-Your branch protections screen should then look something like this:
-
-.. image:: /_static/build-ci/github_branch_protection_travis.png
+Pull requests will automatically run GitHub Actions and their results will be visible in the "Checks" tab of the pull request on GitHub.
 
 .. _lfs-repos:
 
