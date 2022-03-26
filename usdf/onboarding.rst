@@ -31,8 +31,7 @@ To obtain a SLAC SID number and SLAC account, you first need to become a SLAC Us
 
 Notes:
 - classification: select Contractor or Consultant if you have that direct relationship to SLAC, otherwise use your home institution classification.
-- work area: most answers for Rubin Ops will be "Physics Research" or
-   "Computing"
+- work area: most answers for Rubin Ops will be "Physics Research" or "Computing"
 - Experiment: select LSST
 - SLAC Spokesperson/Sponsor/Supervisor: Select Richard Dubois.
 - Time at SLAC: this is physically on site. For most people, this is <10%.
