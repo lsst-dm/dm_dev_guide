@@ -8,7 +8,7 @@ Overview
 The SLAC onboarding procedure involves the following steps:
 
 - join the SLAC HEP users organization, SLUO
-   - fill out the SLUO `form <https://oraweb4.slac.stanford.edu/apex/epnprod/f?p=134:1::::::>`__
+   - fill out the SLAC Users Organization (SLUO) `form <https://oraweb4.slac.stanford.edu/apex/epnprod/f?p=134:1::::::>`__
    - fill out the SLAC Site Access Portal `form <https://vue.slac.stanford.edu/content/slac-site-access-portal>`__
 - a SLAC ServiceNow ticket is submitted to IT to request the account
 - IT creates the account and sends a link to reset the passwords
@@ -44,7 +44,7 @@ Notes:
  - Emergency contact: your own personal contact - relative, friend.
  - details of visit and project name: Using SLAC computing resources to collaborate on Rubin Operations. Seems optional to include your home institution.
 	
-4)	Once the SLUO registration form is submitted, the VUE center Coordinator receives an email notification of the completed form.
+4)	Once the SLUO registration form is submitted, the Visitor User Employee (VUE) center Coordinator receives an email notification of the completed form.
 
 5)	The VUE center Coordinator sends an email to the SLAC Point of
 	Contact (POC) listed on the form and asks to confirm the registration. 
