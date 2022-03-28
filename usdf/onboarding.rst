@@ -42,6 +42,7 @@ Notes:
 
 Notes:
  - Emergency contact: your own personal contact - relative, friend.
+ - Group: select "FPD Rubin Operations"
  - details of visit and project name: Using SLAC computing resources to collaborate on Rubin Operations. Seems optional to include your home institution.
 	
 4)	Once the SLUO registration form is submitted, the Visitor User Employee (VUE) center Coordinator receives an email notification of the completed form.
