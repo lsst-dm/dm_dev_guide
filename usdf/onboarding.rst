@@ -80,6 +80,10 @@ Web applications usually require two-factor authentication. Here are
 Troubleshooting Accounts
 =============================
 
+Check that you are a member of the rubin_user group:
+
+getent group | grep <your account>
+
 Accounts can get disabled a number of ways:
 
 - Every 2 months Windows account disabled due to no activity (same `ticket <https://slacprod.servicenowservices.com/it_services?id=sc_cat_item&sys_id=374faa7d6ff161009c4235af1e3ee4ff&sysparm_category=d65827c46fd921009c4235af1e3ee434>`__ as expired/forgotten)
