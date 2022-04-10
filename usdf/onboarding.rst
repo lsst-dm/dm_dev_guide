@@ -93,4 +93,5 @@ Accounts can get disabled a number of ways:
 
   - The accounts `site <https://www-internal.slac.stanford.edu/comp/admin/bin/account-search.asp>`__ can tell us if the account is disabled
    - if none disabled, then it's due to password expire
+   
 - The training `site <https://www-internal.slac.stanford.edu/esh-db/training/slaconly/bin/ETA_ReportAll.asp?opt=6>`__ can tell us if Cyber is expired.
