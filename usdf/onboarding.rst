@@ -89,7 +89,7 @@ Accounts can get disabled a number of ways:
 - They can also be locked out if they've forgotten their password(s)
   or put in too many attempts with the wrong password. (`ticket <https://slacprod.servicenowservices.com/it_services?id=sc_cat_item&sys_id=374faa7d6ff161009c4235af1e3ee4ff&sysparm_category=d65827c46fd921009c4235af1e3ee434>`__ to reset)
 
-  The user is warned about all these events, but in case they've been ignored/forgotten, how to figure out which it is and how to fix it?
+The user is warned about all these events, but in case they've been ignored/forgotten, how to figure out which it is and how to fix it?
 
 - The accounts `site <https://www-internal.slac.stanford.edu/comp/admin/bin/account-search.asp>`__ can tell us if the account is disabled
    - if none disabled, then it's due to password expire
