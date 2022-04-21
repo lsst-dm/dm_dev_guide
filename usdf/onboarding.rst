@@ -60,7 +60,7 @@ Notes:
 
 	If the user is a non-US citizen, the completed onboarding form is first routed to the SLAC poc then to the VUE Center Coordinator and to the SLAC HR team for SLAC ID duplicate check and issue the SLAC ID number.
 
-8)	After the SLAC SID number is issued, the VUE Center Coordinator completes the user’s SLUO registration form and sends an email to the user with instructions of the next steps. The email instructs the users to complete the SLAC Cyber 100 training and to email the SLAC POC to request for a SLAC account.  
+8)	After the SLAC SID number is issued, the VUE Center Coordinator completes the user’s SLUO registration form and sends an email to the user with instructions of the next steps. The email instructs the users to complete the SLAC Cyber 100 training and to email the SLAC POC to request for a SLAC account.  However, the POC is also notified.
 
 9)	The SLAC POC submits a ticket to IT requesting a SLAC account
 	for the new user. Be sure to tell the POC your preferred account name (and second choice).
