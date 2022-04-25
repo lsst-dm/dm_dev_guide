@@ -366,7 +366,8 @@ The pull request's title should be prefixed with the Jira ticket handle, followe
    DM-NNNN: {{Short summary}}
 
 This format helps you and other developers find the right pull request when browsing repositories on GitHub.
-The short summary does not need to match the Jira issue's title, but should describe the code changes.
+The short summary should describe the code changes.
+It can often be the Jira title if that is relevant to the changes.
 
 The pull request's description shouldn't be exhaustive; only include information that will help frame the review.
 Background information should already be in the JIRA ticket description, commit messages, and code documentation.
