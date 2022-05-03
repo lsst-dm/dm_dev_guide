@@ -3,7 +3,7 @@
 Meeting Free Weeks
 ##################
 
-DM will observe  **Focus Weeks**. 
+DM will observe  several **Meeting Free Weeks** each year. 
 
 
 Meeting Free Weeks 2022
