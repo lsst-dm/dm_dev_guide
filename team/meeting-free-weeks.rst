@@ -8,7 +8,7 @@ DM will observe  several **Meeting Free Weeks** each year.
 
 Meeting Free Weeks 2022
 =======================
-The DM Focus weeks will be - June 13 - 17 - September 19 - 23 - December 26 - Jan 9
+The DM Meeting Free weeks will be: June 13 - 17, September 19 - 23, and December 26 - Jan 9
 
 
 Guidelines
