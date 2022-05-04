@@ -36,8 +36,8 @@ Feedback
 ========
 Though we did one experimental day and changed the rules according to feedback we 
 assume there may be more refinements needed to get this correct. 
-Feedback on the form and format of the day is welcome and may be sent to your T/CAM or 
-directly to William O'Mullane.
-This concept will then be reassessed in the DMLT Face to Face meeting in Nov 2020.
+This concept has been reassessed and refined in several 
+DMLT Face to Face meetings since Nov 2020.
+Feedback on the form and format of the day is welcome and may be sent to your T/CAM or directly to William O'Mullane.
 
 
