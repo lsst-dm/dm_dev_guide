@@ -10,6 +10,8 @@ A sandbox area has been created at:
 
 with access control via the rubin_users unix group. Currently it is unregulated. Once the data transfers are done from NCSA, a more familiar filetree will be available.
 
+Home directory space is available at /sdf/home/<first_letter_of_account>/<account>
+
 Data compression
 ================
 
