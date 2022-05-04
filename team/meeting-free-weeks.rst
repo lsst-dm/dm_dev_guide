@@ -15,7 +15,7 @@ Guidelines
 ==========
 The driver for meeting free weeks is similar to :doc:`focus-friday`. 
 We wish to allow staff a block of time without meetings such they can focus on a specific task or take personal time.  
-These periods do not stipulate the more stringent slack rules that :doc:`focus-friday` does. 
+These periods do not stipulate the more stringent Slack rules that :doc:`focus-friday` does. 
 Basically in a meeting free week there will be none of the regular meetings. Topic specific meetings may be held as agreed by all parties.
 
 Feedback
