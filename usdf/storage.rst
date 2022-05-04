@@ -6,7 +6,7 @@ This document describes the file systems available at the LSST Data Facility dur
 
 A sandbox area has been created at:
 
-/sdf/group/sandbox/
+/sdf/group/rubin/sandbox/
 
 with access control via the rubin_users unix group. Currently it is unregulated. Once the data transfers are done from NCSA, a more familiar filetree will be available.
 
