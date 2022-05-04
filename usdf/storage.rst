@@ -2,55 +2,13 @@
 Storage Resources
 #################
 
-This document describes the file systems available at the LSST Data Facility and their quotas.
+This document describes the file systems available at the LSST Data Facility during the interim period where the Rubin filesystems at SLAC go into production mode on our own hardware, and while user and project data are being transferred from NCSA.
 
-There are a few other documents that might have the info you are looking for:
+A sandbox area has been created at:
 
-- The doc:data_protection policy page describes what the retention policy is, what are immutable files, what is to be placed in each file system area.
-- The doc:ldf-resources LDF resources pages for explanation of each of the file systems, and the type of data and where it's to be located and the policies of each of the file systems.
+/sdf/group/sandbox/
 
-Filesystems in GPFS (6.3PB of storage)
-======================================
-
-:file:`/datasets`
-    Long term storage of project-approved shared data. Contains immutable data. This is under a disaster recovery policy that every 30 days it is stored and written to nearline tape.
-
-:file:`/home`
-    Storage of individual-user data. This data is backed up on a daily basis and NCSA retains 30 days of those backups in a snapshot.  It does have quotas on this file system for 1TB for each "directory," and a 1 million INODE quota.
-
-:file:`/software`
-    Central location for maintenance of project-shared software installations that require access from multiple resources. (i.e., batch, Nebula).
-
-:file:`/scratch`
-    Ephemeral big-data storage for use in computation and other project-related activities. This is not backed up.  This file system is purged.   Every 30 days a purge policy deletes files older than 180 days.
-
-:file:`/project`
-    Long term big-data storage for use in computation and other project-related activities. This is backed up with 7 days of snapshots.  This file system is not subject to purge.
-
-Quotas 
-======
-
-Your home directory is the default directory you are placed in when you log on. You should use this space for storing files you want to keep long term such as source code, scripts, etc. Every user has a 1TB home directory quota (total space) and 1 million INODE quota (total number of files).
-
-On 6/17/2018, quotas were enforced. The soft limit is 1TB and the hard limit is 1.2 TB. The INODE soft quota is 1 million files and the hard limit is 1.2 million files.   If the amount of data in your home directory is over the soft limit  but under the hard limit, there is a grace period of 7 days to get under the soft limit. When the grace period expires, you will not be able to write new files or update any current files until you reduce the amount of data to below the soft limit.
-
-The command to see your disk usage and limits is :command:`quota`. Example:
-
-.. code-block:: text
-
-   $ quota
-   Directories quota usage for user jdoe:
-
-   ---------------------------------------------------------------
-   | GPFS Fileset         | Used (GB)  | Quota (GB) | # Of Files |
-   ---------------------------------------------------------------
-   | home                 | 1          | 1000       | 22,533     |
-   | jhome                | 0          | 100        | 9          |
-   | scratch              | 0          | 0          | 2          |
-   | project              | 0          | 0          | 2          |
-   ---------------------------------------------------------------
-
-Home directories are backed up using snapshots and a separate DR process.
+with access control via the rubin_users unix group. Currently it is unregulated. Once the data transfers are done from NCSA, a more familiar filetree will be available.
 
 Data compression
 ================
