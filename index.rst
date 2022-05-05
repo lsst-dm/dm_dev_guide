@@ -583,6 +583,7 @@ Interim Data Facility
    usdf/kubernetes
    usdf/storage
    usdf/datasets
+   usdf/batch
 
 .. _part-usdf:
 
@@ -594,3 +595,4 @@ US Data Facility
 - :doc:`usdf/kubernetes`
 - :doc:`usdf/storage`
 - :doc:`usdf/datasets`
+- :doc:`usdf/batch`
