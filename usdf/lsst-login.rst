@@ -11,6 +11,10 @@ Connecting and Authenticating
 
 You'll need to ssh into an SDF login server once to establish your home directory etc. From then on you can choose access via ssh or the browser portal, https://sdf.slac.stanford.edu
 
+You can use NoMachine for ssh access as well:
+
+https://confluence.slac.stanford.edu/x/f8E7Eg
+
 You can ssh into Rubin Observatory development servers at SLAC with your Windows account and password. It is only visible from the SDF login nodes (or within the SLAC network. Use the load balancer:
 
 ``rubin-devl.slac.stanford.edu``
