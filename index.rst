@@ -582,8 +582,8 @@ Interim Data Facility
    usdf/lsst-login
    usdf/kubernetes
    usdf/storage
-   usdf/datasets
    usdf/batch
+   usdf/stack
 
 .. _part-usdf:
 
@@ -594,5 +594,5 @@ US Data Facility
 - :doc:`usdf/lsst-login`
 - :doc:`usdf/kubernetes`
 - :doc:`usdf/storage`
-- :doc:`usdf/datasets`
 - :doc:`usdf/batch`
+- :doc:`usdf/stack`
