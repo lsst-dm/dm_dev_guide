@@ -4,7 +4,7 @@ Using the lsst-login Servers
 
 The following login load-balancer is run by SLAC to jump to select Rubin Observatory development resources at SLAC:
 
-- ``sdf.slac.stanford.edu``
+- ``sdf-login.slac.stanford.edu``
 
 Connecting and Authenticating
 =============================
