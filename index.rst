@@ -584,6 +584,7 @@ Interim Data Facility
    usdf/storage
    usdf/batch
    usdf/stack
+   usdf/datasets
 
 .. _part-usdf:
 
@@ -596,3 +597,4 @@ US Data Facility
 - :doc:`usdf/storage`
 - :doc:`usdf/batch`
 - :doc:`usdf/stack`
+  - :doc:`usdf/datasets`
