@@ -86,12 +86,12 @@ getent group | grep <your account>
 
 Accounts can get disabled a number of ways:
 
-- Every 2 months Windows account disabled due to no activity (same `ticket <https://slacprod.servicenowservices.com/it_services?id=sc_cat_item&sys_id=374faa7d6ff161009c4235af1e3ee4ff&sysparm_category=d65827c46fd921009c4235af1e3ee434>`__ as expired/forgotten)
+- Every 2 months Windows account disabled due to no activity (same `ticket <https://ithelp.slac.stanford.edu>`__ as expired/forgotten)
 - Every 6 months password changes (change pw -`windows
   <https://win-password.slac.stanford.edu/>`__ , `unix <https://unix-password.slac.stanford.edu/>`__)
 - Every year Cyber training `(link <https://www-bis3.slac.stanford.edu/skillsoft/webtraining/gotocourse.aspx?sid=553894&courseid=CS100&lang=ENG>`__)
 - They can also be locked out if they've forgotten their password(s)
-  or put in too many attempts with the wrong password. (`ticket <https://slacprod.servicenowservices.com/it_services?id=sc_cat_item&sys_id=374faa7d6ff161009c4235af1e3ee4ff&sysparm_category=d65827c46fd921009c4235af1e3ee434>`__ to reset)
+  or put in too many attempts with the wrong password. (`ticket <https://ithelp.slac.stanford.edu>`__ to reset)
 
 The user is warned about all these events, but in case they've been ignored/forgotten, how to figure out which it is and how to fix it?
 
