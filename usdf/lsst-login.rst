@@ -9,7 +9,7 @@ The following login load-balancer is run by SLAC to jump to select Rubin Observa
 Connecting and Authenticating
 =============================
 
-You'll need to ssh into an SDF login server once to establish your home directory etc. From then on you can choose access via ssh or the browser portal, https://sdf.slac.stanford.edu
+You'll need to ssh into an SDF login server once to establish your home directory etc - **using your Windows account password**. From then on you can choose access via ssh or the browser portal, https://sdf.slac.stanford.edu
 
 You can use NoMachine for ssh access as well:
 
