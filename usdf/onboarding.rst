@@ -35,6 +35,7 @@ Notes:
  - Experiment: select LSST
  - SLAC Spokesperson/Sponsor/Supervisor: Select Richard Dubois.
  - Time at SLAC: this is physically on site. For most people, this is <10%.
+ - Start date: choose today
 
 3) The second page of the SLUO registration form asks users of their research activity at SLAC (screenshot below). After completing the form, please click the “Submit” button. 
 
@@ -44,6 +45,7 @@ Notes:
  - Emergency contact: your own personal contact - relative, friend.
  - Group: select "FPD Rubin Operations"
  - details of visit and project name: Using SLAC computing resources to collaborate on Rubin Operations. Seems optional to include your home institution.
+ - Funding source: choose your majority support source
 	
 4)	Once the SLUO registration form is submitted, the Visitor User Employee (VUE) center Coordinator receives an email notification of the completed form.
 
