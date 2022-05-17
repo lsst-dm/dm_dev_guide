@@ -51,7 +51,7 @@ Notes:
 
 5)	The VUE center Coordinator sends an email to the SLAC Point of
 	Contact (POC) listed on the form and asks to confirm the registration. 
-6)	After the POC confirms the registration, the VUE Center Coordinator sends an email of the onboarding request form SLAC Site Access Portal | Coming to SLAC (stanford.edu) to the new user with instructions in how to complete the form.
+6)	After the POC confirms the registration, the VUE Center Coordinator sends an email of the onboarding request form SLAC Site Access Portal | Coming to SLAC (stanford.edu) to the new user with instructions in how to complete the form. *Be sure to select "Person of Interest"*
 
 7)	When the user submits the onboarding request form, the form is
 	then sent to several approvers before a SLAC ID is granted.
