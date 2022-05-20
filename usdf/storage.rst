@@ -8,9 +8,11 @@ A sandbox area has been created at:
 
 /sdf/group/rubin/sandbox/
 
-with access control via the rubin_users unix group. Currently it is unregulated. Once the data transfers are done from NCSA, a more familiar filetree will be available. NOte that the current filesystem is Lustre - not a friend to our small files. We expect better when we get to WekaFS in S3DF.
+with access control via the rubin_users unix group. Currently it is unregulated. Once the data transfers are done from NCSA, a more familiar filetree will be available. Note that the current filesystem is Lustre - not a friend to our small files. We expect better when we get to WekaFS in S3DF.
 
 Home directory space is available at /sdf/home/<first_letter_of_account>/<account>
+
+A scratch directory is auto-created for every SDF account in /sdf/scratch/<account>
 
 Data compression
 ================
