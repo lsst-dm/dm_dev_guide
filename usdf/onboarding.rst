@@ -43,7 +43,7 @@ Notes:
 
 Notes:
  - Emergency contact: your own personal contact - relative, friend.
- - Group: select "FPD Rubin Operations"
+ - Group: select "FPD LSST Computing"
  - details of visit and project name: Using SLAC computing resources to collaborate on Rubin Operations. Seems optional to include your home institution.
  - Funding source: choose your majority support source
 	
