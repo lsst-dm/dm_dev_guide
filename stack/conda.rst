@@ -13,7 +13,7 @@ In particular, the ``conda-forge`` distribution channel is used, as it provides 
 The list of required dependencies is maintained in a ``conda-forge`` metapackage named ``rubin-env``.
 Use of a metapackage rather than an environment specification allows for simple installation and environment creation by end users.
 
-``rubin-env`` is intended to be the minimal set of dependencies required to build and execute all packages of ``lsst_distrib`` in production.
+``rubin-env`` is intended to be the minimal set of dependencies required to build and execute all packages of ``lsst_distrib`` in batch production.
 It does not necessarily include dependencies useful for developers to modify existing packages or add new packages.
 It also does not necessarily include dependencies useful for science users to analyze, visualize, or otherwise work with raw Science Pipelines inputs or output data products.
 
@@ -62,6 +62,6 @@ The list of packages is maintained in ``lsst-sqre/nublado2``; requests for addit
 "Exact" environments
 --------------------
 
-The conda environments used by Jenkins to build nightly, weekly, and official releases are preserved as ``conda list --explicit`` outputs in ``eups.lsst.codes``.
+The conda environments used by Jenkins to build nightly, weekly, and official release tarballs are preserved as ``conda list --explicit`` outputs in ``eups.lsst.codes``.
 These can be used in place of the ``rubin-env`` metapackage to exactly reproduce a build for consistency in production or for debugging.
 Both ``newinstall`` and ``lsstsw`` allow specification of an eups tag to retrieve the exact environment used when that tag was published.
