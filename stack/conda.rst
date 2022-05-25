@@ -37,6 +37,10 @@ These components are updated as follows:
 * Minor: increment when adding a new dependency.
 * Major: increment when removing a dependency, or when removing a pin, or when changing a dependency major version
 
+Because of the way that conda-forge works, adding a build or patch or minor version increment to a *past* rubin-env release requires creating a new branch in the `rubinenv-feedstock <https://github.com/conda-forge/rubinenv-feedstock/>`__ repository.
+For current releases, the ``main`` branch is used, of course.
+The tip of each branch is built and published by the conda-forge automation (and of course older versions on each branch were published when they were the tip).
+
 When updating rubin-env, the following procedure should be followed:
 
 #. Update the dev branch in rubinenv-feedstock and ensure that it solves and builds.
