@@ -17,8 +17,9 @@ Use of a metapackage rather than an environment specification allows for simple 
 It does not necessarily include dependencies useful for developers to modify existing packages or add new packages.
 It also does not necessarily include dependencies useful for science users to analyze, visualize, or otherwise work with raw Science Pipelines inputs or output data products.
 
-In the future, an expanded ``rubin-env-plus`` may be created that would include additional dependencies for convenience and to ensure that compatible versions of all packages can be determined.
-``rubin-env`` would then become a subset of this environment.
+An expanded ``rubin-env-extras`` has been created that includes additional dependencies commonly used with the Science Pipelines to ensure that compatible versions of all packages can be determined.
+These additional dependencies are used in the Rubin Science Platform, in the "shared stack" deployed on the Rubin development platforms at the NCSA LDF and the SLAC USDF, and in the rubin-sim metapackage.
+Note that each of these other environments is maintained separately; see below.
 
 Requests for additions to ``rubin-env`` should be made via RFC.
 The DM-CCB must approve such requests.
