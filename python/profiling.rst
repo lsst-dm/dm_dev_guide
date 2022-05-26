@@ -80,13 +80,16 @@ you can see that the **cumtime** column doesn't add up to the **cumtime** values
 
 For more details on pstats and python profiling in general see http://docs.python.org/library/profile.html.
 
-A potentially useful tool for visualising the results is http://www.vrplumber.com/programming/runsnakerun/.
+`snakeviz <https://jiffyclub.github.io/snakeviz/>`_ is a web interface for visualizing the python profile output files, installable via ``pip``: pass it the profile output file you wish to visualize to open an interactive browser window.
+If you run a pipeline with the ``--profile somefile.prof`` option :ref:`documented below<stack_profiling>`, you can run ``snakeviz somefile.prof`` on your local computer to get an interactive view of the entire profile in a web browser.
 
 Another useful tool for visualising the call graph is `gprof2dot <https://github.com/jrfonseca/gprof2dot>`_:
 
 .. code-block:: bash
 
     gprof2dot -f pstats -e 0.01 cprofile-mosaic.dat | dot -Tpng -o cprofile-mosaic.png
+
+.. _stack_profiling:
 
 Stack profiling
 ===============
@@ -97,7 +100,7 @@ The LSST stack contains some support for obtaining a python profile easily:
 * ``BatchCmdLineTask`` (the front-end to scripts such as ``singleFrameDriver.py`` in pipe_drivers) supports a ``--batch-profile`` command-line argument switch. The profile is written to ``profile-<job>-<hostname>-<pid>.dat``.
 * `ci_hsc <http://github.com/LSST/ci_hsc>`_ (an integration test package, driven by SCons) supports a ``--enable-profile`` command-line argument specifying a base filename for the profiles (default is ``profile``). The profiles are written to ``<base>-<sequenceNumber>-<script>.pstats``. This is useful for profiling the entire stack.
 
-All of the above profile outputs can be read using ``pstats``.
+All of the above profile outputs can be read using ``pstats``, ``snakeviz``, or other tools that support the ``cProfile`` output format.
 
 
 Line profiling
