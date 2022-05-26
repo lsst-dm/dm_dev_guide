@@ -102,6 +102,10 @@ The LSST stack contains some support for obtaining a python profile easily:
 
 All of the above profile outputs can be read using ``pstats``, ``snakeviz``, or other tools that support the ``cProfile`` output format.
 
+.. _timing_decorator:
+
+Note that our timing decorator--``lsst/utils/timer.py:timeMethod``, used to generate timing metrics metdata for Tasks--will result in a call graph that is difficult to interpret, due to every ``run()`` method being called by ``timeMethod_wrapper()``.
+`DM-34978 <https://jira.lsstcorp.org/browse/DM-34978>`_ gives a plan for a workaround of this; until that is merged, you can try the branch of ``utils`` described on `DM-34881 <https://jira.lsstcorp.org/browse/DM-34881>`_ to disable the timer during your profiling run.
 
 Line profiling
 ==============
