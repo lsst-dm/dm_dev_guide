@@ -123,3 +123,20 @@ Put an ``@profile`` decorator on the function of interest, and run:
 .. code-block:: bash
 
    kernprof.py -l -v /path/to/script.py <arguments>
+
+Statistical Profiling
+=====================
+
+A different method of profiling is "statistical profiling", which repeatedly pauses the python interpreter and samples the call stack each time.
+This call stack sampling can help to work around circular call graphs that result from our :ref:`timing decorator <timing_decorator>` and how the standard profiler interprets each function call.
+`pyinstrument <https://github.com/joerick/pyinstrument>`_ is an example of a statistical profiler that can be used with the Science Pipelines ``pipetask`` command.
+You have to run ``pipetask`` via pyinstrument:
+
+.. code-block:: bash
+
+    PIPETASKCMD=`which pipetask`
+    pyinstrument -r speedscope -o report.speedscope ${PIPETASKCMD} run ...
+
+The ``-r speedscope`` option produces a file that can be dropped into the web-based `speedscope flamegraph visualizer <https://www.speedscope.app/>`_ to explore your profile results.
+You can also run with ``-r html`` to get a single html web page of the results in a mostly-text format, but it is generally not as useful as the more interactive speedscope option.
+Note that the ``-t`` option for rendering as a single timeline is compatible with ``-r html`` but not with ``-r speedscope``.
