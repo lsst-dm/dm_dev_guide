@@ -80,7 +80,8 @@ you can see that the **cumtime** column doesn't add up to the **cumtime** values
 
 For more details on pstats and python profiling in general see http://docs.python.org/library/profile.html.
 
-A potentially useful tool for visualising the results is http://www.vrplumber.com/programming/runsnakerun/.
+`snakeviz <https://jiffyclub.github.io/snakeviz/>`_ is a web interface for visualizing the python profile output files, installable via ``pip``: pass it the profile output file you wish to visualize to open an interactive browser window.
+If you run a pipeline with the ``--profile somefile.prof`` option :ref:`documented below<stack_profiling>`, you can run ``snakeviz somefile.prof`` on your local computer to get an interactive view of the entire profile in a web browser.
 
 Another useful tool for visualising the call graph is `gprof2dot <https://github.com/jrfonseca/gprof2dot>`_:
 
@@ -88,17 +89,23 @@ Another useful tool for visualising the call graph is `gprof2dot <https://github
 
     gprof2dot -f pstats -e 0.01 cprofile-mosaic.dat | dot -Tpng -o cprofile-mosaic.png
 
+.. _stack_profiling:
+
 Stack profiling
 ===============
 
 The LSST stack contains some support for obtaining a python profile easily:
 
-* ``CmdLineTask`` (the front-end to scripts such as ``processCcd.py`` in pipe_tasks) supports a ``--profile`` command-line argument specifying a filename to which to write the profile.
+* ``pipetask`` supports a ``--profile somefile.prof`` command-line argument to write the full run profile to the specified filename (``somefile.prof`` in this case).
 * ``BatchCmdLineTask`` (the front-end to scripts such as ``singleFrameDriver.py`` in pipe_drivers) supports a ``--batch-profile`` command-line argument switch. The profile is written to ``profile-<job>-<hostname>-<pid>.dat``.
 * `ci_hsc <http://github.com/LSST/ci_hsc>`_ (an integration test package, driven by SCons) supports a ``--enable-profile`` command-line argument specifying a base filename for the profiles (default is ``profile``). The profiles are written to ``<base>-<sequenceNumber>-<script>.pstats``. This is useful for profiling the entire stack.
 
-All of the above profile outputs can be read using ``pstats``.
+All of the above profile outputs can be read using ``pstats``, ``snakeviz``, or other tools that support the ``cProfile`` output format.
 
+.. _timing_decorator:
+
+Note that our timing decorator--``lsst/utils/timer.py:timeMethod``, used to generate timing metrics metdata for Tasks--will result in a call graph that is difficult to interpret, due to every ``run()`` method being called by ``timeMethod_wrapper()``.
+`DM-34978 <https://jira.lsstcorp.org/browse/DM-34978>`_ gives a plan for a workaround of this; until that is merged, you can try the branch of ``utils`` described on `DM-34881 <https://jira.lsstcorp.org/browse/DM-34881>`_ to disable the timer during your profiling run.
 
 Line profiling
 ==============
@@ -116,3 +123,20 @@ Put an ``@profile`` decorator on the function of interest, and run:
 .. code-block:: bash
 
    kernprof.py -l -v /path/to/script.py <arguments>
+
+Statistical Profiling
+=====================
+
+A different method of profiling is "statistical profiling", which repeatedly pauses the python interpreter and samples the call stack each time.
+This call stack sampling can help to work around circular call graphs that result from our :ref:`timing decorator <timing_decorator>` and how the standard profiler interprets each function call.
+`pyinstrument <https://github.com/joerick/pyinstrument>`_ is an example of a statistical profiler that can be used with the Science Pipelines ``pipetask`` command.
+You have to run ``pipetask`` via pyinstrument:
+
+.. code-block:: bash
+
+    PIPETASKCMD=`which pipetask`
+    pyinstrument -r speedscope -o report.speedscope ${PIPETASKCMD} run ...
+
+The ``-r speedscope`` option produces a file that can be dropped into the web-based `speedscope flamegraph visualizer <https://www.speedscope.app/>`_ to explore your profile results.
+You can also run with ``-r html`` to get a single html web page of the results in a mostly-text format, but it is generally not as useful as the more interactive speedscope option.
+Note that the ``-t`` option for rendering as a single timeline is compatible with ``-r html`` but not with ``-r speedscope``.
