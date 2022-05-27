@@ -46,6 +46,7 @@ Notes:
  - Funding source: choose your majority support source
  - Time at SLAC: this is physically on site. For most people, this is <10%. Occasional visits for meetings don't count.
  - Start date: choose today
+ - Answer "yes" to will you be performing work at SLAC
 	
 4)	Once the SLUO registration form is submitted, the Visitor User Employee (VUE) center Coordinator receives an email notification of the completed form.
 
