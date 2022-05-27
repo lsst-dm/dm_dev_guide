@@ -8,8 +8,8 @@ Overview
 The SLAC onboarding procedure involves the following steps:
 
 - join the SLAC HEP users organization, SLUO
-   - fill out the SLAC Users Organization (SLUO) `form <https://oraweb4.slac.stanford.edu/apex/epnprod/f?p=134:1::::::>`__
-   - fill out the SLAC Site Access Portal `form <https://vue.slac.stanford.edu/content/slac-site-access-portal>`__
+   - fill out the SLAC Users Organization (SLUO) form
+   - fill out the SLAC Site Access Portal form
 - a SLAC ServiceNow ticket is submitted to IT to request the account
 - IT creates the account and sends a link to reset the passwords
   (note: this will result in 2 accounts at present: a Windows account
