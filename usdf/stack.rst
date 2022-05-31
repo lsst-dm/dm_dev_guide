@@ -8,7 +8,7 @@ Facility during the interim period where the Rubin filesystems at SLAC
 go into production mode on our own hardware, and while user and
 project data are being transferred from NCSA.
 
-Access to the stack is available via cvmfs (eg w_2022_11)
+Access to the stack is available via cvmfs (eg ``w_2022_11``)
 
 ``source
 /cvmfs/sw.lsst.eu/linux-x86_64/lsst_distrib/w_2022_11/loadLSST.bash``
