@@ -24,6 +24,6 @@ You can ssh into Rubin Observatory development servers at SLAC with your Windows
 Staff RSP
 =========
 
-An RSP has been deployed for testing - the kubernetes environment has not been declared production yet, so beware.
+An RSP has been deployed for testing - the kubernetes environment has not been declared production yet, so beware. Your SLAC credential will be used for authentication.
 
 https://rubin-data-dev.slac.stanford.edu/
