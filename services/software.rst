@@ -409,15 +409,17 @@ Test data location is: ``/project/shared/data/test_data``
 
 Included test data repositories are::
 
-  testdata_jointcal
-  testdata_cfht
-  testdata_subaru
-  testdata_decam
-  testdata_lsst
+  afwdata
   ap_verify_testdata
   ap_pipe_testdata
-  ci_hsc
-  afwdata
+  testdata_cfht
+  testdata_ci_hsc
+  testdata_ci_imsim
+  testdata_decam
+  testdata_jointcal
+  testdata_latiss_cpp
+  testdata_lsst
+  testdata_subaru
 
 Validation data location is: ``/project/shared/data/validation_data``
 
