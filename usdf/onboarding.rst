@@ -33,7 +33,6 @@ Notes:
  - classification: select Contractor or Consultant if you have that direct relationship to SLAC, otherwise use your home institution classification.
  - work area: most answers for Rubin Ops will be "Physics Research" or "Computing"
  - Experiment: select Vera C. Rubin Observatory
- - SLAC Spokesperson/Sponsor/Supervisor: Select Richard Dubois.
 
 3) The second page of the SLUO registration form asks users of their research activity at SLAC (screenshot below). After completing the form, please click the “Submit” button. 
 
@@ -47,6 +46,7 @@ Notes:
  - Time at SLAC: this is physically on site. For most people, this is <10%. Occasional visits for meetings don't count.
  - Start date: choose today
  - Answer "yes" to will you be performing work at SLAC
+ - SLAC Spokesperson/Sponsor/Supervisor: Select Richard Dubois.
 	
 4)	Once the SLUO registration form is submitted, the Visitor User Employee (VUE) center Coordinator receives an email notification of the completed form.
 
