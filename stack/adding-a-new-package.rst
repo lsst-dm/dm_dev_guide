@@ -2,10 +2,24 @@
 Adding a New Package to the Build
 #################################
 
+Creating a new package
+----------------------
+
+To create a new LSST package, send a "create project" message to ``@sqrbot-jr`` on the LSST Slack and select "LSST EUPS package" as the project type.
+Follow the prompts to select the github organization (choose ``lsst`` for the `LSST organization on GitHub`_ for packages that you plan to add to the full distribution via RFC, as described below) and the specific flavor of package (e.g. ``Pipelines Python`` for a typical python package that depends on `pipe_base`_)  to get an appropriate directory structure set up.
+The bot uses the templates in the `lsst/templates`_ repository to define the package layout.
+
+DM packaging of third party code should proceed as described in :doc:`packaging-third-party-eups-dependencies`.
+
+If the new package needs a distinct Jira component (most will), any DMLT member (such as your manager) can add one.
+
+Adding a package to a distributed product
+-----------------------------------------
+
 New packages intended for distribution to end users should generally be added as a dependency of a "top-level product:" these are the roots of the LSST package hierarchy.
 They include ``lsst_apps``, ``lsst_distrib``, ``qserv_distrib`` and ``lsst_sims``.
 
-Before adding a new dependency to any of these products, it must be approved through the :doc:`RFC process </processes/decision_process>`.
+Before adding a new dependency one these top-level distribution products, it must be approved through the :doc:`RFC process </processes/decision_process>`.
 Consensus must be reached regarding both the name and the suitability of the new package.
 Before adopting the RFC, the following steps must be completed:
 
@@ -14,12 +28,6 @@ Before adopting the RFC, the following steps must be completed:
 * An audit is done of any dependencies with a focus on identifying implied dependencies.
 
 Packages that will not be distributed as part of a release do not require an RFC.
-
-After approval, code written internally by Data Management should be packaged following the template in the `lsst/templates`_ repository.
-DM packaging of third party code should proceed as described in :doc:`packaging-third-party-eups-dependencies`.
-
-New packages must be added to the `LSST organization on GitHub`_.
-The simplest way to do this is to send a "create project" Slack message to ``@sqrbot-jr`` and select "LSST EUPS package" as the project type.
 
 Access to the repository must be granted by a repository administrator to appropriate teams.
 For DM-written code, these include "Data Management" and "Overlords."
@@ -42,12 +50,15 @@ The new package then needs to be added to the :file:`ups/*.table` file (and poss
 Table files should use ``setupRequired(package_name)`` or ``setupOptional(package_name)`` as necessary; test data packages are usually optional to allow releases to be made without requiring large additional data packages to be included.
 Packages that use optional dependencies must be written to ensure that they can pass their unit tests when the package is not available.
 
-If the new package needs a distinct Jira component (most will), any DMLT member (such as your manager) can add one.
-
 .. _github-repository-configuration:
 
 Configuring GitHub Repositories
 ===============================
+
+.. Note::
+
+  If you created your package via ``@sqrbot-jr`` on the LSST slack, the github repo should be configured correctly.
+  These instructions are for the rare cases that cannot be handled by ``@sqrbot-jr``.
 
 All LSST DM repositories on GitHub must be configured by a repository administrator to protect the ``main`` branch and to ensure that the merge button for pull requests can not be pushed without the branch being up to date with ``main``.
 There are a number of settings required to ensure this and they are described below with URLs referring to the ``afw`` package.
@@ -92,6 +103,7 @@ Handling Git LFS-backed repos
 =============================
 
 New :doc:`Git LFS-backed </git/git-lfs>` repos (or existing repos being converted to LFS) require additional configuration.
+``@sqrbot-jr`` cannot yet create an empty LFS-ready repo.
 
 - The `repos.yaml`_ entry must declare that the repository is LFS backed:
 
@@ -125,3 +137,4 @@ New :doc:`Git LFS-backed </git/git-lfs>` repos (or existing repos being converte
 .. _etc/repos.yaml file in the lsst/repos repository: https://github.com/lsst/repos/blob/main/etc/repos.yaml
 .. _repos.yaml: https://github.com/lsst/repos/blob/main/etc/repos.yaml
 .. _manifest.remap:  https://github.com/lsst/lsstsw/blob/main/etc/manifest.remap
+.. _pipe_base: https://github.com/lsst/pipe_base/
