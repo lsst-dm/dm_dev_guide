@@ -80,6 +80,8 @@ Ask your T/CAM for access to the ‘lsstc’ Slack team.
 You can access it online at https://lsstc.slack.com, and through `Slack's mobile and desktop apps <https://get.slack.help/hc/en-us/articles/201746897-Slack-apps-for-computers-phones-tablets>`__.
 Slack's `online help <https://get.slack.help/hc/en-us>`__ is a great way to learn Slack's features.
 
+Be sure to :doc:`link your github profile to your slack account <../communications/slack-github-username>` so that our slack integrations will work correctly.
+
 Channels set up specifically for Data Management related discussion have a ‘dm-’ prefix.
 Some important channels are:
 
