@@ -30,19 +30,18 @@ A simple :mod:`unittest` example is shown below:
 
 The important things to note in this example are:
 
-* Python tests explicitly should not contain a shebang (``#!/usr/bin/env python``) and should not be executable (so cannot be run directly with ``./test_Example.py``).
-  This avoids problems encountered running tests on macOS and helps ensure consistency in the way that tests are executed.
-* Test file names must begin with ``test_`` to allow `pytest`_ to automatically detect them without requiring an explicit test list, which can be hard to maintain and can lead to missed tests.
-* If the test is being executed using :command:`python` from the command line the `unittest.main` call performs the test discovery and executes the tests, setting exit status to non-zero if any of the tests fail.
-* Test classes are executed in the order in which they appear in the test file.
-  In this case the tests in ``DemoTestCase1`` will be executed before those in ``DemoTestCase2``.
-* Test classes must, ultimately, inherit from `unittest.TestCase` in order to be discovered, and it is :ref:`recommended <py-utils-tests>` that `lsst.utils.tests.TestCase` be used as the base class when :lmod:`~lsst.afw` objects are involved.
-  The tests themselves must be methods of the test class with names that begin with ``test``.
+* Run a given test file manually via ``pytest -sv tests/test_Example.py``; see these :ref:`useful_pytest_options` for more details.
+  Python tests explicitly should not contain a shebang (``#!/usr/bin/env python``) and should not be executable (so cannot be run directly with ``./test_Example.py``).
+  This avoids problems encountered when running tests on macOS and helps ensure consistency in the way that tests are executed.
+* Test file names must begin with ``test_`` to allow `pytest`_ to automatically detect them without requiring an explicit test list.
+* Test classes must, ultimately, inherit from `unittest.TestCase` in order to be discovered.
+  It is :ref:`recommended <py-utils-tests>` that `lsst.utils.tests.TestCase` be used as the base class when :lmod:`~lsst.afw` objects are involved; this adds :ref:`several useful test assert methods <py-utils-tests>`.
+* The tests themselves must be methods of the test class with names that begin with ``test``.
   All other methods and classes will be ignored by the test system but can be used by tests.
 * Specific test asserts, such as `~unittest.TestCase.assertGreater`, `~unittest.TestCase.assertIsNone` or `~unittest.TestCase.assertIn`, should be used wherever possible.
   It is always better to use a specific assert because the error message will contain more useful detail and the intent is more obvious to someone reading the code.
   Only use `~unittest.TestCase.assertTrue` or `~unittest.TestCase.assertFalse` if you are checking a boolean value, or a complex statement that is unsupported by other asserts.
-* When testing that an exception is raised always use `~unittest.TestCase.assertRaises` as a context manager, as shown in line 10 of the above example.
+* When testing that an exception is raised always use `~unittest.TestCase.assertRaisesRegex` or `~unittest.TestCase.assertRaises` as a context manager, as shown in line 10 of the above example. Test against the specific exception, do not just check for the generic ``Exception``.
 * If a test method completes, the test passes; if it throws an uncaught exception the test has failed.
 
 We write test files to allow them to be run by `pytest`_ rather than simply :command:`python`, as the former provides more flexibility and enhanced reporting when running tests (such as specifying that only certain tests run).
@@ -120,6 +119,7 @@ Our default logging configuration results in pytest automatically capturing log 
 To override this and get log messages printed directly (for example to see logs from successful tests, or to see log messages while you are stepping through a debugger), include ``--log-cli-level=INFO -sv`` in your ``pytest`` command when running your tests.
 The first option sets the log level that pytest will send directly to stderr (in this case, ``INFO``), while the ``-sv`` options get pytest to show which tests it is executing (``-v``) and to print all output as it appears (``-s``).
 
+.. _useful_pytest_options:
 
 Useful pytest options
 ---------------------
