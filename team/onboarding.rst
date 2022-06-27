@@ -98,12 +98,6 @@ Some important channels are:
 
 Your team may also have specific channels, and you can send private messages to individuals.
 
-Google account for Hangouts
-===========================
-
-Many small meetings are conducted on `Google Hangouts <https://hangouts.google.com/>`_, which requires you to have an account with https://google.com.
-The meeting convener will pass around a Hangouts room URL to attendees.
-
 Mailing lists
 =============
 
