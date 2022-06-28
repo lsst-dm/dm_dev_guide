@@ -16,15 +16,15 @@ Style Guides
 .. toctree::
    :maxdepth: 2
 
-   python_style_guide
-   cpp_style_guide
+   ../python/style
+   ../cpp/style
 
 In addition, the follow coding guides may help you write code for DM:
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
-   using_cpp_templates
+   ../cpp/templates
 
 .. _style-guide-rfc-2119:
 

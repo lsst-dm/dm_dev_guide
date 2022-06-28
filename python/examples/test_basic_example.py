@@ -7,7 +7,7 @@ class DemoTestCase1(unittest.TestCase):
 
     def testDemo(self):
         self.assertGreater(10, 5)
-        with self.assertRaises(TypeError):
+        with self.assertRaisesRegex(TypeError, "unsupported operand"):
             1 + "2"
 
 

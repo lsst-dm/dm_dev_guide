@@ -2,11 +2,13 @@
 Adding a New Package to the Build
 #################################
 
+.. _adding_new_package:
+
 Creating a new package
 ----------------------
 
 To create a new LSST package, send a "create project" message to ``@sqrbot-jr`` on the LSST Slack and select "LSST EUPS package" as the project type.
-Follow the prompts to select the github organization (choose ``lsst`` for the `LSST organization on GitHub`_ for packages that you plan to add to the full distribution via RFC, as described below) and the specific flavor of package (e.g. ``Pipelines Python`` for a typical python package that depends on `pipe_base`_)  to get an appropriate directory structure set up.
+Follow the prompts to select the GitHub organization (choose ``lsst`` for the `LSST organization on GitHub`_ for packages that you plan to add to the full distribution via RFC, as described below) and the specific flavor of package (e.g. ``Pipelines Python`` for a typical python package that depends on `pipe_base`_)  to get an appropriate directory structure set up.
 The bot uses the templates in the `lsst/templates`_ repository to define the package layout.
 
 DM packaging of third party code should proceed as described in :doc:`packaging-third-party-eups-dependencies`.
@@ -57,7 +59,7 @@ Configuring GitHub Repositories
 
 .. Note::
 
-  If you created your package via ``@sqrbot-jr`` on the LSST slack, the github repo should be configured correctly.
+  If you created your package via ``@sqrbot-jr`` on the LSST slack, the GitHub repo should be configured correctly.
   These instructions are for the rare cases that cannot be handled by ``@sqrbot-jr``.
 
 All LSST DM repositories on GitHub must be configured by a repository administrator to protect the ``main`` branch and to ensure that the merge button for pull requests can not be pushed without the branch being up to date with ``main``.

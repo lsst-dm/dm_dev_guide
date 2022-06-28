@@ -28,13 +28,11 @@ Other related pages:
 Git & GitHub Setup
 ==================
 
-You need to install Git version 1.8.2, or later, and the :ref:`Git LFS client <git-lfs-install>` to work with our data repositories.
-
+A `Science Pipelines <https://pipelines.lsst.io/#installation>`_ installation comes with the required version of Git and the :ref:`Git LFS client <git-lfs-install>` to work with our data repositories.
 Follow these steps to configure your Git environment for DM work:
 
-1. :ref:`Install Git LFS <git-lfs-install>` with authenticated access.
+1. :ref:`Configure Git LFS <git-lfs-config>` to allow authenticated access to our LFS repositories.
 2. :ref:`Set Git and GitHub to use your institution-hosted email address <git-setup-institutional-email>`.
-3. :ref:`Set Git to use 'plain' pushes <git-setup-plain-pushes>`.
 
 *See also:* :doc:`/git/setup`.
 
@@ -284,7 +282,7 @@ Before offering unsolicited code review on your colleagues' user branches, remem
 Developers can feel free to rebase and force push work to their personal user branches.
 
 A user branch *cannot* be merged into main; it must be converted into a *ticket branch* first.
-The only exception is for documentation edits and additions.
+The only exception is for documentation edits and additions; we want to minimize the steps required to update docs, including :doc:`docstrings <../python/numpydoc>`, :ref:`package documentation <stack-docs-system-packages>`, or guides (like this one).
 
 .. _git-branch-ticket:
 
@@ -295,11 +293,11 @@ Ticket branches are associated with a JIRA ticket.
 Only ticket branches can be merged into ``main``.
 (In other words, developing on a ticket branch is the only way to record earned value for code development.)
 
-If the JIRA ticket is named ``DM-NNNN``, then the ticket branch will be named
+If the JIRA ticket is named ``DM-NNNNN``, then the ticket branch MUST be named
 
 .. code-block:: text
 
-   tickets/DM-NNNN
+   tickets/DM-NNNNN
 
 A ticket branch can be made by branching off an existing user branch.
 This is a great way to formalize and shape experimental work into an LSST software contribution.
@@ -339,7 +337,7 @@ A common pattern is:
    git pull
    git checkout tickets/DM-NNNN
    git rebase -i main
-   # interactive rebase
+   # perform the interactive rebase in your editor
    git push --force
 
 .. _workflow-testing:

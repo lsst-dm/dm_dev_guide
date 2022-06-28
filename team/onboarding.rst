@@ -80,6 +80,8 @@ Ask your T/CAM for access to the ‘lsstc’ Slack team.
 You can access it online at https://lsstc.slack.com, and through `Slack's mobile and desktop apps <https://get.slack.help/hc/en-us/articles/201746897-Slack-apps-for-computers-phones-tablets>`__.
 Slack's `online help <https://get.slack.help/hc/en-us>`__ is a great way to learn Slack's features.
 
+Be sure to :doc:`link your GitHub profile to your Slack account <../communications/slack-github-username>` so that our Slack integrations will work correctly.
+
 Channels set up specifically for Data Management related discussion have a ‘dm-’ prefix.
 Some important channels are:
 
@@ -95,12 +97,6 @@ Some important channels are:
 - `dm-admin-support <https://lsstc.slack.com/archives/dm-admin-support>`__ to contact DM's administrator.
 
 Your team may also have specific channels, and you can send private messages to individuals.
-
-Google account for Hangouts
-===========================
-
-Many small meetings are conducted on `Google Hangouts <https://hangouts.google.com/>`_, which requires you to have an account with https://google.com.
-The meeting convener will pass around a Hangouts room URL to attendees.
 
 Mailing lists
 =============
@@ -130,6 +126,19 @@ In summary, here are the things you can do to get started:
 #. Send your https://community.lsst.org username to your T/CAM.
 
 #. Follow emailed directions to set up your LSST account (including email), NCSA account, and Slack account.
+
+Further steps
+-------------
+
+While you're waiting on your accounts, here are some additional steps to help smooth your entry into the Rubin Observatory software team:
+
+* Familiarize yourself with :doc:`our code of conduct <../team/code-of-conduct>`.
+* Read :ref:`these tips <slack-summary>` on using our large slack.
+* Configure :doc:`your editor <../editors/index>` to better integrate with the Science Pipelines workflow.
+* Check out our :doc:`coding style guides <../coding/intro>`; our python style is mostly enforced by flake8 as a Github Action.
+* Ensure your :doc:`git and GitHub configuration <../git/setup>` uses your :ref:`institutional email address <git-setup-institutional-email>`, and is tuned to :ref:`help your development process <git-shell-setup>`.
+* Begin becoming familiar with our :doc:`development workflow <../work/flow>`: this will be an ongoing process as you work with other DM developers.
+* Browse this guide's sidebar and use the search box: we've tried to provide guidance to help ensure consistent code quality and help you work within this large collaboration.
 
 .. _onboarding-tcam-checklist:
 
