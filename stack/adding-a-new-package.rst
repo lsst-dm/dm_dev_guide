@@ -2,6 +2,8 @@
 Adding a New Package to the Build
 #################################
 
+.. _adding_new_package:
+
 Creating a new package
 ----------------------
 

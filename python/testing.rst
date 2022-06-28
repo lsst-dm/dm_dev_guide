@@ -189,6 +189,9 @@ Enabling additional Pytest options: flake8
 As described in :ref:`style-guide-py-flake8`, Python modules can be configured using the :file:`setup.cfg` file.
 This configuration is supported by `pytest`_ and can be used to enable additional testing or tuning on a per-package basis.
 `pytest`_ uses the ``[tool:pytest]`` block in the configuration file.
+This flake8 block is automatically added to any package created via :ref:`our package template system <adding_new_package>`.
+The information below is included for reference, but generally will not need to be modified from what is in an existing package, or one created via the template.
+
 To enable automatic :command:`flake8` testing as part of the normal test execution the following can be added to the :file:`setup.cfg` file:
 
 .. code-block:: ini
