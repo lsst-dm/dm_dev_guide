@@ -62,6 +62,28 @@ In particular, care must be taken not to have free functions that use a ``test``
   When :command:`pytest` is run by :command:`scons` full warnings are reported, including `DeprecationWarning`.
   Previously these warnings were hidden in the test output but now they are more obvious, allowing you to fix any problems early.
 
+.. _useful_pytest_options:
+
+Useful pytest options
+---------------------
+
+:command:`pytest` options that are useful when running tests manually:
+
+- Install `pdbpp <https://github.com/pdbpp/pdbpp>`_ to get an ipython-like interface for the ``pytest --pdb`` command.
+
+- Use ``pytest -k name test.py`` to only run tests that match the ``name`` pattern.
+  This is generally easier and more flexible than specifying individual tests via ``ClassName.testName`` in the ``unittest`` style.
+
+- Run with ``-sv`` to get extended output during the run (normally :command:`pytest` grabs all of stdout).
+
+- Run with ``-r`` to get a summary of successes and failures at the end that can be useful when you have many failing tests.
+
+- Run with ``-n X`` to run your tests with ``X`` processes to speed things up (like ``scons -jX``).
+
+- Run with ``--durations=N`` to get a list of the top ``N`` longest-running tests.
+
+- Run with ``--log-cli-level=INFO -sv`` to print log messages as they are emitted. See the note about :ref:`pytest capturing log messages<pytest_logging_output>` for more details.
+
 The tests/SConscript file
 -------------------------
 
@@ -118,28 +140,6 @@ For convenience the output from the main :command:`pytest` run (as opposed to th
 Our default logging configuration results in pytest automatically capturing log message output and reporting it separately from output sent to stdout/stderr; successful tests don't show any log output, while the logs from failed tests are collated at the end.
 To override this and get log messages printed directly (for example to see logs from successful tests, or to see log messages while you are stepping through a debugger), include ``--log-cli-level=INFO -sv`` in your ``pytest`` command when running your tests.
 The first option sets the log level that pytest will send directly to stderr (in this case, ``INFO``), while the ``-sv`` options get pytest to show which tests it is executing (``-v``) and to print all output as it appears (``-s``).
-
-.. _useful_pytest_options:
-
-Useful pytest options
----------------------
-
-:command:`pytest` options that have been found useful:
-
-- Install :command:`pdbpp` to get an ipython-like interface for the ``pytest --pdb`` command.
-
-- Use ``pytest -k name test.py`` to only run tests that match the ``name`` pattern.
-  This is generally easier and more flexible than specifying individual tests via ``ClassName.testName`` in the ``unittest`` style.
-
-- Run with ``-sv`` to get extended output during the run (normally :command:`pytest` grabs all of stdout).
-
-- Run with ``-r`` to get a summary of successes and failures at the end that can be useful when you have many failing tests.
-
-- Run with ``-n X`` to run your tests with ``X`` processes to speed things up (like ``scons -jX``).
-
-- Run with ``--durations=N`` to get a list of the top ``N`` longest-running tests.
-
-- Run with ``--log-cli-level=INFO -sv`` to print log messages as they are emitted. See the note about :ref:`pytest capturing log messages<pytest_logging_output>` for more details.
 
 Common Issues
 =============
