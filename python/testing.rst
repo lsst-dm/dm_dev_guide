@@ -133,7 +133,7 @@ When :command:`scons` runs any tests, the output from those tests is written to 
 For the usual case where :command:`pytest` is running on multiple test files at once, there is a single file created, :file:`pytest-*.out`, in that directory, along with an XML file containing the test output in JUnit format.
 If a test command fails, that output is renamed to have a :file:`.failed` extension and is reported by :command:`scons`.
 
-For convenience the output from the main :command:`pytest` run (as opposed to the rare standalone usages) is also written to standard output so it is visible in the log or in the shell along with other :command:`scons` output.
+For convenience the output from the main :command:`pytest` run is also written to standard output so it is visible in the log or in the shell along with other :command:`scons` output.
 
 .. _pytest_logging_output:
 
