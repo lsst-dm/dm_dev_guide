@@ -76,26 +76,6 @@ This step ensures that Git commits you make `directly on GitHub.com <https://hel
 Alternatively, remember to choose your institution email from the email address drop-down menu before committing.
 See the GitHub help page `Editing files in your repository <https://help.github.com/articles/editing-files-in-your-repository/>`__ for details.
 
-.. _git-setup-plain-pushes:
-
-Configure 'plain' pushes in Git (required for Git prior to v2.0)
-================================================================
-
-Ensure that ``git push`` only pushes your currently checked-out branch by running this command:
-
-.. code-block:: bash
-
-   git config --global push.default simple
-
-This command modifies :file:`~/.gitconfig`.
-
-.. note::
-
-   This behavior is the default for Git v2.0 and later.
-
-   In earlier versions of Git, ``push.default=matching`` was the default.
-   See the `git-config <https://git-scm.com/docs/git-config>`_ documentation for details.
-
 .. _git-github-2fa:
 
 Set up Two-Factor Authentication (2FA) for GitHub
@@ -231,3 +211,23 @@ Here are some aliases try in :file:`~/.gitconfig`:
        # Create a commit that will be automatically squashed as a fixup when you
        # run `git rebase --autosquash`
        fixup = "commit --fixup=HEAD"
+
+.. _git-setup-plain-pushes:
+
+Configure 'plain' pushes in Git (required for Git prior to v2.0)
+================================================================
+
+.. note::
+
+   This behavior is the default for Git v2.0 and later; this section is only here for reference for those coming from an earlier version of git who may have set a different config option for this.
+
+   In earlier versions of Git, ``push.default=matching`` was the default.
+   See the `git-config <https://git-scm.com/docs/git-config>`_ documentation for details.
+
+Ensure that ``git push`` only pushes your currently checked-out branch by running this command:
+
+.. code-block:: bash
+
+   git config --global push.default simple
+
+This command modifies :file:`~/.gitconfig`.
