@@ -503,7 +503,19 @@ If a rebase was required, a final check with Jenkins should be done.
 We encourage you to use this button when GitHub says "This branch has no conflicts with the base branch", "All checks have passed", and at least one of the checks has "Required" next to it, which should be the case for almost all repos that are being changed.
 For normally-configured repos, using the button will also delete the ticket branch after the merge.
 Do *not* select a different merge strategy from the pulldown next to the button; these should be disabled anyway.
-Also do *not* use the "Update my branch" button as that does a merge; rebase from the command line instead.
+Also do *not* use the "Update my branch" button as that does a merge from main; rebase from the command line instead.
+
+The :ref:`figure below <fig-git-rebase-history>` shows what the git history looks like for a typical Science Pipelines package.
+Note that each merge to main is independent from any other, and history is linear.
+This history makes ``git bisect`` searches more obvious.
+We understand that this workflow may take longer to get used to, but the end result of a clean history has paid us dividends in finding when particular algorithmic changes had unexpected effects.
+
+.. figure:: /_static/development/git-rebase-history.png
+   :target: ../_images/git-rebase-history.png
+   :name: fig-git-rebase-history
+   :alt: What our git history looks like, following the rebase workflow.
+
+   What our git history looks like, following the rebase workflow.
 
 We **always use non-fast forward merges** so that the merge point is marked in Git history, with the merge commit containing the ticket number:
 
