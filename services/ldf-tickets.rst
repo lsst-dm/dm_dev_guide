@@ -57,7 +57,7 @@ Checking Ticket Status
 
 Checking on the status of a ticket is at:  `JIRA web app <https://jira.lsstcorp.org>`_  You can search for your ticket number or many other search type criteria.   
 
-Tickets are watched by many admins, the service manager and the product owner at NCSA.  After a ticket is created,  if a serious incident is ongoing the  `status page <https://confluence.lsstcorp.org/display/DM/LSST+Service+Status+page>`_ can be checked for known incidents, and a quick note into the dm-infrastucture slack channel can also get information  about a problem you are having.   
+Tickets are watched by many admins, the service manager and the product owner at NCSA.  After a ticket is created,  if a serious incident is ongoing the  `status page <https://confluence.lsstcorp.org/display/DM/LSST+Service+Status+page>`_ can be checked for known incidents, and a quick note into the dm-infrastucture Slack channel can also get information  about a problem you are having.   
 
 Currently all resources at NCSA are considered development and fixed with a "best effort" type of work.   NCSA currently works on a 8*5 (CST) schedule for non-critical tickets.   A critical issue will be worked on throughout a 7*24 schedule to resolution.   
 
