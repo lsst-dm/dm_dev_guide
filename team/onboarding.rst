@@ -127,6 +127,17 @@ In summary, here are the things you can do to get started:
 
 #. Follow emailed directions to set up your LSST account (including email), NCSA account, and Slack account.
 
+Further steps
+-------------
+
+While you're waiting on your accounts, here are some additional steps to help smooth your entry into the Rubin Observatory software team:
+
+* Familiarize yourself with :doc:`our code of conduct <../team/code-of-conduct>`.
+* Read :ref:`these tips <slack-summary>` on using our large slack.
+* Configure :doc:`your editor <../editors/index>` to better integrate with the Science Pipelines workflow.
+* Check out our :doc:`coding style guides <../coding/intro>`; our python style is mostly enforced by flake8 as a Github Action.
+* Browse the sidebar and use the search box of this developer's guide: we've tried to provide guidance to help ensure consistent code quality and help you work within this large collaboration.
+
 .. _onboarding-tcam-checklist:
 
 Checklist for T/CAMs
