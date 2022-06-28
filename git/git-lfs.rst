@@ -49,14 +49,12 @@ Configuring Git LFS
 Basic configuration
 -------------------
 
-Once, after you've installed Git LFS, run:
+Run this command to add a ``filter "lfs"`` section to :file:`~/.gitconfig`.
+This command, and the LSST configuration below, have to be done once on every machine you are planning to work with LSST LFS repos on.
 
 .. code-block:: bash
 
    git lfs install
-
-This is the regular Git LFS configuration step that adds a ``filter "lfs"`` section to :file:`~/.gitconfig`.
-Additional configurations for LSST are next.
 
 .. _git-lfs-config-lsst:
 
