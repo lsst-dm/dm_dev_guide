@@ -123,34 +123,15 @@ The separate `pep8-naming`_ plugin validates names according to the DM Python St
 Flake8 installation
 ^^^^^^^^^^^^^^^^^^^
 
-Linters are installable with :command:`pip`:
-
-.. code-block:: bash
-
-   pip install flake8
-   pip install pep8-naming
-
-.. _style-guide-py-flake8-invoke:
-
-Flake8 command line invocation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: bash
-
-   flake8 --ignore=E133,E226,E228 --max-line-length=110 --max-doc-length=79 .
-
-This command lints all Python files in the current directory.
-Alternatively, individual files can be specified in place of ``.``.
-
-The ignored error codes are :ref:`explained above <style-guide-py-ignored-errors>`.
-N802, N803, N806, N812, N813, N815, and N816 can be added to this list for some packages.
+Flake8 comes installed with any `LSST Science Pipelines installation <https://pipelines.lsst.io/#installation>`_, and is run automatically when building packages with ``scons``, during manual  :ref:`pytest <useful_pytest_options>` invocation, and as Github Actions on new Pull Requests.
+All of our existing packages, and any package created via our :ref:`template system <adding_new_package>`, come pre-configured with the necessary :ref:`style-guide-py-flake8-config`.
 
 .. _style-guide-py-flake8-config:
 
 Flake8 configuration files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-:command:`flake8` can be invoked without arguments when a configuration file is present.
+:command:`flake8` can be invoked without arguments when a configuration file is present; existing Science Pipelines packages already include this file.
 This configuration, included in a :file:`setup.cfg` file at the root of code repositories, is consistent with the style guide:
 
 .. code-block:: ini
