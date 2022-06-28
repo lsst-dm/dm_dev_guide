@@ -197,7 +197,7 @@ def exampleGenerator(n):
         yield i
 
 
-class ExampleClass(object):
+class ExampleClass:
     """An example class for demonstrating docstrings for classes, methods, and
     attributes in the Numpydoc format.
 
