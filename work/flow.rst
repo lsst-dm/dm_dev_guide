@@ -282,7 +282,7 @@ Before offering unsolicited code review on your colleagues' user branches, remem
 Developers can feel free to rebase and force push work to their personal user branches.
 
 A user branch *cannot* be merged into main; it must be converted into a *ticket branch* first.
-The only exception is for documentation edits and additions.
+The only exception is for documentation edits and additions; we want to minimize the steps required to update docs, including :doc:`docstrings <../python/numpydoc>`, :ref:`package documentation <stack-docs-system-packages>`, or guides (like this one).
 
 .. _git-branch-ticket:
 
