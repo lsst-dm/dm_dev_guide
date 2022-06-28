@@ -136,7 +136,9 @@ While you're waiting on your accounts, here are some additional steps to help sm
 * Read :ref:`these tips <slack-summary>` on using our large slack.
 * Configure :doc:`your editor <../editors/index>` to better integrate with the Science Pipelines workflow.
 * Check out our :doc:`coding style guides <../coding/intro>`; our python style is mostly enforced by flake8 as a Github Action.
-* Browse the sidebar and use the search box of this developer's guide: we've tried to provide guidance to help ensure consistent code quality and help you work within this large collaboration.
+* Ensure your :doc:`git and GitHub configuration <../git/setup>` uses your :ref:`institutional email address <git-setup-institutional-email>`, and is tuned to :ref:`help your development process <git-shell-setup>`.
+* Begin becoming familiar with our :doc:`development workflow <../work/flow>`: this will be an ongoing process as you work with other DM developers.
+* Browse this guide's sidebar and use the search box: we've tried to provide guidance to help ensure consistent code quality and help you work within this large collaboration.
 
 .. _onboarding-tcam-checklist:
 
