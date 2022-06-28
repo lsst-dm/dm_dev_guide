@@ -193,7 +193,7 @@ For example, to have FITS and ``*.gz`` files tracked by Git LFS,
 
 Add and commit the :file:`.lfsconfig` and :file:`.gitattributes` files to your repository.
 
-You can then push the repo up to github with
+You can then push the repo up to GitHub with
 
 .. code-block:: bash
 
