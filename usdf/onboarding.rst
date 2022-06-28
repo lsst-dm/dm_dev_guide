@@ -74,6 +74,16 @@ Notes:
 11) SLAC Cyber training must be done within 2 weeks to keep the
     account enabled.
 
+SLAC email forwarding
+=============================
+
+Odds are you will want to forward mail from the SLAC inbox that got created to your destination of choice. If you find the email has not already been forwarded, 
+you can do this via the web email interface:
+
+https://email.slac.stanford.edu
+
+Onoce you are logged in, click on the Settings gear icon, View all Outlook Settings, then to Forwarding.
+
 Setting up DUO
 =============================
 
