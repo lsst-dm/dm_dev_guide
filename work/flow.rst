@@ -293,11 +293,11 @@ Ticket branches are associated with a JIRA ticket.
 Only ticket branches can be merged into ``main``.
 (In other words, developing on a ticket branch is the only way to record earned value for code development.)
 
-If the JIRA ticket is named ``DM-NNNN``, then the ticket branch will be named
+If the JIRA ticket is named ``DM-NNNNN``, then the ticket branch MUST be named
 
 .. code-block:: text
 
-   tickets/DM-NNNN
+   tickets/DM-NNNNN
 
 A ticket branch can be made by branching off an existing user branch.
 This is a great way to formalize and shape experimental work into an LSST software contribution.
