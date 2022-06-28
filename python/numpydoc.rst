@@ -746,11 +746,12 @@ For Numpy arrays, try to include the dimensionality:
    coords : `numpy.ndarray`, (N, 2)
        [...]
    flags : `numpy.ndarray`, (N,)
-       [...]
+       Boolean array identifying sources that failed photometry.
    image : `numpy.ndarray`, (Ny, Nx)
-       [...]
+       Processed image as a 2-dimensional array of float or double.
 
 Choose conventional variables or labels to describe dimensions, like ``N`` for the number of sources or ``Nx, Ny`` for rectangular dimensions.
+If the array should contain a specific type (e.g. `float` or `bool`), note that in the description.
 
 .. _py-docstring-parameter-types-callable:
 
