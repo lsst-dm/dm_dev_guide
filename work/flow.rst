@@ -28,13 +28,11 @@ Other related pages:
 Git & GitHub Setup
 ==================
 
-You need to install Git version 1.8.2, or later, and the :ref:`Git LFS client <git-lfs-install>` to work with our data repositories.
-
+A `Science Pipelines <https://pipelines.lsst.io/#installation>`_ installation comes with the required version of Git and the :ref:`Git LFS client <git-lfs-install>` to work with our data repositories.
 Follow these steps to configure your Git environment for DM work:
 
-1. :ref:`Install Git LFS <git-lfs-install>` with authenticated access.
+1. :ref:`Configure Git LFS <git-lfs-config>` to allow authenticated access to our LFS repositories.
 2. :ref:`Set Git and GitHub to use your institution-hosted email address <git-setup-institutional-email>`.
-3. :ref:`Set Git to use 'plain' pushes <git-setup-plain-pushes>`.
 
 *See also:* :doc:`/git/setup`.
 
@@ -339,7 +337,7 @@ A common pattern is:
    git pull
    git checkout tickets/DM-NNNN
    git rebase -i main
-   # interactive rebase
+   # perform the interactive rebase in your editor
    git push --force
 
 .. _workflow-testing:
