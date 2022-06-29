@@ -536,6 +536,9 @@ Fixing a breakage on main
 In rare cases, despite the pre-merge integration testing process described :ref:`above <workflow-testing>`, a merge to main might accidentally contain an error and "break the build".
 If this occurs, the merge may be reverted by anyone who notices the breakage and verifies that the merge is the cause -- unless a fix can be created, tested, reviewed, and merged very promptly.
 
+Such a fix need not use a brand new ticket and ticket branch.
+Instead, it can be performed on a "hotfix" branch named after the original ticket that was merged, typically ``tickets/DM-NNNNN-hotfix``.
+
 .. _workflow-announce:
 
 Announce the change
