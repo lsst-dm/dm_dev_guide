@@ -335,7 +335,7 @@ A common pattern is:
 
    git checkout main
    git pull
-   git checkout tickets/DM-NNNN
+   git checkout tickets/DM-NNNNN
    git rebase -i main
    # perform the interactive rebase in your editor
    git push --force
@@ -361,7 +361,7 @@ The pull request's title should be prefixed with the Jira ticket handle, followe
 
 .. code-block:: text
 
-   DM-NNNN: {{Short summary}}
+   DM-NNNNN: {{Short summary}}
 
 This format helps you and other developers find the right pull request when browsing repositories on GitHub.
 The short summary should describe the code changes.
@@ -523,7 +523,7 @@ We **always use non-fast forward merges** so that the merge point is marked in G
 
    git checkout main
    git pull  # Sanity check; rebase ticket if main was updated.
-   git merge --no-ff tickets/DM-NNNN
+   git merge --no-ff tickets/DM-NNNNN
    git push
 
 The ticket branch may be deleted from the GitHub remote if its name is in the merge commit comment (which it is by default).
