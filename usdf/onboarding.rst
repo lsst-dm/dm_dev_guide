@@ -16,6 +16,12 @@ The SLAC onboarding procedure involves the following steps:
   used for authentication to SDF, and a unix account) 
 - do the SLAC Cyber training
 
+**If you already have a SLAC unix account, you do not need to be re-onboarded.** Odds are you were not set up with a Windows account. If that is the case, you can use the self serve link to get one:
+
+https://sdf.slac.stanford.edu/public/doc/#/accounts-and-access
+
+Note that if you only have a SLAC Confluence account (eg for DESC), you will still need to be onboarded as a user.
+
 Procedure Details
 =============================
 
