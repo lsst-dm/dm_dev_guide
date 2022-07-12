@@ -45,6 +45,7 @@ Notes:
 .. image:: /_static/usdf/dev_guide/SLUO_New_User_Form_p2.jpg
 
 Notes:
+ - **If your institution is missing, let Richard Dubois know, to get it added to the list**
  - Emergency contact: your own personal contact - relative, friend.
  - Group: select "FPD LSST Computing"
  - details of visit and project name: Using SLAC computing resources to collaborate on Rubin Operations. Seems optional to include your home institution.
