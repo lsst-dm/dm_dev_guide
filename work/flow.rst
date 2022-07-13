@@ -401,8 +401,8 @@ Before serious coding effort is committed to a ticket, the developer should eith
 Assign a reviewer
 -----------------
 
-On your ticket's JIRA page, use the **Workflow** button to switch the ticket's state to **In Review**.
-JIRA will ask you to assign reviewers.
+On your ticket's JIRA page, click the **Ask for Review** button at the top of the page to switch the ticket's state to **In Review**.
+JIRA will open an overlay box to assign reviewers and send them a message about the review.
 
 In your JIRA message requesting review, indicate how involved the review work will be ("quick" or "not quick").
 The reviewer should promptly acknowledge the request, indicate whether they can do the review, and give a timeline for when they will be able to accomplish the request.
