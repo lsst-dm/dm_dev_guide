@@ -17,7 +17,7 @@ special batch queues exist yet.
 
 Running LSST Pipelines with BPS
 ===============================
-The LSST Batch Processing Service (BPS) is the standard execution framework for running LSST pipelines using batch resources.  There are a few different plugins to BPS that are available that can be used for running BPS on various computing systems:
+The LSST Batch Processing Service (`BPS <https://github.com/lsst/ctrl_bps>`__) is the standard execution framework for running LSST pipelines using batch resources.  There are a few different plugins to BPS that are available that can be used for running BPS on various computing systems:
 
 - ctrl_bps_htcondor
 - ctrl_bps_panda
@@ -112,14 +112,13 @@ This is essentially the same as ``slurm``, but the ``--partition=rubin``  and ``
 
 TripleSlurm
 -----------
-This configuration provides three ``HighThroughputExecutors``, each with different memory limits for the pipetask jobs that are run on them.  In the above example,
-each executor assigns the specified memory per core, and accordingly limits the number of available cores for running jobs given the total memory per node.  Pipetask jobs that request less than 2GB of memory will be run on the "small" allocation; jobs that request between 2GB and 4GB of memory will be run on the "medium" allocation; and all other jobs will be run on the "large" allocation.  Despite the segregation into small, medium, and large memory requests, there is still the risk of jobs that request more than 8GB on average causing the "large" allocation to suffer an out-of-memory error.
+This configuration provides three ``HighThroughputExecutors``, each with different memory limits for the pipetask jobs that are run on them.  In the above example, each executor assigns the specified memory per core, and accordingly limits the number of available cores for running jobs given the total memory per node.  Pipetask jobs that request less than 2GB of memory will be run on the "small" allocation; jobs that request between 2GB and 4GB of memory will be run on the "medium" allocation; and all other jobs will be run on the "large" allocation.  Despite the segregation into small, medium, and large memory requests, there is still the risk of jobs that request more than 8GB on average causing the "large" allocation to suffer an out-of-memory error.
 
 work_queue.LocalSrunWorkQueue
 -----------------------------
 The ``LocalSrunWorkQueue`` configuration class uses Parsl's `WorkQueueExecutor <https://parsl.readthedocs.io/en/stable/stubs/parsl.executors.WorkQueueExecutor.html#parsl.executors.WorkQueueExecutor>`__ to manage the resource requests by the individual pipetask jobs.   It uses the `work_queue <https://cctools.readthedocs.io/en/stable/work_queue/>`__ module to keep track of overall resource usage in the allocation and launches jobs when and where the needed resources are available.
 
-In this class, a Parsl `LocalProvider <https://parsl.readthedocs.io/en/stable/stubs/parsl.providers.LocalProvider.html#parsl.providers.LocalProvider>`__ managesthe resources from within the allocation itself, and so the procedure for running with this class differs from the Slurm-based classes in that the user is responsible for submitting the pilot job using ``sbatch`` command and running the ``bps submit`` command within that script.  In the pilot job, one of the nodes serves as the Parsl "submission node" and runs the pipetask jobs on the available nodes (including the submission node) using the Slurm ``srun`` command.   Here is an example submission script with the sbatch options set to match the ``work_queue`` configuration shown above:
+In this class, a Parsl `LocalProvider <https://parsl.readthedocs.io/en/stable/stubs/parsl.providers.LocalProvider.html#parsl.providers.LocalProvider>`__ manages the resources from within the allocation itself, and so the procedure for running with this class differs from the Slurm-based classes in that the user is responsible for submitting the pilot job using ``sbatch`` command and running the ``bps submit`` command within the submission script.  In the pilot job, one of the nodes serves as the Parsl "submission node" and runs the pipetask jobs on the available nodes (including the submission node) using the Slurm ``srun`` command.   Here is an example submission script with the sbatch options set to match the ``work_queue`` configuration shown above:
 
 .. code-block:: bash
    :name: sbatch-work-queue-example
@@ -144,4 +143,6 @@ Since the Parsl-plugin and other processes running on the submission node have t
 
    srun bps submit <bps yaml file>
 
-To use this class, the ``work_queue`` module must be installed, and that module is available from the `cctools toolkit <https://cctools.readthedocs.io/en/stable/>`__, which is itself available from conda-forge.
+In this case, one should set ``#SBATCH --nodes=N`` so that ``N`` is one greater than the ``nodes_per_block`` value in the BPS config entry.
+
+To use this class, the ``work_queue`` module must be installed.  That module is available from the `cctools toolkit <https://cctools.readthedocs.io/en/stable/>`__, which is itself available from conda-forge.
