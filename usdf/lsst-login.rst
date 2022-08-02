@@ -13,7 +13,7 @@ The following login load-balancer is run by SLAC to jump to select Rubin Observa
 USDF usage questions can be posted to slack ``#ops-usdf``. Announcements will go to ``#ops-usdf-announce``.
 
 Connecting and Authenticating to Rubin servers
-=============================
+==============================================
 
 You'll need to be a member of the rubin_users unix group to access pretty much anything Rubin. If you're finding you're not, this is probably why. Ask to be added in the #ops-usdf slack channel.
 
