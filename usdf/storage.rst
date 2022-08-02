@@ -4,15 +4,18 @@ Storage Resources
 
 This document describes the file systems available at the LSST Data Facility during the interim period where the Rubin filesystems at SLAC go into production mode on our own hardware, and while user and project data are being transferred from NCSA.
 
-A sandbox area has been created at:
+Personal space:
+ - Home directory space is available at /sdf/home/<first_letter_of_account>/<account> - standard S3DF personal allocation (25 GB)
+ - Rubin-allocated space: /sdf/data/rubin/u/<account_name> with a 1 TB quota
+ - A scratch directory is auto-created for every SDF account in /sdf/scratch/<account>
 
-/sdf/group/rubin/sandbox/
-
-with access control via the rubin_users unix group. Currently it is unregulated. Once the data transfers are done from NCSA, a more familiar filetree will be available. Note that the current filesystem is Lustre - not a friend to our small files. We expect better when we get to WekaFS in S3DF.
-
-Home directory space is available at /sdf/home/<first_letter_of_account>/<account>
-
-A scratch directory is auto-created for every SDF account in /sdf/scratch/<account>
+Science data under /sdf/data/rubin/:
+ - datasets/
+ - lsstdata/offline/
+ - repo/
+ 
+ Shared stack builds
+  - /sdf/group/rubin/sw/
 
 Data compression
 ================
