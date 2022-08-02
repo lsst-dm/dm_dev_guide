@@ -1,6 +1,6 @@
-############################
+##################################################
 S3DF: SLAC Shared Science Data Facility Hosts USDF
-############################
+##################################################
 
 The USDF is hosted on the S3DF cluster at SLAC. The resource is shared amongst projects, and is documented here:
 
