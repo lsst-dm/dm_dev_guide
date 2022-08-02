@@ -473,6 +473,7 @@ User documentation style
 
 - :doc:`user-docs/index`
 - :doc:`user-docs/lsst-specific-content-style-guide`
+- :doc:`user-docs/topic-based-documentation`
 
 .. _part-services:
 
