@@ -1,6 +1,10 @@
 ############################
-Using the lsst-login Servers
+S3DF: SLAC Shared Science Data Facility Hosts USDF
 ############################
+
+The USDF is hosted on the S3DF cluster at SLAC. The resource is shared amongst projects, and is documented here:
+
+``https://s3df.slac.stanford.edu/public/doc/#/``
 
 The following login load-balancer is run by SLAC to jump to select Rubin Observatory development resources at SLAC (it should not be used for heavy compute tasks):
 
@@ -8,7 +12,7 @@ The following login load-balancer is run by SLAC to jump to select Rubin Observa
 
 USDF usage questions can be posted to slack ``#ops-usdf``. Announcements will go to ``#ops-usdf-announce``.
 
-Connecting and Authenticating
+Connecting and Authenticating to Rubin servers
 =============================
 
 You'll need to be a member of the rubin_users unix group to access pretty much anything Rubin. If you're finding you're not, this is probably why. Ask to be added in the #ops-usdf slack channel.
@@ -28,4 +32,4 @@ Staff RSP
 
 An RSP has been deployed for testing - the kubernetes environment has not been declared production yet, so beware. Your SLAC unix credential will be used for authentication.
 
-https://rubin-data-dev.slac.stanford.edu/
+https://usdf-rsp-dev.slac.stanford.edu/
