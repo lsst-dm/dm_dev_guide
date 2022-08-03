@@ -2,7 +2,7 @@
 Storage Resources
 #################
 
-This document describes the file systems available at the LSST Data Facility during the interim period where the Rubin filesystems at SLAC go into production mode on our own hardware, and while user and project data are being transferred from NCSA.
+This document describes the file systems available at the LSST Data Facility.
 
 Personal space:
  - Home directory space is available at /sdf/home/<first_letter_of_account>/<account> - standard S3DF personal allocation (25 GB)
