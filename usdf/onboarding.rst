@@ -16,9 +16,7 @@ The SLAC onboarding procedure involves the following steps:
   used for authentication to SDF, and a unix account) 
 - do the SLAC Cyber training
 
-**If you already have a SLAC unix account, you do not need to be re-onboarded.** Odds are you were not set up with a Windows account. If that is the case, you can use the self serve link to get one:
-
-https://sdf.slac.stanford.edu/public/doc/#/accounts-and-access
+**If you already have a SLAC unix account, you do not need to be re-onboarded.**
 
 Note that if you only have a SLAC Confluence account (eg for DESC), you will still need to be onboarded as a user.
 
@@ -76,7 +74,7 @@ Notes:
 	for the new user. Be sure to tell the POC your preferred account name (and second choice).
 
 10) SLAC IT will send a url to the user to reset their initial
-    passwords
+    password
 
 11) SLAC Cyber training must be done within 2 weeks to keep the
     account enabled.
@@ -106,7 +104,6 @@ getent group | grep <your account>
 
 Accounts can get disabled a number of ways:
 
-- Every 2 months Windows account disabled due to no activity (same `ticket <https://ithelp.slac.stanford.edu>`__ as expired/forgotten)
 - Every 6 months password changes (change pw -`windows
   <https://win-password.slac.stanford.edu/>`__ , `unix <https://unix-password.slac.stanford.edu/>`__)
 - Every year Cyber training `(link <https://www-bis3.slac.stanford.edu/skillsoft/webtraining/gotocourse.aspx?sid=553894&courseid=CS100&lang=ENG>`__)
