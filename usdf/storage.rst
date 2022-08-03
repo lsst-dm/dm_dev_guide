@@ -6,16 +6,16 @@ This document describes the file systems available at the LSST Data Facility.
 
 Personal space:
  - Home directory space is available at /sdf/home/<first_letter_of_account>/<account> - standard S3DF personal allocation (25 GB)
- - Rubin-allocated space: /sdf/data/rubin/u/<account_name> with a 1 TB quota
+ - Rubin-allocated space: /sdf/group/rubin/u/<account_name> with a 1 TB quota
  - A scratch directory is auto-created for every SDF account in /sdf/scratch/<account>
 
-Science data under /sdf/data/rubin/:
+Science data under /sdf/group/rubin/:
  - datasets/
  - lsstdata/offline/
  - repo/
  
  Shared stack builds
-  - /sdf/group/rubin/sw/
+  - /sdf/group/rubin/software/
 
 Data compression
 ================
