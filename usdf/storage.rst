@@ -1,8 +1,11 @@
-#################
-Storage Resources
-#################
+#########################################
+Data Access: Storage Locations and Butler
+#########################################
 
 This document describes the file systems available at the LSST Data Facility.
+
+Storage Locations
+=================
 
 Personal space:
  - Home directory space is available at /sdf/home/<first_letter_of_account>/<account> - standard S3DF personal allocation (25 GB)
@@ -16,6 +19,13 @@ Science data under /sdf/group/rubin/:
  
  Shared stack builds
   - /sdf/group/rubin/software/
+
+Butler access
+=============
+
+The USDF butler can be accessed at https://usdf-butler.slac.stanford.edu
+
+As of this writing, authentication is via a shared account/password, but is being transitioned to access by existing personal accounts.
 
 Data compression
 ================
