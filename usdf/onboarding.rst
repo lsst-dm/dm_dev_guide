@@ -102,8 +102,7 @@ getent group | grep <your account>
 
 Accounts can get disabled a number of ways:
 
-- Every 6 months password changes (change pw -`windows
-  <https://win-password.slac.stanford.edu/>`__ , `unix <https://unix-password.slac.stanford.edu/>`__)
+- Every 6 months password changes (change pw - `unix <https://unix-password.slac.stanford.edu/>`__)
 - Every year Cyber training `(link <https://www-bis3.slac.stanford.edu/skillsoft/webtraining/gotocourse.aspx?sid=553894&courseid=CS100&lang=ENG>`__)
 - They can also be locked out if they've forgotten their password(s)
   or put in too many attempts with the wrong password. (`ticket <https://ithelp.slac.stanford.edu>`__ to reset)
