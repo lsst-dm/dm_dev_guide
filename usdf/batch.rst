@@ -11,7 +11,7 @@ Use of SDF batch is documented at
 
 https://sdf.slac.stanford.edu/public/doc/#/batch-compute
 
-Rubin currently has 7 128 core Romes in its rubin partition. No
+Rubin currently has an allocation of 2000 cores. Currently only a single slurm partition is defined, called "roma". No
 special batch queues exist yet.
 
 
