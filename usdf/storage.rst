@@ -14,14 +14,17 @@ Personal space:
 
 Science data under /sdf/group/rubin/:
  - datasets/
- - lsstdata/offline/
+ - lsstdata/offline/ (still in prep)
  - repo/
+ - ncsa_home - copy of NCSA home directories
+ - ncsa_jhome - copy of NCSA RSP home directories (in prep)
  
  Shared stack builds
   - /sdf/group/rubin/software/
   
- Interim Access to SDF Lustre
-  - SDF Lustre is separate from s3df filesystems. Access the Lustre filesystem via ``/fs/ddn/sdf/`` to access your SDF home directories, sandbox and scratch files
+Interim while NCSA data is being placed at SLAC
+ - SDF Lustre is separate from s3df filesystems. Access the Lustre filesystem via ``/fs/ddn/sdf/`` to access your SDF home directories, sandbox and scratch files
+ - datasets and repo/main are read-only, with the exception of repo/main_20220411, which is live and in use for HSC reprocessing
 
 Butler access
 =============
