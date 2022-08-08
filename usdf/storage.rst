@@ -16,8 +16,8 @@ Science data under /sdf/group/rubin/:
  - datasets/
  - lsstdata/offline/ (still in prep)
  - repo/
- - ncsa_home - copy of NCSA home directories
- - ncsa_jhome - copy of NCSA RSP home directories (in prep)
+ - ncsa_home - copy of NCSA home directories (in prep, setting permissions)
+ - ncsa_jhome - copy of NCSA RSP home directories (in prep, setting permissions)
  
  Shared stack builds
   - /sdf/group/rubin/software/
