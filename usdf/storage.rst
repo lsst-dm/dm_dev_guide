@@ -10,7 +10,6 @@ Storage Locations
 Personal space:
  - Home directory space is available at /sdf/home/<first_letter_of_account>/<account> - standard S3DF personal allocation (25 GB)
  - Rubin-allocated space: /sdf/group/rubin/u/<account_name> with a 1 TB quota
- - A scratch directory is auto-created for every SDF account in /sdf/scratch/<account>
 
 Science data under /sdf/group/rubin/:
  - datasets/
