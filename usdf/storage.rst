@@ -1,18 +1,36 @@
-#################
-Storage Resources
-#################
+#########################################
+Data Access: Storage Locations and Butler
+#########################################
 
-This document describes the file systems available at the LSST Data Facility during the interim period where the Rubin filesystems at SLAC go into production mode on our own hardware, and while user and project data are being transferred from NCSA.
+This document describes the file systems available at the LSST Data Facility.
 
-A sandbox area has been created at:
+Storage Locations
+=================
 
-/sdf/group/rubin/sandbox/
+Personal space:
+ - Home directory space is available at /sdf/home/<first_letter_of_account>/<account> - standard S3DF personal allocation (25 GB)
+ - Rubin-allocated space: /sdf/group/rubin/u/<account_name> with a 1 TB quota
 
-with access control via the rubin_users unix group. Currently it is unregulated. Once the data transfers are done from NCSA, a more familiar filetree will be available. Note that the current filesystem is Lustre - not a friend to our small files. We expect better when we get to WekaFS in S3DF.
+Science data under /sdf/group/rubin/:
+ - datasets/
+ - lsstdata/offline/ (still in prep)
+ - repo/
+ - ncsa_home - copy of NCSA home directories (in prep, setting permissions)
+ - ncsa_jhome - copy of NCSA RSP home directories (in prep, setting permissions)
+ 
+ Shared stack builds
+  - /sdf/group/rubin/software/
+  
+Interim while NCSA data is being placed at SLAC
+ - SDF Lustre is separate from s3df filesystems. Access the Lustre filesystem via ``/fs/ddn/sdf/`` to access your SDF home directories, sandbox and scratch files
+ - datasets and repo/main are read-only, with the exception of repo/main_20220411, which is live and in use for HSC reprocessing
 
-Home directory space is available at /sdf/home/<first_letter_of_account>/<account>
+Butler access
+=============
 
-A scratch directory is auto-created for every SDF account in /sdf/scratch/<account>
+The USDF butler can be accessed at https://usdf-butler.slac.stanford.edu
+
+As of this writing, authentication is via vault, but is being transitioned to access by existing per-user credentials. The actual url is hidden in the db-auth.yaml files.
 
 Data compression
 ================
