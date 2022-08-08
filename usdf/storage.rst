@@ -19,6 +19,9 @@ Science data under /sdf/group/rubin/:
  
  Shared stack builds
   - /sdf/group/rubin/software/
+  
+ Interim Access to SDF Lustre
+  - SDF Lustre is separate from s3df filesystems. Access the Lustre filesystem via ``/fs/ddn/sdf/`` to access your SDF home directories, sandbox and scratch files
 
 Butler access
 =============
