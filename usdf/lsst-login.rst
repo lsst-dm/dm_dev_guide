@@ -6,7 +6,8 @@ The USDF is hosted on the S3DF cluster at SLAC. The resource is shared amongst p
 
 ``https://s3df.slac.stanford.edu/public/doc/#/``
 
-The following login load-balancer is run by SLAC to jump to select Rubin Observatory development resources at SLAC (it should not be used for heavy compute tasks):
+The following login load-balancer is run by SLAC to jump to select Rubin Observatory development resources at SLAC (almost nothing useful can be done here. Use the 
+jump nodes):
 
 - ``s3dflogin.slac.stanford.edu``
 
