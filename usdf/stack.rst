@@ -20,7 +20,7 @@ and
 
 ``ls /cvmfs/sw.lsst.eu/linux-x86_64/lsst_distrib/``
 
-Shared filesystem stack versions is still under discussion.
+Shared filesystem daily stack versions are available at /sdf/group/rubin/sw/.
 
 Note that you can access conda from the stack install; SDF does not
 provide a central conda install.
