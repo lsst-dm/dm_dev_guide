@@ -4,7 +4,7 @@ S3DF: SLAC Shared Science Data Facility Hosts USDF
 
 The USDF is hosted on the S3DF cluster at SLAC. The resource is shared amongst projects, and is documented here:
 
-``https://s3df.slac.stanford.edu/public/doc/#/``
+https://s3df.slac.stanford.edu/public/doc/#/
 
 The following login load-balancer is run by SLAC to jump to select Rubin Observatory development resources at SLAC (almost nothing useful can be done here. Use the 
 jump nodes):
