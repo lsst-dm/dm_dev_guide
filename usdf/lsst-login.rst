@@ -43,6 +43,8 @@ Host slacd
         Hostname rubin-devl
         ProxyJump slacl
 
+and then add your e.g. ``~/.ssh/id_rsa.pub`` from from your device to ``~/.ssh/authorized_keys`` at SLAC.
+
 Staff RSP
 =========
 
