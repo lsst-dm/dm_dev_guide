@@ -32,6 +32,15 @@ The USDF butler can be accessed at https://usdf-butler.slac.stanford.edu
 
 As of this writing, authentication is via vault, but is being transitioned to access by existing per-user credentials. The actual url is hidden in the db-auth.yaml files.
 
+Data Transfer Tools
+===================
+
+SLAC supports bbcp and Globus. For now, see the s3df documentation:
+
+https://s3df.slac.stanford.edu/public/doc/#/data-transfer
+
+(it is expected that the s3df endpoint will be established close to Aug 15)
+
 Data compression
 ================
 
