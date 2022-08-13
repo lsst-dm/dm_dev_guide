@@ -28,6 +28,21 @@ You can ssh into Rubin Observatory development servers at SLAC with your Windows
 
 ssh ``rubin-devl`` (note: do not add the .slac.stanford.edu postfix!)
 
+Passwordless ssh access to rubin-devl
+=====================================
+
+You can modify your .ssh config to allow direct passwordless access from your device to rubin-devl, by adding this to your .ssh/config file on your end:
+
+Host slac\*
+        User <you>
+
+Host slacl
+        Hostname s3dflogin.slac.stanford.edu
+
+Host slacd
+        Hostname rubin-devl
+        ProxyJump slacl
+
 Staff RSP
 =========
 
