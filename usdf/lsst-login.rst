@@ -33,15 +33,17 @@ Passwordless ssh access to rubin-devl
 
 You can modify your .ssh config to allow direct passwordless access from your device to rubin-devl, by adding this to your .ssh/config file on your end:
 
-Host slac\*
-        User <you>
+.. code-block:: text
 
-Host slacl
-        Hostname s3dflogin.slac.stanford.edu
+   Host slac*
+           User <you>
 
-Host slacd
-        Hostname rubin-devl
-        ProxyJump slacl
+   Host slacl
+           Hostname s3dflogin.slac.stanford.edu
+
+   Host slacd
+           Hostname rubin-devl
+           ProxyJump slacl
 
 and then add your e.g. ``~/.ssh/id_rsa.pub`` from from your device to ``~/.ssh/authorized_keys`` at SLAC.
 
