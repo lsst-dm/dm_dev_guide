@@ -30,7 +30,12 @@ Before adopting the RFC, the following steps must be completed:
 
 * Implementation tickets are created to cover package creation.
 * The package is migrated to the `LSST organization on GitHub`_, if not already there.
+* The package must have a descriptive README file at the root level, describing how it fits into the Science Pipelines infrastructure.
 * An audit is done of any dependencies with a focus on identifying implied dependencies.
+
+If the package in the RFC already exists, you must also complete these steps before the RFC can be adopted:
+
+* Demonstrate that the package documentation can build and be linked from a branch of the `Science Pipelines docs`_ (see :ref:`package_and_pipeline_docs` for how to do this)`.
 
 Packages that will not be distributed as part of a release do not require an RFC.
 
@@ -56,6 +61,25 @@ The new package must be added to the `etc/repos.yaml file in the lsst/repos repo
 This file is governed by a "self-merge" policy: upon opening a pull request, it will be checked by GitHub Actions, and developers may merge without further review on success.
 This change **must** be merged before the package can be built on Jenkins, and this should be done early in the RFC implementation process.
 Refer to :jira:`RFC-75` for background.
+
+.. _package_and_pipeline_docs:
+
+Package and pipelines docs
+--------------------------
+
+Documentation for the new package must be built and linked from the main `Science Pipelines docs`_ page.
+Before your package is included in the official builds, you need to follow these steps to make that documentation visible to reviewers.
+This must be done as part of your RFC proposal (for pre-existing packages), or prior to marking the RFC implemented (for packages that did not exist prior to the RFC being filed):
+
+1. Follow the instructions for :ref:`adding a package to pipelines.lsst.io <add-to-pipelines-lsst-io>` on a ticket branch.
+2. :ref:`Build the Science PIpelines docs locally <local-pipelines-lsst-io-build>` on that branch.
+3. Copy the ``_build/html`` directory from your pipelines build to a place that's publicly viewable (e.g. your public web path on :doc:`the USDF </usdf/storage>`).
+4. Include a link to those built docs in your RFC.
+
+.. note::
+
+   The current Science Pipelines documentation build only builds against tagged versions of packages (e.g. daily or weekly tags) in a release with a Docker image build, like ``lsst_distrib``.
+   You can work around this current limitation by building the documentation locally and publishing it with your USDF web hosting, as described above.
 
 Top-level product dependency
 ----------------------------
@@ -152,3 +176,4 @@ New :doc:`Git LFS-backed </git/git-lfs>` repos (or existing repos being converte
 .. _repos.yaml: https://github.com/lsst/repos/blob/main/etc/repos.yaml
 .. _manifest.remap:  https://github.com/lsst/lsstsw/blob/main/etc/manifest.remap
 .. _pipe_base: https://github.com/lsst/pipe_base/
+.. _Science Pipelines docs: https://pipelines.lsst.io/
