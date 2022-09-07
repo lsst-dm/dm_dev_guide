@@ -5,7 +5,7 @@ Adding a New Package to the Build
 .. _adding_new_package:
 
 Creating a new package
-----------------------
+======================
 
 To create a new LSST package, send a "create project" message to ``@sqrbot-jr`` on the LSST Slack and select "LSST EUPS package" as the project type.
 Follow the prompts to select the GitHub organization (choose ``lsst`` for the `LSST organization on GitHub`_ for packages that you plan to add to the full distribution via RFC, as described below) and the specific flavor of package (e.g. ``Pipelines Python`` for a typical python package that depends on `pipe_base`_)  to get an appropriate directory structure set up.
@@ -16,7 +16,10 @@ DM packaging of third party code should proceed as described in :doc:`packaging-
 If the new package needs a distinct Jira component (most will), any DMLT member (such as your manager) can add one.
 
 Adding a package to a distributed product
------------------------------------------
+=========================================
+
+RFC process
+-----------
 
 New packages intended for distribution to end users should generally be added as a dependency of a "top-level product:" these are the roots of the LSST package hierarchy.
 They include ``lsst_apps``, ``lsst_distrib``, ``qserv_distrib`` and ``lsst_sims``.
@@ -31,6 +34,9 @@ Before adopting the RFC, the following steps must be completed:
 
 Packages that will not be distributed as part of a release do not require an RFC.
 
+Repository access
+-----------------
+
 Access to the repository must be granted by a repository administrator to appropriate teams.
 For DM-written code, these include "Data Management" and "Overlords."
 For third-party code, either forked or packaged as "TaP" tarball-and-patch, use the "DM Externals" and "Overlords" (but *not* "Data Management") teams.
@@ -43,10 +49,16 @@ The roles assigned to these teams should typically be "Write" for "Data Manageme
   The automated builds use the team membership to determine the type of tag to be applied.
   Having the code reside in the ``lsst`` or ``lsst-dm`` organization on GitHub is not sufficient.
 
+repos.yaml
+----------
+
 The new package must be added to the `etc/repos.yaml file in the lsst/repos repository`_ along with its corresponding GitHub URL.
 This file is governed by a "self-merge" policy: upon opening a pull request, it will be checked by GitHub Actions, and developers may merge without further review on success.
 This change **must** be merged before the package can be built on Jenkins.
 Refer to :jira:`RFC-75` for background.
+
+Top-level product dependency
+----------------------------
 
 The new package then needs to be added to the :file:`ups/*.table` file (and possibly the :file:`ups/*.cfg` file if this is a C++ package) of one or more other packages in the stack where it is used so that the build system can work out the correct dependency tree.
 Table files should use ``setupRequired(package_name)`` or ``setupOptional(package_name)`` as necessary; test data packages are usually optional to allow releases to be made without requiring large additional data packages to be included.
