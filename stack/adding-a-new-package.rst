@@ -29,7 +29,7 @@ Consensus must be reached regarding both the name and the suitability of the new
 Before adopting the RFC, the following steps must be completed:
 
 * Implementation tickets are created to cover package creation.
-* The package is migrated to the ``lsst`` org, if not already there.
+* The package is migrated to the `LSST organization on GitHub`_, if not already there.
 * An audit is done of any dependencies with a focus on identifying implied dependencies.
 
 Packages that will not be distributed as part of a release do not require an RFC.
@@ -54,7 +54,7 @@ repos.yaml
 
 The new package must be added to the `etc/repos.yaml file in the lsst/repos repository`_ along with its corresponding GitHub URL.
 This file is governed by a "self-merge" policy: upon opening a pull request, it will be checked by GitHub Actions, and developers may merge without further review on success.
-This change **must** be merged before the package can be built on Jenkins.
+This change **must** be merged before the package can be built on Jenkins, and this should be done early in the RFC implementation process.
 Refer to :jira:`RFC-75` for background.
 
 Top-level product dependency
