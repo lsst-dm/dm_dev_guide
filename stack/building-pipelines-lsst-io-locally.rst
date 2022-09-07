@@ -135,7 +135,7 @@ Further reading
 - Alternative ways to build documentation:
 
    - :doc:`building-single-package-docs`
-   - Building pipelines.lsst.io with Jenkins CI
+   - :ref:`Building pipelines.lsst.io with Jenkins CI <jenkins-pipelines-lsst-io-build>`
 
 .. _`Documenteer`: https://documenteer.lsst.io
 .. _`Documentation for the stack-docs command in Documenteer`:

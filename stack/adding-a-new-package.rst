@@ -24,7 +24,7 @@ RFC process
 New packages intended for distribution to end users should generally be added as a dependency of a "top-level product:" these are the roots of the LSST package hierarchy.
 They include ``lsst_apps``, ``lsst_distrib``, ``qserv_distrib`` and ``lsst_sims``.
 
-Before adding a new dependency one these top-level distribution products, it must be approved through the :doc:`RFC process </processes/decision_process>`.
+Before adding a new dependency to one of these top-level distribution products, it must be approved through the :doc:`RFC process </communications/rfc>`.
 Consensus must be reached regarding both the name and the suitability of the new package.
 Before adopting the RFC, the following steps must be completed:
 
