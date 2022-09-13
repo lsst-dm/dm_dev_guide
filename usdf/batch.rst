@@ -36,10 +36,14 @@ Download package condor.tar.gz , and unpack it in your home directory on Rubin m
 Edit files to specify your home directory and username
   - condor/condor_config: change VAR_FOR_HOME
   - condor_master in  server_bootstrap.sh
-Source server_bootstrap.sh (if HTCondor is not running )or client_env_setup.sh (for system variables setup only).
+Source server_bootstrap.sh (if HTCondor is not running), or client_env_setup.sh (for system variables setup only).
 These scripts will create catalogs, setup system variables and start personal condor (server_bootstrap.sh).
 Create a glide-in to slurm with:
-``sbatch ~/condor/glidein/exec.sl``
+
+.. prompt:: bash
+
+sbatch ~/condor/glidein/exec.sl bash
+
 Check the status of the glide-in with
 ``squeue -u username``
 If glide-in is running, submit your job with ``bps submit``.
