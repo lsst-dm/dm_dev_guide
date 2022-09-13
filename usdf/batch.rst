@@ -42,8 +42,7 @@ Source server_bootstrap.sh (if HTCondor is not running), or client_env_setup.sh 
 These scripts will create catalogs, setup system variables and start personal condor (server_bootstrap.sh).
 Create a glide-in to slurm with:
 
-.. prompt:: bash
-   sbatch ~/condor/glidein/exec.sl 
+`sbatch ~/condor/glidein/exec.sl`
 
 Check the status of the glide-in with
 ``squeue -u username``
