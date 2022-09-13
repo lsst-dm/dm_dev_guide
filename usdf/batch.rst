@@ -19,7 +19,7 @@ Running LSST Pipelines with BPS
 ===============================
 The LSST Batch Processing Service (`BPS <https://github.com/lsst/ctrl_bps>`__) is the standard execution framework for running LSST pipelines using batch resources.  There are a few different plugins to BPS that are available that can be used for running BPS on various computing systems:
 
-- :ref:`ctrl_bps_htcondor <ctrl_bps_htcondor>`
+- ctrl_bps_htcondor
 - ctrl_bps_panda
 - :ref:`ctrl_bps_parsl <ctrl_bps_parsl>`
 
