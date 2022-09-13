@@ -19,11 +19,31 @@ Running LSST Pipelines with BPS
 ===============================
 The LSST Batch Processing Service (`BPS <https://github.com/lsst/ctrl_bps>`__) is the standard execution framework for running LSST pipelines using batch resources.  There are a few different plugins to BPS that are available that can be used for running BPS on various computing systems:
 
-- ctrl_bps_htcondor
+- :ref:`ctrl_bps_htcondor <ctrl_bps_htcondor>`
 - ctrl_bps_panda
 - :ref:`ctrl_bps_parsl <ctrl_bps_parsl>`
 
 .. _ctrl_bps_parsl:
+
+
+ctrl_bps_htcondor
+=================
+This section describes how to obtain a personal `HTCondor <https://htcondor.org>`__ pool and run BPS workflows with it.
+HTCondor is not included in the LSST stack, so install it locally.
+Try to import it from python shell first (just in case). If it is not there, install it with:
+``pip3 install --user htcondor``
+Download package condor.tar.gz , and unpack it in your home directory on Rubin machines at SLAC.
+Edit files to specify your home directory and username
+  - condor/condor_config: change VAR_FOR_HOME
+  - condor_master in  server_bootstrap.sh
+Source server_bootstrap.sh (if HTCondor is not running )or client_env_setup.sh (for system variables setup only).
+These scripts will create catalogs, setup system variables and start personal condor (server_bootstrap.sh).
+Create a glide-in to slurm with:
+``sbatch ~/condor/glidein/exec.sl``
+Check the status of the glide-in with
+``squeue -u username``
+If glide-in is running, submit your job with ``bps submit``.
+
 
 ctrl_bps_parsl
 ==============
