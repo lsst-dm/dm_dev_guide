@@ -34,8 +34,10 @@ Try to import it from python shell first (just in case). If it is not there, ins
 ``pip3 install --user htcondor``
 Download  `condor.tar.gz <https://jira.lsstcorp.org/secure/attachment/63075/condor.tar.gz>`__ package, and unpack it in your home directory on Rubin machines at SLAC.
 Edit files to specify your home directory and username
+
 - condor/condor_config: change VAR_FOR_HOME
 - condor_master in  server_bootstrap.sh
+
 Source server_bootstrap.sh (if HTCondor is not running), or client_env_setup.sh (for system variables setup only).
 These scripts will create catalogs, setup system variables and start personal condor (server_bootstrap.sh).
 Create a glide-in to slurm with:
