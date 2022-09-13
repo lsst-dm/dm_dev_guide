@@ -32,7 +32,7 @@ This section describes how to obtain a personal `HTCondor <https://htcondor.org>
 HTCondor is not included in the LSST stack, so install it locally.
 Try to import it from python shell first (just in case). If it is not there, install it with:
 ``pip3 install --user htcondor``
-Download package `condor.tar.gz <https://jira.lsstcorp.org/secure/attachment/63075/condor.tar.gz>`__, and unpack it in your home directory on Rubin machines at SLAC.
+Download  `condor.tar.gz <https://jira.lsstcorp.org/secure/attachment/63075/condor.tar.gz>`__ package, and unpack it in your home directory on Rubin machines at SLAC.
 Edit files to specify your home directory and username
   - condor/condor_config: change VAR_FOR_HOME
   - condor_master in  server_bootstrap.sh
