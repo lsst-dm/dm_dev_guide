@@ -47,6 +47,20 @@ You can modify your .ssh config to allow direct passwordless access from your de
 
 and then add your e.g. ``~/.ssh/id_rsa.pub`` from from your device to ``~/.ssh/authorized_keys`` at SLAC.
 
+Outbound Access
+===============
+
+Currently the s3df is in private IP space, so a squid proxy is used to access the outside world. Your .bashrc was configured when your account got created to set environment variables to make use of the proxy. You should not overwrite the section of your .bashc that sets HTTPS_PROXY (and similar).
+
+Should you have overwritten your .bashrc, this snippet is what set up the environment variables:
+
+.. code-block:: text
+
+   # SLAC S3DF - source all files under ~/.profile.d
+   if [[ -e ~/.profile.d && -n "$(ls -A ~/.profile.d/)" ]]; then
+      source <(cat $(find -L  ~/.profile.d -name '*.conf'))
+   fi
+
 Staff RSP
 =========
 
