@@ -29,7 +29,10 @@ Interim while NCSA data is being placed at SLAC
 Butler access
 =============
 
-The USDF butler can be accessed at https://usdf-butler.slac.stanford.edu
+The primary Butler repos are located at ``/sdf/group/rubin/repo/main_20210215`` and ``/sdf/group/rubin/repo/dc2_20210215``.
+They can also be accessed via aliases ``/repo/main`` and ``/repo/dc2``.
+
+The USDF butler Registry can be accessed at ``usdf-butler.slac.stanford.edu``.
 
 As of this writing, authentication is by account and password, obtained from vault, but is being transitioned to access by existing per-user credentials. The actual url is hidden in the db-auth.yaml files.
 
