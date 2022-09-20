@@ -29,7 +29,7 @@ ctrl_bps_parsl
 ==============
 The `ctrl_bps_parsl <https://github.com/lsst/ctrl_bps_parsl/>`__ package uses the `Parsl parallel programming library <https://parsl-project.org/>`__ to enable running on HPC resources.  This plugin can also be configured for running on a single node, such as a laptop, which is useful for testing and development.  An `earlier version <https://github.com/LSSTDESC/gen3_workflow/>`__ of this plugin was developed by DESC and has been used extensively by DESC at `NERSC <https://www.nersc.gov/>`__, `CC-IN2P3 <https://cc.in2p3.fr/en/>`__, and `CSD3 <https://www.hpc.cam.ac.uk/high-performance-computing>`__ for running the LSST Science Pipelines at scale.  The ctrl_bps_parsl package `README <https://github.com/lsst/ctrl_bps_parsl#readme>`__ has further details about the history, development, and usage of this plugin.   The `README  <https://github.com/lsst/ctrl_bps_parsl#readme>`__ also has instructions for installing Parsl for use with the LSST Science Pipelines code.
 
-There are nominally five different site configuration classes in ctrl_bps_parsl that can be used for running BPS jobs on the SLAC SDF cluster.  Here is an example BPS configuration file that illustrates possible configurations for each one:
+There are nominally four different site configuration classes in ctrl_bps_parsl that can be used for running BPS jobs on the SLAC S3DF cluster.  Here is an example BPS configuration file that illustrates possible configurations for each one:
 
 .. code-block:: yaml
    :name: bps-parsl-config-example
@@ -52,10 +52,6 @@ There are nominally five different site configuration classes in ctrl_bps_parsl 
        walltime: 2:00:00     # This is 2 hours
        cores_per_node: 100
        qos: normal
-     slac_sdf:
-       class: lsst.ctrl.bps.parsl.sites.slac.Sdf
-       nodes: 10
-       walltime: 2:00:00
      triple_slurm:
        class: lsst.ctrl.bps.parsl.sites.TripleSlurm
        nodes: 1
@@ -98,17 +94,13 @@ Note that the ``--cpus-per-task`` matches the number of ``cores`` in the ``local
 
 Slurm
 -----
-This class uses a generic Slurm site configuration that can, in principle, be used with any Slurm submission system.  However, there is no interface (yet) to specify the Slurm partition, so for running at SDF, the default ``shared`` partition will be requested, and therefore the Slurm jobs can be pre-empted by jobs from the owners of the nodes being used.
+This class uses a generic Slurm site configuration that can, in principle, be used with any Slurm submission system.  However, there is no interface (yet) to specify the Slurm partition, so for running at S3DF, the default ``roma`` partition will be used.
 
-In the above example, an allocation of 10 nodes with at least 100 cores per node is requested.  Note that ``qos: normal`` needs to be set explicitly for running at SDF.
+In the above example, an allocation of 10 nodes with at least 100 cores per node is requested.  Note that ``qos: normal`` needs to be set explicitly for running at S3DF.
 
-The ``bps submit <bps config yaml>`` command will have Parsl submit a pilot job request to the Slurm queues, and once the pilot job starts, Parsl will run the pipetask jobs on that allocation.  Meanwhile, the ``bps submit`` command will continue to run on the user's command line, outputting various log messages from BPS and Parsl.   The ``Slurm`` configuration class uses Parsl's `HighThroughputExecutor <https://parsl.readthedocs.io/en/stable/stubs/parsl.executors.HighThroughputExecutor.html#parsl.executors.HighThroughputExecutor>`__ to manage the job execution on the allocated nodes, assigning one core per pipetask job.  An important caveat is that the per-pipetask memory requests provided by the BPS config are ignored, so if the average memory per pipetask exceeds 4GB and all of the cores on a SDF batch node are running, an out-of-memory error will occur, and the Slurm job will terminate.  The ``TripleSlurm`` and ``LocalSrunWorkQueue`` configuration classes provide ways of handling the per-pipetask memory requests.
+The ``bps submit <bps config yaml>`` command will have Parsl submit a pilot job request to the Slurm queues, and once the pilot job starts, Parsl will run the pipetask jobs on that allocation.  Meanwhile, the ``bps submit`` command will continue to run on the user's command line, outputting various log messages from BPS and Parsl.   The ``Slurm`` configuration class uses Parsl's `HighThroughputExecutor <https://parsl.readthedocs.io/en/stable/stubs/parsl.executors.HighThroughputExecutor.html#parsl.executors.HighThroughputExecutor>`__ to manage the job execution on the allocated nodes, assigning one core per pipetask job.  An important caveat is that the per-pipetask memory requests provided by the BPS config are ignored, so if the average memory per pipetask exceeds 4GB and all of the cores on a S3DF batch node are running, an out-of-memory error will occur, and the Slurm job will terminate.  The ``TripleSlurm`` and ``LocalSrunWorkQueue`` configuration classes provide ways of handling the per-pipetask memory requests.
 
 A useful feature of this class is that it uses the `sbatch <https://slurm.schedmd.com/sbatch.html#OPT_singleton>`__ ``--dependency=singleton`` option to schedule a Slurm job that is able to begin execution as soon as the previous job (with the same job name and user) finishes.  This way long running pipelines need not request a single, long (and difficult to schedule) allocation at the outset and can instead use a series of smaller allocations as needed.
-
-slac.Sdf
---------
-This is essentially the same as ``slurm``, but the ``--partition=rubin``  and ``--qos=normal`` sbatch options have been set.
 
 TripleSlurm
 -----------
@@ -125,13 +117,12 @@ In this class, a Parsl `LocalProvider <https://parsl.readthedocs.io/en/stable/st
 
    #!/bin/bash
 
-   #SBATCH --partition=rubin
    #SBATCH --nodes=10
    #SBATCH --exclusive
    #SBATCH --time=02:00:00
 
    cd <working_dir>
-   source /cvmfs/sw.lsst.eu/linux-x86_64/lsst_distrib/w_2022_30/loadLSST-ext.bash
+   source /cvmfs/sw.lsst.eu/linux-x86_64/lsst_distrib/w_2022_38/loadLSST-ext.bash
    setup lsst_distrib
    <other setup commands>
    bps submit <bps yaml file>
