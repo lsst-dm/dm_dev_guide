@@ -102,7 +102,7 @@ This class should be used for running on a single node.  The ``cores`` field sho
 
 .. prompt:: bash
 
-   srun --pty --cpus-per-task=8 --mem-per-cpu=4G --time=01:00:00 --partition=rubin bash
+   srun --pty --cpus-per-task=8 --mem-per-cpu=4G --time=01:00:00 --partition=roma bash
 
 Note that the ``--cpus-per-task`` matches the number of ``cores`` in the ``local`` config.
 
