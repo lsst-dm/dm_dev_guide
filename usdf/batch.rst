@@ -48,10 +48,13 @@ There are nominally four different site configuration classes in ctrl_bps_parsl 
        cores: 8
      slurm:
        class: lsst.ctrl.bps.parsl.sites.Slurm
-       nodes: 10
+       nodes: 2
        walltime: 2:00:00     # This is 2 hours
        cores_per_node: 100
        qos: normal
+       scheduler_options: |
+         #SBATCH --partition=roma
+         #SBATCH --exclusive
      triple_slurm:
        class: lsst.ctrl.bps.parsl.sites.TripleSlurm
        nodes: 1
@@ -94,9 +97,9 @@ Note that the ``--cpus-per-task`` matches the number of ``cores`` in the ``local
 
 Slurm
 -----
-This class uses a generic Slurm site configuration that can, in principle, be used with any Slurm submission system.  However, there is no interface (yet) to specify the Slurm partition, so for running at S3DF, the default ``roma`` partition will be used.
+This class uses a generic Slurm site configuration that can, in principle, be used with any Slurm submission system.
 
-In the above example, an allocation of 10 nodes with at least 100 cores per node is requested.  Note that ``qos: normal`` needs to be set explicitly for running at S3DF.
+In the above example, an allocation of 2 nodes with at least 100 cores per node is requested.   Various ``sbatch`` options can be passed to slurm via the ``scheduler_options`` entry.  In the above example, we've chosen the ``roma`` partition at S3DF and requested exclusive use of the nodes.
 
 The ``bps submit <bps config yaml>`` command will have Parsl submit a pilot job request to the Slurm queues, and once the pilot job starts, Parsl will run the pipetask jobs on that allocation.  Meanwhile, the ``bps submit`` command will continue to run on the user's command line, outputting various log messages from BPS and Parsl.   The ``Slurm`` configuration class uses Parsl's `HighThroughputExecutor <https://parsl.readthedocs.io/en/stable/stubs/parsl.executors.HighThroughputExecutor.html#parsl.executors.HighThroughputExecutor>`__ to manage the job execution on the allocated nodes, assigning one core per pipetask job.  An important caveat is that the per-pipetask memory requests provided by the BPS config are ignored, so if the average memory per pipetask exceeds 4GB and all of the cores on a S3DF batch node are running, an out-of-memory error will occur, and the Slurm job will terminate.  The ``TripleSlurm`` and ``LocalSrunWorkQueue`` configuration classes provide ways of handling the per-pipetask memory requests.
 
