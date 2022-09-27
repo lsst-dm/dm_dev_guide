@@ -83,6 +83,17 @@ Monitoring of the pipetask job progress can be enabled by adding the lines
 
 to the desired ``site`` subsection.  The ``monitorFilename`` field specifies the name of the sqlite3 file into which the Parsl workflow tracking information is written.  Parsl has a web-app for displaying the monitoring information, and installation of the packages needed to support that web-app are described in the ctrl_bps_parsl `README <https://github.com/lsst/ctrl_bps_parsl#parsl-with-monitoring-support>`__.  This `python module <https://github.com/LSSTDESC/gen3_workflow/blob/master/python/desc/gen3_workflow/query_workflow.py>`__ provides an example for reading the info from that monitoring database.
 
+.. note::
+
+  As of 2022-09-27, the ``parsl`` module and its dependencies are only available at S3DF via the CVMFS distributions of ``lsst_distrib`` for weekly ``w_2022_37`` and later.  However, the modules needed for Parsl *monitoring* are not available in the CVMFS distributions.  They can be installed in ``~/.local`` with the following commands::
+
+   $ source /cvmfs/sw.lsst.eu/linux-x86_64/lsst_distrib/w_2022_39/loadLSST-ext.bash
+   $ setup lsst_distrib
+   $ pip install 'parsl[monitoring]' --user
+   $ pip uninstall sqlalchemy
+
+  The ``pip uninstall sqlalchemy`` command is needed since the ``pip install 'parsl[monitoring]'`` command installs an earlier version of ``sqlalchemy`` that's incompatible with ``lsst_distrib``.
+
 Notes on each of the example configurations follow (Each class listed below lives in the ``lsst.ctrl.bps.parsl.sites`` namespace):
 
 Local
