@@ -34,6 +34,10 @@ Running a stack-os-matrix job
      - ``ci_hsc`` exercises most of the Data Release Production pipelines, including single-frame processing and coaddition, on HSC engineering data. This package is also run as part of the nightly build.
      - ``ci_imsim`` runs the same on simulated Rubin Observatory data. Like ``ci_hsc``, it's run nightly in addition to as part of ``stack-os-matrix``.
 
+   - **Set the conda environment** to run on.
+     The default is the latest ``rubin-env`` package.
+     You should only need to change this when testing a new environment, or to temporarily work around bugs introduced in the latest version.
+
 4. Click the **Run** button in the dialog to start the build.
 
 Monitoring the run status
