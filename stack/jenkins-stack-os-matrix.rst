@@ -24,14 +24,11 @@ Running a stack-os-matrix job
      Because of those third-party packages, you *never* want to specify ``main`` explicitly in this field.
 
    - **Set the list of EUPS packages** to build.
-     Use the default (``lsst_distrib``) to build and test your changes with a full Stack.
-     To improve build times you can instead specify the name of the package you are actively developing and check the **Skip Demo** box.
+     Use the default (``lsst_distrib lsst_ci``) to build and test your changes with a full Stack.
+     To improve build times you can instead specify the name of the package you are actively developing.
+     Before you merge a ticket branch to ``main``, **you must** run a stack-os-matrix Job with at least the default packages so that the full Stack is built and tested with your changes.
 
-   - **Check the Skip Demo** option only if you are testing your package alone (in conjunction with specifying your package in the prior text box).
 
-     Before you merge a ticket branch to ``main``, **you must** run a stack-os-matrix Job without **Skip Demo** enabled so that the full Stack is built and tested with your changes.
-
-     When the ``demo`` is run, the `lsst_ci`_ top-level package is automatically added to the build and the `lsst_dm_stack_demo`_ is run to test a simple :command:`processCcd.py`\ -based pipeline.
 
 4. Click the **Run** button in the dialog to start the build.
 
