@@ -28,7 +28,11 @@ Running a stack-os-matrix job
      To improve build times you can instead specify the name of the package you are actively developing.
      Before you merge a ticket branch to ``main``, **you must** run a stack-os-matrix Job with at least the default packages so that the full Stack is built and tested with your changes.
 
+     There are also several packages that can be appended to the default to do more thorough testing at the cost of much longer build times:
 
+     - ``ci_cpp`` exercises the Calibration Products Pipeline in ways that are too computationally expensive for unit tests in ``cp_pipe``.
+     - ``ci_hsc`` exercises most of the Data Release Production pipelines, including single-frame processing and coaddition, on HSC engineering data. This package is also run as part of the nightly build.
+     - ``ci_imsim`` runs the same on simulated Rubin Observatory data. Like ``ci_hsc``, it's run nightly in addition to as part of ``stack-os-matrix``.
 
 4. Click the **Run** button in the dialog to start the build.
 
