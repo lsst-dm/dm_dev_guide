@@ -34,17 +34,7 @@ They can also be accessed via aliases ``/repo/main`` and ``/repo/dc2``.
 
 The USDF butler Registry can be accessed at ``usdf-butler.slac.stanford.edu``.
 
-As of this writing, authentication is by account and password, obtained from vault, but is being transitioned to access by existing per-user credentials. The actual url is hidden in the db-auth.yaml files.
-
-You need to provide a file called db-auth.yaml and put it (chmod 600) in your ~/.lsst/ directory. The file looks like:
-
-.. code-block:: text
-
-   - url: postgresql://usdf-butler.slac.stanford.edu:5432/lsstdb1
-     username: xxx
-     password: yyy
-     
-where you'll need to inquire about the account and password. The mechanism for that is being worked on.
+As of this writing, authentication is by a single account and password. It will be set up for you automatically once you log in to RSP once, creating a .lsst/postgres-credentials.txt file.
 
 Data Transfer Tools
 ===================
