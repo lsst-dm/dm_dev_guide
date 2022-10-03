@@ -20,18 +20,25 @@ Running a stack-os-matrix job
 
      For example, if you enter ``tickets/DM-2 tickets/DM-1``, the build system will attempt to check out the ``tickets/DM-2`` branch in Stack packages.
      If a package does not have a ``tickets/DM-2`` branch, it will attempt to check out the ``tickets/DM-1`` branch.
+
      If a package has neither branch, it falls back to checking out the ``main`` branch or the branch configured in ``repos.yaml`` in the case of forked third-party packages.
      Because of those third-party packages, you *never* want to specify ``main`` explicitly in this field.
+     To check that a ``main``-only build passes, leave the refs box entirely blank.
 
    - **Set the list of EUPS packages** to build.
-     Use the default (``lsst_distrib``) to build and test your changes with a full Stack.
-     To improve build times you can instead specify the name of the package you are actively developing and check the **Skip Demo** box.
+     Use the default (``lsst_distrib lsst_ci``) to build and test your changes with a full Stack.
+     To improve build times you can instead specify the name of the package you are actively developing.
+     Before you merge a ticket branch to ``main``, **you must** run a stack-os-matrix Job with at least the default packages so that the full Stack is built and tested with your changes.
 
-   - **Check the Skip Demo** option only if you are testing your package alone (in conjunction with specifying your package in the prior text box).
+     There are also several packages that can be appended to the default to do more thorough testing at the cost of much longer build times:
 
-     Before you merge a ticket branch to ``main``, **you must** run a stack-os-matrix Job without **Skip Demo** enabled so that the full Stack is built and tested with your changes.
+     - ``ci_cpp`` exercises the Calibration Products Pipeline in ways that are too computationally expensive for unit tests in ``cp_pipe``.
+     - ``ci_hsc`` exercises most of the Data Release Production pipelines, including single-frame processing and coaddition, on HSC engineering data. This package is also run as part of the nightly build.
+     - ``ci_imsim`` runs the same on simulated Rubin Observatory data. Like ``ci_hsc``, it's run nightly in addition to as part of ``stack-os-matrix``.
 
-     When the ``demo`` is run, the `lsst_ci`_ top-level package is automatically added to the build and the `lsst_dm_stack_demo`_ is run to test a simple :command:`processCcd.py`\ -based pipeline.
+   - **Set the conda environment** to run on.
+     The default is the latest ``rubin-env`` package.
+     You should only need to change this when testing a new environment, or to temporarily work around bugs introduced in the latest version.
 
 4. Click the **Run** button in the dialog to start the build.
 
