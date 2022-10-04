@@ -41,7 +41,7 @@ They can also be accessed via aliases ``/repo/main`` and ``/repo/dc2``.
 
 The USDF butler Registry can be accessed at ``usdf-butler.slac.stanford.edu``.
 
-As of this writing, authentication is by a single account and password. It will be set up for you automatically once you log in to RSP once, creating a .lsst/postgres-credentials.txt file.
+As of this writing, authentication is by a single account and password. It will be set up for you automatically once you log in to RSP once, creating a .lsst/postgres-credentials.txt file. You wil need to fire up a notebook server while on RSP.
 
 Data Transfer Tools
 ===================
