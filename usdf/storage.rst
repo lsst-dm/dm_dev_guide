@@ -13,7 +13,7 @@ Personal space:
  
 Web space:
  - "public_html" web access is available upon request: it will be visible at https://s3df.slac.stanford.edu/people/<user>
- - send email to usdf at slac.stanford.edu requesting a personal web directory
+ - send email to usdf-help at slac.stanford.edu requesting a personal web directory
  - a public_html directory will be created in your home directory after acknowledging a usage policy
  - note that this is for static pages - no server-side content.
  - no symlinks outside public_html will be followed.
