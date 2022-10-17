@@ -5,7 +5,7 @@ Adding a New Package to the Build
 .. _adding_new_package:
 
 Creating a new package
-----------------------
+======================
 
 To create a new LSST package, send a "create project" message to ``@sqrbot-jr`` on the LSST Slack and select "LSST EUPS package" as the project type.
 Follow the prompts to select the GitHub organization (choose ``lsst`` for the `LSST organization on GitHub`_ for packages that you plan to add to the full distribution via RFC, as described below) and the specific flavor of package (e.g. ``Pipelines Python`` for a typical python package that depends on `pipe_base`_)  to get an appropriate directory structure set up.
@@ -16,20 +16,31 @@ DM packaging of third party code should proceed as described in :doc:`packaging-
 If the new package needs a distinct Jira component (most will), any DMLT member (such as your manager) can add one.
 
 Adding a package to a distributed product
------------------------------------------
+=========================================
+
+RFC process
+-----------
 
 New packages intended for distribution to end users should generally be added as a dependency of a "top-level product:" these are the roots of the LSST package hierarchy.
 They include ``lsst_apps``, ``lsst_distrib``, ``qserv_distrib`` and ``lsst_sims``.
 
-Before adding a new dependency one these top-level distribution products, it must be approved through the :doc:`RFC process </processes/decision_process>`.
+Before adding a new dependency to one of these top-level distribution products, it must be approved through the :doc:`RFC process </communications/rfc>`.
 Consensus must be reached regarding both the name and the suitability of the new package.
 Before adopting the RFC, the following steps must be completed:
 
 * Implementation tickets are created to cover package creation.
-* The package is migrated to the ``lsst`` org, if not already there.
+* The package is migrated to the `LSST organization on GitHub`_, if not already there.
+* The package must have a descriptive README file at the root level, describing how it fits into the Science Pipelines infrastructure.
 * An audit is done of any dependencies with a focus on identifying implied dependencies.
 
+If the package in the RFC already exists, you must also complete these steps before the RFC can be adopted:
+
+* Demonstrate that the package documentation can build and be linked from a branch of the `Science Pipelines docs`_ (see :ref:`package_and_pipeline_docs` for how to do this)`.
+
 Packages that will not be distributed as part of a release do not require an RFC.
+
+Repository access
+-----------------
 
 Access to the repository must be granted by a repository administrator to appropriate teams.
 For DM-written code, these include "Data Management" and "Overlords."
@@ -43,10 +54,35 @@ The roles assigned to these teams should typically be "Write" for "Data Manageme
   The automated builds use the team membership to determine the type of tag to be applied.
   Having the code reside in the ``lsst`` or ``lsst-dm`` organization on GitHub is not sufficient.
 
+repos.yaml
+----------
+
 The new package must be added to the `etc/repos.yaml file in the lsst/repos repository`_ along with its corresponding GitHub URL.
 This file is governed by a "self-merge" policy: upon opening a pull request, it will be checked by GitHub Actions, and developers may merge without further review on success.
-This change **must** be merged before the package can be built on Jenkins.
+This change **must** be merged before the package can be built on Jenkins, and this should be done early in the RFC implementation process.
 Refer to :jira:`RFC-75` for background.
+
+.. _package_and_pipeline_docs:
+
+Package and pipelines docs
+--------------------------
+
+Documentation for the new package must be built and linked from the main `Science Pipelines docs`_ page.
+Before your package is included in the official builds, you need to follow these steps to make that documentation visible to reviewers.
+This must be done as part of your RFC proposal (for pre-existing packages), or prior to marking the RFC implemented (for packages that did not exist prior to the RFC being filed):
+
+1. Follow the instructions for :ref:`adding a package to pipelines.lsst.io <add-to-pipelines-lsst-io>` on a ticket branch.
+2. :ref:`Build the Science PIpelines docs locally <local-pipelines-lsst-io-build>` on that branch.
+3. Copy the ``_build/html`` directory from your pipelines build to a place that's publicly viewable (e.g. your public web path on :doc:`the USDF </usdf/storage>`).
+4. Include a link to those built docs in your RFC.
+
+.. note::
+
+   The current Science Pipelines documentation build only builds against tagged versions of packages (e.g. daily or weekly tags) in a release with a Docker image build, like ``lsst_distrib``.
+   You can work around this current limitation by building the documentation locally and publishing it with your USDF web hosting, as described above.
+
+Top-level product dependency
+----------------------------
 
 The new package then needs to be added to the :file:`ups/*.table` file (and possibly the :file:`ups/*.cfg` file if this is a C++ package) of one or more other packages in the stack where it is used so that the build system can work out the correct dependency tree.
 Table files should use ``setupRequired(package_name)`` or ``setupOptional(package_name)`` as necessary; test data packages are usually optional to allow releases to be made without requiring large additional data packages to be included.
@@ -140,3 +176,4 @@ New :doc:`Git LFS-backed </git/git-lfs>` repos (or existing repos being converte
 .. _repos.yaml: https://github.com/lsst/repos/blob/main/etc/repos.yaml
 .. _manifest.remap:  https://github.com/lsst/lsstsw/blob/main/etc/manifest.remap
 .. _pipe_base: https://github.com/lsst/pipe_base/
+.. _Science Pipelines docs: https://pipelines.lsst.io/
