@@ -6,10 +6,16 @@ Meeting Free Weeks
 DM will observe  several **Meeting Free Weeks** each year. 
 
 
+Meeting Free Weeks 2023
+=======================
+In 2023 meeting free weeks will be: April 10 - 14, 
+June 19 - 23, 
+Sept 25 - 29,
+December 25 Jan 5.
+
 Meeting Free Weeks 2022
 =======================
-The DM Meeting Free weeks will be: June 13 - 17, September 19 - 23, and December 26 - Jan 9
-
+Remaining in 2022: December 26 - Jan 9
 
 Guidelines
 ==========
