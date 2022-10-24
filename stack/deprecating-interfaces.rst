@@ -128,7 +128,7 @@ To deprecate an entire package, first have its top-level :file:`__init__.py` (e.
 
     import warnings
 
-    warnings.warn('lsst.example.package is deprecated; it will be removed from the Rubin Observatory'
+    warnings.warn('lsst.example.package is deprecated; it will be removed from the Rubin Observatory '
                   'Science Pipelines after release 21.0.0', category=FutureWarning)
 
 Add a similar warning to the :file:`index.rst` file documenting this package (e.g. :file:`doc/lsst.example.package/index.rst)`::
