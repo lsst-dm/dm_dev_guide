@@ -9,7 +9,7 @@ Storage Locations
 
 Personal space:
  - Home directory space is available at /sdf/home/<first_letter_of_account>/<account> - standard S3DF personal allocation (25 GB)
- - Rubin-allocated space: /sdf/group/rubin/u/<account_name> with a 1 TB quota
+ - Rubin-allocated space: /sdf/group/rubin/user/<account_name> with a 1 TB quota (a symlink to this directory, called rubin-user, is auto-created in your home directory)
  
 Web space:
  - "public_html" web access is available upon request: it will be visible at https://s3df.slac.stanford.edu/people/<user>
