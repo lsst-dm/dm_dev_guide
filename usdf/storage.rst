@@ -22,7 +22,7 @@ Science data under /sdf/group/rubin/:
  - datasets/
  - lsstdata/offline/ (still in prep)
  - repo/
- - g/shared/data/{test,validation}_data - daily updated checkouts of git lfs repos for use in testing code
+ - shared/data/{test,validation}_data - daily updated checkouts of git lfs repos for use in testing code
  - ncsa_home - copy of NCSA home directories (in prep, setting permissions)
  - ncsa_jhome - copy of NCSA RSP home directories (in prep, setting permissions)
  
