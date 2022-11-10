@@ -16,7 +16,7 @@ The SLAC onboarding procedure involves the following steps:
 
 **If you already have a SLAC unix account, you do not need to be re-onboarded.**
 
-Note that if you only have a SLAC Confluence account (eg for DESC), you will still need to be onboarded as a user **and** there will be complications with your accounts.
+Note that if you only have a SLAC Confluence account (eg for DESC or LSSTCam), you will still need to be onboarded as a user **and** there will be complications with your accounts. SLAC and Rubin confluence sites are independent installations.
 
 - if your existing Confluence account name is longer than 8 characters (or if for some reason your unix account name did not match your confluence one), you will need a different name. In that case, a new Confluence identity is created using your unix account name, added to DESC permissions, and your old account deleted.
 - else: you will need to login to Confluence once with the unix password, then the Confluence admins will merge the unix and Confluence identities.
