@@ -28,7 +28,7 @@ Connecting and Authenticating
 
 Most LDF server nodes can be accessed after first connecting to the :doc:`lsst-login <lsst-login>` nodes. Once connected to an ``lsst-login`` node, a user can connect to a node via its short hostname (e.g., ``lsst-devl01``) without having to enter a password (Kerberos authentication should be used by default; if your Kerberos ticket expires on the login node you may need to ``kinit`` again before proceeding to the second node).
 
-For various suggestions on streamlining connections through the ``lsst-login`` nodes ("jump host" configuration, port forwarding, Kerberos) see :ref:`related documentation <lsst-login-connect>`.
+For various suggestions on streamlining connections through the ``lsst-login`` nodes ("jump host" configuration, port forwarding, Kerberos) see :doc:`related documentation </usdf/lsst-login>`.
 
 If you use an ``lsst-login`` node as a "jump host" and authenticate to another server node using a Kerberos ticket from your local machine (workstation/laptop), you may not have a Kerberos ticket when you arrive on the second node. You can configure ``GSSAPIDelegateCredentials yes`` in your local ``~/.ssh/config`` file in order to forward your Kerberos credentials to the second node and automatically create a ticket there upon connection.
 
@@ -54,7 +54,7 @@ The following text editors are installed and available: ``vim``, ``emacs``, ``na
 Git
 ---
 
-While most developers use ``git`` from the :ref:`software-stack`, a relatively recent version of ``git`` (2.24.x) is also installed as a package from the `IUS YUM repo <https://ius.io/>`_ on the host. 
+While most developers use ``git`` from the :ref:`software-stack`, a relatively recent version of ``git`` (2.24.x) is also installed as a package from the `IUS YUM repo <https://ius.io/>`_ on the host.
 
 .. _software-terminal-multiplex:
 
@@ -445,7 +445,7 @@ Users are encouraged to submit batch jobs to perform work that requires more sig
 Interactive Batch Jobs
 ----------------------
 
-Refer to :ref:`batch-htcondor-interactive-job` for details on how to submit simple, interactive batch jobs.
+Refer to :doc:`batch processing resources <../usdf/batch>` for details on how to submit simple, interactive batch jobs.
 
 .. _software-processing-batch:
 
