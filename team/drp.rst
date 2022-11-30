@@ -38,7 +38,7 @@ See also the project-wide :ref:`jira-labels`.
 Princeton HPC Systems
 =====================
 
-In addition to the regular LSST-provided compute systems (:doc:`lsst-devl </usdf/lsst-login>`), DRP team members have access to two clusters hosted by the `Research Computing Group <https://researchcomputing.princeton.edu>`_ in Princeton.
+In addition to the :doc:`regular LSST-provided compute systems </usdf/lsst-login>`, DRP team members have access to a number of clusters hosted by the `Research Computing Group <https://researchcomputing.princeton.edu>`_ in Princeton.
 Please refer to the Research Computing Group's pages for information on getting started, how to connect with SSH, usage policies, FAQs, etc.
 Be aware that you *must* comply with all their rules when using these systems
 
