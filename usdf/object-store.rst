@@ -44,7 +44,7 @@ Other development and production buckets, typically devoted to a single applicat
 Credentials
 ===========
 
-The default set of credentials for read-only access to the raw data buckets and for read-write access to the ``-users`` buckets is most easily retrieved by logging into the USDF RSP and starting a notebook server.
+The default set of credentials for read-only access to the embargo raw data buckets and for read-write access to the embargo ``-users`` buckets is most easily retrieved by logging into the USDF RSP and starting a notebook server.
 Starting the server will create or overwrite the ``~/.lsst/aws-credentials.ini`` file; the credentials will be set as the default profile in this file.
 The RSP and the default scripts executed by .bashrc upon ssh login will set the ``AWS_SHARED_CREDENTIALS_FILE`` environment variable to point to this file.
 
