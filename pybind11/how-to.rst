@@ -180,15 +180,15 @@ Following :ref:`our rules on file naming <style-guide-pybind11-module-naming>`, 
 
     #include "pybind11/pybind11.h"
 
-    #include "lsst/utils.python.h"
+    #include "lsst/cpputils/python.h"
 
     namespace lsst {
     namespace tmpl {
 
-    void wrapExampleOne(utils::python::WrapperCollection & wrappers);
+    void wrapExampleOne(cpputils::python::WrapperCollection & wrappers);
 
     PYBIND11_MODULE(_tmpl, mod) {
-        utils::python::WrapperCollection wrappers(mod, "lsst.tmpl");
+        cpputils::python::WrapperCollection wrappers(mod, "lsst.tmpl");
         wrapExampleOne(wrappers);
         wrappers.finish();
     }
@@ -199,7 +199,7 @@ Following :ref:`our rules on file naming <style-guide-pybind11-module-naming>`, 
 
     The name used for the ``PYBIND11_MODULE(..., mod)`` macro must match the name of the file, otherwise an ``ImportError`` will be raised.
 
-``WrapperCollection`` is a helper class provided by the LSST ``utils`` package that should be used in essentially all LSST pybind11 wrappers (the only exception being packages that have a good reason not to have a dependency on ``utils``).
+``WrapperCollection`` is a helper class provided by the LSST ``cpputils`` package that should be used in essentially all LSST pybind11 wrappers (the only exception being packages that have a good reason not to have a dependency on ``cpputils``).
 It makes it easier to avoid dependency problems when wrapping multiple interrelated classes.
 It also makes wrapped classes appear as if they were defined directly in the higher-level Python package (``lsst.tmpl`` here) rather than a hidden nested module like ``lsst.tmpl._tmpl``, which should be considered an implementation detail.
 ``WrapperCollection`` instances should always be passed by non-const reference.
@@ -218,7 +218,7 @@ The source file that will actually contain the wrappers for ``ExampleOne.h`` wil
 
     #include "pybind11/pybind11.h"
 
-    #include "lsst/utils/python.h"
+    #include "lsst/cpputils/python.h"
     #include "lsst/tmpl/ExampleOne.h"
 
     namespace py = pybind11;
@@ -226,7 +226,7 @@ The source file that will actually contain the wrappers for ``ExampleOne.h`` wil
 
     namespace lsst { namespace tmpl {
 
-    void wrapExampleOne(utils::python::WrapperCollection & wrappers) {
+    void wrapExampleOne(cpputils::python::WrapperCollection & wrappers) {
         // ... wrappers for ExampleOne go here ...
     }
 
@@ -245,7 +245,7 @@ We wrap the class using the ``py::class_<T>`` template:
 
 .. code-block:: cpp
 
-    void wrapExampleOne(utils::python::WrapperCollection & wrappers) {
+    void wrapExampleOne(cpputils::python::WrapperCollection & wrappers) {
         wrappers.wrapType(
             py::class_<ExampleOne, std::shared_ptr<ExampleOne>>(wrappers.module, "ExampleOne"),
             [](auto & mod, auto & cls) {
@@ -393,12 +393,12 @@ Here we use both approaches:
     cls.def("__iadd__", &ExampleOne::operator+= /* no py::is_operator() here */);
     cls.def("__add__", [](ExampleOne const & self, ExampleOne const & other) { return self + other; }, py::is_operator());
 
-Additionally, ``lsst::utils::python::addOutputOp`` can be used to generate one or both of the ``__str__`` and ``__repr__`` methods using the stream insertion operator (``operator<<``):
+Additionally, ``lsst::cpputils::python::addOutputOp`` can be used to generate one or both of the ``__str__`` and ``__repr__`` methods using the stream insertion operator (``operator<<``):
 
 .. code-block:: cpp
 
-    utils::python::addOutputOp(cls, "__str__");
-    utils::python::addOutputOp(cls, "__repr__");
+    cpputils::python::addOutputOp(cls, "__str__");
+    cpputils::python::addOutputOp(cls, "__repr__");
 
 .. note::
 
@@ -497,7 +497,7 @@ The end result of all the steps above looks like this:
     #include "pybind11/stl.h"
     #include "ndarray/pybind11.h"
 
-    #include "lsst/utils/python.h"
+    #include "lsst/cpputils/python.h"
     #include "lsst/tmpl/ExampleOne.h"
 
     namespace py = pybind11;
@@ -505,7 +505,7 @@ The end result of all the steps above looks like this:
 
     namespace lsst { namespace tmpl {
 
-    void wrapExampleOne(utils::python::WrapperCollection & wrappers) {
+    void wrapExampleOne(cpputils::python::WrapperCollection & wrappers) {
 
         wrappers.addInheritanceDependency("lsst.pex.exceptions");
 
@@ -661,7 +661,7 @@ Because code in different headers should usually be wrapped in different source 
 
     #include "pybind11/pybind11.h"
 
-    #include "lsst/utils/python.h"
+    #include "lsst/cpputils/python.h"
     #include "lsst/tmpl/ExampleTwo.h"
 
     namespace py = pybind11;
@@ -669,7 +669,7 @@ Because code in different headers should usually be wrapped in different source 
 
     namespace lsst { namespace tmpl {
 
-    void wrapExampleTwo(utils::python::WrapperCollection & wrappers) {
+    void wrapExampleTwo(cpputils::python::WrapperCollection & wrappers) {
         // ... wrappers for ExampleTwo go here ...
     }
 
@@ -681,7 +681,7 @@ Because code in different headers should usually be wrapped in different source 
 
     #include "pybind11/pybind11.h"
 
-    #include "lsst/utils/python.h"
+    #include "lsst/cpputils/python.h"
     #include "lsst/tmpl/ExampleThree.h"
 
     namespace py = pybind11;
@@ -689,7 +689,7 @@ Because code in different headers should usually be wrapped in different source 
 
     namespace lsst { namespace tmpl {
 
-    void wrapExampleThree(utils::python::WrapperCollection & wrappers) {
+    void wrapExampleThree(cpputils::python::WrapperCollection & wrappers) {
         // ... wrappers for ExampleThree go here ...
     }
 
@@ -704,16 +704,16 @@ Our main source file should then be updated to declare and call all of the ``wra
 
     #include "pybind11/pybind11.h"
 
-    #include "lsst/utils/python.h"
+    #include "lsst/cpputils/python.h"
 
     namespace lsst { namespace tmpl {
 
-    void wrapExampleOne(utils::python::WrapperCollection & wrappers);
-    void wrapExampleTwo(utils::python::WrapperCollection & wrappers);
-    void wrapExampleThree(utils::python::WrapperCollection & wrappers);
+    void wrapExampleOne(cpputils::python::WrapperCollection & wrappers);
+    void wrapExampleTwo(cpputils::python::WrapperCollection & wrappers);
+    void wrapExampleThree(cpputils::python::WrapperCollection & wrappers);
 
     PYBIND11_MODULE(_tmpl, mod) {
-        utils::python::WrapperCollection wrappers(mod, "lsst.tmpl");
+        cpputils::python::WrapperCollection wrappers(mod, "lsst.tmpl");
         wrapExampleOne(wrappers);
         wrapExampleTwo(wrappers);
         wrapExampleThree(wrappers);
@@ -768,7 +768,7 @@ Following :ref:`this rule <style-guide-pybind11-declare-template-wrappers>` we d
     namespace {
 
     template <typename T>
-    void declareExampleThree(utils::python::WrapperCollection & wrappers, std::string const & suffix) {
+    void declareExampleThree(cpputils::python::WrapperCollection & wrappers, std::string const & suffix) {
         using Class = ExampleThree<T>;
         using PyClass = py::class_<Class, std::shared_ptr<Class>, ExampleBase>;
 
@@ -783,7 +783,7 @@ Following :ref:`this rule <style-guide-pybind11-declare-template-wrappers>` we d
 
     } // anonymous
 
-    void wrapExampleThree(utils::python::WrapperCollection & wrappers) {
+    void wrapExampleThree(cpputils::python::WrapperCollection & wrappers) {
         declareExampleThree<int>(wrappers, "I");
         declareExampleThree<double>(wrappers, "D");
     }
