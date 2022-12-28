@@ -18,7 +18,7 @@ Check out the `README <https://github.com/lsst-dm/dm_dev_guide/blob/main/README.
 
 **Development guides:** :ref:`Overview <part-guides>` · :ref:`C++ <part-cpp>` · :ref:`Python <part-python>` · :ref:`Pybind11 <part-pybind11>` · :ref:`JavaScript <part-javascript>` · :ref:`ReStructuredText <part-rst>` · :ref:`DM Stack <part-dm-stack>` · :ref:`Git <part-git>` · :ref:`Editors <part-editors>` · :ref:`Legal <part-legal>` · :ref:`User documentation style <part-user-doc-style-guide>`
 
-**Services:** :ref:`Overview <part-services>` · :ref:`Jenkins <part-jenkins>` · :ref:`LSST Data Facility <part-ldf>`
+**Services:** :ref:`Overview <part-services>` · :ref:`Jenkins <part-jenkins>`
 
 ****
 
