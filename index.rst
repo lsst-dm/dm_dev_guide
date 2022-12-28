@@ -511,49 +511,6 @@ Jenkins CI
 
 - :doc:`jenkins/getting-started`
 
-.. NCSA/LDF SERVICES SECTION =================================================
-
-.. toctree::
-   :maxdepth: 1
-   :caption: LDF Services
-   :hidden:
-
-   services/lsst-login
-   services/lsst-devl
-   services/batch
-   services/software
-   services/datasets
-   services/data_protection
-   services/ncsa_bulk_transfer
-   services/orchestration/index
-   services/ldf-tickets
-   services/ldf-resources
-   services/storage
-   services/monitoring_applications
-   services/lsst-dev
-   services/lsst-db
-   services/verification
-
-.. _part-ldf:
-
-LSST Data Facility services
----------------------------
-
-- :doc:`services/lsst-login`
-- :doc:`services/lsst-devl`
-- :doc:`services/batch`
-- :doc:`services/software`
-- :doc:`services/datasets`
-- :doc:`services/data_protection`
-- :doc:`services/ncsa_bulk_transfer`
-- :doc:`services/orchestration/index`
-- :doc:`services/ldf-tickets`
-- :doc:`services/ldf-resources`
-- :doc:`services/storage`
-- :doc:`services/monitoring_applications`
-- :doc:`services/lsst-dev`
-- :doc:`services/lsst-db`
-- :doc:`services/verification`
 
 .. IDF SECTION ===========================================================
 
