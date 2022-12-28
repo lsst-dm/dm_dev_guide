@@ -2,7 +2,7 @@
 Common Dataset Organization and Policy
 ######################################
 
-This document covers the specific :ref:`format <format>` and :ref:`policies <policy>` governing the shared datasets in ``/datasets``, space available on the :doc:`login nodes </services/lsst-login>` and on all of the compute nodes of the :doc:`Batch Systems </services/batch>`.
+This document covers the specific :ref:`format <format_usdf>` and :ref:`policies <policy_usdf>` governing the shared datasets in ``/datasets``, space available on the :doc:`login nodes </usdf/lsst-login>` and on all of the compute nodes of the :doc:`Batch Systems </usdf/batch>`.
 
 .. _format_usdf:
 
@@ -18,7 +18,7 @@ All data added to ``/datasets`` must adhere to the following format (caps are to
   (processed results)
 - PUBLIC = <ticket>/PRIVATE | <tag>/PRIVATE (ex. 'HSC-RC'; RFC needed for new tags)
 - PRIVATE = private/<user> | ""
-  (:ref:`see details below <CaveatForPrivate>`)
+  (:ref:`see details below <CaveatForPrivate_usdf>`)
 - PREPROCESSED = preprocessed/<label>/ | preprocessed/<label>/<date>/
   (ex. 'dr9')
 - SIM = <ticket>_<date>/ | <user>/<ticket>/
@@ -43,7 +43,7 @@ For the Gen2 Middleware, reference catalogs are contained in the repository itse
 For ``/datasets`` repositories, we handle this by symlinking from ``repo/ref_cats/NAME`` to the corresponding refcat directory in ``/datasets/refcats``.
 The version subdirectory (e.g. ``v0/``, ``v1``) should match the ``REFCAT_FORMAT_VERSION`` that is set by the refcat ingestion task.
 
-When adding a refcat, you have a :ref:`responsibility <responsibilities>` to supply a ``README.txt`` for the new refcat, and update the overall ``README.txt`` for that type of refcat (e.g. ``/datasets/ref_cats/htm/README.txt``).
+When adding a refcat, you have a :ref:`responsibility <responsibilities_usdf>` to supply a ``README.txt`` for the new refcat, and update the overall ``README.txt`` for that type of refcat (e.g. ``/datasets/ref_cats/htm/README.txt``).
 Updates to the readme should be reviewed on a Jira ticket about the new reference catalog (for example, `DM-20267 <https://jira.lsstcorp.org/browse/DM-20267>`_).
 Here is a template for what each refcat's readme should contain:
 
@@ -81,7 +81,7 @@ Immutability/Sharing
 --------------------
 
 NCSA is working on a simple procedure for making the data both shared and safe.
-The process to **Lock** or **Unlock** a set of data is to open a JIRA ticket (https://jira.lsstcorp.org) 
+The process to **Lock** or **Unlock** a set of data is to open a JIRA ticket (https://jira.lsstcorp.org)
 under the "IT Helpdesk Support" project.
 
 Illustration:
@@ -89,7 +89,7 @@ Illustration:
 Steps to add to datasets
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. (you) RFC if necessary per :ref:`policy <policy>`
+#. (you) RFC if necessary per :ref:`policy <policy_usdf>`
 #. (you) Ask for write access to a new rerun|new camera|ref cat| directory
 #. Directory created, write permissions given
 #. (you) Populate and organize data (as per policy), ask to have it locked down
@@ -98,7 +98,7 @@ Steps to add to datasets
 Steps to modify/remove from datasets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. (you) RFC if necessary per :ref:`policy <policy>`
+#. (you) RFC if necessary per :ref:`policy <policy_usdf>`
 #. (you) Ask for write access to existing rerun|new camera|ref cat| directory
 #. Write permissions given, immutability removed
 #. (you) Reorganize, ask to have it locked down
