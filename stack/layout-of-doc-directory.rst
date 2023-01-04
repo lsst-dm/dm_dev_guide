@@ -100,14 +100,12 @@ The doc/conf.py file
 ====================
 
 The :file:`doc/conf.py` file provides Sphinx configurations during a :doc:`single-package build <building-single-package-docs>`.
-The :file:`doc/conf.py` file should look like this example:
+The :file:`doc/conf.py` file for a packaged named ``example`` looks like this:
 
 .. remote-code-block:: https://raw.githubusercontent.com/lsst/templates/main/project_templates/stack_package/example/doc/conf.py
    :language: py
 
-Fill in the ``project_name`` and ``version`` keyword arguments as appropriate.
-
-Be careful not to add customizations to this :file:`conf.py` file since they won’t be used during the build of `pipelines.lsst.io`_ (only the :file:`conf.py` of the `pipelines_lsst_io`_ package is used in that case).
+Don't add additional customizations to the package's :file:`doc/conf.py` file since it isn't used during the build of `pipelines.lsst.io`_ (only the :file:`doc/conf.py` of the `pipelines_lsst_io`_ package is used in that case).
 
 .. _docdir-gitignore:
 
