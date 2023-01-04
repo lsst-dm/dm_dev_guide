@@ -18,7 +18,7 @@ Check out the `README <https://github.com/lsst-dm/dm_dev_guide/blob/main/README.
 
 **Development guides:** :ref:`Overview <part-guides>` · :ref:`C++ <part-cpp>` · :ref:`Python <part-python>` · :ref:`Pybind11 <part-pybind11>` · :ref:`JavaScript <part-javascript>` · :ref:`ReStructuredText <part-rst>` · :ref:`DM Stack <part-dm-stack>` · :ref:`Git <part-git>` · :ref:`Editors <part-editors>` · :ref:`Legal <part-legal>` · :ref:`User documentation style <part-user-doc-style-guide>`
 
-**Services:** :ref:`Overview <part-services>` · :ref:`Jenkins <part-jenkins>` · :ref:`LSST Data Facility <part-ldf>`
+**Services:** :ref:`Overview <part-services>` · :ref:`Jenkins <part-jenkins>`
 
 ****
 
@@ -511,49 +511,6 @@ Jenkins CI
 
 - :doc:`jenkins/getting-started`
 
-.. NCSA/LDF SERVICES SECTION =================================================
-
-.. toctree::
-   :maxdepth: 1
-   :caption: LDF Services
-   :hidden:
-
-   services/lsst-login
-   services/lsst-devl
-   services/batch
-   services/software
-   services/datasets
-   services/data_protection
-   services/ncsa_bulk_transfer
-   services/orchestration/index
-   services/ldf-tickets
-   services/ldf-resources
-   services/storage
-   services/monitoring_applications
-   services/lsst-dev
-   services/lsst-db
-   services/verification
-
-.. _part-ldf:
-
-LSST Data Facility services
----------------------------
-
-- :doc:`services/lsst-login`
-- :doc:`services/lsst-devl`
-- :doc:`services/batch`
-- :doc:`services/software`
-- :doc:`services/datasets`
-- :doc:`services/data_protection`
-- :doc:`services/ncsa_bulk_transfer`
-- :doc:`services/orchestration/index`
-- :doc:`services/ldf-tickets`
-- :doc:`services/ldf-resources`
-- :doc:`services/storage`
-- :doc:`services/monitoring_applications`
-- :doc:`services/lsst-dev`
-- :doc:`services/lsst-db`
-- :doc:`services/verification`
 
 .. IDF SECTION ===========================================================
 
