@@ -67,8 +67,8 @@ A shared Science Pipelines stack is maintained in the ``/software/lsstsw`` direc
 This stack is accessible to all login, development/head/submit, and batch nodes.
 It is maintained by a ``cron`` job (running under user ``lsstsw``) that executes a script from ``lsst-dm/shared-stack``.
 This script automatically installs new weekly releases from source.
-It also augments the standard ``rubin-env`` conda environment with additional packages useful for developers (but not needed in production).
-Requests for additions to this list should be made via RFC.
+It also augments the standard ``rubin-env`` conda environment with additional packages useful for developers (but not needed in production) using the ``rubin-env-developer`` metapackage.
+Requests for additions to ``rubin-env-developer`` should be made via RFC.
 
 .. _conda-rsp-notebooks:
 
@@ -76,8 +76,9 @@ Rubin Science Platform notebooks
 --------------------------------
 
 Rubin Science Platform notebooks use a container that is built from each release.
-As part of the container build process, additional packages useful in the notebook environment are added to the conda environment.
-The list of packages is maintained in ``lsst-sqre/nublado2``; requests for additions to this list should be made via RFC.
+As part of the container build process, additional packages useful in the notebook environment are added to the conda environment using the ``rubin-env-rsp`` metapackage.
+``rubin-env-rsp`` differs from ``rubin-env-developer`` in being user-focused and including packages specific for the JupyterHub/JupyterLab platform.
+Requests for additions to ``rubin-env-rsp`` should be made via RFC.
 
 .. _conda-exact-environments:
 
