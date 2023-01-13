@@ -100,9 +100,9 @@ Web applications usually require two-factor authentication. Here are
 Troubleshooting Accounts
 =============================
 
-Check that you are a member of the rubin_user group:
+Check that you are a member of the rubin_users group:
 
-getent group | grep <your account>
+id <your account>
 
 Accounts can get disabled a number of ways:
 
