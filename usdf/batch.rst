@@ -33,13 +33,47 @@ This section describes how to obtain an `HTCondor <https://htcondor.org>`__ pool
    $ condor_q
    -- Schedd: sdfrome002.sdf.slac.stanford.edu : <172.24.33.226:9618?... @ 01/31/23 11:51:35
    OWNER BATCH_NAME      SUBMITTED   DONE   RUN    IDLE   HOLD  TOTAL JOB_IDS
+
    Total for query: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
    Total for daues: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
    Total for all users: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
+
    $ condor_status
    $
 
-In order to run BPS workflows via htcondor at S3DF, it is necessary to submit glide-in jobs to the S3DF Slurm scheduler using the ``allocateNodes.py`` utility of the ``ctrl_execute`` package.  The ``ctrl_execute`` utilities will reference the ``ctrl_platform_s3df`` package to obtain needed S3DF configuration.  These packages will eventually be available within the shared stack on S3DF. Until they are published there, it may be necessary to perform local user installs.
+In order to run BPS workflows via htcondor at S3DF, it is necessary to submit glide-in jobs to the S3DF Slurm scheduler using the ``allocateNodes.py`` utility of the ``ctrl_execute`` package.  The ``ctrl_execute`` utilities will reference the ``ctrl_platform_s3df`` package to obtain needed S3DF configuration.  These packages will eventually be available within the shared stack on S3DF. Until they are published there, it may be necessary to perform local user installs. After these two packages are setup the glide-ins may be submitted.
+
+The ``allocateNodes.py`` utility has the following options::
+
+   $ allocateNodes.py --help
+   usage: /sdf/home/d/daues/repo_work/testrun4/ctrl_execute/bin/allocateNodes.py [-h] -n NODECOUNT -c CPUS -m MAXIMUMWALLCLOCK
+                                                                              [-q QUEUE] [-O OUTPUTLOG] [-E ERRORLOG]
+                                                                              [-g GLIDEINSHUTDOWN] [-v] [-r RESERVATION]
+                                                                              [-d [DYNAMIC]]
+                                                                              platform
+    positional arguments:
+      platform              node allocation platform
+
+    options:
+      -h, --help            show this help message and exit
+      -n NODECOUNT, --node-count NODECOUNT
+                        number of glideins to submit; these are chunks of a node, size the number of cores/cpus
+      -c CPUS, --cpus CPUS  cores / cpus per glidein
+      -m MAXIMUMWALLCLOCK, --maximum-wall-clock MAXIMUMWALLCLOCK
+                        maximum wall clock time; e.g., 3600, 10:00:00, 6-00:00:00, etc
+      -q QUEUE, --queue QUEUE
+                        queue / partition name
+      -O OUTPUTLOG, --output-log OUTPUTLOG
+                        Output log filename; this option for PBS, unused with Slurm
+      -E ERRORLOG, --error-log ERRORLOG
+                        Error log filename; this option for PBS, unused with Slurm
+      -g GLIDEINSHUTDOWN, --glidein-shutdown GLIDEINSHUTDOWN
+                        glide-in inactivity shutdown time in seconds
+      -v, --verbose         verbose
+      -r RESERVATION, --reservation RESERVATION
+                        target a particular Slurm reservation
+      -d [DYNAMIC], --dynamic [DYNAMIC]
+                        configure to use dynamic/partitionable slot; legacy option: this is always enabled now
 
 
 ctrl_bps_parsl
