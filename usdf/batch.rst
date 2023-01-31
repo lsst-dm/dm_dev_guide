@@ -11,7 +11,7 @@ Use of S3DF batch is documented at
 
 https://s3df.slac.stanford.edu/
 
-S3DF has two Slurm partitions `roma` and `milano`. Both of these partitions have AMD nodes with 128 cores, two 
+S3DF has two Slurm partitions ``roma`` and ``milano``. Both of these partitions have AMD nodes with 128 cores, two 
 sockets each with a 64-core processor (hyperthreading disabled). A Slurm job can be submitted with markup
 ``#SBATCH -p roma,milano`` to run on either of the partitions. 
 
@@ -39,7 +39,7 @@ This section describes how to obtain an `HTCondor <https://htcondor.org>`__ pool
    $ condor_status
    $
 
-In order to run BPS workflows via htcondor at S3DF, it is necessary to submit glide-in jobs to the S3DF Slurm scheduler using the ``allocateNodes.py`` utiity of the `ctrl_execute` package.  The `ctrl_execute` utilities will reference the `ctrl_platform_s3df` package to obtain needed S3DF configuration. 
+In order to run BPS workflows via htcondor at S3DF, it is necessary to submit glide-in jobs to the S3DF Slurm scheduler using the ``allocateNodes.py`` utility of the ``ctrl_execute`` package.  The ``ctrl_execute`` utilities will reference the ``ctrl_platform_s3df`` package to obtain needed S3DF configuration.  These packages will eventually be available within the shared stack on S3DF. Until they are published there, it may be necessary to perform local user installs.
 
 
 ctrl_bps_parsl
