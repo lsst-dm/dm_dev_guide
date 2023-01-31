@@ -28,7 +28,7 @@ The LSST Batch Processing Service (`BPS <https://github.com/lsst/ctrl_bps>`__) i
 
 ctrl_bps_htcondor 
 =================
-This section describes how to obtain an `HTCondor <https://htcondor.org>`__ pool in S3DF for use with BPS workflows.  Upon logging in via ```ssh rubin-devl` to either sdfrome001 or sdfrome002, one can see that htcondor is installed and running, but that no computing slots are available::
+This section describes how to obtain an `HTCondor <https://htcondor.org>`__ pool in S3DF for use with BPS workflows.  Upon logging in via ``ssh rubin-devl`` to either sdfrome001 or sdfrome002, one can see that htcondor is installed and running, but that no computing slots are available::
 
    $ condor_q
    -- Schedd: sdfrome002.sdf.slac.stanford.edu : <172.24.33.226:9618?... @ 01/31/23 11:51:35
