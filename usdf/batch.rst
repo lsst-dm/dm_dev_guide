@@ -7,13 +7,13 @@ Facility during the interim period where the Rubin filesystems at SLAC
 go into production mode on our own hardware, and while user and
 project data are being transferred from NCSA.
 
-Use of SDF batch is documented at
+Use of S3DF batch is documented at 
 
-https://sdf.slac.stanford.edu/public/doc/#/batch-compute
+https://s3df.slac.stanford.edu/
 
-Rubin currently has an allocation of 2000 cores. Currently only a single slurm partition is defined, called "roma". No
-special batch queues exist yet.
-
+S3DF has two Slurm partitions `roma` and `milano`. Both of these partitions have AMD nodes with 128 cores, two 
+sockets each with a 64-core processor (hyperthreading disabled). A Slurm job can be submitted with markup
+``#SBATCH -p roma,milano`` to run on either of the partitions. 
 
 Running LSST Pipelines with BPS
 ===============================
@@ -26,25 +26,20 @@ The LSST Batch Processing Service (`BPS <https://github.com/lsst/ctrl_bps>`__) i
 .. _ctrl_bps_parsl:
 
 
-ctrl_bps_htcondor
+ctrl_bps_htcondor 
 =================
-This section describes how to obtain a personal `HTCondor <https://htcondor.org>`__ pool and run BPS workflows with it.
-HTCondor is not included in the LSST stack, so install it locally.
-Try to import it from python shell first (just in case). If it is not there, install it with:
-``pip3 install --user htcondor``
-Download package condor.tar.gz , and unpack it in your home directory on Rubin machines at SLAC.
-Edit files to specify your home directory and username:
+This section describes how to obtain an `HTCondor <https://htcondor.org>`__ pool in S3DF for use with BPS workflows.  Upon logging in via ```ssh rubin-devl` to either sdfrome001 or sdfrome002, one can see that htcondor is installed and running, but that no computing slots are available::
 
-- condor/condor_config: change VAR_FOR_HOME
-- condor_master in  server_bootstrap.sh
+   $ condor_q
+   -- Schedd: sdfrome002.sdf.slac.stanford.edu : <172.24.33.226:9618?... @ 01/31/23 11:51:35
+   OWNER BATCH_NAME      SUBMITTED   DONE   RUN    IDLE   HOLD  TOTAL JOB_IDS
+   Total for query: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
+   Total for daues: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
+   Total for all users: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
+   $ condor_status
+   $
 
-Source server_bootstrap.sh (if HTCondor is not running )or client_env_setup.sh (for system variables setup only).
-These scripts will create catalogs, setup system variables and start personal condor (server_bootstrap.sh).
-Create a glide-in to slurm with:
-``sbatch ~/condor/glidein/exec.sl``
-Check the status of the glide-in with
-``squeue -u username``
-If glide-in is running, submit your job with ``bps submit``.
+In order to run BPS workflows via htcondor at S3DF, it is necessary to submit glide-in jobs to the S3DF Slurm scheduler using the ``allocateNodes.py`` utiity of the `ctrl_execute` package.  The `ctrl_execute` utilities will reference the `ctrl_platform_s3df` package to obtain needed S3DF configuration. 
 
 
 ctrl_bps_parsl
