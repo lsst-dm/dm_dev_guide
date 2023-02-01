@@ -19,12 +19,11 @@ Running LSST Pipelines with BPS
 ===============================
 The LSST Batch Processing Service (`BPS <https://github.com/lsst/ctrl_bps>`__) is the standard execution framework for running LSST pipelines using batch resources.  There are a few different plugins to BPS that are available that can be used for running BPS on various computing systems:
 
-- ctrl_bps_htcondor 
+- :ref:`ctrl_bps_htcondor <ctrl_bps_htcondor>` 
 - ctrl_bps_panda
 - :ref:`ctrl_bps_parsl <ctrl_bps_parsl>`
 
-.. _ctrl_bps_parsl:
-
+.. _ctrl_bps_htcondor:
 
 ctrl_bps_htcondor 
 =================
@@ -153,6 +152,7 @@ The htcondor slots will have a label with the username, so that one user's glide
 The ``allocateNodes.py`` utility is set up to be run in a maintenance or cron type manner, where reissuing the exact same command line request for 20 glide-ins will not directly issue 20 additional glide-ins. Rather ``allocateNodes.py`` will strive to maintain 20 glide-ins for the workflow, checking to see if that number of glide-ins are in the queue, and resubmit any missing glide-ins that may have exited due to lulls in activity within the workflow.  With htcondor slots present and visible with ``condor_status``, one may proceed with running ``ctrl_bps`` ``ctrl_bps_htcondor`` 
 workflows in the same manner as was done on the project's previous generation computing cluster at NCSA.  
 
+.. _ctrl_bps_parsl:
 
 ctrl_bps_parsl
 ==============
