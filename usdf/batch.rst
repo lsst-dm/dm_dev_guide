@@ -90,7 +90,8 @@ will exit at that time to avoid wasting idle resources. The ``--dynamic`` option
 
 After submitting the ``allocateNodes.py`` command line above, the user may see Slurm jobs and htcondor slots along the lines of::
 
-   $ squeue -u daues
+   $ squeue -u <username>
+
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
            4246331      roma glide_da    daues  R       0:05      1 sdfrome016
            4246332      roma glide_da    daues  R       0:05      1 sdfrome016
@@ -141,9 +142,10 @@ After submitting the ``allocateNodes.py`` command line above, the user may see S
 
          Total    19     0       0        19       0          0        0      0
 
-In this case the glide-in slots are partial node 32-core chunks, and so more than one slot can start on a given node. The decisionas to whether tp request full nodes or partial nodes would depend on the general load on the cluster, i.e., if the cluster is populated with other numerous single core jobs that partially fill nodes, it will be necessary to request partial nodes to acquire available resources. 
+The htcondor slots will have a label with the username, so that one user's glide-ins may be distinguished from another's.  In this case the glide-in slots are partial node 32-core chunks, and so more than one slot can appear on a given node. The decision as to whether to request full nodes or partial nodes would depend on the general load on the cluster, i.e., if the cluster is populated with other numerous single core jobs that partially fill nodes, it will be necessary to request partial nodes to acquire available resources. 
 
-
+The ``allocateNodes.py`` utility is set up to be run in a maintenance or cron type manner, where reissuing the exact same command line request for 20 glide-ins will not directly issue 20 additional glide-ins. Rather ``allocateNodes.py`` will strive to maintain 20 glide-ins for the workflow, checking to see if that number of glide-ins are in the queue, and resubmit any missing glide-ins that may have exited due to lulls in activity within the workflow.  With htcondor slots present and visible with ``condor_status``, one may proceed with running ``ctrl_bps`` ``ctrl_bps_htcondor`` 
+workflows in the same manner as was done on the project's previous generation computing cluster at NCSA.  
 
 
 ctrl_bps_parsl
