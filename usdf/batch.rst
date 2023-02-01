@@ -152,6 +152,11 @@ The htcondor slots will have a label with the username, so that one user's glide
 The ``allocateNodes.py`` utility is set up to be run in a maintenance or cron type manner, where reissuing the exact same command line request for 20 glide-ins will not directly issue 20 additional glide-ins. Rather ``allocateNodes.py`` will strive to maintain 20 glide-ins for the workflow, checking to see if that number of glide-ins are in the queue, and resubmit any missing glide-ins that may have exited due to lulls in activity within the workflow.  With htcondor slots present and visible with ``condor_status``, one may proceed with running ``ctrl_bps`` ``ctrl_bps_htcondor`` 
 workflows in the same manner as was done on the project's previous generation computing cluster at NCSA.  
 
+Usage of the ``ctrl_bps_htcondor`` plugin and module has been extensively documented at
+
+https://pipelines.lsst.io/modules/lsst.ctrl.bps.htcondor/userguide.html
+
+
 .. _ctrl_bps_parsl:
 
 ctrl_bps_parsl
