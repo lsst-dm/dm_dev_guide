@@ -75,6 +75,12 @@ The ``allocateNodes.py`` utility has the following options::
       -d [DYNAMIC], --dynamic [DYNAMIC]
                         configure to use dynamic/partitionable slot; legacy option: this is always enabled now
 
+The ``allocateNodes.py`` utility requires a small measure of configuration in the user's home directory::
+
+   $  cat  ~/.lsst/condor-info.py
+   config.platform["s3df"].user.name="daues"
+   config.platform["s3df"].user.home="/sdf/home/d/daues"
+
 A typical ``allocateNodes.py`` command line for obtaining resources for a BPS workflow could be::
 
    $ allocateNodes.py -v --dynamic -n 20 -c 32 -m 4-00:00:00 -q roma,milano -g 900 s3df
