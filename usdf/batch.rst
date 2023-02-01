@@ -75,6 +75,76 @@ The ``allocateNodes.py`` utility has the following options::
       -d [DYNAMIC], --dynamic [DYNAMIC]
                         configure to use dynamic/partitionable slot; legacy option: this is always enabled now
 
+A typical ``allocateNodes.py`` command line for obtaining resources for a BPS workflow could be::
+
+   $ allocateNodes.py -v --dynamic -n 20 -c 32 -m 4-00:00:00 -q roma,milano -g 900 s3df
+
+``s3df`` is specified as the target platform. 
+The ``-q roma,milano`` option specifies that the glide-in jobs may run in either the roma or milano partition. 
+The ``-n 20 -c 32`` options request 20 individual glide-in slots of size 32 cores each (each is a Slurm job that obtains a partial node).
+The maximum possible time is set to 4 days via ``-m 4-00:00:00``. 
+The glide-in Slurm jobs may not run for the full 4 days however, as the option ``-g 900`` specifies a 
+condor glide-in shutdown time of 900 seconds or 15 minutes. This means that the htcondor daemons will shut themselves 
+down after 15 minutes of inactivity (for example, after the workflow is complete), and the glide-in Slurm jobs 
+will exit at that time to avoid wasting idle resources. The ``--dynamic`` option requests that the htcondor slots be dynamic, partionable slots; this is the recommended setting as it supports possible multi-core jobs in the workflow. 
+
+After submitting the ``allocateNodes.py`` command line above, the user may see Slurm jobs and htcondor slots along the lines of::
+
+   $ squeue -u daues
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           4246331      roma glide_da    daues  R       0:05      1 sdfrome016
+           4246332      roma glide_da    daues  R       0:05      1 sdfrome016
+           4246333      roma glide_da    daues  R       0:05      1 sdfrome016
+           4246334      roma glide_da    daues  R       0:05      1 sdfrome016
+           4246335      roma glide_da    daues  R       0:05      1 sdfrome011
+           4246336      roma glide_da    daues  R       0:05      1 sdfrome011
+           4246337      roma glide_da    daues  R       0:05      1 sdfrome011
+           4246338      roma glide_da    daues  R       0:05      1 sdfrome011
+           4246339      roma glide_da    daues  R       0:05      1 sdfrome012
+           4246340      roma glide_da    daues  R       0:05      1 sdfrome012
+           4246341      roma glide_da    daues  R       0:05      1 sdfrome012
+           4246342      roma glide_da    daues  R       0:05      1 sdfrome020
+           4246343      roma glide_da    daues  R       0:05      1 sdfrome020
+           4246344      roma glide_da    daues  R       0:05      1 sdfrome020
+           4246345      roma glide_da    daues  R       0:05      1 sdfrome021
+           4246346      roma glide_da    daues  R       0:05      1 sdfrome021
+           4246347      roma glide_da    daues  R       0:05      1 sdfrome021
+           4246348      roma glide_da    daues  R       0:05      1 sdfrome021
+           4246349      roma glide_da    daues  R       0:05      1 sdfrome023
+           4246350      roma glide_da    daues  R       0:05      1 sdfrome023
+   $ condor_status
+   Name                                                OpSys      Arch   State     Activity LoadAv Mem     ActvtyTime
+
+   slot_daues_1455_1@sdfrome011.sdf.slac.stanford.edu  LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_10693_1@sdfrome011.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_27645_1@sdfrome011.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_32041_1@sdfrome011.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_2010_1@sdfrome012.sdf.slac.stanford.edu  LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_24423_1@sdfrome012.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_31147_1@sdfrome012.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_4125_1@sdfrome016.sdf.slac.stanford.edu  LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_12576_1@sdfrome016.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_14984_1@sdfrome016.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_25023_1@sdfrome016.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_5936_1@sdfrome020.sdf.slac.stanford.edu  LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_12034_1@sdfrome020.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_24875_1@sdfrome020.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_7366_1@sdfrome021.sdf.slac.stanford.edu  LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_7575_1@sdfrome021.sdf.slac.stanford.edu  LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_9335_1@sdfrome021.sdf.slac.stanford.edu  LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_23816_1@sdfrome021.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_18562_1@sdfrome023.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+
+               Total Owner Claimed Unclaimed Matched Preempting Backfill  Drain
+
+  X86_64/LINUX    19     0       0        19       0          0        0      0
+
+         Total    19     0       0        19       0          0        0      0
+
+In this case the glide-in slots are partial node 32-core chunks, and so more than one slot can start on a given node. The decisionas to whether tp request full nodes or partial nodes would depend on the general load on the cluster, i.e., if the cluster is populated with other numerous single core jobs that partially fill nodes, it will be necessary to request partial nodes to acquire available resources. 
+
+
+
 
 ctrl_bps_parsl
 ==============
