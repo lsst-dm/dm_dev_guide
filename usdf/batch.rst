@@ -7,45 +7,157 @@ Facility during the interim period where the Rubin filesystems at SLAC
 go into production mode on our own hardware, and while user and
 project data are being transferred from NCSA.
 
-Use of SDF batch is documented at
+Use of S3DF batch is documented at 
 
-https://sdf.slac.stanford.edu/public/doc/#/batch-compute
+https://s3df.slac.stanford.edu/
 
-Rubin currently has an allocation of 2000 cores. Currently only a single slurm partition is defined, called "roma". No
-special batch queues exist yet.
-
+S3DF has two Slurm partitions ``roma`` and ``milano``. Both of these partitions have AMD nodes with 128 cores, two 
+sockets each with a 64-core processor (hyperthreading disabled). A Slurm job can be submitted with markup
+``#SBATCH -p roma,milano`` to run on either of the partitions. 
 
 Running LSST Pipelines with BPS
 ===============================
 The LSST Batch Processing Service (`BPS <https://github.com/lsst/ctrl_bps>`__) is the standard execution framework for running LSST pipelines using batch resources.  There are a few different plugins to BPS that are available that can be used for running BPS on various computing systems:
 
-- ctrl_bps_htcondor 
+- :ref:`ctrl_bps_htcondor <ctrl_bps_htcondor>` 
 - ctrl_bps_panda
 - :ref:`ctrl_bps_parsl <ctrl_bps_parsl>`
 
-.. _ctrl_bps_parsl:
+.. _ctrl_bps_htcondor:
 
-
-ctrl_bps_htcondor
+ctrl_bps_htcondor 
 =================
-This section describes how to obtain a personal `HTCondor <https://htcondor.org>`__ pool and run BPS workflows with it.
-HTCondor is not included in the LSST stack, so install it locally.
-Try to import it from python shell first (just in case). If it is not there, install it with:
-``pip3 install --user htcondor``
-Download package condor.tar.gz , and unpack it in your home directory on Rubin machines at SLAC.
-Edit files to specify your home directory and username:
+This section describes how to obtain an `HTCondor <https://htcondor.org>`__ pool in S3DF for use with BPS workflows.  Upon logging in via ``ssh rubin-devl`` to either sdfrome001 or sdfrome002, one can see that htcondor is installed and running, but that no computing slots are available::
 
-- condor/condor_config: change VAR_FOR_HOME
-- condor_master in  server_bootstrap.sh
+   $ condor_q
+   -- Schedd: sdfrome002.sdf.slac.stanford.edu : <172.24.33.226:9618?... @ 01/31/23 11:51:35
+   OWNER BATCH_NAME      SUBMITTED   DONE   RUN    IDLE   HOLD  TOTAL JOB_IDS
 
-Source server_bootstrap.sh (if HTCondor is not running )or client_env_setup.sh (for system variables setup only).
-These scripts will create catalogs, setup system variables and start personal condor (server_bootstrap.sh).
-Create a glide-in to slurm with:
-``sbatch ~/condor/glidein/exec.sl``
-Check the status of the glide-in with
-``squeue -u username``
-If glide-in is running, submit your job with ``bps submit``.
+   Total for query: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
+   Total for daues: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
+   Total for all users: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
 
+   $ condor_status
+   $
+
+In order to run BPS workflows via htcondor at S3DF, it is necessary to submit glide-in jobs to the S3DF Slurm scheduler using the ``allocateNodes.py`` utility of the ``ctrl_execute`` package.  The ``ctrl_execute`` utilities will reference the ``ctrl_platform_s3df`` package to obtain needed S3DF configuration.  These packages will eventually be available within the shared stack on S3DF. Until they are published there, it may be necessary to perform local user installs. After these two packages are setup the glide-ins may be submitted.
+
+The ``allocateNodes.py`` utility has the following options::
+
+   $ allocateNodes.py --help
+   usage: /sdf/home/d/daues/repo_work/testrun4/ctrl_execute/bin/allocateNodes.py [-h] -n NODECOUNT -c CPUS -m MAXIMUMWALLCLOCK
+                                                                              [-q QUEUE] [-O OUTPUTLOG] [-E ERRORLOG]
+                                                                              [-g GLIDEINSHUTDOWN] [-v] [-r RESERVATION]
+                                                                              [-d [DYNAMIC]]
+                                                                              platform
+    positional arguments:
+      platform              node allocation platform
+
+    options:
+      -h, --help            show this help message and exit
+      -n NODECOUNT, --node-count NODECOUNT
+                        number of glideins to submit; these are chunks of a node, size the number of cores/cpus
+      -c CPUS, --cpus CPUS  cores / cpus per glidein
+      -m MAXIMUMWALLCLOCK, --maximum-wall-clock MAXIMUMWALLCLOCK
+                        maximum wall clock time; e.g., 3600, 10:00:00, 6-00:00:00, etc
+      -q QUEUE, --queue QUEUE
+                        queue / partition name
+      -O OUTPUTLOG, --output-log OUTPUTLOG
+                        Output log filename; this option for PBS, unused with Slurm
+      -E ERRORLOG, --error-log ERRORLOG
+                        Error log filename; this option for PBS, unused with Slurm
+      -g GLIDEINSHUTDOWN, --glidein-shutdown GLIDEINSHUTDOWN
+                        glide-in inactivity shutdown time in seconds
+      -v, --verbose         verbose
+      -r RESERVATION, --reservation RESERVATION
+                        target a particular Slurm reservation
+      -d [DYNAMIC], --dynamic [DYNAMIC]
+                        configure to use dynamic/partitionable slot; legacy option: this is always enabled now
+
+The ``allocateNodes.py`` utility requires a small measure of configuration in the user's home directory::
+
+   $  cat  ~/.lsst/condor-info.py
+   config.platform["s3df"].user.name="daues"
+   config.platform["s3df"].user.home="/sdf/home/d/daues"
+
+A typical ``allocateNodes.py`` command line for obtaining resources for a BPS workflow could be::
+
+   $ allocateNodes.py -v --dynamic -n 20 -c 32 -m 4-00:00:00 -q roma,milano -g 900 s3df
+
+``s3df`` is specified as the target platform. 
+The ``-q roma,milano`` option specifies that the glide-in jobs may run in either the roma or milano partition. 
+The ``-n 20 -c 32`` options request 20 individual glide-in slots of size 32 cores each (each is a Slurm job that obtains a partial node).
+The maximum possible time is set to 4 days via ``-m 4-00:00:00``. 
+The glide-in Slurm jobs may not run for the full 4 days however, as the option ``-g 900`` specifies a 
+condor glide-in shutdown time of 900 seconds or 15 minutes. This means that the htcondor daemons will shut themselves 
+down after 15 minutes of inactivity (for example, after the workflow is complete), and the glide-in Slurm jobs 
+will exit at that time to avoid wasting idle resources. The ``--dynamic`` option requests that the htcondor slots be dynamic, partionable slots; this is the recommended setting as it supports possible multi-core jobs in the workflow. 
+
+After submitting the ``allocateNodes.py`` command line above, the user may see Slurm jobs and htcondor slots along the lines of::
+
+   $ squeue -u <username>
+
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+           4246331      roma glide_da    daues  R       0:05      1 sdfrome016
+           4246332      roma glide_da    daues  R       0:05      1 sdfrome016
+           4246333      roma glide_da    daues  R       0:05      1 sdfrome016
+           4246334      roma glide_da    daues  R       0:05      1 sdfrome016
+           4246335      roma glide_da    daues  R       0:05      1 sdfrome011
+           4246336      roma glide_da    daues  R       0:05      1 sdfrome011
+           4246337      roma glide_da    daues  R       0:05      1 sdfrome011
+           4246338      roma glide_da    daues  R       0:05      1 sdfrome011
+           4246339      roma glide_da    daues  R       0:05      1 sdfrome012
+           4246340      roma glide_da    daues  R       0:05      1 sdfrome012
+           4246341      roma glide_da    daues  R       0:05      1 sdfrome012
+           4246342      roma glide_da    daues  R       0:05      1 sdfrome020
+           4246343      roma glide_da    daues  R       0:05      1 sdfrome020
+           4246344      roma glide_da    daues  R       0:05      1 sdfrome020
+           4246345      roma glide_da    daues  R       0:05      1 sdfrome021
+           4246346      roma glide_da    daues  R       0:05      1 sdfrome021
+           4246347      roma glide_da    daues  R       0:05      1 sdfrome021
+           4246348      roma glide_da    daues  R       0:05      1 sdfrome021
+           4246349      roma glide_da    daues  R       0:05      1 sdfrome023
+           4246350      roma glide_da    daues  R       0:05      1 sdfrome023
+   $ condor_status
+   Name                                                OpSys      Arch   State     Activity LoadAv Mem     ActvtyTime
+
+   slot_daues_1455_1@sdfrome011.sdf.slac.stanford.edu  LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_10693_1@sdfrome011.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_27645_1@sdfrome011.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_32041_1@sdfrome011.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_2010_1@sdfrome012.sdf.slac.stanford.edu  LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_24423_1@sdfrome012.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_31147_1@sdfrome012.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_4125_1@sdfrome016.sdf.slac.stanford.edu  LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_12576_1@sdfrome016.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_14984_1@sdfrome016.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_25023_1@sdfrome016.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_5936_1@sdfrome020.sdf.slac.stanford.edu  LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_12034_1@sdfrome020.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_24875_1@sdfrome020.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_7366_1@sdfrome021.sdf.slac.stanford.edu  LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_7575_1@sdfrome021.sdf.slac.stanford.edu  LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_9335_1@sdfrome021.sdf.slac.stanford.edu  LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_23816_1@sdfrome021.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_18562_1@sdfrome023.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+
+               Total Owner Claimed Unclaimed Matched Preempting Backfill  Drain
+
+  X86_64/LINUX    19     0       0        19       0          0        0      0
+
+         Total    19     0       0        19       0          0        0      0
+
+The htcondor slots will have a label with the username, so that one user's glide-ins may be distinguished from another's.  In this case the glide-in slots are partial node 32-core chunks, and so more than one slot can appear on a given node. The decision as to whether to request full nodes or partial nodes would depend on the general load on the cluster, i.e., if the cluster is populated with other numerous single core jobs that partially fill nodes, it will be necessary to request partial nodes to acquire available resources. 
+
+The ``allocateNodes.py`` utility is set up to be run in a maintenance or cron type manner, where reissuing the exact same command line request for 20 glide-ins will not directly issue 20 additional glide-ins. Rather ``allocateNodes.py`` will strive to maintain 20 glide-ins for the workflow, checking to see if that number of glide-ins are in the queue, and resubmit any missing glide-ins that may have exited due to lulls in activity within the workflow.  With htcondor slots present and visible with ``condor_status``, one may proceed with running ``ctrl_bps`` ``ctrl_bps_htcondor`` 
+workflows in the same manner as was done on the project's previous generation computing cluster at NCSA.  
+
+Usage of the ``ctrl_bps_htcondor`` plugin and module has been extensively documented at
+
+https://pipelines.lsst.io/modules/lsst.ctrl.bps.htcondor/userguide.html
+
+
+.. _ctrl_bps_parsl:
 
 ctrl_bps_parsl
 ==============
