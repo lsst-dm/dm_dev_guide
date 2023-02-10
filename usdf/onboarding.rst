@@ -25,7 +25,7 @@ Note that if you only have a SLAC Confluence account (eg for DESC or LSSTCam), y
 Procedure Details
 =============================
 
-To obtain a SLAC SID number and SLAC account, you first need to become a SLAC User. Please follow the below steps and complete the registration form.  
+To obtain a SLAC SID number and SLAC account, you first need to become a SLAC User. Please follow the below steps and complete the registration form.  You should hear back from the SLUO administrator after 2-3 days from form submission. It's a bit hard to predict the progress rate after that.
 
 
 1)	New users are required to complete the SLUO registration form using the below `form <https://oraweb4.slac.stanford.edu/apex/epnprod/f?p=134:1::::::>`__.
