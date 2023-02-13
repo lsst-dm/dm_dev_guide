@@ -42,7 +42,9 @@ You can modify your .ssh config to allow direct passwordless access from your de
            Hostname rubin-devl
            ProxyJump slacl
 
-and then add your e.g. ``~/.ssh/id_rsa.pub`` from from your device to ``~/.ssh/authorized_keys`` at SLAC.
+and then add your e.g. ``~/.ssh/id_rsa.pub`` from from your device to ``~/.ssh/authorized_keys`` at SLAC, using:
+
+ssh-copy-id <you>@s3dflogin.slac.stanford.edu
 
 Outbound Access
 ===============
