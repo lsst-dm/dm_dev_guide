@@ -1,3 +1,4 @@
 documenteer
 sphinx-prompt
 sphinx_rtd_theme
+sphinx<6.0.0
