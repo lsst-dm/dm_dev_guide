@@ -194,7 +194,7 @@ Linking
 External links
 --------------
 
-Links to external web pages can be made two ways.
+Links to external web pages can be made two ways (or see :ref:`rst-intersphinx-links` if the other site is a Sphinx project).
 The first way is:
 
 .. code-block:: rst
@@ -252,6 +252,51 @@ You can also make references with ``:ref:`label-name``` and the link text will a
 Remember that labels are **global** across a Sphinx documentation project.
 With labels, you can link to sections in other pages.
 
+.. _rst-intersphinx-links:
+
+Linking to labels in other Sphinx sites
+---------------------------------------
+
+You can also link to labels in other Sphinx sites with an ``:external+project:ref:`` role.
+
+First, the other Sphinx project must be included in your Sphinx project's configuration.
+For common Sphinx projects, look in the :file:`conf.py` file for an ``intersphinx_mapping``:
+
+.. code-block:: python
+   :caption: conf.py
+
+   intersphinx_mapping = {
+       'python': ('https://docs.python.org/3', None),
+       'pipelines': ('https://pipelines.lsst.io/v/weekly/', None),
+   }
+
+In newer :external+documenteer:doc:`Documenteer Guide projects <guides/index>` the configuration is in the :file:`documenteer.toml` file:
+
+.. code-block:: toml
+   :caption: documenteer.toml
+
+   [sphinx.intersphinx.projects]
+   python = "https://docs.python.org/3/"
+   pipelines = "https://pipelines.lsst.io/v/weekly/"
+
+Use the keys in those configurations to specify what site the external reference is pointing to.
+For example, to link to the ``release-latest`` label in the Pipelines docs:
+
+.. code-block:: rst
+
+   :external+pipelines:ref:`release-latest`
+
+You can also provide custom labels like a regular ``:ref:`` role:
+
+.. code-block:: rst
+
+   :external+pipelines:ref:`latest Science Pipelines release <release-latest>`
+
+.. note::
+
+   `Intersphinx <https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html>`_ also enables you to link to API references pages in other Sphinx sites.
+   Those links are automatically resolved by the Python namespace though, so you don't need to use the ``external`` role.
+
 .. _rst-doc-link:
 
 Internal links to other pages
@@ -264,6 +309,21 @@ To link to another page in the same doc project, use the ``:doc:`` role with the
    See our :doc:`Styleguide <rst_styleguide>` to learn how to write reST docs.
 
 Note how the ``.rst`` extension wasn't included.
+
+Linking to pages in other Sphinx sites
+--------------------------------------
+
+As with the ``ref`` role (see :ref:`rst-intersphinx-links`), you can also link to pages in other Sphinx sites based on their page.
+This is a slight improvement over regular regular hyperlinks in that the root URL of the other project is configurable.
+In this case, the page path is relative to the project root, but does not begin with a ``/``. For example:
+
+.. code-block:: rst
+
+   :external+documenteer:doc:`Documenteer Guide projects <guides/index>`
+
+   :external+documenteer:doc:`guides/index>`
+
+Those samples would create links to https://documenteer.lsst.io/guides/index.html.
 
 Links to equations
 ------------------
