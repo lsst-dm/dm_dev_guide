@@ -103,7 +103,10 @@ exclude_patterns = [
     'README.rst',
     '_build',
     'restructuredtext/examples',
-    '_assets']
+    '_assets',
+    '.venv',
+    'venv'
+]
 
 # The reST default role (single back ticks `dict`) cross links to any code
 # object (including Python, but others as well).
