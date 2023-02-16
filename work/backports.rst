@@ -2,15 +2,19 @@
 Backporting Tickets to a Release Branch
 #######################################
 
-So you have a ticket that you think should be backported to ``v23.0.0`` and/or be used for DP0.2.
+So you have a ticket that you think should be backported to a previous release.
 What next?
 
-1) First, add the label "backport-v23" to your jira ticket.
+1) First, add the label "backport-v23" to your jira ticket, replacing "23" here and elsewhere on this page with the actual release you're targeting.
+   To backport to multiple releases, add multiple labels.
 
-   This will flag it for review by the DM-CCB or the DP0.2 campaign managers.
+   This will flag it for review by the DM-CCB.
    Continue merging your ticket to the default branch (``main``) and mark the ticket ``Done`` per instructions in the normal :doc:`flow`.
 
-2) Wait for approval. The ticket will gain the label "backport-approved."  A comment will be posted on the ticket that you may start the backporting process.
+2) Wait for approval.
+   The ticket will gain the label "backport-approved."
+   A comment will be posted on the ticket that you may start the backporting process.
+   Backports are approved for all requested releases together.
 
 3) Checkout the release branch, ``v23.0.x``, for each repo affected by your ticket.
 
@@ -52,8 +56,8 @@ What next?
    Continue using the same procedure outlined in :ref:`review-preparation`.
    Check that it cleanly builds via scons. There should be a latest shared v23.0.0.rcN stack on lsst-devl.
    Run Jenkins. When running Jenkins, build against the release branch and rc1 even if later rcNs exist.
-   The default ``SPLENV_REF`` may no longer be appropriate for ``v23.0.x``.
-   If you are unsure of the recommended env for the release, check with the release manager.
+   The default ``SPLENV_REF`` value (the rubin-env conda metapackage version) may no longer be appropriate for ``v23.0.x``.
+   If you are unsure of the recommended env for the release, see the :external+pipelines:ref:`release documentation page <release_history>` or check with the release manager.
 
    .. code-block:: bash
 
@@ -70,13 +74,4 @@ What next?
    If the backport was not clean and you would like another pair of eyes, you may ask someone to hit the "Approved" button on GitHub,
    but please *do not* put your ticket status back into ``In Review`` on Jira.
 
-7) When merged to ``v23.0.x``, label your Jira ticket ``backport-done``.
-
-
-Interaction between v23 and DP0.2
----------------------------------
-Before the full-scale data release processing of step1 commences for DP0.2, a new rcN release will be built on approximately weekly cadence.
-This weekly cadence follows the weekly review of backport requests.
-
-After step1 begins and 23.0.0 is released, the current plan is to increment the release versions.
-This backporting process will remain the same, but with evolving release tags and release branch numbers.
+7) When a ticket has been backported to all requested releases, label your Jira ticket ``backport-done``.
