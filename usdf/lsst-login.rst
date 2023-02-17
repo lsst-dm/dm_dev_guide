@@ -66,3 +66,5 @@ Staff RSP
 An RSP has been deployed. Your SLAC unix credential will be used for authentication.
 
 https://usdf-rsp.slac.stanford.edu/
+
+Note that the notebook tutorials that come with RSP are targeted at the IDF/DP02. The DP0.2 image data is not available at the USDF; the catalogue data is.
