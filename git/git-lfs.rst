@@ -117,7 +117,7 @@ Git LFS operates transparently to the user.
 *Just use the repo as you normally would any other Git repo.*
 All of the regular Git commands just work, whether you are working with LFS-managed files or not.
 
-There are two caveats for working with LFS: HTTPS is always used, and Git LFS must be told to track new binary file types.
+There are three caveats for working with LFS: HTTPS is always used, Git LFS must be told to track new binary file types, and you usually need enough memory to hold the largest file.
 
 First, DM's LFS implementation mandates the HTTPS transport protocol.
 Developers used to working with `ssh-agent <http://www.openbsd.org/cgi-bin/man.cgi?query=ssh-agent&sektion=1>`_ for passwordless GitHub interaction should use a :ref:`Git credential helper <git-credential-helper>`, and follow the :ref:`directions above <git-lfs-auth>` for configuring their credentials.
@@ -133,6 +133,18 @@ You can run
 
 to see what file types are being tracked by LFS in your repository.
 :ref:`We describe how to track additional file types below <git-lfs-tracking>`.
+
+Third, when cloning or fetching files in an LFS-backed repository, the git internals will expand each file into memory before writing it.
+This can be a problem on notebook servers configured with smaller memories.
+On these small servers, you can use the following workaround:
+
+.. code-block:: bash
+
+   GIT_LFS_SKIP_SMUDGE=1 git clone <url>
+   cd <dir>
+   git lfs fetch
+
+This works by skipping the automatic extraction by ``git`` and then manually extracting the files using ``git lfs``, which does not have the same memory constraints.
 
 .. _git-lfs-tracking:
 
