@@ -4,7 +4,7 @@ Debugging Tasks with ``lsstDebug``
 
 .. note::
 
-   See also the `Doxygen documentation on lsstDebug <http://doxygen.lsst.codes/stack/doxygen/x_mainDoxyDoc/base_debug.html>`_.
+   See also the `Pipelines documentation on lsstDebug <https://pipelines.lsst.io/v/daily/modules/lsstDebug/index.html>`_.
 
 Task Authors
 ============
@@ -43,7 +43,8 @@ Then you can write your task to optionally enable a display (or whatever) by doi
 Task Users
 ==========
 
-Refer to the `task documentation <http://doxygen.lsst.codes/stack/doxygen/x_mainDoxyDoc/group___l_s_s_t__task__documentation.html>`_ and look for “debug variables” to discover what debugging options are available for existing ``Task``\s.
+Refer to the `task documentation <https://pipelines.lsst.io/v/daily/tasks.html>`_ for your task of interest, and look for a "Debugging" section to discover what debugging options are available for existing ``Task``\s.
+We also provide further details about the `lsstDebug module <https://pipelines.lsst.io/v/daily/modules/lsstDebug/index.html>`_ in the pipeline docs.
 
 Your goal is to customize the behaviour of ``debug`` to meet your particular needs by redefining the ``lsstDebug.Info`` function to return an object that returns non-``False`` values for certain combinations of ``__name__`` and attribute.
 
@@ -61,4 +62,4 @@ In order to load your specific debugging configuration, create a ``debug.py`` in
 That should enable debugging the ``display`` attribute when you are running inside ``lsst.meas.astrom.astrometry``, and disable it elsewhere.
 Of course, you can also return arbitrarily more complex objects, doing things like specifying the frame to display on etc.
 
-You must use the ``--debug`` command line argument to ask a command line task to import your :file:`debug.py` file.
+You must use the ``--debug`` command line argument to ask a pipetask to import your :file:`debug.py` file.
