@@ -10,6 +10,7 @@ This style guide will help you write technical end-user documentation content fo
    :hidden:
 
    lsst-specific-content-style-guide
+   topic-based-documentation
 
 .. _user-doc-style-guide-list:
 
@@ -26,6 +27,10 @@ If the Google Developer Style Guide doesn’t address your situation, you can fa
 - `Project Publications Style Guide <https://ls.st/Document-13016>`__
 - `The Chicago Manual of Style <http://www.chicagomanualofstyle.org/>`__
 - The `Merriam-Webster <https://www.merriam-webster.com>`__ dictionary
+
+Additional writing resources:
+
+- :doc:`topic-based-documentation`
 
 .. _user-doc-style-guide-where:
 
