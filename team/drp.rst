@@ -146,14 +146,14 @@ The following example shows how to submit a job using the generic configuration 
 
 .. code-block:: shell
 
-  # All submissions must be made from your /scratch/gpfs directory.
-  cd /scratch/gpfs/$USER
-
   # Set the following environment variables to ensure that
   # the Science Pipelines and BPS do not try to use more
   # threads than are available on a single node.
   export OMP_NUM_THREADS=1
   export NUMEXPR_MAX_THREADS=1
+
+  # All submissions must be made from your /scratch/gpfs directory.
+  cd /scratch/gpfs/$USER
 
   # Save the output of the BPS submit command to a log file
   # (optional, but recommended).
@@ -171,6 +171,10 @@ The following example shows how to submit a job using the generic configuration 
   -d "instrument='HSC' AND visit=1228" \
   2>&1 | tee -a $LOGFILE; \
   date | tee -a $LOGFILE
+
+  # Additional command-line arguments may be passed to BPS
+  # using the --extra-qgraph-options argument, e.g.:
+  # --extra-qgraph-options "isr:doOverscan=False"
 
 A number of different compute sites are available for use with BPS as defined in the generic configuration file.
 Select a compute site using the syntax ``tiger_Xh_Xn_Xc``, where ``X`` is replaced by the appropriate number of hours, nodes, and cores.
