@@ -128,9 +128,9 @@ More information on storage limits, including on how to request a quota increase
 Cluster Usage
 -------------
 
-Jobs are managed on both systems using `SLURM <https://slurm.schedmd.com>`_; refer to its documentation for details.
+Jobs are managed on cluster systems using `SLURM <https://slurm.schedmd.com>`_; refer to its documentation for details.
 
-Batch processing funcitonality with the Science Pipelines is provided by the `LSST Batch Processing Service (BPS) <https://pipelines.lsst.io/modules/lsst.ctrl.bps>`_ module.
+Batch processing functionality with the Science Pipelines is provided by the `LSST Batch Processing Service (BPS) <https://pipelines.lsst.io/modules/lsst.ctrl.bps>`_ module.
 BPS on the Princeton clusters is configured to work with the `ctrl_bps_parsl plugin <https://github.com/lsst/ctrl_bps_parsl>`_, which uses the `Parsl <https://parsl-project.org>`_ workflow engine to submit jobs to SLURM.
 
 .. note::
