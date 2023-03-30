@@ -9,6 +9,10 @@ Deprecations are changes to interfaces.
 (If they were limited to implementation alone, they wouldn't require deprecation, as no one would notice when the change was made.)
 They require approval from the DMCCB by means of an :doc:`RFC </communications/rfc>`.
 
+All internal usage of deprecated interfaces MUST be removed at the point the deprecation is made, not later when the deprecated interfaces are removed; this includes all packages in ``lsst_distrib`` as well as standard CI packages like ``ci_hsc``, ``ci_imsim``, and ``ci_cpp``.
+No DM pipeline or test output should ever include deprecation warnings emitted by our own code.
+See :ref:`finding-downstream-usage` for how to ensure this.
+
 Release notes
 -------------
 
@@ -167,3 +171,23 @@ After deprecating a package as described :ref:`above <package-deprecation>`, the
 4. Edit the URL in the ``etc/repos.yaml`` file in the ``lsst/repos`` repository to correspond to the new location of the package's GitHub repository.
    This step is to make it easy to find the relocated repository, particularly for historical builds.
    Because of the redirects, this step does not have to occur immediately, but it is simple enough to do right away given the self-merge policy on the ``lsst/repos`` repository.
+
+.. _finding-downstream-usage:
+
+Finding Downstream Usage
+========================
+
+For all Python deprecations (including pybind11 and config deprecations), developers should find and fix downstream usage of a deprecated interface by turning the new warnings into errors temporarily, and running Jenkins (or running lsstsw locally).
+The easiest approach is to modify the ``PYTHONWARNINGS`` environment variable in the EUPS table file of the package containing the deprecated interface, e.g.
+
+.. code::
+
+    envPrepend(PYTHONWARNINGS, "error::FutureWarning:lsst.daf.butler.core.dimensions._universe", ",")
+    envPrepend(PYTHONWARNINGS, "error::FutureWarning:lsst.daf.butler.core.dimensions._coordinate", ",")
+
+Each module with a new deprecation must be listed separately and fully-qualified; including the module is usually sufficient for matching only the desired warnings, and is much less error-prone than including the message.
+See the `Python docs <https://docs.python.org/3/library/warnings.html#describing-warning-filters>`__ for details on the warnings filter syntax.
+After a successful Jenkins run (including all possibly-relevant ``ci_`` packages) these additions to the table file should be reverted.
+
+Developers may also actually remove deprecated interfaces on temporary ``git`` commits and run Jenkins; this may be more effective for more complicated deprecations, and it can provide a starting point for the removal ticket branch in advance.
+This is the recommended approach for all pure C++ deprecations.
