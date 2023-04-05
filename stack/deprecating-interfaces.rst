@@ -108,6 +108,16 @@ It should appear on its own line, adjacent to the declaration of the function, v
 The reason string should include the replacement API when available or explain why there is no replacement.
 The reason string must also specify the version after which the object may be removed, as discussed in :ref:`code_removal`.
 
+When a deprecated C++ interface is used by code that we cannot yet remove (e.g. an also-deprecated pybind11 wrapper for it), we do not want to emit compiler warnings due to the original deprecation.
+This can be achieved via preprocessor directives::
+
+    #pragma GCC diagnostic push
+    #pragma GCC diagnostic ignored "-Wdeprecated"
+    call_deprecated_function();
+    #pragma GCC diagnostic pop
+
+Note that this works for ``clang`` as well as ``gcc``, despite the pragma name.
+
 Config Deprecation
 ==================
 
