@@ -108,6 +108,16 @@ It should appear on its own line, adjacent to the declaration of the function, v
 The reason string should include the replacement API when available or explain why there is no replacement.
 The reason string must also specify the version after which the object may be removed, as discussed in :ref:`code_removal`.
 
+When a deprecated C++ interface is used by code that we cannot yet remove (e.g. an also-deprecated pybind11 wrapper for it), we do not want to emit compiler warnings due to the original deprecation.
+This can be achieved via preprocessor directives::
+
+    #pragma GCC diagnostic push
+    #pragma GCC diagnostic ignored "-Wdeprecated"
+    call_deprecated_function();
+    #pragma GCC diagnostic pop
+
+Note that this works for ``clang`` as well as ``gcc``, despite the pragma name.
+
 Config Deprecation
 ==================
 
@@ -178,16 +188,14 @@ Finding Downstream Usage
 ========================
 
 For all Python deprecations (including pybind11 and config deprecations), developers should find and fix downstream usage of a deprecated interface by turning the new warnings into errors temporarily, and running Jenkins (or running lsstsw locally).
-The easiest approach is to modify the ``PYTHONWARNINGS`` environment variable in the EUPS table file of the package containing the deprecated interface, e.g.
+The easiest approach is to pass ``action="error"`` to the ``@deprecated`` decorator when it is used, or to replace a `warnings.warn` with a ``raise`` statement, on a temporary commit.
+Unfortunately this action takes precedence over any warnings filter added later, so code that intentionally calls the deprecated code while silencing the warning (i.e. because it is also a deprecated code path) will also fail.
 
-.. code::
+.. note::
 
-    envPrepend(PYTHONWARNINGS, "error::FutureWarning:lsst.daf.butler.core.dimensions._universe", ",")
-    envPrepend(PYTHONWARNINGS, "error::FutureWarning:lsst.daf.butler.core.dimensions._coordinate", ",")
-
-Each module with a new deprecation must be listed separately and fully-qualified; including the module is usually sufficient for matching only the desired warnings, and is much less error-prone than including the message.
-See the `Python docs <https://docs.python.org/3/library/warnings.html#describing-warning-filters>`__ for details on the warnings filter syntax.
-After a successful Jenkins run (including all possibly-relevant ``ci_`` packages) these additions to the table file should be reverted.
+    It is tempting to use the ``PYTHONWARNINGS`` environment variable or the Python interpreter's ``-W`` option to turn warnings into errors instead, since these can be overridden by in-code warnings filters.
+    Writing a filter that matches just the desired deprecations is at least difficult, however, and in our testing it seems that matching on ``module`` is surprisingly unreliable and hard-to-debug.
+    Since a filter that does not match will cause emitted warnings to be missed in testing, we do not recommend this approach.
 
 Developers may also actually remove deprecated interfaces on temporary ``git`` commits and run Jenkins; this may be more effective for more complicated deprecations, and it can provide a starting point for the removal ticket branch in advance.
 This is the recommended approach for all pure C++ deprecations.
