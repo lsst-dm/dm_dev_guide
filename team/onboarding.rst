@@ -54,7 +54,7 @@ GitHub and LSST organizations
 
 If you don't have one already, create an account on https://github.com.
 
-Next, ask your T/CAM to add you to the `lsst <https://github.com/lsst>`__ and `lsst-dm <https://github.com/lsst>`__ GitHub organizations, along with any relevant team organizations (send your GitHub username to your T/CAM).
+Next, ask your T/CAM to add you to the `lsst <https://github.com/lsst>`__ and `lsst-dm <https://github.com/lsst-dm>`__ GitHub organizations, along with any relevant team organizations (send your GitHub username to your T/CAM).
 
 .. seealso::
 
