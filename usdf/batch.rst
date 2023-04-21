@@ -2,18 +2,14 @@
 Batch Resources
 #################
 
-This document describes the batch resources available at the LSST Data
-Facility during the interim period where the Rubin filesystems at SLAC
-go into production mode on our own hardware, and while user and
-project data are being transferred from NCSA.
+This document describes the batch resources available at the US Data Facility hosted at the SLAC Shared Scientific Data Facility (S3DF).
 
 Use of S3DF batch is documented at 
 
 https://s3df.slac.stanford.edu/
 
-S3DF has two Slurm partitions ``roma`` and ``milano``. Both of these partitions have AMD nodes with 128 cores, two 
-sockets each with a 64-core processor (hyperthreading disabled). A Slurm job can be submitted with markup
-``#SBATCH -p roma,milano`` to run on either of the partitions. 
+S3DF has two Slurm partitions ``roma`` and ``milano``. Both of these partitions have AMD nodes with 128 cores, composed of two sockets, each with a 64-core processor (hyperthreading disabled).
+A Slurm job can be submitted with markup ``#SBATCH -p roma,milano`` to run on either of the partitions. 
 
 Running LSST Pipelines with BPS
 ===============================
@@ -40,7 +36,8 @@ This section describes how to obtain an `HTCondor <https://htcondor.org>`__ pool
    $ condor_status
    $
 
-In order to run BPS workflows via htcondor at S3DF, it is necessary to submit glide-in jobs to the S3DF Slurm scheduler using the ``allocateNodes.py`` utility of the ``ctrl_execute`` package.  The ``ctrl_execute`` utilities will reference the ``ctrl_platform_s3df`` package to obtain needed S3DF configuration.  These packages will eventually be available within the shared stack on S3DF. Until they are published there, it may be necessary to perform local user installs. After these two packages are setup the glide-ins may be submitted.
+In order to run BPS workflows via htcondor at S3DF, it is necessary to submit glide-in jobs to the S3DF Slurm scheduler using the ``allocateNodes.py`` utility of the ``ctrl_execute`` package which will reference the ``ctrl_platform_s3df`` package`.
+After these two packages are setup the glide-ins may be submitted.
 
 The ``allocateNodes.py`` utility has the following options::
 
@@ -149,8 +146,9 @@ After submitting the ``allocateNodes.py`` command line above, the user may see S
 
 The htcondor slots will have a label with the username, so that one user's glide-ins may be distinguished from another's.  In this case the glide-in slots are partial node 32-core chunks, and so more than one slot can appear on a given node. The decision as to whether to request full nodes or partial nodes would depend on the general load on the cluster, i.e., if the cluster is populated with other numerous single core jobs that partially fill nodes, it will be necessary to request partial nodes to acquire available resources. 
 
-The ``allocateNodes.py`` utility is set up to be run in a maintenance or cron type manner, where reissuing the exact same command line request for 20 glide-ins will not directly issue 20 additional glide-ins. Rather ``allocateNodes.py`` will strive to maintain 20 glide-ins for the workflow, checking to see if that number of glide-ins are in the queue, and resubmit any missing glide-ins that may have exited due to lulls in activity within the workflow.  With htcondor slots present and visible with ``condor_status``, one may proceed with running ``ctrl_bps`` ``ctrl_bps_htcondor`` 
-workflows in the same manner as was done on the project's previous generation computing cluster at NCSA.  
+The ``allocateNodes.py`` utility is set up to be run in a maintenance or cron type manner, where reissuing the exact same command line request for 20 glide-ins will not directly issue 20 additional glide-ins. Rather ``allocateNodes.py`` will strive to maintain 20 glide-ins for the workflow, checking to see if that number of glide-ins are in the queue, and resubmit any missing glide-ins that may have exited due to lulls in activity within the workflow.
+
+With htcondor slots present and visible with ``condor_status``, one may proceed with running ``ctrl_bps`` ``ctrl_bps_htcondor`` workflows in the same manner as was done on the project's previous generation computing cluster at NCSA.
 
 Usage of the ``ctrl_bps_htcondor`` plugin and module has been extensively documented at
 
