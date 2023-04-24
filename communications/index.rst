@@ -11,6 +11,7 @@ How to use DM's communication channels.
 - :doc:`rfc`
 - :doc:`rfd`
 - :doc:`wiki`
+- :doc:`mail`
 - :doc:`presenting-at-conferences`
 - :doc:`community-support`
 - :doc:`calendars`
