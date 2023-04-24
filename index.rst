@@ -72,6 +72,7 @@ Team-specific pages:
    communications/rfc.rst
    communications/rfd.rst
    communications/wiki.rst
+   communications/mail.rst
    communications/presenting-at-conferences.rst
    communications/community-support.rst
    communications/calendars.rst
