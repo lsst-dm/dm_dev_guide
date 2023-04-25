@@ -40,35 +40,6 @@ Then set up the `pipelines_lsst_io`_ package with EUPS:
 
    setup -k -r pipelines_lsst_io
 
-.. _local-pipelines-lsst-io-build-documenteer:
-
-Install Documenteer, the documentation tooling
-==============================================
-
-Documenteer_ provides tooling to build `pipelines.lsst.io`_.
-Since it’s a `PyPI-distributed Python package <https://pypi.org/project/documenteer/>`__, you need to install it separately from the EUPS Stack:
-
-.. code-block:: bash
-
-   cd pipelines_lsst_io
-   pip install -r requirements.txt
-
-Do this *after* :ref:`running the setup command <local-pipelines-lsst-io-build-clone>`.
-
-If it is not already present in your environment, you may also want to install the `graphviz`_ package to enable generation of diagrams:
-
-.. code-block:: bash
-
-   conda install graphviz
-
-.. note::
-
-   On a shared resource, you will need to use a ``--user`` flag with :command:`pip install`.
-
-.. note::
-
-   By using the :file:`requirements.txt` file in the `pipelines_lsst_io`_ repository, you can ensure you’re using the same version of Documenteer_ and its dependencies as in the CI builds of `pipelines.lsst.io`_.
-
 .. _local-pipelines-lsst-io-build-build:
 
 Building the pipelines\_lsst\_io site
