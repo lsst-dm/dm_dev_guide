@@ -43,6 +43,8 @@ The USDF butler Registry can be accessed at ``usdf-butler.slac.stanford.edu``.
 
 As of this writing, authentication is by a single account and password. It will be set up for you automatically once you log in to RSP once, creating a .lsst/postgres-credentials.txt file. You wil need to fire up a notebook server while on RSP.
 
+If additional credentials are required (e.g. APDB), these credentials should be copied into ``~/.lsst/postgres-credentials.txt``. Note that starting a USDF RSP notebook with a container earlier than w_2022_14 will result in overwriting these credentials. The use of a ``db-auth.yaml`` file is depreciated and the file should be removed.
+
 Data Transfer Tools
 ===================
 
