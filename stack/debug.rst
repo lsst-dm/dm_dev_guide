@@ -46,7 +46,7 @@ Task Users
 Refer to the `task documentation <https://pipelines.lsst.io/v/daily/tasks.html>`_ for your task of interest, and look for a "Debugging" section to discover what debugging options are available for existing ``Task``\s.
 We also provide further details about the `lsstDebug module <https://pipelines.lsst.io/v/daily/modules/lsstDebug/index.html>`_ in the pipeline docs.
 
-Your goal is to customize the behaviour of ``debug`` to meet your particular needs by redefining the ``lsstDebug.Info`` function to return an object that returns non-``False`` values for certain combinations of ``__name__`` and attribute.
+To use ``lsstDebug``, you need to customize the behaviour of ``debug`` to meet your particular needs by redefining the ``lsstDebug.Info`` function to return an object that returns non-``False`` values for certain combinations of ``__name__`` and attribute.
 
 In order to load your specific debugging configuration, create a ``debug.py`` in a directory that is already in your ``PYTHONPATH`` or a new directory that you add to your ``PYTHONPATH``, and put something like this in it::
 
