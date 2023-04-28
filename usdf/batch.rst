@@ -144,7 +144,9 @@ After submitting the ``allocateNodes.py`` command line above, the user may see S
 
          Total    19     0       0        19       0          0        0      0
 
-The htcondor slots will have a label with the username, so that one user's glide-ins may be distinguished from another's.  In this case the glide-in slots are partial node 32-core chunks, and so more than one slot can appear on a given node. The decision as to whether to request full nodes or partial nodes would depend on the general load on the cluster, i.e., if the cluster is populated with other numerous single core jobs that partially fill nodes, it will be necessary to request partial nodes to acquire available resources. 
+The htcondor slots will have a label with the username, so that one user's glide-ins may be distinguished from another's.  In this case the glide-in slots are partial node 32-core chunks, and so more than one slot can appear on a given node. The decision as to whether to request full nodes or partial nodes would depend on the general load on the cluster, i.e., if the cluster is populated with other numerous single core jobs that partially fill nodes, it will be necessary to request partial nodes to acquire available resources.
+Larger ``-c`` values (and hence smaller ``-n`` values for the same total number of cores) will entail less process overhead, but there may be inefficient unused cores within a slot/"node", and slots may be harder to schedule.
+We recommend selecting ``-c`` such that ``-n`` is in the range of 1 to 32; ``-c 32`` is often reasonable for jobs using dozens to hundreds of cores.
 
 The ``allocateNodes.py`` utility is set up to be run in a maintenance or cron type manner, where reissuing the exact same command line request for 20 glide-ins will not directly issue 20 additional glide-ins. Rather ``allocateNodes.py`` will strive to maintain 20 glide-ins for the workflow, checking to see if that number of glide-ins are in the queue, and resubmit any missing glide-ins that may have exited due to lulls in activity within the workflow.
 
