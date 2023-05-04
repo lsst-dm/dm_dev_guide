@@ -20,6 +20,10 @@ Before starting, you’ll need a working ``lsst_distrib`` installation.
 
 This installation needs to be a recent daily or weekly build so that any in-development packages will compile with the Stack. Working from the tip of the ``main`` branch is the norm for LSST software development.
 
+The documentation build uses Documenteer_ and related Sphinx_ documentation packages, which are already installed if you are using the Rubin Conda developer environment.
+You can check if ``rubin-env-developer`` is installed by running ``mamba list rubin-env``.
+If not, you can install the developer environment with: ``mamba install rubin-env-developer``.
+
 .. _local-pipelines-lsst-io-build-clone:
 
 Clone and set up the pipelines\_lsst\_io repository
@@ -116,3 +120,4 @@ Further reading
 .. _`pipelines_lsst_io`: https://github.com/lsst/pipelines_lsst_io
 .. _`pipe_base`: https://github.com/lsst/pipe_base
 .. _`graphviz`: https://graphviz.org
+.. _`Sphinx`: https://www.sphinx-doc.org/en/master/
