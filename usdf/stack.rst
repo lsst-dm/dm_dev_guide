@@ -64,3 +64,8 @@ To get the environment for a specific version:
 The last 24 daily releases and the last 26 weekly releases, as well as all official releases and release candidates after v23_0_2 are intended to be available.
 
 Note that you can access ``conda`` from the stack install; SDF does not provide a central ``conda`` install.
+
+After initializing the environment as above, you can use the EUPS ``setup`` command (e.g. ``setup lsst_distrib`` or ``setup lsst_sitcom``) to choose a compatible version of the Science Pipelines packages.
+By default, ``setup`` will use the *latest* weekly that is compatible with the environment you chose, regardless of how you got that environment, as that is the version that is tagged with ``current``.
+
+If you need a specific version, you should use ``source /sdf/group/rubin/sw/tag/{version}/loadLSST.sh; setup -t {version} {package}`` where ``{package}`` is ``lsst_distrib`` or ``lsst_sitcom`` or any other Science Pipelines package.
