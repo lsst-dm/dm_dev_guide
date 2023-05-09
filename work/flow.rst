@@ -274,7 +274,7 @@ These branches are named
 
 .. code-block:: text
 
-   u/{{username}}/{{topic}}
+   u/{{github-username}}/{{topic}}
 
 User branches can be pushed to GitHub to enable collaboration and communication.
 Before offering unsolicited code review on your colleagues' user branches, remember that the work is intended to be an early prototype.
