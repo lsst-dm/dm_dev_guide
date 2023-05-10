@@ -42,7 +42,7 @@ After these two packages are setup the glide-ins may be submitted.
 The ``allocateNodes.py`` utility has the following options::
 
    $ allocateNodes.py --help
-   usage: /sdf/home/d/daues/repo_work/testrun4/ctrl_execute/bin/allocateNodes.py [-h] -n NODECOUNT -c CPUS -m MAXIMUMWALLCLOCK
+   usage: [...]/ctrl_execute/bin/allocateNodes.py [-h] -n NODECOUNT -c CPUS -m MAXIMUMWALLCLOCK
                                                                               [-q QUEUE] [-O OUTPUTLOG] [-E ERRORLOG]
                                                                               [-g GLIDEINSHUTDOWN] [-v] [-r RESERVATION]
                                                                               [-d [DYNAMIC]]
@@ -71,7 +71,7 @@ The ``allocateNodes.py`` utility has the following options::
       -d [DYNAMIC], --dynamic [DYNAMIC]
                         configure to use dynamic/partitionable slot; legacy option: this is always enabled now
 
-The ``allocateNodes.py`` utility requires a small measure of configuration in the user's home directory::
+The ``allocateNodes.py`` utility requires a small measure of configuration in the user's home directory (replace the username ``daues`` with your own)::
 
    $  cat  ~/.lsst/condor-info.py
    config.platform["s3df"].user.name="daues"
