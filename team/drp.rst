@@ -51,6 +51,12 @@ Accounts are issued on demand at the request of an appropriate PI.
 For our group, that means you should speak to either Robert or Yusra, and they will arrange one for you.
 When your account has been created, you should check that you are a member of the groups ``astro``, ``hsc``, and ``lsst`` (use the :command:`groups` command).
 
+.. note::
+
+  A new user account may not have the ``lsst`` group added by default.
+  This group is not being used for anything at present, so it shouldn't be a problem if you are not a member of it.
+  If you find that you do need to be a member of this group, please contact Robert or Yusra.
+
 .. _drp-princeton-available-systems:
 
 Available Systems
@@ -68,7 +74,7 @@ You can use this node for building software and running small and/or short-lived
 Shared Stack
 ------------
 
-The Tiger cluster has access to regularly-updated installations of the LSST “stack” through the shared :file:`/scratch/gpfs` filesystem.
+The Tiger cluster has access to regularly-updated installations of the LSST Science Pipelines (the “stack”) through the shared :file:`/scratch/gpfs` filesystem.
 The stack is automatically updated every Thursday evening (i.e., 24h after a new weekly gets cut). To initialize the stack in your shell, run:
 
 .. code-block:: shell
@@ -92,8 +98,8 @@ A list of all currently installed Rubin Environments can be found by running: ``
 
 .. note::
 
-   The current default shared stack, described above, is a symbolic link to the latest build using the post-:jira:`RFC-584` Conda environment.
-   Older builds, if any, are available in ``/scratch/gpfs/HSC/LSST/`` with the syntax ``stack_YYYYMMDD``.
+  The current default shared stack, described above, is a symbolic link to the latest build using the post-:jira:`RFC-584` Conda environment.
+  Older builds, if any, are available in ``/scratch/gpfs/HSC/LSST/`` with the syntax ``stack_YYYYMMDD``.
 
 .. _drp-princeton-repositories:
 
@@ -102,7 +108,11 @@ Repositories
 
 The primary HSC/LSST butler data repository is located at: ``/projects/HSC/repo/main``.
 All raw HSC data on-disk has been ingested into this gen3 repo.
-For more information on accessing and using this repository, including setting up required permissions, see the contained ``README.md`` file.
+For information on accessing and using this repository, including setting up required permissions, see the contained ``/projects/HSC/repo/main/README.md`` file.
+
+.. note::
+
+  You will not be able to access the data within this repository without first following the **Database Authentication** instructions in the above ``README.md`` file.
 
 .. _drp-princeton-storage:
 
@@ -178,17 +188,18 @@ The following example shows how to submit a job using the generic configuration 
 
 A number of different compute sites are available for use with BPS as defined in the generic configuration file.
 Select a compute site using the syntax ``tiger_Xh_Xn_Xc``, where ``X`` is replaced by the appropriate number of hours, nodes, and cores.
+You may check the available compute sites defined in the generic configuration file using: ``grep "tiger" /projects/HSC/LSST/bps/bps_tiger.yaml``.
 The following table lists the available compute site dimensions and their associated options:
 
-+------------------+----------+
-|    Dimension     | Options  |
-+==================+==========+
-| Walltime (Hours) | 1, 5, 24 |
-+------------------+----------+
-| Nodes            | 1, 4     |
-+------------------+----------+
-| Cores per Node   | 10, 40   |
-+------------------+----------+
++------------------+-----------+
+|    Dimension     |  Options  |
++==================+===========+
+| Walltime (Hours) | 1, 5, 24  |
++------------------+-----------+
+| Nodes            | 1, 4      |
++------------------+-----------+
+| Cores per Node   | 1, 10, 40 |
++------------------+-----------+
 
 It is occasionally useful to be able to bring up an interactive shell on a compute node.
 The following should work:
