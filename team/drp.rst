@@ -182,9 +182,9 @@ The following example shows how to submit a job using the generic configuration 
   2>&1 | tee -a $LOGFILE; \
   date | tee -a $LOGFILE
 
-  # Additional command-line arguments may be passed to BPS
-  # using the --extra-qgraph-options argument, e.g.:
-  # --extra-qgraph-options "isr:doOverscan=False"
+  # Additional command-line arguments may be passed to BPS using the
+  # --extra-qgraph-options argument, for example, to add a config override:
+  # --extra-qgraph-options "-c isr:doOverscan=False"
 
 A number of different compute sites are available for use with BPS as defined in the generic configuration file.
 Select a compute site using the syntax ``tiger_Xh_Xn_Xc``, where ``X`` is replaced by the appropriate number of hours, nodes, and cores.
