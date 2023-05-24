@@ -111,6 +111,7 @@ To have your credentials cached for 1 hour (3600 seconds):
 
 **Linux users can alternatively** have their `credentials stored on disk <http://git-scm.com/docs/git-credential-store>`_ in a :file:`~/.git-credentials` file.
 Only do this for machines where you can ensure some level of security.
+To do this securely on USDF, set the credential file to be only read/write by your user: ``chmod 0600 ~/.git-credentials``.
 
 .. code-block:: bash
 
