@@ -87,26 +87,7 @@ If the resulting new directory is about 220MB in size, as measured by ``du -sh t
 Authenticating for push access
 ==============================
 
-If you want to push to a LSST Git LFS-backed repository you'll need to configure and cache your credentials.
-
-Due to GitHub's authentication interface, you must use a personal access token instead of a password, regardless of whether or not you have two-factor authentication enabled.
-You can set up a personal token at https://github.com/settings/tokens with ``public_repo`` and ``read:org`` permissions.
-
-First, set up a credential helper to manage your GitHub credentials (Git LFS won't use your SSH keys).
-:ref:`We describe how to set up a credential helper for your system in the Git set up guide <git-credential-helper>`.
-
-Then the next time you run a Git command that requires authentication, Git may ask you to authenticate with both GitHub (for the push via HTTPS) and with LSST's Git LFS server (for authentication of the LFS upload)::
-
-   Username for 'https://github.com': <GitHub username>
-   Password for 'https://<user>@github.com': <GitHub token>
-   Username for 'https://git-lfs.lsst.codes': <GitHub username>
-   Password for 'https://<user>@git-lfs.lsst.codes': <GitHub token>
-
-At the prompts, enter your GitHub username and token.
-
-Once your credentials are cached, you won't need to repeat this process on your system (:ref:`unless you opted for the cache-based credential helper <git-credential-helper>`).
-
-If you find that ``git push`` is not working but also not asking you for credentials, you may need to manually insert the username/password or token into the credential store or macOS keychain.
+If you want to push to a LSST Git LFS-backed repository you'll need to configure and cache your credentials, as described at :ref:`git-auth-tokens`.
 
 .. _git-lfs-using:
 
