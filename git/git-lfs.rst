@@ -80,7 +80,7 @@ Trying cloning a small data repository to test your configuration:
 
    git clone https://github.com/lsst/testdata_subaru
 
-*That's it.*
+If the resulting new directory is about 220MB in size, as measured by ``du -sh testdata_subaru``, you are correctly configured for Git LFS use.
 
 .. _git-lfs-auth:
 
