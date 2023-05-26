@@ -10,7 +10,7 @@ The following login load-balancer is run by SLAC to jump to select Rubin Observa
 
 - ``s3dflogin.slac.stanford.edu``
 
-USDF usage questions can be posted to slack ``#ops-usdf``. Announcements will go to ``#ops-usdf-announce``.
+USDF usage questions can be posted to slack ``#ops-usdf``. Announcements will go to ``#ops-usdf-announce``. SLAC also maintains an internal workspace with a channel dedicated to S3DF support, called comp-sdf. We have created an LSSTC workspace wormhole into that channel, called ``#ops-help-s3df-slac``, intended for non Stanford/SLAC people. This SLAC channel is for the entire S3DF community.
 
 Connecting and Authenticating to Rubin servers
 ==============================================
