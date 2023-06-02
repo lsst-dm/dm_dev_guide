@@ -643,6 +643,14 @@ If the type of the sequence's items isn't known, leave out the item typing and e
    items : `list`
        A sequence of items, which can be any type.
 
+Sequences of complex types can potentially have very long type descriptions.
+If such a description must be split across multiple lines, you must end each line but the last with a ``\``:
+
+.. code-block:: rst
+
+    items : `lsst.afw.collections.FancyList` [`~collections.abc.Mapping` \
+            [`str`, `~lsst.pex.config.Config`]]
+
 .. _py-docstring-parameter-types-dict:
 
 Dictionary types
@@ -705,6 +713,14 @@ If the keys are well-known, document the keys using a pattern similar to :ref:`p
            all content is aligned with the opening content line.
 
 Notice how the keys are shown by enclosing the quoted strings in double backticks to clarify that the keys are `str` types.
+
+Mappings of complex types can potentially have very long type descriptions.
+If such a description must be split across multiple lines, you must end each line but the last with a ``\``:
+
+.. code-block:: rst
+
+    items : `lsst.afw.collections.FancyList` [`~collections.abc.Mapping` \
+            [`str`, `~lsst.pex.config.Config`]]
 
 .. _py-docstring-parameter-types-struct:
 
