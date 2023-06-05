@@ -589,8 +589,14 @@ This works for both built-in types and most importable objects:
        [...]
 
 In general, provide the full namespace to the object, such as ```lsst.pipe.base.Struct```.
-It may be possible to reference objects in the same namespace as the current module without any namespace prefix.
+The ``.`` prefix denotes the current module, and it may be possible to reference objects in the same package as the current type or function without any namespace prefix at all.
 Always check the compiled documentation site to ensure the link worked.
+
+.. note::
+
+   Unqualified links to types are evaluated relative to the *package* in which the linking object is documented, not the module file in which the docstring is written.
+   In particular, importing a type into a module does not let you use unqualified links to that type from module code.
+
 
 .. _py-docstring-parameter-types-choices:
 
