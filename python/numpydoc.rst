@@ -589,8 +589,14 @@ This works for both built-in types and most importable objects:
        [...]
 
 In general, provide the full namespace to the object, such as ```lsst.pipe.base.Struct```.
-It may be possible to reference objects in the same namespace as the current module without any namespace prefix.
+The ``.`` prefix denotes the current module, and it may be possible to reference objects in the same package as the current type or function without any namespace prefix at all.
 Always check the compiled documentation site to ensure the link worked.
+
+.. note::
+
+   Unqualified links to types are evaluated relative to the *package* in which the linking object is documented, not the module file in which the docstring is written.
+   In particular, importing a type into a module does not let you use unqualified links to that type from module code.
+
 
 .. _py-docstring-parameter-types-choices:
 
@@ -642,6 +648,14 @@ If the type of the sequence's items isn't known, leave out the item typing and e
 
    items : `list`
        A sequence of items, which can be any type.
+
+Sequences of complex types can potentially have very long type descriptions.
+If such a description must be split across multiple lines, you must end each line but the last with a ``\``:
+
+.. code-block:: rst
+
+    items : `lsst.afw.collections.FancyList` [`~collections.abc.Mapping` \
+            [`str`, `~lsst.pex.config.Config`]]
 
 .. _py-docstring-parameter-types-dict:
 
@@ -705,6 +719,14 @@ If the keys are well-known, document the keys using a pattern similar to :ref:`p
            all content is aligned with the opening content line.
 
 Notice how the keys are shown by enclosing the quoted strings in double backticks to clarify that the keys are `str` types.
+
+Mappings of complex types can potentially have very long type descriptions.
+If such a description must be split across multiple lines, you must end each line but the last with a ``\``:
+
+.. code-block:: rst
+
+    items : `lsst.afw.collections.FancyList` [`~collections.abc.Mapping` \
+            [`str`, `~lsst.pex.config.Config`]]
 
 .. _py-docstring-parameter-types-struct:
 
