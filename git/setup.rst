@@ -133,7 +133,7 @@ You can build an effective development environment and workflow by tuning your G
 Here are some ideas:
 
 1. `Add git status to your prompt <https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh>`_ (see the instructions under "To enable:" at the top of the file). Some more complicated suggestions are discussed on `this Community thread <https://community.lsst.org/t/git-tips-and-tricks/3169>`_, including this `git bash prompt <https://github.com/magicmonty/bash-git-prompt>`_ project. Colorized git information in your prompt can help you easily know what branch you are on, or if you forgot to finish a rebase.
-2. `Enable shell autocompletion <https://github.com/git/git/blob/master/contrib/completion/git-completion.bash>`_, to allow things like tab-completing git branch names and files to commit. Linux users can install the "bash-completion" package to automatically gain this, and other, autocomplete functionality.
+2. `Enable shell autocompletion <https://github.com/git/git/blob/master/contrib/completion/git-completion.bash>`_, to allow things like tab-completing git branch names and files to commit. Linux users can install the "bash-completion" package to automatically gain this, and other, autocomplete functionality. MacOS users can add ``autoload -Uz compinit && compinit`` to their ``.zshrc`` file.
 3. `Craft aliases for common workflows <http://git-scm.com/book/en/v2/Git-Basics-Git-Aliases>`_.
 4. Use `hub <https://hub.github.com>`_ to interact with GitHub features from the command line.
 
