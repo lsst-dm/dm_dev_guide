@@ -33,6 +33,7 @@ Check out the `README <https://github.com/lsst-dm/dm_dev_guide/blob/main/README.
 
    team/onboarding
    team/code-of-conduct
+   team/tools
    team/focus-friday
    team/meeting-free-weeks
    team/empowerment

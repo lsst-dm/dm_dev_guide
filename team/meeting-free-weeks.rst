@@ -13,10 +13,6 @@ June 19 - 23,
 Sept 25 - 29,
 December 25 Jan 5.
 
-Meeting Free Weeks 2022
-=======================
-Remaining in 2022: December 26 - Jan 9
-
 Guidelines
 ==========
 The driver for meeting free weeks is similar to :doc:`focus-friday`. 
