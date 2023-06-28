@@ -15,6 +15,10 @@ DM packaging of third party code should proceed as described in :doc:`packaging-
 
 If the new package needs a distinct Jira component (most will), any DMLT member (such as your manager) can add one.
 
+Upon adding a new package, the dependency should be listed in the table file of packages that specifically utilize it. This method prevents the code from breaking for users who only setup specific packages they are utilizing and not the entire ``lsst_apps`` or ``lsst_distrib``. Even when changes are made on a branch, Jenkins will promptly detect the integration of the new package and its dependencies as soon as it picks up the ``ap_association`` change, and proceed to pull in the new package into the build. Dependencies managed through Conda, rather than EUPS, are assumed and do not need to be specified in the table file.
+
+Should the need for clarification arise upon the successful addition of a new package and validation of its operational functionality, your firsthand experience would be invaluable in proposing enhancements to this documentation, thereby aiding future developers.
+
 Adding a package to a distributed product
 =========================================
 
