@@ -3,8 +3,8 @@
 Tools and external resources
 #############################
 
-DM uses many third party tools and  systems. 
-We have services account on most of these.
+DM uses many third party tools and systems. 
+We have service accounts for most of these.
 Passwords are stored in 1Password vaults. 
 
 Before creating or asking for a new third party service please consult `#rubinobs-it-public <https://lsstc.slack.com/archives/CDY9NGNJ1>`_ on Slack.
