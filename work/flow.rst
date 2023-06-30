@@ -323,6 +323,16 @@ Review Preparation
 When development on your ticket branch is complete, we use a standard process for reviewing and merging your work.
 This section describes how to prepare your work for review.
 
+.. _workflow-search-todo:
+
+Search for TODO comments
+------------------------
+
+Search for your ticket number (with the 'DM-' prefix) in all repositories associated with the LSST organization on GitHub (using "org:lsst" as the prefix).
+If there are any TODO comments linked with your current ticket, make sure that they are addressed in this ticket and remove the comments.
+If any additional follow up work is needed to fully resolve the issue, update the comment to reflect the follow up ticket.
+This is particularly relevant for long-standing tickets.
+
 .. _workflow-pushing:
 
 Pushing code
