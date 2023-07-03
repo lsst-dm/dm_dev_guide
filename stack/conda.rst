@@ -70,8 +70,9 @@ This script automatically installs new weekly releases from source.
 It also augments the standard ``rubin-env`` conda environment with additional packages useful for developers (but not needed in production) using the ``rubin-env-developer`` metapackage.
 Requests for additions to ``rubin-env-developer`` should be made via RFC.
 
-``rubin-env-developer`` versioning follows ``rubin-env``.
-New builds of ``rubin-env`` can be used to update the packages that are in ``rubin-env-developer`` and not ``rubin-env``.
+``rubin-env-developer`` currently uses the same version number as the underlying ``rubin-env``.
+New builds of ``rubin-env`` (without updating its version) can generally be used to update the packages that are in ``rubin-env-developer`` and not ``rubin-env``.
+If a new or updated ``rubin-env-developer`` package somehow breaks compatibility with old versions of Science Pipelines code, then a new version of ``rubin-env`` itself may be necessary.
 
 .. _conda-rsp-notebooks:
 
@@ -83,8 +84,8 @@ As part of the container build process, additional packages useful in the notebo
 ``rubin-env-rsp`` differs from ``rubin-env-developer`` in being user-focused and including packages specific for the JupyterHub/JupyterLab platform.
 Requests for additions to ``rubin-env-rsp`` should be made via RFC.
 
-``rubin-env-rsp`` versioning follows ``rubin-env``.
-New builds of ``rubin-env`` can be used to update the packages that are in ``rubin-env-rsp`` and not ``rubin-env``.
+``rubin-env-rsp`` currently uses the same version number as the underlying ``rubin-env``.
+New builds of ``rubin-env`` (without updating its version) can always be used to update the packages that are in ``rubin-env-rsp`` and not ``rubin-env``.
 
 .. _conda-exact-environments:
 
