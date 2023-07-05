@@ -119,12 +119,12 @@ For ``afw`` this is located at https://github.com/lsst/afw/settings/branches/ an
 In the "Branch protection rules" section of that page you will have to click on "Add rule" to create a rule for ``main``.
 First, add in ``main`` as the branch name pattern.
 Second, enable ``Require a pull request before merging``, but disable ``Require approvals``.
-Third, enable status checks, require that branches be up to date before merging, and add the ``lint`` GitHub action to the list of required status checks.
-To enable the ``lint`` GitHub action, type ``lint`` into the search box and select the ``lint`` GitHub action.
-Finally, include Administrators in these protections, since it's all too easy to make a mistake without realizing you have special override powers.
+Third, enable status checks, require that branches be up to date before merging, and add the ``call-workflow/lint`` and ``call-workflow/rebase-checker`` GitHub actions to the list of required status checks.
+To enable the ``call-workflow/lint`` GitHub action, type ``lint`` into the search box and select the ``call-workflow/lint`` GitHub action and similarly for the other required action.
+Finally, check the "Do not allow bypassing the above settings" box, since it's all too easy to make a mistake without realizing you have special override powers.
 With checks enabled people will be able to use the GitHub merge button on Pull Requests and know that the :ref:`standard process <workflow-code-review-merge>` is being adhered to.
 
-Once the above settings have been configured correctly, click CREATE to save the new rule.
+Once the above settings have been configured correctly, click ``Create`` to save the new rule.
 The new rule settings should look something like this:
 
 .. image:: /_static/build-ci/github_branch_protection_rule_settings.png
