@@ -33,8 +33,14 @@ Running a stack-os-matrix job
      There are also several packages that can be appended to the default to do more thorough testing at the cost of much longer build times:
 
      - ``ci_cpp`` exercises the Calibration Products Pipeline in ways that are too computationally expensive for unit tests in ``cp_pipe``.
-     - ``ci_hsc`` exercises most of the Data Release Production pipelines, including single-frame processing and coaddition, on HSC engineering data. This package is also run as part of the nightly build.
-     - ``ci_imsim`` runs the same on simulated Rubin Observatory data. Like ``ci_hsc``, it's run nightly in addition to as part of ``stack-os-matrix``.
+       It is run as part of the nightly ``lsst_distrib`` Jenkins job, and it takes about 20 minutes.
+     - ``ci_hsc`` runs a variant of the Data Release Production (DRP) pipeline, including single-frame processing and coaddition, on HSC engineering data. This package is run in a separate nightly Jenkins job, and it takes about 2 hours.
+     - ``ci_imsim`` runs a slightly simplified version of the DRP pipeline on simulated Rubin Observatory data. Like ``ci_hsc``, it's run nightly in its own nightly Jenkins job, and also takes about 2 hours.
+     - ``ci_middleware`` runs a few variants of the DRP pipeline in a "mocked" mode in which the algorithmic code and true I/O routines are replaced by simple placeholders that just exercise the overall flow of datasets between tasks (i.e. whether the pipelines are self-consistently defined) and the middleware tooling for predicting and running task execution.  It is run nightly with ``ci_cpp`` in the ``lsst_distrib`` Jenkins job, and it takes about 20 minutes.
+
+     DM developers should use their own judgement when determining which of these to run when testing a ticket branch, but the general expectation is that at least one of ``ci_hsc`` and ``ci_imsim`` (and often both) is run for changes to algorithmic or data structure code that is included in the DRP pipelines.
+     Changes to ``ip_isr`` or ``cp_pipe`` should be tested with ``ci_cpp``.
+     Middleware changes and changes to DRP pipeline *structure* (new tasks or changes to connections) should be tested with ``ci_middleware``, and major middleware changes should be tested with all ``ci_*`` packages.
 
    - **Set the conda environment** to run on.
      The default is the latest ``rubin-env`` package.
