@@ -513,7 +513,11 @@ If a rebase was required, a final check with Jenkins should be done.
 We encourage you to use this button when GitHub says "This branch has no conflicts with the base branch", "All checks have passed", and at least one of the checks has "Required" next to it, which should be the case for almost all repos that are being changed.
 For normally-configured repos, using the button will also delete the ticket branch after the merge.
 Do *not* select a different merge strategy from the pulldown next to the button; these should be disabled anyway.
-Also do *not* use the "Update my branch" button as that does a merge from main; rebase from the command line instead.
+
+Also do *not* click the "Update branch" button as that does a merge from main;
+rebase from the command line instead or use the "Update with rebase" option by clicking on the little down arrow on the right side of the button.
+Many repositories in the ``lsst``` and ``lsst-dm`` Github organizations have an automated check that will fail and prevent merging into main if "Update with merge commit" is used.
+If you mistakenly clicked the "Update branch" button, you can rectify it by following the rebasing procedure described :ref:`above <workflow-pushing>`.
 
 The :ref:`figure below <fig-git-rebase-history>` shows what the git history looks like for a typical Science Pipelines package.
 Note that each merge to main is independent from any other, and history is linear.
