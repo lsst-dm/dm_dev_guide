@@ -25,12 +25,26 @@ Code removal
 ------------
 
 When an interface is deprecated, a ticket should be filed to remove the corresponding deprecated code, usually assigned to the team of the deprecating developer.
-Removal of the deprecated code occurs, at the earliest, immediately after the next major release following the release with the first deprecation release note; at the latest, immediately before the major release following.
-In other words, if deprecation is first noted in release 17.2.3, the code cannot be removed until after 18.0 is released and must be removed before 19.0 is released.
-So the code removal ticket should block the following major release (19.0 in this example).
-In general, no deprecation should be removed before two calendar months have elapsed.
+Removal of the deprecated code occurs, at the earliest, immediately after the next major release, which will be the first one to include the deprecation in its release notes, or after eight weeks (whichever is longer).
+Removal should occur before the major release after the one in which it is first deprecated.
+For the purposes of removal, the "release" event is when the first release candidate is tagged, because this is when the release branch may start to diverge from the ``main`` branch.
+In other words, if a deprecation is merged to the ``main`` branch between the first release candidate tags for v17 and v18, it may only be removed after the first release candidate tag for v18 (and also only after eight weeks have passed), and should be removed before the first release candidate tag for v19.
+The code removal ticket should be blocked by the next major release (v18 in this example), and block the following one (v19).
 Scheduling of the code removal should be handled like :doc:`any other backlog story </work/project-planning>`, although with a clear deadline (and a clear "do not merge before" point, unlike most stories).
 In particular, the removal could be assigned to a different developer than the one doing the original deprecation, as negotiated by the relevant T/CAM.
+
+This ensures that users of major releases will first see deprecation warnings at the same time the deprecation appears in the release notes, and will then have until the next major release to update their code accordingly.
+Users of weekly releases will see only the deprecation warnings and will have eight weeks to update.
+
+Backporting deprecations
+------------------------
+
+Deprecations may be backported to release branches, with :doc:`backport requests made and approved </work/backports>` like any other ticket.
+After a major release is out, backporting deprecations to a release branch is discouraged and will be permitted only in special circumstances.
+Backporting new alternative interfaces without backporting deprecations is preferred when possible.
+
+In all cases, interfaces whose deprecations have been backported onto a release branch are treated the same way as deprecations merged to ``main`` before the first release candidate in terms of when the code should be removed (i.e. after the next major release).
+The eight-week counter for removing deprecated code starts when the deprecation is merged to ``main`` and is unaffected by backports.
 
 Continuous integration tests
 ----------------------------
@@ -47,7 +61,7 @@ If you need to deprecate a class or function, import the `~deprecated.sphinx.dep
 
 For each class or function to be deprecated, decorate it as follows::
 
-   @deprecated(reason="This method is no longer used for ISR. Will be removed after v15.",
+   @deprecated(reason="This method is no longer used for ISR. Will be removed after v14.",
                version="v14.0", category=FutureWarning)
    def _extractAmpId(self, dataId):
 
@@ -55,13 +69,13 @@ Class and static methods should be decorated in the order given here::
 
     class Foo:
         @classmethod
-        @deprecated(reason="This has been replaced with `mm()`. Will be removed after v10.",
+        @deprecated(reason="This has been replaced with `mm()`. Will be removed after v9.",
 	            version="v9.0", category=FutureWarning)
         def cm(cls, x):
             pass
 
         @staticmethod
-        @deprecated(reason="This has been replaced with `mm()`. Will be removed after v10.",
+        @deprecated(reason="This has been replaced with `mm()`. Will be removed after v9.",
 	            version="v9.0", category=FutureWarning)
         def sm(x):
             pass
@@ -84,7 +98,7 @@ A deprecated pybind11-wrapped function, method or class must be rewrapped in pur
    from lsst.utils.deprecated import deprecate_pybind11
    ExposureF.getCalib = deprecate_pybind11(
        ExposureF.getCalib,
-       reason="Replaced by getPhotoCalib. Will be removed after v18."
+       reason="Replaced by getPhotoCalib. Will be removed after v17."
        version="v17.0")
 
 If only one overload of a set is being deprecated, state that in the reason string.
