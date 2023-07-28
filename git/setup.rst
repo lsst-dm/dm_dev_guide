@@ -81,19 +81,19 @@ See the GitHub help page `Editing files in your repository <https://help.github.
 Set up Two-Factor Authentication (2FA) for GitHub
 =================================================
 
-We encourage you to enable `Two-Factor Authentication (2FA) for GitHub <https://help.github.com/articles/about-two-factor-authentication/>`_ through your `account security settings <https://github.com/settings/security>`_.
+GitHub now requires `Two-Factor Authentication (2FA) <https://help.github.com/articles/about-two-factor-authentication/>`_ to work with repos via HTTPS.
+Configure it through your `GitHub account security settings <https://github.com/settings/security>`_.
 2FA means that you'll have to enter an authentication code when logging into GitHub.com from a new computer.
 Apps like `1Password <https://agilebits.com/onepassword>`_ (see their `guide <https://guides.agilebits.com/1password-ios/5/en/topic/setting-up-one-time-passwords>`_), `Authy <https://www.authy.com>`_, and the Google Authenticator App can help you generate these authentication codes.
 When pushing commits with a 2FA-enabled account, you'll use a personal access token instead of your password.
-You can `create and revoke tokens from your GitHub settings page <https://github.com/settings/tokens>`_.
-To help you automatically authenticate when pushing to GitHub, we encourage you to follow the next step and enable a credential helper.
+Follow the instructions below to :ref:`set up a credential helper <git-credential-helper>` and :ref:`create authentication tokens <git-auth-tokens>`.
 
 .. _git-credential-helper:
 
 Set up a Git credential helper
 ==============================
 
-Rather than entering your GitHub username and password (or 2FA access token) every time you push, you can set up a Git credential helper to manage this for you.
+Rather than entering your GitHub username and 2FA authentication token or ssh key every time you push, you should set up a Git credential helper to manage this for you.
 A credential helper is especially important for working with our :doc:`Git LFS-backed repositories <git-lfs>`.
 
 **Mac users** can use the secure macOS keychain:
@@ -111,6 +111,7 @@ To have your credentials cached for 1 hour (3600 seconds):
 
 **Linux users can alternatively** have their `credentials stored on disk <http://git-scm.com/docs/git-credential-store>`_ in a :file:`~/.git-credentials` file.
 Only do this for machines where you can ensure some level of security.
+To do this securely on USDF, set the credential file to be only read/write by your user: ``chmod 0600 ~/.git-credentials``.
 
 .. code-block:: bash
 
@@ -118,11 +119,34 @@ Only do this for machines where you can ensure some level of security.
 
 Once a credential helper is enabled, the next time you ``git push``, you will add your credentials to the helper.
 
-Remember that if you have 2FA enabled, you will create and use a `personal access token <https://github.com/settings/tokens>`_ instead of your GitHub password.
+If you are using HTTPS access, you will need to create and use a :ref:`personal access token <git-auth-tokens>` instead of your GitHub password, as described below.
 
-If you find that ``git push`` is not working but also not asking you for credentials, you may need to manually insert the username/password or token into the credential store or macOS keychain.
+.. _git-auth-tokens:
 
-The DM Git LFS documentation has further information about :ref:`authenticating with our LFS storage backend <git-lfs-auth>`.
+Git authentication tokens
+-------------------------
+
+Due to GitHub's authentication interface, you must use a personal access token instead of a password when pushing to GitHub via HTTPS.
+GitHub access via ssh does not require a token, but we have more experience working with :doc:`Git LFS repos <git-lfs>` via HTTPS.
+A credential helper, as :ref:`described above <git-credential-helper>`, will let you cache this token, so you do not have to save it (you can only view it on GitHub when you generate it).
+Create a personal token at `GitHub Personal Access Tokens <https://github.com/settings/tokens>`_, using the "generate new token" button in the upper right, with the "classic" interface.
+Give it a name (e.g. "LSST USDF"), choose an expiration date (when the token expires you will have to generate a new one and re-enter it into your credential cache), and set the following permissions::
+
+  repo->public_repo
+  workflow
+
+The next time you run a Git command that requires authentication, Git will ask you to authenticate with both GitHub (for the push via HTTPS) and, if you are pushing to a Git LFS repo, with LSST's Git LFS server (for authentication of the LFS upload)::
+
+   Username for 'https://github.com': <GitHub username>
+   Password for 'https://<user>@github.com': <GitHub token>
+   Username for 'https://git-lfs.lsst.codes': <GitHub username>
+   Password for 'https://<user>@git-lfs.lsst.codes': <GitHub token>
+
+At the prompts, enter your GitHub username and token.
+
+Once your credentials are cached, you won't need to repeat this process on your system (:ref:`unless you opted for the cache-based credential helper <git-credential-helper>`) until the token expires.
+
+If you find that ``git push`` is not working but also not asking you for credentials, you may need to manually insert the username and token into the credential store or macOS keychain, or manually delete the token and let it re-authenticate; ask for help on Slack if you are having trouble.
 
 .. _git-shell-setup:
 
