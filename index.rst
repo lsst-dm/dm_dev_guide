@@ -436,6 +436,7 @@ Crowd-sourced recommendations for configuring editors for LSST development (list
 - :doc:`editors/emacs`
 - :doc:`editors/sublime`
 - :doc:`editors/vim`
+- :doc:`editors/vscode`
 
 .. LEGAL SECTION ============================================================
 
