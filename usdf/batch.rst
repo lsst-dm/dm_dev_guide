@@ -167,6 +167,16 @@ Usage of the ``ctrl_bps_htcondor`` plugin and module has been extensively docume
 
 https://pipelines.lsst.io/modules/lsst.ctrl.bps.htcondor/userguide.html
 
+For running at S3DF, the following ``site`` specification can be used in the BPS configuration file:
+
+.. code-block:: yaml
+   :name: bps-htcondor-site-config
+
+   site:
+     s3df:
+       profile:
+         condor:
+           +Walltime: 7200
 
 .. _ctrl_bps_parsl:
 
