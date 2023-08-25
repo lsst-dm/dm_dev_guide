@@ -4,12 +4,23 @@ Batch Resources
 
 This document describes the batch resources available at the US Data Facility hosted at the SLAC Shared Scientific Data Facility (S3DF).
 
-Use of S3DF batch is documented at 
+Use of S3DF batch is documented at
 
 https://s3df.slac.stanford.edu/
 
+and more general Slurm documentation is available at https://slurm.schedmd.com/.
+
 S3DF has two Slurm partitions ``roma`` and ``milano``. Both of these partitions have AMD nodes with 128 cores, composed of two sockets, each with a 64-core processor (hyperthreading disabled).
-A Slurm job can be submitted with markup ``#SBATCH -p roma,milano`` to run on either of the partitions. 
+A Slurm job can be submitted with markup ``#SBATCH -p roma,milano`` to run on either of the partitions.
+
+For light interactive work, e.g., running *small* ``pipetask`` jobs, one can obtain an interactive session on the batch nodes using ``srun``.  For example,
+
+.. code-block:: bash
+   :name: srun-interactive-example
+
+   srun --pty --cpus-per-task=4 --mem=6GB --time=02:00:00 --partition=roma,milano --account=rubin bash
+
+will create a 2-hour, 4-core bash session with a total of 6GB memory.  One can then run ``pipetask -j 4``, making use of the 4 allocated cores.  In general, using BPS is preferred to running ``pipetask`` directly since many concurrent ``pipetask`` jobs that are run like this can cause registry database contention.
 
 Running LSST Pipelines with BPS
 ===============================
