@@ -4,12 +4,25 @@ Batch Resources
 
 This document describes the batch resources available at the US Data Facility hosted at the SLAC Shared Scientific Data Facility (S3DF).
 
-Use of S3DF batch is documented at 
+Use of S3DF batch is documented at
 
 https://s3df.slac.stanford.edu/
 
+and more general Slurm documentation is available at https://slurm.schedmd.com/.
+
 S3DF has two Slurm partitions ``roma`` and ``milano``. Both of these partitions have AMD nodes with 128 cores, composed of two sockets, each with a 64-core processor (hyperthreading disabled).
-A Slurm job can be submitted with markup ``#SBATCH -p roma,milano`` to run on either of the partitions. 
+A Slurm job can be submitted with markup ``#SBATCH -p roma,milano`` to run on either of the partitions.
+
+For light interactive work, e.g., running *small* ``pipetask`` jobs, one can obtain an interactive session on the batch nodes using ``srun``.  For example,
+
+.. code-block:: bash
+   :name: srun-interactive-example
+
+   srun --pty --cpus-per-task=4 --mem=16GB --nodes=1 --time=02:00:00 --partition=roma,milano --account=rubin bash
+
+will create a 2-hour, 4-core bash session with a total of 16GB memory.  Specifying the total memory with ``--mem`` means that the memory can be distributed among the cores as needed, whereas using ``--mem-per-cpu`` sets the memory available for each individual core; and the option ``--nodes=1`` ensures that all of the cores are on the same node.  With this set up, one can then run ``pipetask -j 4``, making use of the 4 allocated cores.  Adding the ``--exclusive`` option will request a whole node, but in that case, one probably should be submitting a non-interactive batch job anyway.
+
+In general, using BPS is preferred to running ``pipetask`` directly since many concurrent ``pipetask`` jobs that are run like this can cause registry database contention.
 
 Running LSST Pipelines with BPS
 ===============================
@@ -156,6 +169,16 @@ Usage of the ``ctrl_bps_htcondor`` plugin and module has been extensively docume
 
 https://pipelines.lsst.io/modules/lsst.ctrl.bps.htcondor/userguide.html
 
+For running at S3DF, the following ``site`` specification can be used in the BPS configuration file:
+
+.. code-block:: yaml
+   :name: bps-htcondor-site-config
+
+   site:
+     s3df:
+       profile:
+         condor:
+           +Walltime: 7200
 
 .. _ctrl_bps_parsl:
 
