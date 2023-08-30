@@ -151,6 +151,64 @@ The ``exclude`` field lists paths that are not usefully linted by :command:`flak
 Auto-generated Python should not be linted (including :file:`bin/` for Stack packages with :file:`bin.src/` directories).
 We also discourage linting :file:`__init__.py` modules due to the abundance of :pep:`8` exceptions typically involved.
 
+.. _style-guide-py-ruff:
+
+Code MAY be validated with ruff
+-------------------------------
+
+The ruff_ tool may be used to validate Python source code against the portion of :pep:`8` adopted by Data Management.
+ruff_ is significantly faster than :command:`flake8` to execute and this can be useful for larger projects.
+It also is far more configurable with many built-in linting extensions.
+Sometimes ruff_ will suggest fixes that can be automated.
+Use the ``--fix`` option to apply the automated fixes, and then examine them before committing them to make sure they look correct.
+
+.. _ruff: https://beta.ruff.rs/docs/
+
+.. _style-guide-py-ruff-install:
+
+Ruff installation
+^^^^^^^^^^^^^^^^^
+
+Ruff comes installed with any `LSST Science Pipelines installation <https://pipelines.lsst.io/#installation>`_ using ``rubin-env`` 7.0 or newer.
+It is run automatically when building packages with ``scons`` if a ruff configuration is found.
+
+.. _style-guide-py-ruff-config:
+
+Ruff configuration files
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Science Pipelines packages do not come with a ruff_ configuration by default and one must be added if you wish to use the linting tool with your package.
+Once configured SCons will prefer to run this tool over :command:`flake8`.
+The configuration for ruff_ must be added to the ``pyproject.toml`` file -- this will be the same file used to configure other tools such as :ref:`black and isort<formatting-python-code>`.
+
+.. literalinclude:: examples/pyproject-ruff.toml
+  :language: toml
+
+The above is a complete and sufficient specification for a science pipelines package.
+There is no need to explicitly specify ``W503`` since ruff_ assumes that by default.
+If you wish to add more `linting rules <https://beta.ruff.rs/docs/rules/>`_ that are consistent with the style guide these can be specified in the ``tool.ruff.select`` section.
+For example:
+
+* ``D`` will check docstrings for compliance.
+  The style guide does not yet specify an agreed set of ``pydocstyle`` codes to be ignored.
+* ``UP`` will check for code from older versions of Python that can be modernized.
+* ``C4`` will check for situations where a list or dict comprehension might be preferable.
+* ``B`` enables "bugbear" checks for possible logic problems.
+* ``SIM`` can make suggestions for places where your code can be simplified.
+
+There is no requirement to use these but also no restriction from adding them to the ``pyproject.toml`` configuration if they are consistent with the general style guide.
+To temporarily see the effect of a specific extension use the ``--select`` option to ruff_:
+
+.. code-block:: bash
+
+   $ ruff --select UP,B .
+   python/lsst/pipe/tasks/assembleCoadd.py:263:30: UP031 [*] Use format specifiers instead of percent format
+   python/lsst/pipe/tasks/assembleCoadd.py:387:45: B905 `zip()` without an explicit `strict=` parameter
+   ...
+   [*] nn potentially fixable with the --fix option.
+
+You may temporarily add these configurations to check for possible issues.
+
 .. _style-guide-py-noqa:
 
 Lines that intentionally deviate from DM's PEP 8 MUST include a ``noqa`` comment
