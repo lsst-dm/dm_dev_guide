@@ -115,7 +115,7 @@ Further reading
 .. _`Documenteer`: https://documenteer.lsst.io
 .. _`Documentation for the stack-docs command in Documenteer`:
 .. _`stack-docs command-line app`: https://documenteer.lsst.io/pipelines/stack-docs-cli.html
-.. _`sqre/infrastructure/documenteer`: https://ci.lsst.codes/blue/organizations/jenkins/sqre%2Finfrastructure%2Fdocumenteer/activity
+.. _`sqre/infrastructure/documenteer`: https://rubin-ci.slac.stanford.edu/blue/organizations/jenkins/sqre%2Finfrastructure%2Fdocumenteer/activity
 .. _`pipelines.lsst.io`: https://pipelines.lsst.io
 .. _`pipelines_lsst_io`: https://github.com/lsst/pipelines_lsst_io
 .. _`pipe_base`: https://github.com/lsst/pipe_base

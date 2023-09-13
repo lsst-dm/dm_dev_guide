@@ -119,7 +119,7 @@ builds and unit tests expedites the module's repair and, hopefully, limits the
 time other developers are impacted by the failure. For details, refer to the
 workflow documentation on :ref:`workflow-testing`.
 
-.. _Jenkins: https://ci.lsst.codes/
+.. _Jenkins: https://rubin-ci.slac.stanford.edu/blue
 
 Verifying Test Quality
 ======================
