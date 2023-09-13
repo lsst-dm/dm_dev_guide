@@ -186,11 +186,11 @@ More resources
 .. _`lsst`: https://github.com/lsst
 .. _`lsst-dm`: https://github.com/lsst-dm
 .. _`lsst-sqre`: https://github.com/lsst-sqre
-.. _`jenkins-root`: https://ci.lsst.codes
-.. _`stack-os-matrix`: https://ci.lsst.codes/blue/organizations/jenkins/stack-os-matrix/activity
-.. _`science-pipelines/lsst_distrib`: https://ci.lsst.codes/blue/organizations/jenkins/science-pipelines%2Flsst_distrib/activity
-.. _`qserv/dax_webserv`: https://ci.lsst.codes/blue/organizations/jenkins/qserv%2Fdax_webserv/activity
-.. _`qserv/qserv_distrib`: https://ci.lsst.codes/blue/organizations/jenkins/qserv%2Fqserv_distrib/activity
+.. _`jenkins-root`: https://rubin-ci.slac.stanford.edu
+.. _`stack-os-matrix`: https://rubin-ci.slac.stanford.edu/blue/organizations/jenkins/stack-os-matrix/activity
+.. _`science-pipelines/lsst_distrib`: https://rubin-ci.slac.stanford.edu/blue/organizations/jenkins/science-pipelines%2Flsst_distrib/activity
+.. _`qserv/dax_webserv`: https://rubin-ci.slac.stanford.edu/blue/organizations/jenkins/qserv%2Fdax_webserv/activity
+.. _`qserv/qserv_distrib`: https://rubin-ci.slac.stanford.edu/blue/organizations/jenkins/qserv%2Fqserv_distrib/activity
 .. _`Jenkins documentation`: https://jenkins.io/doc/book/blueocean/
 .. _`Jenkins dashboard documentation`: https://jenkins.io/doc/book/blueocean/dashboard/
 .. _`lsst-dm/jenkins-dm-jobs`: https://github.com/lsst-dm/jenkins-dm-jobs

@@ -10,7 +10,7 @@ For more information about the DM's Jenkins continuous integration service, see 
 Running a stack-os-matrix job
 =============================
 
-1. Open the `stack-os-matrix dashboard`_ in a browser directly or by clicking on the **stack-os-matrix** job from the main dashboard at https://ci.lsst.codes.
+1. Open the `stack-os-matrix dashboard`_ in a browser directly or by clicking on the **stack-os-matrix** job from the main dashboard at https://rubin-ci.slac.stanford.edu.
 
 2. Click on the **Run** button near the top of the page.
 
@@ -77,7 +77,7 @@ You can find these :file:`*.failed` files, along with build logs, under the **Ar
 You can even download all the logs and :file:`*.failed` files for a build by scrolling to the bottom and clicking on the **Download All** button.
 
 .. _`stack-os-matrix dashboard`:
-.. _`stack-os-matrix`: https://ci.lsst.codes/blue/organizations/jenkins/stack-os-matrix/activity
+.. _`stack-os-matrix`: https://rubin-ci.slac.stanford.edu/blue/organizations/jenkins/stack-os-matrix/activity
 .. _`lsst_ci`: https://github.com/lsst/lsst_ci
 .. _`lsst_dm_stack_demo`: https://github.com/lsst/lsst_dm_stack_demo
 .. _`#dmj-stack-os-matrix`: https://lsstc.slack.com/messages/C9A31S9MG
