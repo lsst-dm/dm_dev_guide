@@ -151,4 +151,4 @@ Once the job successfully finishes, open `pipelines.lsst.io/v`_ and find the cor
 .. _`pipelines.lsst.io`: https://pipelines.lsst.io
 .. _`pipelines.lsst.io/v`: https://pipelines.lsst.io/v
 .. _`pipelines_lsst_io`: https://github.com/lsst/pipelines_lsst_io
-.. _`sqre/infra/documenteer`: https://ci.lsst.codes/blue/organizations/jenkins/sqre%2Finfra%2Fdocumenteer/activity
+.. _`sqre/infra/documenteer`: https://rubin-ci.slac.stanford.edu/blue/organizations/jenkins/sqre%2Finfra%2Fdocumenteer/activity

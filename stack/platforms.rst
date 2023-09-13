@@ -26,10 +26,10 @@ The baseline platform is currently CentOS 7 on Intel x86_64.
 
 We regularly test the following platforms in addition to the baseline platform:
 
-* macOS Big Sur (11.0);
-* macOS Catalina (10.15).
+* macOS Monterey (12.x);
+* macOS Ventura (13.x).
 
-See https://ci.lsst.codes for the current list of regularly-tested platforms.
+See https://rubin-ci.slac.stanford.edu/blue for the current list of regularly-tested platforms.
 (The "osx" platform there for the "stack-os-matrix" job randomly chooses a Big Sur or Catalina machine for each execution to limit load.)
 
 .. _platforms-environment:
