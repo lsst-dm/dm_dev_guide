@@ -1,28 +1,28 @@
 ##############################
-Jenkins ci.lsst.codes Overview
+Jenkins Overview
 ##############################
 
-Data Management operates a Jenkins continuous integration cluster at https://ci.lsst.codes.
+Data Management operates a Jenkins continuous integration cluster at `jenkins-root`_.
 You will typically use Jenkins to run the ``stack-os-matrix`` job to build and run unit tests in the LSST Stack as part of `DM's development workflow <processes/workflow.rst>`_.
 See :doc:`/stack/jenkins-stack-os-matrix` for details.
 
 Logging in
 ==========
 
-Log into Jenkins by visiting https://ci.lsst.codes and authenticate with your GitHub credentials.
-Any member of the `lsst`_, `lsst-dm`_, or `lsst-sqre`_ GitHub organizations is authorized to use https://ci.lsst.codes.
+Log into Jenkins by visiting `jenkins-root`_ and authenticate with your GitHub credentials.
+Any member of the `lsst`_, `lsst-dm`_, or `lsst-sqre`_ GitHub organizations is authorized to use `jenkins-root`_.
 See the :doc:`/team/onboarding` for more information.
 
 Using the Jenkins dashboard
 ===========================
 
-This section summarizes how to use the Jenkins dashboard, which is the first view you see when browsing to https://ci.lsst.codes.
+This section summarizes how to use the Jenkins dashboard, which is the first view you see when browsing to `jenkins-root`_.
 `Jenkins's own dashboard documentation <https://jenkins.io/doc/book/blueocean/dashboard/>`_ provides additional information.
 
 Browsing Jenkins jobs
 ---------------------
 
-From https://ci.lsst.codes, you see a listing of Jenkins jobs.
+From `jenkins-root`_, you see a listing of Jenkins jobs.
 Each job fulfills a different purpose, see :ref:`jenkins-jobs`.
 
 To access a job, click on the job's name.
@@ -31,7 +31,7 @@ This takes you to a page where you can run the job and review past runs.
 Favoriting Jenkins jobs
 -----------------------
 
-From the https://ci.lsst.codes dashboard, you can click on the star icon next to any job.
+From the `jenkins-root`_ dashboard, you can click on the star icon next to any job.
 This will favorite the Job.
 Favorited jobs appear at the top of the homepage, before other jobs.
 
@@ -40,7 +40,7 @@ We recommend that you favorite the ``stack-os-matrix`` job.
 Searching for Jenkins jobs
 --------------------------
 
-From the https://ci.lsst.codes dashboard, you can filter the listing of jobs by using the search box at the top of the page.
+From the `jenkins-root`_ dashboard, you can filter the listing of jobs by using the search box at the top of the page.
 
 Jenkins jobs are organized in directories, so it's helpful to search by directory prefix to find the right job.
 The directories are:
@@ -186,6 +186,7 @@ More resources
 .. _`lsst`: https://github.com/lsst
 .. _`lsst-dm`: https://github.com/lsst-dm
 .. _`lsst-sqre`: https://github.com/lsst-sqre
+.. _`jenkins-root`: https://ci.lsst.codes
 .. _`stack-os-matrix`: https://ci.lsst.codes/blue/organizations/jenkins/stack-os-matrix/activity
 .. _`science-pipelines/lsst_distrib`: https://ci.lsst.codes/blue/organizations/jenkins/science-pipelines%2Flsst_distrib/activity
 .. _`qserv/dax_webserv`: https://ci.lsst.codes/blue/organizations/jenkins/qserv%2Fdax_webserv/activity
