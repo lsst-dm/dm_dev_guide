@@ -25,6 +25,34 @@ the following procedure should be used:
     #. Merge the transfer branch back to the regular issue branch using
        ``--no-ff`` to preserve the transfer branch name in the merge commit.
 
+    #. On the actual ticket branch, in place of the original file, add a new file with the same name that
+   contains an import redirect similar to the following snippet:
+
+    .. code-block:: python
+
+        import warnings
+
+        try:
+            from lsst.new.package.new_module import *  # noqa: F401
+        except ImportError as error:
+            error.msg += ". Please import it from <new.package>."
+            raise error
+        finally:
+            # TODO: Remove this entire file in DM-NNNNN.
+            warnings.warn("lsst.old.package.oldModule is deprecated and will be removed in v26; "
+                          "Please use lsst.new.package.new_module instead",
+                          DeprecationWarning,
+                          stacklevel=2
+                          )
+
+    For the actual version where the code will be removed, refer to `Code Removal`_ section.
+    If the repository includes a unit test via `ImportTestCase` that checks that all the files are importable,
+    add the path and the list of module(s) as a key-value pair to `SKIP_MODULES` class variable.
+
+    If the code is transferred to a downstream package, the ``try-except`` block may be omitted, and a warning
+    should be emitted after the import statement.
+
+
 #. In the destination repository:
 
     #. Create the usual ``tickets/DM-XXXX`` issue branch.
