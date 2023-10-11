@@ -18,7 +18,7 @@ For light interactive work, e.g., running *small* ``pipetask`` jobs, one can obt
 .. code-block:: bash
    :name: srun-interactive-example
 
-   srun --pty --cpus-per-task=4 --mem=16GB --nodes=1 --time=02:00:00 --partition=roma,milano --account=rubin bash --qos normal
+   srun --pty --cpus-per-task=4 --mem=16GB --nodes=1 --time=02:00:00 --partition=roma,milano --account=rubin --qos normal bash 
 
 will create a 2-hour, 4-core bash session with a total of 16GB memory.  Specifying the total memory with ``--mem`` means that the memory can be distributed among the cores as needed, whereas using ``--mem-per-cpu`` sets the memory available for each individual core; and the option ``--nodes=1`` ensures that all of the cores are on the same node.  With this set up, one can then run ``pipetask -j 4``, making use of the 4 allocated cores.  Adding the ``--exclusive`` option will request a whole node, but in that case, one probably should be submitting a non-interactive batch job anyway. The account parameter is mandatory.
 
