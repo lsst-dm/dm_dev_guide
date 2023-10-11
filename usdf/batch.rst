@@ -18,9 +18,18 @@ For light interactive work, e.g., running *small* ``pipetask`` jobs, one can obt
 .. code-block:: bash
    :name: srun-interactive-example
 
-   srun --pty --cpus-per-task=4 --mem=16GB --nodes=1 --time=02:00:00 --partition=roma,milano --account=rubin bash
+   srun --pty --cpus-per-task=4 --mem=16GB --nodes=1 --time=02:00:00 --partition=roma,milano --account=rubin bash --qos normal
 
-will create a 2-hour, 4-core bash session with a total of 16GB memory.  Specifying the total memory with ``--mem`` means that the memory can be distributed among the cores as needed, whereas using ``--mem-per-cpu`` sets the memory available for each individual core; and the option ``--nodes=1`` ensures that all of the cores are on the same node.  With this set up, one can then run ``pipetask -j 4``, making use of the 4 allocated cores.  Adding the ``--exclusive`` option will request a whole node, but in that case, one probably should be submitting a non-interactive batch job anyway.
+will create a 2-hour, 4-core bash session with a total of 16GB memory.  Specifying the total memory with ``--mem`` means that the memory can be distributed among the cores as needed, whereas using ``--mem-per-cpu`` sets the memory available for each individual core; and the option ``--nodes=1`` ensures that all of the cores are on the same node.  With this set up, one can then run ``pipetask -j 4``, making use of the 4 allocated cores.  Adding the ``--exclusive`` option will request a whole node, but in that case, one probably should be submitting a non-interactive batch job anyway. The account parameter is mandatory.
+
+Four "repos" have been created to apportion the batch allocation. We have yet to determine the relative allocations per repo - at the time of writing, accounting has not yet been enabled. Repos are selected by appending a ":" with the repo name, eg ``--account rubin:developers``. The non-default repos are not pre-emptible.
+
+- default - always preemptible
+- production - PanDA production jobs, eg DRP
+- developers
+- commissioning
+
+All Rubin account holders can submit to any but the production repo. We will give guidance as it is developed on which to choose.
 
 In general, using BPS is preferred to running ``pipetask`` directly since many concurrent ``pipetask`` jobs that are run like this can cause registry database contention.
 
