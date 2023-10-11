@@ -120,7 +120,9 @@ There is support for setting USDF S3DF Slurm account, repo and qos values. By de
 with the ``developers`` repo (``--account rubin:developers``) will be used, and the qos will be ``normal`` by default. 
 If one wants to target a different repo, this is 
 handled as part of the account setting, placed following a colon after the account value proper, 
-e.g., ``--account rubin:commissioning``.
+e.g., ``--account rubin:commissioning``.  A cautionary note on account and qos values: if one sets 
+the fairly benign looking value ``--account rubin``, this will lead to the job having ``preemptable`` qos, 
+and the job will be less likely to run to completion without interruption. 
 
 After submitting the ``allocateNodes.py`` command line above, the user may see Slurm jobs and htcondor slots along the lines of::
 
