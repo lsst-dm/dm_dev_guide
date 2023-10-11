@@ -117,7 +117,8 @@ down after 15 minutes of inactivity (for example, after the workflow is complete
 will exit at that time to avoid wasting idle resources. The ``--dynamic`` option requests that the htcondor slots be dynamic, partionable slots; this is the recommended setting as it supports possible multi-core jobs in the workflow. 
 
 There is support for setting USDF S3DF Slurm account, repo and qos values. By default the account ``rubin`` 
-with a ``default`` repo will be used, and the qos will be ``normal`` by default. If one wants to target a different repo, this is 
+with the ``developers`` repo (``--account rubin:developers``) will be used, and the qos will be ``normal`` by default. 
+If one wants to target a different repo, this is 
 handled as part of the account setting, placed following a colon after the account value proper, 
 e.g., ``--account rubin:commissioning``.
 
