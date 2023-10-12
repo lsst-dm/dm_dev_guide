@@ -64,11 +64,12 @@ After these two packages are setup the glide-ins may be submitted.
 The ``allocateNodes.py`` utility has the following options::
 
    $ allocateNodes.py --help
-   usage: [...]/ctrl_execute/bin/allocateNodes.py [-h] -n NODECOUNT -c CPUS -m MAXIMUMWALLCLOCK
-                                                                              [-q QUEUE] [-O OUTPUTLOG] [-E ERRORLOG]
-                                                                              [-g GLIDEINSHUTDOWN] [-v] [-r RESERVATION]
-                                                                              [-d [DYNAMIC]]
-                                                                              platform
+    usage: [...]/ctrl_execute/bin/allocateNodes.py [-h] -n NODECOUNT -c CPUS [-a ACCOUNT] [-s QOS] 
+                                                    -m MAXIMUMWALLCLOCK [-q QUEUE] [-O OUTPUTLOG] 
+                                                    [-E ERRORLOG] [-g GLIDEINSHUTDOWN] [-v]
+                                                    [-r RESERVATION] [-d [DYNAMIC]]
+                                                    platform
+
     positional arguments:
       platform              node allocation platform
 
@@ -77,20 +78,23 @@ The ``allocateNodes.py`` utility has the following options::
       -n NODECOUNT, --node-count NODECOUNT
                         number of glideins to submit; these are chunks of a node, size the number of cores/cpus
       -c CPUS, --cpus CPUS  cores / cpus per glidein
+      -a ACCOUNT, --account ACCOUNT
+                        Slurm account for glidein job
+      -s QOS, --qos QOS     Slurm qos or glidein job
       -m MAXIMUMWALLCLOCK, --maximum-wall-clock MAXIMUMWALLCLOCK
                         maximum wall clock time; e.g., 3600, 10:00:00, 6-00:00:00, etc
       -q QUEUE, --queue QUEUE
                         queue / partition name
       -O OUTPUTLOG, --output-log OUTPUTLOG
                         Output log filename; this option for PBS, unused with Slurm
-      -E ERRORLOG, --error-log ERRORLOG
+       -E ERRORLOG, --error-log ERRORLOG
                         Error log filename; this option for PBS, unused with Slurm
-      -g GLIDEINSHUTDOWN, --glidein-shutdown GLIDEINSHUTDOWN
+       -g GLIDEINSHUTDOWN, --glidein-shutdown GLIDEINSHUTDOWN
                         glide-in inactivity shutdown time in seconds
-      -v, --verbose         verbose
-      -r RESERVATION, --reservation RESERVATION
+       -v, --verbose         verbose
+       -r RESERVATION, --reservation RESERVATION
                         target a particular Slurm reservation
-      -d [DYNAMIC], --dynamic [DYNAMIC]
+       -d [DYNAMIC], --dynamic [DYNAMIC]
                         configure to use dynamic/partitionable slot; legacy option: this is always enabled now
 
 The ``allocateNodes.py`` utility requires a small measure of configuration in the user's home directory (replace the username ``daues`` with your own)::
@@ -111,6 +115,14 @@ The glide-in Slurm jobs may not run for the full 4 days however, as the option `
 condor glide-in shutdown time of 900 seconds or 15 minutes. This means that the htcondor daemons will shut themselves 
 down after 15 minutes of inactivity (for example, after the workflow is complete), and the glide-in Slurm jobs 
 will exit at that time to avoid wasting idle resources. The ``--dynamic`` option requests that the htcondor slots be dynamic, partionable slots; this is the recommended setting as it supports possible multi-core jobs in the workflow. 
+
+There is support for setting USDF S3DF Slurm account, repo and qos values. By default the account ``rubin`` 
+with the ``developers`` repo (``--account rubin:developers``) will be used, and the qos will be ``normal`` by default. 
+If one wants to target a different repo, this is 
+handled as part of the account setting, placed following a colon after the account value proper, 
+e.g., ``--account rubin:commissioning``.  A cautionary note on account and qos values: if one sets 
+the fairly benign looking value ``--account rubin``, this will lead to the job having ``preemptable`` qos, 
+and the job will be less likely to run to completion without interruption. 
 
 After submitting the ``allocateNodes.py`` command line above, the user may see Slurm jobs and htcondor slots along the lines of::
 
