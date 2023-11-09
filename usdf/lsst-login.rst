@@ -25,6 +25,8 @@ You should ssh into Rubin Observatory development servers at SLAC with your unix
 
 ssh ``rubin-devl`` (note: do not add the .slac.stanford.edu postfix!)
 
+If you are connecting from the summit, outside the Long Haul Network (LHN), you'll currently need to access s3df via a bastion host outside s3df. Use ``centos7@slac.stanford.edu`` for this, authenticating with your usual unix credential.
+
 Passwordless ssh access to rubin-devl
 =====================================
 
