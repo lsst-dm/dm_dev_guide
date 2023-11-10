@@ -83,6 +83,31 @@ You can save space, time, and distractions to others by using commonly understoo
 
 -  ``:thank_you:`` (🙏) or ``:thankyou:``
 
+.. _slack-direct-messages:
+
+Direct messages
+---------------
+
+Please keep direct messaging to a user or a set of users to a minimum.
+Direct messages should be avoided for any technical discussions or asking for support, even if you are sure that you have involved all those who are interested or who can contribute.
+Instead, such discussions should be in a thread in an appropriate :ref:`discussion channel<slack-discussion-channels>` and support questions must be asked in appropriate :ref:`support channels<slack-support-channels>`.
+Direct messages should be reserved for conversations regarding code review requests, logistics, etc. or on topics not directly related to work.
+See this `community post`_ for why direct messages are considered harmful.
+
+.. _community post: https://community.lsst.org/t/dms-in-slack-considered-harmful/4036
+
+.. _slack-editing:
+
+Editing and deleting messages
+-----------------------------
+
+Slack has a feature that allows a user to edit a message sent by that user.
+
+- This edit feature is ideal to correct typographical or grammatical errors, or if the message is accidentally sent before it is fully typed out.
+- In order to easily link them elsewhere, messages should be coherent and in multiple sentences if required, instead of multiple single-line messages in short bursts.
+- In place of amending a message, it is preferable to use strikethrough ``~text~`` to retract an idea or statement that you recognize is wrong after posting. A corrected statement may be added next to it. This prevents surprises of seeing a notification and not finding that message on Slack. Moreover, this indicates the thought process undergone and avoids somebody else posting the same point again.
+- A message should be deleted only if posted in a wrong channel, or if it is not appropriate in a social forum.
+
 .. _slack-snippets:
 
 Text snippets and posts
@@ -192,7 +217,8 @@ If you need to have a group created because you have a routine need to @-mention
 @-mentioning a particular user notifies that user and adds the message to their "Mentions & reactions" list.
 Be aware of the person's timezone before @-mentioning them.
 If you need to @-mention them outside normal hours, you may want to schedule the message to be posted later (using the ``/send`` or more sophisticated ``/schedule`` shortcuts from `Timy`_).
-Sometimes @-mentioning a user can be helpful to disambiguate replies in a multi-person conversation, but if you find yourself prefixing every message you send with an @-mention, consider whether it is implied by context or whether the whole conversation might be better in a thread or in direct messages to that user.
+Sometimes @-mentioning a user can be helpful to disambiguate replies in a multi-person conversation, but if you find yourself prefixing every message you send with an @-mention, consider whether it is implied by context or whether the whole conversation might be better in a thread or in direct messages to that user if the issue at hand is unique to the user.
+An example where it is acceptable to move to direct messaging would be to help out unexpected login issues faced by the user.
 
 .. _Timy: https://timy.website/#commands
 
