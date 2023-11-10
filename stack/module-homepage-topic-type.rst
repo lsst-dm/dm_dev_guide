@@ -99,15 +99,28 @@ In most cases, you can add a single section titled “Using <module>” containi
       howto-a
       howto-b
 
-.. _module-homepage-python-contributing:
+.. _module-homepage-python-dev:
 
-Contributing section
-====================
+Design and development section
+==============================
 
-This section puts the module in context as an open source development project.
+This section collects documentation related to the design and development of the module.
+As opposed to pages in the :ref:`Using <module-homepage-toctrees>` section, such content is for an "internal" developer and maintainer audience.
+We keep this content in the public documentation, though, because LSST software is open source and has a sophisticated user base that could benefit from transparent developer documentation.
+Maintaining design and development documentation documentation here also ensures that the content lives and evolves with the code.
+
 The template seeds this section with links to the GitHub repository for the module's corresponding package and a ticket search with the module's corresponding Jira component (if the package does not have a Jira component, request one in `#dm-square`_).
 
-If there is documentation describing how to develop (contribute) to the module, as opposed to using the APIs, you should link to those topics with a `toctree`_ in this section.
+Below the preamble, you can link to additional pages related to the module’s design and development with a toctree_.
+All design and development pages should be contained in a **subdirectory** called :file:`dev`:
+
+.. code-block:: rst
+
+   .. toctree::
+      :maxdepth: 1
+
+      dev/design-overview
+      dev/development-guidelines
 
 .. _module-homepage-task-reference:
 
