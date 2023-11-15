@@ -3,7 +3,7 @@ Making Your Package pip Installable
 ###################################
 
 By default a science pipelines package will be configured to work with SCons and EUPS but not with ``pip``.
-If the package does not include C++ code and does not depend on any of the C++ packages, such as ``afw`` or ``daf_base`` then it is possible to make the package installable with ``pip`` as well as with SCons.
+If the package does not include C++ code and does not depend on any of the C++ packages, such as ``afw`` or ``daf_base``, then it is possible to make the package installable with ``pip`` as well as with SCons.
 
 .. note::
 
