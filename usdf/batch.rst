@@ -64,7 +64,7 @@ After these two packages are setup the glide-ins may be submitted.
 The ``allocateNodes.py`` utility has the following options::
 
    $ allocateNodes.py --help
-    usage: [...]/ctrl_execute/bin/allocateNodes.py [-h] -n NODECOUNT -c CPUS [-a ACCOUNT] [-s QOS] 
+    usage: [...]/ctrl_execute/bin/allocateNodes.py [-h] [-u] -n NODECOUNT -c CPUS [-a ACCOUNT] [-s QOS] 
                                                     -m MAXIMUMWALLCLOCK [-q QUEUE] [-O OUTPUTLOG] 
                                                     [-E ERRORLOG] [-g GLIDEINSHUTDOWN] [-v]
                                                     [-r RESERVATION] [-d [DYNAMIC]]
@@ -75,6 +75,7 @@ The ``allocateNodes.py`` utility has the following options::
 
     options:
       -h, --help            show this help message and exit
+      -u, --auto            use automatic detection of jobs to determine glide-ins
       -n NODECOUNT, --node-count NODECOUNT
                         number of glideins to submit; these are chunks of a node, size the number of cores/cpus
       -c CPUS, --cpus CPUS  cores / cpus per glidein
@@ -200,6 +201,26 @@ For running at S3DF, the following ``site`` specification can be used in the BPS
        profile:
          condor:
            +Walltime: 7200
+
+allocateNodes auto
+------------------
+
+The ``ctrl_execute`` package now provides an ``allocateNodes --auto`` mode in which the user does not have to specify the number of glideins to run. This mode is not the default, and must be explicitly invoked. In this mode the user's idle jobs in the htcondor queue will be detected and an appropriate number of glideins submitted. At this stage of development the allocateNodes auto is used in conjuction with a bash script that runs alongside a BPS workflow, workflows, or generic HTCondor jobs.  The script will invoke allocateNodes auto at regular intervals to submit the number of glideins needed by the workflow(s) at the particular time.  A sample ``service.sh`` script is::
+
+    #!/bin/bash
+    export LSST_TAG=w_2023_46
+    lsstsw_root=/sdf/group/rubin/sw
+    source ${lsstsw_root}/loadLSST.bash
+    setup -v lsst_distrib -t ${LSST_TAG}
+ 
+    # Loop for a long time, executing "allocateNodes auto" every 10 minutes.
+    for i in {1..500}
+    do
+        allocateNodes.py --auto --dynamic --qos normal --account rubin:developers -n 100 -c 16 -m 4-00:00:00 -q milano -g 240 s3df
+        sleep 600
+    done
+
+On the allocateNodes auto command line the option ``-n 100`` no longer specifies the desired number of glideins, but rather specifies an upper bound.  After the workflow is complete all of the glideins will expire and the ``service.sh`` process can be removed with Ctrl-C, killing the process, etc. For the future we are investigating if BPS itself can manage the allocateNodes auto invocations that a workflow requires, eliminating the need for the user to manage the ``service.sh`` script.
 
 .. _ctrl_bps_parsl:
 
