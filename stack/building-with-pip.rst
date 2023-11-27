@@ -2,13 +2,15 @@
 Making Your Package pip Installable
 ###################################
 
-By default a science pipelines package will be configured to work with SCons and EUPS but not with ``pip``.
+By default a Science Pipelines package will be configured to work with SCons and EUPS but not with ``pip``.
 If the package does not include C++ code and does not depend on any of the C++ packages, such as ``afw`` or ``daf_base``, then it is possible to make the package installable with ``pip`` as well as with SCons.
+
+You can discuss with your T/CAM or scientist whether a package should be modified to support building with ``pip``.
 
 .. note::
 
   C++ packages can be built with ``pip`` but when packages are built this way they can't easily be used as dependencies for C++ code from other packages.
-  The `lsst-sphgeom`_ PyPI package is a C++ package but can not be used to build ``afw`` because the include files and shared libraries are not part of the installation.
+  The `lsst-sphgeom`_ PyPI package is a C++ package but can not be used to build ``afw`` because the include files and standalone shared library are not part of the installation.
   Only the Python interface is available.
 
 Configuring the Package
@@ -28,8 +30,15 @@ The Build Requirements
 
 This section tells ``pip`` what to install before the build process can even begin.
 Usually you will find that a package will use ``setuptools_scm`` to determine the version number.
-This doesn't really work for science pipelines packages since tags are applied by the pipelines build procedure and can not be set by the individual package owner.
+This doesn't really work for Science Pipeline packages since tags are applied by the pipeline's build procedure and can not be set by the individual package owner.
 This means that semantic versions can't be used but it also means that if we want packages to be published on a cadence smaller than every 6 months we can not rely solely on the formal release tags to appear.
+
+.. note::
+
+  One way around the semantic versioning impasse with Science Pipelines tagging is to introduce a new tagging scheme for `PyPI`_ distribution and adjust the tags that are matched by the deployment algorithm.
+  This would require modifications to `lsst-versions`_ to understand the new scheme and adding the ability to turn off versioning for weekly tags.
+  If we are intending to upload the formal Science Pipelines release versions to `PyPI`_ the resulting version number must be higher than any Pipelines release number we expect to use in the future.
+  If you wish to use semantic versioning for your package please discuss your options on ``#dm-arch`` on Slack before finalizing your approach.
 
 The `lsst-versions`_ package is used to work around this restriction by determining version numbers based on the most recent formal version and the current weekly tag.
 For example, in ``daf_butler`` the version that was uploaded to `PyPI`_ for tag ``w.2023.42`` was ``26.2023.4200`` (where v26 was the most recent formal release tag at the time).
@@ -56,8 +65,8 @@ For example, this is the content for the ``lsst-resources`` package:
         "License :: OSI Approved :: BSD License",
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
     ]
     keywords = ["lsst"]
     dependencies = [
@@ -65,13 +74,13 @@ For example, this is the content for the ``lsst-resources`` package:
         "importlib_resources",
     ]
     dynamic = ["version"]
-    requires-python = ">=3.10.0"
+    requires-python = ">=3.11.0"
 
-The Rubin DM convention is that science pipelines packages that are to be distributed on `PyPI`_ should include the ``lsst-`` prefix in the name.
+The Rubin DM convention is that Science Pipelines packages that are to be distributed on `PyPI`_ should include the ``lsst-`` prefix in the name.
 This differs from the EUPS naming convention where the ``lsst`` is implicit.
 For example, the ``daf_butler`` EUPS package has a python distribution name of ``lsst-daf-butler``.
 Middleware packages use a dual license for distribution, with the `PyPI`_ package declaring the BSD 3-clause license.
-Most science pipelines packages use the GPLv3 license and for those packages the ``pyproject.toml`` should use:
+Most Science Pipelines packages use the GPLv3 license and for those packages the ``pyproject.toml`` should use:
 
 .. code-block:: toml
 
@@ -80,15 +89,37 @@ Most science pipelines packages use the GPLv3 license and for those packages the
       "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
     ]
 
-Every Rubin DM science pipelines package should be owned by the special DM account and that should always be included in the ``authors`` section.
+Every Rubin DM Science Pipelines package should be owned by the special DM account and that should always be included in the ``authors`` section.
 Additional authors can be included if required.
 
 The ``dependencies`` section can only refer to packages that are available on `PyPI`_ since this is the section that will be read during ``pip install``.
+It should include all Python packages that would normally be included as part of the ``rubin-env`` Conda environment.
+Do not include optional packages in this list or packages that are only needed to run the test code.
+
+This can be achieved with something like the following:
+
+.. code-block:: toml
+
+  [project.optional-dependencies]
+  test = [
+      "pytest >= 3.2",
+      "numpy >= 1.17",
+      "matplotlib >= 3.0.3",
+      "pyarrow >= 0.16",
+      "pandas >= 1.0",
+  ]
+
+and would be installed automatically if ``pip`` is called with:
+
+.. code-block:: bash
+
+  $ pip install lsst-yourpackage[test]
+
 
 Setuptools Configuration
 ------------------------
 
-For ``setuptools`` builds additional configuration is needed so that the python files and data files can be located.
+For ``setuptools`` builds, the usual default build system for our packages, additional configuration is needed so that the python files and data files can be located.
 For example, in ``daf_butler`` there is this configuration:
 
 .. code-block:: toml
@@ -111,8 +142,8 @@ This tells ``setuptools`` that the python files are in a ``python/`` directory a
 The license-files section should reflect the specific needs of your package.
 
 When making a `PyPI`_ distribution, the package should work without relying on the EUPS ``$PACKAGE_DIR`` variable being set.
-This means that any supplementary data such as those that would go in a ``config/`` or ``policy/`` directory should instead be included inside the ``python/`` directory and be accessed using the standard package resources APIs.
-These files must then be listed explicitly in the ``package-data`` section of the configuration file.
+This means that any supplementary data such as those that would go in a ``config/`` or ``policy/`` directory should instead be included inside the ``python/`` directory and be accessed using the standard package resources APIs (such as `importlib.resources` or ``lsst.resources.ResourcePath``).
+These files must then be listed explicitly in the ``package-data`` section of the configuration file, as can be shown in the above example.
 
 .. warning::
 
@@ -124,9 +155,9 @@ Using GitHub Actions
 ====================
 
 If a package is pip-installable it is likely that you will want to build the package in a GitHub action and run the associated tests.
-If your package depends on other science pipelines packages you will want to install those directly from GitHub from the ``main`` branch since there is no guarantee that `PyPI`_ will have the right version.
+If your package depends on other Science Pipelines packages you will want to install those directly from GitHub from the ``main`` branch since there is no guarantee that `PyPI`_ will have the right version.
 The easiest way to do this is to write a ``requirements.txt`` file which has the direct dependencies that should be installed by the build script.
-This file is a simple text file listing packages and versions.
+This file is a simple text file listing packages and versions, and will likely duplicate information found in the ``pyproject.toml`` file.
 
 For example, the ``requirements.txt`` in the ``daf_relation`` package looks like:
 
@@ -151,7 +182,7 @@ and then the package can be installed with:
 
 Where this will skip the dependency check and install the package directly.
 When developing multiple packages at the same time it is possible to change the ``requirements.txt`` file to point at a specific ticket branch rather than ``main``.
-There are checkers available that can block merging if such a change has been made.
+There are checkers available that can block merging if such a change has been made, an example can be found in the ``daf_butler`` repository named `do_not_merge.yaml`_.
 
 If you want the version number of the build to be determined correctly the code must be checked out on GitHub with the full history included:
 
@@ -193,7 +224,7 @@ One caveat is that all the required dependencies listed in the ``pyproject.toml`
 
 The recommended process is for a GitHub action to trigger when the package is tagged.
 This action will then build the package and trigger the upload to `PyPI`_.
-All science pipeline packages on `PyPI`_ must be owned by the Rubin DM `PyPI`_ account attached to ``dm-admin@lists.lsst.org``.
+All Science Pipeline packages on `PyPI`_ must be owned by the Rubin DM `PyPI`_ account attached to ``dm-admin@lists.lsst.org``.
 
 The `PyPI`_ upload can be configured in the same GitHub action that builds the package and tests it.
 Usually it will block on the successful completion of that phase and then only trigger if a tag is being added.
@@ -234,8 +265,10 @@ A full example can be seen below:
         uses: pypa/gh-action-pypi-publish@release/v1
 
 For the upload to work `PyPI`_ must be preconfigured to expect uploads from this specific GitHub action using a `trusted publisher`_ mechanism.
+When you get to this part of the process please ask for help on ``#dm-arch`` on Slack.
 
 .. _PyPI: https://pypi.org
 .. _lsst-sphgeom: https://pypi.org/project/lsst-sphgeom/
 .. _lsst-versions: https://pypi.org/project/lsst-versions/
 .. _trusted publisher: https://docs.pypi.org/trusted-publishers/
+.. _do_not_merge.yaml: https://github.com/lsst/daf_butler/blob/main/.github/workflows/do_not_merge.yaml
