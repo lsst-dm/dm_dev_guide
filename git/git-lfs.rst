@@ -144,22 +144,29 @@ For instance, if you were working with
 
 .. _git-lfs-historical:
 
-Checking out Historical Commits
+Checking out historical commits
 ===============================
 
-If you want to check out a historical commit, you will find that the LFS
-object fetch fails, because only recent commits will reference
+If you want to check out a historical commit, you first need to know
+that arbitrary commits are no longer available.  When we migrated from
+``git-lfs.lsst.codes`` to ``git-lfs.lsst.cloud`` we only migrated LFS
+objects that were either at the tip of the ``main`` branch or a release
+branch (one whose name begins with ``v`` followed by a digit), or were
+referenced in a Git tag.
+
+If your proposed checkout meets these criteria, next you will will find
+that the LFS object fetch fails, because only recent commits reference
 ``git-lfs.lsst.cloud`` rather than ``git-lfs.lsst.codes``, and the
 checkout will reset ``.lfsconfig`` to its old value.  What you will need
 to do in that case is the following.
 
 #. Attempt the checkout as normal.  It will fail when it starts to
-smudge any files that differ from the previous checkout.
+   smudge any files that differ from the previous checkout.
 #. Next, you must edit ``.lfsconfig`` to reference
-``https://git.lfs-rw.lsst.cloud/<org>/<repo>`` rather than
-``https://git-lfs.lsst.codes``; you can do this either by simply editing
-the file, or with ``git config lfs.url
-https://git-lfs-rw.lsst.cloud/<org>/<repo>``.
+   ``https://git.lfs-rw.lsst.cloud/<org>/<repo>`` rather than
+   ``https://git-lfs.lsst.codes``; you can do this either by simply editing
+   the file, or with ``git config lfs.url
+   https://git-lfs-rw.lsst.cloud/<org>/<repo>``.
 #. Finally, execute ``git lfs fetch`` to download the LFS objects.
 
 .. _git-lfs-using:
