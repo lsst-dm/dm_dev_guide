@@ -64,7 +64,7 @@ After these two packages are setup the glide-ins may be submitted.
 The ``allocateNodes.py`` utility has the following options::
 
    $ allocateNodes.py --help
-    usage: [...]/ctrl_execute/bin/allocateNodes.py [-h] -n NODECOUNT -c CPUS [-a ACCOUNT] [-s QOS] 
+    usage: [...]/ctrl_execute/bin/allocateNodes.py [-h] [--auto] -n NODECOUNT -c CPUS [-a ACCOUNT] [-s QOS] 
                                                     -m MAXIMUMWALLCLOCK [-q QUEUE] [-O OUTPUTLOG] 
                                                     [-E ERRORLOG] [-g GLIDEINSHUTDOWN] [-v]
                                                     [-r RESERVATION] [-d [DYNAMIC]]
@@ -75,6 +75,7 @@ The ``allocateNodes.py`` utility has the following options::
 
     options:
       -h, --help            show this help message and exit
+      --auto            use automatic detection of jobs to determine glide-ins
       -n NODECOUNT, --node-count NODECOUNT
                         number of glideins to submit; these are chunks of a node, size the number of cores/cpus
       -c CPUS, --cpus CPUS  cores / cpus per glidein
@@ -200,6 +201,28 @@ For running at S3DF, the following ``site`` specification can be used in the BPS
        profile:
          condor:
            +Walltime: 7200
+
+allocateNodes auto
+------------------
+
+The ``ctrl_execute`` package now provides an ``allocateNodes --auto`` mode in which the user does not have to specify the number of glideins to run. This mode is not the default, and must be explicitly invoked. In this mode the user's idle jobs in the htcondor queue will be detected and an appropriate number of glideins submitted. At this stage of development the allocateNodes auto is used in conjuction with a bash script that runs alongside a BPS workflow, workflows, or generic HTCondor jobs.  The script will invoke allocateNodes auto at regular intervals to submit the number of glideins needed by the workflow(s) at the particular time.  A sample ``service.sh`` script is::
+
+    #!/bin/bash
+    export LSST_TAG=w_2023_46
+    lsstsw_root=/sdf/group/rubin/sw
+    source ${lsstsw_root}/loadLSST.bash
+    setup -v lsst_distrib -t ${LSST_TAG}
+ 
+    # Loop for a long time, executing "allocateNodes auto" every 10 minutes.
+    for i in {1..500}
+    do
+        allocateNodes.py --auto --dynamic --qos normal --account rubin:developers -n 100 -c 16 -m 4-00:00:00 -q milano -g 240 s3df
+        sleep 600
+    done
+
+On the allocateNodes auto command line the option ``-n 100`` no longer specifies the desired number of glideins, but rather specifies an upper bound. There are two time scales in the script above, the first is the glidein shutdown with inactivity time ``-g 240``. This can be fairly short (here 240 seconds / four minutes) to avoid idle cpus, since new glideins will be resubmitted for the user if needed in later cycles. The second time scale is the sleep time ``sleep 600``. This provides the frequency with which to run allocateNodes, and a typical time scale is 600 seconds / ten minutes. With each invocation queries are made to the htcondor schedd and the Slurm scheduler, so it is best not run with unnecessary frequency. Each invocation of allocateNodes queries the htcondor schedd on the current development machine (e.g., ``sdfrome002``). 
+
+After the workflow is complete all of the glideins will expire and the ``service.sh`` process can be removed with Ctrl-C, killing the process, etc.  If a user has executed a ``bps submit`` and acquired resources via the ``service.sh`` / ``allocateNodes`` and everything is running, but then wishes to terminate everything, how best to proceed? A good path is to issue a ``bps cancel``, which would take the precise form ``bps cancel --id <condor ID or path to run submit dir (including timestamp)>``. After the cancel all htcondor jobs will be terminated soon, and the glideins will become idle and expire shortly after the glidein shutdown time with inactivity. The last item that might remain is to stop the ``service.sh`` script, as described above.  For the future we are investigating if BPS itself can manage the allocateNodes auto invocations that a workflow requires, eliminating the need for the user to manage the ``service.sh`` script. 
 
 .. _ctrl_bps_parsl:
 
