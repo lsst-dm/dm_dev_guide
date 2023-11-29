@@ -94,9 +94,9 @@ Additional authors can be included if required.
 
 The ``dependencies`` section can only refer to packages that are available on `PyPI`_ since this is the section that will be read during ``pip install``.
 It should include all Python packages that would normally be included as part of the ``rubin-env`` Conda environment.
-Do not include optional packages in this list or packages that are only needed to run the test code.
 
-This can be achieved with something like the following:
+Do not include optional packages in this list or packages that are only needed to run the test code.
+Instead, add a separate item like the following:
 
 .. code-block:: toml
 
@@ -109,7 +109,7 @@ This can be achieved with something like the following:
       "pandas >= 1.0",
   ]
 
-and would be installed automatically if ``pip`` is called with:
+These optional packages would be installed automatically if ``pip`` is called with:
 
 .. code-block:: bash
 
@@ -182,7 +182,7 @@ and then the package can be installed with:
 
 Where this will skip the dependency check and install the package directly.
 When developing multiple packages at the same time it is possible to change the ``requirements.txt`` file to point at a specific ticket branch rather than ``main``.
-There are checkers available that can block merging if such a change has been made, an example can be found in the ``daf_butler`` repository named `do_not_merge.yaml`_.
+There are checkers available that can block merging if such a change has been made; an example can be found in the ``daf_butler`` repository named `do_not_merge.yaml`_.
 
 If you want the version number of the build to be determined correctly the code must be checked out on GitHub with the full history included:
 
