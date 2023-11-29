@@ -326,6 +326,7 @@ ReStructuredText
    stack/eups-tutorial
    stack/lsstsw
    stack/adding-a-new-package
+   stack/building-with-pip
    stack/moving-to-github-actions
    stack/license-and-copyright
    stack/packaging-third-party-eups-dependencies
