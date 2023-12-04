@@ -14,6 +14,8 @@ The SLAC onboarding procedure involves the following steps:
 - IT creates the unix account and sends a link to reset the password
 - do the SLAC Cyber training
 
+**If you are an in-kind contributor, you'll need to be listed in** `SITCOMTN-050 <https://sitcomtn-050.lsst.io/>`__.
+
 **If you already have a SLAC unix account, you do not need to be re-onboarded.**
 
 Note that if you only have a SLAC Confluence account (eg for DESC or LSSTCam), you will still need to be onboarded as a user **and** there will be complications with your accounts. SLAC and Rubin confluence sites are independent installations.
