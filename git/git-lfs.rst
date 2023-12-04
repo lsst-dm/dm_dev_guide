@@ -15,6 +15,7 @@ Examples of LFS-backed repositories are `lsst/afwdata <https://github.com/lsst/a
 - :ref:`git-lfs-install`
 - :ref:`git-lfs-config`
 - :ref:`git-lfs-auth`
+- :ref:`git-lfs-migration`
 - :ref:`git-lfs-historical`
 - :ref:`git-lfs-using`
 - :ref:`git-lfs-tracking`
@@ -141,6 +142,25 @@ For instance, if you were working with
     cd testdata_subaru
     git config lfs.url https://git-lfs-rw.lsst.cloud/lsst/testdata_subaru
     git config lfs.locksverify false
+
+.. _git-lfs-migration:
+
+Migrating Git LFS
+=================
+
+If you were already using Git LFS with ``https://git-lfs.lsst.codes``
+you will find that pulling a repository you had previously been using
+fails.  This is because the ``.lfsconfig`` in that repository is still
+referencing the old LFS URL, which is no longer serving content.
+
+In that case you need to run:
+
+``git config lfs.url https://git-lfs.lsst.cloud/<owner>/<repo>`` and
+then try the pull again.
+
+If you know you are going to need to push LFS objects, you can use
+``git-lfs-rw`` here instead as described above, or you can configure
+that later, if and when you need it.
 
 .. _git-lfs-historical:
 
