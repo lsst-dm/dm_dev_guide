@@ -66,7 +66,7 @@ The ``allocateNodes.py`` utility has the following options::
    $ allocateNodes.py --help
     usage: [...]/ctrl_execute/bin/allocateNodes.py [-h] [--auto] -n NODECOUNT -c CPUS [-a ACCOUNT] [-s QOS] 
                                                     -m MAXIMUMWALLCLOCK [-q QUEUE] [-O OUTPUTLOG] 
-                                                    [-E ERRORLOG] [-g GLIDEINSHUTDOWN] [-v]
+                                                    [-E ERRORLOG] [-g GLIDEINSHUTDOWN] [-p] [-v]
                                                     [-r RESERVATION] [-d [DYNAMIC]]
                                                     platform
 
@@ -92,7 +92,8 @@ The ``allocateNodes.py`` utility has the following options::
                         Error log filename; this option for PBS, unused with Slurm
        -g GLIDEINSHUTDOWN, --glidein-shutdown GLIDEINSHUTDOWN
                         glide-in inactivity shutdown time in seconds
-       -v, --verbose         verbose
+       -p, --pack       encouraging nodes to pack jobs rather than spread
+       -v, --verbose    verbose
        -r RESERVATION, --reservation RESERVATION
                         target a particular Slurm reservation
        -d [DYNAMIC], --dynamic [DYNAMIC]
