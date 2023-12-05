@@ -92,7 +92,7 @@ The ``allocateNodes.py`` utility has the following options::
                         Error log filename; this option for PBS, unused with Slurm
        -g GLIDEINSHUTDOWN, --glidein-shutdown GLIDEINSHUTDOWN
                         glide-in inactivity shutdown time in seconds
-       -p, --pack       encouraging nodes to pack jobs rather than spread
+       -p, --pack       encourage nodes to pack jobs rather than spread
        -v, --verbose    verbose
        -r RESERVATION, --reservation RESERVATION
                         target a particular Slurm reservation
