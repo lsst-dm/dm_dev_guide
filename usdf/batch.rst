@@ -74,7 +74,7 @@ The ``allocateNodes.py`` utility has the following options::
       platform              node allocation platform
 
     options:
-      -h, --help            show this help message and exit
+      -h, --help        show this help message and exit
       --auto            use automatic detection of jobs to determine glide-ins
       -n NODECOUNT, --node-count NODECOUNT
                         number of glideins to submit; these are chunks of a node, size the number of cores/cpus
