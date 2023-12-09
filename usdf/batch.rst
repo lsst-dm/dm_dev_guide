@@ -18,7 +18,7 @@ For light interactive work, e.g., running *small* ``pipetask`` jobs, one can obt
 .. code-block:: bash
    :name: srun-interactive-example
 
-   srun --pty --cpus-per-task=4 --mem=16GB --nodes=1 --time=02:00:00 --partition=roma,milano --account=rubin --qos normal bash 
+   srun --pty --cpus-per-task=4 --mem=16GB --nodes=1 --time=02:00:00 --partition=roma,milano --account=rubin:developers bash 
 
 will create a 2-hour, 4-core bash session with a total of 16GB memory.  Specifying the total memory with ``--mem`` means that the memory can be distributed among the cores as needed, whereas using ``--mem-per-cpu`` sets the memory available for each individual core; and the option ``--nodes=1`` ensures that all of the cores are on the same node.  With this set up, one can then run ``pipetask -j 4``, making use of the 4 allocated cores.  Adding the ``--exclusive`` option will request a whole node, but in that case, one probably should be submitting a non-interactive batch job anyway. The account parameter is mandatory.
 
@@ -119,7 +119,7 @@ down after 15 minutes of inactivity (for example, after the workflow is complete
 will exit at that time to avoid wasting idle resources. The ``--dynamic`` option requests that the htcondor slots be dynamic, partionable slots; this is the recommended setting as it supports possible multi-core jobs in the workflow. 
 
 There is support for setting USDF S3DF Slurm account, repo and qos values. By default the account ``rubin`` 
-with the ``developers`` repo (``--account rubin:developers``) will be used, and the qos will be ``normal`` by default. 
+with the ``developers`` repo (``--account rubin:developers``) will be used. 
 If one wants to target a different repo, this is 
 handled as part of the account setting, placed following a colon after the account value proper, 
 e.g., ``--account rubin:commissioning``.  A cautionary note on account and qos values: if one sets 
@@ -217,7 +217,7 @@ The ``ctrl_execute`` package now provides an ``allocateNodes --auto`` mode in wh
     # Loop for a long time, executing "allocateNodes auto" every 10 minutes.
     for i in {1..500}
     do
-        allocateNodes.py --auto --dynamic --qos normal --account rubin:developers -n 100 -c 16 -m 4-00:00:00 -q milano -g 240 s3df
+        allocateNodes.py --auto --account rubin:developers -n 100 -c 16 -m 4-00:00:00 -q milano -g 240 s3df
         sleep 600
     done
 
