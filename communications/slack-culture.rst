@@ -21,7 +21,7 @@ Summary
 
 - Use common emoji as reactions in place of messages. (:ref:`Details<slack-emoji-responses>`)
 
-- Use text snippets or posts instead of long code or text blocks. (:ref:`Details<slack-snippets>`)
+- Use text snippets or canvases instead of long code or text blocks. (:ref:`Details<slack-snippets>`)
 
 - Use threads for side conversations; suggest replies go to a thread with ``→``, ``-->``, or ``:thread:`` (🧵). (:ref:`Details<slack-general-threading>`)
 
@@ -85,8 +85,8 @@ You can save space, time, and distractions to others by using commonly understoo
 
 .. _slack-snippets:
 
-Text snippets and posts
------------------------
+Code and quoting
+----------------
 
 Slack has several ways to include blocks of text or code in a message.
 
@@ -102,29 +102,24 @@ Slack has several ways to include blocks of text or code in a message.
 
    Slack formatting bar.
 
-- Entire messages can be shared from one place to another using the "Share message" button that appears when you hover over or select a message.
+- Entire messages can be shared from one place to another using the "Forward message" item in the "More actions" menu that appears when you hover over or select a message.
 
-There are two less-known but very powerful features for code and text blocks.
-Within the "lightning bolt" Shortcuts menu to the left of the :ref:`formatting bar <fig-slack-bolt-normal>` or the :ref:`message input area <fig-slack-bolt-advanced>`, there are entries for "Create a text snippet" and "Create a post".
-(These may be found under the "Slack" app in the "Browse by app" section if they don't show up near the top as in the screenshot below, or you can search for them by typing, e.g., "snip" or "post" into the "Search shortcuts" box.)
+Note that the formatting bar is obtained by selecting the "Aa" button in the message input area in mobile apps.
 
-.. figure:: /_static/communications/slack-culture/bolt-normal.png
-   :name: fig-slack-bolt-normal
-   :alt: Shortcut "lightning bolt" icon with the normal formatting bar
+Text snippets and posts
+-----------------------
 
-   Shortcut "lightning bolt" icon with the normal formatting bar.
+There are two less-known but very powerful features for code and text blocks, including items like error messages.
+Within the "plus sign/+" attachment menu to the left of the :ref:`message input area <fig-slack-attach>` on desktop Slack, there are entries for "Create a text snippet" and "Create a canvas".
+In mobile apps, you can only create a canvas, not a text snippet.
+To do that, from the Home tab, tap the search bar at the top of your screen.
+Then tap "Canvases" in the bar that appears below (between "Recents" and "Files"), and then tap "Create a canvas".
 
-.. figure:: /_static/communications/slack-culture/bolt-advanced.png
-   :name: fig-slack-bolt-advanced
-   :alt: Shortcut "lightning bolt" icon with the markup-only preference set
+.. figure:: /_static/communications/slack-culture/attach.png
+   :name: fig-slack-attach
+   :alt: Attachment "plus sign" icon within the message input area.
 
-   Shortcut "lightning bolt" icon with the markup-only preference set.
-
-.. figure:: /_static/communications/slack-culture/snippet-post.png
-   :name: fig-slack-snippet-post
-   :alt: Text snippet and post shortcuts
-
-   Text snippet and post shortcuts.
+   Attachment "plus sign" icon within the message input area.
 
 A `text snippet`_ is a file, but it appears as a message attachment.
 It can have a title (like a filename with extension).
@@ -137,16 +132,16 @@ Like messages themselves, text snippets can be edited even after being sent.
 
 .. _text snippet: https://slack.com/help/articles/204145658-Create-a-snippet
 
-A `post`_ is also a file that appears as a (somewhat larger) message attachment.
+A `canvas`_ is also a file that appears as a (somewhat larger) message attachment.
 Its title is more of a heading than a filename.
 It can include normal text, which can be formatted in the same ways as messages, including triple-backtick code blocks.
 Two levels of header formatting are also available.
-There are two special things about posts: they can be made editable by other users (snippets are only editable by the original author), and they can be given public URLs to be shared outside of Slack (but only if the post is posted in a public channel).
-When a post gets longer than about 48 lines, it will automatically display in "collapsed" form.
+There is one special thing about canvases: they can be made editable by other users (snippets are only editable by the original author).
+When a canvas gets longer than about 48 lines, it will automatically display in "collapsed" form.
 
-.. _post: https://slack.com/help/articles/203950418-Use-posts-in-Slack
+.. _canvas: https://slack.com/help/articles/203950418-Use-a-canvas-in-Slack#mobile-8
 
-Please use text snippets or posts for long segments of code, text, or error messages (e.g. more than 10 lines or so).
+Please use text snippets or canvases for long segments of code, text, or error messages (e.g. more than 10 lines or so).
 
 .. _slack-general-threading:
 
@@ -191,7 +186,7 @@ If you need to have a group created because you have a routine need to @-mention
 
 @-mentioning a particular user notifies that user and adds the message to their "Mentions & reactions" list.
 Be aware of the person's timezone before @-mentioning them.
-If you need to @-mention them outside normal hours, you may want to schedule the message to be posted later (using the ``/send`` or more sophisticated ``/schedule`` shortcuts from `Timy`_).
+If you need to @-mention them outside normal hours, you may want to schedule the message to be posted later (using the ``/send`` or more sophisticated ``/schedule`` shortcuts from `Timy`_ or the "Schedule for later" drop-down next to the send button in the message input area).
 Sometimes @-mentioning a user can be helpful to disambiguate replies in a multi-person conversation, but if you find yourself prefixing every message you send with an @-mention, consider whether it is implied by context or whether the whole conversation might be better in a thread or in direct messages to that user.
 
 .. _Timy: https://timy.website/#commands
@@ -212,7 +207,8 @@ Threading
 ---------
 
 To reserve the main channel for announcements, almost any question or reply should be in a thread.
-If there is a clarification developed in a thread, that message can be shared back to the main channel.
+If there is a clarification developed in a thread, that message can be shared back to the main channel using the "Also send to #channel" checkbox.
+(If you want to take back a sharing with the main channel, you can do that by selecting the message in the main channel and then choosing "Remove from channel" in the "More actions" menu.)
 
 .. _slack-announcement-mentions:
 
