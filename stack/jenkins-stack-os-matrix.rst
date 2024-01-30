@@ -26,7 +26,7 @@ Running a stack-os-matrix job
      To check that a ``main``-only build passes, leave the refs box entirely blank.
 
    - **Set the list of EUPS packages** to build.
-     Use the default (``lsst_distrib lsst_ci``) to build and test your changes with a full Stack.
+     Use the default (``lsst_distrib lsst_ci lsst_sitcom``) to build and test your changes with a full Stack.
      To improve build times you can instead specify the name of the package you are actively developing.
      Before you merge a ticket branch to ``main``, **you must** run a stack-os-matrix Job with at least the default packages so that the full Stack is built and tested with your changes.
 
