@@ -81,11 +81,11 @@ The ``allocateNodes.py`` utility has the following options::
       -c CPUS, --cpus CPUS  cores / cpus per glidein
       -a ACCOUNT, --account ACCOUNT
                         Slurm account for glidein job
-      -s QOS, --qos QOS     Slurm qos or glidein job
+      -s QOS, --qos QOS Slurm qos for glidein job
       -m MAXIMUMWALLCLOCK, --maximum-wall-clock MAXIMUMWALLCLOCK
                         maximum wall clock time; e.g., 3600, 10:00:00, 6-00:00:00, etc
       -q QUEUE, --queue QUEUE
-                        queue / partition name
+                        Slurm queue / partition name
       -O OUTPUTLOG, --output-log OUTPUTLOG
                         Output log filename; this option for PBS, unused with Slurm
        -E ERRORLOG, --error-log ERRORLOG
@@ -107,16 +107,17 @@ The ``allocateNodes.py`` utility requires a small measure of configuration in th
 
 A typical ``allocateNodes.py`` command line for obtaining resources for a BPS workflow could be::
 
-   $ allocateNodes.py -v --dynamic -n 20 -c 32 -m 4-00:00:00 -q roma,milano -g 900 s3df
+   $ allocateNodes.py -v -n 20 -c 32 -m 4-00:00:00 -q roma -g 600 s3df
 
 ``s3df`` is specified as the target platform. 
-The ``-q roma,milano`` option specifies that the glide-in jobs may run in either the roma or milano partition. 
+The ``-q roma`` option specifies that the glide-in jobs should run in the ``roma`` partition (a good alternative value is ``milano``).
 The ``-n 20 -c 32`` options request 20 individual glide-in slots of size 32 cores each (each is a Slurm job that obtains a partial node).
-The maximum possible time is set to 4 days via ``-m 4-00:00:00``. 
-The glide-in Slurm jobs may not run for the full 4 days however, as the option ``-g 900`` specifies a 
-condor glide-in shutdown time of 900 seconds or 15 minutes. This means that the htcondor daemons will shut themselves 
-down after 15 minutes of inactivity (for example, after the workflow is complete), and the glide-in Slurm jobs 
-will exit at that time to avoid wasting idle resources. The ``--dynamic`` option requests that the htcondor slots be dynamic, partionable slots; this is the recommended setting as it supports possible multi-core jobs in the workflow. 
+The ``-c`` option is no longer a required command line option, as it will default to a value of 16 cores.
+The maximum possible time is set to 4 days via ``-m 4-00:00:00``.
+The glide-in Slurm jobs may not run for the full 4 days however, as the option ``-g 600`` specifies a
+condor glide-in shutdown time of 600 seconds or 10 minutes. This means that the htcondor daemons will shut themselves 
+down after 10 minutes of inactivity (for example, after the workflow is complete), and the glide-in Slurm jobs 
+will exit at that time to avoid wasting idle resources. 
 
 There is support for setting USDF S3DF Slurm account, repo and qos values. By default the account ``rubin`` 
 with the ``developers`` repo (``--account rubin:developers``) will be used. 
@@ -181,12 +182,11 @@ After submitting the ``allocateNodes.py`` command line above, the user may see S
          Total    19     0       0        19       0          0        0      0
 
 The htcondor slots will have a label with the username, so that one user's glide-ins may be distinguished from another's.  In this case the glide-in slots are partial node 32-core chunks, and so more than one slot can appear on a given node. The decision as to whether to request full nodes or partial nodes would depend on the general load on the cluster, i.e., if the cluster is populated with other numerous single core jobs that partially fill nodes, it will be necessary to request partial nodes to acquire available resources.
-Larger ``-c`` values (and hence smaller ``-n`` values for the same total number of cores) will entail less process overhead, but there may be inefficient unused cores within a slot/"node", and slots may be harder to schedule.
-We recommend selecting ``-c`` such that ``-n`` is in the range of 1 to 32; ``-c 32`` is often reasonable for jobs using dozens to hundreds of cores.
+Larger ``-c`` values (and hence smaller ``-n`` values for the same total number of cores) will entail less process overhead, but there may be inefficient unused cores within a slot/"node", and slots may be harder to schedule. The ``-c`` option has a default value of 16. 
 
 The ``allocateNodes.py`` utility is set up to be run in a maintenance or cron type manner, where reissuing the exact same command line request for 20 glide-ins will not directly issue 20 additional glide-ins. Rather ``allocateNodes.py`` will strive to maintain 20 glide-ins for the workflow, checking to see if that number of glide-ins are in the queue, and resubmit any missing glide-ins that may have exited due to lulls in activity within the workflow.
 
-With htcondor slots present and visible with ``condor_status``, one may proceed with running ``ctrl_bps`` ``ctrl_bps_htcondor`` workflows in the same manner as was done on the project's previous generation computing cluster at NCSA.
+With htcondor slots present and visible with ``condor_status``, one may proceed with running ``ctrl_bps`` ``ctrl_bps_htcondor`` workflows. 
 
 Usage of the ``ctrl_bps_htcondor`` plugin and module has been extensively documented at
 
@@ -206,10 +206,10 @@ For running at S3DF, the following ``site`` specification can be used in the BPS
 allocateNodes auto
 ------------------
 
-The ``ctrl_execute`` package now provides an ``allocateNodes --auto`` mode in which the user does not have to specify the number of glideins to run. This mode is not the default, and must be explicitly invoked. In this mode the user's idle jobs in the htcondor queue will be detected and an appropriate number of glideins submitted. At this stage of development the allocateNodes auto is used in conjuction with a bash script that runs alongside a BPS workflow, workflows, or generic HTCondor jobs.  The script will invoke allocateNodes auto at regular intervals to submit the number of glideins needed by the workflow(s) at the particular time.  A sample ``service.sh`` script is::
+The ``ctrl_execute`` package now provides an ``allocateNodes --auto`` mode in which the user 1) does not have to specify the number of glideins to run and 2) does not have to specify the size of the glideins. This mode is not the default, and must be explicitly invoked. In this mode the user's idle jobs in the htcondor queue will be detected and an appropriate number of glideins submitted. The current version of ``allocateNodes --auto`` works with BPS workflows exclusively and the ``-c`` option is ignored. ``allocateNodes --auto`` searches for "large" jobs (taken to be larger than 16 cores or equivalent memory) and for each of the large jobs a customized glidein is created and submitted; for smaller jobs 16 core glideins will be submitted in the quantity needed. At this stage of development the allocateNodes auto is used in conjuction with a bash script that runs alongside a BPS workflow or workflows.  The script will invoke allocateNodes auto at regular intervals to submit the number of glideins needed by the workflow(s) at the particular time.  A sample ``service.sh`` script is::
 
     #!/bin/bash
-    export LSST_TAG=w_2023_46
+    export LSST_TAG=d_2024_02_02
     lsstsw_root=/sdf/group/rubin/sw
     source ${lsstsw_root}/loadLSST.bash
     setup -v lsst_distrib -t ${LSST_TAG}
@@ -217,7 +217,7 @@ The ``ctrl_execute`` package now provides an ``allocateNodes --auto`` mode in wh
     # Loop for a long time, executing "allocateNodes auto" every 10 minutes.
     for i in {1..500}
     do
-        allocateNodes.py --auto --account rubin:developers -n 100 -c 16 -m 4-00:00:00 -q milano -g 240 s3df
+        allocateNodes.py --auto --account rubin:developers -n 100 -m 4-00:00:00 -q milano -g 240 s3df
         sleep 600
     done
 
