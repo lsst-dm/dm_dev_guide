@@ -24,6 +24,33 @@ Note that each of these other environments is maintained separately; see below.
 Requests for additions to ``rubin-env`` should be made via RFC.
 The DM-CCB must approve such requests.
 
+.. _rubin-env-dependency-versioning:
+
+Dependency versions
+-------------------
+
+The package specifications that define ``rubin-env`` typically do not constrain dependency versions or at most specify minimum versions.
+This usage is intentional so that users can add packages on top of ``rubin-env`` with a minimum of conflicts.
+Otherwise, it would frequently be the case that the version requirements of a desired package would conflict with those of ``rubin-env``, preventing both from being present in the same environment.
+The main exceptions that have strict constraints are packages that include shared libraries that Science Pipelines C++ code links against which must be constrained for binary compatibility.
+
+The lax constraints naturally mean that different installations of ``rubin-env`` performed at different times may include different dependency versions.
+Generally these will be compatible and should cause no difficulty.
+If necessary to debug a problem, an "exact" environment that contains the exact versions that were used during the Science Pipelines release process can be installed using ``lsstinstall -X {release tag}``.
+
+On occasion, a change in a dependency will break Rubin code.
+This cost is accepted to allow the benefit of combining ``rubin-env`` with other packages.
+The breakage is typically detected in the Jenkins nightly "clean" builds that reinstall the conda environment from scratch.
+The problem is resolved in three phases:
+
+- The dependency version is pinned to be less than the failing version in a new build of the current release of ``rubin-env``, and a notation is made in the `DM Third Party Software Confluence page <https://confluence.lsstcorp.org/display/DM/DM+Third+Party+Software>`__.  This solves the immediate problem.
+- At a later date, the relevant Science Pipelines code is modified to be compatible with both the older and newer versions of the dependency.  This makes the pin eligible for release, which is marked on the Confluence page.
+- In the next major rubin-env release, the version constraint is removed.
+
+If the dependency change is generally acknowledged to be a bug and is rapidly fixed upstream, a ``!=`` version constraint can be used without releasing a new version of ``rubin-env``.
+
+If a dependency frequently breaks Rubin code when it is updated, its version can be constrained at increasingly stringent levels (e.g. major version, minor version, or even specific patch version).
+
 .. _rubin-env-versioning:
 
 Versioning ``rubin-env``
