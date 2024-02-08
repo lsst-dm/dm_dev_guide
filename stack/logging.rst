@@ -135,7 +135,10 @@ The guideline of using the log levels is as follows:
 In addition there are two additional log levels allowed for specialist pipelines-specific loggers (such as those used for :lclass:`lsst.pipe.base.Task`):
 
 - VERBOSE: for messages of a more detailed nature than would normally be expected to be shown by default but that will not swamp the user in the way that DEBUG messages would if that level of output was enabled.
+  The `numeric log level`_ for VERBOSE logs is 15.
+
 - TRACE: for detailed information when debugging, particularly inside loops.
+  The TRACE `numeric log level`_ spans a range from 1-5 (e.g. for use with the ``log-cli-level`` argument to ``pytest``).
 
 An alternative approach for TRACE and VERBOSE is to consider using DEBUG messages with a separate logger name that can be enabled when desired, :ref:`as described below <logger-trace-verbosity>`.
 Remember though that the default output level for general users is usually INFO and for large-scale pipeline processing it is VERBOSE.
@@ -153,6 +156,8 @@ For example:
 The idea here is that the author understands the intent of the log message and can simply name it, without worrying about its relative importance or priority compared with other log messages in the same component.
 A person debugging the code would typically be looking at it and so would be able to determine the appropriate name to enable.
 The hierarchy allows all components to be easily enabled or disabled together.
+
+.. _`numeric log level`: <https://docs.python.org/3/library/logging.html#levels>
 
 Logging within the Task framework
 =================================
