@@ -29,7 +29,7 @@ Four "repos" have been created to apportion the batch allocation. We have yet to
 - developers
 - commissioning
 
-All Rubin account holders can submit to any but the production repo. We will give guidance as it is developed on which to choose.
+All Rubin account holders can submit to any but the production repo (at some point we will divide up membership between commissioning and developers; when initially set up the repos, we added all users to both). If you are new to the USDF and you find you cannot submit to the developers or commissioning repos, check `coact <https://coact.slac.stanford.edu/repos/info>`__ to see which repos you belong to. If none, request addition to the appropriate repo in the ops-usdf slack channel.
 
 In general, using BPS is preferred to running ``pipetask`` directly since many concurrent ``pipetask`` jobs that are run like this can cause registry database contention.
 
