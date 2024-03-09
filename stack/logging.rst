@@ -36,6 +36,8 @@ Such a logger can be derived from the module logger using ``log.getChild()``.
 
 Logger names use ``.`` as component separators, not ``::``, even in C++.
 
+.. _basic-python-logging:
+
 Basic Usage in Python
 =====================
 
@@ -87,6 +89,8 @@ To specify the threshold or the lowest-severity log messages a logger handles, :
 .. code-block:: python
 
    logger.setLevel(logging.DEBUG)
+
+.. _basic-c++-logging:
 
 Basic Usage in C++
 ==================
@@ -176,6 +180,29 @@ For example, to make the ``calibrate`` stage of ``processCcd`` less verbose:
 .. code-block:: bash
 
      pipetask --log-level processCcd.calibrate=WARN run [pipeline options]
+
+.. _notebook-logging:
+
+Getting log output in a notebook
+================================
+
+The Rubin Science Platform (RSP) automatically configures log output to appear in RSP notebooks via an ipython startup file (``~/.ipython/profile_default/startup/20-logging.py``) that is automatically copied into place if no such file exists.
+For stand-alone jupyter notebooks, you have to configure the log output yourself, otherwise log messages will not appear in a notebook.
+Running the following code at the start of your notebook will result in output of logs at INFO-level and above:
+
+.. code-block:: python
+
+    from lsst.daf.butler.cli.cliLog import CliLog
+    CliLog.initLog(longlog=False)
+
+Note that if you use the above configuration, you won't get the same logging output as you would with the RSP configuration.
+
+To further configure which logs will appear, set the log level for the ``"lsst"`` namespace as :ref:`described at the end of the python section above <basic-python-logging>` inside your notebook:
+
+.. code-block:: python
+
+    import logging
+    logging.getLogger("lsst").setLevel(logging.DEBUG)
 
 .. _logger-trace-verbosity:
 
