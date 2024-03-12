@@ -107,17 +107,17 @@ The ``allocateNodes.py`` utility requires a small measure of configuration in th
 
 A typical ``allocateNodes.py`` command line for obtaining resources for a BPS workflow could be::
 
-   $ allocateNodes.py -v -n 20 -c 32 -m 4-00:00:00 -q roma -g 600 s3df
+   $ allocateNodes.py -v -n 20 -c 32 -m 4-00:00:00 -q milano -g 240 s3df
 
 ``s3df`` is specified as the target platform. 
-The ``-q roma`` option specifies that the glide-in jobs should run in the ``roma`` partition (a good alternative value is ``milano``).
+The ``-q milano`` option specifies that the glide-in jobs should run in the ``milano`` partition (an alternative value is ``roma``).
 The ``-n 20 -c 32`` options request 20 individual glide-in slots of size 32 cores each (640 total cores, each glidein is a Slurm job that obtains a partial node).
 The ``-c`` option is no longer a required command line option, as it will default to a value of 16 cores.
 In allocateNodes there is now an encoded upper bound of 8000 cores to prevent a runaway scenario, and best collaborative usage 
 is generally in the 1000-2000 total core range given current qos limits.
 The maximum possible time is set to 4 days via ``-m 4-00:00:00``.
-The glide-in Slurm jobs may not run for the full 4 days however, as the option ``-g 600`` specifies a
-condor glide-in shutdown time of 600 seconds or 10 minutes. This means that the htcondor daemons will shut themselves 
+The glide-in Slurm jobs may not run for the full 4 days however, as the option ``-g 240`` specifies a
+condor glide-in shutdown time of 240 seconds or 4 minutes. This means that the htcondor daemons will shut themselves 
 down after 10 minutes of inactivity (for example, after the workflow is complete), and the glide-in Slurm jobs 
 will exit at that time to avoid wasting idle resources. 
 
@@ -132,56 +132,57 @@ and the job will be less likely to run to completion without interruption.
 After submitting the ``allocateNodes.py`` command line above, the user may see Slurm jobs and htcondor slots along the lines of::
 
    $ squeue -u <username>
-
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-           4246331      roma glide_da    daues  R       0:05      1 sdfrome016
-           4246332      roma glide_da    daues  R       0:05      1 sdfrome016
-           4246333      roma glide_da    daues  R       0:05      1 sdfrome016
-           4246334      roma glide_da    daues  R       0:05      1 sdfrome016
-           4246335      roma glide_da    daues  R       0:05      1 sdfrome011
-           4246336      roma glide_da    daues  R       0:05      1 sdfrome011
-           4246337      roma glide_da    daues  R       0:05      1 sdfrome011
-           4246338      roma glide_da    daues  R       0:05      1 sdfrome011
-           4246339      roma glide_da    daues  R       0:05      1 sdfrome012
-           4246340      roma glide_da    daues  R       0:05      1 sdfrome012
-           4246341      roma glide_da    daues  R       0:05      1 sdfrome012
-           4246342      roma glide_da    daues  R       0:05      1 sdfrome020
-           4246343      roma glide_da    daues  R       0:05      1 sdfrome020
-           4246344      roma glide_da    daues  R       0:05      1 sdfrome020
-           4246345      roma glide_da    daues  R       0:05      1 sdfrome021
-           4246346      roma glide_da    daues  R       0:05      1 sdfrome021
-           4246347      roma glide_da    daues  R       0:05      1 sdfrome021
-           4246348      roma glide_da    daues  R       0:05      1 sdfrome021
-           4246349      roma glide_da    daues  R       0:05      1 sdfrome023
-           4246350      roma glide_da    daues  R       0:05      1 sdfrome023
-   $ condor_status
+          41338730    milano glide_da    daues  R       0:10      1 sdfmilan072
+          41338729    milano glide_da    daues  R       0:11      1 sdfmilan071
+          41338727    milano glide_da    daues  R       0:12      1 sdfmilan038
+          41338724    milano glide_da    daues  R       0:13      1 sdfmilan131
+          41338725    milano glide_da    daues  R       0:13      1 sdfmilan131
+          41338726    milano glide_da    daues  R       0:13      1 sdfmilan131
+          41338720    milano glide_da    daues  R       0:14      1 sdfmilan033
+          41338721    milano glide_da    daues  R       0:14      1 sdfmilan033
+          41338723    milano glide_da    daues  R       0:14      1 sdfmilan033
+          41338719    milano glide_da    daues  R       0:19      1 sdfmilan023
+          41338718    milano glide_da    daues  R       0:21      1 sdfmilan041
+          41338717    milano glide_da    daues  R       0:23      1 sdfmilan037
+          41338716    milano glide_da    daues  R       0:25      1 sdfmilan004
+          41338715    milano glide_da    daues  R       0:27      1 sdfmilan231
+          41338714    milano glide_da    daues  R       0:29      1 sdfmilan118
+          41338712    milano glide_da    daues  R       0:31      1 sdfmilan113
+          41338711    milano glide_da    daues  R       0:33      1 sdfmilan063
+          41338708    milano glide_da    daues  R       0:35      1 sdfmilan070
+          41338709    milano glide_da    daues  R       0:35      1 sdfmilan070
+          41338710    milano glide_da    daues  R       0:35      1 sdfmilan070
+
+   $ condor_status -constraint 'regexp("daues", Name)'
    Name                                                OpSys      Arch   State     Activity LoadAv Mem     ActvtyTime
 
-   slot_daues_1455_1@sdfrome011.sdf.slac.stanford.edu  LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
-   slot_daues_10693_1@sdfrome011.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
-   slot_daues_27645_1@sdfrome011.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
-   slot_daues_32041_1@sdfrome011.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
-   slot_daues_2010_1@sdfrome012.sdf.slac.stanford.edu  LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
-   slot_daues_24423_1@sdfrome012.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
-   slot_daues_31147_1@sdfrome012.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
-   slot_daues_4125_1@sdfrome016.sdf.slac.stanford.edu  LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
-   slot_daues_12576_1@sdfrome016.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
-   slot_daues_14984_1@sdfrome016.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
-   slot_daues_25023_1@sdfrome016.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
-   slot_daues_5936_1@sdfrome020.sdf.slac.stanford.edu  LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
-   slot_daues_12034_1@sdfrome020.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
-   slot_daues_24875_1@sdfrome020.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
-   slot_daues_7366_1@sdfrome021.sdf.slac.stanford.edu  LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
-   slot_daues_7575_1@sdfrome021.sdf.slac.stanford.edu  LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
-   slot_daues_9335_1@sdfrome021.sdf.slac.stanford.edu  LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
-   slot_daues_23816_1@sdfrome021.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
-   slot_daues_18562_1@sdfrome023.sdf.slac.stanford.edu LINUX      X86_64 Unclaimed Idle      0.000 128000  0+00:00:00
+   slot_daues_11594_1@sdfmilan004.sdf.slac.stanford.edu   LINUX      X86_64 Unclaimed  Idle      0.000 131072  0+00:00:00
+   slot_daues_14389_1@sdfmilan023.sdf.slac.stanford.edu   LINUX      X86_64 Unclaimed  Idle      0.000 131072  0+00:00:00
+   slot_daues_25857_1@sdfmilan033.sdf.slac.stanford.edu   LINUX      X86_64 Unclaimed  Idle      0.000 131072  0+00:00:00
+   slot_daues_30890_1@sdfmilan033.sdf.slac.stanford.edu   LINUX      X86_64 Unclaimed  Idle      0.000 131072  0+00:00:00
+   slot_daues_32717_1@sdfmilan033.sdf.slac.stanford.edu   LINUX      X86_64 Unclaimed  Idle      0.000 131072  0+00:00:00
+   slot_daues_24186_1@sdfmilan037.sdf.slac.stanford.edu   LINUX      X86_64 Unclaimed  Idle      0.000 131072  0+00:00:00
+   slot_daues_192_1@sdfmilan038.sdf.slac.stanford.edu     LINUX      X86_64 Unclaimed  Idle      0.000 131072  0+00:00:00
+   slot_daues_30129_1@sdfmilan041.sdf.slac.stanford.edu   LINUX      X86_64 Unclaimed  Idle      0.000 131072  0+00:00:00
+   slot_daues_18578_1@sdfmilan063.sdf.slac.stanford.edu   LINUX      X86_64 Unclaimed  Idle      0.000 131072  0+00:00:00
+   slot_daues_29865_1@sdfmilan070.sdf.slac.stanford.edu   LINUX      X86_64 Unclaimed  Idle      0.000 131072  0+00:00:00
+   slot_daues_30427_1@sdfmilan070.sdf.slac.stanford.edu   LINUX      X86_64 Unclaimed  Idle      0.000 131072  0+00:00:00
+   slot_daues_31288_1@sdfmilan070.sdf.slac.stanford.edu   LINUX      X86_64 Unclaimed  Idle      0.000 131072  0+00:00:00
+   slot_daues_13464_1@sdfmilan071.sdf.slac.stanford.edu   LINUX      X86_64 Unclaimed  Idle      0.000 131072  0+00:00:00
+   slot_daues_28680_1@sdfmilan072.sdf.slac.stanford.edu   LINUX      X86_64 Unclaimed  Idle      0.000 131072  0+00:00:00
+   slot_daues_31387_1@sdfmilan113.sdf.slac.stanford.edu   LINUX      X86_64 Unclaimed  Idle      0.000 131072  0+00:00:00
+   slot_daues_30410_1@sdfmilan118.sdf.slac.stanford.edu   LINUX      X86_64 Unclaimed  Idle      0.000 131072  0+00:00:00
+   slot_daues_7514_1@sdfmilan131.sdf.slac.stanford.edu    LINUX      X86_64 Unclaimed  Idle      0.000 131072  0+00:00:00
+   slot_daues_15251_1@sdfmilan131.sdf.slac.stanford.edu   LINUX      X86_64 Unclaimed  Idle      0.000 131072  0+00:00:00
+   slot_daues_19639_1@sdfmilan131.sdf.slac.stanford.edu   LINUX      X86_64 Unclaimed  Idle      0.000 131072  0+00:00:00
+   slot_daues_18815_1@sdfmilan231.sdf.slac.stanford.edu   LINUX      X86_64 Unclaimed  Idle      0.000 131072  0+00:00:00
 
-               Total Owner Claimed Unclaimed Matched Preempting Backfill  Drain
+               Total Owner Claimed Unclaimed Matched Preempting  Drain Backfill BkIdle
 
-  X86_64/LINUX    19     0       0        19       0          0        0      0
+   X86_64/LINUX     20     0       0         20       0          0      0        0      0
 
-         Total    19     0       0        19       0          0        0      0
+          Total     20     0       0         20       0          0      0        0      0
 
 The htcondor slots will have a label with the username, so that one user's glide-ins may be distinguished from another's.  In this case the glide-in slots are partial node 32-core chunks, and so more than one slot can appear on a given node. The decision as to whether to request full nodes or partial nodes would depend on the general load on the cluster, i.e., if the cluster is populated with other numerous single core jobs that partially fill nodes, it will be necessary to request partial nodes to acquire available resources.
 Larger ``-c`` values (and hence smaller ``-n`` values for the same total number of cores) will entail less process overhead, but there may be inefficient unused cores within a slot/"node", and slots may be harder to schedule. The ``-c`` option has a default value of 16. 
