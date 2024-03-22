@@ -86,4 +86,23 @@ The user is warned about all these events, but in case they've been ignored/forg
 - The accounts `site <https://www-internal.slac.stanford.edu/comp/admin/bin/account-search.asp>`__ can tell us if the account is disabled
    - if none disabled, then it's due to password expire
    
-- The training `site <https://www-internal.slac.stanford.edu/esh-db/training/slaconly/bin/ETA_ReportAll.asp?opt=6>`__ can tell us if Cyber is expired.
+- The training `site <https://www-internal.slac.stanford.edu/esh-db/training/slaconly/bin/ETA_ReportAll.asp?opt=6>`__ can tell us if Cyber is expired. If it has:
+
+Cyber Training
+==============
+
+Cyber training comes up annually. There are issues with the training system at the moment, so here is (hopefully) temporary advice on how to navigate it (note that if you got an email saying your training is coming due, the SLAC ID (SID) is embedded in the url in the email - that is the xxxxxxx in the instructions below - if your account has not been disabled, you can ssh to centos7 and issue the command:
+
+res list user <your unix account name>
+
+which will give your SID (along with your account status).
+
+if none of that works, ask your SLAC Point of Contact):
+
+You need to go to the url below; DO NOT click on forgot password. Give it your system id  (SID) number.
+
+Note: the interim training password  is "SLACtraining2005!". If it does not work, email slac-training, asking them to reset it. Then go back to the original link, enter SID and this password. Then do CS100.
+
+https://slactraining.csod.com/
+
+Basically, always use the SID where "user name" is requested.
