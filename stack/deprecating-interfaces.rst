@@ -132,6 +132,14 @@ This can be achieved via preprocessor directives::
 
 Note that this works for ``clang`` as well as ``gcc``, despite the pragma name.
 
+Measurement Plugin Deprecation
+------------------------------
+
+Some of our measurement plugins are written in C++, as subclasses of `~lsst.meas.base.SimpleAlgorithm`.
+To deprecate such a C++ plugin, follow the C++ deprecation procedure above for the C++ header declaration, being sure to catch each of the ``Control``, ``Algorithm``, and ``Transform`` classes.
+In addition, where the algorithm class is registered to the plugin algorithm registry via `~lsst.meas.base.wrapSimpleAlgorithm` (for example, from ``plugins.py`` in ``meas_base`` for plugins defined in that package), add a ``deprecated="Plugin 'XXXX' is deprecated and will be removed after vXX."`` kwarg to the ``wrapSimpleAlgorithm`` call.
+This will ensure that any pipeline that is configured to use this plugin will emit a deprecation warning about the plugin during initialization.
+
 Config Deprecation
 ==================
 
