@@ -10,8 +10,8 @@ The SLAC onboarding procedure involves the following steps:
 - join the SLAC HEP users organization, SLUO
    - fill out the SLAC Users Organization (SLUO) form
    - fill out the SLAC Site Access Portal form
-- a SLAC ServiceNow ticket is submitted to IT to request the account
-- IT creates the unix account and sends a link to reset the password
+- **As of April 15 2024, IT is again creating Active Directory (AD) and unix accounts (of the same name).** The AD account is only used for annual cyber training and web access to Service Now (SLAC IT ticketing system). The AD account needs to be accessed every 60 days; notifications are sent out.
+- IT creates the accounts and sends a link to reset the passwords
 - do the SLAC Cyber training
 
 **If you are an in-kind contributor, you'll need to be listed in** `SITCOMTN-050 <https://sitcomtn-050.lsst.io/>`__.
