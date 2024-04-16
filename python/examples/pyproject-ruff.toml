@@ -10,6 +10,7 @@ ignore = [
     "N813",
     "N815",
     "N816",
+    "N999",
 ]
 line-length = 110
 select = [
