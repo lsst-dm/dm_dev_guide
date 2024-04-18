@@ -186,7 +186,7 @@ The configuration for ruff_ must be added to the ``pyproject.toml`` file -- this
 
 The above is a complete and sufficient specification for a science pipelines package.
 There is no need to explicitly specify ``W503`` since ruff_ assumes that by default.
-If you wish to add more `linting rules <https://beta.ruff.rs/docs/rules/>`_ that are consistent with the style guide these can be specified in the ``tool.ruff.select`` section.
+If you wish to add more `linting rules <https://beta.ruff.rs/docs/rules/>`_ that are consistent with the style guide these can be specified in the ``tool.ruff.lint.select`` section.
 For example:
 
 * ``D`` will check docstrings for compliance.
