@@ -91,7 +91,9 @@ The user is warned about all these events, but in case they've been ignored/forg
 Cyber Training
 ==============
 
-Cyber training comes up annually. There are issues with the training system at the moment, so here is (hopefully) temporary advice on how to navigate it (note that if you got an email saying your training is coming due, the SLAC ID (SID) is embedded in the url in the email - that is the xxxxxxx in the instructions below - if your account has not been disabled, you can ssh to centos7 and issue the command:
+Cyber training comes up annually. If you have an Active Directory (aka Windows) account, just follow the instructions to login with that account.
+
+There are issues with the training system at the moment if you only have a unix account, so here is (hopefully) temporary advice on how to navigate it (note that if you got an email saying your training is coming due, the SLAC ID (SID) is embedded in the url in the email - that is the xxxxxxx in the instructions below - if your account has not been disabled, you can ssh to centos7 and issue the command:
 
 res list user <your unix account name>
 
