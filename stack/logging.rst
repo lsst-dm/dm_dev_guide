@@ -6,15 +6,15 @@ This page provides guidance to developers for using logging in the Science Pipel
 In general, all logging in Python code should be done with the standard :mod:`logging` package.
 All logging from C++ code should be done using the :lmod:`lsst.log` package; reference documentation on that logging framework can be found at the `Doxygen page on logging`_.
 Application code that uses both Python and C++ logging should include configuration code to forward C++ log messages to the Python :mod:`logging` system.
-This is handled automatically when using, for example, the `pipetask`_ command.
-For an example of configuring the logging framework in pipeline tasks, see the `pipelines.lsst.io page on logging`_.
+This is handled automatically when using, for example, the `pipetask`_ command; see the documentation for `pipetask`_ for available logging options on the command-line.
+For more details, and an example of configuring the logging framework from the command-line, see the `pipelines.lsst.io page on logging`_.
 
 Developers are encouraged to insert log messages whenever and wherever they might be useful, with appropriate component names and levels.
 
 Whether using :mod:`logging` or any other logging mechanism, timestamps recorded in logs should use Internet `RFC 3339`_ format, which is sortable and includes the timezone.  See the discussion in :jira:`DM-1203` for history.
 
 .. _Doxygen page on logging: http://doxygen.lsst.codes/stack/doxygen/x_mainDoxyDoc/log.html
-.. _pipelines.lsst.io page on logging: https://pipelines.lsst.io/modules/lsst.pipe.base/command-line-task-logging-howto.html
+.. _pipelines.lsst.io page on logging: https://pipelines.lsst.io/v/weekly/modules/lsst.daf.butler/scripts/logging.html
 .. _RFC 3339: http://tools.ietf.org/html/rfc3339
 .. _pipetask: https://pipelines.lsst.io/modules/lsst.ctrl.mpexec/pipetask.html
 
