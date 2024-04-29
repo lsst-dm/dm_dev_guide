@@ -36,7 +36,7 @@ Notes:
  - Experiment: select Vera C. Rubin Observatory
 
 Notes for Portal:
- - **If your institution is missing, let Richard Dubois know, to get it added to the list**
+ - **If your institution is missing, let Sierra Villarreal know, to get it added to the list**
  - Emergency contact: your own personal contact - relative, friend.
  - Group: select "FPD LSST Computing"
  - details of visit and project name: Using SLAC computing resources to collaborate on Rubin Operations. Seems optional to include your home institution.
@@ -44,7 +44,7 @@ Notes for Portal:
  - Time at SLAC: this is physically on site. For most people, this is <10%. Occasional visits for meetings don't count.
  - Start date: choose today
  - Answer "yes" to will you be performing work at SLAC
- - SLAC Spokesperson/Sponsor/Supervisor: Select Richard Dubois.
+ - SLAC Spokesperson/Sponsor/Supervisor: Select Sierra Villarreal.
 	
 1)	When the user submits the onboarding request form, the form is
 	then sent to several approvers before a SLAC ID is granted.
