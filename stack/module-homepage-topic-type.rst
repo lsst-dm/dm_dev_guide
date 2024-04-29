@@ -99,6 +99,9 @@ In most cases, you can add a single section titled “Using <module>” containi
       howto-a
       howto-b
 
+Besides providing navigation from the module page, these toctree_ directives also define the hierarchical structure of pages in the documentation.
+All pages need to be listed through a toctree_.
+
 .. _module-homepage-python-contributing:
 
 Contributing section
