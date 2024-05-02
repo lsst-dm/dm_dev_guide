@@ -38,7 +38,7 @@ Notes:
 Notes for Portal:
  - **If your institution is missing, let Sierra Villarreal know, to get it added to the list**
  - Emergency contact: your own personal contact - relative, friend.
- - Group: select "FPD LSST Computing"
+ - Group: select "FPD Technology & Operations"
  - details of visit and project name: Using SLAC computing resources to collaborate on Rubin Operations. Seems optional to include your home institution.
  - Funding source: choose your majority support source
  - Time at SLAC: this is physically on site. For most people, this is <10%. Occasional visits for meetings don't count.
