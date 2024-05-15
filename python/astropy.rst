@@ -40,8 +40,8 @@ The interaction of Astropy with LSST C++ classes providing related functionality
 If the code is already using ``afw`` it is strongly preferred that ``afw`` equivalents be used until such time as specific ``afw`` interfaces are deprecated.
 :mod:`astropy.table` views into ``afw.table`` tables can be used if required.
 
-Changing any public APIs requires prior an :doc:`RFC </communications/rfc>`. 
-Hence using Astropy in any public PAI must go through RFC. 
+Changing any public APIs requires an :doc:`RFC </communications/rfc>`. 
+Hence using Astropy in any public API must go through an RFC. 
 
 These items have functionality that is similar to that provided in LSST packages:
 
