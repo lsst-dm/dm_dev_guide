@@ -13,7 +13,7 @@ Integration of Astropy core into the LSST software stack is an ongoing process t
 This document is not discussing Astropy affiliated packages, use of which must go through the standard :doc:`RFC </communications/rfc>` process.
 Not all Astropy core packages can be used by default.
 
-The following packages can be used internally in packages if they do not leak into public APIs:
+The following packages can be used internally in packages:
 
 * :mod:`astropy.coordinates`
 * :mod:`astropy.time`
@@ -27,17 +27,20 @@ For reading and writing files in FITS format, both :mod:`astropy.io.fits` and `f
 These libraries differ in the features available and in performance (with the latter usually surpassing the former).
 Developers must evaluate which works best for their use case and choose one accordingly.
 
+
 .. _fitsio: https://github.com/esheldon/fitsio
 
 .. warning::
 
     ``lsst.afw.fits`` must not be used in any new Python code, as it is not considered memory safe.
 
+If not interacting with C++ classes the use of ``astropy.table`` is encouraged.
 The interaction of Astropy with LSST C++ classes providing related functionality should be carefully monitored.
 If the code is already using ``afw`` it is strongly preferred that ``afw`` equivalents be used until such time as specific ``afw`` interfaces are deprecated.
 :mod:`astropy.table` views into ``afw.table`` tables can be used if required.
 
-Changing public APIs to use the above Astropy packages requires prior permission and possibly an :doc:`RFC </communications/rfc>`.
+Changing any public APIs requires prior an :doc:`RFC </communications/rfc>`. 
+Hence using Astropy in any public PAI must go through RFC. 
 
 These items have functionality that is similar to that provided in LSST packages:
 
