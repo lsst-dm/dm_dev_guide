@@ -553,6 +553,15 @@ If this occurs, the merge may be reverted by anyone who notices the breakage and
 Such a fix need not use a brand new ticket and ticket branch.
 Instead, it can be performed on a "hotfix" branch named after the original ticket that was merged, typically ``tickets/DM-NNNNN-hotfix``.
 
+If a merge revert is required, the following process should be followed:
+
+- Create a new "revert" branch named ``tickets/DM-NNNNN-revert``.  This is necessary because no pushes are allowed directly to the ``main`` branch.
+- Revert the faulty merge commit on the branch: ``git revert -m 1 {merge hash}``.  ``-m 1`` indicates that the first parent is the "mainline" code that should be kept.
+- Push the branch, create a PR, and merge it as normal.
+
+The commits on the reverted branch cannot be re-merged from that branch as is, even if fixes have been applied.
+The branch should instead be rebased on ``main`` after the revert, according to our normal process.
+
 .. _workflow-announce:
 
 Announce the change
