@@ -41,11 +41,14 @@ That will get you up to speed with the LSST Project; the rest of this page is sp
 Data Facility resources
 =======================
 
-You'll also need an account for the LSST Data Facility services, hosted at NCSA, which include:
+You'll also need an account for the US Data Facility services, hosted at SLAC, which include:
 
-- Development Servers (`lsst-dev </services/lsst-login.html>`_)
+- `Development servers </usdf/lsst-login.html>`_
+- `Storage, precursor, and production data </usdf/storage.html>`_
+- `Batch resources </usdf/batch.html>`_
+- `Kubernetes vclusters to deploy services </usdf/kubernetes.html>`_
 
-This account will be automatically issued along with your LSST account.
+You must sign up for this account separately via `this procedure </usdf/onboarding.html>`_.
 
 .. _getting-started-github:
 
@@ -125,7 +128,7 @@ In summary, here are the things you can do to get started:
 
 #. Send your https://community.lsst.org username to your T/CAM.
 
-#. Follow emailed directions to set up your LSST account (including email), NCSA account, and Slack account.
+#. Follow emailed directions to set up your LSST account (including email), SLAC account, and Slack account.
 
 Further steps
 -------------
@@ -171,13 +174,7 @@ Here's what T/CAMs need to do to get their new hire started:
 
 #. Give the hire's email address to a Slack administrator: `@brianv0 <https://lsstc.slack.com/team/brianv0>`__, `@jonathansick <https://lsstc.slack.com/team/jonathansick>`__, and `@frossie <https://lsstc.slack.com/team/frossie>`__, can make Slack accounts.
 
-Your new hire should automatically be issued a Data Facility (NCSA) account along with their LSST account.
-However, if for some reason this doesn't happen, send the following information to ``lsst-account _at_ ncsa.illinois.edu`` (and CC ``lsst-sysadmins _at_ lsst.org``):
-
-- First and last name of new hire
-- Email
-- Sponsoring LSST manager (ie, your name)
-- Team within DM (one of DM Science, Architecture, Alert Production, Data Release Production, SUIT, Data Access and Database, Data Factility, Long Haul Networks, SQuaRE)
+You must inform your new hire that they need to follow the `SLAC Onboarding Procedure </usdf/onboarding.html>`_.
 
 Departing
 ---------
@@ -190,6 +187,7 @@ Offboarded
    An offboarded member of staff loses access to all LSST services.
    They retain builder status if they have accrued enough time with the project.
    To transition a member of staff to this status, fill out the `offboarding form <https://project.lsst.org/onboarding/offboarding_form>`_ and ensure they are set to 0% contribution in the `team spreadsheet <https://docs.google.com/spreadsheets/d/1f_dijhaSBjOvNyGPlPgIFWjjZpo_jwii_a0j7imq2CM/edit>`_.
+   Remove the individual from GitHub organizations, teams, and repos.
 
 Friendly
 
@@ -199,6 +197,8 @@ Friendly
    Do *not* fill out an offboarding form for friendlies.
    Instead, simply set their contribution to 0% in the `spreadsheet <https://docs.google.com/spreadsheets/d/1f_dijhaSBjOvNyGPlPgIFWjjZpo_jwii_a0j7imq2CM/edit>`_ and send an e-mail to the DM Admin to let her know.
    Refer to `Document-27073 <http://ls.st/Document-27073>`_ for more information on friendly status.
+   Consider changing the individual's GitHub status to "collaborator".
+
 
 In addition, the LSST Communications Team request that you notify the `dm-staff <https://lists.lsst.org/mailman/listinfo/dm-staff>`_ mailing list of any departures from your team following the template in `Document-26947 <http://ls.st/Document-26947>`_.
 
