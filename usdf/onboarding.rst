@@ -29,8 +29,8 @@ Procedure Details
 
 To obtain a SLAC SID number and SLAC account, you first need to become a SLAC User. Please follow the below steps and complete the registration form.
 
-New users are required to complete the SLUO registration form using this `form <https://www-group.slac.stanford.edu/IAM/>`__. The link also points to 
-documentation on the process.
+New users are required to complete the SLUO registration form using this `form <https://it.slac.stanford.edu/identity/scientific-collaborative-researcher-registration>`__.
+The link also points to documentation on the process.
 
 Notes:
  - Experiment: select Vera C. Rubin Observatory
