@@ -11,10 +11,10 @@ If the package is not already in conda-forge, `creating and maintaining a conda-
 
 .. _creating and maintaining a conda-forge recipe: https://conda-forge.org/docs/maintainer/adding_pkgs/
 
-If the package is changing rapidly, particularly in its interface, and if the Science Pipelines need those new features or fixes as soon as possible, perhaps even before an official release of the package, a forked repo is usually recommended.
+:ref:`The forked repo method <fork-creating>` is recommended if the package is changing rapidly, particularly in its interface, and if the Science Pipelines need those new features or fixes as soon as possible, perhaps even before an official release of the package.
 This also :ref:`requires an RFC <third-party-approval>` to add the dependency, but new versions can be incorporated into weekly and even daily builds of the Science Pipelines.
 
-The primary, and rare, reasons to add a TaP package as described here are if we require a fix that will not be released in conda-forge or if the package has no conda-forge recipe at all and we do not want to create one because maintenance of a community recipe might be more burdensome than that of a Science Pipelines-only package (e.g. if we only use a piece of the package but the community would use all of it).
+The primary, and rare, reasons to :ref:`add a TaP package <third-party-creating>` as described here are if we require a fix that will not be released in conda-forge or if the package has no conda-forge recipe at all and we do not want to create one because maintenance of a community recipe might be more burdensome than that of a Science Pipelines-only package (e.g. if we only use a piece of the package but the community would use all of it).
 
 
 .. _third-party-approval:
@@ -48,12 +48,17 @@ We set that branch to be the GitHub default in our fork.
 
 When changes are made to the upstream source, they can be merged into the ``lsst-dev`` branch, or ``lsst-dev`` can be rebased on an upstream branch.
 If we make local changes for our own needs, they can be converted into PRs to the upstream fork, leaving out any commits that refer to the ``ups`` directory contents.
+But it should be preferred to submit changes to the upstream source as long as its update timelines are sufficiently rapid.
 
 The new package then needs to be added to ``etc/repos.yaml`` in the ``lsst/repos`` repository.
 We indicate that the ``lsst-dev`` branch is the one that we will build from by adding a ``ref:`` clause in that file.
 
 Finally, the package should be added as an eups dependency to some other package or meta-package in its ``.table`` file.
 This will ensure that it is incorporated in the Science Pipelines build.
+For most purposes, there's effectively no difference between ``setupOptional`` and ``setupRequired`` dependency specifications.
+They only differ in the case where someone has not installed an optional package in their local stack.
+If you can do useful things with the depending package (and if its tests, if it has any, pass), then ``setupOptional`` can be a hint that it's not mandatory to have the dependency.
+But the shared stack, CVMFS, stack containers, and the RSP will always have the dependency anyway.
 
 If Rubin Data Management becomes the primary maintainer of the package, it can still be treated as third-party, but it may make sense to transition it to being a first-party package.
 That would mean ensuring it follows all DM standards and processes.
