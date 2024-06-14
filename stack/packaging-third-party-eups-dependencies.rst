@@ -47,8 +47,8 @@ That branch is traditionally named ``lsst-dev``.
 We set that branch to be the GitHub default in our fork.
 
 When changes are made to the upstream source, they can be merged into the ``lsst-dev`` branch, or ``lsst-dev`` can be rebased on an upstream branch.
-If we make local changes for our own needs, they can be converted into PRs to the upstream fork, leaving out any commits that refer to the ``ups`` directory contents.
-But it should be preferred to submit changes to the upstream source as long as its update timelines are sufficiently rapid.
+If we need changes to the package, we should prefer to submit PRs to the upstream fork as long as its update timeline is sufficiently rapid.
+If that process is too slow, changes can be made locally and merged to ``lsst-dev`` while still being submitted upstream, leaving out any commits that refer to the ``ups`` directory contents.
 
 The new package then needs to be added to ``etc/repos.yaml`` in the ``lsst/repos`` repository.
 We indicate that the ``lsst-dev`` branch is the one that we will build from by adding a ``ref:`` clause in that file.
