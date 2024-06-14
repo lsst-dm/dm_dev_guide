@@ -2,12 +2,20 @@
 Distributing Third-Party Packages with EUPS
 ###########################################
 
-This page documents how to make a third-party software package install-able using the :command:`eups distrib install` command.
+This page documents how to make a third-party software package installable using the :command:`eups distrib install` command via two methods: the "forked repo" and the "tarball-and-patch" (TaP) package.
 
-Generally, most dependencies :doc:`should be added via conda </stack/conda>` using the ``rubin-env`` metapackage.
-The primary reason to add an eups tarball-and-patch (TaP) package as described here is if we require a fix that has not been released in conda-forge (or if the package has no conda-forge recipe at all, and we do not want to create one).
+Generally, most dependencies :doc:`should be added via conda </stack/conda>` using the ``rubin-env`` metapackage rather than either of these eups methods.
+If the package is already in conda-forge, it can be added to ``rubin-env`` :ref:`via RFC <third-party-approval>`.
+(Changes to ``rubin-env`` are made approximately 2-4 times a year.)
+If the package is not already in conda-forge, `creating and maintaining a conda-forge recipe`_ is about the same level of effort as maintaining a TaP package, and it makes the package available to the conda-forge community at large rather than just LSST Science Pipelines consumers.
 
-Other packages that are under active development by Rubin developers may be maintained as forked repositories and distributed as normal eups packages.
+.. _creating and maintaining a conda-forge recipe: https://conda-forge.org/docs/maintainer/adding_pkgs/
+
+:ref:`The forked repo method <fork-creating>` is recommended if the package is changing rapidly, particularly in its interface, and if the Science Pipelines need those new features or fixes as soon as possible, perhaps even before an official release of the package.
+This also :ref:`requires an RFC <third-party-approval>` to add the dependency, but new versions can be incorporated into weekly and even daily builds of the Science Pipelines.
+
+The primary, and rare, reasons to :ref:`add a TaP package <third-party-creating>` as described here are if we require a fix that will not be released in conda-forge or if the package has no conda-forge recipe at all and we do not want to create one because maintenance of a community recipe might be more burdensome than that of a Science Pipelines-only package (e.g. if we only use a piece of the package but the community would use all of it).
+
 
 .. _third-party-approval:
 
@@ -22,10 +30,45 @@ See `this page`_ for a list of compatible licenses.
 .. _this page: https://www.gnu.org/licenses/license-list.html
 
 
+.. _fork-creating:
+
+Creating A Forked Repo
+======================
+
+A forked repo relies on building the package from source, rather than using binary artifacts, on the assumption that we may need to use the latest developments.
+Accordingly, we fork the package on GitHub into the ``lsst`` organization and add the "DM Externals" and "Overlords" teams to it as described in :doc:`adding-a-new-package`.
+This ensures that it will be tagged appropriately for official releases (while not conflicting with the third-party tags).
+
+Since the third-party package likely has no support for eups, we need to add a ``ups`` directory.
+This directory should contain the package's EUPS table file as well as an optional file :file:`eupspkg.cfg.sh` which will contain any customized commands for building and installing the third-party package.
+
+The upstream source has no need to know about the ``ups`` directory, so we put it on a separate branch in the ``lsst`` fork.
+That branch is traditionally named ``lsst-dev``.
+We set that branch to be the GitHub default in our fork.
+
+When changes are made to the upstream source, they can be merged into the ``lsst-dev`` branch, or ``lsst-dev`` can be rebased on an upstream branch.
+If we need changes to the package, we should prefer to submit PRs to the upstream fork as long as its update timeline is sufficiently rapid.
+If that process is too slow, changes can be made locally and merged to ``lsst-dev`` while still being submitted upstream, leaving out any commits that refer to the ``ups`` directory contents.
+
+The new package then needs to be added to ``etc/repos.yaml`` in the ``lsst/repos`` repository.
+We indicate that the ``lsst-dev`` branch is the one that we will build from by adding a ``ref:`` clause in that file.
+
+Finally, the package should be added as an eups dependency to some other package or meta-package in its ``.table`` file.
+This will ensure that it is incorporated in the Science Pipelines build.
+For most purposes, there's effectively no difference between ``setupOptional`` and ``setupRequired`` dependency specifications.
+They only differ in the case where someone has not installed an optional package in their local stack.
+If you can do useful things with the depending package (and if its tests, if it has any, pass), then ``setupOptional`` can be a hint that it's not mandatory to have the dependency.
+But the shared stack, CVMFS, stack containers, and the RSP will always have the dependency anyway.
+
+If Rubin Data Management becomes the primary maintainer of the package, it can still be treated as third-party, but it may make sense to transition it to being a first-party package.
+That would mean ensuring it follows all DM standards and processes.
+It can still be published :doc:`via PyPI </stack/building-with-pip>` and conda, in addition to eups.
+
+
 .. _third-party-creating:
 
-Creating the Package
-====================
+Creating a TaP Package
+======================
 
 Repositories containing third-party packages exist in the `LSST GitHub organization`_.
 (Unfortunately, it is currently difficult to distinguish between an LSST package and a third-party package: `the table file`_ in the ``lsst_thirdparty`` package and the documentation on `third party software`_ may help.)
@@ -46,7 +89,7 @@ The repository, once created, needs to contain the following directories:
         git archive --format=tar --prefix=astrometry.net-68b1/ HEAD | gzip > astrometry.net-68b1.tar.gz
 
 :file:`ups/`
-    This directory should contain the packages EUPS table file as well as an optional file :file:`eupspkg.cfg.sh` which will contain any customized commands for installing the third-party package.
+    This directory should contain the package's EUPS table file as well as an optional file :file:`eupspkg.cfg.sh` which will contain any customized commands for installing the third-party package.
 
 :file:`patches/`
     This directory is optional.
@@ -200,14 +243,9 @@ Often, it is desirable to add other files to the package (for example, :file:`RE
 EUPS will then misidentify the package type, and the build will fail.
 
 To account for this, it is necessary to explicitly flag this as a TaP package.
-There are two mechanisms for this, depending of the `version of EUPS`_ being used.
-At time of writing, LSST's :doc:`Jenkins </jenkins/getting-started>` use a version of EUPS which only supports the now-deprecated mechanism.
-Therefore, in the interests of future proofing, both:
+This is done by adding the line ``TAP_PACKAGE=1`` to the top of :file:`ups/eupspkg.cfg.sh`.
+(An older mechanism relied on a :file:`.tap_package` file in the package root directory, but this is deprecated.)
 
-#. Add the line ``TAP_PACKAGE=1`` to the top of :file:`ups/eupspkg.cfg.sh`;
-#. Add an empty file, :file:`.tap_package`, to the root directory of your package.
-
-.. _version of EUPS: https://github.com/RobertLuptonTheGood/eups/blob/2.0.2/Release_Notes#L21
 
 .. _third-party-testing:
 
