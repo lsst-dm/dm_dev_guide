@@ -115,11 +115,10 @@ A list of all currently installed Rubin Environments can be found by running: ``
 Repositories
 ------------
 
-We currently maintain three data repositories for general use on the Princeton clusters:
+We currently maintain two data repositories for general use on the Princeton clusters:
 
-- ``/scratch/gpfs/HSC/LSST/repo/main``: The primary HSC/LSST butler data repository, containing all raw HSC data on-disk.
+- ``/scratch/gpfs/HSC/LSST/repo/main``: The primary HSC/LSST butler data repository, containing all raw HSC data on-disk and a selection of non-embargoed LATISS data.
 - ``/scratch/gpfs/HSC/LSST/repo/dc2``: The primary DC2 butler data repository, containing a selection of simulated DC2 data.
-- ``/scratch/gpfs/HSC/LSST/repo/embargo``: The primary repository for LATISS/embargoed data.
 
 For information on accessing these repositories, including setting up required permissions, see the top-level ``/scratch/gpfs/HSC/LSST/repo/README.md`` file.
 
