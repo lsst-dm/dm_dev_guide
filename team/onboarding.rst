@@ -24,7 +24,7 @@ This gives you access to:
   - AURA employees will be able to access the AURA e-mail system at https://mail.lsst.org/owa
   - For non-AURA employees, this will forward to your institutional address (as registered with the `Contacts Database <https://project.lsst.org/LSSTContacts/MemberListPage1.php>`_)
 
-- The Jira project management tool: http://jira.lsstcorp.org/
+- The Jira project management tool: http://https://rubinobs.atlassian.net/
 - The Confluence wiki: https://confluence.lsstcorp.org
 - The DocuShare document archive: https://docushare.lsst.org
 
