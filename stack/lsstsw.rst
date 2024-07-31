@@ -42,7 +42,7 @@ example::
 
     export LSSTSW=<where you've set it up>
     export EUPS_PATH=$LSSTSW/stack
-    . $LSSTSW/bin/setup.sh
+    . $LSSTSW/bin/envconfig
 
 .. DO NOT use double quotes in examples -- it activates syntax highlighting
 
@@ -50,7 +50,7 @@ example::
 
     setenv LSSTSW <where you've set it up>
     setenv EUPS_PATH $LSSTSW/stack
-    source $LSSTSW/bin/setup.csh
+    source $LSSTSW/bin/envconfig.csh
 
 .. note::
 
