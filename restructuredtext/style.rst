@@ -59,7 +59,7 @@ In addition to the fundamental inline typesetting styles above, you may use addi
 The documentation's CSS takes advantage of this semantic meaning to provide visual cues to readers.
 
 Abbreviations
-   ``:abbr:`LSST (Large Synoptic Survey Telescope)``` → :abbr:`LSST (Large Synoptic Survey Telescope)` (a tool tip exposes the definition)
+   ``:abbr:`LSST (Legacy Survey of Space and Time)``` → :abbr:`LSST (Legacy Survey of Space and Time)` (a tool tip exposes the definition)
 
 Filenames and paths
    ``:file:`repos.yaml``` → :file:`repos.yaml`
