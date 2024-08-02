@@ -1,7 +1,7 @@
 :orphan: True
 
 LSST
-    Large Synoptic Survey Telescope
+    Legacy Survey of Space and Time
 
 DM
     Data Management
