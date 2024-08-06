@@ -29,8 +29,11 @@ The DM-CCB must approve such requests.
 Dependency versions
 -------------------
 
-The package specifications that define ``rubin-env`` typically do not constrain dependency versions or at most specify minimum versions.
-This usage is intentional so that users can add packages on top of ``rubin-env`` with a minimum of conflicts.
+The package specifications that define ``rubin-env`` typically specify minimum versions.
+These provide guarantees so that Science Pipelines developers can rely on features of the packages in their code.  
+Features newer than the minimum versions for the environment, or for packages that are not directly listed dependencies, should not be relied on.
+
+The use of minimum and not exact versions is intentional so that users can add packages on top of ``rubin-env`` with a minimum of conflicts.
 Otherwise, it would frequently be the case that the version requirements of a desired package would conflict with those of ``rubin-env``, preventing both from being present in the same environment.
 The main exceptions that have strict constraints are packages that include shared libraries that Science Pipelines C++ code links against which must be constrained for binary compatibility.
 
