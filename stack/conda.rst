@@ -29,27 +29,33 @@ The DM-CCB must approve such requests.
 Switching rubin-env versions
 ----------------------------
 
-There might be an instance where you might need to change the current version of rubin-env.
-You can view the current available env `here <https://anaconda.org/conda-forge/rubin-env/files>`__
+Occasionally, you may need to switch the version of ``rubin-env`` you are using.
+Below, you'll find instructions on how to view available versions and switch between them.
+You can view the current available env versions `on conda-forge <https://anaconda.org/conda-forge/rubin-env/files>`__.
 To see all available ``rubin-env`` in your terminal run the following:
 
 .. code-block:: bash
 
    conda search -c nodefaults  -c conda-forge rubin-env
 
-This command will print out only production ready ``rubin-env``.
+This command will print out only production ready ``rubin-env`` versions.
 To change the ``rubin-env``:
 
 .. code-block:: bash
 
-   git clone https://github.com/lsst/lsstsw
-   cd lsstsw
-   LSST_CONDA_CHANNELS="nodefaults conda-forge"
+   conda deactivate # make sure you do not run this inside an existing conda environment
    ./bin/deploy -v 8.0.0 # or any other rubin env
    source bin/envconfig -n lsst-scipipe-8.0.0
    rebuild lsst_apps # This could be any branch or product you want to use
 
-You might also want to switch to rubin-env that are still under development. To do so, add the label conda-forge/label/rubin-env_dev as follows:
+
+.. _rubin-env-dev-switching-versions:
+
+Using developer rubin-env environments
+--------------------------------------
+
+You might also want to switch to rubin-env that are still under development.
+To do so, add the label conda-forge/label/rubin-env_dev as follows:
 
 .. code-block:: bash
 
@@ -60,12 +66,13 @@ To change the ``rubin-env``:
 
 .. code-block:: bash
 
-   git clone https://github.com/lsst/lsstsw
-   cd lsstsw
-   LSST_CONDA_CHANNELS="nodefaults conda-forge/label/rubin-env_dev conda-forge" # adding conda-forge/label/rubin-env_dev allows to install rubin-env_dev
+   conda deactivate # make sure you do not run this inside an existing conda environment
+   # adding conda-forge/label/rubin-env_dev allows to install rubin-env_dev
+   LSST_CONDA_CHANNELS="nodefaults conda-forge/label/rubin-env_dev conda-forge"
    ./bin/deploy -v 9.0.0dev # or any other rubin env
    source bin/envconfig -n lsst-scipipe-9.0.0dev
    rebuild lsst_apps # This could be any branch or product you want to use
+
 .. _rubin-env-dependency-versioning:
 
 Dependency versions
