@@ -39,6 +39,7 @@ To see all available ``rubin-env`` in your terminal run the following:
    conda search -c nodefaults  -c conda-forge rubin-env
 
 This command will print out only production ready ``rubin-env`` versions.
+It's best to start from a fresh shell when running bin/deploy to avoid confusion.
 To change the ``rubin-env``:
 
 .. code-block:: bash
@@ -54,14 +55,15 @@ To change the ``rubin-env``:
 Using developer rubin-env environments
 --------------------------------------
 
-You might also want to switch to rubin-env that are still under development.
-To do so, add the label conda-forge/label/rubin-env_dev as follows:
+You might also want to switch to ``rubin-env`` versions that are still under development.
+To do so, add the label ``conda-forge/label/rubin-env_dev`` as follows:
 
 .. code-block:: bash
 
    conda search -c nodefaults  -c conda-forge rubin-env -c conda-forge/label/rubin-env_dev
 
-This command will print out all available ``rubin-env`` including ones that are still under development (rubin-env_dev).
+This command will print out all available ``rubin-env`` including ones that are still under development (``rubin-env_dev``).
+Again, start from a fresh shell for each bin/deploy to avoid confusion.
 To change the ``rubin-env``:
 
 .. code-block:: bash
@@ -79,7 +81,7 @@ Dependency versions
 -------------------
 
 The package specifications that define ``rubin-env`` typically specify minimum versions.
-These provide guarantees so that Science Pipelines developers can rely on features of the packages in their code.  
+These provide guarantees so that Science Pipelines developers can rely on features of the packages in their code.
 Features newer than the minimum versions for the environment, or for packages that are not directly listed dependencies, should not be relied on.
 
 The use of minimum and not exact versions is intentional so that users can add packages on top of ``rubin-env`` with a minimum of conflicts.
