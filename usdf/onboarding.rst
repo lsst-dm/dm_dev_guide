@@ -44,7 +44,7 @@ Notes for Portal:
  - Time at SLAC: this is physically on site. For most people, this is <10%. Occasional visits for meetings don't count.
  - Start date: choose today
  - Answer "yes" to will you be performing work at SLAC
- - SLAC Spokesperson/Sponsor/Supervisor: Select Sierra Villarreal.
+ - SLAC Spokesperson/Sponsor/Supervisor: Select Sierra Villarreal (Antonia Villarreal on the Site Access Form).
 	
 1)	When the user submits the onboarding request form, the form is
 	then sent to several approvers before a SLAC ID is granted.
