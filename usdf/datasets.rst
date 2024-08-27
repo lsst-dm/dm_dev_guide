@@ -2,49 +2,76 @@
 Common Dataset Organization and Policy
 ######################################
 
-This document covers the specific :ref:`format <format_usdf>` and :ref:`policies <policy_usdf>` governing the shared datasets in ``/datasets``, space available on the :doc:`login nodes </usdf/lsst-login>` and on all of the compute nodes of the :doc:`Batch Systems </usdf/batch>`.
+This document covers the specific :ref:`format <datasets_format_usdf>` and :ref:`policies <datasets_policy_usdf>` governing the shared datasets at the USDF, including space available on the :doc:`login nodes </usdf/lsst-login>` and on all of the compute nodes of the :doc:`Batch Systems </usdf/batch>`.
 
-.. _format_usdf:
+Datasets covered by this policy include raws, calibration files, and refcats. "Refcats" refers to reference catalogs that are used for calibration (astrometric or photometric). Other types of catalogs may be used as references (e.g. DC2 truth tables) but will be referred to as external catalogs.
+
+.. _datasets_file_paths_usdf:
+
+File Paths
+==========
+
+The following file paths contain shared datasets:
+
+- ``/sdf/group/rubin/datasets`` (henceforth ``/datasets`` for short) is a symlink to ``/sdf/data/rubin/shared/ncsa-datasets``, containing datasets previously stored at NCSA under the now-defunct ``/datasets`` path (i.e. the ``/datasets`` symlink no longer exists at S3DF).
+- ``/sdf/group/rubin/shared`` (henceforth ``/shared`` for short) is a symlink to ``/sdf/data/rubin/shared`` and is the preferred path for new shared datasets, as well as for migrating older datasets.
+- ``/sdf/group/rubin/user`` is a symlink to ``/sdf/data/rubin/user`` and contains user home directories. Shared datasets may reside here temporarily for prototyping but should be moved to ``/shared`` once they start being used by multiple users.
+
+.. _datasets_policy_usdf:
+
+Policy
+======
+
+New shared datasets should be added to ``/shared``.
+Any additions or changes to datasets to be included in a shared butler and/or used in regular (re-)processing must have a corresponding RFC.
+Other datasets must include an implementation ticket.
+
+The RFC and/or implementation ticket should contain information about:
+
+- Description and reason for addition/change/deletion
+- Target top-level-directory for location of addition/change/deletion
+- Organization of data
+- Required disk space
+- Other necessary domain knowledge as identified by project members relating to the contents of the data
+
+External datasets not yet used in regular reprocessing should have a corresponding Jira ticket with similar information.
+
+All newly-added datasets, including external datasets, must follow the guidelines for supplying a :ref:`README <datasets_readme_guidelines_usdf>` file. Updates to the readme should be reviewed on subsequent Jira tickets.
+
+Requests for new shared directories should be emailed to ``usdf-help@slac.stanford.edu``.
+Members of the ``rubinmgr`` group will handle these, including having quotas applied.
+Requesting users are often given initial ownership of the shared directory and are responsible for setting appropriate permissions.
+If the shared dataset needs central curation, ownership may be set to ``rubinmgr`` after it is initially populated.
+More sophisticated options to grant temporary unlocks for modification or to permanently allow curation by a group of users are available on request.
+
+.. _datasets_format_usdf:
 
 Format
 ======
 
-All data added to ``/datasets`` must adhere to the following format (caps are tokens):
+Most data in ``/datasets`` adheres to the following Gen2 format conventions (caps are tokens):
 ``/datasets/<camera>/[REPO|RERUN|PREPROCESSED|SIM|RAW|CALIB] | /datasets/REFCATS`` where
 
 - REPO = repo
   (:lmod:`butler` root)
-- RERUN = REPO/rerun/PUBLIC | REPO/rerun/PRIVATE
-  (processed results)
-- PUBLIC = <ticket>/PRIVATE | <tag>/PRIVATE (ex. 'HSC-RC'; RFC needed for new tags)
-- PRIVATE = private/<user> | ""
-  (:ref:`see details below <CaveatForPrivate_usdf>`)
-- PREPROCESSED = preprocessed/<label>/ | preprocessed/<label>/<date>/
-  (ex. 'dr9')
 - SIM = <ticket>_<date>/ | <user>/<ticket>/
+- CALIB = calib/<date>
+  (ex. master20161025)
 - RAW = raw/<survey-name>/
   (where actual files live)
-- CALIB = calib/default/ | calib/label/
-  (ex. master20161025)
 - REFCATS = refcats/<type>/<version>/<label>
   (ex. astrometry_net_data/sdss-dr8, htm/v1/gaia_DR1_v1)
 
-Some data resides within ``/datasets`` which does not adhere to this format; they are provided for general consumption though not as verification data.
-The following are currently exempted:
+The datasets still in use have been ingested via symlink to current Gen3 Butler repositories, and users generally will not need to interact with them.
+Additional legacy datasets may reside under the RERUN and PREPROCESSED tags, as well as under ``/datasets/all-sky``.
 
-- ``/datasets/all-sky``
-
-.. _reference-catalogs_usdf:
+.. _datasets_reference-catalogs_usdf:
 
 Reference Catalogs
 ------------------
 
-For the Gen2 Middleware, reference catalogs are contained in the repository itself, in a ``ref_cats/`` subdirectory.
-For ``/datasets`` repositories, we handle this by symlinking from ``repo/ref_cats/NAME`` to the corresponding refcat directory in ``/datasets/refcats``.
-The version subdirectory (e.g. ``v0/``, ``v1``) should match the ``REFCAT_FORMAT_VERSION`` that is set by the refcat ingestion task.
+Gen2 reference catalogs in ``/datasets`` were ingested into a version subdirectory (e.g. ``v0/``, ``v1``) matching the ``REFCAT_FORMAT_VERSION`` set by the refcat ingestion task. New refcats should follow the policies to be detailed in `DM-31704 <https://rubinobs.atlassian.net/browse/DM-31704>`_.
 
-When adding a refcat, you have a :ref:`responsibility <responsibilities_usdf>` to supply a ``README.txt`` for the new refcat, and update the overall ``README.txt`` for that type of refcat (e.g. ``/datasets/ref_cats/htm/README.txt``).
-Updates to the readme should be reviewed on a Jira ticket about the new reference catalog (for example, `DM-20267 <https://jira.lsstcorp.org/browse/DM-20267>`_).
 Here is a template for what each refcat's readme should contain:
 
 ::
@@ -58,8 +85,8 @@ Here is a template for what each refcat's readme should contain:
     Disk space: 100 GB
 
     Original data: https://www.example.com/DataRelease9000
-    Jira ticket or Epic: https://jira.lsstcorp.org/browse/DM-Example
-    Jira acceptance RFC: https://jira.lsstcorp.org/browse/RFC-Example
+    Jira ticket or Epic: https://rubinobs.atlassian.net/browse/DM-Example
+    Jira acceptance RFC: https://rubinobs.atlassian.net/browse/RFC-Example
     Contact: Example name, email@example.com, Slack: examplename
 
     This is a brief paragraph summarizing this reference catalog.
@@ -77,72 +104,30 @@ Here is a template for what each refcat's readme should contain:
     The configuration that was used to ingest the data is included in this
     directory as `IngestIndexedReferenceTask.py`.
 
-Immutability/Sharing
---------------------
+.. _datasets_butler_ingest_usdf:
 
-NCSA is working on a simple procedure for making the data both shared and safe.
-The process to **Lock** or **Unlock** a set of data is to open a JIRA ticket (https://jira.lsstcorp.org)
-under the "IT Helpdesk Support" project.
+Butler Ingest
+=============
 
-Illustration:
+Shared datasets to be ingested to shared Gen3 Butler repositories should follow established conventions (also to be clarified in `DM-31704 <https://rubinobs.atlassian.net/browse/DM-31704>`_).
+Existing repos generally contain instrument-specific datasets in a collection prefixed by the instrument name (e.g. ``HSC/raw``).
+Instrument-agnostic datasets may be prefixed by a relevant name, e.g. ``injection`` for source injection datasets or ``pretrained_models``.
 
-Steps to add to datasets
-^^^^^^^^^^^^^^^^^^^^^^^^
+External datasets should be included with an ``external`` prefix, e.g. ``external/catalogs`` or ``external/imaging``.
+The RFC/ingestion ticket should determine whether external datasets need corresponding dimensions.
+For example, a multi-band, multi-instrument catalog covering a small area like COSMOS needs no dimensions, whereas larger catalogs may benefit from htm spatial sharding.
+Pre-processed images could benefit from an instrument and filter; best practices for dataset type specification and spatial sharding are TBD.
 
-#. (you) RFC if necessary per :ref:`policy <policy_usdf>`
-#. (you) Ask for write access to a new rerun|new camera|ref cat| directory
-#. Directory created, write permissions given
-#. (you) Populate and organize data (as per policy), ask to have it locked down
-#. Sharing and immutability applied
+.. _datasets_readme_guidelines_usdf:
 
-Steps to modify/remove from datasets
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-#. (you) RFC if necessary per :ref:`policy <policy_usdf>`
-#. (you) Ask for write access to existing rerun|new camera|ref cat| directory
-#. Write permissions given, immutability removed
-#. (you) Reorganize, ask to have it locked down
-#. Sharing and immutability reapplied (to parent directory, as applicable)
-
-.. _policy_usdf:
-
-Policy
-======
-
-Formatting exists to make data sets easier to consume for the DM project at large.
-Policy exists to enforce the format and serves to inform whenever policy must change.
-The following policies serve to both enforce and inform:
-
-- **/datasets Format Changes**
-
-  Future needs will certainly require format changes.
-  We must go through the RFC process to change the format.
-
-- **/datasets additions/changes/deletions**
-
-  - Additions / modifications / deletions of any non-private data requires an RFC (strictly for input for naming convention, organization, etc)
-  - Additions / modifications /deletions of private data can be performed without a RFC
-
-The RFC allows a gate to confirm that things are compliant and necessary. The RFC should include:
-
-- Description and reason for addition/change/deletion
-- Target top-level-directory for location of addition/change/deletion
-- Organization of data
-- Other necessary domain knowledge as identified by project members relating to the contents of the data
-
-**All local non-private data governed by this RFC must reside within /datasets proper; symbolic links to local non-private data residing on alternate file systems are prohibited.**
-This does not prohibit the use of remote URI's, when supported through the butler, that point to external public repos although this does require the RFC process for addition/deletion of the URI-repo.
-This is due to operational concerns including immutability, sharing permissions, developer change of positions / jobs, etc.
-
-.. _responsibilities_usdf:
-
-Responsibilities on ingest or maintenance
------------------------------------------
+README Guidelines
+=================
 
 - Ticket creator is responsible for butler-ization of dataset (or delegation of responsibility).
 - Responsibility for maintaining usable datasets is a DM-wide effort.
 
-Regardless of the reason for the RFC (implementation or maintenance), as part of implementing the RFC, any relevant information from the RFC should be transferred to a ``README.txt`` file at the root level of the dataset. There is no limit to how much information can be put in ``README.txt``, however at the minimum, it should contain:
+Regardless of the reason for the RFC (implementation or maintenance), as part of implementing the RFC, any relevant information from the RFC should be transferred to a ``README.txt`` file at the root level of the dataset.
+There is no limit to how much information can be put in ``README.txt``, however at the minimum, it should contain:
 
 - A description of the instrument and observatory that produced the data
 - The intended purpose of the dataset
@@ -154,40 +139,4 @@ Regardless of the reason for the RFC (implementation or maintenance), as part of
 For butler repository datasets, the root level is the directory just above the butler repository: e.g. ``/datasets/hsc/README.txt``.
 For reference catalogs, there should be one ``README.txt`` for all reference catalogs of a particular type: e.g. ``/datasets/refcats/htm/README.txt`` with a brief description of the available reference catalogs of that type.
 Separately, each reference catalog should also contain a ``README.txt`` with details about that reference catalog's contents.
-See `reference-catalogs_usdf`_ for a template for the contents of those respective readme files.
-
-.. _CaveatForPrivate_usdf:
-
-Caveats / Implementation Details for PRIVATE
---------------------------------------------
-
-- ``private/`` is created with the sticky bit to allow user managed contents
-- ``private/`` only contains symbolic links pointing out of datasets or contains sub directories containing symbolic links (for organization)
-- No data resides in ``private/`` or subdirectories
-- No access or recovery is offered from ``private/`` other than that provided by the target file system
-- It is a user responsibility to make the private rerun repo shared, or not, and allow, or disallow, sub rerun directories from other users
-- Data retention in ``private/`` is not guaranteed (points to scratch, points to home and user leaves, user erroneously deletes repo, etc)
-- Data in ``private/`` is not immutable
-- ``private/`` entries do not require Jira tickets for creation/deletion/modification
-
-In other words, if:
-
-- you need to do some private work that you don't want to disappear, symlink into ``~/``.
-- you need to so some private work that does not fit into your home quota (to be 1TB), symlink to ``/scratch/`` (180 days purge).
-- you need something to be maintained/shared/immutable/managed, create a ticket and move to PUBLIC.
-- you place actual data in ``private/``, you will be asked to move/delete/clean it in some way.
-
-Examples on Running Tasks with the Common Dataset
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-For each camera, there is one single URI as the main :lmod:`butler` repo root (``/datasets/<camera>/repo``).
-
-Currently our task framework tools support putting outputs in a new repo by specifying a path (``--output``) or specifying a symbolic name for outputs to go to a common place (``--rerun``).
-
-To use ``--rerun`` for private runs, you can create a link without a ticket:
-``/datasets/hsc/repo/rerun/private/jalt/first_attempt -> /scratch/jalt/rerun_output_location``
-and then you can run tasks:
-
-.. prompt:: bash
-
-   processXXX.py /datasets/hsc/repo/ --rerun private/jalt/first_attempt ...
+See `datasets_reference-catalogs_usdf`_ for a template for the contents of those respective readme files.
