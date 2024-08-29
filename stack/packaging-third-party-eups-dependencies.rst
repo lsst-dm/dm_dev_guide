@@ -46,7 +46,11 @@ The upstream source has no need to know about the ``ups`` directory, so we put i
 That branch is traditionally named ``lsst-dev``.
 We set that branch to be the GitHub default in our fork.
 
-When changes are made to the upstream source, they can be merged into the ``lsst-dev`` branch, or ``lsst-dev`` can be rebased on an upstream branch.
+The ``main`` or the ``master`` branch of the fork should track the default branch upstream, and can be synced as often as desired.
+When relevant changes are made to the upstream source, they can be merged into the ``lsst-dev`` branch, or ``lsst-dev`` can be rebased on an upstream branch if the repository does not have weekly tags.
+In such cases, rebasing is preferable since it reduces the apparent divergence between ``lsst-dev`` and the default branch upstream.
+To `preserve the merge commits`_ from any ticket branches onto the ``lsst-dev`` branch, the ``--rebase-merges`` flag has to be passed when rebasing.
+If the repository has weekly tags, updates from the default branch should be first merged into a ticket branch, possibly squashing the commits from upstream, before merging them to ``lsst-dev`` following the :doc:`usual development workflow </work/flow>`.
 If we need changes to the package, we should prefer to submit PRs to the upstream fork as long as its update timeline is sufficiently rapid.
 If that process is too slow, changes can be made locally and merged to ``lsst-dev`` while still being submitted upstream, leaving out any commits that refer to the ``ups`` directory contents.
 
@@ -65,6 +69,7 @@ That would mean ensuring it follows all DM standards and processes.
 It can still be published :doc:`via PyPI </stack/building-with-pip>` and conda, in addition to eups.
 
 
+.. _preserve the merge commits: https://git-scm.com/docs/git-rebase/2.28.0#Documentation/git-rebase.txt---rebase-mergesrebase-cousinsno-rebase-cousins
 .. _third-party-creating:
 
 Creating a TaP Package
