@@ -424,7 +424,8 @@ intersphinx_mapping = {
     'numpy': ('https://numpy.org/doc/stable/', None),
     'pytest': ('https://docs.pytest.org/en/latest/', None),
     'pipelines': ('https://pipelines.lsst.io/v/weekly/', None),
-    'documenteer': ('https://documenteer.lsst.io/', None),
+    # TODO: The v/1.4.0/ documenteer edit should be removed following DM-45324.
+    'documenteer': ('https://documenteer.lsst.io/v/1.4.0/', None),
     'sphinx': ('https://www.sphinx-doc.org/en/master/', None),
     'deprecated': ('https://deprecated.readthedocs.io/en/latest/', None),
 }
