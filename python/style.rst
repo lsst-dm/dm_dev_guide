@@ -7,7 +7,7 @@ The :doc:`/coding/intro` provides the overarching Coding Standards policy applic
 
 .. note::
 
-   Changes to this document must be approved by the System Architect (`RFC-24 <https://jira.lsstcorp.org/browse/RFC-24>`_).
+   Changes to this document must be approved by the System Architect (`RFC-24 <https://rubinobs.atlassian.net/browse/RFC-24>`_).
    To request changes to these standards, please file an :doc:`RFC </communications/rfc>`.
 
 .. contents::
@@ -669,6 +669,13 @@ A Python source file name SHOULD be camelCase-with-leading-lowercase or snake_ca
 
 A module containing a single class should be a ``camelCase``-with-leading-lowercase transliteration of the class's name (if the code within primarily adheres to the older, camelCase version of :ref:`Science Pipelines naming conventions <style-guide-py-sci-pi-naming>`) or a snake_case version of the class's name (if the code within primarily adheres to the full :pep:`8` naming conventions).
 
+.. note::
+
+   **Use of Leading Underscores in Module Names**
+
+   In line with `RFC-653 <https://rubinobs.atlassian.net/browse/RFC-653>`_, when a package-level ``__init__.py`` file lifts all symbols from a module (e.g., ``from .module import *``), modules whose symbols are fully lifted to the package scope SHOULD be named with a leading underscore.
+   This signals that these modules are intended to be private, reducing the proliferation of names and making the codebase more maintainable.
+
 Test files must have the form ``test_{description}.py`` for compatibility with Pytest.
 The name of a test case should be descriptive without the need for a trailing numeral to distinguish one test case from another.
 
@@ -676,7 +683,7 @@ This rule does not apply to executable script files, for which both no extension
 Script files should always be minimal (ideally a single non-import statement), and delegate any actual logic to importable code.
 This maximizes usability from other Python code (including test code) and makes it much easier to include script interfaces in documentation.
 It also means the impact of having no extension on tools that rely on the file extension should be negligible.
-Legacy scripts that do contain signficant logic should have a '.py' script to support this tooling.
+Legacy scripts that do contain significant logic should have a '.py' script to support this tooling.
 
 .. TODO consider refactoring tests into their own section
 
