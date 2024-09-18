@@ -38,7 +38,7 @@ The following are currently exempted:
 
 Reference Catalogs
 ------------------
-
+Update for Gen3
 For the Gen2 Middleware, reference catalogs are contained in the repository itself, in a ``ref_cats/`` subdirectory.
 For ``/datasets`` repositories, we handle this by symlinking from ``repo/ref_cats/NAME`` to the corresponding refcat directory in ``/datasets/refcats``.
 The version subdirectory (e.g. ``v0/``, ``v1``) should match the ``REFCAT_FORMAT_VERSION`` that is set by the refcat ingestion task.
