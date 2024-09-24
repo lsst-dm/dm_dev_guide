@@ -56,7 +56,7 @@ Notes for the Site Access form:
 3. Username Request and S3DF Batch Repo Access
 """"""""""""""""""""""""""""""""""""""""""""""
 
-Once the Site Access form has been approved, another email will be sent out with your SLAC System ID (SID).  Once the SID has been assigned, computing accounts can be made.  At this point, email your POC, Sierra (sierrav@slac.stanford.edu), with your first and second choice usernames (these are limited to no more than 8 alpha characters), and she will submit a ticket to IT with the account request.  Once your account is activated, Sierra will email you a link to request S3DF batch repo access.
+Once the Site Access form has been approved, another email will be sent out with your SLAC System ID (SID).  Once the SID has been assigned, computing accounts can be made.  At this point, email your POC, Sierra (sierrav@slac.stanford.edu), with your first and second choice usernames (these are limited to no more than 8 alphanumeric characters), and she will submit a ticket to IT with the account request.  Once your account is activated, Sierra will email you a link to request S3DF batch repo access.
 
 4. Cyber Training
 """""""""""""""""
