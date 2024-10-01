@@ -45,28 +45,103 @@ Summary
 
 - Be professional and courteous in informal channels. (:ref:`Details<slack-informal-channels>`)
 
+Always consult a channel's description for channel-specific rules of engagement.
+
 .. _slack-channel-types:
 
-Channel Types
-=============
+Naming Channels: Conventions for Different Channel Types
+========================================================
 
-Announcement channels are ones in which notices are posted, sometimes by automated "bots", and little or no response is anticipated.
-These are often but not always indicated in the channel name with "announce" or "-status".
+Channels are created for all sorts of purposes.
+For some types of channels, certain conventions apply.
 
-Support channels are ones in which users of a service, software package, or dataset interact with developers, primarily by asking questions and reporting problems.
-These are often but not always indicated in the channel name with "-support", "-users", "-problems", "-ask", or "help-".
+When a channel belongs to one of the types listed below, following the naming guidelines to indicate this is highly recommended (and may be required in your particular team).
+In general, avoid redundancy (including unnecessary organisational taxonomy) in naming channels, focusing more on a channel's purpose.
+For a (contrived) example, ``rubin-dm-science-pipelines-help`` can just be ``science-pipelines-help``.
 
-Informal channels are ones for interactions that are not at all or not directly work-related.
-They are often location-specific or oriented towards particular interests or hobbies.
+Announcement Channels
+---------------------
 
-Discussion channels are all the rest: work-related discussions about particular topics.
+Announcement channels are ones in which notices are posted and little or no response is solicited.
 
-We are looking into renaming channels to make their type more obvious.
+To indicate this, append ``-announce`` to the channel's name.
+
+For more, see the (:ref:`Announcement Channels<slack-announcement-channels>`) section.
+
+Bot Channels
+------------
+
+There are a number of bots (some third party, some home-built) on our workspace.
+
+Sometimes a channel exists predominantly as an outlet or interaction platform for those bots.
+
+If you want to indicate that a channel predominantly receives bot traffic (for example an echo of our community forum), append ``-bot`` to the channel name.
+
+.. _slack-informal-channels:
+
+Informal Channels
+-----------------
+
+While informal channels are not about work topics, you should still behave professionally and courteously within them, including exhibiting a welcoming attitude towards newcomers.
+
+There are no naming conventions for informal channels - have fun.
+
+Meeting Channels
+----------------
+
+Sometimes channels are created for the explicit purpose of bringing together attendees at a meeting.
+
+No naming convention applies, but please archive those channels once a meeting is over to improve channel search experience.
+
+Status Channels
+---------------
+
+Status channels are a special kind of bot channel used by devops teams to receive alerts from monitoring systems.
+They are typically named after the cluster whose alerts they receive (eg ``status-data-lsst-cloud`` for alerts relevant to data.lsst.cloud).
+Although sometimes operational staff will comment on alerts in those channels to annotate events, these channels should be considered read-only for all practical purposes.
+
+Prepend ``status-`` to the channel's name for channels of this nature.
+
+Summit Channels
+---------------
+
+Channels oriented towards summit activities, including daywork and night observing, have their own set of protocols as they carry communication of a critical nature, involve personnel that are often off-line/off-shift and cannot be assumed to have read all traffic, and are used by staff that are aggressively multitasking and monitoring multiple communication channels.
+
+If you are involved in summit work, make sure you clearly understand the rules of engagements of those channels, when and how to post, and (if relevant to your duties) how to respond to support requests.
+
+Summit slack communication protocols are described in the `Observatory Operations guide <https://obs-ops.lsst.io/Daytime-Nighttime-Interactions/slack-channel-usage.html>`_.
+
+Note that not all summit-type channels are prepended by ``summit-`` although some are.
+
+Support Channels
+----------------
+
+Support channels are intended as primary support venues for obtaining technical assistance that you require in order to do your work.
+Support channels may have different arrangements for how and when problems are reported to them and what to expect from a response.
+Consult the (:ref:`Support Channels<slack-support-channels>`) section for more guidance.
+
+Append ``-support`` to the channel name, and name the channel carefully to minimize misdirected questions (if you're always telling people they are asking in the wrong channel, that's a clue).
+
+Note: there is an emerging practice to reserve the ``-support`` suffix for channels where there is some kind of formal undertaking to provide, well, support.
+For more informal, unofficial and peer-to-peer Q&A channels, consider using ``-help`` instead.
+
+Team Channels
+-------------
+
+If your team has a "find us here" channel, append ``-team`` to the channel name.
+
+Again, avoid unnecessary taxonomy: it turns out ``square-team`` is a more useful name to people that ``dm-square``.
+
+None of the above
+-----------------
+
+Everything else is just considered a :ref:`discussion channel<slack-discussion-channels>`.
+As long as you don't stop on the "reserved" words for the special channel types (announce, bot, status, summit, support and team), give them names that work for their audience.
 
 .. _slack-general-practices:
- 
-General Practices
-=================
+
+General Practices for Slack
+===========================
 
 .. _slack-emoji-responses:
 
@@ -319,11 +394,3 @@ Focus Friday
 Data Management observes :doc:`Focus Friday </team/focus-friday>`.
 See that page for information on use of Slack versus asynchronous communications mechanisms on Fridays.
 Do not use any @-mentions in a discussion channel on Focus Friday.
-
-
-.. _slack-informal-channels:
-
-Informal Channels
-=================
-
-While informal channels are not about work topics, you should still behave professionally and courteously within them, including exhibiting a welcoming attitude towards newcomers.
