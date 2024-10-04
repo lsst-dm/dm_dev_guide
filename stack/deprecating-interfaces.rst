@@ -59,7 +59,14 @@ If you need to deprecate a class or function, import the `~deprecated.sphinx.dep
 
    from deprecated.sphinx import deprecated
 
-For each class or function to be deprecated, decorate it as follows::
+For each class to be deprecated, decorate it as follows::
+
+    @deprecated(reason="The MakeWarpTask is replaced by MakeDirectWarpTask and MakePsfMatchedWarpTask. "
+                       "This Task will be removed after v28.",
+                version="v28.0", category=FutureWarning)
+    class MakeWarpTask(CoaddBaseTask):
+
+and for each function to be deprecated, decorate it similarly as follows::
 
    @deprecated(reason="This method is no longer used for ISR. Will be removed after v14.",
                version="v14.0", category=FutureWarning)
