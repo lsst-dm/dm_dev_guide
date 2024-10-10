@@ -7,7 +7,7 @@ Slack Culture
 Slack is Rubin Observatory's real-time chat platform.
 It is used by project staff and science collaboration members, who can view and join all public channels.
 Partnering users and projects may also be allowed to join specific channels as guests.
-(Ask a Slack admin or ask in ``#help-slack`` if you need a guest added to a channel or want to share a channel with another project/organization.)
+(Ask a Slack admin or ask in ``#slack-usage-help`` if you need a guest added to a channel or want to share a channel with another project/organization.)
 
 Teams may evolve different cultures around the use of Slack.
 In addition, different types of channels may work in different ways.
@@ -257,7 +257,7 @@ The same general considerations apply, however.
 
 Slack has a concept of user groups that can be notified instead of an entire channel that has members outside that group.
 If you can use such a group rather than ``@channel`` or ``@here``, that is preferred.
-If you need to have a group created because you have a routine need to @-mention them, contact a Slack admin (e.g. via ``#help-slack``)
+If you need to have a group created because you have a routine need to @-mention them, contact a Slack admin (e.g. via ``#slack-usage-help``)
 
 @-mentioning a particular user notifies that user and adds the message to their "Mentions & reactions" list.
 Be aware of the person's timezone before @-mentioning them.
