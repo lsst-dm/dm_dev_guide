@@ -53,6 +53,16 @@ Notes for the Site Access form:
 - Will you be performing work at SLAC: "Yes".
 - SLAC Spokesperson/Sponsor/Supervisor: Select Sierra Villarreal ("Antonia Villarreal" on the Site Access Portal form).
 
+All foreign nationals will additionally be requested to submit an CV with the following guidelines:
+
+- The CV must be written in English
+- All education and work history back to the start of college (within the last 10 years)
+- Beginning and end dates of education and experience must include month and year (mm/yyyy format)
+- Include all science and technology specialties
+- Names of all academic institutions attended must be current/accurate
+- There should be no time gap. If any gaps in education and/or employment, it must be noted and explained
+- Do not include social security numbers, government ID numbers, passport numbers, or any other similar data
+
 3. Username Request and S3DF Batch Repo Access
 """"""""""""""""""""""""""""""""""""""""""""""
 
