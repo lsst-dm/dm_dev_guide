@@ -11,6 +11,7 @@ The SLAC onboarding procedure involves the following steps:
 #. Fill out the SLAC Site Access Portal form
 #. Request a username and access to S3DF batch repos
 #. Do the SLAC cyber training
+#. Register your SLAC UNIX account in S3DF
 
 SLAC IT will create Active Directory (AD) and unix accounts (for the same username).  The AD account is only used for annual cyber training and web access to Service Now, the SLAC IT ticketing system. The AD account needs to be accessed every 60 days; notifications are sent out.  Once IT creates the accounts, a link will be emailed to reset the passwords.
 
@@ -80,6 +81,11 @@ Note that if you have received an email saying that your training is coming due,
 If you still have problems, ask your SLAC POC for help.
 
 **SLAC cyber training must be done within 2 weeks to keep the account enabled.**
+
+5. Register your SLAC UNIX account in S3DF
+""""""""""""""""""""""""""""""""""""""""""
+
+This is the same as step 2 of the `S3DF Accounts and Access page <https://s3df.slac.stanford.edu/#/accounts-and-access>`__.
 
 **Final Notes:**
 
