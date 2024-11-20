@@ -11,6 +11,7 @@ The SLAC onboarding procedure involves the following steps:
 #. Fill out the SLAC Site Access Portal form
 #. Request a username and access to S3DF batch repos
 #. Do the SLAC cyber training
+#. Register your SLAC UNIX account in S3DF
 
 SLAC IT will create Active Directory (AD) and unix accounts (for the same username).  The AD account is only used for annual cyber training and web access to Service Now, the SLAC IT ticketing system. The AD account needs to be accessed every 60 days; notifications are sent out.  Once IT creates the accounts, a link will be emailed to reset the passwords.
 
@@ -81,6 +82,11 @@ If you still have problems, ask your SLAC POC for help.
 
 **SLAC cyber training must be done within 2 weeks to keep the account enabled.**
 
+5. Register your SLAC UNIX account in S3DF
+""""""""""""""""""""""""""""""""""""""""""
+
+This is the same as step 2 of the `S3DF Accounts and Access page <https://s3df.slac.stanford.edu/#/accounts-and-access>`__.
+
 **Final Notes:**
 
 When the user submits the onboarding request form, the form is
@@ -104,7 +110,7 @@ Accounts can get disabled a number of ways:
 
 - Out-of-date password (`unix password reset <https://unix-password.slac.stanford.edu/>`__).
 - Out-of-date cyber training (`training link <https://slactraining.skillport.com/skillportfe/login.action>`__)
-- Accounts can also be locked out if too many attempts with the wrong password are made. (File a `Service Now ticket <https://slacprod.servicenowservices.com/gethelp.do>`__ to request a reset.)
+- Accounts can also be locked out if too many attempts with the wrong password are made.  File a `Service Now ticket <https://slacprod.servicenowservices.com/gethelp.do>`__ to request a reset.  Alternatively, it's often quicker to call the `SLAC IT Service Desk <https://it.slac.stanford.edu/support>`__ directly for help with passwords.
 
 Users are warned via several emails about these events, but in case those emails have been ignored/forgotten, the following resources can be used to find any issues:
 
