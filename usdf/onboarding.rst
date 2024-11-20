@@ -110,7 +110,7 @@ Accounts can get disabled a number of ways:
 
 - Out-of-date password (`unix password reset <https://unix-password.slac.stanford.edu/>`__).
 - Out-of-date cyber training (`training link <https://slactraining.skillport.com/skillportfe/login.action>`__)
-- Accounts can also be locked out if too many attempts with the wrong password are made. (File a `Service Now ticket <https://slacprod.servicenowservices.com/gethelp.do>`__ to request a reset.)
+- Accounts can also be locked out if too many attempts with the wrong password are made.  File a `Service Now ticket <https://slacprod.servicenowservices.com/gethelp.do>`__ to request a reset.  Alternatively, it's often quicker to call the `SLAC IT Service Desk <https://it.slac.stanford.edu/support>`__ directly for help with passwords.
 
 Users are warned via several emails about these events, but in case those emails have been ignored/forgotten, the following resources can be used to find any issues:
 
