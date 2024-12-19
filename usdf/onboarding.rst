@@ -86,7 +86,7 @@ If you still have problems, ask your SLAC POC for help.
 5. Register your SLAC UNIX account in S3DF
 """"""""""""""""""""""""""""""""""""""""""
 
-This is the same as step 2 of the `S3DF Accounts and Access page <https://s3df.slac.stanford.edu/#/accounts-and-access>`__.
+This is the same as step 2 of the `S3DF Accounts and Access page <https://s3df.slac.stanford.edu/#/accounts-and-access>`__.   This step should be performed *before* accessing any resources, including S3DF accounts and the USDF Rubin Science Platform.
 
 6. Fill out the Rubin Observatory Staff Access Form
 """""""""""""""""""""""""""""""""""""""""""""""""""
