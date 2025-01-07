@@ -19,7 +19,6 @@ The following packages can be used internally in packages if they do not leak in
 * :mod:`astropy.time`
 * :mod:`astropy.table`
 * :mod:`astropy.units`
-* :mod:`astropy.units.quantity`
 * :mod:`astropy.constants`
 * :mod:`astropy.cosmology`
 * :mod:`astropy.visualization`

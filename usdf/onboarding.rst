@@ -12,6 +12,7 @@ The SLAC onboarding procedure involves the following steps:
 #. Request a username and access to S3DF batch repos
 #. Do the SLAC cyber training
 #. Register your SLAC UNIX account in S3DF
+#. Fill out the `Rubin Observatory Staff Access Form <https://ls.st/staff-access-form>`__ (if you have not already done so as part of Rubin onboarding)  
 
 SLAC IT will create Active Directory (AD) and unix accounts (for the same username).  The AD account is only used for annual cyber training and web access to Service Now, the SLAC IT ticketing system. The AD account needs to be accessed every 60 days; notifications are sent out.  Once IT creates the accounts, a link will be emailed to reset the passwords.
 
@@ -85,7 +86,12 @@ If you still have problems, ask your SLAC POC for help.
 5. Register your SLAC UNIX account in S3DF
 """"""""""""""""""""""""""""""""""""""""""
 
-This is the same as step 2 of the `S3DF Accounts and Access page <https://s3df.slac.stanford.edu/#/accounts-and-access>`__.
+This is the same as step 2 of the `S3DF Accounts and Access page <https://s3df.slac.stanford.edu/#/accounts-and-access>`__.   This step should be performed *before* accessing any resources, including S3DF accounts and the USDF Rubin Science Platform.
+
+6. Fill out the Rubin Observatory Staff Access Form
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Some of the resources and data accessible from the USDF are meant to be only available to Rubin staff.  Please fill out the `Rubin Observatory Staff Access Form <https://ls.st/staff-access-form>`__ to help us determine whether you can be regarded as a Rubin team-member for the purposes of accessing these staff-only resources.
 
 **Final Notes:**
 
