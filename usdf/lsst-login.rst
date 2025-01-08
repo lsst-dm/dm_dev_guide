@@ -15,11 +15,11 @@ USDF usage questions can be posted to the `Rubin Observatory slack <https://rubi
 Connecting and Authenticating to Rubin servers
 ==============================================
 
-You'll need to be a member of the rubin_users unix group to access pretty much anything Rubin. If you're finding you're not, this is probably why. Ask to be added in the #ops-usdf slack channel.
+You'll need to be a member of the rubin_users unix group to access pretty much anything Rubin. If you're finding you cannot, this is probably why. Ask to be added in the #usdf-support slack channel.
 
-You can use NoMachine for ssh access as well:
+You can use `NoMachine <https://s3df.slac.stanford.edu/#/tutorials?id=graphics-and-remote-visualization>`__ for ssh access as well:
 
-https://confluence.slac.stanford.edu/x/f8E7Eg
+https://s3dfnx.slac.stanford.edu/
 
 You should ssh into Rubin Observatory development servers at SLAC with your unix account and password. It is only visible from the s3df login nodes. Use the load balancer:
 
