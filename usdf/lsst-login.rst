@@ -6,20 +6,20 @@ The USDF is hosted on the S3DF cluster at SLAC. The resource is shared amongst p
 
 https://s3df.slac.stanford.edu/public/doc/#/
 
-The following login load-balancer is run by SLAC to jump to select Rubin Observatory development resources at SLAC (almost nothing useful can be done here. Use the jump nodes):
+The following login load-balancer is run by SLAC to jump to select Rubin Observatory development resources at SLAC.  Note that almost nothing useful can be done on the login nodes themselves:
 
 - ``s3dflogin.slac.stanford.edu``
 
-USDF usage questions can be posted to slack ``#ops-usdf``. Announcements will go to ``#ops-usdf-announce``. SLAC also maintains an internal workspace with a channel dedicated to S3DF support, called comp-sdf. We have created an LSSTC workspace wormhole into that channel, called ``#ops-help-s3df-slac``, intended for non Stanford/SLAC people. This SLAC channel is for the entire S3DF community.
+USDF usage questions can be posted to the `Rubin Observatory slack <https://rubin-obs.slack.com>`__ ``#usdf-support`` channel. Announcements will go to ``#usdf-announce``. SLAC also maintains an internal workspace with a channel dedicated to S3DF support, called comp-sdf. We have created an `LSSTC workspace <https://lsstc.slack.com>`__ wormhole into that channel, called ``#ops-help-s3df-slac``, intended for non Stanford/SLAC people.  This slack channel is used by the entire S3DF community.
 
 Connecting and Authenticating to Rubin servers
 ==============================================
 
-You'll need to be a member of the rubin_users unix group to access pretty much anything Rubin. If you're finding you're not, this is probably why. Ask to be added in the #ops-usdf slack channel.
+You'll need to be a member of the ``rubin_users`` unix group to access pretty much anything Rubin. If you're finding that you cannot, this is probably why. Ask to be added in the ``#usdf-support`` slack channel or contact your SLAC POC.
 
-You can use NoMachine for ssh access as well:
+You can use `NoMachine <https://s3df.slac.stanford.edu/#/tutorials?id=graphics-and-remote-visualization>`__ for ssh access as well:
 
-https://confluence.slac.stanford.edu/x/f8E7Eg
+https://s3dfnx.slac.stanford.edu/
 
 You should ssh into Rubin Observatory development servers at SLAC with your unix account and password. It is only visible from the s3df login nodes. Use the load balancer:
 
