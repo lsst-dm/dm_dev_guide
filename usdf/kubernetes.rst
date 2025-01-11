@@ -75,4 +75,5 @@ Miscellaneous
 =============
 
 - if you encounter an error like "Unable to connect to the server: No valid id-token, and cannot refresh without refresh-token" when running your kubectl, you will need to log back in via https://k8s.slac.stanford.edu/<project>, re-executing the commands in the second box. This is because our OIDC (dex) implementation does not and cannot generate refresh tokens from our SAML2 (windows ADFS) backend. (Actually, only the ``set-credentials`` command is needed, but it doesn't hurt to execute them all.)
-- Kubernetes secrets are usually held in Vault (vault.slac.stanford.edu).  The vault command is available on USDF interactive nodes.  You may need to activate it with ``module load vault``.
+
+Kubernetes secrets are usually held in Vault (vault.slac.stanford.edu).  The vault command is available on USDF interactive nodes.  You may need to activate it with ``module load vault``.  Then login using the commands ``export VAULT_ADDR=https://vault.slac.stanford.edu; vault login -method=ldap`` with your SLAC Windows password.  You can then use ``vault kv list -mount=secret PATH`` and ``vault kv get -mount=secret PATH/TO/SECRET`` to access secrets for which you have permission.
