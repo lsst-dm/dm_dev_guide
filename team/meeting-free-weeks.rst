@@ -6,17 +6,14 @@ Meeting Free Weeks
 DM will observe  several **Meeting Free Weeks** each year. 
 
 
-Meeting Free Weeks 2024
+Meeting Free Weeks 2025
 =======================
-In 2024 meeting free weeks will be: 
-   - April 15 - 20 (also JOR in Tucson), 
-   - June 24 - 28, 
-   - Sept 16 - 20,
-   - Dec 23 - Jan 3.
+In 2025 meeting free weeks will be: 
+   - April 14 - 18 
+   - June 23 - 27  (EAS) 
+   - Sept 15 - 19
+   - Dec 22 - Jan 2.
 
-Meeting Free Weeks 2023
-=======================
-December 25 Jan 5.
 
 Guidelines
 ==========
