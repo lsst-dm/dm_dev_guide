@@ -35,6 +35,7 @@ Developers must evaluate which works best for their use case and choose one acco
     ``lsst.afw.fits`` must not be used in any new Python code, as it is not considered memory safe.
 
 If not interacting with C++ classes the use of ``astropy.table`` is encouraged.
+In particular, the Table class has beneficial properties over Pandas DataFrame.
 The interaction of Astropy with LSST C++ classes providing related functionality should be carefully monitored.
 If the code is already using ``afw`` it is strongly preferred that ``afw`` equivalents be used until such time as specific ``afw`` interfaces are deprecated.
 :mod:`astropy.table` views into ``afw.table`` tables can be used if required.
