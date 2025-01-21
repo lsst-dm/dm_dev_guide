@@ -5,7 +5,7 @@ Supported Platforms
 Introduction
 ============
 
-The Science Pipelines are required to be portable across many compute platforms ranging from high-performance computing centers to laptops (refer to DMS-REQ-0308 in :lse:`61`).
+The Science Pipelines are required to be portable across many compute platforms ranging from high-performance computing centers to laptops (refer to DMS-REQ-0308 in `lse-61`_).
 The software will likely work on any Unix-like systems but we limit our testing and support to a fixed set of platforms.
 Patches may be accepted from developers who test on other operating systems.
 
@@ -49,3 +49,5 @@ To request that a new package be added to the environment, please :doc:`file an 
 .. _Conda: https://conda.io
 .. _conda-forge: https://conda-forge.org/
 .. _scipipe_conda_env: https://github.com/lsst/scipipe_conda_env
+.. _lse-61: https://lse-61.lsst.io/
+
