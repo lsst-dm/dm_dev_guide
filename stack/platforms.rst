@@ -17,20 +17,22 @@ Platforms
 We have a baseline platform which is what we are using for integration testing and deployments.
 For each product, we also have a number of other platforms which are regularly tested by our continuous integration system to enhance portability.
 
-The baseline platform is currently CentOS 7 on Intel x86_64.
+The baseline platform is currently AlmaLinux 9 on Intel x86_64.
 
 .. note ::
-    We aim to stay current with CentOS 7 minor releases.
-    Our base OS container will typically be updated to the current CentOS 7 release shortly *after* each major release of the Science Pipelines.
+    We aim to stay current with AlmaLinux minor releases.
+    Our base OS container will typically be updated to the current AlmaLinux release shortly *after* each major release of the Science Pipelines.
     Shared development machines will be updated on their own schedule during periodic maintenance downtime.
 
 We regularly test the following platforms in addition to the baseline platform:
 
-* macOS Monterey (12.x);
-* macOS Ventura (13.x).
+* macOS Monterey (12.x) on x86;
+* macOS Ventura (13.x) on x86;
+* macOS Sonoma (14.x) on Apple Silicon;
+* AlmaLinux 9 on ARM (aarch64).
 
 See https://rubin-ci.slac.stanford.edu/blue for the current list of regularly-tested platforms.
-(The "osx" platform there for the "stack-os-matrix" job randomly chooses a Big Sur or Catalina machine for each execution to limit load.)
+(The "osx" platform there for the "stack-os-matrix" job randomly chooses a Monterey or Ventura machine for each execution to limit load.)
 
 .. _platforms-environment:
 
