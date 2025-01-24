@@ -122,22 +122,32 @@ Because of the way that conda-forge works, adding a build or patch or minor vers
 For current releases, the ``main`` branch is used, of course.
 The tip of each branch is built and published by the conda-forge automation (and of course older versions on each branch were published when they were the tip).
 
+.. _rubin-env-updating:
+
+Updating ``rubin-env``
+----------------------
+
 When updating rubin-env, the following procedure should be followed:
 
-#. Update the dev branch in rubinenv-feedstock and ensure that it solves and builds.
-   Add selectors to ``rubin-env-extras`` or pins to ``rubin-env`` if necessary to allow building.
-#. Test the current Science Pipelines stack using the dev environment (install using the ``conda-forge/label/rubin-env_dev`` channel).
-#. Test pip installation of `RSP dependencies <https://github.com/lsst-sqre/sciplat-lab/blob/prod/stage3-py.sh>`__ into the dev environment.
-#. Create a ticket branch from dev to adjust the version number (from ``dev`` suffix to plain release) and build number (to 0).
+#. Experiment with changes by building and testing the Science Pipelines stack using lsstsw with a custom conda environment.
+   This should turn up problems with dependency conflicts or with Pipelines code (such as use of deprecated, now-gone interfaces).
+   Fix these (or give up on the problematic rubin-env change for now).
+#. Modify the ``dev`` branch in ``rubinenv-feedstock`` to match the custom experimental environment, including any new dependencies, removing any unneeded dependencies, and updating versions of existing dependencies.
+   Ensure that it solves and builds on all platforms.
+   Add selectors to ``rubin-env-extras`` (e.g. to express conditions based on particular platforms or Python versions) or version pins to ``rubin-env`` if necessary to allow building.
+#. Test the current Science Pipelines stack using the ``dev`` environment (install using the ``conda-forge/label/rubin-env_dev`` channel).
+#. Test pip installation of `RSP dependencies <https://github.com/lsst-sqre/sciplat-lab/blob/main/stage3-py.sh>`__ into the ``dev`` environment.
+#. Create a ticket branch from ``dev`` to adjust the version number (from ``dev`` suffix to plain release) and build number (to 0).
 #. Rebase the new branch on main.
    This may involve some merge conflict resolution.
    Don't forget to request rerendering.
-   After successful checks and PR review, merge to main.
+   After successful checks and PR review, merge to ``main``.
 #. Wait for the new metapackage to be available in the conda-forge channel.
 #. Create PRs to update the default versions in `lsst <https://github.com/lsst/lsst/blob/main/scripts/newinstall.sh>`__, `lsstsw <https://github.com/lsst/lsstsw/blob/main/etc/settings.cfg.sh>`__, and `jenkins-dm-jobs <https://github.com/lsst-dm/jenkins-dm-jobs/blob/main/etc/scipipe/build_matrix.yaml>`__.
    GitHub Actions tests of these PRs will not succeed if the metapackage is not available.
-#. Test Jenkins with the ``stack-os-matrix`` job using the new rubin-env version on at least ``lsst_ci`` and ideally also ``ci_hsc`` and ``ci_imsim``.
+#. Test Jenkins with the ``stack-os-matrix`` job using the new rubin-env version on at least ``lsst_ci`` and ideally all the ``ci_*`` jobs.
 #. Merge the lsst+lsstsw+jenkins-dm-jobs PRs and announce the update on community.lsst.org.
+#. Merge the ``main`` branch into the ``dev`` branch to allow it to start the next update cycle with the latest definitions.
 
 .. _conda-shared-stack:
 
