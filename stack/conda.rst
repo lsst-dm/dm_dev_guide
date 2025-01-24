@@ -70,7 +70,7 @@ To change the ``rubin-env``:
 
    conda deactivate # make sure you do not run this inside an existing conda environment
    # adding conda-forge/label/rubin-env_dev allows to install rubin-env_dev
-   LSST_CONDA_CHANNELS="nodefaults conda-forge/label/rubin-env_dev conda-forge"
+   export LSST_CONDA_CHANNELS="nodefaults conda-forge/label/rubin-env_dev conda-forge"
    ./bin/deploy -v 9.0.0dev # or any other rubin env
    source bin/envconfig -n lsst-scipipe-9.0.0dev
    rebuild lsst_apps # This could be any branch or product you want to use
