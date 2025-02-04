@@ -24,7 +24,7 @@ Be careful not to modify the LICENSE file.
 .. tip::
 
    **Create a LICENSE file from Slack.**
-   Open a |dmw-sqrbot| and type:
+   Open a |dmw-squarebot| and type:
 
    .. code-block:: text
 
@@ -47,7 +47,7 @@ Include additions to :file:`COPYRIGHT` files as part of your regular pull reques
 .. tip::
 
    **Create a COPYRIGHT file from Slack.**
-   Open a |dmw-sqrbot| and type:
+   Open a |dmw-squarebot| and type:
 
    .. code-block:: text
 
@@ -83,7 +83,7 @@ Replace ``{{ cookiecutter.package_name }}`` with the repository's name (``afw``,
 .. tip::
 
    **Create a Python license preamble from Slack.**
-   Open a |dmw-sqrbot| and type:
+   Open a |dmw-squarebot| and type:
 
    .. code-block:: text
 
@@ -108,7 +108,7 @@ Replace ``{{ cookiecutter.package_name }}`` with the repository's name (``afw``,
 .. tip::
 
    **Create a C++ license preamble from Slack.**
-   Open a |dmw-sqrbot| and type:
+   Open a |dmw-squarebot| and type:
 
    .. code-block:: text
 

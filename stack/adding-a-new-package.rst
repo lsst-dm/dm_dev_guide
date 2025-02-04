@@ -7,7 +7,7 @@ Adding a New Package to the Build
 Creating a new package
 ======================
 
-To create a new LSST package, send a "create project" message to ``@sqrbot-jr`` on the LSST Slack and select "LSST EUPS package" as the project type.
+To create a new LSST package, send a "create project" message to ``@squarebot`` on the LSST Slack and select "LSST EUPS package" as the project type.
 Follow the prompts to select the GitHub organization (choose ``lsst`` for the `LSST organization on GitHub`_ for packages that you plan to add to the full distribution via RFC, as described below) and the specific flavor of package (e.g. ``Pipelines Python`` for a typical python package that depends on `pipe_base`_)  to get an appropriate directory structure set up.
 The bot uses the templates in the `lsst/templates`_ repository to define the package layout.
 
@@ -99,8 +99,8 @@ Configuring GitHub Repositories
 
 .. Note::
 
-  If you created your package via ``@sqrbot-jr`` on the LSST slack, the GitHub repo should be configured correctly.
-  These instructions are for the rare cases that cannot be handled by ``@sqrbot-jr``.
+  If you created your package via ``@squarebot`` on the LSST slack, the GitHub repo should be configured correctly.
+  These instructions are for the rare cases that cannot be handled by ``@squarebot``.
 
 All LSST DM repositories on GitHub must be configured by a repository administrator to protect the ``main`` branch and to ensure that the merge button for pull requests can not be pushed without the branch being up to date with ``main``.
 There are a number of settings required to ensure this and they are described below with URLs referring to the ``afw`` package.
@@ -145,7 +145,7 @@ Handling Git LFS-backed repos
 =============================
 
 New :doc:`Git LFS-backed </git/git-lfs>` repos (or existing repos being converted to LFS) require additional configuration.
-``@sqrbot-jr`` cannot yet create an empty LFS-ready repo.
+``@squarebot`` cannot yet create an empty LFS-ready repo.
 
 - The `repos.yaml`_ entry must declare that the repository is LFS backed:
 
