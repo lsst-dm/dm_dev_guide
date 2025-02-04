@@ -13,7 +13,7 @@ Starter template
 ================
 
 Create a new task topic from Slack.\ [#template]_
-Open a |dmw-sqrbot| and type:
+Open a |dmw-squarebot| and type:
 
 .. code-block:: text
 

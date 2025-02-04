@@ -79,7 +79,7 @@ Create a technote
 =================
 
 Creating a new technote is easy and takes just a moment.
-In Slack, open a |dmw-sqrbot| and type:
+In Slack, open a |dmw-squarebot| and type:
 
 .. code-block:: text
 

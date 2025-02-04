@@ -154,7 +154,7 @@ The :file:`COPYRIGHT` file does not contain any other content.
 .. tip::
 
    **Create a COPYRIGHT file from Slack.**
-   Open a |dmw-sqrbot| and type:
+   Open a |dmw-squarebot| and type:
 
    .. code-block:: text
 

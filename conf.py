@@ -140,8 +140,8 @@ else:
 
 # Common substitutions and link targets available in every document
 rst_epilog = """
-.. |sqrbot| replace:: `@sqrbot-jr <https://slack.com/app_redirect?app=AF2U6ADV3&team=T06D204F2>`__
-.. |dmw-sqrbot| replace:: `direct message with @sqrbot-jr <https://slack.com/app_redirect?app=AF2U6ADV3&team=T06D204F2>`__
+.. |squarebot| replace:: `@squarebot <https://slack.com/app_redirect?app=A07PWG9UG9M&team=T02SVMGU4>`__
+.. |dmw-squarebot| replace:: `direct message with @squarebot <https://slack.com/app_redirect?app=A07PWG9UG9M&team=T02SVMGU4>`__
 """
 
 

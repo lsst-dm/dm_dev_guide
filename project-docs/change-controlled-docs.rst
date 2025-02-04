@@ -100,7 +100,7 @@ Creating a new LaTeX (lsstdoc) change-controlled document
 **Before creating a new change-controlled document, reserve its handle on DocuShare.**
 Contact the CCB (`#dm-ccb <slack://channel?team=T06D204F2&id=C2JPBA2SU>`_) for assistance.
 
-In Slack, open a |dmw-sqrbot| and type:
+In Slack, open a |dmw-squarebot| and type:
 
 .. code-block:: text
 
