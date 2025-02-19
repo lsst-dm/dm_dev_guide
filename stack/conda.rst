@@ -143,9 +143,9 @@ When updating rubin-env, the following procedure should be followed:
    Don't forget to request rerendering.
    After successful checks and PR review, merge to ``main``.
 #. Wait for the new metapackage to be available in the conda-forge channel.
-#. Create PRs to update the default versions in `lsst <https://github.com/lsst/lsst/blob/main/scripts/newinstall.sh>`__, `lsstsw <https://github.com/lsst/lsstsw/blob/main/etc/settings.cfg.sh>`__, and `jenkins-dm-jobs <https://github.com/lsst-dm/jenkins-dm-jobs/blob/main/etc/scipipe/build_matrix.yaml>`__.
-   GitHub Actions tests of these PRs will not succeed if the metapackage is not available.
-#. Test Jenkins with the ``stack-os-matrix`` job using the new rubin-env version on at least ``lsst_ci`` and ideally all the ``ci_*`` products (``ci_cpp``, ``ci_hsc``, ``ci_imsim``, and ``ci_middleware``).
+#. Test Jenkins with the ``stack-os-matrix`` job using the new rubin-env version (by specifying an explicit ``SPLENV_REF`` parameter) on at least ``lsst_ci`` and ideally all the ``ci_*`` products (``ci_cpp``, ``ci_hsc``, ``ci_imsim``, and ``ci_middleware``).
+#. In parallel, create PRs to update the default versions in `lsst <https://github.com/lsst/lsst/blob/main/scripts/newinstall.sh>`__, `lsstsw <https://github.com/lsst/lsstsw/blob/main/etc/settings.cfg.sh>`__, and `jenkins-dm-jobs <https://github.com/lsst-dm/jenkins-dm-jobs/blob/main/etc/scipipe/build_matrix.yaml>`__.
+   Ensure that all GitHub Actions tests pass; they will not if the metapackage is not available.
 #. Merge the lsst+lsstsw+jenkins-dm-jobs PRs and announce the update on community.lsst.org.
 #. Merge the ``main`` branch into the ``dev`` branch to allow it to start the next update cycle with the latest definitions.
 
