@@ -100,7 +100,7 @@ It also includes enhancements of the standard library including ``ranges``, defi
 
 The use of ``modules`` is discouraged. The use of ``concepts`` and ``coroutines`` should be evaluated carefully.
 
-When using C++20 features, be careful about readability for developers familiar only with C++14.
+When using C++17 and C++20 features, be careful about readability for developers familiar only with C++14.
 
 If you find that any Style Guide rules conflict with C++20 best practices, such as those in the `C++ Core Guidelines`_, please propose updates.
 
