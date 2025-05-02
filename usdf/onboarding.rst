@@ -102,6 +102,11 @@ routed to the SLAC POC, then to the SLAC HR team for a
 duplicate SID check.
 If the user is a non-US citizen, the completed onboarding form is routed to the SLAC POC, then to the VUE Center Coordinator, and then to the SLAC HR team for a duplicate SID check.
 
+7. Complete Access Control Training
+"""""""""""""""""""""""""""""""""""
+
+All users will need to complete Access Control Training previous to being granted access to the USDF resources. Zoom sessions for this training are currently run every Wednesday at 8am PDT. If that time is not feasible, please reach out to K-T Lim on Rubin, Discovery Alliance, or SLAC Slack workspaces.
+
 
 Troubleshooting Accounts
 ========================
