@@ -26,13 +26,10 @@ The baseline platform is currently AlmaLinux 9 on Intel x86_64.
 
 We regularly test the following platforms in addition to the baseline platform:
 
-* macOS Monterey (12.x) on x86;
-* macOS Ventura (13.x) on x86;
 * macOS Sonoma (14.x) on Apple Silicon;
 * AlmaLinux 9 on ARM (aarch64).
 
 See https://rubin-ci.slac.stanford.edu/blue for the current list of regularly-tested platforms.
-(The "osx" platform there for the "stack-os-matrix" job randomly chooses a Monterey or Ventura machine for each execution to limit load.)
 
 .. _platforms-environment:
 
@@ -50,4 +47,3 @@ To request that a new package be added to the environment, please :doc:`file an 
 .. _conda-forge: https://conda-forge.org/
 .. _scipipe_conda_env: https://github.com/lsst/scipipe_conda_env
 .. _lse-61: https://lse-61.lsst.io/
-
