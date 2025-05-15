@@ -13,6 +13,7 @@ The SLAC onboarding procedure involves the following steps:
 #. Do the SLAC cyber training
 #. Register your SLAC UNIX account in S3DF
 #. Fill out the `Rubin Observatory Staff Access Form <https://ls.st/staff-access-form>`__ (if you have not already done so as part of Rubin onboarding)  
+#. Complete Access Control Training.
 
 SLAC IT will create Active Directory (AD) and unix accounts (for the same username).  The AD account is only used for annual cyber training and web access to Service Now, the SLAC IT ticketing system. The AD account needs to be accessed every 60 days; notifications are sent out.  Once IT creates the accounts, a link will be emailed to reset the passwords.
 
