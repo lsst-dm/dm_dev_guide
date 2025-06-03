@@ -746,6 +746,8 @@ For example:
 Using `super` ensures a consistent Method Resolution Order, and prevents inherited methods from being called multiple times.
 In Python 3, `super` does not require naming the class that it is part of, making its use simpler and removing a maintenance issue.
 
+.. _style-guide-py-super-multiple-inheritance:
+
 super() and Multiple Inheritance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -761,6 +763,30 @@ To use `super` with multiple inheritance, all base classes in Python's Method Re
 If your class may be used in multiple inheritance, ensure that all relevant classes use `super` including documenting requirements for subclasses.
 
 For more details, see the `super documentation <super>`, the `astropy coding guide <http://docs.astropy.org/en/stable/development/codeguide.html#super-vs-direct-calling>`__, and `this article from Raymond Hettinger <https://rhettinger.wordpress.com/2011/05/26/super-considered-super/>`__.
+
+.. _style-guide-py-abstract-builtins:
+
+Abstract subclasses of builtins
+-------------------------------
+
+Abstract subclasses of builtins (classes that include both `abc.ABC` and a :ref:`builtin class <bltin-types>` in their hierarchy) are not checked for abstract methods on instantiation.
+This means that `abc.abstractmethod` decorators will not prevent the class from being instantiated.
+For example, an abstract :ref:`Exception <bltin-exceptions>` subclass can still be instantiated without a concrete override of its abstract method(s), resulting in runtime errors when those methods are called.
+You can work around this by defining ``__new__`` on an abstract builtin subclass to check for abstract methods:
+
+.. code-block:: python
+    :name: abstract-builtin
+
+    def __new__(cls, *args: Any, **kwargs: Any) -> MyAbstractClass:
+        # Have to override __new__ because builtin subclasses aren't checked
+        # for abstract methods; see https://github.com/python/cpython/issues/50246
+        if cls.__abstractmethods__:
+            raise TypeError(
+                f"Can't instantiate abstract class {cls.__name__} with "
+                f"abstract methods: {','.join(sorted(cls.__abstractmethods__))}"
+            )
+        return super().__new__(cls, *args, **kwargs)
+
 
 .. _style-guide-py-comparisons:
 
