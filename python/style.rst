@@ -746,6 +746,8 @@ For example:
 Using `super` ensures a consistent Method Resolution Order, and prevents inherited methods from being called multiple times.
 In Python 3, `super` does not require naming the class that it is part of, making its use simpler and removing a maintenance issue.
 
+.. _style-guide-py-super-multiple-inheritance:
+
 super() and Multiple Inheritance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
