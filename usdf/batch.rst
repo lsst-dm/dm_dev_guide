@@ -39,7 +39,6 @@ The LSST Batch Processing Service (`BPS <https://github.com/lsst/ctrl_bps>`__) i
 
 Guidance for developers running pipelines
 =========================================
-- For running at USDF, we recommend using ctrl_bps_htcondor, the HTCondor-based plugin.  For questions regarding its use, please post in `#usdf-support <https://app.slack.com/client/T02SVMGU4/C082C6R9JQ1>`__ for USDF-specific issues or in `#dm-middleware-support <https://app.slack.com/client/T02SVMGU4/C08CANY4B6H>`__ for more general BPS-related questions.  Both of those channels are in the `rubin-obs <https://rubin-obs.slack.com>`__ Slack space.
 - Please use the software distributions in
   ``/cvmfs/sw.lsst.eu/almalinux-x86_64/lsst_distrib``, if possible.  The weekly versions are made available there each Thursday, and the following script will set up the most recent version::
 
@@ -48,7 +47,8 @@ Guidance for developers running pipelines
    setup lsst_distrib -t w_latest
 
   The shared stack distributions in ``/sdf/group/rubin/sw`` can also be used, but we've seen general slowness for people using those distributions when a lot of jobs are running the software in that area.
-- Use BPS clustering to avoid many, e.g., >10s of thousands, of short <1 min jobs.  A common use case would be running ``isr`` on a night's worth of LSSTCam exposures.  Clustering will combine pipeline jobs into single pipetask calls resulting in fewer overall jobs and thus fewer jobs trying to set up the stack, import all the python modules, etc., at the same time.  In addition to mitigating disk contention issues, clustering makes it easier for the workflow systems to manage the execution of the overall pipeline.  Instructions for using bps clustering are available in the `BPS documentation <https://pipelines.lsst.io/modules/lsst.ctrl.bps/quickstart.html#clustering>`__.
+- Use BPS clustering to avoid many, e.g., >10k, of short <1 min jobs.  A common use case would be running ``isr`` on a night's worth of LSSTCam exposures.  Clustering will combine pipeline jobs into single pipetask calls resulting in fewer overall jobs and thus fewer jobs trying to import all of the python modules at the same time.  In addition to mitigating disk contention issues, clustering makes it easier for the workflow systems to manage the execution of the overall pipeline.  Instructions for using bps clustering are available in the `BPS documentation <https://pipelines.lsst.io/modules/lsst.ctrl.bps/quickstart.html#clustering>`__, and examples of clustering for DRP processing of LSSTCam data are available in the `drp_pipe package <https://github.com/lsst/drp_pipe/blob/main/bps/clustering/LSSTCam/DRP-clustering.yaml>`__.
+- For running at USDF, we recommend using ctrl_bps_htcondor, the HTCondor-based plugin.  For questions regarding its use, please post in `#usdf-support <https://app.slack.com/client/T02SVMGU4/C082C6R9JQ1>`__ for USDF-specific issues or in `#dm-middleware-support <https://app.slack.com/client/T02SVMGU4/C08CANY4B6H>`__ for more general BPS-related questions.  Both of those channels are in the `rubin-obs <https://rubin-obs.slack.com>`__ Slack space.
 
 
 BPS Plugins
@@ -56,7 +56,7 @@ BPS Plugins
 A few different plugins to BPS are available that use various workflow systems for running BPS on the USDF Slurm batch system:
 
 - :ref:`ctrl_bps_htcondor <ctrl_bps_htcondor>`
-- `ctrl_bps_panda <https://panda.lsst.io/>`__  The PanDA-based plugin can also be used for running remotely at the UK and French Data facilities.
+- `ctrl_bps_panda <https://panda.lsst.io/>`__  This plugin is intended for production execution of the DRP pipelines, as well as for remote execution at the UK and French Data Facilities.
 - :ref:`ctrl_bps_parsl <ctrl_bps_parsl>`
 
 .. _ctrl_bps_htcondor:
