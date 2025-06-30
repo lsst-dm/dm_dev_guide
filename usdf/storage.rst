@@ -54,6 +54,8 @@ As of this writing, authentication to the Butler repos is by a single shared acc
 Requests for outages of the Butler repos should be handled by the `USDF outage process <https://confluence.lsstcorp.org/display/LSSTOps/USDF+Outage+Planning>`__.
 
 
+If additional credentials are required (e.g. APDB), these credentials should be copied into ``~/.lsst/postgres-credentials.txt``. Note that starting a USDF RSP notebook with a container earlier than w_2022_14 will result in overwriting these credentials. The use of a ``db-auth.yaml`` file is depreciated and the file should be removed.
+
 Data Transfer Tools
 ===================
 
