@@ -321,6 +321,11 @@ to the desired ``site`` subsection.  The ``monitorFilename`` field specifies the
 
   The ``pip uninstall sqlalchemy`` command is needed since the ``pip install 'parsl[monitoring]'`` command installs an earlier version of ``sqlalchemy`` that's incompatible with ``lsst_distrib``.
 
+
+.. tip::
+
+  Weekly releases ``w_2025_11`` and later are exclusively built on AlmaLinux instead of CentOS 7. They can be found under ``/cvmfs/sw.lsst.eu/almalinux-x86_64/lsst_distrib/`` (note the ``almalinux-x86_64`` instead of ``linux-x86_64`` in the path).
+
 Notes on each of the example configurations follow (Each class listed below lives in the ``lsst.ctrl.bps.parsl.sites`` namespace):
 
 Local
@@ -363,7 +368,7 @@ In this class, a Parsl `LocalProvider <https://parsl.readthedocs.io/en/stable/st
    #SBATCH --time=02:00:00
 
    cd <working_dir>
-   source /cvmfs/sw.lsst.eu/linux-x86_64/lsst_distrib/w_2022_38/loadLSST-ext.bash
+   source /cvmfs/sw.lsst.eu/almalinux-x86_64/lsst_distrib/w_2025_26/loadLSST-ext.bash
    setup lsst_distrib
    <other setup commands>
    bps submit <bps yaml file>
