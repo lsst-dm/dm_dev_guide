@@ -38,7 +38,7 @@ and
 
 .. note::
 
-	Stable and select weekly releases older than ``w_2025_11``, were built on the CentOS 7 Linux distribution (the previous reference platform). They are available under ``/cvmfs/sw.lsst.eu/linux-x86_64/lsst_distrib`` (note the ``linux-x86_64`` instead of ``almalinux-x86_64`` in the path).
+	Stable and select weekly releases older than ``w_2025_11`` were built on the CentOS 7 Linux distribution (the previous reference platform). They are available under ``/cvmfs/sw.lsst.eu/linux-x86_64/lsst_distrib`` (note the ``linux-x86_64`` instead of ``almalinux-x86_64`` in the path).
 
 Shared Stack
 ============

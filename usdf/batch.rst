@@ -312,7 +312,7 @@ to the desired ``site`` subsection.  The ``monitorFilename`` field specifies the
 
 .. note::
 
-  As of 2022-09-27, the ``parsl`` module and its dependencies are only available at S3DF via the CVMFS distributions of ``lsst_distrib`` for weekly ``w_2022_37`` and later.  However, the modules needed for Parsl *monitoring* are not available in the CVMFS distributions.  They can be installed in ``~/.local`` with the following commands::
+  The ``parsl`` module and its dependencies are available at S3DF via the CVMFS distributions of ``lsst_distrib`` for weekly ``w_2022_37`` and later.  However, the modules needed for Parsl *monitoring* are not available in the CVMFS distributions.  They can be installed in ``~/.local`` with the following commands::
 
    $ source /cvmfs/sw.lsst.eu/linux-x86_64/lsst_distrib/w_2022_39/loadLSST-ext.bash
    $ setup lsst_distrib
