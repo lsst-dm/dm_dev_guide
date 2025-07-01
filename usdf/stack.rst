@@ -8,33 +8,37 @@ LSST Science Pipelines "stack" available at the USDF.
 Release and Weekly
 ==================
 
-Access to self-contained release and weekly versions is available via cvmfs (e.g. ``v24.0.0`` or ``w_2023_01``).
+Access to self-contained release and weekly versions is available via cvmfs (e.g. ``v29.1.1`` or ``w_2025_26``).
 Each version is available in three variants: a Conda environment with minimal dependencies for processing data, an extended Conda environment with packages appropriate for code developers, and an Apptainer container with the minimal environment.
 
 Minimal processing Conda environment:
 
 .. code-block:: bash
 
-   source /cvmfs/sw.lsst.eu/linux-x86_64/lsst_distrib/w_2023_01/loadLSST.bash
+   source /cvmfs/sw.lsst.eu/almalinux-x86_64/lsst_distrib/w_2025_26/loadLSST.bash
 
 Developer-friendly Conda environment:
 
 .. code-block:: bash
 
-   source /cvmfs/sw.lsst.eu/linux-x86_64/lsst_distrib/w_2023_01/loadLSST-ext.bash
+   source /cvmfs/sw.lsst.eu/almalinux-x86_64/lsst_distrib/w_2025_26/loadLSST-ext.bash
 
 Minimal processing Apptainer:
 
 .. code-block:: bash
 
-   apptainer run-help /cvmfs/sw.lsst.eu/containers/apptainer/lsst_distrib/w_2023_01.sif
+   apptainer run-help /cvmfs/sw.lsst.eu/containers/apptainer/x86_64/almalinux/lsst_distrib/w_2025_26
 
 provides more information.
 
 You can see which versions are available by:
-``ls /cvmfs/sw.lsst.eu/linux-x86_64/lsst_distrib/``
+``ls /cvmfs/sw.lsst.eu/almalinux-x86_64/lsst_distrib/``
 and
-``ls /cvmfs/sw.lsst.eu/containers/apptainer/lsst_distrib/``
+``ls /cvmfs/sw.lsst.eu/containers/apptainer/x86_64/almalinux/lsst_distrib/``
+
+.. note::
+
+	Stable and select weekly releases older than ``w_2025_11`` were built on the CentOS 7 Linux distribution (the previous reference platform). They are available under ``/cvmfs/sw.lsst.eu/linux-x86_64/lsst_distrib`` (note the ``linux-x86_64`` instead of ``almalinux-x86_64`` in the path).
 
 Shared Stack
 ============
