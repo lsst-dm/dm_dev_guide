@@ -14,6 +14,8 @@ In 2025 meeting free weeks will be:
    - Sept 15 - 19
    - Dec 22 - Jan 2.
 
+An exceptional meeting free week has been added 2025:
+   - Aug 18 - 22
 
 Guidelines
 ==========
