@@ -90,7 +90,12 @@ Top-level product dependency
 
 The new package then needs to be added to the :file:`ups/*.table` file (and possibly the :file:`ups/*.cfg` file if this is a C++ package) of one or more other packages in the stack where it is used so that the build system can work out the correct dependency tree.
 Table files should use ``setupRequired(package_name)`` or ``setupOptional(package_name)`` as necessary; test data packages are usually optional to allow releases to be made without requiring large additional data packages to be included.
+
 Packages that use optional dependencies must be written to ensure that they can pass their unit tests when the package is not available.
+*Optional* dependencies must be added to `manifest.remap`_ to prevent the creation of broken EUPS distrib packages.
+Please note that the "self-merge" policy (:jira:`RFC-75`) does not apply to `manifest.remap`_.
+Unlike changes merged into `repos.yaml`_, modifications to `manifest.remap`_ do not take immediate affect.
+We recommend that you attach the modification PR to a DM Jira issue on the ``Continuous Integration`` component.
 
 .. _github-repository-configuration:
 
@@ -159,13 +164,6 @@ New :doc:`Git LFS-backed </git/git-lfs>` repos (or existing repos being converte
 
 - At present, the EUPS distrib packaging mechanism does not support LFS-backed repos.
   These products **must not** be added to any top-level meta-package or as a mandatory (non-``optional``) recursive dependency of a top-level package.
-
-- *Optional* dependencies must be added to `manifest.remap`_ to prevent the creation of broken EUPS distrib packages.
-  Please note that the "self-merge" policy (:jira:`RFC-75`) does not apply to `manifest.remap`_.
-
-  Unlike changes merged into `repos.yaml`_, modifications to `manifest.remap`_ do not take immediate affect.
-
-  We recommend that you attach the modification PR to a DM Jira issue on the ``Continuous Integration`` component.
 
 
 .. warning::
