@@ -47,10 +47,11 @@ Repository access
 -----------------
 
 Access to the repository must be granted by a repository administrator to appropriate teams.
-For DM-written code, these include "Data Management" and "Overlords."
+For DM-written code living in the ``lsst`` organization, these include "Data Management" and "Overlords."
 For third-party code, either forked or packaged as "TaP" tarball-and-patch, use the "DM Externals" and "Overlords" (but *not* "Data Management") teams.
 Note that the "DM Auxilliaries" [sic] team is used to mark packages that are *not* part of the release distribution; it is used to tag them alongside the release as well as to catch accidental inclusions.
 The roles assigned to these teams should typically be "Write" for "Data Management", "Admin" for "Overlords", and "Read" for all others, but most permissions are handled at the organization level, so these could even be "Read" for all teams.
+For repositories in the ``lsst-dm`` organization, roles assigned to the teams should typically be "Write" for "Data Management" and "Read" for "DM Auxilliaries".
 
 .. warning::
 
