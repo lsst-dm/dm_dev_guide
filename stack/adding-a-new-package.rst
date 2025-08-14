@@ -51,7 +51,8 @@ For DM-written code living in the ``lsst`` organization, these include "Data Man
 For third-party code, either forked or packaged as "TaP" tarball-and-patch, use the "DM Externals" and "Overlords" (but *not* "Data Management") teams.
 Note that the "DM Auxilliaries" [sic] team is used to mark packages that are *not* part of the release distribution; it is used to tag them alongside the release as well as to catch accidental inclusions.
 The roles assigned to these teams should typically be "Write" for "Data Management", "Admin" for "Overlords", and "Read" for all others, but most permissions are handled at the organization level, so these could even be "Read" for all teams.
-For repositories in the ``lsst-dm`` organization, roles assigned to the teams should typically be "Write" for "Data Management" and "Read" for "DM Auxilliaries".
+For the rare repositories in the ``lsst-dm`` organization that are part of the build but not distributed, roles assigned to the teams should typically be "Write" for "Data Management" and "Read" for "DM Auxilliaries".
+(There must not be repositories in ``lsst-dm`` that are distributed, and other repositories in ``lsst-dm`` do not need team assignments.)
 
 .. warning::
 
