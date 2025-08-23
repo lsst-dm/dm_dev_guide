@@ -235,7 +235,7 @@ You may need to exclude APIs from automodapi_ for two reasons:
 2. The API includes a broken docstring, and you need to remove that API temporarily.
 
 The main tool for removing non-public APIs from the published documentation is ``__all__``.
-Each module should provide an ``__all__`` that explicitly lists the module’s public APIs.
+Each module should provide an ``__all__`` tuple that explicitly lists the module’s public APIs.
 `automodapi`_ respects ``__all__``.
 
 .. _module-homepage-automodapi-skip:
