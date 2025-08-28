@@ -99,6 +99,12 @@ From the drop-down, select **Documents > Technote <format>** for the format you 
 Once you select the template type and fill in the form on Slack, the bot will create and configure the technote on GitHub.
 Watch for Slack messages from the bot about the technote's GitHub repository and publication URL.
 
+.. tip::
+
+   The template form asks for your *author ID*.
+   You can find your author ID in the `Author DB Google Sheet <https://docs.google.com/spreadsheets/d/1_zXLp7GaIJnzihKsyEAz298_xdbrgxRgZ1_86kwhGPY/edit?usp=drivesdk>`__.
+   Send a pull request to update your entry in `authordb.yaml <https://github.com/lsst/lsst-texmf/blob/main/etc/authordb.yaml>`__, or use the Google form linked from the ``#all-users`` channel in Slack.
+
 Updating a technote
 -------------------
 
