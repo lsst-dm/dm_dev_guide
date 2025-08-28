@@ -68,9 +68,10 @@ Technote series
 
 .. _which-series:
 
-Operations vs Construction
-==========================
-The DMTN and SQR series will still exist in operations and so it may still be used.
+Operations vs construction
+--------------------------
+
+The DMTN and SQR series still exist in operations and so it may still be used.
 In general if a topic fits in a given series use the series without hesitation.
 
 .. _technote-create:
@@ -79,77 +80,48 @@ Create a technote
 =================
 
 Creating a new technote is easy and takes just a moment.
-In Slack, open a |dmw-squarebot| and type:
+In the rubin-obs Slack, send a message to Squarebot:
 
 .. code-block:: text
 
-   create project
+   /msg @Squarebot create project
 
-From the drop-down, select **Documents > Technote (reStructuredText)** or **(lsstdoc LaTeX)** depending on the format you wish to work in.
+From the drop-down, select **Documents > Technote <format>** for the format you wish to work in:
+
+- ``Documents > Technote (reStructuredText)`` creates web-native technotes using the same reStructuredText markup as Python docstrings and most Sphinx documentation
+- ``Documents > Technote (Markdown)`` use the same HTML output as above, but with Markdown syntax
+- ``Documents > Technote (lsstdoc LaTeX)`` is the LaTeX format for Rubin documents (PDF output)
+- ``Documents > Technote (AASTeX LaTeX)`` for AAS preprints (PDF output)
+- ``Documents > Technote (ADASS LaTeX)``  for ADASS conference proceedings (PDF output)
+- ``Documents > Technote (ASCOM LaTeX)`` for Astronomy & Computing preprints (PDF output)
+- ``Documents > Technote (SPIE LaTeX)`` for SPIE conference proceedings (PDF output)
+
 Once you select the template type and fill in the form on Slack, the bot will create and configure the technote on GitHub.
 Watch for Slack messages from the bot about the technote's GitHub repository and publication URL.
+
+.. tip::
+
+   The template form asks for your *author ID*.
+   You can find your author ID in the `Author DB Google Sheet <https://docs.google.com/spreadsheets/d/1_zXLp7GaIJnzihKsyEAz298_xdbrgxRgZ1_86kwhGPY/edit?usp=drivesdk>`__.
+   Send a pull request to update your entry in `authordb.yaml <https://github.com/lsst/lsst-texmf/blob/main/etc/authordb.yaml>`__, or use the Google form linked from the ``#all-users`` channel in Slack.
+
+Updating a technote
+-------------------
 
 Any time you push to GitHub, your technote will be republished at its ``lsst.io`` site.
 Pushes to the ``main`` branch update your technote's main page, while updates to other branches update preview editions behind the ``/v/`` URL path.
 Click on the **Switch editions** or **Change version** link from your published technote to get links for other editions.
 
+.. _technote-rst:
+
+Working with reStructuredText or Markdown technotes
+---------------------------------------------------
+
+See the `Documenteer technote documentation <https://documenteer.lsst.io/technotes/index.html>`__ for information on writing and building reStructuredText or Markdown technotes.
+
 .. _technote-latex:
 
 Working with LaTeX-formatted technotes
-======================================
+--------------------------------------
 
-LaTeX-formatted technotes use the ``lsstdoc`` class.
 The `lsst-texmf documentation <https://lsst-texmf.lsst.io/lsstdoc.html>`__ explains how to write ``lsstdoc``-based documents.
-
-.. _technote-rst:
-
-Working with reStructuredText-formatted technotes
-=================================================
-
-See the :doc:`/restructuredtext/style` for a primer on writing reStructuredText.
-The sections below deal with specific issues for technote projects.
-
-.. _technote-rst-bib:
-
-Using bibliographies in reStructuredText technotes
---------------------------------------------------
-
-The lsst-texmf project includes `shared BibTeX bibliographic databases <https://lsst-texmf.lsst.io/lsstdoc.html#bibliographies>`_.
-You can also use these bibliographies from reStructuredText technotes.
-
-First, add or uncomment the ``bibliography`` directive at the bottom of your technote's :file:`index.rst` file:
-
-.. code-block:: rst
-
-   .. bibliography:: local.bib lsstbib/books.bib lsstbib/lsst.bib lsstbib/lsst-dm.bib lsstbib/refs.bib lsstbib/refs_ads.bib
-      :style: lsst_aa
-
-.. note::
-
-   Only include the :file:`local.bib` file if your technote's repository has one.
-   Use :file:`local.bib` to temporarily store bib items before you permanently `transfer them to the lsst-texmf project <https://lsst-texmf.lsst.io/developer.html#updating-bibliographies>`_.
-
-The bibliographies in the :file:`lsstbib` directory are copies from the https://github.com/lsst/lsst-texmf repository.
-Refresh the copies maintained in your technote's repository by running this command:
-
-.. code-block:: bash
-
-   make refresh-bib
-
-To make citations in the technote's text, use the ``cite`` role.
-For example:
-
-.. code-block:: rst
-
-   :cite:`2007PASP..119.1462B`
-
-In-text citations are numbered, not author-year style.
-
-.. _technote-rst-metadata:
-
-Editing metadata in reStructuredText technotes
-----------------------------------------------
-
-ReStructuredText-format technotes use a :file:`metadata.yaml` in their repositories to describe attributes like the document's title, author list, and abstract.
-To change the technote's title or author list, for example, commit a change to the :file:`metadata.yaml` file.
-See the comments in :file:`metadata.yaml` for a description of these fields.
