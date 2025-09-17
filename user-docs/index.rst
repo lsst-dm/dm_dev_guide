@@ -32,6 +32,10 @@ Additional writing resources:
 
 - :doc:`topic-based-documentation`
 
+Graphics resources:
+
+- Accessibility guidelines (colour blindness) are provided by `RTN-045: Guidelines for User Tutorials`_.
+
 .. _user-doc-style-guide-where:
 
 Where to use this style guide
@@ -76,3 +80,4 @@ In any case, be open to learning so that the next batch of content you create wi
 See the `About this guide <https://developers.google.com/style/highlights>`__ page from the Google Developer Style Guide for additional thoughts, including when to break the rules.
 
 .. _`Google Developer Style Guide`: https://developers.google.com/style/
+.. _`RTN-045: Guidelines for User Tutorials`: https://rtn-045.lsst.io/#colorblind-friendly-plots
