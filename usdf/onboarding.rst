@@ -54,7 +54,7 @@ Notes for the Site Access form:
 - Time at SLAC: This is for being physically on site. For most people, this is <10%. Occasional visits for meetings don't count.
 - Start date: Choose today.
 - Will you be performing work at SLAC: "Yes".
-- SLAC Spokesperson/Sponsor/Supervisor: Select Sierra Villarreal ("Antonia Villarreal" on the Site Access Portal form).
+- SLAC Spokesperson/Sponsor/Supervisor: Select Antonia Villarreal.
 
 All foreign nationals will additionally be requested to submit an CV with the following guidelines:
 
@@ -106,7 +106,7 @@ If the user is a non-US citizen, the completed onboarding form is routed to the 
 7. Complete Access Control Training
 """""""""""""""""""""""""""""""""""
 
-All users will need to complete Access Control Training previous to being granted access to the USDF resources. This training is currently run every Wednesday at 8am PDT and located on Zoom (`Zoom meeting link <https://stanford.zoom.us/j/93763004905?pwd=GxkphvOcZ64ebx41C04bLDMOVqISdo.1>`__). If that time is not feasible, please reach out to K-T Lim on Rubin, Discovery Alliance, or SLAC Slack workspaces.
+All users will need to complete Access Control Training previous to being granted access to the USDF resources. This training is currently run every Wednesday at 8am PDT and located on Zoom (`Zoom meeting link <https://stanford.zoom.us/j/93763004905?pwd=GxkphvOcZ64ebx41C04bLDMOVqISdo.1>`__). If that time is not feasible, please reach out to Sierra Villarreal on Rubin, Discovery Alliance, or SLAC Slack workspaces.
 
 
 Troubleshooting Accounts
