@@ -32,24 +32,27 @@ Science data under ``/sdf/group/rubin/``:
 Butler access
 =============
 
-Butler repo configurations for most repos are located under ``/sdf/group/rubin/repo/``, but we define aliases for them starting with ``/repo/`` as a convenience.
-A few Butler repos that use S3 object stores have their configuration files defined there.
+Butler repo configurations for most repos are located under ``/sdf/group/rubin/repo/``, but we define aliases for them as a convenience.
+A few Butler repos that use S3 object stores have their configuration files defined there, also with convenience aliases.
 
 Available Butler repos:
    - ``main`` - All images taken of the real sky by HSC, DECam, LATISS, LSSTComCam, and LSSTCam and data products derived from them.  (This repo only contains post-embargo images for the Rubin cameras.)
-   - ``embargo`` - Embargoed data from Summit cameras (located in the Embargo Rack).  After the embargo period, images and other data products in this repo will be copied to ``/repo/main`` and/or ``/repo/prompt``.  After a further delay, they will be removed from this repo.
+   - ``embargo`` - Embargoed data from Summit cameras (located in the Embargo Rack).  After the embargo period, images and other data products in this repo will be copied to ``main`` and/or ``prompt``.  After a further delay, they will be removed from this repo.
    - ``prompt`` - Summit camera raw images and data products published as nightly post-embargo data products for LSST data rights holders.
+   - ``dp1_prep`` - Preparatory repo for the Data Release Production for the Data Preview 1 release.
+   - ``dp1`` - Official repo with the final DP1 contents.
    - ``dc2`` - DESC DC2 simulated LSSTCam.
    - ``ir2`` - LSSTCam and TS8 data taken at SLAC during testing.
    - ``bts`` - Equivalent of ``embargo`` for the Base Test Stand (located in the Embargo Rack).
    - ``tts`` - Equivalent of ``embargo`` for the Tucson Test Stand (not located in the Embargo Rack).
    - ``ops-rehearsal-3-prep`` - Images and data products used to prepare for Ops Rehearsals 3 and 4.  Data products generated as a result of the Ops Rehearsals are elsewhere, starting in ``/repo/embargo``..
    - ``hsc_pdr2_multisite`` - Special campaign for testing multi-site Data Release Production (DRP).  (Does not have an alias defined.)
-   - Future DRPs such as DP1, DP2, DR1, etc. will go into distinct Butler repos.
+   - Future DRPs such as DP2, DR1, etc. will go into distinct Butler repos, one for preparation and one with the final published release.
 
 The USDF butler Registry can be accessed at ``usdf-butler.slac.stanford.edu``.
 
 As of this writing, authentication to the Butler repos is by a single shared account and password. It will be set up for you automatically once you log in to the USDF RSP and start a notebook server. This will create ``~/.lsst/postgres-credentials.txt`` and ``~/.lsst/aws-credentials.ini`` files.
+Certain services use distinct service accounts for Butler repo access.
 
 Requests for outages of the Butler repos should be handled by the `USDF outage process <https://confluence.lsstcorp.org/display/LSSTOps/USDF+Outage+Planning>`__.
 
