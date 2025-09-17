@@ -32,9 +32,9 @@ Additional writing resources:
 
 - :doc:`topic-based-documentation`
 
-Colorblind-friendly plots:
+Graphics resources:
 
-- Follow the recommendations described in `RTN-045: Guidelines for User Tutorials`_.
+- Accessibility guidelines (colour blindness) are provided by `RTN-045: Guidelines for User Tutorials`_.
 
 .. _user-doc-style-guide-where:
 
