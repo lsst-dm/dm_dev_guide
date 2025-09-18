@@ -70,7 +70,7 @@ Typically, LSST (and HSC/DECam) data processing is carried out using the `Tiger`
 
 .. _Tiger: https://researchcomputing.princeton.edu/systems/tiger
 
-The Princeton astronomical software group owns a head node on the Tiger cluster called ``tiger2-sumire``.
+The Princeton astronomical software group owns a head node on the Tiger cluster called ``tiger3-sumire``.
 You can use this node for building software and running small and/or short-lived jobs.
 
 .. note::
@@ -161,7 +161,7 @@ BPS on the Princeton clusters is configured to work with the `ctrl_bps_parsl plu
 
 To submit a job to the cluster, you will first need to create a YAML configuration file for BPS.
 For convenience, two generic configuration files have been constructed on disk at ``/scratch/gpfs/RUBIN/bps/bps_tiger.yaml`` and ``/scratch/gpfs/RUBIN/bps/bps_tiger_clustering.yaml``.
-The former is intended for general use, while the latter is intended for use with quantum clusering enabled.
+The former is intended for general use, while the latter is intended for use with quantum clustering enabled.
 These files may either be used directly when submitting a job or copied to your working directory and modified as needed.
 The following example shows how to submit a job using the generic configuration file:
 
@@ -258,7 +258,7 @@ If you choose the first or second options, you may find the ``ProxyCommand`` or 
 For example, adding the following to :file:`~/.ssh/config` will automatically route your connection to the right place when you run :command:`ssh tiger`::
 
     Host tiger
-        HostName tiger3.princeton.edu
+        HostName tiger3-sumire.princeton.edu
         ProxyCommand ssh coma.astro.princeton.edu -W %h:%p
 
 The following SSH configuration allows access via the Research Computing gateway::
@@ -268,14 +268,14 @@ The following SSH configuration allows access via the Research Computing gateway
     Host tiger* tigressdata*
         ProxyCommand ssh -q -W %h:%p tigressgateway.princeton.edu
     Host tiger
-        Hostname tiger3.princeton.edu
+        Hostname tiger3-sumire.princeton.edu
 
 or alternatively::
 
     Host tigressgateway
         HostName tigressgateway.princeton.edu
     Host tiger
-        Hostname tiger3.princeton.edu
+        Hostname tiger3-sumire.princeton.edu
         ProxyJump tigressgateway
 
 (It may also be necessary to add a ``User`` line under ``Host tigressgateway`` if there is a mismatch between your local and Princeton usernames.)
