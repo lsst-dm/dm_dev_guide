@@ -16,7 +16,7 @@ Check out the `README <https://github.com/lsst-dm/dm_dev_guide/blob/main/README.
 
 **Jump to:** :ref:`Team <part-team>` · :ref:`Communications <part-communications>` · :ref:`Project documentation <part-project-docs>` · :ref:`Work management <part-work>`
 
-**Development guides:** :ref:`Overview <part-guides>` · :ref:`C++ <part-cpp>` · :ref:`Python <part-python>` · :ref:`Pybind11 <part-pybind11>` · :ref:`JavaScript <part-javascript>` · :ref:`ReStructuredText <part-rst>` · :ref:`DM Stack <part-dm-stack>` · :ref:`Git <part-git>` · :ref:`Editors <part-editors>` · :ref:`Legal <part-legal>` · :ref:`User documentation style <part-user-doc-style-guide>`
+**Development guides:** :ref:`Overview <part-guides>` · :ref:`C++ <part-cpp>` · :ref:`Rust <part-rust>` · :ref:`Python <part-python>` · :ref:`Pybind11 <part-pybind11>` · :ref:`JavaScript <part-javascript>` · :ref:`ReStructuredText <part-rst>` · :ref:`DM Stack <part-dm-stack>` · :ref:`Git <part-git>` · :ref:`Editors <part-editors>` · :ref:`Legal <part-legal>` · :ref:`User documentation style <part-user-doc-style-guide>`
 
 **Services:** :ref:`Overview <part-services>` · :ref:`Jenkins <part-jenkins>`
 
@@ -213,6 +213,24 @@ C++
 - :doc:`cpp/eigen`
 - :doc:`cpp/profiling`
 - :doc:`cpp/compilation-db`
+
+.. RUST SECTION ============================================================
+
+.. Hidden toctree to manage the sidebar navigation. Match the contents list below.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Rust
+   :hidden:
+
+   rust/rust
+
+.. _part-rust:
+
+rust
+----
+- :doc:`rust/rust`
+
 
 .. PYTHON SECTION ============================================================
 
