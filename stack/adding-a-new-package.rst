@@ -79,7 +79,7 @@ This must be done as part of your RFC proposal (for pre-existing packages), or p
 
 1. Follow the instructions for :ref:`adding a package to pipelines.lsst.io <add-to-pipelines-lsst-io>` on a ticket branch.
 2. :ref:`Build the Science PIpelines docs locally <local-pipelines-lsst-io-build>` on that branch.
-3. Copy the ``_build/html`` directory from your pipelines build to a place that's publicly viewable (e.g. your public web path on :doc:`the USDF </usdf/storage>`).
+3. Copy the ``_build/html`` directory from your pipelines build to a place that's publicly viewable (e.g. your public web path on `the USDF <https://df-ops.lsst.io/users/storage.html>`__).
 4. Include a link to those built docs in your RFC.
 
 .. note::
