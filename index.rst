@@ -535,30 +535,9 @@ Interim Data Facility
 
 .. USDF SECTION ===========================================================
 
-.. toctree::
-   :maxdepth: 1
-   :caption: USDF
-   :hidden:
-
-   usdf/onboarding.rst
-   usdf/lsst-login
-   usdf/kubernetes
-   usdf/storage
-   usdf/batch
-   usdf/stack
-   usdf/datasets
-   usdf/object-store
-
 .. _part-usdf:
 
 US Data Facility
 ---------------------
 
-- :doc:`usdf/onboarding`
-- :doc:`usdf/lsst-login`
-- :doc:`usdf/kubernetes`
-- :doc:`usdf/storage`
-- :doc:`usdf/batch`
-- :doc:`usdf/stack`
-- :doc:`usdf/datasets`
-- :doc:`usdf/object-store`
+Access the `Data Facilities Operations Site <https://df-ops.lsst.io/>`__
