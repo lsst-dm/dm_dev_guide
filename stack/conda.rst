@@ -183,6 +183,6 @@ New builds of ``rubin-env`` (without updating its version) can always be used to
 "Exact" environments
 --------------------
 
-The conda environments used by Jenkins to build nightly, weekly, and official release tarballs are preserved as ``conda list --explicit`` outputs in ``eups.lsst.codes``.
+The conda environments used by Jenkins to build nightly, weekly, and official release tarballs are preserved as ``conda list --explicit`` outputs in ``eups.lsst.cloud``.
 These can be used in place of the ``rubin-env`` metapackage to exactly reproduce a build for consistency in production or for debugging.
 Both ``newinstall`` and ``lsstsw`` allow specification of an eups tag to retrieve the exact environment used when that tag was published.
