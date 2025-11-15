@@ -98,7 +98,7 @@ If you wish to use a different Rubin Environment, you can do so by first setting
 
 .. code-block:: shell
 
-   export LSST_CONDA_ENV_NAME="lsst-scipipe-9.0.0"
+   export LSST_CONDA_ENV_NAME="lsst-scipipe-12.0.0"
    source /scratch/gpfs/LSST/stack/loadLSST.sh
    setup lsst_distrib -t <old_version_tag>
 

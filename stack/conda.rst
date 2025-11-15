@@ -45,8 +45,8 @@ To change the ``rubin-env``:
 .. code-block:: bash
 
    conda deactivate # make sure you do not run this inside an existing conda environment
-   ./bin/deploy -v 8.0.0 # or any other rubin env
-   source bin/envconfig -n lsst-scipipe-8.0.0
+   ./bin/deploy -v 12.0.0 # or any other rubin env
+   source bin/envconfig -n lsst-scipipe-12.0.0
    rebuild lsst_apps # This could be any branch or product you want to use
 
 
@@ -71,8 +71,8 @@ To change the ``rubin-env``:
    conda deactivate # make sure you do not run this inside an existing conda environment
    # adding conda-forge/label/rubin-env_dev allows to install rubin-env_dev
    export LSST_CONDA_CHANNELS="nodefaults conda-forge/label/rubin-env_dev conda-forge"
-   ./bin/deploy -v 9.0.0dev # or any other rubin env
-   source bin/envconfig -n lsst-scipipe-9.0.0dev
+   ./bin/deploy -v 12.0.0dev # or any other rubin env
+   source bin/envconfig -n lsst-scipipe-12.0.0dev
    rebuild lsst_apps # This could be any branch or product you want to use
 
 .. _rubin-env-dependency-versioning:
