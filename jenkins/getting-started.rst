@@ -1,28 +1,28 @@
 ###########################################
-Jenkins rubin-ci.slac.stanford.edu Overview
+Jenkins ci.lsst.cloud Overview
 ###########################################
 
-Data Management operates a Jenkins continuous integration cluster at https://rubin-ci.slac.stanford.edu.
+Data Management operates a Jenkins continuous integration cluster at https://ci.lsst.cloud.
 You will typically use Jenkins to run the ``stack-os-matrix`` job to build and run unit tests in the LSST Stack as part of `DM's development workflow <processes/workflow.rst>`_.
 See :doc:`/stack/jenkins-stack-os-matrix` for details.
 
 Logging in
 ==========
 
-Log into Jenkins by visiting https://rubin-ci.slac.stanford.edu/blue and authenticate with your GitHub credentials.
-Any member of the `lsst`_, `lsst-dm`_, or `lsst-sqre`_ GitHub organizations is authorized to use https://rubin-ci.slac.stanford.edu.
+Log into Jenkins by visiting https://ci.lsst.cloud/blue and authenticate with your GitHub credentials.
+Any member of the `lsst`_, `lsst-dm`_, or `lsst-sqre`_ GitHub organizations is authorized to use https://ci.lsst.cloud.
 See the :doc:`/team/onboarding` for more information.
 
 Using the Jenkins dashboard
 ===========================
 
-This section summarizes how to use the Jenkins dashboard, which is the first view you see when browsing to https://rubin-ci.slac.stanford.edu/blue.
+This section summarizes how to use the Jenkins dashboard, which is the first view you see when browsing to https://ci.lsst.cloud/blue.
 `Jenkins's own dashboard documentation <https://jenkins.io/doc/book/blueocean/dashboard/>`_ provides additional information.
 
 Browsing Jenkins jobs
 ---------------------
 
-From https://rubin-ci.slac.stanford.edu/blue, you see a listing of Jenkins jobs.
+From https://ci.lsst.cloud/blue, you see a listing of Jenkins jobs.
 Each job fulfills a different purpose, see :ref:`jenkins-jobs`.
 
 To access a job, click on the job's name.
@@ -31,7 +31,7 @@ This takes you to a page where you can run the job and review past runs.
 Favoriting Jenkins jobs
 -----------------------
 
-From the https://rubin-ci.slac.stanford.edu/blue dashboard, you can click on the star icon next to any job.
+From the https://ci.lsst.cloud/blue dashboard, you can click on the star icon next to any job.
 This will favorite the Job.
 Favorited jobs appear at the top of the homepage, before other jobs.
 
@@ -40,7 +40,7 @@ We recommend that you favorite the ``stack-os-matrix`` job.
 Searching for Jenkins jobs
 --------------------------
 
-From the https://rubin-ci.slac.stanford.edu/blue dashboard, you can filter the listing of jobs by using the search box at the top of the page.
+From the https://ci.lsst.cloud/blue dashboard, you can filter the listing of jobs by using the search box at the top of the page.
 
 Jenkins jobs are organized in directories, so it's helpful to search by directory prefix to find the right job.
 The directories are:
@@ -186,13 +186,13 @@ More resources
 .. _`lsst`: https://github.com/lsst
 .. _`lsst-dm`: https://github.com/lsst-dm
 .. _`lsst-sqre`: https://github.com/lsst-sqre
-.. _`stack-os-matrix`: https://rubin-ci.slac.stanford.edu/blue/organizations/jenkins/stack-os-matrix/activity
-.. _`science-pipelines/lsst_distrib`: https://rubin-ci.slac.stanford.edu/blue/organizations/jenkins/science-pipelines%2Flsst_distrib/activity
-.. _`qserv/dax_webserv`: https://rubin-ci.slac.stanford.edu/blue/organizations/jenkins/qserv%2Fdax_webserv/activity
-.. _`qserv/qserv_distrib`: https://rubin-ci.slac.stanford.edu/blue/organizations/jenkins/qserv%2Fqserv_distrib/activity
+.. _`stack-os-matrix`: https://ci.lsst.cloud/blue/organizations/jenkins/stack-os-matrix/activity
+.. _`science-pipelines/lsst_distrib`: https://ci.lsst.cloud/blue/organizations/jenkins/science-pipelines%2Flsst_distrib/activity
+.. _`qserv/dax_webserv`: https://ci.lsst.cloud/blue/organizations/jenkins/qserv%2Fdax_webserv/activity
+.. _`qserv/qserv_distrib`: https://ci.lsst.cloud/blue/organizations/jenkins/qserv%2Fqserv_distrib/activity
 .. _`Jenkins documentation`: https://jenkins.io/doc/book/blueocean/
 .. _`Jenkins dashboard documentation`: https://jenkins.io/doc/book/blueocean/dashboard/
 .. _`lsst-dm/jenkins-dm-jobs`: https://github.com/lsst-dm/jenkins-dm-jobs
-.. _`#dm-jenkins`: https://lsstc.slack.com/messages/C2NCSTY3A
+.. _`#dm-jenkins`: https://rubin-obs.slack.com/archives/C07Q45N5SDV
 .. _`search the channel listing`: https://get.slack.help/hc/en-us/articles/205239967-Browse-and-join-channels
 .. _`mute the channel`: https://get.slack.help/hc/en-us/articles/204411433-Mute-a-channel

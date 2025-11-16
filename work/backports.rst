@@ -57,7 +57,7 @@ What next?
    Check that it cleanly builds via scons. There should be a latest shared v23.0.0.rcN stack on lsst-devl.
    Run Jenkins. When running Jenkins, build against the release branch and rc1 even if later rcNs exist.
    The default ``SPLENV_REF`` value (the rubin-env conda metapackage version) may no longer be appropriate for ``v23.0.x``.
-   If you are unsure of the recommended env for the release, see the :external+pipelines:ref:`release documentation page <release-history>`, the `release tag files <https://eups.lsst.codes/stack/src/tags/>`__. or the ``env_name`` files nested under ``/sdf/group/rubin/sw/tag/`` at USDF.
+   If you are unsure of the recommended env for the release, see the :external+pipelines:ref:`release documentation page <release-history>`, the `release tag files <https://eups.lsst.cloud/stack/src/tags/>`__. or the ``env_name`` files nested under ``/sdf/group/rubin/sw/tag/`` at USDF.
 
    .. code-block:: bash
 
