@@ -960,7 +960,7 @@ We'll use the ``continueClass`` decorator to reopen the class and add a new meth
 
     from ._tmpl import ExampleTwo
 
-    __all__ = []  # import for side effects
+    __all__ = ()  # import for side effects
 
 
     @continueClass
@@ -999,7 +999,7 @@ As with ``ExampleTwo``, add this to a pure-Python ``_ExampleThree.py``:
 
     from ._tmpl import ExampleThreeI, ExampleThreeD
 
-    __all__ = ["ExampleThree"]
+    __all__ = ("ExampleThree", )
 
 
     class ExampleThree(metaclass=TemplateMeta):
