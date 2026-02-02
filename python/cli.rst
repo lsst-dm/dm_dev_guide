@@ -33,11 +33,24 @@ Read more in the `argparse documentation`_.
 
 .. _argparse documentation: https://docs.python.org/3/library/argparse.html
 
+.. _add_callable_cli_command_to_your_package:
+
 Add a Callable CLI Command To Your Package
 ==========================================
 
-To create a callable command at the top level of your package create a folder called ``bin.src``.
-It should contain two files:
+If your callable command is implemented as described in :ref:`argparse-script-topic-type` with a single function loading from the package implementing the script, you can define the script in the `standard Python package approach using <https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#creating-executable-scripts>`_ ``pyproject.toml``.
+For example, this:
+
+.. code-block:: toml
+
+   [project.scripts]
+   exampleScript = "lsst.example.scripts.exampleScript:main"
+
+will result in a executable file appearing in ``bin/exampleScript`` that will import ``main`` from ``lsst.example.scripts.exampleScript`` and call it.
+This is the recommended way to define callable commands and all newly-written scripts should be defined this way.
+
+If your script is monolithic and includes the implementation directly in the callable script and you cannot reorganize the code, you must instead write the command to a ``bin.src`` directory at the top level.
+The directory should contain:
 
 1. ``SConscript`` with contents:
 
@@ -47,8 +60,7 @@ It should contain two files:
        from lsst.sconsUtils import scripts
        scripts.BasicSConscript.shebang()
 
-2. A file that has the name of the CLI command the user will call.
-   This file should contain as little implementation as possible.
-   The ideal simplest case is to import an implementation function and call it.
-   This makes the implementation testable and reusable.
+2. A file for each command that has the name of the CLI command the user will call.
+   This file should have a Python shebang (``#!``) in the first line.
 
+It is possible for a package to define some scripts in ``pyproject.toml`` and some scripts in ``bin.src`` but it is an error if a script is defined in both places.
