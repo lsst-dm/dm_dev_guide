@@ -74,16 +74,17 @@ A simple return type does not need backticks to create a link, but backticks may
    As always, types in docstrings do *not* respect imports in the file, and instead are resolved using the `Sphinx target-resolution rules`_.
    See :ref:`rst-python-link` for details.
 
-Functions that return multiple values via a tuple should have their return types documented just like parameters, i.e. with labels and no types::
+Functions that return multiple values via a tuple should just have multiple
+entries::
 
    def return_pair() -> tuple[str, int]:
        """Return a pair.
 
        Returns
        -------
-       name
+       str
            The name.
-       id
+       int
            The ID.
        """
        return ("", 0)
