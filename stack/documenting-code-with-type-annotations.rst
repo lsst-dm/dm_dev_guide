@@ -74,8 +74,7 @@ A simple return type does not need backticks to create a link, but backticks may
    As always, types in docstrings do *not* respect imports in the file, and instead are resolved using the `Sphinx target-resolution rules`_.
    See :ref:`rst-python-link` for details.
 
-Functions that return multiple values via a tuple should just have multiple
-entries::
+Functions that return multiple values via a tuple should just have multiple entries::
 
    def return_pair() -> tuple[str, int]:
        """Return a pair.
@@ -111,8 +110,33 @@ Their docstrings should continue to include the types parenthetically::
    included in documentation *at all*, except for those on `~dataclasses.dataclass` types.
    Important instance attributes that cannot have a class-level default value should be made into properties so they can be documented.
 
+Generics
+--------
+
+Functions that use `generics`_ will appear in the documentation with the type variable as the type, but these do not resolve to any kind of link, and in nitpick mode Sphinx will warn about those broken links.
+These should be included in the ``nitpick-ignore`` section of ``documenteer.toml``:
+
+.. code-block:: toml
+   [sphinx]
+   nitpick_ignore = [
+       ["py:class", "T"],  # type variables don't resolve
+   ]
+
+for e.g.::
+
+   def generic[T: int | float](value: T) -> T:
+       """Do something with a value.
+
+       Parameters
+       ----------
+       value
+           The given value (a `float` or `int`).
+       """
+
+Since the automatic docstrings do not include any information about a bound on the type variable (i.e. ``int | float`` here), including that information in the description is recommended.
 
 .. _`Documenteer 2.x`: https://documenteer.lsst.io
 .. _`sphinx-autodoc-typehints`: https://pypi.org/project/sphinx-autodoc-typehints/
 .. _`pipelines.lsst.io`: https://pipelines.lsst.io
 .. _`Sphinx target-resolution rules`: <https://www.sphinx-doc.org/en/master/usage/domains/python.html#target-resolution>`
+.. _`generics`: <https://docs.python.org/3/library/typing.html#generics>
