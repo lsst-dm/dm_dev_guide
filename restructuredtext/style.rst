@@ -356,13 +356,37 @@ Objects can be referenced with these roles:
 - ``:py:data:`pkg.mod.VARIABLE``` to reference a module-level variable ``VARIABLE`` in ``pkg.mod``.
 - ``:py:const:`pkg.mod.CONSTANT``` to reference a module-level *constant* ``CONSTANT`` in ``pkg.mod``.
 
-Namespace resolution
-""""""""""""""""""""
+.. note::
+   Types in docstrings do *not* respect imports in the file, and instead are resolved using `Sphinx's own target-resolution rules <https://www.sphinx-doc.org/en/master/usage/domains/python.html#target-resolution>`__.
+   In other words,
 
-In these examples, the full namespace of each Python object is specified.
-In some contexts, Sphinx may be able to identify the reference object without the full namespace.
-For example in class docstrings, references to methods or attributes in the same class can be made by name alone.
-See the `Sphinx documentation <http://sphinx-doc.org/domains.html#cross-referencing-python-objects>`_ for more details on object resolution.
+   .. code-block::
+
+      from collections.abc import Sequence
+
+      def run_stuff(stuff):
+          """Run some stuff.
+
+          Parameters
+          ----------
+          stuff : `Sequence` [`str`]
+              Stuff to run.
+
+   does not work, but
+
+   .. code-block::
+
+      from collections.abc import Sequence
+
+      def run_stuff(stuff):
+          """Run some stuff.
+
+          Parameters
+          ----------
+          stuff : `~collections.abc.Sequence` [`str`]
+              Stuff to run.
+
+   does.  See the link above for how to make relative links to types; the syntax is not the same as Python's, and it operates on the documentation hierarchy, not the module hierarchy.
 
 .. _rst-cpp-links:
 
