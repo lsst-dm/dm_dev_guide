@@ -14,8 +14,7 @@ Documentation built with `Documenteer 2.x`_ can often leave this information out
 Function arguments
 ------------------
 
-To document the parameters to a function or method declared with type hints,
-use regular numpydoc style without the colon or the type information that follows it::
+To document the parameters to a function or method declared with type hints, use regular numpydoc style without the colon or the type information that follows it::
 
    def run_thing(self, x: int, *args: int, name: str = "", **kwargs: str) -> None:
        """Run the thing.
@@ -106,8 +105,7 @@ Their docstrings should continue to include the types parenthetically::
        """Value of the thing (`int`)."""
 
 .. note::
-   Attributes without default values (or some sort of ``= RHS``) are not
-   included in documentation *at all*, except for those on `~dataclasses.dataclass` types.
+   Attributes without default values (or some sort of ``= RHS``) are not included in documentation *at all*, except for those on `~dataclasses.dataclass` types.
    Important instance attributes that cannot have a class-level default value should be made into properties so they can be documented.
 
 Generics
