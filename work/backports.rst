@@ -32,6 +32,11 @@ What next?
 
    Now treat ``v23.0.x`` same as you would the default branch (``main``).
 
+   .. note::
+
+      If the release branch (or if it doesn't exist, the release tags) is on a commit that is also on the main branch and your ticket is the first one after that commit, you do not need cherry pick commits onto the release branch and can instead fast forward the release branch.
+      If this is the case, at this point in the process jump to the :ref:`instructions below <backports-fast-forward>`.
+
 4) Create a copy of your ticket branch called ``tickets/DM-XXXXX-v23``.
 
    .. code-block:: bash
@@ -75,3 +80,51 @@ What next?
    but please *do not* put your ticket status back into ``In Review`` on Jira.
 
 7) When a ticket has been backported to all requested releases, label your Jira ticket ``backport-done``.
+
+.. _backports-fast-forward:
+
+What If The Backport Can Be Fast Forwarded?
+===========================================
+
+If the parent commit of your backport coincides with the release branch (or release candidate tag) you do not need to cherry pick and instead should fast forward.
+For example, in this git example from ``daf_butler`` we would like to backport the fix for DM-52738 to v30:
+
+.. code-block:: bash
+
+   *   25fb39d38 - (tag: w.2026.04) Merge pull request #1322 from lsst/tickets/DM-52738 (13 days ago)
+   |\
+   | * 10f3bb0b0 - Fix bug in expandDataId with kwargs. (2 weeks ago)
+   | * c5e14e5e7 - Add convenience iteration method to DatasetRefURIs. (2 weeks ago)
+   | * f7b71d1fc - Expand data IDs when making predicted paths. (2 weeks ago)
+   |/
+   *   f58e329d0 - (origin/v30.0.x, v30.0.x, tag: v30.0.0.rc3, tag: 30.0.0) Merge pull request #1321 from lsst/tickets/DM-53844 (2 weeks ago)
+
+We can see that there are no other commits between what we would like to backport and the v30.0.x release branch, making this an ideal candidate for a fast forward merge to the branch.
+
+.. warning::
+
+   If you are unsure whether your backport should be done as a fast forward, please ask on Slack in channel ``#dm-build-support``.
+
+Following on from step (3) above having created the release branch and pushed it.
+
+4) At the merge commit on ``main`` of the code you are backporting, create a temporary ticket branch.
+
+   .. code-block:: bash
+
+      git checkout -b tickets/DM-XXXXX-v23
+
+  This branch exists solely to allow Jenkins to be tested as a convenience without having to find a commit ref for the merge to ``main``.
+
+5) Run Jenkins as described above in step (5) using this temporary ticket branch.
+
+6) When Jenkins passes you can now merge your ticket branch directly to the release branch.
+
+   .. code-block:: bash
+
+      git checkout v23.0.x
+      git merge --ff-only tickets/DM-XXXXX-v23
+      git push
+      git branch -d tickets/DM-XXXXX-v23
+
+   We ensure that the merge is a fast forward and this command will fail if it is not.
+   The ticket branch is not needed and can be deleted.
