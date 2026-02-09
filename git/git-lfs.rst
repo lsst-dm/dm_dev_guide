@@ -89,7 +89,7 @@ This section describes how to configure Git LFS to write to the Rubin
 Observatory Large File Storage repositories.
 
 You will first need to acquire a token from Roundtable.  Go to
-https://roundtable.lsst.cloud/auth/tokens and request a token with scope
+https://roundtable.lsst.cloud/settings/tokens and request a token with scope
 ``write:git-lfs``.  It would be best practice to request a token with
 a finite lifetime, but on your own conscience be it if you ask for one
 that never expires.
