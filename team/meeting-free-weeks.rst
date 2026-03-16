@@ -6,16 +6,14 @@ Meeting Free Weeks
 DM will observe  several **Meeting Free Weeks** each year. 
 
 
-Meeting Free Weeks 2025
+Meeting Free Weeks 2026
 =======================
-In 2025 meeting free weeks will be: 
-   - April 14 - 18 
-   - June 23 - 27  (EAS) 
-   - Sept 15 - 19
-   - Dec 22 - Jan 2.
+In 2026 meeting free weeks will be: 
+   - April 5 - 10 
+   - June 14 - 18  (AAS) 
+   - Sept 7 - 11
+   - Dec 28 - Jan 8.
 
-An exceptional meeting free week has been added 2025:
-   - Aug 18 - 22
 
 Guidelines
 ==========
