@@ -12,6 +12,7 @@ DM Stack guides
 - :doc:`documentation-system-overview`
 - :doc:`layout-of-doc-directory`
 - :doc:`package-documentation-topic-types`
+- :doc:`documenting-code-with-type-annotations`
 - :doc:`add-a-package-to-pipelines-lsst-io`
 - :doc:`building-single-package-docs`
 - :doc:`building-pipelines-lsst-io-locally`
