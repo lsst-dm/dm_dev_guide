@@ -43,12 +43,12 @@ Data Facility resources
 
 You'll also need an account for the US Data Facility services, hosted at SLAC, which include:
 
-- `Development servers </usdf/lsst-login.html>`_
-- `Storage, precursor, and production data </usdf/storage.html>`_
-- `Batch resources </usdf/batch.html>`_
-- `Kubernetes vclusters to deploy services </usdf/kubernetes.html>`_
+- `Development servers <https://df-ops.lsst.io/users/lsst-login.html>`__
+- `Storage, precursor, and production data <https://df-ops.lsst.io/users/storage.html>`__
+- `Batch resources <https://df-ops.lsst.io/users/batch.html>`__
+- `Kubernetes vclusters to deploy services <https://df-ops.lsst.io/developers/kubernetes.html>`__
 
-You must sign up for this account separately via `this procedure </usdf/onboarding.html>`_.
+You must sign up for this account separately via `this procedure <https://df-ops.lsst.io/users/onboarding.html>`__.
 
 .. _getting-started-github:
 
