@@ -335,6 +335,7 @@ ReStructuredText
    stack/documentation-system-overview
    stack/layout-of-doc-directory
    stack/package-documentation-topic-types
+   stack/documenting-code-with-type-annotations
    stack/add-a-package-to-pipelines-lsst-io
    stack/building-single-package-docs
    stack/building-pipelines-lsst-io-locally
@@ -384,6 +385,8 @@ Documentation.
     - :doc:`stack/script-topic-type`
     - :doc:`stack/argparse-script-topic-type`
     - :doc:`stack/generic-guide-topic-type`
+
+  - :doc:`stack/documenting-code-with-type-annotations`
 
 - Documentation in the main repository:
 
