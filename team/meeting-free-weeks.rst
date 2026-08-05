@@ -10,7 +10,8 @@ Meeting Free Weeks 2026
 =======================
 In 2026 meeting free weeks will be: 
    - April 5 - 10 
-   - June 14 - 18  (AAS) 
+   - June 14 - 18  (AAS) (skipped)
+   - Aug 17 - 21
    - Sept 7 - 11
    - Dec 28 - Jan 8.
 
