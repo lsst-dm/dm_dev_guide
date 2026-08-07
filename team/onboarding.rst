@@ -25,11 +25,10 @@ This gives you access to:
   - For non-AURA employees, this will forward to your institutional address (as registered with the `Contacts Database <https://project.lsst.org/LSSTContacts/MemberListPage1.php>`_)
 
 - The Jira project management tool: https://rubinobs.atlassian.net/
-- The Confluence wiki: https://confluence.lsstcorp.org
+- The Confluence wiki: https://rubinobs.atlassian.net/wiki
 - The DocuShare document archive: https://docushare.lsst.org
 
-  - The IT Team have some `further information about Docushare <https://confluence.lsstcorp.org/display/IT/Docushare>`_.
-    Note in particular the comments on licensing.
+  - The IT Team have some `further information about Docushare <https://rubinobs.atlassian.net/wiki/spaces/IT/pages/46405694/Docushare>`_.
 
 You can always update or reset your LSST password at https://pwdreset.lsst.org/
 
@@ -79,32 +78,33 @@ Slack
 It is used across the project and by external science collaborations.
 Please be aware of our guidance on :doc:`/communications/community-support` when interacting with the latter.
 
-Ask your T/CAM for access to the ‘lsstc’ Slack team.
-You can access it online at https://lsstc.slack.com, and through `Slack's mobile and desktop apps <https://get.slack.help/hc/en-us/articles/201746897-Slack-apps-for-computers-phones-tablets>`__.
+Ask your T/CAM for access to the ‘rubin-obs’ Slack team.
+You can access it online at https://rubin-obs.slack.com, and through `Slack's mobile and desktop apps <https://get.slack.help/hc/en-us/articles/201746897-Slack-apps-for-computers-phones-tablets>`__.
 Slack's `online help <https://get.slack.help/hc/en-us>`__ is a great way to learn Slack's features.
 
 Be sure to :doc:`link your GitHub profile to your Slack account <../communications/slack-github-username>` so that our Slack integrations will work correctly.
 
 Channels set up specifically for Data Management related discussion have a ‘dm-’ prefix.
-Some important channels are:
+Some important channels for rubin-obs are:
+
+- `all-users <https://rubin-obs.slack.com/archives/all-users>`__ for project-wide announcements.
+- `rubinobs-travel <https://rubin-obs.slack.com/archives/rubinobs-travel>`__ for help with travel on project business.
+- `dm-team <https://rubin-obs.slack.com/archives/dm-team>`__ for general DM discussion.
+- `dm-jenkins <https://rubin-obs.slack.com/archives/dm-jenkins>`__ jenkins CI support.
+
+Important channels for the `discovery-alliance Slack <https://discovery-alliance.slack.com>`__:
 
 - `announce-everyone <https://lsstc.slack.com/archives/announce-everyone>`__ for project-wide announcements.
-- `lsst-travel <https://lsstc.slack.com/archives/lsst-travel>`__ for help with travel on project business.
 - `lsst-newchannels <https://lsstc.slack.com/archives/lsst-newchannels>`__ for notifications of new channels.
 - `software-dev <https://lsstc.slack.com/archives/software-dev>`__ for anything about writing software.
-- `dm <https://lsstc.slack.com/archives/dm>`__ for general DM discussion.
-- `dm-square <https://lsstc.slack.com/archives/dm-square>`__ for developer support services.
-- `dm-jenkins <https://lsstc.slack.com/archives/dm-jenkins>`__ for automatic notifications from our Continuous Integration system.
-- `dm-tavern <https://lsstc.slack.com/archives/dm-tavern>`__ for “water cooler” type talk.
-- `dm-tea-time <https://lsstc.slack.com/archives/dm-tea-time>`__ for more serious but still non-LSST conversation.
-- `dm-admin-support <https://lsstc.slack.com/archives/dm-admin-support>`__ to contact DM's administrator.
+- `tea-time <https://lsstc.slack.com/archives/tea-time>`__ for more serious but still non-LSST conversation.
 
 Your team may also have specific channels, and you can send private messages to individuals.
 
 Mailing lists
 =============
 
-We don't use mailing lists for conversations, but they're still used for notifications about :doc:`RFCs </communications/rfc>` and conversations happening on https://community.lsst.org.
+We don't use mailing lists for conversations, we primarily use Slack. We use :doc:`RFCs </communications/rfc>` and user support happens on https://community.lsst.org.
 You will automatically be be subscribed to these lists as soon as you get an :ref:`LSST acccount <getting-started-lsst-account>`:
 
 - `dm-devel <https://lists.lsst.org/mailman/listinfo/dm-devel>`_
@@ -122,7 +122,7 @@ Checklist for hires
 
 In summary, here are the things you can do to get started:
 
-#. Send a profile photo to your T/CAM for our `team page <https://confluence.lsstcorp.org/display/DM/The+Team>`__.
+#. Send a profile photo to your T/CAM for our `team page <https://rubinobs.atlassian.net/wiki/spaces/DM/pages/48824819/The+Team>`__.
 
 #. Send your GitHub username to your T/CAM.
 
@@ -158,7 +158,7 @@ Here's what T/CAMs need to do to get their new hire started:
    - There's no need to upload a photo to DocuShare, see the next step instead.
    - Under "User should belong to which Mailing Lists," add ``dm-devel`` and ``dm-announce``. IT automatically adds DM hires to ``dm-staff``.
 
-#. Ask your new hire for a profile photo and add it to https://confluence.lsstcorp.org/display/DM/The+Team.
+#. Ask your new hire for a profile photo and add it to https://rubinobs.atlassian.net/wiki/spaces/DM/pages/48824819/The+Team.
 
 #. Add the new hire to the DM Team Google spreadsheet with time allocation information.
 
@@ -172,9 +172,7 @@ Here's what T/CAMs need to do to get their new hire started:
    - `LSST <https://community.lsst.org/groups/LSST>`__.
    - `LSSTDM <https://community.lsst.org/groups/LSSTDM>`__.
 
-#. Give the hire's email address to a Slack administrator: `@brianv0 <https://lsstc.slack.com/team/brianv0>`__, `@jonathansick <https://lsstc.slack.com/team/jonathansick>`__, and `@frossie <https://lsstc.slack.com/team/frossie>`__, can make Slack accounts.
-
-You must inform your new hire that they need to follow the `SLAC Onboarding Procedure </usdf/onboarding.html>`_.
+You must inform your new hire that they need to follow the `SLAC Onboarding Procedure <https://df-ops.lsst.io/users/onboarding.html>`_.
 
 Departing
 ---------
@@ -217,4 +215,3 @@ Here's what the awesome DM admin does:
 
 #. Provide Google calendar access to DM Meetings and DM Travel/Vacation (for DMLT members only).
 
-For details on LSST IT's account onboarding procedures, see `Account Management in the IT Support Confluence <https://confluence.lsstcorp.org/display/IT/Account+Management>`_.
