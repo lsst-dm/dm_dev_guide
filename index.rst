@@ -198,6 +198,7 @@ Overview of Code Style Guides & Policies
    cpp/eigen
    cpp/profiling
    cpp/compilation-db
+   cpp/code-analysis
 
 .. _part-cpp:
 
@@ -213,6 +214,7 @@ C++
 - :doc:`cpp/eigen`
 - :doc:`cpp/profiling`
 - :doc:`cpp/compilation-db`
+- :doc:`cpp/code-analysis`
 
 .. RUST SECTION ============================================================
 
