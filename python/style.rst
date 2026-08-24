@@ -708,7 +708,7 @@ Within a module, follow the order:
 #. Shebang line, ``#! /usr/bin/env python`` (only for executable scripts)
 #. Module-level comments (such as the `license statement <https://github.com/lsst/templates/tree/main/file_templates/stack_license_py>`__)
 #. Module-level docstring
-#. ``__all__ = [...]`` statement, if present
+#. ``__all__ = (...)`` statement, if present
 #. Imports
 #. Private module variables (names start with underscore)
 #. Private module functions and classes (names start with underscore)
