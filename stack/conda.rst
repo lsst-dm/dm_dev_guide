@@ -186,3 +186,34 @@ New builds of ``rubin-env`` (without updating its version) can always be used to
 The conda environments used by Jenkins to build nightly, weekly, and official release tarballs are preserved as ``conda list --explicit`` outputs in ``eups.lsst.cloud``.
 These can be used in place of the ``rubin-env`` metapackage to exactly reproduce a build for consistency in production or for debugging.
 Both ``newinstall`` and ``lsstsw`` allow specification of an eups tag to retrieve the exact environment used when that tag was published.
+
+.. _conda-exact-rsp-environments:
+
+"Exact" RSP environments
+------------------------
+
+Alongside each tag's ``rubin-env`` environment file, a ``{tag}_rsp.env`` file records the exact ``rubin-env-rsp`` environment (see :ref:`conda-rsp-notebooks`) for the same tag.
+Install it when you need to reproduce behavior reported from an RSP notebook, where one of the packages that ``rubin-env-rsp`` adds on top of ``rubin-env`` may be involved.
+For anything else, prefer the plain ``rubin-env`` environment.
+
+Pass ``-R`` to either installer to select the RSP environment:
+
+.. code-block:: bash
+
+   # lsstinstall: install the exact RSP environment for a published tag
+   lsstinstall -P -R -X w_2026_22
+
+   # lsstsw: deploy prints the name of the environment it creates
+   ./bin/deploy -R -x w_2026_22
+   source bin/envconfig -n lsst-scipipe-w_2026_22-rsp
+
+The conda environment name gains an ``-rsp`` suffix so that RSP and non-RSP installations of the same version cannot be mistaken for each other or falsely reused.
+``lsstinstall`` appends it after the ``-exact`` suffix, so ``-X w_2026_22 -R`` creates ``lsst-scipipe-{version}-exact-rsp`` while ``-R`` on its own creates ``lsst-scipipe-{version}-rsp``.
+
+The default behavior of both tools is unchanged.
+Without ``-R`` you get a plain ``rubin-env`` environment, which remains the right choice for ordinary development work and is what the distributed tarball binaries are meant to be used, but also work with ``-rsp``.
+
+Only tags published after RSP environment files were introduced have a ``{tag}_rsp.env``; requesting ``-R`` for an older tag fails with a message saying so.
+``-R`` is also rejected for the pre-``rubin-env`` hash-referenced environments, which have no RSP counterpart.
+
+Without ``-X`` (for ``lsstinstall``) or ``-x`` (for ``deploy``), ``-R`` solves ``rubin-env-rsp={version}`` fresh from conda-forge rather than installing a pinned package list.

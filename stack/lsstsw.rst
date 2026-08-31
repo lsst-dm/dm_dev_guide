@@ -58,6 +58,9 @@ example::
    enough to turn into a no-op when it detects it has successfully run
    already.
 
+By default :command:`deploy` creates a plain ``rubin-env`` conda environment.
+Pass ``-R`` to create the ``rubin-env-rsp`` superset that the Rubin Science Platform runs instead, optionally combined with ``-x <eups tag>`` to reproduce the exact RSP environment published for that tag; see :ref:`conda-exact-rsp-environments`.
+
 .. _lsst_build repository: https://github.com/lsst/lsst_build.git
 .. _lsstsw repository: https://github.com/lsst/lsstsw.git
 .. _Miniconda: http://conda.pydata.org/miniconda.html
