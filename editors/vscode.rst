@@ -110,6 +110,7 @@ The ``"rulers"`` setting doesn't affect actual indentation (unless you use the `
         "[cpp]": {
             "editor.defaultFormatter": "ms-vscode.cpptools"
         }
+        "remote.SSH.maxReconnectionAttempts": 5,
     }
 
 .. _vscode-python:
